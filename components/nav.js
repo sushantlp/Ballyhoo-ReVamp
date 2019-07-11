@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Slider from "react-slick";
+import { Dropdown } from "semantic-ui-react";
 
+import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bulma/css/bulma.min.css";
@@ -13,6 +15,7 @@ export default class Nav extends React.Component {
   }
 
   render() {
+    const empty = [];
     const settings = {
       dots: true,
       infinite: true,
@@ -86,12 +89,84 @@ export default class Nav extends React.Component {
               </div>
             </nav>
           </div>
+
           <Slider {...settings}>
             <img src="../static/1.jpg" alt="" className="carousel" />
             <img src="../static/2.jpg" alt="" className="carousel" />
             <img src="../static/4.jpg" alt="" className="carousel" />
           </Slider>
         </section>
+
+        <div className="container">
+          <div className="columns is-desktop">
+            <div className="column is-4">
+              <Dropdown
+                placeholder="City"
+                search
+                fluid
+                selection
+                // style={{ height: "50px" }}
+                options={empty}
+                value={empty}
+                // onChange={}
+                icon={
+                  <img
+                    src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
+                    style={{
+                      marginRight: "-2vh",
+                      float: "right",
+                      color: "grey"
+                    }}
+                  />
+                }
+              />
+            </div>
+            <div className="column is-4">
+              <Dropdown
+                placeholder="City"
+                search
+                fluid
+                selection
+                // style={{ height: "50px" }}
+                options={empty}
+                value={empty}
+                // onChange={}
+                icon={
+                  <img
+                    src="https://img.icons8.com/ios/20/000000/marker.png"
+                    style={{
+                      marginRight: "-2vh",
+                      float: "right",
+                      color: "grey"
+                    }}
+                  />
+                }
+              />
+            </div>
+            <div className="column is-4">
+              <Dropdown
+                placeholder="City"
+                search
+                fluid
+                selection
+                // style={{ height: "50px" }}
+                options={empty}
+                value={empty}
+                // onChange={}
+                icon={
+                  <img
+                    src="https://img.icons8.com/ios/20/000000/marker.png"
+                    style={{
+                      marginRight: "-2vh",
+                      float: "right",
+                      color: "grey"
+                    }}
+                  />
+                }
+              />
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
