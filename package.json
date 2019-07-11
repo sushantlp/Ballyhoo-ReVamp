@@ -1,13 +1,23 @@
 {
   "name": "create-next-example-app",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "bulma": "^0.7.5",
     "next": "^9.0.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-slick": "^0.24.0",
+    "semantic-ui-react": "^0.87.3",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^4.3.2",
+    "sw-precache-webpack-plugin": "^0.11.5"
+  },
+  "devDependencies": {
+    "babel-plugin-react-html-attrs": "^2.1.0"
   }
 }

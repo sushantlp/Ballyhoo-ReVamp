@@ -1,59 +1,98 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
+import Slider from "react-slick";
 
-const links = [
-  { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "bulma/css/bulma.min.css";
+import "./nav.css";
 
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link prefetch href="/">
-          <a>Home</a>
-        </Link>
-      </li>
-      <ul>
-        {links.map(({ key, href, label }) => (
-          <li key={key}>
-            <Link href={href}>
-              <a>{label}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </ul>
+export default class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
-  </nav>
-)
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      autoplaySpeed: 3000
+    };
 
-export default Nav
+    return (
+      <React.Fragment>
+        <section className="hero is-medium">
+          <div className="hero-head">
+            <nav
+              className="navbar is-transparent"
+              role="navigation"
+              aria-label="main navigation"
+            >
+              <div className="navbar-brand">
+                <a className="navbar-item" href="https://bulma.io">
+                  <img
+                    src="https://bulma.io/images/bulma-logo.png"
+                    width="112"
+                    height="28"
+                  />
+                </a>
+
+                <a
+                  role="button"
+                  className="navbar-burger burger"
+                  aria-label="menu"
+                  aria-expanded="false"
+                  data-target="navbarBasicExample"
+                >
+                  <span aria-hidden="true" />
+                  <span aria-hidden="true" />
+                  <span aria-hidden="true" />
+                </a>
+              </div>
+
+              <div id="navbarBasicExample" className="navbar-menu">
+                <div className="navbar-start">
+                  <a className="navbar-item">Home</a>
+
+                  <a className="navbar-item">Documentation</a>
+
+                  <div className="navbar-item has-dropdown is-hoverable">
+                    <a className="navbar-link">More</a>
+
+                    <div className="navbar-dropdown">
+                      <a className="navbar-item">About</a>
+                      <a className="navbar-item">Jobs</a>
+                      <a className="navbar-item">Contact</a>
+                      <hr className="navbar-divider" />
+                      <a className="navbar-item">Report an issue</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="navbar-end">
+                  <div className="navbar-item">
+                    <div className="buttons">
+                      <a className="button is-primary">
+                        <strong>Sign up</strong>
+                      </a>
+                      <a className="button is-light">Log in</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <Slider {...settings}>
+            <img src="../static/1.jpg" alt="" className="carousel" />
+            <img src="../static/2.jpg" alt="" className="carousel" />
+            <img src="../static/4.jpg" alt="" className="carousel" />
+          </Slider>
+        </section>
+      </React.Fragment>
+    );
+  }
+}

@@ -1,0 +1,21 @@
+.slick-next,
+.slick-prev {
+  display: none;
+}
+
+.carousel {
+  background-size: cover;
+}
+
+.slick-list {
+  height: 80vh;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.hero {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
