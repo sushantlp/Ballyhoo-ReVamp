@@ -99,7 +99,29 @@ export default class Nav extends React.Component {
 
         <div className="container">
           <div className="columns is-desktop">
-            <div className="column is-4">
+            <div className="column is-3">
+              <Dropdown
+                placeholder="City"
+                search
+                fluid
+                selection
+                // style={{ height: "50px" }}
+                options={empty}
+                value={empty}
+                // onChange={}
+                icon={
+                  <img
+                    src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
+                    style={{
+                      marginRight: "-2vh",
+                      float: "right",
+                      color: "grey"
+                    }}
+                  />
+                }
+              />
+            </div>
+            <div className="column is-3">
               <Dropdown
                 placeholder="City"
                 search
@@ -133,7 +155,7 @@ export default class Nav extends React.Component {
                 // onChange={}
                 icon={
                   <img
-                    src="https://img.icons8.com/ios/20/000000/marker.png"
+                    src="https://img.icons8.com/wired/20/000000/search.png"
                     style={{
                       marginRight: "-2vh",
                       float: "right",
@@ -143,27 +165,9 @@ export default class Nav extends React.Component {
                 }
               />
             </div>
-            <div className="column is-4">
-              <Dropdown
-                placeholder="City"
-                search
-                fluid
-                selection
-                // style={{ height: "50px" }}
-                options={empty}
-                value={empty}
-                // onChange={}
-                icon={
-                  <img
-                    src="https://img.icons8.com/ios/20/000000/marker.png"
-                    style={{
-                      marginRight: "-2vh",
-                      float: "right",
-                      color: "grey"
-                    }}
-                  />
-                }
-              />
+
+            <div className="column is-2">
+              <a className="button is-danger">Submit</a>
             </div>
           </div>
         </div>

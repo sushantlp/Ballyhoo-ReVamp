@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en-US">
+      <html lang="en-US" style={{ overflowX: "hidden", overflowY: "hidden" }}>
         <Head>
           <link rel="manifest" href="/static/manifest.json" />
 

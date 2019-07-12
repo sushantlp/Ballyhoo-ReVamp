@@ -11,15 +11,11 @@
   height: 80vh;
 }
 
-body {
-  overflow-x: hidden;
-}
-
-.hero {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
 .container {
-  bottom: 35px;
+  bottom: 25px;
+}
+
+.button {
+  width: 8em;
+  height: 2.6em;
 }
