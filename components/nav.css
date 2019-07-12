@@ -1,21 +1,21 @@
-.slick-next,
+/* .slick-next,
 .slick-prev {
   display: none;
-}
+} */
 
-.carousel {
+.hero .carousel {
   background-size: cover;
 }
 
-.slick-list {
+.hero .slick-list {
   height: 80vh;
 }
 
-.container {
+.Search .container {
   bottom: 25px;
 }
 
-.button {
+.Search .button {
   width: 8em;
   height: 2.6em;
 }

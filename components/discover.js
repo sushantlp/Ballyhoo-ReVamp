@@ -70,10 +70,10 @@ function SamplePrevArrow(props) {
 
 export default class Discover extends React.Component {
   render() {
-    const settings = {
+    const setting = {
       dots: false,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
@@ -83,7 +83,7 @@ export default class Discover extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns">
-            <Slider {...settings}>
+            <Slider {...setting}>
               <div className="column">
                 <div className="card">
                   <div className="card-image">
