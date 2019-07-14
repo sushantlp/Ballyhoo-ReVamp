@@ -4,6 +4,7 @@ import Head from "../components/head";
 import Nav from "../components/nav";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
+import Trending from "../components/trending";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
@@ -61,6 +62,7 @@ class Index extends React.Component {
         <Nav />
         <Discover />
         <Featured />
+        <Trending />
         <Footer />
       </div>
     );

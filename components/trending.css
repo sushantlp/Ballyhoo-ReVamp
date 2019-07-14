@@ -1,0 +1,50 @@
+.slick-prev,
+.slick-next {
+  font-size: 15px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: "" !important;
+}
+
+.header-name {
+  background: transparent;
+  padding: 0.5em;
+  font-size: 1.2em;
+  color: black;
+}
+
+.trending {
+  margin-right: 0em;
+  cursor: pointer;
+}
+
+.slick-slide {
+  width: 0px;
+}
+
+.slick-active {
+  width: 0px;
+}
+
+.trending-header {
+  color: rgb(39, 37, 37);
+  font-size: 1.5em;
+}
+
+.underscore {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(39, 37, 37)),
+    to(#dee5ef)
+  );
+  margin-top: 0.5em;
+  content: "";
+  height: 0.3em;
+  display: block;
+  box-sizing: border-box;
+  width: 5em;
+}

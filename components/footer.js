@@ -5,10 +5,10 @@ import "./footer.css";
 export default class Footer extends React.Component {
   render() {
     return (
-      <footer class="app-footer section is-medium">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-5 is-4-widescreen">
+      <footer className="app-footer section is-medium">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-5 is-4-widescreen">
               <div className="footer-rightside-summary">
                 <a className="brand" href="/">
                   <div className="brand-icon">
@@ -33,7 +33,7 @@ export default class Footer extends React.Component {
 
                 <a
                   href="https://itunes.apple.com/us/app/bedtime-stories-read-tell/id1231933548"
-                  class="app-store-badge"
+                  className="app-store-badge"
                   target="_blank"
                 >
                   <img
@@ -44,7 +44,7 @@ export default class Footer extends React.Component {
 
                 <a
                   href="https://itunes.apple.com/us/app/bedtime-stories-read-tell/id1231933548"
-                  class="app-store-badge"
+                  className="app-store-badge"
                   target="_blank"
                   style={{ marginLeft: "0.5em" }}
                 >
@@ -55,12 +55,12 @@ export default class Footer extends React.Component {
                 </a>
               </div>
             </div>
-            <div class="column is-7 is-6-widescreen is-offset-2-widescreen">
-              <div class="columns">
-                <div class="column">
-                  <div class="menu">
-                    <p class="menu-label"> For partners </p>
-                    <ul class="menu-list">
+            <div className="column is-7 is-6-widescreen is-offset-2-widescreen">
+              <div className="columns">
+                <div className="column">
+                  <div className="menu">
+                    <p className="menu-label"> For partners </p>
+                    <ul className="menu-list">
                       <li>
                         <a href="/">Search for doctors</a>
                       </li>
@@ -73,10 +73,10 @@ export default class Footer extends React.Component {
                     </ul>
                   </div>
                 </div>
-                <div class="column">
-                  <div class="menu">
-                    <p class="menu-label"> Company </p>
-                    <ul class="menu-list">
+                <div className="column">
+                  <div className="menu">
+                    <p className="menu-label"> Company </p>
+                    <ul className="menu-list">
                       <li>
                         <a href="/" target="_blank">
                           About Ballyhoo
@@ -106,10 +106,10 @@ export default class Footer extends React.Component {
                   </div>
                 </div>
 
-                <div class="column">
-                  <div class="menu">
-                    <p class="menu-label"> Connect with us </p>
-                    <ul class="menu-list">
+                <div className="column">
+                  <div className="menu">
+                    <p className="menu-label"> Connect with us </p>
+                    <ul className="menu-list">
                       <li>
                         <a
                           href="https://facebook.com/getbedtimestories"
@@ -165,7 +165,7 @@ export default class Footer extends React.Component {
             </div>
           </div>
 
-          <div class="content has-text-centered">
+          <div className="content has-text-centered">
             <p>
               Copyright © 2019, <strong>Ballyhoo</strong> All rights reserved.
             </p>
