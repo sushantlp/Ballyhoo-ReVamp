@@ -15,8 +15,8 @@
   color: black;
 }
 
-.discover {
-  margin: 1em;
+.featured {
+  margin-right: 0em;
   cursor: pointer;
 }
 
@@ -28,7 +28,7 @@
   width: 0px;
 }
 
-.discover-header {
+.featured-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
 }

@@ -58,7 +58,7 @@ export default class Nav extends React.Component {
               </div>
 
               <div id="navbarBasicExample" className="navbar-menu">
-                <div className="navbar-start">
+                {/* <div className="navbar-start">
                   <a className="navbar-item">Home</a>
 
                   <a className="navbar-item">Documentation</a>
@@ -74,7 +74,7 @@ export default class Nav extends React.Component {
                       <a className="navbar-item">Report an issue</a>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="navbar-end">
                   <div className="navbar-item">

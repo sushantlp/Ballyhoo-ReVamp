@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Card } from "semantic-ui-react";
-import "./discover.css";
+import "./featured.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -68,12 +68,12 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default class Discover extends React.Component {
+export default class Featured extends React.Component {
   render() {
     const settings = {
       dots: false,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
@@ -83,45 +83,64 @@ export default class Discover extends React.Component {
       <section className="section">
         <div className="container">
           <div>
-            <div className="discover-container">
-              <h2 className="discover-header">Discover</h2>
+            <div className="featured-container">
+              <h2 className="featured-header">Featured</h2>
               <div className="underscore" />
             </div>
             <Slider {...settings}>
-              <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2FA5xIy" alt="" />
-                </div>
-                <span className="header-name">Restaurants</span>
+              <div className="featured">
+                <Card>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
+                    alt=""
+                  />
+                </Card>
               </div>
 
-              <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2FAH4Tn" alt="" />
-                </div>
-                <span className="header-name">Pubs</span>
+              <div className="featured">
+                <Card>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+                    alt=""
+                  />
+                </Card>
               </div>
 
-              <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2Fzmvqf" alt="" />
-                </div>
-                <span className="header-name">Events</span>
+              <div className="featured">
+                <Card>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
+                    alt=""
+                  />
+                </Card>
               </div>
 
-              <div>
-                <div className="discover">
-                  <img src="https://bit.ly/2U2yExZ" alt="" />
-                </div>
-                <span className="header-name">Saloons</span>
+              <div className="featured">
+                <Card>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
+                    alt=""
+                  />
+                </Card>
               </div>
 
-              {/* <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2FAhVbn" alt="" />
-                </div>
-                <span className="header-name">Saloons</span>
-              </div> */}
+              <div className="featured">
+                <Card>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
+                    alt=""
+                  />
+                </Card>
+              </div>
+
+              <div className="featured">
+                <Card>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
+                    alt=""
+                  />
+                </Card>
+              </div>
             </Slider>
           </div>
         </div>

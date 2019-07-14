@@ -1,0 +1,88 @@
+body {
+  color: #998da0;
+}
+
+.footer-rightside-summary {
+  max-width: 360px;
+  font-size: 1.125rem;
+  line-height: 1.66667;
+}
+
+.brand {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.brand-icon {
+  width: 56px;
+  height: 56px;
+  margin-right: 1rem;
+  transition-duration: 172ms;
+  will-change: width, height, margin-right;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #463853;
+  transition-duration: 172ms;
+  will-change: transform;
+  font-weight: 700;
+}
+
+.brand-subtitle {
+  margin-top: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: normal;
+  color: #998da0;
+  opacity: 1;
+  transition-duration: 172ms;
+  will-change: opacity, transform;
+}
+
+.spacer {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  background: none;
+  border: none;
+}
+
+.spacer.is-1 {
+  height: 1rem;
+}
+
+.menu-label {
+  font-size: 1.2rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.menu-list {
+  margin-left: -0.75rem;
+  font-size: 1rem;
+}
+
+.menu-list a {
+  border-radius: 10px;
+  color: #998da0;
+  display: block;
+  padding: 0.5em 0.75em;
+}
+
+.menu-list img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+.section.is-medium {
+  margin-top: 2em;
+  padding: 3rem 1.5rem;
+  background-color: rgb(240, 241, 245);
+}

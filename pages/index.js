@@ -3,6 +3,8 @@ import Link from "next/link";
 import Head from "../components/head";
 import Nav from "../components/nav";
 import Discover from "../components/discover";
+import Featured from "../components/featured";
+import Footer from "../components/footer";
 import styled from "styled-components";
 
 class Index extends React.Component {
@@ -58,6 +60,8 @@ class Index extends React.Component {
         <Head title="Home" />
         <Nav />
         <Discover />
+        <Featured />
+        <Footer />
       </div>
     );
   }
