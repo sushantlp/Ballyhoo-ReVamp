@@ -59,16 +59,19 @@ export default class Footer extends React.Component {
               <div className="columns">
                 <div className="column">
                   <div className="menu">
-                    <p className="menu-label"> For partners </p>
+                    <p className="menu-label"> Cities </p>
                     <ul className="menu-list">
                       <li>
-                        <a href="/">Search for doctors</a>
+                        <a href="/">Bangloare</a>
                       </li>
                       <li>
-                        <a href="/">Search for clinics</a>
+                        <a href="/">Mumbai</a>
                       </li>
                       <li>
-                        <a href="/">Search for hospitals</a>
+                        <a href="/">Delhi</a>
+                      </li>
+                      <li>
+                        <a href="/">Pune</a>
                       </li>
                     </ul>
                   </div>

@@ -100,8 +100,9 @@ export default class Trending extends React.Component {
                 <Card.Content>
                   <Card.Header
                     style={{
-                      fontWeight: "500",
-                      color: "black"
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
                     }}
                   >
                     Activities
@@ -120,8 +121,9 @@ export default class Trending extends React.Component {
                 <Card.Content>
                   <Card.Header
                     style={{
-                      fontWeight: "500",
-                      color: "black"
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
                     }}
                   >
                     Activities
@@ -141,8 +143,9 @@ export default class Trending extends React.Component {
                 <Card.Content>
                   <Card.Header
                     style={{
-                      fontWeight: "500",
-                      color: "black"
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
                     }}
                   >
                     Activities
@@ -162,8 +165,9 @@ export default class Trending extends React.Component {
                 <Card.Content>
                   <Card.Header
                     style={{
-                      fontWeight: "500",
-                      color: "black"
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
                     }}
                   >
                     Saloons
@@ -183,8 +187,9 @@ export default class Trending extends React.Component {
                 <Card.Content>
                   <Card.Header
                     style={{
-                      fontWeight: "500",
-                      color: "black"
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
                     }}
                   >
                     Escapes
@@ -204,8 +209,9 @@ export default class Trending extends React.Component {
                 <Card.Content>
                   <Card.Header
                     style={{
-                      fontWeight: "500",
-                      color: "black"
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
                     }}
                   >
                     Escapes
