@@ -63,7 +63,7 @@ class Index extends React.Component {
         <Nav />
         <Discover />
         <Featured />
-        <Trending />
+        {/* <Trending /> */}
         <FoodBrewery />
         <Footer />
       </div>

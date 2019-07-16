@@ -1,5 +1,5 @@
 body {
-  color: #998da0;
+  /* color: #998da0; */
 }
 
 .footer-rightside-summary {
@@ -70,7 +70,7 @@ body {
 
 .menu-list a {
   border-radius: 10px;
-  color: #998da0;
+  /* color: #998da0; */
   display: block;
   padding: 0.5em 0.75em;
 }
@@ -84,5 +84,5 @@ body {
 .section.is-medium {
   margin-top: 2em;
   padding: 3rem 1.5rem;
-  background-color: rgb(240, 241, 245);
+  /* background-color: rgb(240, 241, 245); */
 }

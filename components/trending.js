@@ -73,29 +73,31 @@ export default class Trending extends React.Component {
     const settings = {
       dots: false,
       infinite: true,
-      slidesToShow: 5,
+      slidesToShow: 3,
       slidesToScroll: 1,
+      className: "trending-slick",
+      centerMode: true,
+      centerPadding: "0px",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
 
     return (
-      <section className="section">
-        <div className="container">
-          <div>
-            <div className="trending-container">
-              <h2 className="trending-header">Trending</h2>
-              <div className="underscore" />
-            </div>
-            <Slider {...settings}>
+      <div className="container">
+        <div className="trending-container">
+          <div className="trending-header-container">
+            <h2 className="trending-header">Trending</h2>
+            <div className="underscore" />
+          </div>
+          <Slider {...settings}>
+            <div>
               <Card raised>
                 <Image
                   src="http://bit.ly/2FG2kH9"
                   alt=""
-                  style={{
-                    width: "50em",
-                    height: "11.3em"
-                  }}
+                  // style={{
+                  //   width: "50em"
+                  // }}
                 />
                 <Card.Content>
                   <Card.Header
@@ -109,14 +111,17 @@ export default class Trending extends React.Component {
                   </Card.Header>
                 </Card.Content>
               </Card>
+            </div>
+
+            <div>
               <Card raised>
                 <Image
                   src="http://bit.ly/2Fzn2IL"
                   alt=""
-                  style={{
-                    width: "50em",
-                    height: "11.3em"
-                  }}
+                  // style={{
+                  //   width: "50em",
+                  //   height: "auto"
+                  // }}
                 />
                 <Card.Content>
                   <Card.Header
@@ -130,37 +135,17 @@ export default class Trending extends React.Component {
                   </Card.Header>
                 </Card.Content>
               </Card>
+            </div>
 
-              <Card raised>
-                <Image
-                  src="http://bit.ly/2FznkPR"
-                  alt=""
-                  style={{
-                    width: "50em",
-                    height: "11.3em"
-                  }}
-                />
-                <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Activities
-                  </Card.Header>
-                </Card.Content>
-              </Card>
-
+            <div>
               <Card raised>
                 <Image
                   src="https://bit.ly/2U2yExZ"
                   alt=""
-                  style={{
-                    width: "50em",
-                    height: "11.3em"
-                  }}
+                  // style={{
+                  //   width: "50em",
+                  //   height: "auto"
+                  // }}
                 />
                 <Card.Content>
                   <Card.Header
@@ -174,15 +159,41 @@ export default class Trending extends React.Component {
                   </Card.Header>
                 </Card.Content>
               </Card>
+            </div>
 
+            <div>
               <Card raised>
                 <Image
                   src="http://bit.ly/2FAUT4k"
                   alt=""
-                  style={{
-                    width: "512px",
-                    height: "180px"
-                  }}
+                  // style={{
+                  //   width: "50em",
+                  //   height: "auto"
+                  // }}
+                />
+                <Card.Content>
+                  <Card.Header
+                    style={{
+                      fontWeight: "200",
+                      color: "black",
+                      fontSize: "1.1em"
+                    }}
+                  >
+                    Saloons
+                  </Card.Header>
+                </Card.Content>
+              </Card>
+            </div>
+
+            <div>
+              <Card raised>
+                <Image
+                  src="http://bit.ly/2FAUT4k"
+                  alt=""
+                  // style={{
+                  //   width: "512px",
+                  //   height: "auto"
+                  // }}
                 />
                 <Card.Content>
                   <Card.Header
@@ -196,32 +207,10 @@ export default class Trending extends React.Component {
                   </Card.Header>
                 </Card.Content>
               </Card>
-
-              <Card raised>
-                <Image
-                  src="http://bit.ly/2FAUT4k"
-                  alt=""
-                  style={{
-                    width: "512px",
-                    height: "180px"
-                  }}
-                />
-                <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Escapes
-                  </Card.Header>
-                </Card.Content>
-              </Card>
-            </Slider>
-          </div>
+            </div>
+          </Slider>
         </div>
-      </section>
+      </div>
     );
   }
 }

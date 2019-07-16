@@ -76,7 +76,7 @@ export default class Discover extends React.Component {
       infinite: true,
       slidesToShow: 6,
       slidesToScroll: 1,
-      className: "center",
+      className: "discover-slick",
       centerMode: true,
       centerPadding: "0px",
       nextArrow: <SampleNextArrow />,
@@ -84,221 +84,248 @@ export default class Discover extends React.Component {
     };
 
     return (
-      <section className="section">
-        <div className="container">
-          <div className="discover-container">
-            <div className="discover-header-container">
-              <h2 className="discover-header">Discover</h2>
-              <div className="underscore" />
-            </div>
+      // <section className="section">
+      <div className="container" style={{ marginBottom: "1em" }}>
+        <div className="discover-container">
+          <div className="discover-header-container">
+            <h2 className="discover-header">Discover</h2>
+            <div className="underscore" />
+          </div>
 
-            <div>
-              <Slider {...settings}>
-                <div>
-                  <Image
-                    src="../static/discover-1.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Pubs
-                  </h2>
-                </div>
+          <div>
+            <Slider {...settings}>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-1.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Pubs
+                </h2>
+              </div>
 
-                <div>
-                  <Image
-                    src="../static/discover-2.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
-                  <h2
-                    style={{
-                      paddingLeft: "2em",
-                      paddingRight: "2em",
-                      paddingTop: "1em",
-                      paddingBottom: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Restaurants
-                  </h2>
-                </div>
-                <div>
-                  <Image
-                    src="../static/discover-3.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Pubs
-                  </h2>
-                </div>
-                <div>
-                  <Image
-                    src="../static/discover-1.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Events
-                  </h2>
-                </div>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-2.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
+                <h2
+                  style={{
+                    paddingLeft: "2em",
+                    paddingRight: "2em",
+                    paddingTop: "1em",
+                    paddingBottom: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Restaurants
+                </h2>
+              </div>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-3.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Pubs
+                </h2>
+              </div>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-1.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Events
+                </h2>
+              </div>
 
-                <div>
-                  <Image
-                    src="../static/discover-2.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-2.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
 
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Saloons
-                  </h2>
-                </div>
-                <div>
-                  <Image
-                    src="../static/discover-3.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Saloons
+                </h2>
+              </div>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-3.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
 
-                  <h2
-                    style={{
-                      paddingLeft: "2em",
-                      paddingRight: "2em",
-                      paddingTop: "1em",
-                      paddingBottom: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Restaurants
-                  </h2>
-                </div>
-                <div>
-                  <Image
-                    src="../static/discover-1.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Pubs
-                  </h2>
-                </div>
+                <h2
+                  style={{
+                    paddingLeft: "2em",
+                    paddingRight: "2em",
+                    paddingTop: "1em",
+                    paddingBottom: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Restaurants
+                </h2>
+              </div>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-1.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Pubs
+                </h2>
+              </div>
 
-                <div>
-                  <Image
-                    src="../static/discover-2.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-2.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
 
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Events
-                  </h2>
-                </div>
-                <div>
-                  <Image
-                    src="../static/discover-3.jpg"
-                    size="small"
-                    circular
-                    style={{
-                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
-                      width: "150px",
-                      height: "150px"
-                    }}
-                  />
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Events
+                </h2>
+              </div>
+              <div className="discover-slider">
+                <Image
+                  src="../static/discover-3.jpg"
+                  size="small"
+                  circular
+                  style={{
+                    boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                    width: "150px",
+                    height: "150px",
+                    borderWidth: "0.11em",
+                    borderStyle: "solid",
+                    borderColor: "rgba(60,59,59,1)"
+                  }}
+                />
 
-                  <h2
-                    style={{
-                      paddingLeft: "3.5em",
-                      paddingTop: "1em",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Saloons
-                  </h2>
-                </div>
-              </Slider>
-            </div>
+                <h2
+                  style={{
+                    paddingLeft: "3.5em",
+                    paddingTop: "1em",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Saloons
+                </h2>
+              </div>
+            </Slider>
           </div>
         </div>
-      </section>
+      </div>
+      // </section>
     );
   }
 }

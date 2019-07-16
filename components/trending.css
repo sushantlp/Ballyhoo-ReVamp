@@ -33,7 +33,7 @@
   font-size: 1.5em;
 }
 
-.underscore {
+.trending-container .underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -43,7 +43,7 @@
   );
   margin-top: 0.5em;
   content: "";
-  height: 0.3em;
+  height: 0.1em;
   display: block;
   box-sizing: border-box;
   width: 5em;

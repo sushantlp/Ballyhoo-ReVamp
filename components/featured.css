@@ -15,8 +15,7 @@
   color: black;
 }
 
-.featured {
-  margin-right: 0em;
+.featured-container .featured-slider {
   cursor: pointer;
 }
 
@@ -28,12 +27,16 @@
   width: 0px;
 }
 
-.featured-header {
+.featured-header-container {
+  margin-bottom: 1em;
+}
+
+.featured-header-container .featured-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
 }
 
-.underscore {
+.featured-container .underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -43,7 +46,7 @@
   );
   margin-top: 0.5em;
   content: "";
-  height: 0.3em;
+  height: 1px;
   display: block;
   box-sizing: border-box;
   width: 5em;

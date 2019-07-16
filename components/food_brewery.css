@@ -1,13 +1,3 @@
-/* body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #212121;
-  font-family: sans-serif;
-} */
 .box {
   /* width: 1200px; */
   display: grid;
@@ -96,7 +86,7 @@
   margin-top: 5px;
 }
 
-.underscore {
+.food-brewery-container .underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -106,8 +96,13 @@
   );
   margin-top: 0.5em;
   content: "";
-  height: 0.3em;
+  height: 1px;
   display: block;
   box-sizing: border-box;
-  width: 3em;
+  width: 2em;
+}
+
+.food-brewery-header {
+  color: rgb(39, 37, 37);
+  font-size: 1.5em;
 }
