@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
-import { Card } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
+
 import "./discover.css";
 
 function SampleNextArrow(props) {
@@ -16,8 +17,8 @@ function SampleNextArrow(props) {
         position: "relative",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-        right: "-98%",
-        top: "-143px",
+        float: "right",
+        top: "-8em",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -49,8 +50,8 @@ function SamplePrevArrow(props) {
         position: "relative",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-        top: "175px",
-        left: "-16px",
+        float: "left",
+        top: "5em",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -73,8 +74,11 @@ export default class Discover extends React.Component {
     const settings = {
       dots: false,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 6,
       slidesToScroll: 1,
+      className: "center",
+      centerMode: true,
+      centerPadding: "0px",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
@@ -82,47 +86,216 @@ export default class Discover extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <div>
-            <div className="discover-container">
+          <div className="discover-container">
+            <div className="discover-header-container">
               <h2 className="discover-header">Discover</h2>
               <div className="underscore" />
             </div>
-            <Slider {...settings}>
-              <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2FA5xIy" alt="" />
-                </div>
-                <span className="header-name">Restaurants</span>
-              </div>
 
-              <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2FAH4Tn" alt="" />
+            <div>
+              <Slider {...settings}>
+                <div>
+                  <Image
+                    src="../static/discover-1.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Pubs
+                  </h2>
                 </div>
-                <span className="header-name">Pubs</span>
-              </div>
 
-              <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2Fzmvqf" alt="" />
+                <div>
+                  <Image
+                    src="../static/discover-2.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+                  <h2
+                    style={{
+                      paddingLeft: "2em",
+                      paddingRight: "2em",
+                      paddingTop: "1em",
+                      paddingBottom: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Restaurants
+                  </h2>
                 </div>
-                <span className="header-name">Events</span>
-              </div>
+                <div>
+                  <Image
+                    src="../static/discover-3.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Pubs
+                  </h2>
+                </div>
+                <div>
+                  <Image
+                    src="../static/discover-1.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Events
+                  </h2>
+                </div>
 
-              <div>
-                <div className="discover">
-                  <img src="https://bit.ly/2U2yExZ" alt="" />
-                </div>
-                <span className="header-name">Saloons</span>
-              </div>
+                <div>
+                  <Image
+                    src="../static/discover-2.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
 
-              {/* <div>
-                <div className="discover">
-                  <img src="http://bit.ly/2FAhVbn" alt="" />
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Saloons
+                  </h2>
                 </div>
-                <span className="header-name">Saloons</span>
-              </div> */}
-            </Slider>
+                <div>
+                  <Image
+                    src="../static/discover-3.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+
+                  <h2
+                    style={{
+                      paddingLeft: "2em",
+                      paddingRight: "2em",
+                      paddingTop: "1em",
+                      paddingBottom: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Restaurants
+                  </h2>
+                </div>
+                <div>
+                  <Image
+                    src="../static/discover-1.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Pubs
+                  </h2>
+                </div>
+
+                <div>
+                  <Image
+                    src="../static/discover-2.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Events
+                  </h2>
+                </div>
+                <div>
+                  <Image
+                    src="../static/discover-3.jpg"
+                    size="small"
+                    circular
+                    style={{
+                      boxShadow: "0px 3px 5px 0px rgba(247, 85, 106, 1)",
+                      width: "150px",
+                      height: "150px"
+                    }}
+                  />
+
+                  <h2
+                    style={{
+                      paddingLeft: "3.5em",
+                      paddingTop: "1em",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Saloons
+                  </h2>
+                </div>
+              </Slider>
+            </div>
           </div>
         </div>
       </section>

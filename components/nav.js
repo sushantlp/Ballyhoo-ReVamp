@@ -22,8 +22,9 @@ export default class Nav extends React.Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: false,
-      autoplaySpeed: 3000
+      autoplay: true,
+      autoplaySpeed: 3000,
+      fade: true
     };
 
     return (
@@ -100,16 +101,14 @@ export default class Nav extends React.Component {
         <div className="Search">
           <div className="container">
             <div className="columns is-desktop">
-              <div className="column is-3">
+              <div className="column is-3 is-offset-1">
                 <Dropdown
                   placeholder="City"
                   search
                   fluid
                   selection
-                  // style={{ height: "50px" }}
                   options={empty}
                   value={empty}
-                  // onChange={}
                   icon={
                     <img
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
@@ -122,29 +121,8 @@ export default class Nav extends React.Component {
                   }
                 />
               </div>
-              <div className="column is-3">
-                <Dropdown
-                  placeholder="City"
-                  search
-                  fluid
-                  selection
-                  // style={{ height: "50px" }}
-                  options={empty}
-                  value={empty}
-                  // onChange={}
-                  icon={
-                    <img
-                      src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
-                      style={{
-                        marginRight: "-2vh",
-                        float: "right",
-                        color: "grey"
-                      }}
-                    />
-                  }
-                />
-              </div>
-              <div className="column is-4">
+
+              <div className="column is-6">
                 <Dropdown
                   placeholder="City"
                   search

@@ -15,10 +15,10 @@
   color: black;
 }
 
-.discover {
+/* .discover {
   margin: 1em;
   cursor: pointer;
-}
+} */
 
 .slick-slide {
   width: 0px;
@@ -33,7 +33,10 @@
   font-size: 1.5em;
 }
 
-.underscore {
+.discover-header-container {
+  margin-bottom: 1em;
+}
+.discover-container .underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -43,8 +46,23 @@
   );
   margin-top: 0.5em;
   content: "";
-  height: 0.3em;
+  height: 0.1em;
   display: block;
   box-sizing: border-box;
   width: 5em;
 }
+
+.discover-container .slick-track div {
+  width: 200px;
+}
+
+/* .text {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  color: black;
+  font-weight: bold;
+  top: 70%; 
+  text-align: center;
+  width: 60%; 
+} */

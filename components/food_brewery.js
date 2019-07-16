@@ -91,48 +91,52 @@ export default class FoodBrewery extends React.Component {
             <div class="box">
               <div class="card">
                 <div class="imgBx">
-                  <img
-                    src="https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="images"
-                  />
+                  <img src="http://bit.ly/2FA5xIy" alt="images" />
                 </div>
                 <div class="details">
                   <h2>
-                    SomeOne Famous
-                    <br />
-                    <span>Director</span>
+                    Restaurants
+                    {/* <br /> */}
+                    {/* <span>Director</span> */}
                   </h2>
                 </div>
               </div>
 
               <div class="card">
                 <div class="imgBx">
-                  <img
-                    src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="images"
-                  />
+                  <img src="http://bit.ly/2FAH4Tn" alt="images" />
                 </div>
                 <div class="details">
                   <h2>
-                    SomeOne Famous
-                    <br />
-                    <span>Producer</span>
+                    Pubs
+                    {/* <br />
+                    <span>Producer</span> */}
                   </h2>
                 </div>
               </div>
 
               <div class="card">
                 <div class="imgBx">
-                  <img
-                    src="https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="images"
-                  />
+                  <img src="http://bit.ly/2Fzmvqf" alt="images" />
                 </div>
                 <div class="details">
                   <h2>
-                    SomeOne Famous
-                    <br />
-                    <span>Actor</span>
+                    Events
+                    {/* <br />
+                    <span>Actor</span> */}
+                  </h2>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="imgBx">
+                  <img src="https://bit.ly/2U2yExZ" alt="images" />
+                </div>
+                <div class="details">
+                  <h2>
+                    Events
+                    {/* <br />
+                    <span>Actor</span> */}
                   </h2>
                 </div>
               </div>

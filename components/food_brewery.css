@@ -11,7 +11,7 @@
 .box {
   /* width: 1200px; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 15px;
   margin: 0 auto;
   box-shadow: none;
@@ -19,7 +19,7 @@
 .box .card {
   position: relative;
   width: 300px;
-  height: 350px;
+  height: 300px;
   background: #fff;
   margin: 0 auto;
   border-radius: 4px;
@@ -94,4 +94,20 @@
   color: #f38695;
   display: block;
   margin-top: 5px;
+}
+
+.underscore {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(39, 37, 37)),
+    to(#dee5ef)
+  );
+  margin-top: 0.5em;
+  content: "";
+  height: 0.3em;
+  display: block;
+  box-sizing: border-box;
+  width: 3em;
 }
