@@ -15,7 +15,7 @@ export default class FoodBrewery extends React.Component {
           <div class="box">
             <div class="card">
               <div class="imgBx">
-                <img src="http://bit.ly/2FA5xIy" alt="images" />
+                <img src="../static/fb-1.jpg" alt="images" />
               </div>
               <div class="details">
                 <h2>
@@ -28,7 +28,7 @@ export default class FoodBrewery extends React.Component {
 
             <div class="card">
               <div class="imgBx">
-                <img src="http://bit.ly/2FAH4Tn" alt="images" />
+                <img src="../static/fb-2.jpg" alt="images" />
               </div>
               <div class="details">
                 <h2>
@@ -41,7 +41,7 @@ export default class FoodBrewery extends React.Component {
 
             <div class="card">
               <div class="imgBx">
-                <img src="http://bit.ly/2Fzmvqf" alt="images" />
+                <img src="../static/fb-3.jpg" alt="images" />
               </div>
               <div class="details">
                 <h2>
@@ -54,7 +54,59 @@ export default class FoodBrewery extends React.Component {
 
             <div class="card">
               <div class="imgBx">
-                <img src="https://bit.ly/2U2yExZ" alt="images" />
+                <img src="../static/fb-4.jpg" alt="images" />
+              </div>
+              <div class="details">
+                <h2>
+                  Events
+                  {/* <br />
+                    <span>Actor</span> */}
+                </h2>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="imgBx">
+                <img src="../static/fb-5.jpg" alt="images" />
+              </div>
+              <div class="details">
+                <h2>
+                  Events
+                  {/* <br />
+                    <span>Actor</span> */}
+                </h2>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="imgBx">
+                <img src="../static/fb-6.jpg" alt="images" />
+              </div>
+              <div class="details">
+                <h2>
+                  Events
+                  {/* <br />
+                    <span>Actor</span> */}
+                </h2>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="imgBx">
+                <img src="../static/fb-7.jpg" alt="images" />
+              </div>
+              <div class="details">
+                <h2>
+                  Events
+                  {/* <br />
+                    <span>Actor</span> */}
+                </h2>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="imgBx">
+                <img src="../static/fb-8.jpg" alt="images" />
               </div>
               <div class="details">
                 <h2>
