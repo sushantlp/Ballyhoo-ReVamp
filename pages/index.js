@@ -8,6 +8,7 @@ import Trending from "../components/trending";
 import FoodBrewery from "../components/food_brewery";
 import HowItWork from "../components/how_it_work";
 import Banner from "../components/banner";
+import Headout from "../components/headout";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
@@ -63,12 +64,14 @@ class Index extends React.Component {
       <div>
         <Head title="Home" />
         <Nav />
-        <Banner />
+        <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
         <Discover />
         <Featured />
         {/* <Trending /> */}
         <FoodBrewery />
         <HowItWork />
+        <Headout />
+        <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
         <Footer />
       </div>
     );

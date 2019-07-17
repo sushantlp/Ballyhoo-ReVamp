@@ -1,14 +1,14 @@
-import React from "react";
+// import React from "react";
 import "./how_it_work.css";
 
 const Work = props => {
   return (
-    <section className="section" style={{ backgroundColor: "#f2f2f2" }}>
+    <section className="section">
       <div className="container">
         <div className="work-container">
           <div className="work-header-container">
             <h2 className="work-header">How it works</h2>
-            {/* <div className="underscore" /> */}
+            <div className="underscore" />
           </div>
         </div>
 
@@ -30,7 +30,7 @@ const Work = props => {
                   <div className="css-nx2eya">
                     <img src="https://img.icons8.com/color/86/000000/gift.png" />
                   </div>
-                  <h3 className="fwb f20 m0 pb5">Select your package</h3>
+                  {/* <h3 className="fwb f20 m0 pb5">Download Ballyhoo App</h3> */}
                   <h3 className="f14 m0">&amp; tell us your preferences</h3>
                 </div>
 
@@ -43,7 +43,7 @@ const Work = props => {
                   <div class="css-nx2eya">
                     <img src="https://img.icons8.com/color/86/000000/money-bag-pound.png" />
                   </div>
-                  <h3 class="fwb f20 m0 pb5">Get multiple free quotes</h3>
+                  {/* <h3 class="fwb f20 m0 pb5">Get multiple free quotes</h3> */}
                   <h3 class="f14 m0">from verified travel experts</h3>
                 </div>
 
@@ -56,7 +56,7 @@ const Work = props => {
                   <div class="css-nx2eya">
                     <img src="https://img.icons8.com/color/86/000000/hot-air-balloon.png" />
                   </div>
-                  <h3 class="fw7 f20 m0 pb5">Customize &amp; book</h3>
+                  {/* <h3 class="fw7 f20 m0 pb5">Customize &amp; book</h3> */}
                   <h3 class="f14 m0">a perfect holiday experience</h3>
                 </div>
               </div>

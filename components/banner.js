@@ -10,7 +10,7 @@ const Banner = props => {
               marginRight: "auto",
               width: "90%"
             }}
-            src="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px"
+            src={props.image}
             alt="image"
           />
         </div>
