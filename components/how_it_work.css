@@ -1,0 +1,163 @@
+.work-header {
+  color: rgb(39, 37, 37);
+  font-size: 1.5em;
+}
+
+.work-header-container {
+  margin-bottom: 1em;
+}
+
+.work-container .underscore {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(39, 37, 37)),
+    to(#dee5ef)
+  );
+  margin-top: 0.5em;
+  content: "";
+  height: 1px;
+  display: block;
+  box-sizing: border-box;
+  width: 5em;
+}
+
+.m0 {
+  margin: 0 !important;
+}
+
+.pfc1 {
+  color: #20a397 !important;
+}
+
+.fw7 {
+  font-weight: 700;
+}
+
+.f14,
+.f14p {
+  font-size: 14px;
+}
+
+.f14 {
+  line-height: 18px;
+}
+
+.m0 {
+  margin: 0 !important;
+}
+
+.pfc3 {
+  color: #3e3e3e !important;
+}
+
+.css-hv61ur,
+[data-css-hv61ur] {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 900;
+  padding: 0.5rem 0;
+}
+
+.f32 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.css-b9oa3s,
+[data-css-b9oa3s] {
+  width: 150px;
+  margin: 0px auto;
+}
+
+.css-b9oa3s,
+[data-css-b9oa3s] {
+  margin: 0 auto;
+  width: 150px;
+}
+
+.css-nx2eya,
+[data-css-nx2eya] {
+  width: 100px;
+  height: 75px;
+  position: relative;
+  margin: 0px auto 1rem;
+}
+
+.css-nx2eya,
+[data-css-nx2eya] {
+  width: 100px;
+  height: 75px;
+  position: relative;
+  margin: 0 auto 1rem;
+}
+
+.pb5 {
+  padding-bottom: 5px !important;
+}
+
+.fwb {
+  font-weight: 700;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.f20,
+.f24 {
+  line-height: 28px;
+}
+
+.f14,
+.f14p {
+  font-size: 14px;
+}
+.f14 {
+  line-height: 18px;
+}
+
+.css-1opjgzc,
+[data-css-1opjgzc] {
+  width: 31px;
+  height: 22px;
+  right: -15px;
+  top: 60px;
+  position: absolute;
+}
+
+.css-1opjgzc,
+[data-css-1opjgzc] {
+  width: 31px;
+  height: 22px;
+  right: -15px;
+  top: 60px;
+  position: absolute;
+}
+
+.css-1opjgzc,
+[data-css-1opjgzc] {
+  width: 31px;
+  height: 22px;
+  right: -15px;
+  top: 60px;
+  position: absolute;
+}
+
+.css-1opjgzc,
+[data-css-1opjgzc] {
+  width: 31px;
+  height: 22px;
+  right: -15px;
+  top: 60px;
+  position: absolute;
+}
