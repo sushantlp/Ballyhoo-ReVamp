@@ -73,7 +73,8 @@
   margin: 0;
   padding: 0;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
   color: #777;
   text-transform: uppercase;
 }
@@ -105,4 +106,5 @@
 .food-brewery-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
+  font-family: "Quicksand", sans-serif;
 }

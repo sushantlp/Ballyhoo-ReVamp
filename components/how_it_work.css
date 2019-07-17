@@ -1,6 +1,7 @@
 .work-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
+  font-family: "Quicksand", sans-serif;
 }
 
 .work-header-container {
@@ -38,6 +39,7 @@
 .f14,
 .f14p {
   font-size: 14px;
+  font-family: "Quicksand", sans-serif;
 }
 
 .f14 {
@@ -60,9 +62,10 @@
   padding: 0.5rem 0;
 }
 
-.f32 {
-  font-size: 32px;
-  line-height: 40px;
+.f40 {
+  font-size: 40px;
+  line-height: 50px;
+  font-family: "Quicksand", sans-serif;
 }
 
 .text-center {
@@ -111,6 +114,7 @@
 
 .f20 {
   font-size: 20px;
+  font-family: "Quicksand", sans-serif;
 }
 
 .f20,
@@ -121,6 +125,7 @@
 .f14,
 .f14p {
   font-size: 14px;
+  font-family: "Quicksand", sans-serif;
 }
 .f14 {
   line-height: 18px;

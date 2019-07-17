@@ -110,9 +110,9 @@ export default class Discover extends React.Component {
                 />
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Pubs
@@ -135,11 +135,11 @@ export default class Discover extends React.Component {
                 />
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "2em",
                     paddingRight: "2em",
                     paddingTop: "1em",
-                    paddingBottom: "1em",
-                    fontWeight: "bold"
+                    paddingBottom: "1em"
                   }}
                 >
                   Restaurants
@@ -161,9 +161,9 @@ export default class Discover extends React.Component {
                 />
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Pubs
@@ -185,9 +185,9 @@ export default class Discover extends React.Component {
                 />
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Events
@@ -211,9 +211,9 @@ export default class Discover extends React.Component {
 
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Saloons
@@ -236,11 +236,11 @@ export default class Discover extends React.Component {
 
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "2em",
                     paddingRight: "2em",
                     paddingTop: "1em",
-                    paddingBottom: "1em",
-                    fontWeight: "bold"
+                    paddingBottom: "1em"
                   }}
                 >
                   Restaurants
@@ -262,9 +262,9 @@ export default class Discover extends React.Component {
                 />
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Pubs
@@ -288,9 +288,9 @@ export default class Discover extends React.Component {
 
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Events
@@ -313,9 +313,9 @@ export default class Discover extends React.Component {
 
                 <h2
                   style={{
+                    fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
-                    paddingTop: "1em",
-                    fontWeight: "bold"
+                    paddingTop: "1em"
                   }}
                 >
                   Saloons

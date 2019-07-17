@@ -7,6 +7,7 @@ import Featured from "../components/featured";
 import Trending from "../components/trending";
 import FoodBrewery from "../components/food_brewery";
 import HowItWork from "../components/how_it_work";
+import Banner from "../components/banner";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
@@ -62,6 +63,7 @@ class Index extends React.Component {
       <div>
         <Head title="Home" />
         <Nav />
+        <Banner />
         <Discover />
         <Featured />
         {/* <Trending /> */}

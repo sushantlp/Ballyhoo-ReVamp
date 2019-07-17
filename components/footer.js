@@ -25,7 +25,7 @@ export default class Footer extends React.Component {
                   </div>
                 </a>
                 <hr className="spacer is-1" />
-                <p>
+                <p className="short-story">
                   The storytelling app for families - read diverse &amp;
                   empowering stories or tell them in your own words.
                 </p>
@@ -169,7 +169,7 @@ export default class Footer extends React.Component {
           </div>
 
           <div className="content has-text-centered">
-            <p>
+            <p className="copyright">
               Copyright © 2019, <strong>Ballyhoo</strong> All rights reserved.
             </p>
           </div>
