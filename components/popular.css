@@ -1,0 +1,207 @@
+@media only screen and (max-width: 426px) {
+  .tiletext {
+    font-size: 0.8em !important;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .popular_section {
+    padding: 10px;
+  }
+
+  .tilecontainer {
+  }
+}
+
+.tilecontainer {
+}
+
+.tiletext {
+  padding: 5px;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  margin-top: 190px;
+  -webkit-text-stroke: 0.01em black;
+  text-stroke: 0.01em black;
+  font-size: 1.2em;
+  font-weight: 700;
+  font-family: "Quicksand", sans-serif;
+}
+
+.t1 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/1223/image/3f77a082-970d-43df-bc5d-7e6e301925c6-pompeii.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  display: inline-block;
+  object-fit: cover;
+}
+
+.t1:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t2 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/1520/image/206de694-146f-4bc9-8fa1-d77074da8b7e-nikita-semerenko-776957-unsplash.jpg?auto=compress&fm=webp&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  background-position: center;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.t2:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t3 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/349/image/49d50732-f94b-4027-9dfd-58891e960a96-hong-kong-city-tour.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  background-position: center left;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.t3:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t4 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/152/abu-dhabi/image/daytour.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  transition: all 0.5s ease;
+  object-fit: cover;
+}
+
+.t4:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t5 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/177/amsterdam/image/Amsterdam-Attractions.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  transition: all 0.5s ease;
+  object-fit: cover;
+}
+
+.t5:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t6 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/348/image/7a5e9926-9f14-45aa-b915-23c5bc9e1a17-hong-kong-attractions.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  transition: all 0.5s ease;
+  object-fit: cover;
+}
+
+.t6:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t7 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/24/image/66000036-0523-4859-87b7-83d628b8843c-BroadwayShowTickets.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  transition: all 0.5s ease;
+  object-fit: cover;
+}
+
+.t7:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.t8 {
+  width: 250px;
+  height: 250px;
+  background: url("https://cdn-imgix.headout.com/category/49/image/9bf7c5aa-9012-4687-9ada-ecf7ba26048a-49-las-vegas-aerial-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+  transition: all 0.5s ease;
+  object-fit: cover;
+}
+
+.t8:hover {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.popular-header-container {
+  margin-bottom: 1em;
+}
+
+.popular-header {
+  color: rgb(39, 37, 37);
+  font-size: 1.5em;
+  font-family: "Quicksand", sans-serif;
+}
+
+.popular-header-container .underscore {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(39, 37, 37)),
+    to(#dee5ef)
+  );
+  margin-top: 0.5em;
+  content: "";
+  height: 1px;
+  display: block;
+  box-sizing: border-box;
+  width: 5em;
+  margin-bottom: 2em;
+}
