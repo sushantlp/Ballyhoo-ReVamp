@@ -16,8 +16,8 @@ function SampleNextArrow(props) {
         position: "relative",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-        right: "-98%",
-        top: "-143px",
+        float: "right",
+        top: "-13em",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -49,8 +49,8 @@ function SamplePrevArrow(props) {
         position: "relative",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-        top: "175px",
-        left: "-16px",
+        top: "8em",
+        float: "left",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -73,11 +73,11 @@ export default class Trending extends React.Component {
     const settings = {
       dots: false,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       className: "trending-slick",
       centerMode: true,
-      centerPadding: "0px",
+      centerPadding: "-3px",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
@@ -91,120 +91,161 @@ export default class Trending extends React.Component {
           </div>
           <Slider {...settings}>
             <div>
-              <Card raised>
+              <Card
+                raised
+                style={{
+                  width: "260px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
                 <Image
-                  src="http://bit.ly/2FG2kH9"
-                  alt=""
-                  // style={{
-                  //   width: "50em"
-                  // }}
+                  src="https://cdn-imgix.headout.com/tour/15250/TOUR-IMAGE/afd9d294-0065-4914-950f-42fb2c087afd-8541-dubai-dubai-frame-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "260px",
+                    height: "210px"
+                  }}
                 />
                 <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Activities
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
                   </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
                 </Card.Content>
               </Card>
             </div>
 
             <div>
-              <Card raised>
+              <Card
+                raised
+                style={{
+                  width: "260px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
                 <Image
-                  src="http://bit.ly/2Fzn2IL"
-                  alt=""
-                  // style={{
-                  //   width: "50em",
-                  //   height: "auto"
-                  // }}
+                  src="https://cdn-imgix.headout.com/tour/15250/TOUR-IMAGE/afd9d294-0065-4914-950f-42fb2c087afd-8541-dubai-dubai-frame-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "260px",
+                    height: "210px"
+                  }}
                 />
                 <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Activities
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
                   </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
                 </Card.Content>
               </Card>
             </div>
 
             <div>
-              <Card raised>
+              <Card
+                raised
+                style={{
+                  width: "260px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
                 <Image
-                  src="https://bit.ly/2U2yExZ"
-                  alt=""
-                  // style={{
-                  //   width: "50em",
-                  //   height: "auto"
-                  // }}
+                  src="https://cdn-imgix.headout.com/tour/15250/TOUR-IMAGE/afd9d294-0065-4914-950f-42fb2c087afd-8541-dubai-dubai-frame-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "260px",
+                    height: "210px"
+                  }}
                 />
                 <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Saloons
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
                   </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
                 </Card.Content>
               </Card>
             </div>
 
             <div>
-              <Card raised>
+              <Card
+                raised
+                style={{
+                  width: "260px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
                 <Image
-                  src="http://bit.ly/2FAUT4k"
-                  alt=""
-                  // style={{
-                  //   width: "50em",
-                  //   height: "auto"
-                  // }}
+                  src="https://cdn-imgix.headout.com/tour/15250/TOUR-IMAGE/afd9d294-0065-4914-950f-42fb2c087afd-8541-dubai-dubai-frame-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "260px",
+                    height: "210px"
+                  }}
                 />
                 <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Saloons
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
                   </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
                 </Card.Content>
               </Card>
             </div>
 
             <div>
-              <Card raised>
+              <Card
+                raised
+                style={{
+                  width: "260px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
                 <Image
-                  src="http://bit.ly/2FAUT4k"
-                  alt=""
-                  // style={{
-                  //   width: "512px",
-                  //   height: "auto"
-                  // }}
+                  src="https://cdn-imgix.headout.com/tour/15250/TOUR-IMAGE/afd9d294-0065-4914-950f-42fb2c087afd-8541-dubai-dubai-frame-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "260px",
+                    height: "210px"
+                  }}
                 />
                 <Card.Content>
-                  <Card.Header
-                    style={{
-                      fontWeight: "200",
-                      color: "black",
-                      fontSize: "1.1em"
-                    }}
-                  >
-                    Escapes
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
                   </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
                 </Card.Content>
               </Card>
             </div>

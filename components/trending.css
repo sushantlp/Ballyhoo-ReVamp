@@ -33,6 +33,12 @@
   font-size: 1.5em;
 }
 
+.trending-header-container .trending-header {
+  color: rgb(39, 37, 37);
+  font-size: 1.5em;
+  font-family: "Quicksand", sans-serif;
+}
+
 .trending-container .underscore {
   background-image: -webkit-gradient(
     linear,
@@ -43,8 +49,43 @@
   );
   margin-top: 0.5em;
   content: "";
-  height: 0.1em;
+  height: 1px;
   display: block;
   box-sizing: border-box;
   width: 5em;
+}
+
+.facebook-card:hover {
+  transform: scale(1.04);
+  opacity: 1 !important;
+  cursor: pointer;
+}
+
+.trending-container .facebook-card {
+  /* cursor: pointer; */
+}
+
+.trending-container .city-title {
+  text-transform: uppercase;
+  color: #9a9a9a;
+  /* margin-top: 0.5em;
+  margin-bottom: 0.2em; */
+  font-weight: 500;
+  opacity: 0.7;
+  text-decoration: none;
+  pointer-events: none;
+  font-size: 0.7em;
+}
+
+.trending-container .product-title {
+  line-height: 1.5;
+  font-size: 0.9em !important;
+  color: #545454;
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.trending-header-container {
+  margin-bottom: 1em;
 }

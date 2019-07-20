@@ -63,15 +63,15 @@ class Index extends React.Component {
 
     return (
       <div>
-        <Head title="Home" />
-        <Nav />
-        <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
-        <Discover />
+        {/* <Head title="Home" />
+        <Nav /> */}
+        {/* <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
+        <Discover /> */}
         <Featured />
-        <Popular />
-        {/* <Trending /> */}
-        <FoodBrewery />
-        <HowItWork />
+        {/* <Popular />  */}
+        <Trending />
+        {/* <FoodBrewery />
+        <HowItWork /> */}
         <Headout />
         <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
         <Footer />
