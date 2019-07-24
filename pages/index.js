@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Head from "../components/head";
-import Nav from "../components/nav";
+import NavBar from "../components/navbar";
+import Slidder from "../components/slidder";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
 import Trending from "../components/trending";
@@ -63,16 +64,17 @@ class Index extends React.Component {
 
     return (
       <div>
-        {/* <Head title="Home" />
-        <Nav /> */}
-        {/* <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
-        <Discover /> */}
+        <Head title="Home" />
+        <NavBar />
+        <Slidder />
+        <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
+        {/* <Discover />
         <Featured />
-        {/* <Popular />  */}
+        <Popular />
         <Trending />
-        {/* <FoodBrewery />
-        <HowItWork /> */}
-        <Headout />
+        <FoodBrewery />
+        <HowItWork />
+        <Headout /> */}
         <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
         <Footer />
       </div>

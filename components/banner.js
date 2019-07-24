@@ -1,8 +1,8 @@
 const Banner = props => {
   return (
-    <section class="hero is-small has-bg-img">
-      <div class="hero-body">
-        <div class="container">
+    <section className="hero is-small has-bg-img">
+      <div className="hero-body">
+        <div className="container">
           <img
             style={{
               display: "block",

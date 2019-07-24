@@ -1,0 +1,23 @@
+.navbar-container .button {
+  font-weight: 700;
+  background-color: transparent;
+}
+
+.call-now-img {
+  max-height: 20px;
+}
+
+.call-now-number {
+  margin-left: 1em;
+  font-weight: 700;
+}
+
+.blog-img {
+  max-height: 20px;
+}
+
+.blog-text {
+  margin-left: 1em;
+  font-weight: 700;
+  cursor: pointer;
+}
