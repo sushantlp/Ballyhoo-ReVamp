@@ -8,18 +8,6 @@
   content: "" !important;
 }
 
-.header-name {
-  background: transparent;
-  padding: 0.5em;
-  font-size: 1.2em;
-  color: black;
-}
-
-.trending {
-  margin-right: 0em;
-  cursor: pointer;
-}
-
 .slick-slide {
   width: 0px;
 }
@@ -28,15 +16,11 @@
   width: 0px;
 }
 
-.trending-header {
-  color: rgb(39, 37, 37);
-  font-size: 1.5em;
-}
-
-.trending-header-container .trending-header {
+.trending-container .trending-header-container .trending-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
+  font-weight: 200;
 }
 
 .trending-container .underscore {
@@ -55,7 +39,7 @@
   width: 5em;
 }
 
-.trending-card:hover {
+.trending-container .trending-card:hover {
   /* transform: scale(1.04); */
 
   -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
@@ -91,6 +75,6 @@
   display: inline-block;
 }
 
-.trending-header-container {
+.trending-container .trending-header-container {
   margin-bottom: 1em;
 }

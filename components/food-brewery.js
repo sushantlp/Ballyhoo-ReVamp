@@ -3,7 +3,7 @@ import "./food-brewery.css";
 export default class FoodBrewery extends React.Component {
   render() {
     return (
-      <div className="container" style={{ marginBottom: "1em" }}>
+      <div className="container">
         <div className="food-brewery-container">
           <div className="food-brewery-header-container">
             <h2 className="food-brewery-header">F&B</h2>

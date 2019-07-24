@@ -71,11 +71,11 @@ class Index extends React.Component {
         <Slidder />
         <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
         <Discover />
-        {/* <Featured />
+        <Featured />
         <Popular />
         <Trending />
         <FoodBrewery />
-        <HowItWork /> */}
+        {/*<HowItWork /> */}
         <Headout />
         <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
         <Footer />

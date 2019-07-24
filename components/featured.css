@@ -8,12 +8,12 @@
   content: "" !important;
 }
 
-.header-name {
+/* .header-name {
   background: transparent;
   padding: 0.5em;
   font-size: 1.2em;
   color: black;
-}
+} */
 
 .featured-container .featured-slider {
   cursor: pointer;
@@ -27,14 +27,15 @@
   width: 0px;
 }
 
-.featured-header-container {
+.featured-container .featured-header-container {
   margin-bottom: 1em;
 }
 
-.featured-header-container .featured-header {
+.featured-container .featured-header-container .featured-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
+  font-weight: 200;
 }
 
 .featured-container .underscore {
