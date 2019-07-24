@@ -108,7 +108,7 @@ export default class Discover extends React.Component {
                     borderColor: "rgba(60,59,59,1)"
                   }}
                 />
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -116,7 +116,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Pubs
-                </h2>
+                </p>
               </div>
 
               <div className="discover-slider">
@@ -133,7 +133,7 @@ export default class Discover extends React.Component {
                     borderColor: "rgba(60,59,59,1)"
                   }}
                 />
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "2em",
@@ -143,7 +143,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Restaurants
-                </h2>
+                </p>
               </div>
               <div className="discover-slider">
                 <Image
@@ -159,7 +159,7 @@ export default class Discover extends React.Component {
                     borderColor: "rgba(60,59,59,1)"
                   }}
                 />
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -167,7 +167,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Pubs
-                </h2>
+                </p>
               </div>
               <div className="discover-slider">
                 <Image
@@ -183,7 +183,7 @@ export default class Discover extends React.Component {
                     borderColor: "rgba(60,59,59,1)"
                   }}
                 />
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -191,7 +191,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Events
-                </h2>
+                </p>
               </div>
 
               <div className="discover-slider">
@@ -209,7 +209,7 @@ export default class Discover extends React.Component {
                   }}
                 />
 
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -217,7 +217,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Saloons
-                </h2>
+                </p>
               </div>
               <div className="discover-slider">
                 <Image
@@ -234,7 +234,7 @@ export default class Discover extends React.Component {
                   }}
                 />
 
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "2em",
@@ -244,7 +244,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Restaurants
-                </h2>
+                </p>
               </div>
               <div className="discover-slider">
                 <Image
@@ -260,7 +260,7 @@ export default class Discover extends React.Component {
                     borderColor: "rgba(60,59,59,1)"
                   }}
                 />
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -268,7 +268,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Pubs
-                </h2>
+                </p>
               </div>
 
               <div className="discover-slider">
@@ -286,7 +286,7 @@ export default class Discover extends React.Component {
                   }}
                 />
 
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -294,7 +294,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Events
-                </h2>
+                </p>
               </div>
               <div className="discover-slider">
                 <Image
@@ -311,7 +311,7 @@ export default class Discover extends React.Component {
                   }}
                 />
 
-                <h2
+                <p
                   style={{
                     fontFamily: "Quicksand, sans-serif",
                     paddingLeft: "3.5em",
@@ -319,7 +319,7 @@ export default class Discover extends React.Component {
                   }}
                 >
                   Saloons
-                </h2>
+                </p>
               </div>
             </Slider>
           </div>

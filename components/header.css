@@ -1,23 +1,23 @@
-.navbar-container .button {
+.header-container .button {
   font-weight: 700;
   background-color: transparent;
 }
 
-.call-now-img {
+.header-container .call-now-img {
   max-height: 20px;
 }
 
-.call-now-number {
-  margin-left: 1em;
+.header-container .call-now-number {
+  margin-left: 0.5em;
   font-weight: 700;
 }
 
-.blog-img {
+.header-container .blog-img {
   max-height: 20px;
 }
 
-.blog-text {
-  margin-left: 1em;
+.header-container .blog-text {
+  margin-left: 0.5em;
   font-weight: 700;
   cursor: pointer;
 }

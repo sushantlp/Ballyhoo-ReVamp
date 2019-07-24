@@ -8,12 +8,12 @@
   content: "" !important;
 }
 
-.header-name {
+/* .header-name {
   background: transparent;
   padding: 0.5em;
   font-size: 1.2em;
   color: black;
-}
+} */
 
 /* .discover {
   margin: 1em;
@@ -28,13 +28,14 @@
   width: 0px;
 }
 
-.discover-header {
+.discover-container .discover-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
+  font-weight: 200;
 }
 
-.discover-header-container {
+.discover-container .discover-header-container {
   margin-bottom: 1em;
 }
 .discover-container .underscore {

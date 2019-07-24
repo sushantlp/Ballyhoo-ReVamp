@@ -6,7 +6,7 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <div className="navbar-container">
+      <div className="header-container">
         <nav
           id="navbar"
           className="navbar has-shadow"
