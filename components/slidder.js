@@ -84,7 +84,7 @@ export default class Slidder extends React.Component {
               </div>
 
               <div className="column is-2">
-                <a className="button is-danger">Submit</a>
+                <a className="button is-danger">SUBMIT</a>
               </div>
             </div>
           </div>

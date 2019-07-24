@@ -1,13 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import Head from "../components/head";
-import NavBar from "../components/navbar";
+import Header from "../components/header";
+import SubHeader from "../components/sub-header";
 import Slidder from "../components/slidder";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
 import Trending from "../components/trending";
-import FoodBrewery from "../components/food_brewery";
-import HowItWork from "../components/how_it_work";
+import FoodBrewery from "../components/food-brewery";
+import HowItWork from "../components/how-it-work";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Popular from "../components/popular";
@@ -65,7 +66,8 @@ class Index extends React.Component {
     return (
       <div>
         <Head title="Home" />
-        <NavBar />
+        <Header />
+        <SubHeader />
         <Slidder />
         <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
         {/* <Discover />

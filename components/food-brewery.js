@@ -1,6 +1,4 @@
-import React from "react";
-
-import "./food_brewery.css";
+import "./food-brewery.css";
 
 export default class FoodBrewery extends React.Component {
   render() {

@@ -1,6 +1,5 @@
-import "./navbar.css";
-
-export default class NavBar extends React.Component {
+import "./header.css";
+export default class Header extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -8,73 +7,14 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <div className="navbar-container">
-        {/* <nav
+        <nav
+          id="navbar"
           className="navbar has-shadow"
-          role="navigation"
-          aria-label="main navigation"
-          style={{ backgroundColor: "#f2f2f2" }}
+          style={{ backgroundColor: "#fafafa" }}
         >
-          <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
-              <img
-                src="https://bulma.io/images/bulma-logo.png"
-                width="112"
-                height="28"
-              />
-            </a>
-
-            <a
-              role="button"
-              className="navbar-burger burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-            >
-              <span aria-hidden="true" />
-              <span aria-hidden="true" />
-              <span aria-hidden="true" />
-            </a>
-          </div>
-
-          <div id="navbarBasicExample" className="navbar-menu">
-             <div className="navbar-start">
-              <a className="navbar-item">Home</a>
-              <a className="navbar-item">Documentation</a>
-              <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link">More</a>
-                <div className="navbar-dropdown">
-                  <a className="navbar-item">About</a>
-                  <a className="navbar-item">Jobs</a>
-                  <a className="navbar-item">Contact</a>
-                  <hr className="navbar-divider" />
-                  <a className="navbar-item">Report an issue</a>
-                </div>
-              </div>
-            </div> 
-
-            <div className="navbar-end">
-              <div className="navbar-item">
-                <div class="field is-grouped is-grouped-multiline">
-                
-
-                  <a
-                    class="navbar-item bd-navbar-item-expo is-active"
-                    href="https://bulma.io/expo/"
-                  >
-                    <img src="https://img.icons8.com/color/30/000000/google-blog-search.png" />
-                    <span>Expo</span>
-                  </a>
-                </div>
-                <div className="button">LOGIN</div>
-              </div>
-            </div>
-          </div>
-        </nav> */}
-
-        <nav id="navbar" class="navbar has-shadow">
-          <div class="container">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="https://bulma.io">
+          <div className="container">
+            <div className="navbar-brand">
+              <a className="navbar-item" href="https://bulma.io">
                 <img
                   src="https://bulma.io/images/bulma-logo.png"
                   alt="Bulma: Free, open source, &amp; modern CSS framework based on Flexbox"
@@ -94,30 +34,36 @@ export default class NavBar extends React.Component {
               </div>
             </div>
 
-            <div id="navMenuExpo" class="navbar-menu">
-              <div class="navbar-end">
-                <div class="navbar-item">
+            <div id="navMenuExpo" className="navbar-menu">
+              <div className="navbar-end">
+                <div className="navbar-item">
                   <span className="call-now-img">
                     <img src="https://img.icons8.com/color/20/000000/ringer-volume.png" />
                   </span>
                   <span className="call-now-number">1800-123-5555</span>
                 </div>
 
-                <div class="navbar-item">
+                <div className="navbar-item">
                   <span className="blog-img">
                     <img src="https://img.icons8.com/ultraviolet/20/000000/blog.png" />
                   </span>
                   <span className="blog-text">Blog</span>
                 </div>
 
-                <div class="navbar-item">
-                  <p class="control">
+                <div className="navbar-item">
+                  <p className="control">
                     <a
-                      class="button is-danger"
+                      className="button is-outlined"
                       href="https://github.com/jgthms/bulma/releases/download/0.7.5/bulma-0.7.5.zip"
                     >
                       <strong>LOGIN</strong>
                     </a>
+                  </p>
+                </div>
+
+                <div className="navbar-item">
+                  <p className="control">
+                    <a class="button is-danger is-outlined">PLAN MY HOLIDAY</a>
                   </p>
                 </div>
                 {/* <div class="navbar-item has-dropdown is-hoverable">

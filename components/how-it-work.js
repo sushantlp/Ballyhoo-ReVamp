@@ -1,5 +1,4 @@
-// import React from "react";
-import "./how_it_work.css";
+import "./how-it-work.css";
 
 const Work = props => {
   return (
