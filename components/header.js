@@ -25,7 +25,7 @@ export default class Header extends React.Component {
 
               <div
                 id="navbarBurger"
-                class="navbar-burger burger"
+                className="navbar-burger burger"
                 data-target="navMenuExpo"
               >
                 <span />
@@ -63,7 +63,9 @@ export default class Header extends React.Component {
 
                 <div className="navbar-item">
                   <p className="control">
-                    <a class="button is-danger is-outlined">PLAN MY HOLIDAY</a>
+                    <a className="button is-danger is-outlined">
+                      PLAN MY HOLIDAY
+                    </a>
                   </p>
                 </div>
                 {/* <div class="navbar-item has-dropdown is-hoverable">

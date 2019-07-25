@@ -1,6 +1,5 @@
-import React from "react";
 import Slider from "react-slick";
-import { Card, Image } from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
 
 import "./discover.css";
 

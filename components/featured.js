@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { Image } from "semantic-ui-react";
 import "./featured.css";

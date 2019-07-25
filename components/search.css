@@ -1,0 +1,20 @@
+.search-container .column .button {
+  height: 3em;
+  width: 8em;
+}
+
+.search-container .column {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 769px) {
+  .column.is-2,
+  .column.is-2-tablet {
+    flex: none;
+    width: auto;
+  }
+}
+
+.search-container .container {
+  padding: 4em;
+}
