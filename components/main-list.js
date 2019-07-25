@@ -14,35 +14,59 @@ const MainList = props => {
           </div>
           <div className="media-content">
             <div className="content">
-              <p className="title is-5">Kashmir Family Tour Package</p>
-              <p className="subtitle is-6 mb8 plh1">4 Days & 3 Nights</p>
-
-              <div className="columns">
+              <div className="columns mb0">
                 <div className="column">
-                  <span>
-                    <span className="mr24 pfc4">Starting from:</span>
-                    <span className="tag is-primary radius20 fw700">
-                      12% off
-                    </span>
+                  <p className="title is-5">Kashmir Family Tour Package</p>
+                  <p className="subtitle is-6 mb8 plh1">4 Days & 3 Nights</p>
+                </div>
+
+                <div className="column">
+                  <span className="rating">
+                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                   </span>
                 </div>
-                <div className="column pl8">
+              </div>
+              <div className="columns mb0 ">
+                <div className="column pt0">
+                  <span className="f12 fw4 m0 pb8 iblock">
+                    <span className="mr24 pfc4">Starting from:</span>
+                    <span className="tag is-primary radius20 fw7">12% off</span>
+                  </span>
+
+                  <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
+                    ₹ 10,000/-
+                    <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span>
+                  </h5>
+
+                  <p class="f12 m0 pfc4 fw7">Per Person on twin sharing</p>
+                </div>
+                <div className="column pl8 pt0">
                   <div className="package-tag-box">
-                    <ul class="package-tags at_package_tags">
-                      <li class="ellipsis">Shikara Ride</li>
-                      <li class="ellipsis">Nature</li>
-                      <li class="ellipsis">Martand Temple</li>
-                      <li class="ellipsis">Hill station</li>
-                      <li class="ellipsis">Amusement Park</li>
-                      <li class="ellipsis">Sightseeing</li>
-                      <li class="ellipsis">Gondola Ride</li>
-                      <li class="ellipsis">Family</li>
-                      <li class="ellipsis">Budget</li>
+                    <ul className="package-tags at_package_tags">
+                      <li className="ellipsis">Shikara Ride</li>
+                      <li className="ellipsis">Nature</li>
+                      <li className="ellipsis">Martand Temple</li>
+                      <li className="ellipsis">Hill station</li>
+                      <li className="ellipsis">Amusement Park</li>
+                      <li className="ellipsis">Sightseeing</li>
+                      <li className="ellipsis">Gondola Ride</li>
+                      <li className="ellipsis">Family</li>
+                      <li className="ellipsis">Budget</li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
+
+            <p>
+              The Kashmir tour itinerary begins with the pickup from the
+              Srinagar Airport by the agent’s representative. A private cab will
+              transfer you from the airport to a jetty around the Dal Lake.
+            </p>
           </div>
         </article>
 
