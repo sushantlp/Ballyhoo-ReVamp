@@ -8,7 +8,7 @@
 }
 
 @media screen and (min-width: 769px) {
-  .column.is-2,
+  .search-container .column.is-2,
   .column.is-2-tablet {
     flex: none;
     width: auto;

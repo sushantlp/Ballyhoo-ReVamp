@@ -4,6 +4,7 @@ import Head from "../components/head";
 import Header from "../components/header";
 import SubHeader from "../components/sub-header";
 import ParentList from "../components/parent-list";
+
 import Footer from "../components/footer";
 
 class List extends React.Component {

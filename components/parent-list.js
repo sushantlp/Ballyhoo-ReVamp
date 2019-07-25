@@ -4,14 +4,16 @@ const ParentList = props => {
   return (
     <React.Fragment>
       <Search />
-
-      <div class="columns">
- 
-  <div class="column is-3">Auto</div>
-  <div class="column is-9"> <MainList /></div>
-</div>
-
-     
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-2 is-offset-1" />
+            <div className="column is-8 is-offset-1">
+              <MainList />
+            </div>
+          </div>
+        </div>
+      </section>
     </React.Fragment>
   );
 };

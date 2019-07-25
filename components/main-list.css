@@ -1,0 +1,121 @@
+/* .main-list-container .box .card-footer {
+  margin-top: 0em;
+}
+
+.main-list-container .box figure {
+  margin: 0.5em;
+}
+
+.main-list-container .box .media-content .content {
+  margin-left: 1em;
+}
+
+.main-list-container .box .media .right-box {
+  margin-right: 1em;
+} */
+
+.main-list-container .box {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 0.5em;
+  border-radius: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+.main-list-container .box figure {
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+}
+
+.main-list-container .box .image {
+  width: 200px;
+  height: 200px;
+}
+
+.main-list-container .box .media .media-left {
+  margin-right: 0;
+}
+
+.main-list-container .box .media .media-content .content .subtitle {
+  color: #ff3860;
+}
+
+.main-list-container .plh1 {
+  line-height: 1.7em;
+}
+.main-list-container .mb8 {
+  margin-bottom: 8px !important;
+}
+
+.main-list-container .radius20 {
+  border-radius: 20px;
+}
+
+.main-list-container .mr24 {
+  margin-right: 24px !important;
+}
+
+.main-list-container .fw700 {
+  font-weight: 700;
+}
+
+.main-list-container .pfc4 {
+  color: #b2b2b2 !important;
+}
+
+/* .main-list-container .pr8 {
+  padding-right: 8px !important;
+} */
+
+.main-list-container .pl8 {
+  padding-left: 8px !important;
+}
+
+.main-list-container .package-tag-box {
+  text-align: right;
+  overflow: hidden;
+  /* height: 56px; */
+}
+
+.main-list-container .package-tags {
+  justify-content: flex-end;
+}
+
+.main-list-container .package-tags {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-list-container .package-tags li {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #b2b2b2;
+  font-size: 12px;
+  color: #b2b2b2;
+  padding: 3px 10px;
+  list-style: none;
+  margin: 4px;
+  line-height: 12px;
+  text-align: center;
+  height: 20px;
+  width: auto;
+}
+
+.main-list-container .ellipsis {
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* .main-list-container .mb0 {
+  margin-bottom: 0 !important;
+}
+
+.main-list-container .m0 {
+  margin: 0 !important;
+} */
