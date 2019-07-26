@@ -62,6 +62,11 @@ export default class MyDocument extends Document {
             href="/static/icons/icon-192x192.png"
           />
 
+          {/* <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Quicksand:300,400,500,600,700&display=swap"
+            rel="stylesheet"
+          /> */}
+
           <link
             href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap"
             rel="stylesheet"

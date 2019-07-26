@@ -169,3 +169,11 @@
 .main-list-container .pr2 {
   padding-right: 2em;
 }
+
+.main-list-container .google {
+  color: #424242;
+  font-family: Google Sans;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.0175rem;
+}
