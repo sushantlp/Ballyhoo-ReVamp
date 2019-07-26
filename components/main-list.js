@@ -60,29 +60,50 @@ const MainList = props => {
                   </div>
                 </div>
               </div>
-            </div>
 
-            <p>
-              The Kashmir tour itinerary begins with the pickup from the
-              Srinagar Airport by the agent’s representative. A private cab will
-              transfer you from the airport to a jetty around the Dal Lake.
-            </p>
+              <div className="css-clzwav f12 pfc4 m0 fw4">
+                <p>
+                  The Kashmir tour itinerary begins with the pickup from the
+                  Srinagar Airport by the agent’s representative. A private cab
+                  will transfer you from the airport to a jetty around the Dal
+                  Lake.
+                </p>
+              </div>
+            </div>
           </div>
         </article>
 
         <footer className="card-footer">
-          <div className="card-footer-item">
-            <a className="button is-medium">
-              <span className="icon">
-                <img src="https://img.icons8.com/office/23/000000/hospital.png" />
+          <div class="card-footer-item">
+            <span className="span-flex pt0-5 pb0-5">
+              <span className="pr2">
+                <img src="https://img.icons8.com/cute-clipart/25/000000/airplane-mode-on.png" />
+                <p className="f12"> Flight</p>
               </span>
-              <span>7898130226</span>
-            </a>
+
+              <span className="pr2">
+                <img src="https://img.icons8.com/dusk/25/000000/vegan-food.png" />
+                <p className="f12"> Meal</p>
+              </span>
+
+              <span className="pr2">
+                <img
+                  src="https://img.icons8.com/bubbles/25/000000/filled-star.png"
+                  style={{ paddingLeft: "10px" }}
+                />
+                <p className="f12">Featured</p>
+              </span>
+
+              <span className="pr2">
+                <img src="https://img.icons8.com/officel/25/000000/best-seller.png" />
+                <p className="f12">Best</p>
+              </span>
+            </span>
           </div>
 
-          <div className="card-footer-item">
-            <a className="button is-medium">
-              <span className="icon">
+          <div class="card-footer-item">
+            <a class="button is-large">
+              <span class="icon">
                 <img src="https://img.icons8.com/plasticine/30/000000/visible.png" />
               </span>
               <span>View Detail</span>

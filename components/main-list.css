@@ -148,3 +148,24 @@
 .main-list-container .pt0 {
   padding-top: 0;
 }
+
+.main-list-container .css-clzwav,
+[data-css-clzwav] {
+  font-size: 13px !important;
+}
+
+.main-list-container .span-flex {
+  display: flex;
+}
+
+.main-list-container .pt0-5 {
+  padding-top: 0.5em;
+}
+
+.main-list-container .pb0-5 {
+  padding-bottom: 0.5em;
+}
+
+.main-list-container .pr2 {
+  padding-right: 2em;
+}
