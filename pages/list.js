@@ -1,5 +1,9 @@
 import React from "react";
 import Link from "next/link";
+
+import "bulma/css/bulma.min.css";
+import "semantic-ui-css/semantic.min.css";
+
 import Head from "../components/head";
 import Header from "../components/header";
 import SubHeader from "../components/sub-header";

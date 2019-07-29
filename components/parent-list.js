@@ -1,5 +1,6 @@
 import Search from "./search";
 import MainList from "./main-list";
+import Filter from "./filter";
 
 const ParentList = props => {
   return (
@@ -8,7 +9,9 @@ const ParentList = props => {
       <section className="section">
         <div className="container">
           <div className="columns">
-            <div className="column is-2 is-offset-1" />
+            <div className="column is-3">
+              <Filter />
+            </div>
             <div className="column is-8 is-offset-1">
               <MainList />
             </div>

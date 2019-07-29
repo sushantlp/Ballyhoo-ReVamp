@@ -1,10 +1,5 @@
-import Slider from "react-slick";
 import { Dropdown } from "semantic-ui-react";
-
-import "bulma/css/bulma.min.css";
-import "semantic-ui-css/semantic.min.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import "./slidder.css";
 
 export default class Slidder extends React.Component {
