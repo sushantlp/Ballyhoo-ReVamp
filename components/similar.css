@@ -1,0 +1,56 @@
+.similar-container {
+  margin-top: 1em;
+}
+
+.similar-container .box {
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+.similar-container .google {
+  color: #424242;
+  font-family: Google Sans;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.0175rem;
+  line-height: 0;
+  margin-bottom: 1em;
+}
+
+.box-card {
+  background: #fff;
+  /* border-radius: 4px; */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Quicksand", sans-serif;
+}
+
+.box-card figure {
+  margin: 0;
+}
+
+/* .similar-container .box .box-card .subtitle {
+  color: #ff3860;
+} */
+
+.similar-container .box-card .p4 {
+  padding: 0.2em !important;
+}
+
+.similar-container .box-card .plh1 {
+  line-height: 1.7em;
+}
+
+.similar-container .subtitle.is-6 {
+  font-size: 0.9rem;
+}
+
+/* .similar-container img {
+  height: 5em;
+} */
+
+.similar-container .column {
+  padding: 0.3em;
+}
+
+.similar-container .box-card:hover {
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
+import Similar from "./similar";
 import Trending from "../components/trending";
 
 const ParentList = props => {
@@ -12,6 +13,7 @@ const ParentList = props => {
           <div className="columns">
             <div className="column is-3">
               <Filter />
+              <Similar />
             </div>
             <div className="column is-8 is-offset-1">
               <MainList />
