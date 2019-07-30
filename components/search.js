@@ -8,20 +8,15 @@ const Search = props => {
     <div
       className="search-container"
       style={{
-        width: "auto",
-        height: "12em",
         backgroundImage:
-          "url('https://img.traveltriangle.com/attachments/pictures/843472/original/Kashmir-tour-packages-s.jpg?tr=w-1366,h-305')",
+          "url('https://img.traveltriangle.com/attachments/pictures/843472/original/Kashmir-tour-packages-s.jpg?tr=w-1366,h-305')"
 
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center"
         // overflow: "hidden"
       }}
     >
       <section>
         <div className="container is-fluid">
-          <div className="columns is-desktop">
+          <div className="columns">
             <div className="column is-3 is-offset-1">
               <Dropdown
                 placeholder="City"

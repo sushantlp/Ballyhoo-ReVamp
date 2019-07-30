@@ -1,3 +1,11 @@
+.search-container {
+  width: auto;
+  height: 12em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .search-container .column .button {
   height: 3em;
   width: 8em;
@@ -17,4 +25,34 @@
 
 .search-container .container {
   padding: 4em;
+}
+
+@media only screen and (max-width: 1024px) {
+  .search-container .column .button {
+    margin-left: 40%;
+    margin-right: 40%;
+  }
+
+  .search-container .column {
+    background: none;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .search-container .container {
+    padding-top: 0;
+  }
+
+  .search-container {
+    width: auto;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .search-container .column .button {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
 }
