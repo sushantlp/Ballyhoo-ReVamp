@@ -1,6 +1,7 @@
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
+import Trending from "../components/trending";
 
 const ParentList = props => {
   return (
@@ -18,6 +19,7 @@ const ParentList = props => {
           </div>
         </div>
       </section>
+      <Trending />
     </React.Fragment>
   );
 };

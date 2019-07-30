@@ -82,8 +82,8 @@ class Index extends React.Component {
         <Trending />
         <FoodBrewery />
         {/*<HowItWork /> */}
-        <Headout />
         <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
+        <Headout />
         <Footer />
       </div>
     );

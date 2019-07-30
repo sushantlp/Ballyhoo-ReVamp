@@ -8,7 +8,7 @@ import Head from "../components/head";
 import Header from "../components/header";
 import SubHeader from "../components/sub-header";
 import ParentList from "../components/parent-list";
-
+import Headout from "../components/headout";
 import Footer from "../components/footer";
 
 class List extends React.Component {
@@ -45,6 +45,7 @@ class List extends React.Component {
         <Header />
         <SubHeader />
         <ParentList />
+        <Headout />
         <Footer />
       </div>
     );
