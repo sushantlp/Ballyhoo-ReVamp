@@ -27,7 +27,7 @@ const Headout = props => {
           </div>
 
           <div className="middle-content">
-            <div className="title">Headout on the go</div>
+            <div className="title">Ballyhoo on the go</div>
             <div className="line" />
             <div className="subtitle">
               Download our mobile app for easier &amp; faster checkout.
@@ -87,7 +87,7 @@ const Headout = props => {
                   <img
                     src="https://cdn-imgix.headout.com/assets/images/views/app-download/Google-Pixel-Really-Blue.png?auto=compress&amp;fm=png&amp;w=345&amp;h=705&amp;crop=faces&amp;fit=min"
                     alt="android"
-                    class="image"
+                    className="image"
                     width="230"
                     height="470"
                     format="png"

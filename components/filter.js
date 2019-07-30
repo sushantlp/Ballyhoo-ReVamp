@@ -16,9 +16,7 @@ const Filter = props => {
                 name="exampleCheckboxBackgroundColorDanger"
                 checked="checked"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                Honeymoon
-              </label>
+              <label>Honeymoon</label>
 
               <input
                 className="is-checkradio"
@@ -26,7 +24,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">Family</label>
+              <label>Family</label>
             </div>
 
             <div className="column">
@@ -36,9 +34,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                Friends/Group
-              </label>
+              <label>Friends/Group</label>
             </div>
           </div>
         </div>
@@ -56,9 +52,7 @@ const Filter = props => {
                 name="exampleCheckboxBackgroundColorDanger"
                 checked="checked"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                Less Than 10,000
-              </label>
+              <label>Less Than 10,000</label>
             </div>
 
             <div className="column">
@@ -68,9 +62,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                10,000 - 20,000
-              </label>
+              <label>10,000 - 20,000</label>
             </div>
 
             <div className="column">
@@ -80,9 +72,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                20,000 - 40,000
-              </label>
+              <label>20,000 - 40,000</label>
             </div>
 
             <div className="column">
@@ -92,9 +82,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                40,000 - 60,000
-              </label>
+              <label>40,000 - 60,000</label>
             </div>
           </div>
         </div>
@@ -112,9 +100,7 @@ const Filter = props => {
                 name="exampleCheckboxBackgroundColorDanger"
                 checked="checked"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">
-                Mahabaleshwar
-              </label>
+              <label>Mahabaleshwar</label>
             </div>
 
             <div className="column">
@@ -124,7 +110,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">Goa</label>
+              <label>Goa</label>
             </div>
 
             <div className="column">
@@ -134,7 +120,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">Colva</label>
+              <label>Colva</label>
             </div>
 
             <div className="column">
@@ -144,7 +130,7 @@ const Filter = props => {
                 type="checkbox"
                 name="exampleCheckboxBackgroundColorDanger"
               />
-              <label for="exampleCheckboxBackgroundColorDanger">Candolim</label>
+              <label>Candolim</label>
             </div>
           </div>
         </div>
