@@ -101,7 +101,7 @@
 }
 
 .main-list-container .sfc3 {
-  color: #4caf50;
+  color: #00d1b2;
 }
 
 .main-list-container .fw9 {
@@ -211,11 +211,6 @@
   font-family: "Quicksand", sans-serif;
 }
 
-/* top left*/
-/* .ribbon-top-left {
-  top: -10px;
-  left: -10px;
-} */
 .ribbon-top-left::before,
 .ribbon-top-left::after {
   border-top-color: transparent;
@@ -236,7 +231,7 @@
 }
 
 /* top right*/
-.ribbon-top-right {
+/* .ribbon-top-right {
   top: -10px;
   right: -10px;
 }
@@ -257,10 +252,10 @@
   left: -25px;
   top: 30px;
   transform: rotate(45deg);
-}
+} */
 
 /* bottom left*/
-.ribbon-bottom-left {
+/* .ribbon-bottom-left {
   bottom: -10px;
   left: -10px;
 }
@@ -281,12 +276,13 @@
   right: -25px;
   bottom: 30px;
   transform: rotate(225deg);
-}
+} */
 
 /* bottom right*/
 .ribbon-bottom-right {
-  bottom: -10px;
-  right: -10px;
+  /* bottom: 10px; */
+  /* right: -10px; */
+  /* top: 15.5em; */
 }
 .ribbon-bottom-right::before,
 .ribbon-bottom-right::after {
@@ -302,7 +298,7 @@
   right: 0;
 }
 .ribbon-bottom-right span {
-  left: -25px;
+  left: -40px;
   bottom: 30px;
-  transform: rotate(-225deg);
+  /* transform: rotate(-225deg); */
 }

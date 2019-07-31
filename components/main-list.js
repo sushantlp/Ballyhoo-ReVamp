@@ -20,6 +20,12 @@ const MainList = props => {
               <span>Featured</span>
             </div>
 
+            {/* <div class="ribbon ribbon-bottom-right">
+              <span style={{ backgroundColor: "#ffdd57", color: "black" }}>
+                Exculsive
+              </span>
+            </div> */}
+
             <div className="media-content">
               <div className="content">
                 <div className="columns mb0">
@@ -43,11 +49,12 @@ const MainList = props => {
                     </span>
                   </div>
                 </div>
+
                 <div className="columns mb0 ">
                   <div className="column pt0">
                     <span className="f12 fw4 m0 pb8 iblock">
                       <span className="mr24 pfc4">Starting from:</span>
-                      <span className="tag is-primary radius20 fw7">
+                      <span className="tag is-danger radius20 fw7">
                         12% off
                       </span>
                     </span>
@@ -153,6 +160,9 @@ const MainList = props => {
                   alt="Image"
                 />
               </figure>
+            </div>
+            <div class="ribbon ribbon-top-left">
+              <span>Featured</span>
             </div>
             <div className="media-content">
               <div className="content">
@@ -267,6 +277,10 @@ const MainList = props => {
                   alt="Image"
                 />
               </figure>
+            </div>
+
+            <div class="ribbon ribbon-top-left">
+              <span>Featured</span>
             </div>
             <div className="media-content">
               <div className="content">
