@@ -15,6 +15,11 @@ const MainList = props => {
                 />
               </figure>
             </div>
+
+            <div class="ribbon ribbon-top-left">
+              <span>Featured</span>
+            </div>
+
             <div className="media-content">
               <div className="content">
                 <div className="columns mb0">
@@ -24,6 +29,11 @@ const MainList = props => {
                   </div>
 
                   <div className="column">
+                    <span className="tag radius20 fw7">
+                      <img src="https://img.icons8.com/color/17/000000/hearts.png" />
+                      <span className="ellipsis pl0_5">71%</span>
+                    </span>
+
                     <span className="rating">
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
@@ -82,28 +92,43 @@ const MainList = props => {
 
           <footer className="card-footer">
             <div className="card-footer-item">
-              <span className="span-flex pt0-5 pb0-5">
+              <span className="span-flex">
                 <span className="pr2">
-                  <img src="https://img.icons8.com/cute-clipart/25/000000/airplane-mode-on.png" />
-                  <p className="f12"> Flight</p>
-                </span>
+                  <img src="https://img.icons8.com/color/25/000000/4-star-hotel.png" />
 
-                <span className="pr2">
-                  <img src="https://img.icons8.com/dusk/25/000000/vegan-food.png" />
-                  <p className="f12"> Meal</p>
+                  <p className="f12">Stay</p>
                 </span>
 
                 <span className="pr2">
                   <img
-                    src="https://img.icons8.com/bubbles/25/000000/filled-star.png"
-                    style={{ paddingLeft: "10px" }}
+                    src="https://img.icons8.com/color/25/000000/around-the-globe.png"
+                    style={{ paddingLeft: "0.3em" }}
                   />
-                  <p className="f12">Featured</p>
+                  <p className="f12">Travel</p>
                 </span>
 
                 <span className="pr2">
-                  <img src="https://img.icons8.com/officel/25/000000/best-seller.png" />
-                  <p className="f12">Best</p>
+                  <img
+                    src="https://img.icons8.com/color/25/000000/tripadvisor.png"
+                    style={{ paddingLeft: "1.2em" }}
+                  />
+                  <p className="f12">SightSeeing</p>
+                </span>
+
+                <span className="pr2">
+                  <img
+                    src="https://img.icons8.com/color/25/000000/healthy-food.png"
+                    style={{ paddingLeft: "0.9em" }}
+                  />
+                  <p className="f12">BreakFast</p>
+                </span>
+
+                <span className="pr2">
+                  <img
+                    src="https://img.icons8.com/color/25/000000/parachute.png"
+                    style={{ paddingLeft: "0.8em" }}
+                  />
+                  <p className="f12">Activities</p>
                 </span>
               </span>
             </div>
