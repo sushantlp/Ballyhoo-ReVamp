@@ -172,9 +172,10 @@
 
 .main-list-container .google {
   color: #424242;
-  font-family: Google Sans;
+  /* font-family: Google Sans; */
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.0175rem;
 }
 
@@ -187,7 +188,7 @@
 /* common */
 .ribbon {
   width: 140px;
-  height: 140px;
+  height: 200px;
   overflow: hidden;
   position: absolute;
 }
@@ -299,6 +300,7 @@
 }
 .ribbon-bottom-right span {
   left: -40px;
-  bottom: 30px;
+  top: 13em;
+  /* bottom: 30px; */
   /* transform: rotate(-225deg); */
 }
