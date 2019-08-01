@@ -43,9 +43,9 @@ const MainList = props => {
                     <span className="rating">
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
                     </span>
                   </div>
                 </div>
@@ -181,29 +181,21 @@ const MainList = props => {
                     <span className="rating">
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
                     </span>
                   </div>
                 </div>
                 <div className="columns mb0 ">
                   <div className="column pt0">
                     <span className="f12 fw4 m0 pb8 iblock">
-                      <span className="mr24 pfc4">Starting from:</span>
-                      <span className="tag is-danger radius20 fw7">
-                        12% off
-                      </span>
+                      <span className="mr24 pfc4">Average Cost:</span>
                     </span>
 
                     <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
                       ₹ 1,300/-
-                      <span className="f12 pfc3 tdl ml8">₹ 1,000/-</span>
                     </h5>
-
-                    <p className="f12 m0 pfc4 fw7">
-                      Per Person on twin sharing
-                    </p>
                   </div>
                   <div className="column pl8 pt0">
                     <div className="package-tag-box">
@@ -260,14 +252,14 @@ const MainList = props => {
                 <span>
                   <img
                     src="https://img.icons8.com/cute-clipart/64/000000/vegetarian-food-symbol.png"
-                    style={{ height: "2.5em" }}
+                    style={{ height: "2em" }}
                   />
                 </span>
 
                 <span>
                   <img
                     src="https://img.icons8.com/cute-clipart/64/000000/non-vegetarian-food-symbol.png"
-                    style={{ height: "2.5em" }}
+                    style={{ height: "2em" }}
                   />
                 </span>
               </span>
@@ -315,9 +307,9 @@ const MainList = props => {
                     <span className="rating">
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
                     </span>
                   </div>
                 </div>
@@ -335,10 +327,6 @@ const MainList = props => {
                       <span className="f12">onwards</span>
                       <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span>
                     </h5>
-
-                    <p className="f12 m0 pfc4 fw7">
-                      Per Person on twin sharing
-                    </p>
                   </div>
                   <div className="column pl8 pt0">
                     <div className="package-tag-box">
@@ -369,26 +357,11 @@ const MainList = props => {
             <div className="card-footer-item">
               <span className="span-flex pt0-5 pb0-5">
                 <span className="pr2">
-                  <img src="https://img.icons8.com/cute-clipart/25/000000/airplane-mode-on.png" />
-                  <p className="f12"> Flight</p>
-                </span>
-
-                <span className="pr2">
-                  <img src="https://img.icons8.com/dusk/25/000000/vegan-food.png" />
-                  <p className="f12"> Meal</p>
-                </span>
-
-                <span className="pr2">
                   <img
-                    src="https://img.icons8.com/bubbles/25/000000/filled-star.png"
-                    style={{ paddingLeft: "10px" }}
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjUiIGhlaWdodD0iMjUiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjRkY5ODAwIiBkPSJNMzgsMzlIMTBjLTEuMSwwLTItMC45LTItMlYxN2gzMnYyMEM0MCwzOC4xLDM5LjEsMzksMzgsMzl6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0ZGQTcyNiIgZD0iTTQyLDE3SDZ2LTZjMC0xLjEsMC45LTIsMi0yaDMyYzEuMSwwLDIsMC45LDIsMlYxN3oiPjwvcGF0aD48cGF0aCBmaWxsPSIjOUU1RTAwIiBkPSJNMjIgMTdIMjZWMzlIMjJ6TTMyIDNMMjggMyAyMiA5IDI2IDl6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0M3NzYwMCIgZD0iTTIwIDNMMTYgMyAyMiA5IDIyIDE3IDI2IDE3IDI2IDl6Ij48L3BhdGg+PC9zdmc+"
+                    style={{ paddingLeft: "0.6em" }}
                   />
-                  <p className="f12">Featured</p>
-                </span>
-
-                <span className="pr2">
-                  <img src="https://img.icons8.com/officel/25/000000/best-seller.png" />
-                  <p className="f12">Best</p>
+                  <p className="f12">Package</p>
                 </span>
               </span>
             </div>
@@ -435,9 +408,9 @@ const MainList = props => {
                     <span className="rating">
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
                     </span>
                   </div>
                 </div>
@@ -455,10 +428,6 @@ const MainList = props => {
                       <span className="f12">onwards</span>
                       <span className="f12 pfc3 tdl ml8">₹ 500.00/-</span>
                     </h5>
-
-                    <p className="f12 m0 pfc4 fw7">
-                      Per Person on twin sharing
-                    </p>
                   </div>
                   <div className="column pl8 pt0">
                     <div className="package-tag-box">
@@ -528,6 +497,12 @@ const MainList = props => {
                 <div className="columns mb0">
                   <div className="column">
                     <p className="title google">The Comedy Club</p>
+                    <p
+                      className="subtitle is-6 mb-4 plh1"
+                      style={{ color: "black" }}
+                    >
+                      The Humming Tree
+                    </p>
                     <p className="subtitle is-6 mb8 plh1">Koramangala</p>
                   </div>
 
@@ -540,9 +515,9 @@ const MainList = props => {
                     <span className="rating">
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                       <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                      <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
+                      <img src="https://img.icons8.com/color/20/000000/star.png" />
                     </span>
                   </div>
                 </div>
@@ -560,10 +535,6 @@ const MainList = props => {
                       <span className="f12">onwards</span>
                       <span className="f12 pfc3 tdl ml8">₹ 500.00/-</span>
                     </h5>
-
-                    <p className="f12 m0 pfc4 fw7">
-                      Per Person on twin sharing
-                    </p>
                   </div>
                   <div className="column pl8 pt0">
                     <div className="package-tag-box">
@@ -590,10 +561,12 @@ const MainList = props => {
 
           <footer className="card-footer">
             <div className="card-footer-item">
-              <span className="span-flex pt0-5 pb0-5">
-                <span className="pr2">
+              <span className="span-flex ">
+                <span>
                   <img src="https://img.icons8.com/cute-clipart/50/000000/date-to.png" />
-                  <p>Aug Sat 03</p>
+                  <p>
+                    <code>Aug Sat 03</code>
+                  </p>
                 </span>
               </span>
             </div>

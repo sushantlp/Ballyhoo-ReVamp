@@ -33,6 +33,10 @@
   margin-bottom: 8px !important;
 }
 
+.main-list-container .mb-4 {
+  margin-bottom: -4px !important;
+}
+
 .main-list-container .radius20 {
   border-radius: 20px;
 }
