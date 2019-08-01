@@ -250,16 +250,25 @@ const MainList = props => {
             <div className="card-footer-item">
               <span className="span-flex ">
                 <span>
-                  <img
+                  {/* <img
                     src="https://img.icons8.com/cute-clipart/64/000000/vegetarian-food-symbol.png"
                     style={{ height: "2em" }}
+                  /> */}
+                  <img
+                    src="https://img.icons8.com/color/48/000000/vegetarian-food-symbol.png"
+                    style={{ height: "1.5em" }}
                   />
                 </span>
 
                 <span>
-                  <img
+                  {/* <img
                     src="https://img.icons8.com/cute-clipart/64/000000/non-vegetarian-food-symbol.png"
                     style={{ height: "2em" }}
+                  /> */}
+
+                  <img
+                    src="https://img.icons8.com/color/48/000000/non-vegetarian-food-symbol.png"
+                    style={{ height: "1.5em" }}
                   />
                 </span>
               </span>
