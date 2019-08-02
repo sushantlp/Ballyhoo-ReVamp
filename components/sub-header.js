@@ -2,7 +2,16 @@ import "./sub-header.css";
 
 const SubHeader = props => {
   return (
-    <div className="sub-header-container">
+    <div
+      className="sub-header-container"
+      style={{
+        borderWidth: 0,
+        position: props.scrolling ? "fixed" : "relative",
+        top: 0,
+        width: "100vw",
+        zIndex: props.scrolling ? "999" : "1"
+      }}
+    >
       <section className="bg-white text-sm py-2 shadow">
         <div className="container mx-auto py-2 text-center">
           <a

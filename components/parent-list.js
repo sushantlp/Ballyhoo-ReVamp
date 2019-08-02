@@ -1,6 +1,3 @@
-import Sticky from "react-stickynode";
-// import { StickyContainer, Sticky } from "react-sticky";
-
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
@@ -15,9 +12,7 @@ const ParentList = props => {
         <div className="container">
           <div className="columns">
             <div className="column is-3">
-              <Sticky>
-                <Filter />
-              </Sticky>
+              <Filter scrolling={props.scrolling} />
 
               {/* <Similar /> */}
             </div>

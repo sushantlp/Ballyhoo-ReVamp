@@ -3,7 +3,12 @@ import "bulma-checkradio";
 
 const Filter = props => {
   return (
-    <div className="filter-container">
+    <div
+      className="filter-container"
+      style={{
+        marginTop: props.scrolling ? "2em" : "0em"
+      }}
+    >
       <div className="box">
         <h3 className="google">Categories </h3>
         <div className="columns is-desktop is-multiline is-narrow">

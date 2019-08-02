@@ -32,7 +32,33 @@ class List extends React.Component {
   //   return { page, stories };
   // }
 
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.state = {
+      scrolling: false
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll, true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll, true);
+  }
+
+  handleScroll(event) {
+    if (document.body.scrollTop > 53) {
+      this.setState({
+        scrolling: true
+      });
+    } else {
+      this.setState({
+        scrolling: false
+      });
+    }
+  }
 
   render() {
     // const { stories, page } = this.props;
@@ -45,8 +71,8 @@ class List extends React.Component {
       <div>
         <Head title="Home" />
         <Header />
-        <SubHeader />
-        <ParentList />
+        <SubHeader scrolling={this.state.scrolling} />
+        <ParentList scrolling={this.state.scrolling} />
         <Headout />
         <Footer />
       </div>

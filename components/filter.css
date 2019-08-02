@@ -1,3 +1,8 @@
+.filter-container {
+  position: sticky;
+  top: 0;
+}
+
 .filter-container .box {
   box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.1);
 }

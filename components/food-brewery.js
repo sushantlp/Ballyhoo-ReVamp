@@ -10,12 +10,12 @@ export default class FoodBrewery extends React.Component {
             <div className="underscore" />
           </div>
 
-          <div class="box">
-            <div class="card">
-              <div class="imgBx">
+          <div className="box">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-1.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Restaurants
                   {/* <br /> */}
@@ -24,11 +24,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-2.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Pubs
                   {/* <br />
@@ -37,11 +37,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-3.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
@@ -50,11 +50,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-4.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
@@ -63,11 +63,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-5.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
@@ -76,11 +76,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-6.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
@@ -89,11 +89,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-7.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
@@ -102,11 +102,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-8.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
@@ -115,11 +115,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-2.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Pubs
                   {/* <br />
@@ -128,11 +128,11 @@ export default class FoodBrewery extends React.Component {
               </div>
             </div>
 
-            <div class="card">
-              <div class="imgBx">
+            <div className="card">
+              <div className="imgBx">
                 <img src="../static/fb-3.jpg" alt="images" />
               </div>
-              <div class="details">
+              <div className="details">
                 <h2>
                   Events
                   {/* <br />
