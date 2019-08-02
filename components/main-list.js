@@ -190,7 +190,7 @@ const MainList = props => {
                 <div className="columns mb0 ">
                   <div className="column pt0">
                     <span className="f12 fw4 m0 pb8 iblock">
-                      <span className="mr24 pfc4">Average Cost:</span>
+                      <span className="mr24 pfc4">Average cost for two:</span>
                     </span>
 
                     <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
