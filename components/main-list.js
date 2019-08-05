@@ -506,12 +506,7 @@ const MainList = props => {
                 <div className="columns mb0">
                   <div className="column">
                     <p className="title google">The Comedy Club</p>
-                    <p
-                      className="subtitle is-6 mb-4 plh1"
-                      style={{ color: "black" }}
-                    >
-                      The Humming Tree
-                    </p>
+
                     <p className="subtitle is-6 mb8 plh1">Koramangala</p>
                   </div>
 
@@ -578,6 +573,10 @@ const MainList = props => {
                   </p>
                 </span>
               </span>
+            </div>
+
+            <div className="card-footer-item">
+              <p className="title google">The Humming Tree</p>
             </div>
 
             <div className="card-footer-item">

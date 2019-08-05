@@ -2,11 +2,12 @@ import "./filter.css";
 import "bulma-checkradio";
 
 const Filter = props => {
+  console.log(props);
   return (
     <div
       className="filter-container"
       style={{
-        marginTop: props.scrolling ? "2em" : "0em"
+        top: props.scrolling ? "3em" : "0"
       }}
     >
       <div className="box">
