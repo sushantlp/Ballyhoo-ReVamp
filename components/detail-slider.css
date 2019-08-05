@@ -1,0 +1,21 @@
+.hero .carousel {
+  background-size: cover;
+}
+
+.hero .slick-list {
+  height: 50vh;
+}
+
+.detail-slider-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+}
+
+.top-left {
+  position: absolute;
+  top: 1em;
+  left: 80em;
+  z-index: 2;
+}

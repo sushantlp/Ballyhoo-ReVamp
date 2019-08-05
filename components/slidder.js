@@ -41,6 +41,7 @@ export default class Slidder extends React.Component {
                   selection
                   options={empty}
                   value={empty}
+                  style={{ height: "50px" }}
                   icon={
                     <img
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
@@ -60,7 +61,7 @@ export default class Slidder extends React.Component {
                   search
                   fluid
                   selection
-                  // style={{ height: "50px" }}
+                  style={{ height: "50px" }}
                   options={empty}
                   value={empty}
                   // onChange={}
@@ -78,7 +79,12 @@ export default class Slidder extends React.Component {
               </div>
 
               <div className="column is-2">
-                <a className="button is-danger">SUBMIT</a>
+                <a
+                  className="button is-danger"
+                  style={{ height: "50px", fontWeight: "700" }}
+                >
+                  SUBMIT
+                </a>
               </div>
             </div>
           </div>

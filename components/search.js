@@ -23,14 +23,15 @@ const Search = props => {
                 search
                 fluid
                 selection
-                style={{ height: "3em" }}
+                style={{ height: "50px" }}
                 options={empty}
                 value={empty}
                 icon={
                   <img
                     src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
                     style={{
-                      marginRight: "-2vh",
+                      marginRight: "-1.1em",
+                      marginTop: "0.3em",
                       float: "right",
                       color: "grey"
                     }}
@@ -45,7 +46,7 @@ const Search = props => {
                 search
                 fluid
                 selection
-                style={{ height: "3em" }}
+                style={{ height: "50px" }}
                 options={empty}
                 value={empty}
                 // onChange={}
@@ -53,7 +54,8 @@ const Search = props => {
                   <img
                     src="https://img.icons8.com/wired/20/000000/search.png"
                     style={{
-                      marginRight: "-2vh",
+                      marginRight: "-1.1em",
+                      marginTop: "0.3em",
                       float: "right",
                       color: "grey"
                     }}
@@ -63,7 +65,12 @@ const Search = props => {
             </div>
 
             <div className="column is-2">
-              <a className="button is-danger">SUBMIT</a>
+              <a
+                className="button is-danger"
+                style={{ height: "50px", fontWeight: "700" }}
+              >
+                SUBMIT
+              </a>
             </div>
           </div>
         </div>

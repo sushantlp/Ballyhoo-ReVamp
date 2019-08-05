@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Head from "../components/head";
 import Header from "../components/header";
 import SubHeader from "../components/sub-header";
-
+import DetailSlider from "../components/detail-slider";
 import Headout from "../components/headout";
 
 import Footer from "../components/footer";
@@ -34,7 +34,17 @@ class Detail extends React.Component {
   //   return { page, stories };
   // }
 
+  constructor(props) {
+    super(props);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.state = {
+      scrolling: false
+    };
+  }
+
   componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll, true);
+
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
@@ -47,13 +57,29 @@ class Detail extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll, true);
+  }
+
+  handleScroll(event) {
+    if (document.body.scrollTop > 53) {
+      this.setState({
+        scrolling: true
+      });
+    } else {
+      this.setState({
+        scrolling: false
+      });
+    }
+  }
+
   render() {
     return (
       <div>
         <Head title="Home" />
         <Header />
-        <SubHeader />
-
+        <SubHeader scrolling={this.state.scrolling} />
+        <DetailSlider />
         <Headout />
         <Footer />
       </div>

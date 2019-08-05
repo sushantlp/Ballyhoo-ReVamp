@@ -40,7 +40,17 @@ class Index extends React.Component {
   //   return { page, stories };
   // }
 
+  constructor(props) {
+    super(props);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.state = {
+      scrolling: false
+    };
+  }
+
   componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll, true);
+
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
@@ -50,6 +60,22 @@ class Index extends React.Component {
         .catch(err => {
           console.warn("service worker registration failed", err.message);
         });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll, true);
+  }
+
+  handleScroll(event) {
+    if (document.body.scrollTop > 53) {
+      this.setState({
+        scrolling: true
+      });
+    } else {
+      this.setState({
+        scrolling: false
+      });
     }
   }
 
@@ -73,14 +99,14 @@ class Index extends React.Component {
       <div>
         <Head title="Home" />
         <Header />
-        <SubHeader />
+        <SubHeader scrolling={this.state.scrolling} />
         <Slidder />
         <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
-        <Discover />
+        {/* <Discover />
         <Featured />
         <Popular />
         <Trending />
-        <FoodBrewery />
+        <FoodBrewery /> */}
         {/*<HowItWork /> */}
         <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
         <Headout />
