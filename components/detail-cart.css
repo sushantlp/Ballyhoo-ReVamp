@@ -1,0 +1,24 @@
+.price-block.has-price {
+  border: solid #c6c8d0;
+  border-width: 0 2px 2px;
+  border-radius: 2px;
+}
+
+.price-block {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.price-block .top-border-highlight {
+  border-top: 4px solid #1593ff;
+}
+.price-block .price {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  flex-grow: 1;
+  -ms-flex-positive: 1;
+  margin: 0;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-left: 16px;
+}

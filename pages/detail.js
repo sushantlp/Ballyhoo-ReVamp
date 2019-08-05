@@ -10,8 +10,8 @@ import Head from "../components/head";
 import Header from "../components/header";
 import SubHeader from "../components/sub-header";
 import DetailSlider from "../components/detail-slider";
+import ParentDetail from "../components/parent-detail";
 import Headout from "../components/headout";
-
 import Footer from "../components/footer";
 import styled from "styled-components";
 
@@ -80,6 +80,7 @@ class Detail extends React.Component {
         <Header />
         <SubHeader scrolling={this.state.scrolling} />
         <DetailSlider />
+        <ParentDetail />
         <Headout />
         <Footer />
       </div>
