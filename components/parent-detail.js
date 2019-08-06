@@ -11,7 +11,7 @@ const ParentDetail = props => {
             <div className="column is-8">
               <DetailTab />
             </div>
-            <div className="column is-3 is-offset-1">
+            <div className="column is-4 ">
               <DetailCart />
             </div>
           </div>

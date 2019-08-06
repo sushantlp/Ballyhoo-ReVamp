@@ -1,33 +1,27 @@
+import { Segment, Divider } from "semantic-ui-react";
+// import TimePicker from "react-time-picker";
+// import DatePicker from "react-date-picker";
+
 import "./detail-cart.css";
+
 const DetailCart = props => {
+  const date = new Date();
+  const time = "10:00";
+
   return (
-    <React.Fragment>
-      <section className="section">
-        <div className="container">
-          <div class="activity-column-minor">
-            <div class="price-block has-price">
-              <div class="activity-features-price top-border-highlight">
-                <p class="price">
-                  <span class="price-from">From</span>
-                  <strong class="price-actual">₹&nbsp;2,362</strong>
-                  <span class="price-explanation">per person</span>
-                </p>
-                <div class="btn-wrap">
-                  <a
-                    class="btn btn-cta btn-small"
-                    href="#booking-assistant"
-                    id="btn-booking-header"
-                    data-cta-clicked="Continue booking"
-                  >
-                    Book now
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </React.Fragment>
+    <div className="detail-cart-controller">
+      <Segment>
+        <p className="fw7 f24">
+          <span> &#8377;</span> 2,365
+        </p>
+
+        {/* <DatePicker value={date} /> */}
+
+        {/* <TimePicker value={time} /> */}
+        <a className="button cart-button ff">Procced</a>
+        <p className="ff align">You won’t be charged yet</p>
+      </Segment>
+    </div>
   );
 };
 

@@ -1,24 +1,30 @@
-.price-block.has-price {
-  border: solid #c6c8d0;
-  border-width: 0 2px 2px;
-  border-radius: 2px;
+.detail-cart-controller .cart-button {
+  background-color: #ff5a5f;
+  color: white;
+  opacity: 1;
+  width: 17.2em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
 }
 
-.price-block {
-  text-align: right;
-  margin-bottom: 16px;
+.detail-cart-controller .align {
+  text-align: center;
 }
 
-.price-block .top-border-highlight {
-  border-top: 4px solid #1593ff;
+.detail-cart-controller .ff {
+  font-family: "Quicksand", sans-serif;
 }
-.price-block .price {
-  -webkit-flex-grow: 1;
-  -moz-flex-grow: 1;
-  flex-grow: 1;
-  -ms-flex-positive: 1;
-  margin: 0;
-  text-align: left;
-  margin-bottom: 16px;
-  margin-left: 16px;
+
+.detail-cart-controller .ui.segment {
+  border-top: 4px solid #ff5a5f;
+}
+
+.detail-cart-controller .fw7 {
+  font-weight: 700;
+}
+
+.detail-cart-controller .f24 {
+  font-size: 24px;
 }
