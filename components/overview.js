@@ -5,7 +5,7 @@ const Overview = props => {
     <div className="overview-container">
       <div className="columns">
         <div className="column is-7">
-          <h4 className="google">55 Wall Street</h4>
+          <h4 className="google partner-title">55 Wall Street</h4>
         </div>
 
         <div className="column is-2">
@@ -26,7 +26,26 @@ const Overview = props => {
         </div>
       </div>
 
-      {/* <div className="box" /> */}
+      <div className="box">
+        <div className="cuisine-container">
+          <h4 className="google cuisine-title">Cuisines</h4>
+          <div className="columns">
+            <div className="column">
+              <ul className="package-tags">
+                <li className="ellipsis">Shikara Ride</li>
+                <li className="ellipsis">Nature</li>
+                <li className="ellipsis">Martand Temple</li>
+                <li className="ellipsis">Hill station</li>
+                <li className="ellipsis">Amusement Park</li>
+                <li className="ellipsis">Sightseeing</li>
+                <li className="ellipsis">Gondola Ride</li>
+                <li className="ellipsis">Family</li>
+                <li className="ellipsis">Budget</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="columns">
         <div className="column">

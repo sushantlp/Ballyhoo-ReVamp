@@ -46,9 +46,9 @@ export default class DetailCart extends React.Component {
         }}
       >
         <Segment>
-          <p className="fw7 f24 sfc3">
+          <h4 className="fw7 f24">
             <span> &#8377;</span> 2,365
-          </p>
+          </h4>
 
           {/* <DatePicker value={date} /> */}
 
