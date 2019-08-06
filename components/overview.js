@@ -5,7 +5,7 @@ const Overview = props => {
     <div className="overview-container">
       <div className="columns">
         <div className="column is-7">
-          <p className="google">55 Wall Street</p>
+          <h4 className="google">55 Wall Street</h4>
         </div>
 
         <div className="column is-2">
@@ -26,11 +26,13 @@ const Overview = props => {
         </div>
       </div>
 
+      {/* <div className="box" /> */}
+
       <div className="columns">
         <div className="column">
-          <p className="ff f10 f1-1">
+          <h4 className="ff f10 f1-1 fw2">
             C. d'Arístides Maillol, 12, 08028 Barcelona, Spain
-          </p>
+          </h4>
           <Map />
         </div>
       </div>

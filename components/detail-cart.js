@@ -4,25 +4,59 @@ import { Segment, Divider } from "semantic-ui-react";
 
 import "./detail-cart.css";
 
-const DetailCart = props => {
-  const date = new Date();
-  const time = "10:00";
+export default class DetailCart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scrolling: false,
+      date: new Date(),
+      time: "10:00"
+    };
+  }
 
-  return (
-    <div className="detail-cart-container">
-      <Segment>
-        <p className="fw7 f24">
-          <span> &#8377;</span> 2,365
-        </p>
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll, true);
+  }
 
-        {/* <DatePicker value={date} /> */}
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll, true);
+  }
 
-        {/* <TimePicker value={time} /> */}
-        <a className="button cart-button ff">Procced</a>
-        <p className="ff align">You won’t be charged yet</p>
-      </Segment>
-    </div>
-  );
-};
+  handleScroll = event => {
+    console.log(document.body.scrollTop);
+    if (document.body.scrollTop > 212) {
+      if (this.state.scrolling === false)
+        this.setState({
+          scrolling: true
+        });
+    } else {
+      if (this.state.scrolling === true)
+        this.setState({
+          scrolling: false
+        });
+    }
+  };
 
-export default DetailCart;
+  render() {
+    return (
+      <div
+        className="detail-cart-container"
+        style={{
+          top: this.state.scrolling ? "6em" : "0"
+        }}
+      >
+        <Segment>
+          <p className="fw7 f24 sfc3">
+            <span> &#8377;</span> 2,365
+          </p>
+
+          {/* <DatePicker value={date} /> */}
+
+          {/* <TimePicker value={time} /> */}
+          <a className="button cart-button ff">Procced</a>
+          <p className="ff align">You won’t be charged yet</p>
+        </Segment>
+      </div>
+    );
+  }
+}
