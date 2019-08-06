@@ -94,10 +94,41 @@ const Overview = props => {
       <div className="box">
         <div className="columns">
           <div className="column">
+            <h4 className="google cuisine-title">Where ?</h4>
             <h4 className="ff f10 f1-1 fw2">
               C. d'Arístides Maillol, 12, 08028 Barcelona, Spain
             </h4>
             <Map />
+          </div>
+        </div>
+      </div>
+
+      <div className="box">
+        <div className="columns">
+          <div className="column">
+            <h4 className="google cuisine-title">
+              Rating <span className="fs0-7 light-red">(By Zomato) </span>
+            </h4>
+
+            <div className="zomato-container">
+              <h4 className="ff f10 f1-1 fw2"> Amulya Jayadev</h4>
+              <span className="rating">
+                <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                <img src="https://img.icons8.com/color/20/000000/star.png" />
+                <img src="https://img.icons8.com/color/20/000000/star.png" />
+              </span>
+
+              <h4 className="fz1 pfc4 ffqs fw2 ls">
+                This wonderful land of northeast India, is home to some of the
+                most picturesque honeymoon destinations with spellbinding
+                tourist attractions. This romantic 4 nights 5 days north east
+                package from Delhi, Kolkata, Mumbai and other major cities of
+                India takes you around some famous tourist places in northeast
+                India including Shillong and Mawlynnong.
+              </h4>
+            </div>
           </div>
         </div>
       </div>

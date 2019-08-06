@@ -107,3 +107,11 @@
 .overview-container .ls {
   letter-spacing: 0.0175rem;
 }
+
+.overview-container .fs0-7 {
+  font-size: 0.7em;
+}
+
+.overview-container .light-red {
+  color: #ff5a5f;
+}
