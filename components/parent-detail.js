@@ -3,6 +3,7 @@ import DetailCart from "./detail-cart";
 import Trending from "./trending";
 
 const ParentDetail = props => {
+  console.log("Detail");
   return (
     <React.Fragment>
       <section className="section">

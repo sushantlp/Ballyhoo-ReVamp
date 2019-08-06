@@ -1,14 +1,9 @@
-// import Overview from "../overviewTabComponent";
-// import Doctor from "../doctorTabComponent";
-// import Bed from "../bedTabComponent";
-// import Ambulance from "../ambulanceTabComponent";
+import Overview from "./overview";
 import "./detail-tab.css";
 
 export default class DetailTab extends React.Component {
   constructor(props) {
     super(props);
-    // let navigation = "Overview";
-
     this.state = {
       navigation: "Overview"
     };
@@ -21,6 +16,7 @@ export default class DetailTab extends React.Component {
   };
 
   render() {
+    console.log("TAB");
     return (
       <div>
         <div className="tabs is-boxed">
@@ -103,37 +99,17 @@ export default class DetailTab extends React.Component {
           </ul>
         </div>
 
-        {this.state.navigation === "Overview" ? <div /> : null}
+        {this.state.navigation === "Overview" ? <Overview /> : null}
 
-        {this.state.navigation === "Beds" ? (
-          <div />
-        ) : // <Bed
-        //   categoryFeature={this.props.categoryFeature}
-        //   parentState={this.state}
-        //   authOpen={this.props.authOpen}
-        //   updateOpenState={this.props.updateOpenState}
-        //   bedOpen={this.props.bedOpen}
-        //   updateBedOpenState={this.props.updateBedOpenState}
-        //   postMobileRegister={this.props.postMobileRegister}
-        //   mobileRegister={this.props.mobileRegister}
-        //   postOtpVerify={this.props.postOtpVerify}
-        //   otpVerify={this.props.otpVerify}
-        //   onClickBook={this.onClickBook}
-        //   referralBed={this.props.referralBed}
-        //   validateReferralBed={this.props.validateReferralBed}
-        //   selectedData={this.state.selectedData}
-        //   selectedPackage={this.state.selectedPackage}
-        //   history={this.props.history}
-        // />
-        null}
+        {this.state.navigation === "Offers" ? <div /> : null}
 
-        {this.state.navigation === "Doctors" ? <div /> : null}
+        {this.state.navigation === "Buffets" ? <div /> : null}
 
-        {this.state.navigation === "Ambulances" ? <div /> : null}
+        {this.state.navigation === "Packages" ? <div /> : null}
 
-        {this.state.navigation === "Equipments" ? <div /> : null}
+        {this.state.navigation === "Events" ? <div /> : null}
 
-        {this.state.navigation === "Nursings" ? <div /> : null}
+        {this.state.navigation === "Reviews" ? <div /> : null}
       </div>
     );
   }

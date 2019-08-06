@@ -2,7 +2,6 @@ import "./filter.css";
 import "bulma-checkradio";
 
 const Filter = props => {
-  console.log(props);
   return (
     <div
       className="filter-container"

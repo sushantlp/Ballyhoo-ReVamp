@@ -73,9 +73,10 @@ class Index extends React.Component {
         scrolling: true
       });
     } else {
-      this.setState({
-        scrolling: false
-      });
+      if (this.state.scrolling === true)
+        this.setState({
+          scrolling: false
+        });
     }
   }
 

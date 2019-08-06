@@ -1,9 +1,11 @@
+import Map from "./map";
 import "./overview.css";
-
 const Overview = props => {
   return (
     <div className="overview-controller">
-      <div />
+      <div className="box">
+        <Map />
+      </div>
     </div>
   );
 };
