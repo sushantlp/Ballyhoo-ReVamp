@@ -34,39 +34,15 @@ class List extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      scrolling: false
-    };
   }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll, true);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll, true);
-  }
-
-  handleScroll = event => {
-    if (document.body.scrollTop > 53) {
-      this.setState({
-        scrolling: true
-      });
-    } else {
-      if (this.state.scrolling === true)
-        this.setState({
-          scrolling: false
-        });
-    }
-  };
 
   render() {
     return (
       <div>
         <Head title="Home" />
         <Header />
-        <SubHeader scrolling={this.state.scrolling} />
-        <ParentList scrolling={this.state.scrolling} />
+        <SubHeader />
+        <ParentList />
         <Headout />
         <Footer />
       </div>

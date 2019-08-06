@@ -1,4 +1,4 @@
-.detail-cart-controller .cart-button {
+.detail-cart-container .cart-button {
   background-color: #ff5a5f;
   color: white;
   opacity: 1;
@@ -9,22 +9,22 @@
   margin-bottom: 0.5em;
 }
 
-.detail-cart-controller .align {
+.detail-cart-container .align {
   text-align: center;
 }
 
-.detail-cart-controller .ff {
+.detail-cart-container .ff {
   font-family: "Quicksand", sans-serif;
 }
 
-.detail-cart-controller .ui.segment {
+.detail-cart-container .ui.segment {
   border-top: 4px solid #ff5a5f;
 }
 
-.detail-cart-controller .fw7 {
+.detail-cart-container .fw7 {
   font-weight: 700;
 }
 
-.detail-cart-controller .f24 {
+.detail-cart-container .f24 {
   font-size: 24px;
 }

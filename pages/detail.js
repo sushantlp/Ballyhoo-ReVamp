@@ -36,43 +36,19 @@ class Detail extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      scrolling: false
-    };
   }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll, true);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll, true);
-  }
-
-  handleScroll = event => {
-    if (document.body.scrollTop > 53) {
-      this.setState({
-        scrolling: true
-      });
-    } else {
-      if (this.state.scrolling === true)
-        this.setState({
-          scrolling: false
-        });
-    }
-  };
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Head title="Home" />
         <Header />
-        <SubHeader scrolling={this.state.scrolling} />
+        <SubHeader />
         <DetailSlider />
         <ParentDetail />
         <Headout />
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

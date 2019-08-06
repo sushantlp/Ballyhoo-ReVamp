@@ -9,7 +9,7 @@ const DetailCart = props => {
   const time = "10:00";
 
   return (
-    <div className="detail-cart-controller">
+    <div className="detail-cart-container">
       <Segment>
         <p className="fw7 f24">
           <span> &#8377;</span> 2,365

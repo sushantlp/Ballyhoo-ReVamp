@@ -30,7 +30,7 @@ const MainList = props => {
               <div className="content">
                 <div className="columns mb0">
                   <div className="column">
-                    <p className="title google">Kashmir Family Tour Package</p>
+                    <p className="title">Kashmir Family Tour Package</p>
                     <p className="subtitle is-6 mb8 plh1">4 Days & 3 Nights</p>
                   </div>
 

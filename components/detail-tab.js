@@ -16,7 +16,6 @@ export default class DetailTab extends React.Component {
   };
 
   render() {
-    console.log("TAB");
     return (
       <div>
         <div className="tabs is-boxed">
