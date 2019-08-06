@@ -12,7 +12,8 @@
 
 .overview-container .google {
   color: #424242;
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  /* font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif; */
+  font-family: Lato, sans-serif !important;
 }
 
 .overview-container .partner-title {
@@ -66,6 +67,7 @@
   border: 1px solid #b2b2b2;
   font-size: 12px;
   color: #333232;
+  background-color: #ece9e9;
   padding: 3px 10px;
   list-style: none;
   margin: 4px;
@@ -84,4 +86,24 @@
 
 .spacer .is-3 {
   height: 3rem;
+}
+
+.overview-container .fz1 {
+  font-size: 1em;
+}
+
+.overview-container .pfc4 {
+  color: #676363 !important;
+}
+
+.overview-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.overview-container .fw2 {
+  font-weight: 100;
+}
+
+.overview-container .ls {
+  letter-spacing: 0.0175rem;
 }

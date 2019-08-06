@@ -34,7 +34,7 @@ const Overview = props => {
       <div className="box">
         <div className="cuisine-container">
           <div className="columns">
-            <div className="column is-7">
+            <div className="column is-6">
               <h4 className="google cuisine-title">Cuisines</h4>
               <ul className="package-tags">
                 <li className="ellipsis">Shikara Ride</li>
@@ -49,7 +49,7 @@ const Overview = props => {
               </ul>
             </div>
 
-            <div className="column is-5">
+            <div className="column is-5 is-offset-1">
               <h4 className="google cuisine-title">Timings</h4>
               <ul className="package-tags">
                 <li className="ellipsis">Tue 11:30 AM To 12:30 AM</li>
@@ -59,6 +59,38 @@ const Overview = props => {
           </div>
         </div>
       </div>
+
+      <div className="box">
+        <div className="columns">
+          <div className="column">
+            <h4 className="google cuisine-title">About Merchant</h4>
+            <h4 className="fz1 pfc4 ffqs fw2 ls">
+              Passengers embark at North Cove Marina in lower Manhattan, and the
+              tour begins after a short safety briefing. The boat stops for
+              photos at the Freedom Tower, circles around Battery Park, cruises
+              up the East River and stops again for a photo opportunity
+              underneath the Brooklyn Bridge.
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div className="box">
+        <div className="columns">
+          <div className="column">
+            <h4 className="google cuisine-title">Offer Highlight</h4>
+            <h4 className="fz1 pfc4 ffqs fw2 ls">
+              This wonderful land of northeast India, is home to some of the
+              most picturesque honeymoon destinations with spellbinding tourist
+              attractions. This romantic 4 nights 5 days north east package from
+              Delhi, Kolkata, Mumbai and other major cities of India takes you
+              around some famous tourist places in northeast India including
+              Shillong and Mawlynnong.
+            </h4>
+          </div>
+        </div>
+      </div>
+
       <div className="box">
         <div className="columns">
           <div className="column">
