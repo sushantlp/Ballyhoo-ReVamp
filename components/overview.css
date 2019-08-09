@@ -45,8 +45,8 @@
 }
 
 .overview-container .cuisine-title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 400;
   letter-spacing: 0.0175rem;
 }
 
@@ -64,7 +64,7 @@
 .overview-container .package-tags li {
   display: block;
   border-radius: 20px;
-  border: 1px solid #b2b2b2;
+  /* border: 1px solid #b2b2b2; */
   font-size: 12px;
   color: #333232;
   background-color: #ece9e9;
@@ -273,4 +273,8 @@
   display: block;
   box-sizing: border-box;
   width: 7em;
+}
+
+.overview-container .f1-2 {
+  font-size: 1.2em;
 }

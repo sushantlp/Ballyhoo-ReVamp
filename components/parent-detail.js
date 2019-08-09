@@ -12,9 +12,7 @@ const ParentDetail = props => {
           <div className="columns">
             <div className="column is-8">
               <div className="column is-6">
-                <h4 className="parent-detail-google parent-detail-title">
-                  55 Wall Street
-                </h4>
+                <h4 className="ffqs parent-detail-title">55 Wall Street</h4>
               </div>
               <DetailTab />
             </div>

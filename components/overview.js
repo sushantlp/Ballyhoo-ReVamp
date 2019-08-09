@@ -11,11 +11,11 @@ export default class Overview extends React.Component {
       photoIndex: 0,
       lightBox: false,
       bundleImage: [
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/fgnqmyilabm0v5q4ho3b.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/hu4nbdi0t2rmybyiv8bn.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/zvyyrmyaxucotwv5xftg.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/b2hxnhawzl33zqsokrmc.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/zxa9xen670fegz4nnjpk.webp"
+        "https://b.zmtcdn.com/data/menus/410/18387410/c28fc94d82679806af3f1cf12b84b867.jpg?output-format=webp",
+        "https://b.zmtcdn.com/data/menus/410/18387410/732cc23f9107fcfea18555372c176f1c.jpg",
+        "https://b.zmtcdn.com/data/menus/410/18387410/4114c960cea71d7981bf0dc3358dbf9c.jpg",
+        "https://b.zmtcdn.com/data/menus/410/18387410/5315c87be1738af261da3501271dfa15.jpg",
+        "https://b.zmtcdn.com/data/menus/410/18387410/81c918ed61a86ecc2d16b66d18576909.jpg"
       ]
     };
   }
@@ -41,23 +41,27 @@ export default class Overview extends React.Component {
       <div className="overview-container">
         <div className="box">
           <div className="columns">
-            <div className="column is-6">
+            <div className="column is-5">
               <h4 className="ffqs fw2">
                 Average cost for two :{" "}
                 <span className="fw7 f24 sfc3"> &#8377; 2,365</span>
               </h4>
             </div>
 
-            <div className="column is-3">
+            <div className="column is-4">
               <div>
                 <span className="tag fw7">
-                  <img src="https://img.icons8.com/color/17/000000/hearts.png" />
-                  <span className="ellipsis pl0_5">71%</span>
+                  <span className="ffqs fw2 f1-2">Popularity : </span>
+                  <img
+                    src="https://img.icons8.com/plasticine/20/000000/hearts.png"
+                    className="pl0_5"
+                  />
+                  <span className="ellipsis pl0_5"> 71%</span>
                 </span>
               </div>
             </div>
 
-            <div className="column is-3">
+            <div className="column is-2 is-offset-1">
               <span className="rating">
                 <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                 <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
@@ -75,7 +79,7 @@ export default class Overview extends React.Component {
           <div className="cuisine-container">
             <div className="columns">
               <div className="column is-6">
-                <h4 className="google cuisine-title">Cuisines</h4>
+                <h4 className="ffqs cuisine-title">Cuisines</h4>
                 <div className="cuisine-underscore" />
                 <ul className="package-tags">
                   <li className="ellipsis">Shikara Ride</li>
@@ -91,7 +95,7 @@ export default class Overview extends React.Component {
               </div>
 
               <div className="column is-5 is-offset-1">
-                <h4 className="google cuisine-title">Timings</h4>
+                <h4 className="ffqs cuisine-title">Timings</h4>
                 <div className="timing-underscore" />
                 <ul className="package-tags">
                   <li className="ellipsis">Tue 11:30 AM To 12:30 AM</li>
@@ -105,7 +109,7 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="google cuisine-title">About Merchant</h4>
+              <h4 className="ffqs cuisine-title">About Merchant</h4>
               <div className="about-underscore" />
               <h4 className="fz1 pfc4 ffqs fw2 ls">
                 Passengers embark at North Cove Marina in lower Manhattan, and
@@ -121,7 +125,7 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="google cuisine-title">Menu</h4>
+              <h4 className="ffqs cuisine-title">Menu</h4>
               <div className="menu-underscore" />
               <div className="menu-container">
                 <figure
@@ -198,7 +202,7 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="google cuisine-title">Offer Highlight</h4>
+              <h4 className="ffqs cuisine-title">Offer Highlight</h4>
               <div className="offer-underscore" />
               <h4 className="fz1 pfc4 ffqs fw2 ls">
                 This wonderful land of northeast India, is home to some of the
@@ -215,7 +219,7 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="google cuisine-title">Where ?</h4>
+              <h4 className="ffqs cuisine-title">Where ?</h4>
               <div className="where-underscore" />
               <h4 className="ff f10 f1-1 fw2">
                 C. d'Arístides Maillol, 12, 08028 Barcelona, Spain
@@ -228,7 +232,7 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="google cuisine-title">
+              <h4 className="ffqs cuisine-title">
                 Rating <span className="fs0-7 light-red">(By Zomato) </span>
               </h4>
               <div className="rating-underscore" />

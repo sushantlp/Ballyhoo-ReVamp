@@ -1,11 +1,10 @@
-.parent-detail-google {
+.ffqs {
   color: #424242;
-  /* font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif; */
-  font-family: Lato, sans-serif !important;
+  font-family: "Quicksand", sans-serif;
 }
 
 .parent-detail-title {
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.0175rem;
 }
