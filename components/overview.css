@@ -41,7 +41,7 @@
 }
 
 .overview-container .pl0_5 {
-  padding-left: 0.5em;
+  padding-left: 0.2em;
 }
 
 .overview-container .cuisine-title {
@@ -159,6 +159,9 @@
   margin-left: 1em;
 }
 
+.overview-container .fz1_4 {
+  font-size: 1.4em;
+}
 .cuisine-underscore {
   background-image: -webkit-gradient(
     linear,

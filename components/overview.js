@@ -56,7 +56,7 @@ export default class Overview extends React.Component {
                     src="https://img.icons8.com/plasticine/20/000000/hearts.png"
                     className="pl0_5"
                   />
-                  <span className="ellipsis pl0_5"> 71%</span>
+                  <span className="ellipsis pl0_5 fz1_4"> 71%</span>
                 </span>
               </div>
             </div>
