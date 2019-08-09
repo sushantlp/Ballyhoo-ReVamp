@@ -1,5 +1,5 @@
-import { Divider } from "semantic-ui-react";
 import Map from "./map";
+
 import "./overview.css";
 const Overview = props => {
   return (
@@ -7,14 +7,19 @@ const Overview = props => {
       <div className="box">
         <div className="columns">
           <div className="column is-6">
-            <h4 className="google partner-title">55 Wall Street</h4>
+            <h4 className="ffqs fw2">
+              Average cost for two :{" "}
+              <span className="fw7 f24 sfc3"> &#8377; 2,365</span>
+            </h4>
           </div>
 
           <div className="column is-3">
-            <span className="tag radius20 fw7">
-              <img src="https://img.icons8.com/color/17/000000/hearts.png" />
-              <span className="ellipsis pl0_5">71%</span>
-            </span>
+            <div>
+              <span className="tag fw7">
+                <img src="https://img.icons8.com/color/17/000000/hearts.png" />
+                <span className="ellipsis pl0_5">71%</span>
+              </span>
+            </div>
           </div>
 
           <div className="column is-3">
@@ -78,6 +83,60 @@ const Overview = props => {
       <div className="box">
         <div className="columns">
           <div className="column">
+            <h4 className="google cuisine-title">Menu</h4>
+
+            <div className="menu-container">
+              <figure className="image">
+                <img
+                  src="https://b.zmtcdn.com/data/menus/410/18387410/c28fc94d82679806af3f1cf12b84b867.jpg?output-format=webp"
+                  className="menu-image"
+                />
+              </figure>
+
+              <figure className="image">
+                <img
+                  src="https://b.zmtcdn.com/data/menus/410/18387410/732cc23f9107fcfea18555372c176f1c.jpg"
+                  className="menu-image"
+                />
+              </figure>
+
+              <figure className="image">
+                <img
+                  src="https://b.zmtcdn.com/data/menus/410/18387410/4114c960cea71d7981bf0dc3358dbf9c.jpg"
+                  className="menu-image"
+                />
+              </figure>
+
+              <figure className="image">
+                <img
+                  src="https://b.zmtcdn.com/data/menus/410/18387410/5315c87be1738af261da3501271dfa15.jpg"
+                  className="menu-image"
+                />
+              </figure>
+
+              <figure className="image">
+                <img
+                  src="https://b.zmtcdn.com/data/menus/410/18387410/81c918ed61a86ecc2d16b66d18576909.jpg"
+                  className="menu-image"
+                />
+              </figure>
+
+              <figure className="image">
+                <img
+                  src="https://b.zmtcdn.com/data/menus/410/18387410/81c918ed61a86ecc2d16b66d18576909.jpg"
+                  className="menu-image"
+                />
+              </figure>
+
+              <span class="tag is-medium is-danger fw7">10 +</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="box">
+        <div className="columns">
+          <div className="column">
             <h4 className="google cuisine-title">Offer Highlight</h4>
             <h4 className="fz1 pfc4 ffqs fw2 ls">
               This wonderful land of northeast India, is home to some of the
@@ -111,7 +170,7 @@ const Overview = props => {
             </h4>
 
             <div className="zomato-container">
-              <h4 className="ff f10 f1-1 fw2"> Amulya Jayadev</h4>
+              <h4 className="ff f1-1 fw2 mb0-3"> Amulya Jayadev</h4>
               <span className="rating">
                 <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
                 <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
@@ -120,7 +179,25 @@ const Overview = props => {
                 <img src="https://img.icons8.com/color/20/000000/star.png" />
               </span>
 
-              <h4 className="fz1 pfc4 ffqs fw2 ls">
+              <h4 className="fz1 pfc4 ffqs fw2 ls mt0-3">
+                This wonderful land of northeast India, is home to some of the
+                most picturesque honeymoon destinations with spellbinding
+                tourist attractions. This romantic 4 nights 5 days north east
+                package from Delhi, Kolkata, Mumbai and other major cities of
+                India takes you around some famous tourist places in northeast
+                India including Shillong and Mawlynnong.
+              </h4>
+
+              <h4 className="ff f1-1 fw2 mb0-3"> Rishi Dodeja</h4>
+              <span className="rating">
+                <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+                <img src="https://img.icons8.com/color/20/000000/star.png" />
+                <img src="https://img.icons8.com/color/20/000000/star.png" />
+              </span>
+
+              <h4 className="fz1 pfc4 ffqs fw2 ls mt0-3">
                 This wonderful land of northeast India, is home to some of the
                 most picturesque honeymoon destinations with spellbinding
                 tourist attractions. This romantic 4 nights 5 days north east
@@ -129,6 +206,15 @@ const Overview = props => {
                 India including Shillong and Mawlynnong.
               </h4>
             </div>
+
+            <p class="buttons load-more">
+              <a class="button is-medium is-warning">
+                <span class="icon">
+                  <img src="https://img.icons8.com/cotton/64/000000/circled-chevron-down.png" />
+                </span>
+                <span>Load More</span>
+              </a>
+            </p>
           </div>
         </div>
       </div>

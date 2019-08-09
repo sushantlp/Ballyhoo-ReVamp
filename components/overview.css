@@ -115,3 +115,46 @@
 .overview-container .light-red {
   color: #ff5a5f;
 }
+
+.overview-container .sfc3 {
+  color: #00d1b2;
+}
+
+.overview-container .mb0-3 {
+  margin-bottom: 0.3em;
+}
+
+.overview-container .mt0-3 {
+  margin-top: 0.3em;
+}
+
+.overview-container .load-more {
+  padding-left: 40%;
+  padding-right: 40%;
+  margin-top: 2em;
+}
+
+.menu-container figure {
+  margin: 0.4em;
+}
+
+.menu-container .image {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.menu-container .menu-image {
+  border-width: 0.1em;
+  border-style: solid;
+  border-color: rgba(60, 59, 59, 1);
+  width: 100px;
+  height: 120px;
+}
+
+.menu-container .tag {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 3.5em;
+  margin-left: 1em;
+}

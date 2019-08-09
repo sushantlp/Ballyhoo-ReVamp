@@ -1,4 +1,4 @@
-import { Segment, Divider } from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 // import TimePicker from "react-time-picker";
 // import DatePicker from "react-date-picker";
 

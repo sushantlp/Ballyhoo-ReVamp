@@ -2,6 +2,8 @@ import DetailTab from "./detail-tab";
 import DetailCart from "./detail-cart";
 import Trending from "./trending";
 
+import "./parent-detail.css";
+
 const ParentDetail = props => {
   return (
     <React.Fragment>
@@ -9,6 +11,11 @@ const ParentDetail = props => {
         <div className="container">
           <div className="columns">
             <div className="column is-8">
+              <div className="column is-6">
+                <h4 className="parent-detail-google parent-detail-title">
+                  55 Wall Street
+                </h4>
+              </div>
               <DetailTab />
             </div>
             <div className="column is-4 ">
