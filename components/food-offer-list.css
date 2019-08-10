@@ -1,0 +1,31 @@
+.food-offer-list-container .mb0 {
+  margin-bottom: 0;
+}
+
+.food-offer-list-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.food-offer-list-container .list-title {
+  font-weight: 400;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.food-offer-list-container .mb8 {
+  margin-bottom: 8px !important;
+}
+
+.food-offer-list-container .plh1 {
+  line-height: 1.7em;
+}
+
+.food-offer-list-container .list-subtitle {
+  font-weight: 400;
+  font-size: 1em;
+  margin-top: 0.4em;
+}
+
+.food-offer-list-container .f14 {
+  font-size: 14px;
+}
