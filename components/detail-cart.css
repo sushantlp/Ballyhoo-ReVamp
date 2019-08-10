@@ -4,7 +4,7 @@
 }
 
 .detail-cart-container .cart-button {
-  background-color: #ff5a5f;
+  background-color: #ff3860;
   color: white;
   opacity: 1;
   width: 17.2em;
@@ -23,7 +23,7 @@
 }
 
 .detail-cart-container .ui.segment {
-  border-top: 4px solid #ff5a5f;
+  border-top: 4px solid #ff3860;
 }
 
 .detail-cart-container .fw7 {

@@ -1,3 +1,11 @@
+.food-offer-list-container .box {
+  box-shadow: 0 0px 0px rgba(34, 36, 38, 0.15), 0 0 0 0px rgba(34, 36, 38, 0.15);
+  /*  display: block;
+  padding: 0.5em;
+  border-radius: 0; */
+  font-family: "Quicksand", sans-serif;
+}
+
 .food-offer-list-container .mb0 {
   margin-bottom: 0;
 }
