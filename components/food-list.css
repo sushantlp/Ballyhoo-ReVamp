@@ -1,0 +1,142 @@
+.food-list-container .box {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 0.5em;
+  border-radius: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+.food-list-container .box figure {
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+}
+
+.food-list-container .box .image {
+  width: 200px;
+  height: 200px;
+}
+
+.food-list-container .box .media .media-left {
+  margin-right: 0;
+}
+
+.food-list-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.food-list-container .list-title {
+  font-weight: 400;
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.food-list-container .mb8 {
+  margin-bottom: 8px !important;
+}
+
+.food-list-container .list-subtitle {
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-top: 0.4em;
+}
+
+.food-list-container .plh1 {
+  line-height: 1.7em;
+}
+
+.food-list-container .span-flex {
+  display: flex;
+}
+
+.food-list-container .button {
+  width: 8em;
+  height: 2.5em;
+}
+
+.food-list-container .sfc3 {
+  color: #00d1b2;
+}
+
+.food-list-container .f24 {
+  font-size: 24px;
+}
+
+.food-list-container .fw9 {
+  font-weight: 900;
+}
+
+.food-list-container .flh28 {
+  line-height: 28px;
+}
+
+.food-list-container .f12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.food-list-container .pfc3 {
+  color: #3e3e3e !important;
+}
+
+.food-list-container .tdl {
+  text-decoration: line-through;
+}
+
+.food-list-container .mb0 {
+  margin-bottom: 0;
+}
+
+.food-list-container .ml8 {
+  margin-left: 8px !important;
+}
+
+.food-list-container .f14 {
+  font-size: 14px;
+}
+
+.ribbon {
+  width: 140px;
+  height: 200px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  display: block;
+  border: 5px solid #2980b9;
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  background-color: #ff3860;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+}
+
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: 0;
+  right: 0;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -2px;
+  top: 20px;
+  transform: rotate(-45deg);
+}

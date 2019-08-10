@@ -1,5 +1,5 @@
 import Overview from "./overview";
-import DetailList from "./detail-list";
+import FoodList from "./food-list";
 import "./detail-tab.css";
 
 export default class DetailTab extends React.Component {
@@ -101,13 +101,13 @@ export default class DetailTab extends React.Component {
 
         {this.state.navigation === "Overview" ? <Overview /> : null}
 
-        {this.state.navigation === "Offers" ? <DetailList /> : null}
+        {this.state.navigation === "Offers" ? <div /> : null}
 
-        {this.state.navigation === "Buffets" ? <DetailList /> : null}
+        {this.state.navigation === "Buffets" ? <FoodList /> : null}
 
-        {this.state.navigation === "Packages" ? <DetailList /> : null}
+        {this.state.navigation === "Packages" ? <FoodList /> : null}
 
-        {this.state.navigation === "Events" ? <DetailList /> : null}
+        {this.state.navigation === "Events" ? <div /> : null}
 
         {this.state.navigation === "Reviews" ? <div /> : null}
       </div>

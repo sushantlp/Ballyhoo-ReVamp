@@ -59,7 +59,7 @@ const MainList = props => {
                       </span>
                     </span>
 
-                    <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
+                    <h5 className="sfc3 m0 f24 fw9 flh28">
                       ₹ 10,000/-
                       <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span>
                     </h5>
