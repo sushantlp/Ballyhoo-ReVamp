@@ -1,4 +1,4 @@
-.food-list-container .box {
+.food-event-list-container .box {
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   display: block;
   padding: 0.5em;
@@ -6,93 +6,56 @@
   font-family: "Quicksand", sans-serif;
 }
 
-.food-list-container .box figure {
+.food-event-list-container .box figure {
   margin-left: 0px;
   margin-top: 0px;
   margin-right: 1em;
   margin-bottom: 0.5em;
 }
 
-.food-list-container .box .image {
+.food-event-list-container .box .image {
   width: 200px;
   height: 200px;
 }
 
-.food-list-container .box .media .media-left {
+.food-event-list-container .box .media .media-left {
   margin-right: 0;
 }
 
-.food-list-container .ffqs {
+.food-event-list-container .ffqs {
   font-family: "Quicksand", sans-serif;
 }
 
-.food-list-container .list-title {
+.food-event-list-container .list-title {
   font-weight: 400;
   font-size: 1.4em;
   margin: 0;
 }
 
-.food-list-container .mb8 {
+.food-event-list-container .mb8 {
   margin-bottom: 8px !important;
 }
 
-.food-list-container .list-subtitle {
+.food-event-list-container .list-subtitle {
   font-weight: 400;
   font-size: 0.9em;
   margin-top: 0.4em;
 }
 
-.food-list-container .plh1 {
+.food-event-list-container .plh1 {
   line-height: 1.7em;
 }
 
-.food-list-container .span-flex {
-  display: flex;
-}
-
-.food-list-container .button {
+.food-event-list-container .button {
   width: 8em;
   height: 2.5em;
 }
 
-.food-list-container .sfc3 {
-  color: #00d1b2;
-}
-
-.food-list-container .f24 {
-  font-size: 24px;
-}
-
-.food-list-container .fw9 {
-  font-weight: 900;
-}
-
-.food-list-container .flh28 {
-  line-height: 28px;
-}
-
-.food-list-container .f12 {
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.food-list-container .pfc3 {
-  color: #3e3e3e !important;
-}
-
-.food-list-container .tdl {
-  text-decoration: line-through;
-}
-
-.food-list-container .mb0 {
+.food-event-list-container .mb0 {
   margin-bottom: 0;
 }
 
-.food-list-container .ml8 {
-  margin-left: 8px !important;
-}
-
-.food-list-container .f14 {
+.food-event-list-container .f14 {
   font-size: 14px;
 }
 

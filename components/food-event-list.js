@@ -43,16 +43,11 @@ const FoodEventList = props => {
                       </p>
                     </div>
                   </div>
-                </div>
-              </article>
-
-              <footer className="card-footer">
-                <div className="card-footer-item">
-                  <a className="button is-medium is-danger">
+                  <a className="button is-medium is-danger is-pulled-right">
                     <span>RSVP</span>
                   </a>
                 </div>
-              </footer>
+              </article>
             </div>
           </div>
         </div>
