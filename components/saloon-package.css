@@ -1,0 +1,70 @@
+.saloon-package-container .box {
+  box-shadow: 0 0px 0px rgba(34, 36, 38, 0.15), 0 0 0 0px rgba(34, 36, 38, 0.15);
+  /*  display: block;
+    padding: 0.5em;
+    border-radius: 0; */
+  font-family: "Quicksand", sans-serif;
+}
+
+.saloon-package-container .mb0 {
+  margin-bottom: 0;
+}
+
+.saloon-package-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.saloon-package-container .list-title {
+  font-weight: 400;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.saloon-package-container .mb8 {
+  margin-bottom: 8px !important;
+}
+
+.saloon-package-container .plh1 {
+  line-height: 1.7em;
+}
+
+.saloon-package-container .f14 {
+  font-size: 14px;
+}
+
+.saloon-package-container .fw2 {
+  font-weight: 100;
+}
+
+.saloon-package-container .fw7 {
+  font-weight: 700;
+}
+
+.saloon-package-container .sfc3 {
+  color: #00d1b2;
+}
+
+.saloon-package-container .mt0-5 {
+  margin-top: 0.5em;
+}
+
+.saloon-package-container .fs1 {
+  font-size: 1em;
+}
+
+.saloon-package-container .fs1-3 {
+  font-size: 1.3em;
+}
+
+.saloon-package-container .button {
+  background-color: #ff3860;
+  color: white;
+  opacity: 1;
+  width: 15em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  margin-left: 10em;
+  margin-right: 10em;
+}

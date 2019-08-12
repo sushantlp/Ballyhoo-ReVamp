@@ -2,6 +2,7 @@ import Overview from "./overview";
 import FoodList from "./food-list";
 import FoodEventList from "./food-event-list";
 import FoodOfferList from "./food-offer-list";
+import SaloonPackage from "./saloon-package";
 import "./detail-tab.css";
 
 export default class DetailTab extends React.Component {
@@ -103,7 +104,7 @@ export default class DetailTab extends React.Component {
 
         {this.state.navigation === "Overview" ? <Overview /> : null}
 
-        {this.state.navigation === "Offers" ? <FoodOfferList /> : null}
+        {this.state.navigation === "Offers" ? <SaloonPackage /> : null}
 
         {this.state.navigation === "Buffets" ? <FoodList /> : null}
 
