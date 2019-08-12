@@ -40,40 +40,168 @@ const SaloonPackage = props => {
                 </article>
               </div>
               <Segment>
-                {/* <div className="box"> */}
+                <div className="package-container">
+                  <article className="media">
+                    <div className="media-content">
+                      <div className="content">
+                        <div className="columns mb0">
+                          <div className="column is-10">
+                            <h4 className="ffqs list-title">Summer Treat</h4>
+
+                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                              ₹ 10,000/-
+                              <span
+                                className="fw2 fs0-7 tdl ml8"
+                                style={{ color: "#363636" }}
+                              >
+                                ₹ 11,351/-
+                              </span>
+                              <span className="tag is-rounded is-warning ml8">
+                                12% off
+                              </span>
+                            </h5>
+                          </div>
+
+                          <div className="column is-2">
+                            <a class="button is-danger">BOOK</a>
+                          </div>
+                        </div>
+
+                        <div className="f14 ffqs">
+                          <p style={{ whiteSpace: "pre-line" }}>
+                            Avail Any 6 services out of 9 at discounted price.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </Segment>
+
+              <Segment>
+                <div className="package-container">
+                  <article className="media">
+                    <div className="media-content">
+                      <div className="content">
+                        <div className="columns mb0">
+                          <div className="column is-10">
+                            <h4 className="ffqs list-title">Summer Treat</h4>
+
+                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                              ₹ 10,000/-
+                              <span
+                                className="fw2 fs0-7 tdl ml8"
+                                style={{ color: "#363636" }}
+                              >
+                                ₹ 11,351/-
+                              </span>
+                              <span className="tag is-rounded is-warning ml8">
+                                12% off
+                              </span>
+                            </h5>
+                          </div>
+
+                          <div className="column is-2">
+                            <a class="button is-danger">BOOK</a>
+                          </div>
+                        </div>
+
+                        <div className="f14 ffqs">
+                          <p style={{ whiteSpace: "pre-line" }}>
+                            Avail Any 6 services out of 9 at discounted price.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </Segment>
+              <a className="button is-outlined view-detail ffqs is-dark">
+                <span>VIEW DETAILS</span>
+                {/* <span class="icon is-small">
+                  <img src="https://img.icons8.com/carbon-copy/100/000000/down-squared.png" />
+                </span> */}
+              </a>
+            </Segment>
+
+            <Segment>
+              <div className="box">
                 <article className="media">
                   <div className="media-content">
                     <div className="content">
                       <div className="columns mb0">
                         <div className="column is-12">
-                          <h4 className="ffqs list-title">Summer Treat</h4>
+                          <h4 className="ffqs list-title">
+                            Swedish Massage or Aromatherapy
+                          </h4>
 
                           <h4 className="ffqs fw2 mt0-5 fs1">
                             Price :{" "}
                             <span className="sfc3 mt0-5 fs1-3">
                               {" "}
-                              &#8377; 2,365
+                              &#8377; 999.00
                             </span>
                           </h4>
 
                           <h4 className="ffqs fw2 mt0-5 fs1">
                             Price Caption :{" "}
-                            <span className="fw2 mt0-5 fs1-3"> 6 Services</span>
+                            <span className="fw2 mt0-5 fs1-3">Single</span>
                           </h4>
                         </div>
                       </div>
 
                       <div className="f14 ffqs">
                         <p style={{ whiteSpace: "pre-line" }}>
-                          Avail Any 6 services out of 9 at discounted price.
+                          Experience bliss with o2 Spa's Swedish Massage or
+                          Aromatherapy @Rs. 999/-*.
                         </p>
                       </div>
                     </div>
                   </div>
                 </article>
-                {/* </div> */}
+              </div>
+              <Segment>
+                <div className="package-container">
+                  <article className="media">
+                    <div className="media-content">
+                      <div className="content">
+                        <div className="columns mb0">
+                          <div className="column is-10">
+                            <h4 className="ffqs list-title">Single</h4>
+
+                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                              ₹ 999.00/-
+                              {/* <span
+                                className="fw2 fs0-7 tdl ml8"
+                                style={{ color: "#363636" }}
+                              >
+                                ₹ 11,351/-
+                              </span>
+                              <span className="tag is-rounded is-warning ml8">
+                                12% off
+                              </span> */}
+                            </h5>
+                          </div>
+
+                          <div className="column is-2">
+                            <a class="button is-danger">BOOK</a>
+                          </div>
+                        </div>
+
+                        <div className="f14 ffqs">
+                          <p style={{ whiteSpace: "pre-line" }}>
+                            Avail Any 6 services out of 9 at discounted price.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
               </Segment>
-              <a className="button ff">VIEW DETAILS</a>
+
+              <a className="button is-outlined view-detail ffqs is-dark">
+                <span>VIEW DETAILS</span>
+              </a>
             </Segment>
           </div>
         </div>

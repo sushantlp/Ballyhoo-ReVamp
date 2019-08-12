@@ -56,15 +56,33 @@
   font-size: 1.3em;
 }
 
-.saloon-package-container .button {
-  background-color: #ff3860;
-  color: white;
+.saloon-package-container .view-detail {
+  /* background-color: #ff3860; */
+  /* color: white; */
   opacity: 1;
   width: 15em;
-  height: 2.5em;
+  height: 2.3em;
   font-size: 1.4em;
-  font-weight: 600;
+
   margin-bottom: 0.5em;
   margin-left: 10em;
   margin-right: 10em;
+}
+
+.saloon-package-container .package-container .list-title {
+  font-weight: 400;
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.saloon-package-container .package-container .tdl {
+  text-decoration: line-through;
+}
+
+.saloon-package-container .package-container .ml8 {
+  margin-left: 8px !important;
+}
+
+.saloon-package-container .package-container .fs0-7 {
+  font-size: 0.7em;
 }
