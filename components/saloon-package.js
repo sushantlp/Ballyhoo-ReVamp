@@ -1,6 +1,7 @@
 import { Segment } from "semantic-ui-react";
 import "./saloon-package.css";
 const SaloonPackage = props => {
+  console.log(props.open);
   return (
     <React.Fragment>
       <div className="saloon-package-container">
@@ -39,84 +40,97 @@ const SaloonPackage = props => {
                   </div>
                 </article>
               </div>
-              <Segment>
-                <div className="package-container">
-                  <article className="media">
-                    <div className="media-content">
-                      <div className="content">
-                        <div className="columns mb0">
-                          <div className="column is-10">
-                            <h4 className="ffqs list-title">Summer Treat</h4>
+              {props.open ? (
+                <React.Fragment>
+                  <Segment>
+                    <div className="package-container">
+                      <article className="media">
+                        <div className="media-content">
+                          <div className="content">
+                            <div className="columns mb0">
+                              <div className="column is-10">
+                                <h4 className="ffqs list-title">
+                                  Summer Treat
+                                </h4>
 
-                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
-                              ₹ 10,000/-
-                              <span
-                                className="fw2 fs0-7 tdl ml8"
-                                style={{ color: "#363636" }}
-                              >
-                                ₹ 11,351/-
-                              </span>
-                              <span className="tag is-rounded is-warning ml8">
-                                12% off
-                              </span>
-                            </h5>
-                          </div>
+                                <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                                  ₹ 10,000/-
+                                  <span
+                                    className="fw2 fs0-7 tdl ml8"
+                                    style={{ color: "#363636" }}
+                                  >
+                                    ₹ 11,351/-
+                                  </span>
+                                  <span className="tag is-rounded is-warning ml8">
+                                    12% off
+                                  </span>
+                                </h5>
+                              </div>
 
-                          <div className="column is-2">
-                            <a class="button is-danger">BOOK</a>
+                              <div className="column is-2">
+                                <a className="button is-danger fr">BOOK</a>
+                              </div>
+                            </div>
+
+                            <div className="f14 ffqs">
+                              <p style={{ whiteSpace: "pre-line" }}>
+                                Avail Any 6 services out of 9 at discounted
+                                price.
+                              </p>
+                            </div>
                           </div>
                         </div>
-
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            Avail Any 6 services out of 9 at discounted price.
-                          </p>
-                        </div>
-                      </div>
+                      </article>
                     </div>
-                  </article>
-                </div>
-              </Segment>
+                  </Segment>
+                  <Segment>
+                    <div className="package-container">
+                      <article className="media">
+                        <div className="media-content">
+                          <div className="content">
+                            <div className="columns mb0">
+                              <div className="column is-10">
+                                <h4 className="ffqs list-title">
+                                  Summer Treat
+                                </h4>
 
-              <Segment>
-                <div className="package-container">
-                  <article className="media">
-                    <div className="media-content">
-                      <div className="content">
-                        <div className="columns mb0">
-                          <div className="column is-10">
-                            <h4 className="ffqs list-title">Summer Treat</h4>
+                                <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                                  ₹ 10,000/-
+                                  <span
+                                    className="fw2 fs0-7 tdl ml8"
+                                    style={{ color: "#363636" }}
+                                  >
+                                    ₹ 11,351/-
+                                  </span>
+                                  <span className="tag is-rounded is-warning ml8">
+                                    12% off
+                                  </span>
+                                </h5>
+                              </div>
 
-                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
-                              ₹ 10,000/-
-                              <span
-                                className="fw2 fs0-7 tdl ml8"
-                                style={{ color: "#363636" }}
-                              >
-                                ₹ 11,351/-
-                              </span>
-                              <span className="tag is-rounded is-warning ml8">
-                                12% off
-                              </span>
-                            </h5>
-                          </div>
+                              <div className="column is-2">
+                                <a className="button is-danger fr">BOOK</a>
+                              </div>
+                            </div>
 
-                          <div className="column is-2">
-                            <a class="button is-danger">BOOK</a>
+                            <div className="f14 ffqs">
+                              <p style={{ whiteSpace: "pre-line" }}>
+                                Avail Any 6 services out of 9 at discounted
+                                price.
+                              </p>
+                            </div>
                           </div>
                         </div>
-
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            Avail Any 6 services out of 9 at discounted price.
-                          </p>
-                        </div>
-                      </div>
+                      </article>
                     </div>
-                  </article>
-                </div>
-              </Segment>
-              <a className="button is-outlined view-detail ffqs is-dark">
+                  </Segment>
+                </React.Fragment>
+              ) : null}
+
+              <a
+                className="button is-outlined view-detail ffqs is-dark"
+                onClick={() => props.changeOpen()}
+              >
                 <span>VIEW DETAILS</span>
                 {/* <span class="icon is-small">
                   <img src="https://img.icons8.com/carbon-copy/100/000000/down-squared.png" />
@@ -160,18 +174,20 @@ const SaloonPackage = props => {
                   </div>
                 </article>
               </div>
-              <Segment>
-                <div className="package-container">
-                  <article className="media">
-                    <div className="media-content">
-                      <div className="content">
-                        <div className="columns mb0">
-                          <div className="column is-10">
-                            <h4 className="ffqs list-title">Single</h4>
 
-                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
-                              ₹ 999.00/-
-                              {/* <span
+              {props.open ? (
+                <Segment>
+                  <div className="package-container">
+                    <article className="media">
+                      <div className="media-content">
+                        <div className="content">
+                          <div className="columns mb0">
+                            <div className="column is-10">
+                              <h4 className="ffqs list-title">Single</h4>
+
+                              <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                                ₹ 999.00/-
+                                {/* <span
                                 className="fw2 fs0-7 tdl ml8"
                                 style={{ color: "#363636" }}
                               >
@@ -180,26 +196,30 @@ const SaloonPackage = props => {
                               <span className="tag is-rounded is-warning ml8">
                                 12% off
                               </span> */}
-                            </h5>
+                              </h5>
+                            </div>
+
+                            <div className="column is-2">
+                              <a className="button is-danger fr">BOOK</a>
+                            </div>
                           </div>
 
-                          <div className="column is-2">
-                            <a class="button is-danger">BOOK</a>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              Avail Any 6 services out of 9 at discounted price.
+                            </p>
                           </div>
-                        </div>
-
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            Avail Any 6 services out of 9 at discounted price.
-                          </p>
                         </div>
                       </div>
-                    </div>
-                  </article>
-                </div>
-              </Segment>
+                    </article>
+                  </div>
+                </Segment>
+              ) : null}
 
-              <a className="button is-outlined view-detail ffqs is-dark">
+              <a
+                className="button is-outlined view-detail ffqs is-dark"
+                onClick={() => props.changeOpen()}
+              >
                 <span>VIEW DETAILS</span>
               </a>
             </Segment>

@@ -86,3 +86,7 @@
 .saloon-package-container .package-container .fs0-7 {
   font-size: 0.7em;
 }
+
+.saloon-package-container .package-container .fr {
+  float: right;
+}

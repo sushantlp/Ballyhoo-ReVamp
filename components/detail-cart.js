@@ -23,7 +23,6 @@ export default class DetailCart extends React.Component {
   }
 
   handleScroll = event => {
-    console.log(document.body.scrollTop);
     if (document.body.scrollTop > 212) {
       if (this.state.scrolling === false)
         this.setState({

@@ -9,13 +9,20 @@ export default class DetailTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navigation: "Overview"
+      navigation: "Overview",
+      open: false
     };
   }
 
   changeTab = text => {
     this.setState({
       navigation: text
+    });
+  };
+
+  changeOpen = () => {
+    this.setState({
+      open: !this.state.open
     });
   };
 
@@ -104,11 +111,13 @@ export default class DetailTab extends React.Component {
 
         {this.state.navigation === "Overview" ? <Overview /> : null}
 
-        {this.state.navigation === "Offers" ? <SaloonPackage /> : null}
+        {this.state.navigation === "Offers" ? <FoodOfferList /> : null}
 
         {this.state.navigation === "Buffets" ? <FoodList /> : null}
 
-        {this.state.navigation === "Packages" ? <FoodList /> : null}
+        {this.state.navigation === "Packages" ? (
+          <SaloonPackage changeOpen={this.changeOpen} open={this.state.open} />
+        ) : null}
 
         {this.state.navigation === "Events" ? <FoodEventList /> : null}
 
