@@ -146,3 +146,24 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+.saloon-package-container .span-flex {
+  display: flex;
+}
+
+.saloon-package-container .pr3 {
+  padding-right: 3em;
+}
+
+.saloon-package-container .media {
+  margin-bottom: 1em;
+}
+
+.saloon-package-container .f12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.saloon-package-container .text-center {
+  text-align: center;
+}

@@ -101,7 +101,7 @@ const MainList = props => {
             <div className="card-footer-item">
               <span className="span-flex">
                 <span className="pr2">
-                  <img src="https://img.icons8.com/color/48/000000/3-star-hotel.png" />
+                  <img src="https://img.icons8.com/color/25/000000/3-star-hotel.png" />
 
                   <p className="f12">Stay</p>
                 </span>
