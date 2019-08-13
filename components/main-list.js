@@ -70,7 +70,7 @@ const MainList = props => {
                   </div>
                   <div className="column pl8 pt0">
                     <div className="package-tag-box">
-                      <ul className="package-tags at_package_tags">
+                      <ul className="package-tags">
                         <li className="ellipsis">Shikara Ride</li>
                         <li className="ellipsis">Nature</li>
                         <li className="ellipsis">Martand Temple</li>
