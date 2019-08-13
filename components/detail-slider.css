@@ -17,6 +17,6 @@
 .top-left {
   position: absolute;
   top: 1em;
-  left: 80em;
+  left: 85%;
   z-index: 2;
 }

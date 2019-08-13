@@ -163,6 +163,7 @@ const SaloonPackage = props => {
                           <h4 className="ffqs list-title">Go Karting</h4>
 
                           <h4 className="ffqs fw2 mt0-5 fs1">
+                            Price Range :{" "}
                             <span className="sfc3 mt0-5 fs1-3">
                               {" "}
                               &#8377; 200.00 - &#8377; 500.00
@@ -190,7 +191,7 @@ const SaloonPackage = props => {
                       <div className="columns mb0">
                         <div className="column">
                           <h4 className="ffqs fw2 mt0-5 fs1">
-                            {/* Price Caption :{" "} */}
+                            Price Caption :{" "}
                             <span className="fw2 mt0-5 fs1-2">
                               {" "}
                               Individual-evo, Individual- Raptor, Individual-
