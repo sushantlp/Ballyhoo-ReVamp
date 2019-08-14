@@ -882,40 +882,51 @@ export default class SaloonPackage extends React.Component {
                   <footer className="card-footer">
                     <div className="card-footer-item">
                       <span className="span-flex">
-                        <span className="pr3">
-                          <img src="https://img.icons8.com/color/30/000000/bungalow.png" />
+                        <span className="pr2">
+                          <img src="https://img.icons8.com/color/25/000000/bungalow.png" />
                           <p className="f12 text-center">Stay</p>
                         </span>
 
-                        <span className="pr3">
+                        <span className="pr2">
                           <img
-                            src="https://img.icons8.com/color/30/000000/around-the-globe.png"
+                            src="https://img.icons8.com/color/25/000000/around-the-globe.png"
                             style={{ paddingLeft: "0.3em" }}
                           />
                           <p className="f12 text-center">Travel</p>
                         </span>
 
-                        <span className="pr3">
+                        <span className="pr2">
                           <img
-                            src="https://img.icons8.com/color/30/000000/tripadvisor.png"
-                            style={{ paddingLeft: "0.7em" }}
+                            src="https://img.icons8.com/color/25/000000/tripadvisor.png"
+                            style={{ paddingLeft: "1.2em" }}
                           />
                           <p className="f12 text-center">SightSeeing</p>
                         </span>
 
-                        <span className="pr3">
+                        <span className="pr2">
                           <img
-                            src="https://img.icons8.com/color/30/000000/sandwich.png"
+                            src="https://img.icons8.com/color/25/000000/sandwich.png"
                             style={{ paddingLeft: "0.7em" }}
                           />
                           <p className="f12 text-center">BreakFast</p>
                         </span>
 
-                        <span className="pr3">
-                          <img src="https://img.icons8.com/color/30/000000/parachute.png" />
+                        <span className="pr2">
+                          <img
+                            src="https://img.icons8.com/color/25/000000/parachute.png"
+                            style={{ paddingLeft: "0.8em" }}
+                          />
                           <p className="f12 text-center">Activities</p>
                         </span>
                       </span>
+                    </div>
+
+                    <div className="card-footer-item">
+                      <a className="button is-danger fr">BOOK</a>
+                    </div>
+
+                    <div className="card-footer-item">
+                      <a className="button is-warning fr">SEND QUERY</a>
                     </div>
                   </footer>
                 </div>
@@ -936,13 +947,70 @@ export default class SaloonPackage extends React.Component {
                           </h4>
                         </Accordion.Title>
                         <Accordion.Content active={activeIndex === 6}>
-                          <div className="f14 ffqs">
-                            <p style={{ whiteSpace: "pre-line" }}>
-                              Nishane motte is a relatively less known peak in
-                              the Tala cauvery/ Brahmagiri range of Coorg. It
-                              lies to the south of Bhagamandala in a range
-                            </p>
-                          </div>
+                          <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">
+                            Itinerary :{" "}
+                          </h4>
+
+                          <p
+                            style={{ whiteSpace: "pre-line" }}
+                            className="fw2 ffqs"
+                          >
+                            Nishane motte is a relatively less known peak in the
+                            Tala cauvery/ Brahmagiri range of Coorg. It lies to
+                            the south of Bhagamandala in a range
+                          </p>
+
+                          <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">
+                            Inclusion :{" "}
+                          </h4>
+
+                          <p
+                            style={{ whiteSpace: "pre-line" }}
+                            className="fw2 ffqs"
+                          >
+                            Nishane motte is a relatively less known peak in the
+                            Tala cauvery/ Brahmagiri range of Coorg. It lies to
+                            the south of Bhagamandala in a range
+                          </p>
+
+                          <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">
+                            Exclusion :{" "}
+                          </h4>
+
+                          <p
+                            style={{ whiteSpace: "pre-line" }}
+                            className="fw2 ffqs"
+                          >
+                            Nishane motte is a relatively less known peak in the
+                            Tala cauvery/ Brahmagiri range of Coorg. It lies to
+                            the south of Bhagamandala in a range
+                          </p>
+
+                          <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">
+                            Accommodation :{" "}
+                          </h4>
+
+                          <p
+                            style={{ whiteSpace: "pre-line" }}
+                            className="fw2 ffqs"
+                          >
+                            Nishane motte is a relatively less known peak in the
+                            Tala cauvery/ Brahmagiri range of Coorg. It lies to
+                            the south of Bhagamandala in a range
+                          </p>
+
+                          <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">
+                            Transportation :{" "}
+                          </h4>
+
+                          <p
+                            style={{ whiteSpace: "pre-line" }}
+                            className="fw2 ffqs"
+                          >
+                            Nishane motte is a relatively less known peak in the
+                            Tala cauvery/ Brahmagiri range of Coorg. It lies to
+                            the south of Bhagamandala in a range
+                          </p>
                         </Accordion.Content>
 
                         <Accordion.Title
