@@ -64,6 +64,10 @@
   font-size: 1.2em;
 }
 
+.saloon-package-container .fs0-9 {
+  font-size: 0.9em;
+}
+
 .saloon-package-container .view-detail {
   /* background-color: #ff3860; */
   /* color: white; */
