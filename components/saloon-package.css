@@ -1,7 +1,7 @@
 .saloon-package-container .box {
   box-shadow: 0 0px 0px rgba(34, 36, 38, 0.15), 0 0 0 0px rgba(34, 36, 38, 0.15);
-  /*  display: block;
-    padding: 0.5em;
+  display: block;
+  /*  padding: 0.5em;
     border-radius: 0; */
   font-family: "Quicksand", sans-serif;
 }
@@ -178,6 +178,6 @@
   margin: 0;
 }
 
-.ui.accordion .title .dropdown.icon {
+.saloon-package-container .ui.accordion .title .dropdown.icon {
   float: right;
 }

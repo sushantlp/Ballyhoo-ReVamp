@@ -4,7 +4,7 @@ import "./saloon-package.css";
 export default class SaloonPackage extends React.Component {
   // const SaloonPackage = props => {
 
-  state = { activeIndex: 0 };
+  state = { activeIndex: -1 };
 
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -246,15 +246,6 @@ export default class SaloonPackage extends React.Component {
 
                                   <h5 className="fw2 sfc3 mt0-5 fs1-3">
                                     ₹ 500.00/-
-                                    {/* <span
-                                  className="fw2 fs0-7 tdl ml8"
-                                  style={{ color: "#363636" }}
-                                >
-                                  ₹ 11,351/-
-                                </span>
-                                <span className="tag is-rounded is-warning ml8">
-                                  12% off
-                                </span> */}
                                   </h5>
                                 </div>
 
@@ -565,14 +556,13 @@ export default class SaloonPackage extends React.Component {
                     <div className="card-footer-item">
                       <span className="span-flex">
                         <span className="pr3">
-                          {/* <img src="https://img.icons8.com/color/25/000000/3-star-hotel.png" /> */}
-                          <img src="https://img.icons8.com/color/40/000000/bungalow.png" />
+                          <img src="https://img.icons8.com/color/30/000000/bungalow.png" />
                           <p className="f12 text-center">Stay</p>
                         </span>
 
                         <span className="pr3">
                           <img
-                            src="https://img.icons8.com/color/40/000000/around-the-globe.png"
+                            src="https://img.icons8.com/color/30/000000/around-the-globe.png"
                             style={{ paddingLeft: "0.3em" }}
                           />
                           <p className="f12 text-center">Travel</p>
@@ -580,7 +570,7 @@ export default class SaloonPackage extends React.Component {
 
                         <span className="pr3">
                           <img
-                            src="https://img.icons8.com/color/40/000000/tripadvisor.png"
+                            src="https://img.icons8.com/color/30/000000/tripadvisor.png"
                             style={{ paddingLeft: "0.7em" }}
                           />
                           <p className="f12 text-center">SightSeeing</p>
@@ -588,30 +578,18 @@ export default class SaloonPackage extends React.Component {
 
                         <span className="pr3">
                           <img
-                            src="https://img.icons8.com/color/40/000000/sandwich.png"
+                            src="https://img.icons8.com/color/30/000000/sandwich.png"
                             style={{ paddingLeft: "0.7em" }}
                           />
                           <p className="f12 text-center">BreakFast</p>
                         </span>
 
                         <span className="pr3">
-                          <img
-                            src="https://img.icons8.com/color/40/000000/parachute.png"
-                            // style={{ paddingLeft: "0.8em" }}
-                          />
+                          <img src="https://img.icons8.com/color/30/000000/parachute.png" />
                           <p className="f12 text-center">Activities</p>
                         </span>
                       </span>
                     </div>
-                    {/* 
-                  <div className="card-footer-item">
-                    <a className="button is-medium">
-                      <span className="icon">
-                        <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
-                      </span>
-                      <span>View Detail</span>
-                    </a>
-                  </div> */}
                   </footer>
                 </div>
 
@@ -623,7 +601,7 @@ export default class SaloonPackage extends React.Component {
                           <div className="media-content">
                             <div className="content">
                               <div className="columns mb0">
-                                <div className="column is-10">
+                                <div className="column is-8">
                                   <h4 className="ffqs list-title">
                                     Individual- Raptor
                                   </h4>
@@ -643,7 +621,11 @@ export default class SaloonPackage extends React.Component {
                                 </div>
 
                                 <div className="column is-2">
-                                  <a className="button is-danger fr">
+                                  <a className="button is-danger fr">BOOK</a>
+                                </div>
+
+                                <div className="column is-2">
+                                  <a className="button is-warning fr">
                                     SEND OUERY
                                   </a>
                                 </div>
@@ -728,7 +710,7 @@ export default class SaloonPackage extends React.Component {
                           <div className="media-content">
                             <div className="content">
                               <div className="columns mb0">
-                                <div className="column is-10">
+                                <div className="column is-8">
                                   <h4 className="ffqs list-title">
                                     Individual- Raptor
                                   </h4>
@@ -748,7 +730,11 @@ export default class SaloonPackage extends React.Component {
                                 </div>
 
                                 <div className="column is-2">
-                                  <a className="button is-danger fr">
+                                  <a className="button is-danger fr">BOOK</a>
+                                </div>
+
+                                <div className="column is-2">
+                                  <a className="button is-warning fr">
                                     SEND OUERY
                                   </a>
                                 </div>
