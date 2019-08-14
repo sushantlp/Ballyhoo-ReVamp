@@ -167,3 +167,17 @@
 .saloon-package-container .text-center {
   text-align: center;
 }
+
+.saloon-package-container .ui.styled.accordion {
+  width: auto;
+}
+
+.saloon-package-container .accordion-title {
+  font-weight: 400;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.ui.accordion .title .dropdown.icon {
+  float: right;
+}
