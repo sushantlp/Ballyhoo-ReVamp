@@ -1,4 +1,6 @@
+import Link from "next/link";
 import "./header.css";
+
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ export default class Header extends React.Component {
         >
           <div className="container">
             <div className="navbar-brand">
-              <a className="navbar-item" href="https://bulma.io">
+              <a className="navbar-item" href="/">
                 <img
                   src="https://bulma.io/images/bulma-logo.png"
                   alt="Bulma: Free, open source, &amp; modern CSS framework based on Flexbox"
@@ -45,49 +47,57 @@ export default class Header extends React.Component {
 
                 <div className="navbar-item">
                   <p className="control">
-                    <p class="buttons">
-                      <a class="button is-rounded">
-                        <span class="icon">
+                    <Link href="/enquiry">
+                      <p className="buttons">
+                        <a className="button is-rounded is-outlined">
+                          {/* <span class="icon">
                           <img src="https://img.icons8.com/color/20/000000/story-book.png" />
-                        </span>
-                        <span>STORIES</span>
-                      </a>
-                    </p>
+                        </span> */}
+                          <span>STORIES</span>
+                        </a>
+                      </p>
+                    </Link>
                   </p>
                 </div>
 
                 <div className="navbar-item">
                   <p className="control">
-                    <p class="buttons">
-                      <a class="button is-rounded">
-                        <span class="icon">
+                    <Link href="/enquiry">
+                      <p className="buttons">
+                        <a className="button is-rounded is-outlined">
+                          {/* <span class="icon">
                           <img src="https://img.icons8.com/plasticine/100/000000/questions.png" />
-                        </span>
-                        <span>ENQUIRY</span>
-                      </a>
-                    </p>
+                        </span> */}
+                          <span>ENQUIRY</span>
+                        </a>
+                      </p>
+                    </Link>
                   </p>
                 </div>
 
                 <div className="navbar-item">
                   <p className="control">
-                    <p class="buttons">
-                      <a class="button is-rounded">
-                        {/* <span class="icon">
+                    <Link href="/enquiry">
+                      <p className="buttons">
+                        <a className="button is-rounded is-outlined">
+                          {/* <span class="icon">
                           <img src="https://img.icons8.com/cotton/48/000000/login-rounded-right--v2.png" />
                         </span> */}
-                        <span>LOGIN</span>
-                      </a>
-                    </p>
+                          <span>LOGIN</span>
+                        </a>
+                      </p>
+                    </Link>
                   </p>
                 </div>
 
                 <div className="navbar-item">
-                  <p className="control">
-                    <a className="button is-danger is-outlined  is-rounded">
-                      PLAN MY HOLIDAY
-                    </a>
-                  </p>
+                  <Link href="/enquiry">
+                    <p className="control">
+                      <a className="button is-outlined is-rounded">
+                        PLAN MY HOLIDAY
+                      </a>
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>
