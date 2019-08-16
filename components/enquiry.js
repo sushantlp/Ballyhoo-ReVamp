@@ -333,7 +333,7 @@ const Enquiry = props => {
                           <p className="control is-expanded">
                             <input
                               className="input is-medium"
-                              type="text"
+                              type="number"
                               placeholder="Adult"
                             />
                           </p>
@@ -343,7 +343,7 @@ const Enquiry = props => {
                           <p className="control is-expanded">
                             <input
                               className="input is-medium"
-                              type="text"
+                              type="number"
                               placeholder="Children"
                             />
                           </p>
@@ -353,10 +353,189 @@ const Enquiry = props => {
                           <p className="control is-expanded">
                             <input
                               className="input is-medium"
-                              type="text"
+                              type="number"
                               placeholder="Pet"
                             />
                           </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Accommodation of guest ?
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field ">
+                        <div className="control">
+                          <Segment>
+                            <div class="field">
+                              <input
+                                className="is-checkradio is-rtl"
+                                id="exampleRtlRadioInline13"
+                                type="radio"
+                                name="accommodation"
+                                checked="checked"
+                              />
+                              <label
+                                for="exampleRtlRadioInline13"
+                                className="ffqs fw2"
+                              >
+                                Basic amenities
+                              </label>
+
+                              <input
+                                className="is-checkradio is-rtl "
+                                id="exampleRtlRadioInline14"
+                                type="radio"
+                                name="accommodation"
+                              />
+                              <label
+                                for="exampleRtlRadioInline14"
+                                className="ffqs fw2"
+                                style={{ paddingLeft: "1em" }}
+                              >
+                                3 star
+                              </label>
+
+                              <input
+                                className="is-checkradio is-rtl "
+                                id="exampleRtlRadioInline15"
+                                type="radio"
+                                name="accommodation"
+                              />
+                              <label
+                                for="exampleRtlRadioInline15"
+                                className="ffqs fw2"
+                                style={{ paddingLeft: "1em" }}
+                              >
+                                5 star
+                              </label>
+
+                              <input
+                                className="is-checkradio is-rtl "
+                                id="exampleRtlRadioInline16"
+                                type="radio"
+                                name="accommodation"
+                              />
+                              <label
+                                for="exampleRtlRadioInline16"
+                                className="ffqs fw2"
+                                style={{ paddingLeft: "1em" }}
+                              >
+                                Luxury Stay
+                              </label>
+                            </div>
+                          </Segment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Do you need a cab services for pickup, drop and sight
+                      seeing ?
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field ">
+                        <div className="control">
+                          <Segment>
+                            <div class="field">
+                              <input
+                                className="is-checkradio is-rtl"
+                                id="exampleRtlRadioInline17"
+                                type="radio"
+                                name="cab"
+                                checked="checked"
+                              />
+                              <label
+                                for="exampleRtlRadioInline17"
+                                className="ffqs fw2"
+                              >
+                                Yes
+                              </label>
+
+                              <input
+                                className="is-checkradio is-rtl "
+                                id="exampleRtlRadioInline18"
+                                type="radio"
+                                name="cab"
+                              />
+                              <label
+                                for="exampleRtlRadioInline18"
+                                className="ffqs fw2"
+                                style={{ paddingLeft: "1em" }}
+                              >
+                                No
+                              </label>
+                            </div>
+                          </Segment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Preferred destination ?
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field">
+                        <p className="control is-expanded">
+                          <input
+                            className="input is-medium"
+                            type="text"
+                            placeholder="Goa, Delhi ..."
+                          />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Would you like to include sight seeing in this package ?
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field ">
+                        <div className="control">
+                          <Segment>
+                            <div class="field">
+                              <input
+                                className="is-checkradio is-rtl"
+                                id="exampleRtlRadioInline19"
+                                type="radio"
+                                name="destination"
+                                checked="checked"
+                              />
+                              <label
+                                for="exampleRtlRadioInline19"
+                                className="ffqs fw2"
+                              >
+                                Yes
+                              </label>
+
+                              <input
+                                className="is-checkradio is-rtl "
+                                id="exampleRtlRadioInline20"
+                                type="radio"
+                                name="destination"
+                              />
+                              <label
+                                for="exampleRtlRadioInline20"
+                                className="ffqs fw2"
+                                style={{ paddingLeft: "1em" }}
+                              >
+                                No
+                              </label>
+                            </div>
+                          </Segment>
                         </div>
                       </div>
                     </div>
