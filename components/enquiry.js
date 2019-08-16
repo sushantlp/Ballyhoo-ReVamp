@@ -388,6 +388,35 @@ const Enquiry = props => {
                       </div>
                     </div>
                   </div>
+
+                  <div class="field">
+                    <div class="control">
+                      <label class="checkbox">
+                        {/* <input
+                          class="is-checkradio"
+                          id="exampleCheckboxDefault"
+                          type="checkbox"
+                          name="alcohol"
+                          style={{ paddingLeft: "1em" }}
+                        /> */}
+
+                        <input
+                          class="is-checkradio has-background-color is-danger"
+                          id="exampleCheckboxDefault1"
+                          type="checkbox"
+                          name="alcohol"
+                          style={{ paddingLeft: "1em" }}
+                          checked="checked"
+                        />
+                        <label
+                          for="exampleCheckboxDefault1"
+                          className="ffqs fw2"
+                        >
+                          I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
 
