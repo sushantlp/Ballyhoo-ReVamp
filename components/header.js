@@ -91,7 +91,7 @@ export default class Header extends React.Component {
                 </div>
 
                 <div className="navbar-item">
-                  <Link href="/enquiry">
+                  <Link href="/explore">
                     <p className="control">
                       <a className="button is-outlined is-rounded">
                         PLAN MY HOLIDAY

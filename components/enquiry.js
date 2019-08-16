@@ -1,8 +1,9 @@
 import { Segment } from "semantic-ui-react";
 import DatePicker from "react-date-picker";
 
-import "bulma-checkradio";
 import "./enquiry.css";
+
+import "bulma-checkradio";
 
 const Enquiry = props => {
   const date = new Date();
@@ -14,7 +15,7 @@ const Enquiry = props => {
             <Segment style={{ marginTop: "3em" }}>
               <div className="columns">
                 <div className="column is-8 is-offset-one-fifth">
-                  <h4 className="ffqs enquiry-title">Plan Your Trip</h4>
+                  <h4 className="ffqs enquiry-title">Group Booking</h4>
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">Name</label>
@@ -27,9 +28,6 @@ const Enquiry = props => {
                             type="text"
                             placeholder="Aaron Swartz"
                           />
-                          {/* <span class="icon  is-left">
-                            <img src="https://img.icons8.com/bubbles/50/000000/employee-card.png" />
-                          </span> */}
                         </p>
                       </div>
                     </div>
@@ -46,9 +44,6 @@ const Enquiry = props => {
                             type="text"
                             placeholder="Open@Code"
                           />
-                          {/* <span className="icon is-left">
-                            <img src="https://img.icons8.com/bubbles/50/000000/email.png" />
-                          </span> */}
                         </p>
                       </div>
                     </div>
@@ -65,9 +60,6 @@ const Enquiry = props => {
                             type="number"
                             placeholder="+91"
                           />
-                          {/* <span className="icon is-left">
-                            <img src="https://img.icons8.com/bubbles/50/000000/phone.png" />
-                          </span> */}
                         </p>
                       </div>
                     </div>
@@ -75,7 +67,7 @@ const Enquiry = props => {
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">
-                      What kind of Escape are you looking for ?
+                      Your Occasion ?
                     </label>
 
                     <div className="field-body">
@@ -84,7 +76,7 @@ const Enquiry = props => {
                           <Segment>
                             <div class="field">
                               <input
-                                className="is-checkradio is-rtl"
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline1"
                                 type="radio"
                                 name="looking"
@@ -94,41 +86,41 @@ const Enquiry = props => {
                                 for="exampleRtlRadioInline1"
                                 className="ffqs fw2"
                               >
-                                Incity Escape
+                                Birthday
                               </label>
 
                               <input
-                                className="is-checkradio is-rtl "
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline2"
                                 type="radio"
                                 name="looking"
+                                style={{ paddingLeft: "1em" }}
                               />
                               <label
                                 for="exampleRtlRadioInline2"
                                 className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
                               >
-                                Outstation
+                                Bachelor/Bachelorette
                               </label>
 
                               <input
-                                className="is-checkradio is-rtl "
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline3"
                                 type="radio"
                                 name="looking"
+                                style={{ paddingLeft: "1em" }}
                               />
                               <label
                                 for="exampleRtlRadioInline3"
                                 className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
                               >
-                                Wonderlust/Nature
+                                Anniversary
                               </label>
                             </div>
 
                             <div class="field mt1">
                               <input
-                                className="is-checkradio is-rtl"
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline4"
                                 type="radio"
                                 name="looking"
@@ -137,64 +129,21 @@ const Enquiry = props => {
                                 for="exampleRtlRadioInline4"
                                 className="ffqs fw2"
                               >
-                                Backpacking
+                                Social Gathering
                               </label>
 
                               <input
-                                className="is-checkradio is-rtl"
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline5"
                                 type="radio"
                                 name="looking"
+                                style={{ paddingLeft: "1em" }}
                               />
                               <label
                                 for="exampleRtlRadioInline5"
                                 className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
                               >
-                                Group Outing
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline6"
-                                type="radio"
-                                name="looking"
-                              />
-                              <label
-                                for="exampleRtlRadioInline6"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                Adventurous
-                              </label>
-                            </div>
-
-                            <div class="field mt1">
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline7"
-                                type="radio"
-                                name="looking"
-                              />
-                              <label
-                                for="exampleRtlRadioInline7"
-                                className="ffqs fw2"
-                              >
-                                Religious
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline8"
-                                type="radio"
-                                name="looking"
-                              />
-                              <label
-                                for="exampleRtlRadioInline8"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                Luxury
+                                Others
                               </label>
                             </div>
                           </Segment>
@@ -205,95 +154,7 @@ const Enquiry = props => {
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">
-                      Tour type ?
-                    </label>
-
-                    <div className="field-body">
-                      <div className="field ">
-                        <div className="control">
-                          <Segment>
-                            <div class="field">
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline9"
-                                type="radio"
-                                name="tour"
-                                checked="checked"
-                              />
-                              <label
-                                for="exampleRtlRadioInline9"
-                                className="ffqs fw2"
-                              >
-                                Yes
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl "
-                                id="exampleRtlRadioInline10"
-                                type="radio"
-                                name="tour"
-                              />
-                              <label
-                                for="exampleRtlRadioInline10"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                No
-                              </label>
-                            </div>
-                          </Segment>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label is-medium ffqs fw2">
-                      Do you need a guided tour with 24hr tour coordinator ?
-                    </label>
-
-                    <div className="field-body">
-                      <div className="field ">
-                        <div className="control">
-                          <Segment>
-                            <div class="field">
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline11"
-                                type="radio"
-                                name="guided"
-                                checked="checked"
-                              />
-                              <label
-                                for="exampleRtlRadioInline11"
-                                className="ffqs fw2"
-                              >
-                                Yes
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl "
-                                id="exampleRtlRadioInline12"
-                                type="radio"
-                                name="guided"
-                              />
-                              <label
-                                for="exampleRtlRadioInline12"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                No
-                              </label>
-                            </div>
-                          </Segment>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label is-medium ffqs fw2">
-                      Select Date
+                      Party Date
                     </label>
 
                     <div className="field-body">
@@ -307,64 +168,7 @@ const Enquiry = props => {
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">
-                      Total duration of trip in days and nights ?
-                    </label>
-
-                    <div className="field-body">
-                      <div className="field">
-                        <p className="control is-expanded">
-                          <input
-                            className="input is-medium"
-                            type="text"
-                            placeholder="3-days 4-nights"
-                          />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label is-medium ffqs fw2">
-                      Total Number of guest ?
-                    </label>
-                    <div className="field is-horizontal">
-                      <div className="field-body">
-                        <div className="field">
-                          <p className="control is-expanded">
-                            <input
-                              className="input is-medium"
-                              type="number"
-                              placeholder="Adult"
-                            />
-                          </p>
-                        </div>
-
-                        <div className="field">
-                          <p className="control is-expanded">
-                            <input
-                              className="input is-medium"
-                              type="number"
-                              placeholder="Children"
-                            />
-                          </p>
-                        </div>
-
-                        <div className="field">
-                          <p className="control is-expanded">
-                            <input
-                              className="input is-medium"
-                              type="number"
-                              placeholder="Pet"
-                            />
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label is-medium ffqs fw2">
-                      Accommodation of guest ?
+                      Party Time ?
                     </label>
 
                     <div className="field-body">
@@ -373,59 +177,193 @@ const Enquiry = props => {
                           <Segment>
                             <div class="field">
                               <input
-                                className="is-checkradio is-rtl"
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline6"
+                                type="radio"
+                                name="time"
+                                checked="checked"
+                              />
+                              <label
+                                for="exampleRtlRadioInline6"
+                                className="ffqs fw2"
+                              >
+                                Lunch
+                              </label>
+
+                              <input
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline7"
+                                type="radio"
+                                name="time"
+                                style={{ paddingLeft: "1em" }}
+                              />
+                              <label
+                                for="exampleRtlRadioInline7"
+                                className="ffqs fw2"
+                              >
+                                Dinner
+                              </label>
+                            </div>
+                          </Segment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Food Preference ?
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field ">
+                        <div className="control">
+                          <Segment>
+                            <div class="field">
+                              <input
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline8"
+                                type="radio"
+                                name="food"
+                                checked="checked"
+                              />
+                              <label
+                                for="exampleRtlRadioInline8"
+                                className="ffqs fw2"
+                              >
+                                Veg
+                              </label>
+
+                              <input
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline9"
+                                type="radio"
+                                name="food"
+                                style={{ paddingLeft: "1em" }}
+                              />
+                              <label
+                                for="exampleRtlRadioInline9"
+                                className="ffqs fw2"
+                              >
+                                Non Veg
+                              </label>
+
+                              <input
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline10"
+                                type="radio"
+                                name="food"
+                                style={{ paddingLeft: "1em" }}
+                              />
+                              <label
+                                for="exampleRtlRadioInline10"
+                                className="ffqs fw2"
+                              >
+                                Both
+                              </label>
+
+                              <input
+                                class="is-checkradio"
+                                id="exampleCheckboxDefault"
+                                type="checkbox"
+                                name="alcohol"
+                                style={{ paddingLeft: "1em" }}
+                              />
+                              <label
+                                for="exampleCheckboxDefault"
+                                className="ffqs fw2"
+                              >
+                                Alcohol
+                              </label>
+                            </div>
+                          </Segment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Total number of guest 15+
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field">
+                        <p className="control is-expanded">
+                          <input
+                            className="input is-medium"
+                            type="number"
+                            placeholder="Guests"
+                          />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label is-medium ffqs fw2">
+                      Average cost per head ?
+                    </label>
+
+                    <div className="field-body">
+                      <div className="field ">
+                        <div className="control">
+                          <Segment>
+                            <div class="field">
+                              <input
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline11"
+                                type="radio"
+                                name="cost"
+                                checked="checked"
+                              />
+                              <label
+                                for="exampleRtlRadioInline11"
+                                className="ffqs fw2"
+                              >
+                                500 - 1000
+                              </label>
+
+                              <input
+                                className="is-checkradio"
+                                id="exampleRtlRadioInline12"
+                                type="radio"
+                                name="cost"
+                                style={{ paddingLeft: "1em" }}
+                              />
+                              <label
+                                for="exampleRtlRadioInline12"
+                                className="ffqs fw2"
+                              >
+                                1000 - 1500
+                              </label>
+
+                              <input
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline13"
                                 type="radio"
-                                name="accommodation"
-                                checked="checked"
+                                name="cost"
+                                style={{ paddingLeft: "1em" }}
                               />
                               <label
                                 for="exampleRtlRadioInline13"
                                 className="ffqs fw2"
                               >
-                                Basic amenities
+                                1500 - 2000
                               </label>
 
                               <input
-                                className="is-checkradio is-rtl "
+                                className="is-checkradio"
                                 id="exampleRtlRadioInline14"
                                 type="radio"
-                                name="accommodation"
+                                name="cost"
+                                style={{ paddingLeft: "1em" }}
                               />
                               <label
                                 for="exampleRtlRadioInline14"
                                 className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
                               >
-                                3 star
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl "
-                                id="exampleRtlRadioInline15"
-                                type="radio"
-                                name="accommodation"
-                              />
-                              <label
-                                for="exampleRtlRadioInline15"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                5 star
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl "
-                                id="exampleRtlRadioInline16"
-                                type="radio"
-                                name="accommodation"
-                              />
-                              <label
-                                for="exampleRtlRadioInline16"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                Luxury Stay
+                                2000 - 4000
                               </label>
                             </div>
                           </Segment>
@@ -436,106 +374,16 @@ const Enquiry = props => {
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">
-                      Do you need a cab services for pickup, drop and sight
-                      seeing ?
+                      Any special request ?
                     </label>
 
                     <div className="field-body">
                       <div className="field ">
                         <div className="control">
-                          <Segment>
-                            <div class="field">
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline17"
-                                type="radio"
-                                name="cab"
-                                checked="checked"
-                              />
-                              <label
-                                for="exampleRtlRadioInline17"
-                                className="ffqs fw2"
-                              >
-                                Yes
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl "
-                                id="exampleRtlRadioInline18"
-                                type="radio"
-                                name="cab"
-                              />
-                              <label
-                                for="exampleRtlRadioInline18"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                No
-                              </label>
-                            </div>
-                          </Segment>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label is-medium ffqs fw2">
-                      Preferred destination ?
-                    </label>
-
-                    <div className="field-body">
-                      <div className="field">
-                        <p className="control is-expanded">
-                          <input
-                            className="input is-medium"
-                            type="text"
-                            placeholder="Goa, Delhi ..."
+                          <textarea
+                            class="textarea"
+                            placeholder="Any Request"
                           />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label className="label is-medium ffqs fw2">
-                      Would you like to include sight seeing in this package ?
-                    </label>
-
-                    <div className="field-body">
-                      <div className="field ">
-                        <div className="control">
-                          <Segment>
-                            <div class="field">
-                              <input
-                                className="is-checkradio is-rtl"
-                                id="exampleRtlRadioInline19"
-                                type="radio"
-                                name="destination"
-                                checked="checked"
-                              />
-                              <label
-                                for="exampleRtlRadioInline19"
-                                className="ffqs fw2"
-                              >
-                                Yes
-                              </label>
-
-                              <input
-                                className="is-checkradio is-rtl "
-                                id="exampleRtlRadioInline20"
-                                type="radio"
-                                name="destination"
-                              />
-                              <label
-                                for="exampleRtlRadioInline20"
-                                className="ffqs fw2"
-                                style={{ paddingLeft: "1em" }}
-                              >
-                                No
-                              </label>
-                            </div>
-                          </Segment>
                         </div>
                       </div>
                     </div>

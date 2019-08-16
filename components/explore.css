@@ -1,0 +1,37 @@
+.explore-container {
+  background-image: url("https://img.traveltriangle.com/public-product/homepage_illustrations/hero_general.gif?tr=w-1000,h-800");
+  overflow: hidden;
+  object-fit: cover;
+  background-repeat: repeat space;
+}
+.explore-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.explore-container .explore-title {
+  font-size: 2rem;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 0.0175rem;
+}
+
+.explore-container .fw2 {
+  font-weight: 200;
+}
+
+.explore-container .mt1 {
+  margin-top: 1em;
+}
+
+.explore-container .button {
+  background-color: #ff3860;
+  color: white;
+  opacity: 1;
+  width: 17.2em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  margin-left: 10em;
+  margin-right: 10em;
+}
