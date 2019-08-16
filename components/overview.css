@@ -162,6 +162,14 @@
 .overview-container .fz1_4 {
   font-size: 1.4em;
 }
+
+.overview-container .white-space {
+  white-space: pre-line;
+}
+
+.overview-container .readMoreText {
+  padding-left: 1em;
+}
 .cuisine-underscore {
   background-image: -webkit-gradient(
     linear,

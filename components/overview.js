@@ -1,5 +1,6 @@
 import Map from "./map";
 import Lightbox from "lightbox-react";
+import ReadMoreAndLess from "react-read-more-less";
 
 import "lightbox-react/style.css";
 import "./overview.css";
@@ -204,13 +205,23 @@ export default class Overview extends React.Component {
             <div className="column">
               <h4 className="ffqs cuisine-title">Offer Highlight</h4>
               <div className="offer-underscore" />
-              <h4 className="fz1 pfc4 ffqs fw2 ls">
-                This wonderful land of northeast India, is home to some of the
-                most picturesque honeymoon destinations with spellbinding
-                tourist attractions. This romantic 4 nights 5 days north east
-                package from Delhi, Kolkata, Mumbai and other major cities of
-                India takes you around some famous tourist places in northeast
-                India including Shillong and Mawlynnong.
+
+              <h4 className="fz1 pfc4 ffqs fw2 ls white-space">
+                <ReadMoreAndLess
+                  ref={this.ReadMore}
+                  className="read-more-content"
+                  charLimit={300}
+                  readMoreText="See more"
+                  readLessText="See less"
+                >
+                  This wonderful land of northeast India, is home to some of the
+                  most picturesque honeymoon destinations with spellbinding
+                  tourist attractions. This romantic 4 nights 5 days north east
+                  package from Delhi, Kolkata, Mumbai and other major cities of
+                  India takes you around some famous tourist places in northeast
+                  India including Shillong and Mawlynnong Shillong and
+                  Mawlynnong.
+                </ReadMoreAndLess>
               </h4>
             </div>
           </div>
@@ -225,6 +236,33 @@ export default class Overview extends React.Component {
                 C. d'Arístides Maillol, 12, 08028 Barcelona, Spain
               </h4>
               <Map />
+            </div>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="columns">
+            <div className="column">
+              <h4 className="ffqs cuisine-title">Terms</h4>
+              <div className="offer-underscore" />
+
+              <h4 className="fz1 pfc4 ffqs fw2 ls white-space">
+                <ReadMoreAndLess
+                  ref={this.ReadMore}
+                  className="read-more-content"
+                  charLimit={300}
+                  readMoreText="See more"
+                  readLessText="See less"
+                >
+                  This wonderful land of northeast India, is home to some of the
+                  most picturesque honeymoon destinations with spellbinding
+                  tourist attractions. This romantic 4 nights 5 days north east
+                  package from Delhi, Kolkata, Mumbai and other major cities of
+                  India takes you around some famous tourist places in northeast
+                  India including Shillong and Mawlynnong Shillong and
+                  Mawlynnong.
+                </ReadMoreAndLess>
+              </h4>
             </div>
           </div>
         </div>
@@ -247,13 +285,22 @@ export default class Overview extends React.Component {
                   <img src="https://img.icons8.com/color/20/000000/star.png" />
                 </span>
 
-                <h4 className="fz1 pfc4 ffqs fw2 ls mt0-3">
-                  This wonderful land of northeast India, is home to some of the
-                  most picturesque honeymoon destinations with spellbinding
-                  tourist attractions. This romantic 4 nights 5 days north east
-                  package from Delhi, Kolkata, Mumbai and other major cities of
-                  India takes you around some famous tourist places in northeast
-                  India including Shillong and Mawlynnong.
+                <h4 className="fz1 pfc4 ffqs fw2 ls mt0-3 white-space">
+                  <ReadMoreAndLess
+                    ref={this.ReadMore}
+                    className="read-more-content"
+                    charLimit={300}
+                    readMoreText="See more"
+                    readLessText="See less"
+                  >
+                    This wonderful land of northeast India, is home to some of
+                    the most picturesque honeymoon destinations with
+                    spellbinding tourist attractions. This romantic 4 nights 5
+                    days north east package from Delhi, Kolkata, Mumbai and
+                    other major cities of India takes you around some famous
+                    tourist places in northeast India including Shillong and
+                    Mawlynnong.
+                  </ReadMoreAndLess>
                 </h4>
 
                 <h4 className="ff f1-1 fw2 mb0-3"> Rishi Dodeja</h4>
@@ -265,13 +312,22 @@ export default class Overview extends React.Component {
                   <img src="https://img.icons8.com/color/20/000000/star.png" />
                 </span>
 
-                <h4 className="fz1 pfc4 ffqs fw2 ls mt0-3">
-                  This wonderful land of northeast India, is home to some of the
-                  most picturesque honeymoon destinations with spellbinding
-                  tourist attractions. This romantic 4 nights 5 days north east
-                  package from Delhi, Kolkata, Mumbai and other major cities of
-                  India takes you around some famous tourist places in northeast
-                  India including Shillong and Mawlynnong.
+                <h4 className="fz1 pfc4 ffqs fw2 ls mt0-3 white-space">
+                  <ReadMoreAndLess
+                    ref={this.ReadMore}
+                    className="read-more-content"
+                    charLimit={300}
+                    readMoreText="See more"
+                    readLessText="See less"
+                  >
+                    This wonderful land of northeast India, is home to some of
+                    the most picturesque honeymoon destinations with
+                    spellbinding tourist attractions. This romantic 4 nights 5
+                    days north east package from Delhi, Kolkata, Mumbai and
+                    other major cities of India takes you around some famous
+                    tourist places in northeast India including Shillong and
+                    Mawlynnong.
+                  </ReadMoreAndLess>
                 </h4>
               </div>
 
