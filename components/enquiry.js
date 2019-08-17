@@ -2,7 +2,6 @@ import { Segment } from "semantic-ui-react";
 import DatePicker from "react-date-picker";
 
 import "./enquiry.css";
-
 import "bulma-checkradio";
 
 const Enquiry = props => {
@@ -22,13 +21,13 @@ const Enquiry = props => {
 
                     <div className="field-body">
                       <div className="field">
-                        <p className="control is-expanded">
+                        <label className="control is-expanded">
                           <input
                             className="input is-medium"
                             type="text"
                             placeholder="Aaron Swartz"
                           />
-                        </p>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -38,13 +37,13 @@ const Enquiry = props => {
 
                     <div className="field-body">
                       <div className="field">
-                        <p className="control is-expanded">
+                        <label className="control is-expanded">
                           <input
                             className="input is-medium"
                             type="text"
                             placeholder="Open@Code"
                           />
-                        </p>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -54,13 +53,13 @@ const Enquiry = props => {
 
                     <div className="field-body">
                       <div className="field">
-                        <p className="control is-expanded">
+                        <label className="control is-expanded">
                           <input
                             className="input is-medium"
                             type="number"
                             placeholder="+91"
                           />
-                        </p>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -74,16 +73,15 @@ const Enquiry = props => {
                       <div className="field ">
                         <div className="control">
                           <Segment>
-                            <div class="field">
+                            <div className="field">
                               <input
                                 className="is-checkradio"
                                 id="exampleRtlRadioInline1"
                                 type="radio"
                                 name="looking"
-                                checked="checked"
                               />
                               <label
-                                for="exampleRtlRadioInline1"
+                                htmlFor="exampleRtlRadioInline1"
                                 className="ffqs fw2"
                               >
                                 Birthday
@@ -97,7 +95,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline2"
+                                htmlFor="exampleRtlRadioInline2"
                                 className="ffqs fw2"
                               >
                                 Bachelor/Bachelorette
@@ -111,14 +109,14 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline3"
+                                htmlFor="exampleRtlRadioInline3"
                                 className="ffqs fw2"
                               >
                                 Anniversary
                               </label>
                             </div>
 
-                            <div class="field mt1">
+                            <div className="field mt1">
                               <input
                                 className="is-checkradio"
                                 id="exampleRtlRadioInline4"
@@ -126,7 +124,7 @@ const Enquiry = props => {
                                 name="looking"
                               />
                               <label
-                                for="exampleRtlRadioInline4"
+                                htmlFor="exampleRtlRadioInline4"
                                 className="ffqs fw2"
                               >
                                 Social Gathering
@@ -140,7 +138,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline5"
+                                htmlFor="exampleRtlRadioInline5"
                                 className="ffqs fw2"
                               >
                                 Others
@@ -175,16 +173,15 @@ const Enquiry = props => {
                       <div className="field ">
                         <div className="control">
                           <Segment>
-                            <div class="field">
+                            <div className="field">
                               <input
                                 className="is-checkradio"
                                 id="exampleRtlRadioInline6"
                                 type="radio"
                                 name="time"
-                                checked="checked"
                               />
                               <label
-                                for="exampleRtlRadioInline6"
+                                htmlFor="exampleRtlRadioInline6"
                                 className="ffqs fw2"
                               >
                                 Lunch
@@ -198,7 +195,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline7"
+                                htmlFor="exampleRtlRadioInline7"
                                 className="ffqs fw2"
                               >
                                 Dinner
@@ -219,16 +216,15 @@ const Enquiry = props => {
                       <div className="field ">
                         <div className="control">
                           <Segment>
-                            <div class="field">
+                            <div className="field">
                               <input
                                 className="is-checkradio"
                                 id="exampleRtlRadioInline8"
                                 type="radio"
                                 name="food"
-                                checked="checked"
                               />
                               <label
-                                for="exampleRtlRadioInline8"
+                                htmlFor="exampleRtlRadioInline8"
                                 className="ffqs fw2"
                               >
                                 Veg
@@ -242,7 +238,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline9"
+                                htmlFor="exampleRtlRadioInline9"
                                 className="ffqs fw2"
                               >
                                 Non Veg
@@ -256,21 +252,21 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline10"
+                                htmlFor="exampleRtlRadioInline10"
                                 className="ffqs fw2"
                               >
                                 Both
                               </label>
 
                               <input
-                                class="is-checkradio"
+                                className="is-checkradio"
                                 id="exampleCheckboxDefault"
                                 type="checkbox"
                                 name="alcohol"
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleCheckboxDefault"
+                                htmlFor="exampleCheckboxDefault"
                                 className="ffqs fw2"
                               >
                                 Alcohol
@@ -289,13 +285,13 @@ const Enquiry = props => {
 
                     <div className="field-body">
                       <div className="field">
-                        <p className="control is-expanded">
+                        <label className="control is-expanded">
                           <input
                             className="input is-medium"
                             type="number"
                             placeholder="Guests"
                           />
-                        </p>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -309,16 +305,15 @@ const Enquiry = props => {
                       <div className="field ">
                         <div className="control">
                           <Segment>
-                            <div class="field">
+                            <div className="field">
                               <input
                                 className="is-checkradio"
                                 id="exampleRtlRadioInline11"
                                 type="radio"
                                 name="cost"
-                                checked="checked"
                               />
                               <label
-                                for="exampleRtlRadioInline11"
+                                htmlFor="exampleRtlRadioInline11"
                                 className="ffqs fw2"
                               >
                                 500 - 1000
@@ -332,7 +327,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline12"
+                                htmlFor="exampleRtlRadioInline12"
                                 className="ffqs fw2"
                               >
                                 1000 - 1500
@@ -346,7 +341,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline13"
+                                htmlFor="exampleRtlRadioInline13"
                                 className="ffqs fw2"
                               >
                                 1500 - 2000
@@ -360,7 +355,7 @@ const Enquiry = props => {
                                 style={{ paddingLeft: "1em" }}
                               />
                               <label
-                                for="exampleRtlRadioInline14"
+                                htmlFor="exampleRtlRadioInline14"
                                 className="ffqs fw2"
                               >
                                 2000 - 4000
@@ -381,7 +376,7 @@ const Enquiry = props => {
                       <div className="field ">
                         <div className="control">
                           <textarea
-                            class="textarea"
+                            className="textarea"
                             placeholder="Any Request"
                           />
                         </div>
@@ -389,11 +384,11 @@ const Enquiry = props => {
                     </div>
                   </div>
 
-                  <div class="field">
-                    <div class="control">
-                      <label class="checkbox">
+                  <div className="field">
+                    <div className="control">
+                      <label className="checkbox">
                         {/* <input
-                          class="is-checkradio"
+                          className="is-checkradio"
                           id="exampleCheckboxDefault"
                           type="checkbox"
                           name="alcohol"
@@ -401,15 +396,15 @@ const Enquiry = props => {
                         /> */}
 
                         <input
-                          class="is-checkradio has-background-color is-danger"
+                          className="is-checkradio has-background-color is-danger"
                           id="exampleCheckboxDefault1"
                           type="checkbox"
                           name="alcohol"
-                          style={{ paddingLeft: "1em" }}
                           checked="checked"
+                          style={{ paddingLeft: "1em" }}
                         />
                         <label
-                          for="exampleCheckboxDefault1"
+                          htmlFor="exampleCheckboxDefault1"
                           className="ffqs fw2"
                         >
                           I agree to the <a href="#">terms and conditions</a>

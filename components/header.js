@@ -46,57 +46,57 @@ export default class Header extends React.Component {
                 </div> */}
 
                 <div className="navbar-item">
-                  <p className="control">
-                    <Link href="/enquiry">
-                      <p className="buttons">
+                  <Link href="/enquiry">
+                    <div className="control">
+                      <div className="buttons">
                         <a className="button is-rounded is-outlined">
                           {/* <span class="icon">
                           <img src="https://img.icons8.com/color/20/000000/story-book.png" />
                         </span> */}
                           <span>STORIES</span>
                         </a>
-                      </p>
-                    </Link>
-                  </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
 
                 <div className="navbar-item">
-                  <p className="control">
-                    <Link href="/enquiry">
-                      <p className="buttons">
+                  <Link href="/enquiry">
+                    <div className="control">
+                      <div className="buttons">
                         <a className="button is-rounded is-outlined">
                           {/* <span class="icon">
                           <img src="https://img.icons8.com/plasticine/100/000000/questions.png" />
                         </span> */}
                           <span>ENQUIRY</span>
                         </a>
-                      </p>
-                    </Link>
-                  </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
 
                 <div className="navbar-item">
-                  <p className="control">
-                    <Link href="/enquiry">
-                      <p className="buttons">
+                  <Link href="/enquiry">
+                    <div className="control">
+                      <div className="buttons">
                         <a className="button is-rounded is-outlined">
                           {/* <span class="icon">
                           <img src="https://img.icons8.com/cotton/48/000000/login-rounded-right--v2.png" />
                         </span> */}
                           <span>LOGIN</span>
                         </a>
-                      </p>
-                    </Link>
-                  </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
 
                 <div className="navbar-item">
                   <Link href="/explore">
-                    <p className="control">
+                    <div className="control">
                       <a className="button is-outlined is-rounded">
                         PLAN MY HOLIDAY
                       </a>
-                    </p>
+                    </div>
                   </Link>
                 </div>
               </div>

@@ -29,14 +29,21 @@ class Explore extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      gate: true
+    };
   }
+
+  changeGate = bool => {
+    this.setState({ gate: bool });
+  };
 
   render() {
     return (
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <ExploreComponent />
+        <ExploreComponent gate={this.state.gate} changeGate={this.changeGate} />
         <Headout />
         <Footer />
       </React.Fragment>
