@@ -294,13 +294,18 @@ const Explore = props => {
                           </div>
                         </div>
                       </div>
-
-                      <div className="field">
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <div className="field is-horizontal">
                         <label className="label is-medium ffqs fw2">
                           Select Date
                         </label>
 
-                        <div className="field-body">
+                        <div
+                          className="field-body"
+                          style={{ paddingLeft: "3em" }}
+                        >
                           <div className="field ">
                             <div className="control">
                               <DatePicker value={date} />
@@ -308,9 +313,7 @@ const Explore = props => {
                           </div>
                         </div>
                       </div>
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment>
+
                       <div className="field">
                         <label className="label is-medium ffqs fw2">
                           Total duration of trip in days and nights ?
@@ -534,50 +537,6 @@ const Explore = props => {
                                   />
                                   <label
                                     htmlFor="exampleRtlRadioInline20"
-                                    className="ffqs fw2"
-                                  >
-                                    No
-                                  </label>
-                                </div>
-                              </Segment>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="field">
-                        <label className="label is-medium ffqs fw2">
-                          Would you like to include sight seeing in this package
-                          ?
-                        </label>
-
-                        <div className="field-body">
-                          <div className="field ">
-                            <div className="control">
-                              <Segment>
-                                <div className="field">
-                                  <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline21"
-                                    type="radio"
-                                    name="destination"
-                                  />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline21"
-                                    className="ffqs fw2"
-                                  >
-                                    Yes
-                                  </label>
-
-                                  <input
-                                    className="is-checkradio"
-                                    id="exampleRtlRadioInline22"
-                                    type="radio"
-                                    name="destination"
-                                    style={{ paddingLeft: "1em" }}
-                                  />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline22"
                                     className="ffqs fw2"
                                   >
                                     No
