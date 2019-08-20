@@ -2,13 +2,13 @@ import React from "react";
 
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
-import EnquiryComponent from "../components/enquiry";
+import ProfileComponent from "../components/profile";
 import Head from "../components/head";
 import Header from "../components/header";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
 
-class Enquiry extends React.Component {
+class Profile extends React.Component {
   // static async getInitialProps({ req, res, query }) {
   //   let stories;
   //   let page;
@@ -36,7 +36,7 @@ class Enquiry extends React.Component {
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <EnquiryComponent />
+        <ProfileComponent />
         <Headout />
         <Footer />
       </React.Fragment>
@@ -44,4 +44,4 @@ class Enquiry extends React.Component {
   }
 }
 
-export default Enquiry;
+export default Profile;

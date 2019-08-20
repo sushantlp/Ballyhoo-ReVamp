@@ -13,6 +13,7 @@
     "next": "^9.0.3",
     "react": "^16.8.6",
     "react-date-picker": "^7.8.1",
+    "react-dates": "^20.3.0",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
     "react-read-more-less": "^0.1.6",

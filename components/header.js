@@ -2,6 +2,7 @@ import Link from "next/link";
 import Login from "./login";
 import Signup from "./signup";
 import Forget from "./forget";
+import Profile from "./profile";
 import "./header.css";
 
 export default class Header extends React.Component {
@@ -81,7 +82,7 @@ export default class Header extends React.Component {
                 </div> */}
 
                 <div className="navbar-item">
-                  <Link href="/enquiry">
+                  <Link href="/profile">
                     <div className="control">
                       <div className="buttons">
                         <a className="button is-rounded is-outlined">
