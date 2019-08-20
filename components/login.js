@@ -51,7 +51,10 @@ const Login = props => {
               <div style={{ textAlign: "right" }}>
                 <label>
                   {" "}
-                  <strong className="pointer ffqs is-success">
+                  <strong
+                    className="pointer ffqs is-success"
+                    onClick={() => props.moveToForget()}
+                  >
                     Forget Password ?
                   </strong>
                 </label>

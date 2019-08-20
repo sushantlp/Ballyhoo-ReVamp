@@ -1,0 +1,35 @@
+.forget-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.forget-container .modal-card-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.forget-container .fw2 {
+  font-weight: 200;
+}
+
+.forget-container .submit-button {
+  opacity: 1;
+  width: 10em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  /* margin-right: 10em;
+    margin-left: 10em; */
+}
+
+.forget-container .modal-card-foot {
+  flex-direction: column;
+}
+
+.forget-container .br0 {
+  border-radius: 0;
+}
+
+.forget-container .text-align-center {
+  text-align: center;
+}

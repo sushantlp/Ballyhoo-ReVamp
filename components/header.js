@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Login from "./login";
 import Signup from "./signup";
+import Forget from "./forget";
 import "./header.css";
 
 export default class Header extends React.Component {
@@ -8,7 +9,8 @@ export default class Header extends React.Component {
     super(props);
     this.state = {
       loginOpen: false,
-      signupOpen: false
+      signupOpen: false,
+      forgetOpen: false
     };
   }
 
@@ -22,6 +24,17 @@ export default class Header extends React.Component {
     this.setState({
       signupOpen: bool
     });
+  };
+
+  updateForgetState = bool => {
+    this.setState({
+      forgetOpen: bool
+    });
+  };
+
+  moveToForget = () => {
+    this.updateLoginState(false);
+    this.updateForgetState(true);
   };
 
   moveToSignup = () => {
@@ -132,6 +145,7 @@ export default class Header extends React.Component {
             loginOpen={this.state.loginOpen}
             updateLoginState={this.updateLoginState}
             moveToSignup={this.moveToSignup}
+            moveToForget={this.moveToForget}
           />
         ) : null}
 
@@ -139,6 +153,13 @@ export default class Header extends React.Component {
           <Signup
             signupOpen={this.state.signupOpen}
             updateSignupState={this.updateSignupState}
+          />
+        ) : null}
+
+        {this.state.forgetOpen ? (
+          <Forget
+            forgetOpen={this.state.forgetOpen}
+            updateForgetState={this.updateForgetState}
           />
         ) : null}
       </div>
