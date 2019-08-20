@@ -11,7 +11,7 @@
   font-weight: 200;
 }
 
-.login-container .button-previous {
+.login-container .login-button {
   opacity: 1;
   width: 10em;
   height: 2.5em;
@@ -40,4 +40,8 @@
 
 .login-container .control.has-icons-right .icon {
   pointer-events: auto;
+}
+
+.login-container .br0 {
+  border-radius: 0;
 }

@@ -9,7 +9,7 @@ import "bulma-checkradio";
 
 const Explore = props => {
   const date = new Date();
-  console.log(props.gate);
+
   return (
     <React.Fragment>
       <div className="explore-container">

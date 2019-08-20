@@ -12,7 +12,7 @@ const Login = props => {
               <button
                 className="delete"
                 aria-label="close"
-                onClick={() => props.updateOpenState(false)}
+                onClick={() => props.updateLoginState(false)}
               />
             </header>
             <section className="modal-card-body">
@@ -21,7 +21,7 @@ const Login = props => {
                   <div className="field">
                     <div className="control is-expanded ffqs fw2">
                       <input
-                        className="input is-large"
+                        className="input is-large br0"
                         type="text"
                         placeholder="Email"
                       />
@@ -36,7 +36,7 @@ const Login = props => {
                   <div className="field">
                     <div className="control is-expanded has-icons-right">
                       <input
-                        className="input is-large"
+                        className="input is-large br0"
                         type="email"
                         placeholder="Password"
                       />
@@ -58,13 +58,16 @@ const Login = props => {
               </div>
             </section>
             <footer className="modal-card-foot">
-              <button className="button is-danger is-active button-previous">
+              <button className="button is-danger is-active login-button">
                 LOGIN
               </button>
               <label>
                 {" "}
                 New to Ballyhoo ?{" "}
-                <strong className="pointer ffqs is-success">
+                <strong
+                  className="pointer ffqs is-success"
+                  onClick={() => props.moveToSignup()}
+                >
                   Create an account
                 </strong>
               </label>

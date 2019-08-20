@@ -1,0 +1,35 @@
+.signup-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.signup-container .modal-card-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.signup-container .fw2 {
+  font-weight: 200;
+}
+
+.signup-container .signup-button {
+  opacity: 1;
+  width: 10em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  /* margin-right: 10em;
+    margin-left: 10em; */
+}
+
+.signup-container .modal-card-foot {
+  flex-direction: column;
+}
+
+.signup-container .is-success {
+  color: #23d160;
+}
+
+.signup-container .br0 {
+  border-radius: 0;
+}

@@ -1,21 +1,33 @@
 import Link from "next/link";
 import Login from "./login";
+import Signup from "./signup";
 import "./header.css";
 
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginOpen: false
+      loginOpen: false,
+      signupOpen: false
     };
   }
 
-  updateOpenState = bool => {
+  updateLoginState = bool => {
     this.setState({
       loginOpen: bool
     });
   };
 
+  updateSignupState = bool => {
+    this.setState({
+      signupOpen: bool
+    });
+  };
+
+  moveToSignup = () => {
+    this.updateLoginState(false);
+    this.updateSignupState(true);
+  };
   render() {
     return (
       <div className="header-container">
@@ -89,7 +101,7 @@ export default class Header extends React.Component {
                   <div className="control">
                     <div
                       className="buttons"
-                      onClick={() => this.updateOpenState(true)}
+                      onClick={() => this.updateLoginState(true)}
                     >
                       <a className="button is-rounded is-outlined">
                         {/* <span class="icon">
@@ -118,7 +130,15 @@ export default class Header extends React.Component {
         {this.state.loginOpen ? (
           <Login
             loginOpen={this.state.loginOpen}
-            updateOpenState={this.updateOpenState}
+            updateLoginState={this.updateLoginState}
+            moveToSignup={this.moveToSignup}
+          />
+        ) : null}
+
+        {this.state.signupOpen ? (
+          <Signup
+            signupOpen={this.state.signupOpen}
+            updateSignupState={this.updateSignupState}
           />
         ) : null}
       </div>

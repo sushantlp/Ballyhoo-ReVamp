@@ -390,14 +390,6 @@ const Enquiry = props => {
                   <div className="field">
                     <div className="control">
                       <label className="checkbox">
-                        {/* <input
-                          className="is-checkradio"
-                          id="exampleCheckboxDefault"
-                          type="checkbox"
-                          name="alcohol"
-                          style={{ paddingLeft: "1em" }}
-                        /> */}
-
                         <input
                           className="is-checkradio has-background-color is-danger"
                           id="exampleCheckboxDefault1"
