@@ -8,49 +8,65 @@ const Login = props => {
           <div className="modal-background" />
           <div className="modal-card">
             <header className="modal-card-head">
-              <h4 className="modal-card-title fw2">BALLYHOO</h4>
+              <h4 className="modal-card-title fw2 ffqs">BALLYHOO</h4>
               <button
                 className="delete"
                 aria-label="close"
                 onClick={() => props.updateOpenState(false)}
               />
             </header>
-            <section className="modal-card-body fw2">
+            <section className="modal-card-body">
               <div className="field">
                 <div className="field-body">
                   <div className="field">
-                    <p className="control is-expanded">
+                    <div className="control is-expanded ffqs fw2">
                       <input
                         className="input is-large"
                         type="text"
                         placeholder="Email"
                       />
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
               {/* <hr className="spacer is-1" /> */}
+
               <div className="field">
                 <div className="field-body">
                   <div className="field">
-                    <p className="control is-expanded">
+                    <div className="control is-expanded has-icons-right">
                       <input
                         className="input is-large"
-                        type="password"
+                        type="email"
                         placeholder="Password"
                       />
-                    </p>
+                      <span className="pointer icon is-small is-right">
+                        <img src="https://img.icons8.com/wired/20/000000/show-password.png" />
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <div style={{ textAlign: "right" }}>
+                <label>
+                  {" "}
+                  <strong className="pointer ffqs is-success">
+                    Forget Password ?
+                  </strong>
+                </label>
+              </div>
             </section>
             <footer className="modal-card-foot">
-              <button className="button is-danger is-active button-previous ff">
-                SUBMIT
+              <button className="button is-danger is-active button-previous">
+                LOGIN
               </button>
               <label>
                 {" "}
-                I agree to the <a href="#">terms and conditions</a>
+                New to Ballyhoo ?{" "}
+                <strong className="pointer ffqs is-success">
+                  Create an account
+                </strong>
               </label>
             </footer>
           </div>

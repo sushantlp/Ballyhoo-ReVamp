@@ -17,21 +17,27 @@
   height: 2.5em;
   font-size: 1.4em;
   font-weight: 600;
-  margin-right: 10em;
-  margin-left: 10em;
+  margin-bottom: 0.5em;
+  /* margin-right: 10em;
+  margin-left: 10em; */
 }
 
 .login-container .spacer.is-1 {
   height: 1rem;
 }
-/* .login-container .button-previous-disabled {
-  background-color: #e8c2c9;
-  opacity: 1;
-  width: 8em;
-  height: 2.5em;
-  font-size: 1.4em;
-  font-weight: 600;
-  margin-bottom: 0.5em;
-  margin-left: 12em;
-  pointer-events: none;
-} */
+
+.login-container .modal-card-foot {
+  flex-direction: column;
+}
+
+.login-container .is-success {
+  color: #23d160;
+}
+
+.login-container .pointer {
+  cursor: pointer;
+}
+
+.login-container .control.has-icons-right .icon {
+  pointer-events: auto;
+}
