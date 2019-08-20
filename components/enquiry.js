@@ -1,6 +1,9 @@
 import { Segment } from "semantic-ui-react";
-import DatePicker from "react-date-picker";
+// import DatePicker from "react-date-picker";
+import DatePicker from "react-date-picker/dist/entry.nostyle";
 
+import "../node_modules/react-date-picker/dist/DatePicker.css";
+import "../node_modules/react-calendar/dist/Calendar.css";
 import "./enquiry.css";
 import "bulma-checkradio";
 

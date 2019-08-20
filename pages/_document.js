@@ -71,6 +71,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap"
             rel="stylesheet"
           />
+
           {/* {this.props.styleTags} */}
         </Head>
         <body>

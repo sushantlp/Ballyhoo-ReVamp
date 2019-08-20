@@ -1,5 +1,8 @@
 import { Segment } from "semantic-ui-react";
-import DatePicker from "react-date-picker";
+import DatePicker from "react-date-picker/dist/entry.nostyle";
+
+import "../node_modules/react-date-picker/dist/DatePicker.css";
+import "../node_modules/react-calendar/dist/Calendar.css";
 
 import "./explore.css";
 import "bulma-checkradio";
@@ -297,15 +300,12 @@ const Explore = props => {
                     </React.Fragment>
                   ) : (
                     <React.Fragment>
-                      <div className="field is-horizontal">
+                      <div className="field">
                         <label className="label is-medium ffqs fw2">
                           Select Date
                         </label>
 
-                        <div
-                          className="field-body"
-                          style={{ paddingLeft: "3em" }}
-                        >
+                        <div className="field-body">
                           <div className="field ">
                             <div className="control">
                               <DatePicker value={date} />

@@ -1,10 +1,20 @@
 import Link from "next/link";
+import Login from "./login";
 import "./header.css";
 
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loginOpen: false
+    };
   }
+
+  updateOpenState = bool => {
+    this.setState({
+      loginOpen: bool
+    });
+  };
 
   render() {
     return (
@@ -76,18 +86,19 @@ export default class Header extends React.Component {
                 </div>
 
                 <div className="navbar-item">
-                  <Link href="/enquiry">
-                    <div className="control">
-                      <div className="buttons">
-                        <a className="button is-rounded is-outlined">
-                          {/* <span class="icon">
+                  <div className="control">
+                    <div
+                      className="buttons"
+                      onClick={() => this.updateOpenState(true)}
+                    >
+                      <a className="button is-rounded is-outlined">
+                        {/* <span class="icon">
                           <img src="https://img.icons8.com/cotton/48/000000/login-rounded-right--v2.png" />
                         </span> */}
-                          <span>LOGIN</span>
-                        </a>
-                      </div>
+                        <span>LOGIN</span>
+                      </a>
                     </div>
-                  </Link>
+                  </div>
                 </div>
 
                 <div className="navbar-item">
@@ -103,6 +114,13 @@ export default class Header extends React.Component {
             </div>
           </div>
         </nav>
+
+        {this.state.loginOpen ? (
+          <Login
+            loginOpen={this.state.loginOpen}
+            updateOpenState={this.updateOpenState}
+          />
+        ) : null}
       </div>
     );
   }
