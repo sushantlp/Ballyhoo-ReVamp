@@ -14,7 +14,7 @@ const Profile = props => {
             <Segment style={{ marginTop: "3em" }}>
               <div className="columns">
                 <div className="column is-7 is-offset-one-fifth">
-                  <h4 className="ffqs profile-title">BALLYHOO</h4>
+                  {/* <h4 className="ffqs profile-title">BALLYHOO</h4> */}
                   <div className="text-align-center mb1">
                     <h4 className="ffqs fw2 fs1-5">
                       {" "}

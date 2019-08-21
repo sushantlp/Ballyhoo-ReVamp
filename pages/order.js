@@ -33,22 +33,19 @@ class Order extends React.Component {
     super(props);
     this.state = {
       fromDate: moment(),
-      toDate: moment()
+      toDate: moment(),
+      focused: ["startDate", "endDate"]
     };
   }
 
-  fromDateChange = date => {
-    this.setState({ fromDate: date });
+  onDateChange = (fromDate, toDate) => {
+    this.setState({ fromDate, toDate });
   };
 
-  toDateChange = date => {
-    this.setState({ toDate: date });
+  onFocusChange = bool => {
+    console.log(bool);
+    this.setState({ focused: bool });
   };
-
-  //   onFocusChange = bool => {
-  //     console.log(bool);
-  //     this.setState({ focused: bool.focused });
-  //   };
 
   render() {
     return (
@@ -58,9 +55,9 @@ class Order extends React.Component {
         <OrderComponent
           fromDate={this.state.fromDate}
           toDate={this.state.toDate}
-          //   focused={this.state.focused}
-          fromDateChange={this.fromDateChange}
-          toDateChange={this.toDateChange}
+          focused={this.state.focused}
+          onDateChange={this.onDateChange}
+          onFocusChange={this.onFocusChange}
         />
         <Headout />
         <Footer />
