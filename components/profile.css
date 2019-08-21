@@ -1,0 +1,68 @@
+.profile-container .profile-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.0175rem;
+}
+
+.profile-container .loyality-title {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.profile-container .loyality-price {
+  background-color: #8376e8;
+  color: white;
+  border-radius: 4px;
+  padding: 0.1em 0.3em 0.1em 0.3em;
+}
+
+.profile-container .br0 {
+  border-radius: 0;
+}
+
+.profile-container .select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #7f7c7c;
+  right: 1.125em;
+  z-index: 4;
+}
+
+.profile-container .DateInput {
+  width: 30.3em;
+}
+
+.profile-container .SingleDatePickerInput_calendarIcon {
+  padding: 0;
+}
+
+.profile-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.profile-container .fw2 {
+  font-weight: 200;
+}
+
+.profile-container .button {
+  background-color: #ff3860;
+  color: white;
+  opacity: 1;
+  width: 17.2em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  margin-left: 10em;
+  margin-right: 10em;
+}
+
+.profile-container .text-align-center {
+  text-align: center;
+}
+
+.fs1-5 {
+  font-size: 1.5em;
+}
+
+.mb1 {
+  margin-bottom: 1em;
+}

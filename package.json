@@ -10,6 +10,7 @@
     "bulma": "^0.7.5",
     "bulma-checkradio": "^1.1.1",
     "lightbox-react": "^0.3.7",
+    "moment-timezone": "^0.5.26",
     "next": "^9.0.3",
     "react": "^16.8.6",
     "react-date-picker": "^7.8.1",

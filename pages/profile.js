@@ -1,7 +1,9 @@
 import React from "react";
+import moment from "moment-timezone";
 
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
+
 import ProfileComponent from "../components/profile";
 import Head from "../components/head";
 import Header from "../components/header";
@@ -29,14 +31,33 @@ class Profile extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      date: moment(),
+      focused: false
+    };
   }
+
+  onDateChange = date => {
+    console.log(date);
+    this.setState({ date: date });
+  };
+
+  onFocusChange = bool => {
+    console.log(bool);
+    this.setState({ focused: bool.focused });
+  };
 
   render() {
     return (
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <ProfileComponent />
+        <ProfileComponent
+          date={this.state.date}
+          focused={this.state.focused}
+          onDateChange={this.onDateChange}
+          onFocusChange={this.onFocusChange}
+        />
         <Headout />
         <Footer />
       </React.Fragment>
