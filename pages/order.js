@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment-timezone";
 
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
@@ -31,34 +30,14 @@ class Order extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      fromDate: moment(),
-      toDate: moment(),
-      focused: ["startDate", "endDate"]
-    };
   }
-
-  onDateChange = (fromDate, toDate) => {
-    this.setState({ fromDate, toDate });
-  };
-
-  onFocusChange = bool => {
-    console.log(bool);
-    this.setState({ focused: bool });
-  };
 
   render() {
     return (
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <OrderComponent
-          fromDate={this.state.fromDate}
-          toDate={this.state.toDate}
-          focused={this.state.focused}
-          onDateChange={this.onDateChange}
-          onFocusChange={this.onFocusChange}
-        />
+        <OrderComponent />
         <Headout />
         <Footer />
       </React.Fragment>

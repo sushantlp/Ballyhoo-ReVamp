@@ -1,179 +1,146 @@
 import "react-dates/initialize";
+import moment from "moment-timezone";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import "./order.css";
 
-const Order = props => {
-  return (
-    <React.Fragment>
-      <section className="section">
-        <div className="container">
-          <div className="order-container">
-            <h4 className="fw2 fs2 ffqs text-align-center">
-              {/* <span> Past Orders </span> */}
-              <span>
-                {" "}
-                <DateRangePicker
-                  startDate={props.fromDate}
-                  startDateId="2"
-                  endDate={props.toDate}
-                  endDateId="3"
-                  onDatesChange={(startDate, endDate) =>
-                    props.onDateChange(startDate, endDate)
-                  }
-                  focusedInput={props.focused}
-                  onFocusChange={focusedInput =>
-                    props.onFocusChange(focusedInput)
-                  }
-                />{" "}
-              </span>
-            </h4>
+export default class DetailTab extends React.Component {
+  // const Order = props => {
 
-            <div className="box">
-              <article className="media">
-                <div className="media-left">
-                  <figure className="image is-128x128">
-                    <img
-                      src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/xs9g4vpc9q1qxqisb8ma"
-                      alt="Image"
-                    />
-                  </figure>
-                </div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: moment(),
+      endDate: moment(),
+      focusedInput: null
+    };
+  }
 
-                <div className="media-content">
-                  <div className="content">
-                    <div className="columns mb0">
-                      <div className="column is-7">
-                        <h4 className="fw2 fs1-5 m0 ffqs plh1">Homely</h4>
-                        <h4 className="mt2 fs1 ffqs fw2 plh1">
-                          3rd Phase Jp-Nagar
-                        </h4>
-                        <h4 className="mt2 fs1 ffqs fw2">
-                          ORDER #38313280562 | Sun, Apr 14, 04:04 PM
-                        </h4>
+  render() {
+    return (
+      <React.Fragment>
+        <section className="section">
+          <div className="container">
+            <div className="order-container">
+              <h4 className="fw2 fs2 ffqs text-align-center">
+                {/* <span> Past Orders </span> */}
+                <span>
+                  {" "}
+                  <DateRangePicker
+                    startDate={this.state.startDate}
+                    startDateId="filterStartDate"
+                    endDate={this.state.endDate}
+                    endDateId="filterEndDate"
+                    // onDatesChange={props.onDateChange}
+                    onDatesChange={({ startDate, endDate }) =>
+                      this.setState({ startDate, endDate })
+                    }
+                    focusedInput={this.state.focusedInput}
+                    onFocusChange={focusedInput =>
+                      this.setState({ focusedInput })
+                    }
+                    displayFormat="MMM DD YYYY"
+                  />{" "}
+                </span>
+              </h4>
+
+              <div className="box">
+                <article className="media">
+                  <div className="media-left">
+                    <figure className="image is-128x128">
+                      <img
+                        src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/xs9g4vpc9q1qxqisb8ma"
+                        alt="Image"
+                      />
+                    </figure>
+                  </div>
+
+                  <div className="media-content">
+                    <div className="content">
+                      <div className="columns">
+                        <div className="column is-12">
+                          <h4 className="fw2 fs2 m0 ffqs plh1">
+                            {" "}
+                            Appointment Le Tranquille spa
+                          </h4>
+                        </div>
                       </div>
 
-                      <div className="column is-5">
-                        <h4 className="ffqs fs1-1 fw2">
-                          Delivered on Sun, Apr 14, 04:27 PM
-                        </h4>
+                      <div className="columns">
+                        <div className="column is-8">
+                          <h4 className="fs1-3 fw2 ffqs">Quanity : 1</h4>
+                          <h4 className="fs1-3 fw2 ffqs">Total Amount : N/A</h4>
+                          <h4 className="fs1-3 fw2 ffqs">Payment Type : N/A</h4>
+                        </div>
+
+                        <div className="column is-4">
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Confirmation Code : N/A
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">Booking Date : N/A</h4>
+                          <h4 className="fs1-3 fw2 ffqs">Booking Time : N/A</h4>
+                        </div>
                       </div>
                     </div>
-                    {/* 
-                    <div className="f14 ffqs">
-                      <p style={{ whiteSpace: "pre-line" }}>
-                        About Buffet:- Enjoy Authentic Cuisine with Unlimited
-                        spread for Lunch Buffet @Cubbon Pavilion - ITC Gardenia.
-                        Inclusions: Unlimited Spread with Table Service. T&C:
-                        Validity: Monday to Saturday, 12 noon to 3 pm. Taxes may
-                        apply. Per person basis. Can not be shared. Rights of
-                        reservation reserved. Management reserved the rights to
-                        change the prices without any notice.
-                      </p>
-                    </div> */}
                   </div>
-                </div>
-              </article>
-            </div>
+                </article>
+              </div>
 
-            <div className="box">
-              <article className="media">
-                <div className="media-left">
-                  <figure className="image is-128x128">
-                    <img
-                      src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/xs9g4vpc9q1qxqisb8ma"
-                      alt="Image"
-                    />
-                  </figure>
-                </div>
+              <div className="box">
+                <article className="media">
+                  <div className="media-left">
+                    <figure className="image is-128x128">
+                      <img
+                        src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/xs9g4vpc9q1qxqisb8ma"
+                        alt="Image"
+                      />
+                    </figure>
+                  </div>
 
-                <div className="media-content">
-                  <div className="content">
-                    <div className="columns mb0">
-                      <div className="column is-7">
-                        <h4 className="fw2 fs1-5 m0 ffqs plh1">Homely</h4>
-                        <h4 className="mt2 fs1 ffqs fw2 plh1">
-                          3rd Phase Jp-Nagar
-                        </h4>
-                        <h4 className="mt2 fs1 ffqs fw2">
-                          ORDER #38313280562 | Sun, Apr 14, 04:04 PM
-                        </h4>
+                  <div className="media-content">
+                    <div className="content">
+                      <div className="columns">
+                        <div className="column is-12">
+                          <h4 className="fw2 fs2 m0 ffqs plh1">
+                            {" "}
+                            Wake and Bake by Rohan Joshi That Comedy Club
+                          </h4>
+                        </div>
                       </div>
 
-                      <div className="column is-5">
-                        <h4 className="ffqs fs1-1 fw2">
-                          Delivered on Sun, Apr 14, 04:27 PM
-                        </h4>
+                      <div className="columns">
+                        <div className="column is-8">
+                          <h4 className="fs1-3 fw2 ffqs">Quanity : 2</h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Total Amount : <span> &#8377;</span> 100
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Payment Type : Pay At Venue
+                          </h4>
+                        </div>
+
+                        <div className="column is-4">
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Confirmation Code : 26989
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Booking Date : 21-08-2019
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Booking Time : 03:10 PM
+                          </h4>
+                        </div>
                       </div>
                     </div>
-                    {/* 
-                    <div className="f14 ffqs">
-                      <p style={{ whiteSpace: "pre-line" }}>
-                        About Buffet:- Enjoy Authentic Cuisine with Unlimited
-                        spread for Lunch Buffet @Cubbon Pavilion - ITC Gardenia.
-                        Inclusions: Unlimited Spread with Table Service. T&C:
-                        Validity: Monday to Saturday, 12 noon to 3 pm. Taxes may
-                        apply. Per person basis. Can not be shared. Rights of
-                        reservation reserved. Management reserved the rights to
-                        change the prices without any notice.
-                      </p>
-                    </div> */}
                   </div>
-                </div>
-              </article>
-            </div>
-
-            <div className="box">
-              <article className="media">
-                <div className="media-left">
-                  <figure className="image is-128x128">
-                    <img
-                      src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/xs9g4vpc9q1qxqisb8ma"
-                      alt="Image"
-                    />
-                  </figure>
-                </div>
-
-                <div className="media-content">
-                  <div className="content">
-                    <div className="columns mb0">
-                      <div className="column is-7">
-                        <h4 className="fw2 fs1-5 m0 ffqs plh1">Homely</h4>
-                        <h4 className="mt2 fs1 ffqs fw2 plh1">
-                          3rd Phase Jp-Nagar
-                        </h4>
-                        <h4 className="mt2 fs1 ffqs fw2">
-                          ORDER #38313280562 | Sun, Apr 14, 04:04 PM
-                        </h4>
-                      </div>
-
-                      <div className="column is-5">
-                        <h4 className="ffqs fs1-1 fw2">
-                          Delivered on Sun, Apr 14, 04:27 PM
-                        </h4>
-                      </div>
-                    </div>
-                    {/* 
-                    <div className="f14 ffqs">
-                      <p style={{ whiteSpace: "pre-line" }}>
-                        About Buffet:- Enjoy Authentic Cuisine with Unlimited
-                        spread for Lunch Buffet @Cubbon Pavilion - ITC Gardenia.
-                        Inclusions: Unlimited Spread with Table Service. T&C:
-                        Validity: Monday to Saturday, 12 noon to 3 pm. Taxes may
-                        apply. Per person basis. Can not be shared. Rights of
-                        reservation reserved. Management reserved the rights to
-                        change the prices without any notice.
-                      </p>
-                    </div> */}
-                  </div>
-                </div>
-              </article>
+                </article>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </React.Fragment>
-  );
-};
+        </section>
+      </React.Fragment>
+    );
+  }
+}
 
-export default Order;
+// export default Order;
