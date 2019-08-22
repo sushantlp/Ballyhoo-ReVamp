@@ -36,7 +36,7 @@ const OrderModel = props => {
                       <div className="columns m0">
                         <div className="column is-4">
                           <h4 className="fs1-2 fw2 ffqs ">
-                            <span className="violet">
+                            <span className="grey">
                               Price : <span> &#8377;</span> 5
                             </span>
                           </h4>
@@ -45,13 +45,13 @@ const OrderModel = props => {
                         <div className="column is-4">
                           <h4 className="fs1-2 fw2 ffqs">
                             {" "}
-                            <span className="violet">Aug 31 2019</span>
+                            <span className="grey">Aug 31 2019</span>
                           </h4>
                         </div>
 
                         <div className="column is-4">
                           <h4 className="fs1-2 fw2 ffqs float-right">
-                            <span className="violet">Quantity : 2</span>
+                            <span className="grey">Quantity : 2</span>
                           </h4>
                         </div>
                       </div>
@@ -80,7 +80,7 @@ const OrderModel = props => {
                       <div className="columns m0">
                         <div className="column is-4">
                           <h4 className="fs1-2 fw2 ffqs ">
-                            <span className="violet">
+                            <span className="grey">
                               Price : <span> &#8377;</span> 5
                             </span>
                           </h4>
@@ -89,13 +89,13 @@ const OrderModel = props => {
                         <div className="column is-4">
                           <h4 className="fs1-2 fw2 ffqs">
                             {" "}
-                            <span className="violet">Aug 31 2019</span>
+                            <span className="grey">Aug 31 2019</span>
                           </h4>
                         </div>
 
                         <div className="column is-4">
                           <h4 className="fs1-2 fw2 ffqs float-right">
-                            <span className="violet">Quantity : 2</span>
+                            <span className="grey">Quantity : 2</span>
                           </h4>
                         </div>
                       </div>

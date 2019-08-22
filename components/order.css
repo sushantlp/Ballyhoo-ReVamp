@@ -85,9 +85,8 @@
   text-align: center;
 }
 
-.order-container .violet {
-  background-color: #8376e8;
-  color: white;
+.order-container .grey {
+  background-color: #ece9e9;
   border-radius: 4px;
   padding: 0.1em 0.5em 0.1em 0.5em;
 }

@@ -10,8 +10,9 @@
 }
 
 .profile-container .loyality-price {
-  background-color: #8376e8;
-  color: white;
+  /* background-color: #8376e8; */
+  background-color: #ece9e9;
+
   border-radius: 4px;
   padding: 0.1em 0.3em 0.1em 0.3em;
 }

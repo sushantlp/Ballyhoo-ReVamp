@@ -27,9 +27,8 @@
   float: right;
 }
 
-.order-model-container .violet {
-  background-color: #8376e8;
-  color: white;
+.order-model-container .grey {
+  background-color: #ece9e9;
   border-radius: 4px;
   padding: 0.3em 0.5em 0.3em 0.5em;
 }

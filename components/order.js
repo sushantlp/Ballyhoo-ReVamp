@@ -53,6 +53,10 @@ export default class DetailTab extends React.Component {
                     displayFormat="MMM DD YYYY"
                   />{" "}
                 </span>
+
+                <span>
+                  <a class="button is-danger is-large">SEARCH</a>
+                </span>
               </h4>
 
               <div className="box">
@@ -79,19 +83,28 @@ export default class DetailTab extends React.Component {
 
                       <div className="columns">
                         <div className="column is-8">
-                          <h4 className="fs1-3 fw2 ffqs">Quanity : 1</h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Total Amount : N/A{" "}
+                            Quanity : <span className="grey"> 1 </span>
                           </h4>
-                          <h4 className="fs1-3 fw2 ffqs">Payment Type : N/A</h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Total Amount : <span className="grey"> N/A </span>{" "}
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Payment Type : <span className="grey"> N/A </span>
+                          </h4>
                         </div>
 
                         <div className="column is-4">
                           <h4 className="fs1-3 fw2 ffqs">
-                            Confirmation Code : N/A
+                            Confirmation Code :{" "}
+                            <span className="grey"> N/A </span>
                           </h4>
-                          <h4 className="fs1-3 fw2 ffqs">Booking Date : N/A</h4>
-                          <h4 className="fs1-3 fw2 ffqs">Booking Time : N/A</h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Booking Date : <span className="grey"> N/A </span>
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Booking Time : <span className="grey"> N/A </span>
+                          </h4>
                         </div>
                       </div>
                     </div>
@@ -101,6 +114,7 @@ export default class DetailTab extends React.Component {
                       title="Disabled button"
                       disabled
                       onClick={() => this.updateOrderModel(true)}
+                      style={{ pointerEvents: "none" }}
                     >
                       VIEW DETAIL
                     </a>
@@ -132,24 +146,33 @@ export default class DetailTab extends React.Component {
 
                       <div className="columns">
                         <div className="column is-8">
-                          <h4 className="fs1-3 fw2 ffqs">Quanity : 2</h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Total Amount : <span> &#8377;</span> 100
+                            Quanity : <span className="grey">2</span>
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Payment Type : Pay At Venue
+                            Total Amount :{" "}
+                            <span className="grey">
+                              <span> &#8377;</span> 100
+                            </span>
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Payment Type :{" "}
+                            <span className="grey">Pay At Venue</span>
                           </h4>
                         </div>
 
                         <div className="column is-4">
                           <h4 className="fs1-3 fw2 ffqs">
-                            Confirmation Code : 26989
+                            Confirmation Code :{" "}
+                            <span className="grey">26989</span>
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Booking Date : 21-08-2019
+                            Booking Date :{" "}
+                            <span className="grey">21-08-2019</span>
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Booking Time : 03:10 PM
+                            Booking Time :{" "}
+                            <span className="grey">03 : 10 PM</span>
                           </h4>
                         </div>
                       </div>
