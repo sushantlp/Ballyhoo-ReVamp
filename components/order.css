@@ -84,3 +84,14 @@
 .order-container .text-align-center {
   text-align: center;
 }
+
+.order-container .violet {
+  background-color: #8376e8;
+  color: white;
+  border-radius: 4px;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+}
+
+.order-container .button.is-fullwidth {
+  margin-top: 3em;
+}

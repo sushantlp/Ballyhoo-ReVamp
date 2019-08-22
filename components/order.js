@@ -1,20 +1,30 @@
 import "react-dates/initialize";
+
+// import { Accordion, Icon } from "semantic-ui-react";
 import moment from "moment-timezone";
 import { DateRangePicker } from "react-dates";
+
 import "react-dates/lib/css/_datepicker.css";
 import "./order.css";
 
 export default class DetailTab extends React.Component {
-  // const Order = props => {
-
   constructor(props) {
     super(props);
     this.state = {
       startDate: moment(),
       endDate: moment(),
-      focusedInput: null
+      focusedInput: null,
+      activeIndex: -1
     };
   }
+
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    this.setState({ activeIndex: newIndex });
+  };
 
   render() {
     return (
@@ -69,7 +79,9 @@ export default class DetailTab extends React.Component {
                       <div className="columns">
                         <div className="column is-8">
                           <h4 className="fs1-3 fw2 ffqs">Quanity : 1</h4>
-                          <h4 className="fs1-3 fw2 ffqs">Total Amount : N/A</h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Total Amount : N/A{" "}
+                          </h4>
                           <h4 className="fs1-3 fw2 ffqs">Payment Type : N/A</h4>
                         </div>
 
@@ -82,6 +94,14 @@ export default class DetailTab extends React.Component {
                         </div>
                       </div>
                     </div>
+
+                    <a
+                      className="button is-large is-danger is-outlined is-fullwidth"
+                      title="Disabled button"
+                      disabled
+                    >
+                      VIEW DETAIL
+                    </a>
                   </div>
                 </article>
               </div>
@@ -91,7 +111,7 @@ export default class DetailTab extends React.Component {
                   <div className="media-left">
                     <figure className="image is-128x128">
                       <img
-                        src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/xs9g4vpc9q1qxqisb8ma"
+                        src="https:////cdn-imgix.headout.com/tour/13770/TOUR-IMAGE/9590b09b-3c11-4e47-b364-53ee809b8326-7563-barcelona-skip-the-line-entry-ticket-to-park-guell-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min"
                         alt="Image"
                       />
                     </figure>
@@ -110,28 +130,41 @@ export default class DetailTab extends React.Component {
 
                       <div className="columns">
                         <div className="column is-8">
-                          <h4 className="fs1-3 fw2 ffqs">Quanity : 2</h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Total Amount : <span> &#8377;</span> 100
+                            Quanity : <span className="violet">2</span>
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Payment Type : Pay At Venue
+                            Total Amount :{" "}
+                            <span className="violet">
+                              <span> &#8377;</span> 100
+                            </span>
+                          </h4>
+                          <h4 className="fs1-3 fw2 ffqs">
+                            Payment Type :{" "}
+                            <span className="violet">Pay At Venue</span>
                           </h4>
                         </div>
 
                         <div className="column is-4">
                           <h4 className="fs1-3 fw2 ffqs">
-                            Confirmation Code : 26989
+                            Confirmation Code :{" "}
+                            <span className="violet">26989</span>
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Booking Date : 21-08-2019
+                            Booking Date :{" "}
+                            <span className="violet">21-08-2019</span>
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Booking Time : 03:10 PM
+                            Booking Time :{" "}
+                            <span className="violet">03:10 PM</span>
                           </h4>
                         </div>
                       </div>
                     </div>
+
+                    <a className="button is-large is-danger is-outlined is-fullwidth">
+                      VIEW DETAIL
+                    </a>
                   </div>
                 </article>
               </div>
@@ -142,5 +175,3 @@ export default class DetailTab extends React.Component {
     );
   }
 }
-
-// export default Order;
