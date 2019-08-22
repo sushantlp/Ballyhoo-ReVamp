@@ -4,6 +4,8 @@ import "react-dates/initialize";
 import moment from "moment-timezone";
 import { DateRangePicker } from "react-dates";
 
+import OrderModel from "./order-model";
+
 import "react-dates/lib/css/_datepicker.css";
 import "./order.css";
 
@@ -14,16 +16,15 @@ export default class DetailTab extends React.Component {
       startDate: moment(),
       endDate: moment(),
       focusedInput: null,
-      activeIndex: -1
+      orderOpen: false
     };
   }
 
-  handleClick = (e, titleProps) => {
-    const { index } = titleProps;
-    const { activeIndex } = this.state;
-    const newIndex = activeIndex === index ? -1 : index;
-
-    this.setState({ activeIndex: newIndex });
+  updateOrderModel = bool => {
+    console.log(bool);
+    this.setState({
+      orderOpen: bool
+    });
   };
 
   render() {
@@ -99,6 +100,7 @@ export default class DetailTab extends React.Component {
                       className="button is-large is-danger is-outlined is-fullwidth"
                       title="Disabled button"
                       disabled
+                      onClick={() => this.updateOrderModel(true)}
                     >
                       VIEW DETAIL
                     </a>
@@ -130,39 +132,33 @@ export default class DetailTab extends React.Component {
 
                       <div className="columns">
                         <div className="column is-8">
+                          <h4 className="fs1-3 fw2 ffqs">Quanity : 2</h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Quanity : <span className="violet">2</span>
+                            Total Amount : <span> &#8377;</span> 100
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Total Amount :{" "}
-                            <span className="violet">
-                              <span> &#8377;</span> 100
-                            </span>
-                          </h4>
-                          <h4 className="fs1-3 fw2 ffqs">
-                            Payment Type :{" "}
-                            <span className="violet">Pay At Venue</span>
+                            Payment Type : Pay At Venue
                           </h4>
                         </div>
 
                         <div className="column is-4">
                           <h4 className="fs1-3 fw2 ffqs">
-                            Confirmation Code :{" "}
-                            <span className="violet">26989</span>
+                            Confirmation Code : 26989
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Booking Date :{" "}
-                            <span className="violet">21-08-2019</span>
+                            Booking Date : 21-08-2019
                           </h4>
                           <h4 className="fs1-3 fw2 ffqs">
-                            Booking Time :{" "}
-                            <span className="violet">03:10 PM</span>
+                            Booking Time : 03:10 PM
                           </h4>
                         </div>
                       </div>
                     </div>
 
-                    <a className="button is-large is-danger is-outlined is-fullwidth">
+                    <a
+                      className="button is-large is-danger is-outlined is-fullwidth"
+                      onClick={() => this.updateOrderModel(true)}
+                    >
                       VIEW DETAIL
                     </a>
                   </div>
@@ -170,6 +166,13 @@ export default class DetailTab extends React.Component {
               </div>
             </div>
           </div>
+
+          {this.state.orderOpen ? (
+            <OrderModel
+              orderOpen={this.state.orderOpen}
+              updateOrderModel={this.updateOrderModel}
+            />
+          ) : null}
         </section>
       </React.Fragment>
     );

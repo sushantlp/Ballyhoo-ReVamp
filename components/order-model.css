@@ -1,0 +1,35 @@
+.order-model-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.order-model-container .modal-card-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.order-model-container .fw2 {
+  font-weight: 200;
+}
+
+.order-model-container .mt2 {
+  margin-top: 2px;
+}
+
+.order-model-container .fs1-5 {
+  font-size: 1.5em;
+}
+
+.order-model-container .fs1-2 {
+  font-size: 1.2em;
+}
+
+.order-model-container .float-right {
+  float: right;
+}
+
+.order-model-container .violet {
+  background-color: #8376e8;
+  color: white;
+  border-radius: 4px;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+}
