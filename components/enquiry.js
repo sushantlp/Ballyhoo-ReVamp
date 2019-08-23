@@ -26,7 +26,7 @@ const Enquiry = props => {
                       <div className="field">
                         <label className="control is-expanded">
                           <input
-                            className="input is-medium"
+                            className="input is-large"
                             type="text"
                             placeholder="Aaron Swartz"
                           />
@@ -42,7 +42,7 @@ const Enquiry = props => {
                       <div className="field">
                         <label className="control is-expanded">
                           <input
-                            className="input is-medium"
+                            className="input is-large"
                             type="text"
                             placeholder="Open@Code"
                           />
@@ -58,7 +58,7 @@ const Enquiry = props => {
                       <div className="field">
                         <label className="control is-expanded">
                           <input
-                            className="input is-medium"
+                            className="input is-large"
                             type="number"
                             placeholder="+91"
                           />
@@ -290,7 +290,7 @@ const Enquiry = props => {
                       <div className="field">
                         <label className="control is-expanded">
                           <input
-                            className="input is-medium"
+                            className="input is-large"
                             type="number"
                             placeholder="Guests"
                           />
@@ -376,7 +376,7 @@ const Enquiry = props => {
                     </label>
 
                     <div className="field-body">
-                      <div className="field ">
+                      <div className="field">
                         <div className="control">
                           <textarea
                             className="textarea"

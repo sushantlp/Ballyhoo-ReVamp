@@ -29,7 +29,7 @@ const Explore = props => {
                           <div className="field">
                             <p className="control is-expanded">
                               <input
-                                className="input is-medium"
+                                className="input is-large"
                                 type="text"
                                 placeholder="Aaron Swartz"
                               />
@@ -50,7 +50,7 @@ const Explore = props => {
                           <div className="field">
                             <p className="control is-expanded">
                               <input
-                                className="input is-medium"
+                                className="input is-large"
                                 type="text"
                                 placeholder="Open@Code"
                               />
@@ -71,7 +71,7 @@ const Explore = props => {
                           <div className="field">
                             <p className="control is-expanded">
                               <input
-                                className="input is-medium"
+                                className="input is-large"
                                 type="number"
                                 placeholder="+91"
                               />

@@ -18,7 +18,7 @@
   text-align: center;
 }
 
-.detail-cart-container .ff {
+.detail-cart-container .ffqs {
   font-family: "Quicksand", sans-serif;
 }
 
@@ -36,4 +36,32 @@
 
 .detail-cart-container .sfc3 {
   color: #00d1b2;
+}
+
+.detail-cart-container .mb0 {
+  margin-bottom: 0;
+}
+
+.detail-cart-container .fs1-5 {
+  font-size: 1.5em;
+}
+
+.detail-cart-container .fs2 {
+  font-size: 2em;
+}
+
+.detail-cart-container .pl0-3 {
+  padding-left: 0.3em;
+}
+
+.detail-cart-container .pr0-3 {
+  padding-right: 0.3em;
+}
+
+.detail-cart-container .fw2 {
+  font-weight: 200;
+}
+
+.detail-cart-container .inline-block {
+  display: inline-block;
 }

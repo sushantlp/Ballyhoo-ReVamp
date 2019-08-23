@@ -1,6 +1,5 @@
 import "react-dates/initialize";
 
-// import { Accordion, Icon } from "semantic-ui-react";
 import moment from "moment-timezone";
 import { DateRangePicker } from "react-dates";
 
