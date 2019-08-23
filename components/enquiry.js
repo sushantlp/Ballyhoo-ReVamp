@@ -4,8 +4,9 @@ import DatePicker from "react-date-picker/dist/entry.nostyle";
 
 import "../node_modules/react-date-picker/dist/DatePicker.css";
 import "../node_modules/react-calendar/dist/Calendar.css";
-import "./enquiry.css";
 import "bulma-checkradio";
+
+import "./enquiry.css";
 
 const Enquiry = props => {
   const date = new Date();

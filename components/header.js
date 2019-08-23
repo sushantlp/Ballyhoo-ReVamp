@@ -2,7 +2,7 @@ import Link from "next/link";
 import Login from "./login";
 import Signup from "./signup";
 import Forget from "./forget";
-import Profile from "./profile";
+
 import "./header.css";
 
 export default class Header extends React.Component {

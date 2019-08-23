@@ -50,12 +50,15 @@
   font-size: 2em;
 }
 
-.detail-cart-container .pl0-3 {
-  padding-left: 0.3em;
+.detail-cart-container .fs1-7 {
+  font-size: 1.7em;
 }
 
 .detail-cart-container .pr0-3 {
-  padding-right: 0.3em;
+  padding-left: 0.3em;
+}
+.detail-cart-container .mr1-5 {
+  margin-left: 1.5em;
 }
 
 .detail-cart-container .fw2 {
@@ -64,4 +67,24 @@
 
 .detail-cart-container .inline-block {
   display: inline-block;
+}
+
+.detail-cart-container .cursor-pointer {
+  cursor: pointer;
+}
+
+.detail-cart-container .react-date-picker__wrapper {
+  height: 2.5em;
+}
+
+.detail-cart-container .react-time-picker__wrapper {
+  height: 2.5em;
+}
+
+.detail-cart-container .position-absolute {
+  position: absolute;
+}
+
+.detail-cart-container .mt0-2 {
+  margin-top: 0.2em;
 }
