@@ -1,0 +1,31 @@
+.checkout-right-container .fs1-4 {
+  font-size: 1.4em;
+}
+
+.checkout-right-container .fs1-2 {
+  font-size: 1.2em;
+}
+
+.checkout-right-container .fw2 {
+  font-weight: 200;
+}
+
+.checkout-right-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.checkout-right-container .border-bottom-solid {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.checkout-right-container .p0-5 {
+  padding: 0.5em;
+}
+
+.checkout-right-container .float-right {
+  float: right;
+}
+
+.checkout-right-container .border-top-dashed {
+  border-top: 1px dashed #e0e0e0;
+}

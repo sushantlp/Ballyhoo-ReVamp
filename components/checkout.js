@@ -1,0 +1,30 @@
+import { Segment } from "semantic-ui-react";
+
+import CheckoutRight from "./checkout-right";
+
+import "./checkout.css";
+
+const Checkout = props => {
+  return (
+    <div className="checkout-container">
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-8">
+              <Segment>
+                <div />
+              </Segment>
+            </div>
+            <div className="column is-4">
+              <Segment>
+                <CheckoutRight />
+              </Segment>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Checkout;
