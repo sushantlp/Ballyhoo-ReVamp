@@ -49,7 +49,7 @@ export default class DetailCart extends React.Component {
           top: this.state.scrolling ? "6em" : "0"
         }}
       >
-        <Segment>
+        <Segment style={{ borderTop: "4px solid #ff3860" }}>
           {/* <div className="columns">
             <div className="column is-4">
               <h4 className="ffqs fs1-5 fw2">Quantity :</h4>
@@ -88,8 +88,8 @@ export default class DetailCart extends React.Component {
             </div>
           </div>
 
-          <div className="box" style={{ overflow: "auto", maxHeight: "15em" }}>
-            <div className="box">
+          <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
+            <Segment>
               <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
               <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
                 Individual - Baby Kart
@@ -115,9 +115,9 @@ export default class DetailCart extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </Segment>
 
-            <div className="box">
+            <Segment>
               <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
               <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">Individual - Micro</h4>
               <div className="columns mt0-2">
@@ -141,7 +141,7 @@ export default class DetailCart extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </Segment>
 
             {/* <Segment>
               <h4 className="ffqs fs1-5 fw7 mt0-1 mb0-1">Go Karting</h4>
@@ -170,7 +170,7 @@ export default class DetailCart extends React.Component {
                 </div>
               </div>
             </Segment> */}
-          </div>
+          </Segment>
 
           <h4>
             <span className="ffqs fw2 f24">Total : </span>
