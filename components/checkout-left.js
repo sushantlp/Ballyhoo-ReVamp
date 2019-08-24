@@ -31,7 +31,7 @@ const CheckoutLeft = props => {
 
       <h4 className="fs1-4 ffqs fw2">Items Bought :</h4>
 
-      <Segment>
+      <Segment style={{ backgroundColor: "aliceblue" }}>
         <h4 className="ffqs fs1-5 fw2 m0">Go Karting</h4>
         <h4 className="ffqs fs1 fw2 mt0-5">Individual - Micro</h4>
         <div className="columns">
@@ -52,7 +52,7 @@ const CheckoutLeft = props => {
         </div>
       </Segment>
 
-      <Segment>
+      <Segment style={{ backgroundColor: "aliceblue" }}>
         <h4 className="ffqs fs1-5 fw2 m0">Go Karting</h4>
         <h4 className="ffqs fs1 fw2 mt0-5">Individual - Micro</h4>
         <div className="columns">
@@ -80,7 +80,7 @@ const CheckoutLeft = props => {
         <div className="field-body">
           <div className="field ">
             <div className="control">
-              <Segment>
+              <Segment style={{ backgroundColor: "aliceblue" }}>
                 <div className="field">
                   <input
                     className="is-checkradio is-danger"
