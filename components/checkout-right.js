@@ -33,6 +33,8 @@ const CheckoutRight = props => {
           </h4>
         </div>
       </div>
+
+      <a className="button cart-button ffqs">Place Order</a>
     </div>
   );
 };

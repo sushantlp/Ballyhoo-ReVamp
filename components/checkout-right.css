@@ -29,3 +29,14 @@
 .checkout-right-container .border-top-dashed {
   border-top: 1px dashed #e0e0e0;
 }
+
+.checkout-right-container .cart-button {
+  background-color: #ff3860;
+  color: white;
+  opacity: 1;
+  width: 17.2em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}

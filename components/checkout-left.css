@@ -1,0 +1,36 @@
+.checkout-left-container .fw2 {
+  font-weight: 200;
+}
+
+.checkout-left-container .fs1-5 {
+  font-size: 1.5em;
+}
+
+.checkout-left-container .fs1-2 {
+  font-size: 1.2em;
+}
+
+.checkout-left-container .fs1 {
+  font-size: 1em;
+}
+
+.checkout-left-container .fs2 {
+  font-size: 2em;
+  /* line-height: 56px; */
+}
+
+.checkout-left-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.checkout-left-container .border-bottom-solid {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.checkout-left-container .border-top-dashed {
+  border-top: 1px dashed #e0e0e0;
+}
+
+.checkout-left-container .float-right {
+  float: right;
+}

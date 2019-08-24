@@ -179,7 +179,7 @@ export default class DetailCart extends React.Component {
             </span>
           </h4>
 
-          <a className="button cart-button ff">Procced</a>
+          <a className="button cart-button ffqs">Procced</a>
           <p className="ffqs align">You won’t be charged yet</p>
         </Segment>
       </div>
