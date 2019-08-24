@@ -1,5 +1,8 @@
 import { Segment } from "semantic-ui-react";
+
+import "bulma-checkradio";
 import "./checkout-left.css";
+
 const CheckoutLeft = props => {
   return (
     <div className="checkout-left-container">
@@ -26,29 +29,92 @@ const CheckoutLeft = props => {
 
       <div className="border-top-dashed" />
 
-      <h4 className="fs1-2 ffqs fw2">Items Bought</h4>
+      <h4 className="fs1-4 ffqs fw2">Items Bought :</h4>
 
-      <div className="box">
-        <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
-        <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">Individual - Micro</h4>
-        <div className="columns mt0-2">
+      <Segment>
+        <h4 className="ffqs fs1-5 fw2 m0">Go Karting</h4>
+        <h4 className="ffqs fs1 fw2 mt0-5">Individual - Micro</h4>
+        <div className="columns">
           <div className="column is-6">
-            {" "}
-            <h4 className="fw2">
-              <span> &#8377;</span> 2,365
+            <h4 className="ffqs fw2 p0-5 fs1-2">
+              Price :
+              <span>
+                {" "}
+                <span> &#8377;</span> 2,365{" "}
+              </span>
             </h4>
           </div>
           <div className="column is-6">
-            <div className="float-right">
-              <span className="icon is-medium cursor-pointer">
-                <img src="https://img.icons8.com/ios/15/000000/minus.png" />
-              </span>
+            <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
+              Quanity :<span> 2</span>
+            </h4>
+          </div>
+        </div>
+      </Segment>
 
-              <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">2</span>
-
-              <span className="icon is-medium cursor-pointer">
-                <img src="https://img.icons8.com/ios/15/000000/plus.png" />
+      <Segment>
+        <h4 className="ffqs fs1-5 fw2 m0">Go Karting</h4>
+        <h4 className="ffqs fs1 fw2 mt0-5">Individual - Micro</h4>
+        <div className="columns">
+          <div className="column is-6">
+            <h4 className="ffqs fw2 p0-5 fs1-2">
+              Price :
+              <span>
+                {" "}
+                <span> &#8377;</span> 2,365{" "}
               </span>
+            </h4>
+          </div>
+          <div className="column is-6">
+            <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
+              Quanity :<span> 2</span>
+            </h4>
+          </div>
+        </div>
+      </Segment>
+
+      <div className="field">
+        <label className="label is-medium ffqs fw2 fs1-4">
+          Payment Options :
+        </label>
+        <div className="field-body">
+          <div className="field ">
+            <div className="control">
+              <Segment>
+                <div className="field">
+                  <input
+                    className="is-checkradio is-danger"
+                    id="online"
+                    type="radio"
+                    name="payment"
+                  />
+                  <label htmlFor="online" className="ffqs fw2 fs1-1">
+                    Online payment (Mobikwik, PayuMoney, PayzZapp)
+                  </label>
+
+                  <input
+                    className="is-checkradio is-danger"
+                    id="paytm"
+                    type="radio"
+                    name="payment"
+                    style={{ paddingLeft: "1em" }}
+                  />
+                  <label htmlFor="paytm" className="ffqs fw2 fs1-1">
+                    Paytm
+                  </label>
+
+                  <input
+                    className="is-checkradio is-danger"
+                    id="venue"
+                    type="radio"
+                    name="payment"
+                    style={{ paddingLeft: "1em" }}
+                  />
+                  <label htmlFor="venue" className="ffqs fw2 fs1-1">
+                    Pay At Venue
+                  </label>
+                </div>
+              </Segment>
             </div>
           </div>
         </div>

@@ -6,8 +6,16 @@
   font-size: 1.5em;
 }
 
+.checkout-left-container .fs1-4 {
+  font-size: 1.4em;
+}
+
 .checkout-left-container .fs1-2 {
   font-size: 1.2em;
+}
+
+.checkout-left-container .is-checkradio[type="radio"] + label {
+  font-size: 1.1em;
 }
 
 .checkout-left-container .fs1 {
@@ -33,4 +41,12 @@
 
 .checkout-left-container .float-right {
   float: right;
+}
+
+.checkout-left-container .m0 {
+  margin: 0;
+}
+
+.checkout-left-container .mt0-5 {
+  margin-top: 0.5em;
 }
