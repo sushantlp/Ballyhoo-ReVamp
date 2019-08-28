@@ -1,5 +1,10 @@
 import React from "react";
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import Link from "next/link";
+
+import fetch from "isomorphic-unfetch";
 
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
@@ -21,28 +26,36 @@ import Popular from "../components/popular";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
+import { getCityLocality } from "../actions/city-locality-action"
+
 class Index extends React.Component {
-  // static async getInitialProps({ req, res, query }) {
-  //   let stories;
-  //   let page;
+  static async getInitialProps(ctx) {
+    try {
+     
+      
+      // const { store, isServer, query } = ctx
 
-  //   try {
-  //     page = Number(query.page) || 1;
-  //     const response = await fetch(
-  //       `https://node-hnapi.herokuapp.com/news?page=${page}`
-  //     );
-  //     stories = await response.json();
-  //   } catch (err) {
-  //     console.log(err);
-  //     stories = [];
-  //   }
+      
+      // console.log(ctx.store)
+      const response = await fetch(
+        `https://ballyhoo.today/api/v4/web/city/locality`
+      );
+     
+       const json = await response.json();
+        
+       
+      //  ctx.store.dispatch({ type: 'CITY_LOCALITY', cityLocality: json});
+      ctx.store.dispatch(getCityLocality(json));
+    } catch (err) {
+      console.log(err);
+    }
 
-  //   return { page, stories };
-  // }
-
-  constructor(props) {
-    super(props);
+    return {};
   }
+
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     if ("serviceWorker" in navigator) {
@@ -58,12 +71,6 @@ class Index extends React.Component {
   }
 
   render() {
-    // const { stories, page } = this.props;
-
-    // if (stories.length === 0) {
-    //   return <Error statusCode={503} />;
-    // }
-
     const Hero = styled.div`
       width: 100%;
       color: #333;
@@ -94,4 +101,16 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+const mapDispatchToProps = dispatch => {
+  return {
+    getCityLocality: bindActionCreators(getCityLocality, dispatch),
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Index)
+
+
+

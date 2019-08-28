@@ -24,9 +24,9 @@ export default class Slidder extends React.Component {
       <React.Fragment>
         <section className="hero is-medium">
           <Slider {...settings}>
-            <img src="../static/1.jpg" alt="" className="carousel" />
-            <img src="../static/2.jpg" alt="" className="carousel" />
-            <img src="../static/4.jpg" alt="" className="carousel" />
+            <img src="https://cdn.getyourguide.com/img/tour_img-2170432-99.jpg" alt="" className="carousel" />
+            <img src="https://cdn.getyourguide.com/img/tour_img-1883442-99.jpg" alt="" className="carousel" />
+            <img src="https://cdn.getyourguide.com/img/tour_img-1883417-99.jpg" alt="" className="carousel" />
           </Slider>
         </section>
 
