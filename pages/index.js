@@ -31,22 +31,16 @@ import { getCityLocality } from "../actions/city-locality-action"
 class Index extends React.Component {
   static async getInitialProps(ctx) {
     try {
-     
-      
-      // const { store, isServer, query } = ctx
-
-      
-      // console.log(ctx.store)
+      const { store, isServer, query } = ctx
       const response = await fetch(
         `https://ballyhoo.today/api/v4/web/city/locality`
       );
      
-       const json = await response.json();
-        
-       
+      const json = await response.json(); 
       //  ctx.store.dispatch({ type: 'CITY_LOCALITY', cityLocality: json});
-      ctx.store.dispatch(getCityLocality(json));
+      store.dispatch(getCityLocality(json,"hello"));
     } catch (err) {
+      console.log("ERROR")
       console.log(err);
     }
 
@@ -85,7 +79,7 @@ class Index extends React.Component {
         <Head title="Home" />
         <Header />
         <SubHeader />
-        <Slidder />
+        <Slidder  cityLocality={this.props.cityLocality}/>
         <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
         <Discover />
         <Featured />
@@ -101,6 +95,12 @@ class Index extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    cityLocality: state.cityLocality
+  };
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
@@ -108,7 +108,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Index)
 

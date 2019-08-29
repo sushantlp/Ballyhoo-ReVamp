@@ -8,6 +8,7 @@ export default class Slidder extends React.Component {
   }
 
   render() {
+    console.log(this.props.cityLocality)
     const empty = [];
     const settings = {
       dots: true,
