@@ -73,10 +73,10 @@ export default class Trending extends React.Component {
       dots: false,
       infinite: true,
       slidesToShow: 4,
-      slidesToScroll: 1,
+      slidesToScroll: 4,
       className: "trending-slick",
-      centerMode: true,
-      centerPadding: "-1px",
+      // centerMode: true,
+      centerPadding: "13px",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
@@ -98,6 +98,7 @@ export default class Trending extends React.Component {
                   marginBottom: "1em"
                 }}
               >
+                
                 <Image
                   src="https://cdn-imgix.headout.com/tour/15250/TOUR-IMAGE/afd9d294-0065-4914-950f-42fb2c087afd-8541-dubai-dubai-frame-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
                   alt="image"
@@ -106,6 +107,17 @@ export default class Trending extends React.Component {
                     height: "210px"
                   }}
                 />
+
+                <div className="ribbon ribbon-top-left">
+                  <span>Featured</span>
+                </div>
+
+                <div className="ribbon ribbon-bottom-right">
+                  <span style={{ backgroundColor: "#ffdd57", color: "black" }}>
+                    Exculsive
+                  </span>
+                </div>
+
                 <Card.Content>
                   <Card.Header>
                     <span className="city-title">NEW YORK</span>
@@ -138,6 +150,13 @@ export default class Trending extends React.Component {
                     height: "210px"
                   }}
                 />
+
+                <div className="ribbon ribbon-top-left">
+                  <span>Featured</span>
+                </div>
+
+               
+
                 <Card.Content>
                   <Card.Header>
                     <span className="city-title">NEW YORK</span>
@@ -170,6 +189,13 @@ export default class Trending extends React.Component {
                     height: "210px"
                   }}
                 />
+
+                <div className="ribbon ribbon-bottom-right">
+                  <span style={{ backgroundColor: "#ffdd57", color: "black" }}>
+                    Exculsive
+                  </span>
+                </div>
+
                 <Card.Content>
                   <Card.Header>
                     <span className="city-title">NEW YORK</span>
