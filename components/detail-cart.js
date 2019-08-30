@@ -50,23 +50,7 @@ export default class DetailCart extends React.Component {
         }}
       >
         <Segment style={{ borderTop: "4px solid #ff3860" }}>
-          {/* <div className="columns">
-            <div className="column is-4">
-              <h4 className="ffqs fs1-5 fw2">Quantity :</h4>
-            </div>
-
-            <div className="column is-8">
-              <div>
-                <span className="icon is-medium cursor-pointer">
-                  <img src="https://img.icons8.com/ios/22/000000/minus.png" />
-                </span>
-                <span className="ffqs fs2 fw2 pl0-3 pr0-3">2</span>
-                <span className="icon is-medium cursor-pointer">
-                  <img src="https://img.icons8.com/ios/22/000000/plus.png" />
-                </span>
-              </div>
-            </div>
-          </div> */}
+    
 
           <div className="columns">
             <div className="column is-4">
@@ -88,7 +72,7 @@ export default class DetailCart extends React.Component {
             </div>
           </div>
 
-          <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
+          {/* <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
             <Segment>
               <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
               <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
@@ -143,34 +127,8 @@ export default class DetailCart extends React.Component {
               </div>
             </Segment>
 
-            {/* <Segment>
-              <h4 className="ffqs fs1-5 fw7 mt0-1 mb0-1">Go Karting</h4>
-              <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
-                Individual - Level 1 - 7 Bhp
-              </h4>
-              <div className="columns mt0-2">
-                <div className="column is-6">
-                  {" "}
-                  <h4 className="fw2">
-                    <span> &#8377;</span> 2,365
-                  </h4>
-                </div>
-                <div className="column is-6">
-                  <div className="float-right">
-                    <span className="icon is-medium cursor-pointer">
-                      <img src="https://img.icons8.com/ios/15/000000/minus.png" />
-                    </span>
-
-                    <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">3</span>
-
-                    <span className="icon is-medium cursor-pointer">
-                      <img src="https://img.icons8.com/ios/15/000000/plus.png" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Segment> */}
-          </Segment>
+        
+          </Segment> */}
 
           <h4>
             <span className="ffqs fw2 f24">Total : </span>

@@ -102,6 +102,7 @@
 }
 
 .detail-cart-container .react-date-picker__wrapper {
+  width: 11.2em;
   height: 2.5em;
 }
 
