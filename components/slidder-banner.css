@@ -1,0 +1,13 @@
+
+
+.slidder-banner-container .carousel {
+    background-size: cover;
+  }
+  
+  .slidder-banner-container .slick-list {
+    height: 25vh;
+  }
+
+  .slidder-banner-container {
+      margin-bottom: 1em
+  }

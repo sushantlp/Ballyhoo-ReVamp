@@ -19,7 +19,7 @@ import Discover from "../components/discover";
 import Featured from "../components/featured";
 import Trending from "../components/trending";
 import FoodBrewery from "../components/food-brewery";
-import HowItWork from "../components/how-it-work";
+import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Popular from "../components/popular";
@@ -80,7 +80,8 @@ class Index extends React.Component {
         <Header />
         <SubHeader />
         <Slidder  cityLocality={this.props.cityLocality}/>
-        <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" />
+        <SlidderBanner/>
+        {/* <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" /> */}
         <Discover />
         <Featured />
         <Popular />
