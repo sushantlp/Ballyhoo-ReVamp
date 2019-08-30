@@ -17,7 +17,7 @@ function SampleNextArrow(props) {
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
         right:"-4em",
-        top: "-5.6em",
+        top: "-7.5em",
         zIndex: "1"
       }}
       onClick={onClick}

@@ -8,6 +8,7 @@
 
 .overview-container .box {
   box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.1);
+  background-color: ghostwhite;
 }
 
 .overview-container .google {
@@ -146,8 +147,8 @@
 
 .menu-container .menu-image {
   border-width: 0.1em;
-  border-style: solid;
-  border-color: rgba(60, 59, 59, 1);
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.1);
   width: 100px;
   height: 120px;
 }
