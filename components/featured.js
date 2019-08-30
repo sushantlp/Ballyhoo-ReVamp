@@ -70,12 +70,12 @@ function SamplePrevArrow(props) {
 export default class Featured extends React.Component {
   render() {
     const settings = {
-      dots: false,
-      infinite: true,
+      dots: true,
+      infinite: false,
       slidesToShow: 4,
-      slidesToScroll: 1,
+      slidesToScroll: 4,
       className: "featured-slick",
-      centerMode: true,
+      // centerMode: true,
       centerPadding: "0px",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
