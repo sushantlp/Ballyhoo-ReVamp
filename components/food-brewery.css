@@ -1,19 +1,19 @@
 .box {
   /* width: 1200px; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   grid-gap: 15px;
   margin: 0 auto;
   box-shadow: none;
 }
 .box .card {
   position: relative;
-  width: 200px;
-  height: 160px;
+  width: 230px; 
+  height: 200px;
   background: #fff;
   margin: 0 auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  /* border-radius: 4px; */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
 }
 .box .card:before,
 .box .card:after {
@@ -39,9 +39,9 @@
 .box .card .imgBx {
   position: absolute;
   top: 1px;
-  left: 1px;
+  left: 2px;
   bottom: 1px;
-  right: 1px;
+  right: 2px;
   background: #222;
   transition: 0.5s;
   z-index: 1;
