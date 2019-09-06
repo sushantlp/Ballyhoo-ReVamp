@@ -54,12 +54,7 @@ export default class Slidder extends React.Component {
     return (
       <React.Fragment>
         <section className="hero is-medium">
-          <Slider {...settings}>
-            {this.slidderImageArray(homeScreen)}
-            {/* <img src="https://cdn.getyourguide.com/img/tour_img-2170432-99.jpg" alt="" className="carousel" />
-            <img src="https://cdn.getyourguide.com/img/tour_img-1883442-99.jpg" alt="" className="carousel" />
-            <img src="https://cdn.getyourguide.com/img/tour_img-1883417-99.jpg" alt="" className="carousel" /> */}
-          </Slider>
+          <Slider {...settings}>{this.slidderImageArray(homeScreen)}</Slider>
         </section>
 
         <div className="Search">

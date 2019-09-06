@@ -1,4 +1,3 @@
-
 import Slider from "react-slick";
 
 import Spinner from "./spinner";
@@ -10,16 +9,22 @@ export default class SlidderBanner extends React.Component {
     super(props);
   }
 
-  render() {
+  bannerImageArray = json => {
+    return json.banner.map((image, key) => {
+      return <img src={image.img} alt="" className="carousel" key={key} />;
+    });
+  };
 
+  render() {
     if (
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
     )
       return <Spinner />;
-    
+
     if (this.props.homeScreen.homeScreen.banner.length === 0) return null;
 
+    const homeScreen = this.props.homeScreen.homeScreen;
     const settings = {
       dots: true,
       infinite: true,
@@ -34,11 +39,8 @@ export default class SlidderBanner extends React.Component {
     return (
       <div className="slidder-banner-container">
         <section>
-        <div className="container">
-          <Slider {...settings}>
-            <img src="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" alt="" className="carousel" />
-            <img src="https://img.traveltriangle.com/attachments/pictures/847253/original/family.jpg?tr=w-1366,h-305" alt="" className="carousel" />
-        </Slider>
+          <div className="container">
+            <Slider {...settings}>{this.bannerImageArray(homeScreen)}</Slider>
           </div>
         </section>
       </div>
