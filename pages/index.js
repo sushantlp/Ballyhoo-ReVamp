@@ -91,16 +91,15 @@ class Index extends React.Component {
         <Head title="Home" />
         <Header />
         <SubHeader />
-        <Slidder  cityLocality={this.props.cityLocality}/>
-        <SlidderBanner/>
-        {/* <Banner image="https://img.traveltriangle.com/public-product/mkt/honeymoon+small.jpg?tr=w-1000,h-120px" /> */}
-        <Discover />
-        <Featured />
-        <Popular />
-        <Trending />
-        <FoodBrewery />
+        <Slidder cityLocality={this.props.cityLocality} homeScreen={this.props.homeScreen}/>
+        <SlidderBanner homeScreen={this.props.homeScreen}/>
+        <Discover homeScreen={this.props.homeScreen}/>
+        <Featured homeScreen={this.props.homeScreen}/>
+        <Popular homeScreen={this.props.homeScreen}/>
+        <Trending homeScreen={this.props.homeScreen}/>
+        <FoodBrewery homeScreen={this.props.homeScreen}/>
         {/* <HowItWork /> */}
-        <Banner image="https://img.traveltriangle.com/public-product/mkt/generic+Large.jpg?tr=w-1000,h-300px" />
+        <Banner homeScreen={this.props.homeScreen} />
         <Headout />
         <Footer />
       </div>

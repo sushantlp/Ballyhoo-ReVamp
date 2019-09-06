@@ -1,6 +1,9 @@
-import Router from 'next/router'
+import Router from "next/router";
 import { Dropdown } from "semantic-ui-react";
 import Slider from "react-slick";
+
+import Spinner from "./spinner";
+
 import "./slidder.css";
 
 export default class Slidder extends React.Component {
@@ -9,20 +12,34 @@ export default class Slidder extends React.Component {
   }
 
   componentDidMount() {
-    console.log("INSIDE")
     // Router.push({
     //   pathname: '/detail/jp-nagar',
     //   asPath:'/detail/',
-    //   shallow: true 
+    //   shallow: true
     // })
   }
 
-  render() {
-    // console.log(this.props.cityLocality)
+  slidderImageArray = json => {
+    return json.carousel.map((image, key) => {
+      return <img src={image} alt="" className="carousel" key={key} />;
+    });
+  };
 
-   
+  render() {
+    if (
+      this.props.cityLocality.status === "START" ||
+      this.props.cityLocality.status === "FAIL"
+    )
+      return <Spinner />;
+
+    if (
+      this.props.homeScreen.status === "START" ||
+      this.props.homeScreen.status === "FAIL"
+    )
+      return <Spinner />;
 
     const empty = [];
+    const homeScreen = this.props.homeScreen.homeScreen;
     const settings = {
       dots: true,
       infinite: true,
@@ -38,9 +55,10 @@ export default class Slidder extends React.Component {
       <React.Fragment>
         <section className="hero is-medium">
           <Slider {...settings}>
-            <img src="https://cdn.getyourguide.com/img/tour_img-2170432-99.jpg" alt="" className="carousel" />
+            {this.slidderImageArray(homeScreen)}
+            {/* <img src="https://cdn.getyourguide.com/img/tour_img-2170432-99.jpg" alt="" className="carousel" />
             <img src="https://cdn.getyourguide.com/img/tour_img-1883442-99.jpg" alt="" className="carousel" />
-            <img src="https://cdn.getyourguide.com/img/tour_img-1883417-99.jpg" alt="" className="carousel" />
+            <img src="https://cdn.getyourguide.com/img/tour_img-1883417-99.jpg" alt="" className="carousel" /> */}
           </Slider>
         </section>
 

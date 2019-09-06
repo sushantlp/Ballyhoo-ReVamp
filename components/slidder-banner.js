@@ -1,5 +1,8 @@
 
 import Slider from "react-slick";
+
+import Spinner from "./spinner";
+
 import "./slidder-banner.css";
 
 export default class SlidderBanner extends React.Component {
@@ -8,6 +11,15 @@ export default class SlidderBanner extends React.Component {
   }
 
   render() {
+
+    if (
+      this.props.homeScreen.status === "START" ||
+      this.props.homeScreen.status === "FAIL"
+    )
+      return <Spinner />;
+    
+    if (this.props.homeScreen.homeScreen.banner.length === 0) return null;
+
     const settings = {
       dots: true,
       infinite: true,
@@ -16,7 +28,6 @@ export default class SlidderBanner extends React.Component {
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 3000,
-      
       fade: true
     };
 
