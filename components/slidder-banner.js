@@ -10,7 +10,7 @@ export default class SlidderBanner extends React.Component {
   }
 
   bannerImageArray = json => {
-    return json.banner.map((image, key) => {
+    return json.map((image, key) => {
       return <img src={image.img} alt="" className="carousel" key={key} />;
     });
   };
@@ -24,7 +24,7 @@ export default class SlidderBanner extends React.Component {
 
     if (this.props.homeScreen.homeScreen.banner.length === 0) return null;
 
-    const homeScreen = this.props.homeScreen.homeScreen;
+    const banner = this.props.homeScreen.homeScreen.banner;
     const settings = {
       dots: true,
       infinite: true,
@@ -40,7 +40,7 @@ export default class SlidderBanner extends React.Component {
       <div className="slidder-banner-container">
         <section>
           <div className="container">
-            <Slider {...settings}>{this.bannerImageArray(homeScreen)}</Slider>
+            <Slider {...settings}>{this.bannerImageArray(banner)}</Slider>
           </div>
         </section>
       </div>

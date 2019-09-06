@@ -20,7 +20,7 @@ export default class Slidder extends React.Component {
   }
 
   slidderImageArray = json => {
-    return json.carousel.map((image, key) => {
+    return json.map((image, key) => {
       return <img src={image} alt="" className="carousel" key={key} />;
     });
   };
@@ -39,7 +39,7 @@ export default class Slidder extends React.Component {
       return <Spinner />;
 
     const empty = [];
-    const homeScreen = this.props.homeScreen.homeScreen;
+    const carousel = this.props.homeScreen.homeScreen.carousel;
     const settings = {
       dots: true,
       infinite: true,
@@ -54,7 +54,7 @@ export default class Slidder extends React.Component {
     return (
       <React.Fragment>
         <section className="hero is-medium">
-          <Slider {...settings}>{this.slidderImageArray(homeScreen)}</Slider>
+          <Slider {...settings}>{this.slidderImageArray(carousel)}</Slider>
         </section>
 
         <div className="Search">
