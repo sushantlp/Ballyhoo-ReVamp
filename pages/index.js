@@ -27,24 +27,36 @@ import Footer from "../components/footer";
 import styled from "styled-components";
 
 import { getCityLocality } from "../actions/city-locality-action"
+import { getHomeScreen } from "../actions/home-screen-action"
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
+    let cityLocalityJson = []
+    let homeScreenJson = [];
     try {
       const { store, isServer, query } = ctx
-      const response = await fetch(
-        `https://ballyhoo.today/api/v4/web/city/locality`
+      
+      // City Locality API
+      cityLocalityJson = await fetch(
+        `http://3.83.29.184:8080/api/v9/web/city-list`
       );
-     
-      const json = await response.json(); 
-      //  ctx.store.dispatch({ type: 'CITY_LOCALITY', cityLocality: json});
-      store.dispatch(getCityLocality(json,"hello"));
+      cityLocalityJson = await cityLocalityJson.json(); 
+      
+      // Home Screen API
+      homeScreenJson = await fetch(
+        `http://3.83.29.184:8080/api/v9/web/home?city_id=1`
+      );
+      homeScreenJson = await homeScreenJson.json();
+      
+      store.dispatch(getHomeScreen(homeScreenJson));
+      store.dispatch(getCityLocality(cityLocalityJson));
+      
     } catch (err) {
       console.log("ERROR")
       console.log(err);
     }
 
-    return {};
+    return {cityLocalityJson, homeScreenJson};
   }
 
   // constructor(props) {
@@ -98,13 +110,15 @@ class Index extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cityLocality: state.cityLocality
+    cityLocality: state.cityLocality,
+    homeScreen: state.homeScreen
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
+    getHomeScreen: bindActionCreators(getHomeScreen, dispatch)
   }
 }
 

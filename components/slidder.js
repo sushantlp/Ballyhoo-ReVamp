@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import { Dropdown } from "semantic-ui-react";
 import Slider from "react-slick";
 import "./slidder.css";
@@ -7,8 +8,20 @@ export default class Slidder extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    console.log("INSIDE")
+    // Router.push({
+    //   pathname: '/detail/jp-nagar',
+    //   asPath:'/detail/',
+    //   shallow: true 
+    // })
+  }
+
   render() {
-    console.log(this.props.cityLocality)
+    // console.log(this.props.cityLocality)
+
+   
+
     const empty = [];
     const settings = {
       dots: true,

@@ -1,3 +1,4 @@
 import { combineReducers } from 'redux';
 import { cityLocality } from "./city-locality-reducer";
-export default combineReducers({cityLocality});
+import { homeScreen } from "./home-screen-reducer";
+export default combineReducers({cityLocality,homeScreen});
