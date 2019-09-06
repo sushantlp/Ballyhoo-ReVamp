@@ -82,7 +82,6 @@ export default class Featured extends React.Component {
     };
 
     return (
-      // <section className="section">
       <div className="container" style={{ marginBottom: "1em" }}>
         <div className="featured-container">
           <div className="featured-header-container">
@@ -182,7 +181,6 @@ export default class Featured extends React.Component {
           </Slider>
         </div>
       </div>
-      // </section>
     );
   }
 }

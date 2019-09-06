@@ -95,7 +95,7 @@ export default class Discover extends React.Component {
           <p
             style={{
               fontFamily: "Quicksand, sans-serif",
-              paddingLeft: "3.5em",
+              paddingLeft: "2em",
               paddingTop: "1em"
             }}
           >
