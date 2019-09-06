@@ -1,4 +1,5 @@
 const Banner = props => {
+  return null;
   return (
     <section className="hero is-small has-bg-img">
       <div className="hero-body">

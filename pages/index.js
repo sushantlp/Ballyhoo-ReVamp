@@ -1,6 +1,6 @@
 import React from "react";
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ import Slidder from "../components/slidder";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
 import Trending from "../components/trending";
-import FoodBrewery from "../components/food-brewery";
+import Collection from "../components/collection";
 import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
@@ -26,37 +26,36 @@ import Popular from "../components/popular";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
-import { getCityLocality } from "../actions/city-locality-action"
-import { getHomeScreen } from "../actions/home-screen-action"
+import { getCityLocality } from "../actions/city-locality-action";
+import { getHomeScreen } from "../actions/home-screen-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
-    let cityLocalityJson = []
+    let cityLocalityJson = [];
     let homeScreenJson = [];
     try {
-      const { store, isServer, query } = ctx
-      
+      const { store, isServer, query } = ctx;
+
       // City Locality API
       cityLocalityJson = await fetch(
         `http://3.83.29.184:8080/api/v9/web/city-list`
       );
-      cityLocalityJson = await cityLocalityJson.json(); 
-      
+      cityLocalityJson = await cityLocalityJson.json();
+
       // Home Screen API
       homeScreenJson = await fetch(
         `http://3.83.29.184:8080/api/v9/web/home?city_id=1`
       );
       homeScreenJson = await homeScreenJson.json();
-      
+
       store.dispatch(getHomeScreen(homeScreenJson));
       store.dispatch(getCityLocality(cityLocalityJson));
-      
     } catch (err) {
-      console.log("ERROR")
+      console.log("ERROR");
       console.log(err);
     }
 
-    return {cityLocalityJson, homeScreenJson};
+    return { cityLocalityJson, homeScreenJson };
   }
 
   // constructor(props) {
@@ -91,14 +90,16 @@ class Index extends React.Component {
         <Head title="Home" />
         <Header />
         <SubHeader />
-        <Slidder cityLocality={this.props.cityLocality} homeScreen={this.props.homeScreen}/>
-        <SlidderBanner homeScreen={this.props.homeScreen}/>
-        <Discover homeScreen={this.props.homeScreen}/>
-        <Featured homeScreen={this.props.homeScreen}/>
-        <Popular homeScreen={this.props.homeScreen}/>
-        <Trending homeScreen={this.props.homeScreen}/>
-        <FoodBrewery homeScreen={this.props.homeScreen}/>
-        {/* <HowItWork /> */}
+        <Slidder
+          cityLocality={this.props.cityLocality}
+          homeScreen={this.props.homeScreen}
+        />
+        <SlidderBanner homeScreen={this.props.homeScreen} />
+        <Discover homeScreen={this.props.homeScreen} />
+        <Featured homeScreen={this.props.homeScreen} />
+        <Popular homeScreen={this.props.homeScreen} />
+        <Trending homeScreen={this.props.homeScreen} />
+        <Collection homeScreen={this.props.homeScreen} />
         <Banner homeScreen={this.props.homeScreen} />
         <Headout />
         <Footer />
@@ -112,19 +113,16 @@ const mapStateToProps = state => {
     cityLocality: state.cityLocality,
     homeScreen: state.homeScreen
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getHomeScreen: bindActionCreators(getHomeScreen, dispatch)
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Index)
-
-
-
+)(Index);

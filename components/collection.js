@@ -1,9 +1,5 @@
 import Slider from "react-slick";
-import { Image } from "semantic-ui-react";
-
-import Spinner from "./spinner";
-
-import "./featured.css";
+import "./collection.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -19,7 +15,8 @@ function SampleNextArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
-        top: "-10.6em",
+        right: "-4em",
+        top: "-7.5em",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -51,7 +48,7 @@ function SamplePrevArrow(props) {
         position: "relative",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-        top: "11.8em",
+        top: "8em",
         float: "left",
         zIndex: "1"
       }}
@@ -70,27 +67,54 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default class Featured extends React.Component {
+export default class FoodBrewery extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      settings: {
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        className: "trending-slick",
+        // centerPadding: "13px",
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />
+      }
+    };
   }
 
-  featuredArray = json => {
-    return json.map((featured, key) => {
+  innerCollection = json => {
+    return json.map((item, key) => {
       return (
-        <div className="featured-slider" key={key}>
-          <Image
-            src={featured.img}
-            size="large"
-            style={{
-              // boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-              width: "230px",
-              height: "330px",
-              borderWidth: "0.1em",
-              borderStyle: "solid",
-              borderColor: "rgba(60,59,59,1)"
-            }}
-          />
+        <div className="card" key={key}>
+          <div className="imgBx">
+            <img src={item.img} alt="images" />
+          </div>
+          <div className="details">
+            <h2>{item.title}</h2>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  collectionArray = json => {
+    return json.map((collection, key) => {
+      return (
+        <div className="container" key={key}>
+          <div className="food-brewery-container">
+            <div className="food-brewery-header-container">
+              <h2 className="food-brewery-header">{collection.title}</h2>
+              <div className="underscore" />
+            </div>
+
+            <div className="box">
+              <Slider {...this.state.settings}>
+                {this.innerCollection(collection.collection_items)}
+              </Slider>
+            </div>
+          </div>
         </div>
       );
     });
@@ -101,34 +125,10 @@ export default class Featured extends React.Component {
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
     )
-      return <Spinner />;
+      return <div />;
 
-    if (this.props.homeScreen.homeScreen.featured.length === 0) return null;
+    const collection = this.props.homeScreen.homeScreen.collection;
 
-    const featured = this.props.homeScreen.homeScreen.featured;
-
-    const settings = {
-      dots: true,
-      infinite: false,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      className: "featured-slick",
-      // centerMode: true,
-      centerPadding: "0px",
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
-    };
-
-    return (
-      <div className="container" style={{ marginBottom: "1em" }}>
-        <div className="featured-container">
-          <div className="featured-header-container">
-            <h2 className="featured-header">Featured</h2>
-            <div className="underscore" />
-          </div>
-          <Slider {...settings}>{this.featuredArray(featured)}</Slider>
-        </div>
-      </div>
-    );
+    return <div>{this.collectionArray(collection)}</div>;
   }
 }

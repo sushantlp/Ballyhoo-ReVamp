@@ -27,13 +27,12 @@
   font-size: 1.2em;
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
-  background-color:rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .t1 {
   width: 250px;
   height: 250px;
-  background: url("https://cdn-imgix.headout.com/category/1303/image/ed686051-e9b8-493c-b0a5-dc27c79a726c-1303.jpeg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -53,7 +52,6 @@
 .t2 {
   width: 250px;
   height: 250px;
-  background: url("https://cdn-imgix.headout.com/category/29/image/379e4fd4-3c83-43a4-b4e7-8422b0356867-NYCCityWalks.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
@@ -73,7 +71,6 @@
 .t3 {
   width: 250px;
   height: 250px;
-  background: url("//cdn-imgix.headout.com/category/20/image/50dd86bd-0af8-4fef-a334-94a699d3a67c-NYC101.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
@@ -93,7 +90,6 @@
 .t4 {
   width: 250px;
   height: 250px;
-  background: url("//cdn-imgix.headout.com/category/21/image/f083df8f-c083-4766-b496-bd67cb1199ad-NYCCruises.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
@@ -111,7 +107,6 @@
 .t5 {
   width: 250px;
   height: 250px;
-  background: url("https://cdn-imgix.headout.com/category/177/amsterdam/image/Amsterdam-Attractions.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
@@ -129,7 +124,6 @@
 .t6 {
   width: 250px;
   height: 250px;
-  background: url("https://cdn-imgix.headout.com/category/348/image/7a5e9926-9f14-45aa-b915-23c5bc9e1a17-hong-kong-attractions.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
@@ -147,7 +141,6 @@
 .t7 {
   width: 250px;
   height: 250px;
-  background: url("https://cdn-imgix.headout.com/category/24/image/66000036-0523-4859-87b7-83d628b8843c-BroadwayShowTickets.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
@@ -165,7 +158,6 @@
 .t8 {
   width: 250px;
   height: 250px;
-  background: url("https://cdn-imgix.headout.com/category/49/image/9bf7c5aa-9012-4687-9ada-ecf7ba26048a-49-las-vegas-aerial-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min");
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
