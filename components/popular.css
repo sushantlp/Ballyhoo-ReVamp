@@ -31,6 +31,23 @@
   bottom: 8px;
 }
 
+.tiletext-hover {
+  cursor: pointer;
+  background-color: black;
+  padding: 5px;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  margin-top: 190px;
+  -webkit-text-stroke: 0.01em black;
+  text-stroke: 0.01em black;
+  font-size: 1.2em;
+  font-weight: 700;
+  font-family: "Quicksand", sans-serif;
+  position: absolute;
+  bottom: 8px;
+}
+
 /* .tiletext:hover {
   background-color: black;
 } */
