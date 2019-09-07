@@ -6,12 +6,18 @@
   margin: 0 auto;
   box-shadow: none;
 }
+
+.box:hover {
+  cursor: pointer;
+}
+
 .box .card {
   position: relative;
   width: 230px;
   height: 230px;
-  background: #fff;
+  background: #ebebeb;
   margin: 0 auto;
+
   /* border-radius: 4px; */
   /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
 }
@@ -72,7 +78,7 @@
 .box .card .details h2 {
   margin: 0;
   padding: 0;
-  /* font-weight: 600; */
+  font-weight: 200;
   font-size: 15px;
   font-family: "Quicksand", sans-serif;
   color: #777;
