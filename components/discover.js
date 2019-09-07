@@ -1,8 +1,6 @@
 import Slider from "react-slick";
 import { Image } from "semantic-ui-react";
 
-import Spinner from "./spinner";
-
 import "./discover.css";
 
 function SampleNextArrow(props) {
@@ -111,7 +109,7 @@ export default class Discover extends React.Component {
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
     )
-      return <Spinner />;
+      return <div />;
 
     if (this.props.homeScreen.homeScreen.discover.length === 0) return null;
 

@@ -1,6 +1,6 @@
 import DetailTab from "./detail-tab";
 import DetailCart from "./detail-cart";
-import Trending from "./trending";
+import TrendingDetail from "./trending-detail";
 
 import "./parent-detail.css";
 
@@ -23,7 +23,7 @@ const ParentDetail = props => {
         </div>
       </section>
 
-      <Trending />
+      <TrendingDetail />
     </React.Fragment>
   );
 };

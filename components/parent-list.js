@@ -2,7 +2,7 @@ import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
 import Similar from "./similar";
-import Trending from "./trending";
+import TrendingList from "./trending-list";
 
 const ParentList = props => {
   return (
@@ -23,7 +23,7 @@ const ParentList = props => {
         </div>
       </section>
 
-      <Trending />
+      <TrendingList />
     </React.Fragment>
   );
 };

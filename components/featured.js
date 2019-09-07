@@ -1,8 +1,5 @@
 import Slider from "react-slick";
 import { Image } from "semantic-ui-react";
-
-import Spinner from "./spinner";
-
 import "./featured.css";
 
 function SampleNextArrow(props) {
@@ -101,7 +98,7 @@ export default class Featured extends React.Component {
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
     )
-      return <Spinner />;
+      return <div />;
 
     if (this.props.homeScreen.homeScreen.featured.length === 0) return null;
 

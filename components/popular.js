@@ -1,18 +1,23 @@
-import Spinner from "./spinner";
 import "./popular.css";
-// import { url } from "inspector";
 
 export default class Popular extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hover: false
+    };
   }
+
+  toggleHover = () => {
+    this.setState({ hover: !this.state.hover });
+  };
 
   render() {
     if (
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
     )
-      return <Spinner />;
+      return <div />;
 
     if (this.props.homeScreen.homeScreen.popular_escapes.length === 0)
       return null;
@@ -21,12 +26,10 @@ export default class Popular extends React.Component {
 
     return (
       <div className="container">
-        {/* <div className="discover-container"> */}
         <div className="popular-header-container">
           <h2 className="popular-header">Popular</h2>
           <div className="underscore" />
         </div>
-        {/* </div> */}
 
         <div className="popular_section">
           <div className="tilecontainer">
@@ -36,6 +39,8 @@ export default class Popular extends React.Component {
                 style={{
                   backgroundImage: `url(${popular[0].img})`
                 }}
+                onMouseEnter={this.toggleHover}
+                onMouseLeave={this.toggleHover}
               >
                 <p className="tiletext">{popular[0].title}</p>
               </div>
@@ -46,7 +51,9 @@ export default class Popular extends React.Component {
                   backgroundImage: `url(${popular[1].img})`
                 }}
               >
-                <p className="tiletext">{popular[1].title}</p>
+                <p className="tiletext" style={{ left: "10vh" }}>
+                  {popular[1].title}
+                </p>
               </div>
 
               <div
@@ -55,7 +62,9 @@ export default class Popular extends React.Component {
                   backgroundImage: `url(${popular[2].img})`
                 }}
               >
-                <p className="tiletext">{popular[2].title}</p>
+                <p className="tiletext" style={{ left: "10vh" }}>
+                  {popular[2].title}
+                </p>
               </div>
 
               <div
@@ -64,7 +73,9 @@ export default class Popular extends React.Component {
                   backgroundImage: `url(${popular[3].img})`
                 }}
               >
-                <p className="tiletext">{popular[3].title}</p>
+                <p className="tiletext" style={{ left: "20vh" }}>
+                  {popular[3].title}
+                </p>
               </div>
             </div>
 
@@ -75,7 +86,9 @@ export default class Popular extends React.Component {
                   backgroundImage: `url(${popular[4].img})`
                 }}
               >
-                <p className="tiletext">{popular[4].title}</p>
+                <p className="tiletext" style={{ left: "10vh" }}>
+                  {popular[4].title}
+                </p>
               </div>
 
               <div
@@ -84,7 +97,9 @@ export default class Popular extends React.Component {
                   backgroundImage: `url(${popular[5].img})`
                 }}
               >
-                <p className="tiletext">{popular[5].title}</p>
+                <p className="tiletext" style={{ left: "10vh" }}>
+                  {popular[5].title}
+                </p>
               </div>
 
               <div
@@ -93,7 +108,9 @@ export default class Popular extends React.Component {
                   backgroundImage: `url(${popular[6].img})`
                 }}
               >
-                <p className="tiletext">{popular[6].title}</p>
+                <p className="tiletext" style={{ left: "20vh" }}>
+                  {popular[6].title}
+                </p>
               </div>
               <div
                 className="column is-2 t8"

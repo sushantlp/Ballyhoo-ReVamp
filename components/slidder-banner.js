@@ -1,7 +1,4 @@
 import Slider from "react-slick";
-
-import Spinner from "./spinner";
-
 import "./slidder-banner.css";
 
 export default class SlidderBanner extends React.Component {
@@ -20,7 +17,7 @@ export default class SlidderBanner extends React.Component {
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
     )
-      return <Spinner />;
+      return <div />;
 
     if (this.props.homeScreen.homeScreen.banner.length === 0) return null;
 

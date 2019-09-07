@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import { Card, Image } from "semantic-ui-react";
 
-import "./trending.css";
+import "./trending-detail.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -70,73 +70,12 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default class Trending extends React.Component {
+export default class TrendingDetail extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  trendingArray = json => {
-    return json.map((trending, key) => {
-      return (
-        <div className="trending-card" key={key}>
-          <Card
-            raised
-            style={{
-              width: "250px",
-              height: "300px",
-              marginBottom: "1em"
-            }}
-          >
-            <Image
-              src={trending.img}
-              alt="image"
-              style={{
-                width: "250px",
-                height: "210px"
-              }}
-            />
-
-            {trending.offer_promoted === 1 ? (
-              <div className="ribbon ribbon-top-left">
-                <span>Featured</span>
-              </div>
-            ) : null}
-
-            {trending.offer_exclusive === 1 ? (
-              <div className="ribbon ribbon-bottom-right">
-                <span style={{ backgroundColor: "#ffdd57", color: "black" }}>
-                  Exculsive
-                </span>
-              </div>
-            ) : null}
-
-            <Card.Content>
-              <Card.Header>
-                <span className="city-title">{trending.offer_title}</span>
-              </Card.Header>
-
-              <a
-                className="product-title block"
-                href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
-              >
-                {trending.offer_description}
-              </a>
-            </Card.Content>
-          </Card>
-        </div>
-      );
-    });
-  };
-
   render() {
-    console.log(this.props.homeScreen);
-    if (
-      this.props.homeScreen.status === "START" ||
-      this.props.homeScreen.status === "FAIL"
-    )
-      return <div />;
-
-    const trending = this.props.homeScreen.homeScreen.trending_escapes;
     const settings = {
       dots: false,
       infinite: true,
@@ -150,15 +89,13 @@ export default class Trending extends React.Component {
 
     return (
       <div className="container">
-        <div className="trending-container">
-          <div className="trending-header-container">
-            <h2 className="trending-header">Trending</h2>
+        <div className="trending-detail-card">
+          <div className="trending-detail-header-container">
+            <h2 className="trending-detail-header">Trending</h2>
             <div className="underscore" />
           </div>
           <Slider {...settings}>
-            {this.trendingArray(trending)}
-
-            {/* <div className="trending-card">
+            <div className="trending-detail-card">
               <Card
                 raised
                 style={{
@@ -193,9 +130,9 @@ export default class Trending extends React.Component {
                   </a>
                 </Card.Content>
               </Card>
-            </div> */}
-            {/* 
-            <div className="trending-card">
+            </div>
+
+            <div className="trending-detail-card">
               <Card
                 raised
                 style={{
@@ -234,7 +171,7 @@ export default class Trending extends React.Component {
               </Card>
             </div>
 
-            <div className="trending-card">
+            <div className="trending-detail-card">
               <Card
                 raised
                 style={{
@@ -266,7 +203,7 @@ export default class Trending extends React.Component {
               </Card>
             </div>
 
-            <div className="trending-card">
+            <div className="trending-detail-card">
               <Card
                 raised
                 style={{
@@ -296,7 +233,7 @@ export default class Trending extends React.Component {
                   </a>
                 </Card.Content>
               </Card>
-            </div> */}
+            </div>
           </Slider>
         </div>
       </div>

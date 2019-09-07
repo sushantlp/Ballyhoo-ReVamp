@@ -17,12 +17,12 @@ import SubHeader from "../components/sub-header";
 import Slidder from "../components/slidder";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
-import Trending from "../components/trending";
+import Popular from "../components/popular";
 import Collection from "../components/collection";
+import Trending from "../components/trending";
 import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
-import Popular from "../components/popular";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
@@ -38,13 +38,13 @@ class Index extends React.Component {
 
       // City Locality API
       cityLocalityJson = await fetch(
-        `http://3.83.29.184:8080/api/v9/web/city-list`
+        `http://52.55.158.17:8080/api/v9/web/city-list`
       );
       cityLocalityJson = await cityLocalityJson.json();
 
       // Home Screen API
       homeScreenJson = await fetch(
-        `http://3.83.29.184:8080/api/v9/web/home?city_id=1`
+        `http://52.55.158.17:8080/api/v9/web/home?city_id=1`
       );
       homeScreenJson = await homeScreenJson.json();
 
