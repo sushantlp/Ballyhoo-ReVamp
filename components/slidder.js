@@ -14,8 +14,7 @@ export default class Slidder extends React.Component {
   componentDidMount() {
     // Router.push({
     //   pathname: '/detail/jp-nagar',
-    //   asPath:'/detail/',
-    //   shallow: true
+    //   query: { name: 'Zeit' }
     // })
   }
 

@@ -191,13 +191,13 @@
 /* @import url(https://fonts.googleapis.com/css?family=Lato:700); */
 
 /* common */
-.ribbon {
+.main-list-container .ribbon {
   width: 140px;
   height: 200px;
   overflow: hidden;
   position: absolute;
 }
-.ribbon::before,
+.main-list-container .ribbon::before,
 .ribbon::after {
   position: absolute;
   z-index: -1;
@@ -205,7 +205,7 @@
   display: block;
   border: 5px solid #2980b9;
 }
-.ribbon span {
+.main-list-container .ribbon span {
   position: absolute;
   display: block;
   width: 225px;
@@ -217,20 +217,20 @@
   font-family: "Quicksand", sans-serif;
 }
 
-.ribbon-top-left::before,
+.main-list-container .ribbon-top-left::before,
 .ribbon-top-left::after {
   border-top-color: transparent;
   border-left-color: transparent;
 }
-.ribbon-top-left::before {
+.main-list-container .ribbon-top-left::before {
   top: 0;
   right: 0;
 }
-.ribbon-top-left::after {
+.main-list-container .ribbon-top-left::after {
   bottom: 0;
   left: 0;
 }
-.ribbon-top-left span {
+.main-list-container .ribbon-top-left span {
   right: -2px;
   top: 20px;
   transform: rotate(-45deg);
@@ -285,25 +285,25 @@
 } */
 
 /* bottom right*/
-.ribbon-bottom-right {
+.main-list-container .ribbon-bottom-right {
   /* bottom: 10px; */
   /* right: -10px; */
   /* top: 15.5em; */
 }
-.ribbon-bottom-right::before,
+.main-list-container .ribbon-bottom-right::before,
 .ribbon-bottom-right::after {
   border-bottom-color: transparent;
   border-right-color: transparent;
 }
-.ribbon-bottom-right::before {
+.main-list-container .ribbon-bottom-right::before {
   bottom: 0;
   left: 0;
 }
-.ribbon-bottom-right::after {
+.main-list-container .ribbon-bottom-right::after {
   top: 0;
   right: 0;
 }
-.ribbon-bottom-right span {
+.main-list-container .ribbon-bottom-right span {
   left: -40px;
   top: 13em;
   /* bottom: 30px; */

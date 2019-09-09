@@ -38,13 +38,13 @@ class Index extends React.Component {
 
       // City Locality API
       cityLocalityJson = await fetch(
-        `http://35.175.148.150:8080/api/v9/web/city-list`
+        `http://18.208.135.38:8080/api/v9/web/city-list`
       );
       cityLocalityJson = await cityLocalityJson.json();
 
       // Home Screen API
       homeScreenJson = await fetch(
-        `http://35.175.148.150:8080/api/v9/web/home?city_id=1`
+        `http://18.208.135.38:8080/api/v9/web/home?city_id=1`
       );
       homeScreenJson = await homeScreenJson.json();
 
