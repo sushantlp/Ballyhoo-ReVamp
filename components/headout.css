@@ -106,5 +106,6 @@ picture {
 }
 
 .download-section .iphone-wrapper div.on-visible .image {
-  margin-left: 3em;
+   /* margin-left: 3em; */
+   right:7em;
 }

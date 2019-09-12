@@ -1,3 +1,5 @@
+export const host = "http://3.83.84.189:8080/";
+
 export const COUNTRY_CODE = [
   { name: "Afghanistan", dial_code: "+93", code: "AF" },
   { name: "Åland Islands", dial_code: "+358", code: "AX" },

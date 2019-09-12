@@ -11,6 +11,8 @@ import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { host } from "../constants";
+
 import Head from "../components/head";
 import Header from "../components/header";
 import SubHeader from "../components/sub-header";
@@ -37,15 +39,11 @@ class Index extends React.Component {
       const { store, isServer, query } = ctx;
 
       // City Locality API
-      cityLocalityJson = await fetch(
-        `http://18.208.135.38:8080/api/v9/web/city-list`
-      );
+      cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
 
       // Home Screen API
-      homeScreenJson = await fetch(
-        `http://18.208.135.38:8080/api/v9/web/home?city_id=1`
-      );
+      homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=1`);
       homeScreenJson = await homeScreenJson.json();
 
       store.dispatch(getHomeScreen(homeScreenJson));

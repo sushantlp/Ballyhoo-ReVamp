@@ -11,10 +11,10 @@ export default class Footer extends React.Component {
                 <a className="brand" href="/">
                   <div className="brand-icon">
                     <img
-                      style={{ width: "50px" }}
+                      // style={{ width: "50px" }}
                       alt="Ballyhoo"
                       role="presentation"
-                      src="https://getbedtimestories.com/assets/images/app-icon-df78e144.png?1553506572"
+                      src="https://res.cloudinary.com/dp67gawk6/image/upload/ar_1:1,b_rgb:f2f6fb,bo_5px_solid_rgb:ff0000,c_fill,g_auto,r_max,w_1000/v1568101757/BallyhooV3/WEB/2.jpg"
                     />
                   </div>
                   <div className="brand-content">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Slider from "react-slick";
 import { Image } from "semantic-ui-react";
 
@@ -76,30 +77,41 @@ export default class Discover extends React.Component {
   discoverArray = json => {
     return json.map((discover, key) => {
       return (
-        <div className="discover-slider" key={key}>
-          <Image
-            src={discover.img}
-            size="small"
-            circular
-            style={{
-              boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-              width: "150px",
-              height: "150px",
-              borderWidth: "0.11em",
-              borderStyle: "solid",
-              borderColor: "rgba(60,59,59,1)"
-            }}
-          />
-          <p
-            style={{
-              fontFamily: "Quicksand, sans-serif",
-              paddingLeft: "2em",
-              paddingTop: "1em"
-            }}
+        <Link
+          href="/list?slug=something"
+          as="/post/something"
+          key={key}
+          prefetch
+        >
+          <div
+            className="discover-slider"
+            key={key}
+            // onClick={() => this.onClickDiscover(discover)}
           >
-            {discover.title}
-          </p>
-        </div>
+            <Image
+              src={discover.img}
+              size="small"
+              circular
+              style={{
+                boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+                width: "150px",
+                height: "150px",
+                borderWidth: "0.11em",
+                borderStyle: "solid",
+                borderColor: "rgba(60,59,59,1)"
+              }}
+            />
+            <p
+              style={{
+                fontFamily: "Quicksand, sans-serif",
+                paddingLeft: "2em",
+                paddingTop: "1em"
+              }}
+            >
+              {discover.title}
+            </p>
+          </div>
+        </Link>
       );
     });
   };

@@ -11,13 +11,14 @@ const Headout = props => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="https://cdn-imgix.headout.com/assets/images/views/app-download/Apple-iPhone-7-Silver.png?auto=compress&amp;fm=webp&amp;w=345&amp;h=705&amp;crop=faces&amp;fit=min"
+                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-1.png"
                   />
                   <img
-                    src="https://cdn-imgix.headout.com/assets/images/views/app-download/Apple-iPhone-7-Silver.png?auto=compress&amp;fm=png&amp;w=345&amp;h=705&amp;crop=faces&amp;fit=min"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-1.png"
                     alt="iphone"
                     className="image"
-                    width="230"
+                    // width="230"
+                    width="400"
                     height="470"
                     format="png"
                   />
@@ -82,13 +83,13 @@ const Headout = props => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="https://cdn-imgix.headout.com/assets/images/views/app-download/Google-Pixel-Really-Blue.png?auto=compress&amp;fm=webp&amp;w=345&amp;h=705&amp;crop=faces&amp;fit=min"
+                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-2.png"
                   />
                   <img
-                    src="https://cdn-imgix.headout.com/assets/images/views/app-download/Google-Pixel-Really-Blue.png?auto=compress&amp;fm=png&amp;w=345&amp;h=705&amp;crop=faces&amp;fit=min"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-2.png"
                     alt="android"
                     className="image"
-                    width="230"
+                    width="400"
                     height="470"
                     format="png"
                   />
