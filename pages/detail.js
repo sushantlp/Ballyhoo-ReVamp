@@ -43,7 +43,7 @@ class Detail extends React.Component {
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <SubHeader />
+      
         <DetailSlider />
         <ParentDetail />
         <Headout />

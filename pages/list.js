@@ -41,7 +41,7 @@ class List extends React.Component {
       <div>
         <Head title="Home" />
         <Header />
-        <SubHeader />
+       
         <ParentList />
         <Headout />
         <Footer />

@@ -87,7 +87,6 @@ class Index extends React.Component {
       <div>
         <Head title="Home" />
         <Header />
-        <SubHeader />
         <Slidder
           cityLocality={this.props.cityLocality}
           homeScreen={this.props.homeScreen}
