@@ -9,7 +9,7 @@ const Search = props => {
       className="search-container"
       style={{
         backgroundImage:
-          "url('https://img.traveltriangle.com/attachments/pictures/843472/original/Kashmir-tour-packages-s.jpg?tr=w-1366,h-305')"
+          "url('https://res.cloudinary.com/dp67gawk6/image/upload/v1568281013/BallyhooV3/WEB/List-Image/3.jpg')"
 
         // overflow: "hidden"
       }}

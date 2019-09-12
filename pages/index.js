@@ -60,7 +60,7 @@ class Index extends React.Component {
   //   super(props);
   // }
 
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
