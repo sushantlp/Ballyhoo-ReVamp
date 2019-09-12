@@ -5,6 +5,12 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sushantlp/Ballyhoo-ReVamp.git"
+  },
+
+ 
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "bulma": "^0.7.5",
