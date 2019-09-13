@@ -1,17 +1,23 @@
 import { Dropdown } from "semantic-ui-react";
 import "./search.css";
 
-const Search = props => {
-  const empty = [];
+export default class Search extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      cityList: [],
+      cityName: "Bengaluru"
+    };
+  }
+
+  render() {
   return (
     <div
       className="search-container"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/dp67gawk6/image/upload/v1568281013/BallyhooV3/WEB/List-Image/3.jpg')"
-
-        // overflow: "hidden"
       }}
     >
       <section>
@@ -24,8 +30,8 @@ const Search = props => {
                 fluid
                 selection
                 style={{ height: "50px" }}
-                options={empty}
-                value={empty}
+                options={this.state.cityList}
+                value={this.state.cityList}
                 icon={
                   <img
                     src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
@@ -47,8 +53,8 @@ const Search = props => {
                 fluid
                 selection
                 style={{ height: "50px" }}
-                options={empty}
-                value={empty}
+                options={this.state.cityList}
+                value={this.state.cityList}
                 // onChange={}
                 icon={
                   <img
@@ -77,6 +83,6 @@ const Search = props => {
       </section>
     </div>
   );
+  }
 };
 
-export default Search;

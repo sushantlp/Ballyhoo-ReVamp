@@ -1,16 +1,15 @@
 import getQueryString from "./paramParser";
 
-
-const host = "https://ballyhoo.today/";
+import { host } from "../constants";
 
 export default {
-  cityLocalityApi: () => {
+  homeScreenApi: (cityId) => {
     return new Promise((resolve, reject) => {
-      fetch(host + "api/v4/web/city/locality")
+      fetch(`${host}api/v9/web/home?city_id=${cityId}`)
         .then(response => {
           response
             .json()
-            .then(cityLocality => resolve(cityLocality))
+            .then(homeScreen => resolve(homeScreen))
             .catch(error => console.log(error));
         })
         .catch(error => console.log(error));

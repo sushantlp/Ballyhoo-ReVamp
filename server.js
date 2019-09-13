@@ -50,8 +50,8 @@ app.prepare().then(() => {
   });
 
 
-  server.get("/post/:slug", (req, res) => {
-    return app.render(req, res, "/list", { slug: req.params.slug });
+  server.get("/:city", (req, res) => {
+    return app.render(req, res, "/", { city: req.params.city });
   });
 
   server.get("*", (req, res) => {

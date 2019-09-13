@@ -2,8 +2,6 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import Link from "next/link";
-
 import fetch from "isomorphic-unfetch";
 
 import "bulma/css/bulma.min.css";
@@ -29,7 +27,7 @@ import Footer from "../components/footer";
 import styled from "styled-components";
 
 import { getCityLocality } from "../actions/city-locality-action";
-import { getHomeScreen } from "../actions/home-screen-action";
+import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
@@ -37,7 +35,7 @@ class Index extends React.Component {
     let homeScreenJson = [];
     try {
       const { store, isServer, query } = ctx;
-
+  
       // City Locality API
       cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
@@ -73,6 +71,10 @@ class Index extends React.Component {
     }
   }
 
+  cityChangeApiCall = (cityId) => {
+    this.props.getHomeScreenApi(cityId);
+  };
+
   render() {
     const Hero = styled.div`
       width: 100%;
@@ -90,6 +92,7 @@ class Index extends React.Component {
         <Slidder
           cityLocality={this.props.cityLocality}
           homeScreen={this.props.homeScreen}
+          cityChangeApiCall={this.cityChangeApiCall}
         />
         <SlidderBanner homeScreen={this.props.homeScreen} />
         <Discover homeScreen={this.props.homeScreen} />
@@ -115,7 +118,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
-    getHomeScreen: bindActionCreators(getHomeScreen, dispatch)
+    getHomeScreen: bindActionCreators(getHomeScreen, dispatch),
+    getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch),
   };
 };
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Router from 'next/router'
 import Slider from "react-slick";
 import { Image } from "semantic-ui-react";
 
@@ -74,19 +75,32 @@ export default class Discover extends React.Component {
     super(props);
   }
 
+  onClickDiscover = (discover) => {
+
+    
+    console.log(discover)
+  //   const id = 1;
+  //   Router.push({
+  //     pathname: '/list',
+  //     query: { slug: id }
+      
+  // }, '' + id);
+
+  }
+
   discoverArray = json => {
     return json.map((discover, key) => {
       return (
-        <Link
-          href="/list?slug=something"
-          as="/post/something"
-          key={key}
-          prefetch
-        >
+        // <Link
+        //   href="/list?slug=something"
+        //   as="/something"
+        //   key={key}
+        //   prefetch
+        // >
           <div
             className="discover-slider"
             key={key}
-            // onClick={() => this.onClickDiscover(discover)}
+            onClick={() => this.onClickDiscover(discover)}
           >
             <Image
               src={discover.img}
@@ -111,7 +125,7 @@ export default class Discover extends React.Component {
               {discover.title}
             </p>
           </div>
-        </Link>
+        // </Link>
       );
     });
   };
@@ -148,7 +162,7 @@ export default class Discover extends React.Component {
           <div>
             <Slider {...settings}>
               {this.discoverArray(discover)}
-              <div />
+              <div/>
             </Slider>
           </div>
         </div>

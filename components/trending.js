@@ -129,7 +129,7 @@ export default class Trending extends React.Component {
   };
 
   render() {
-    console.log(this.props.homeScreen);
+   
     if (
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
