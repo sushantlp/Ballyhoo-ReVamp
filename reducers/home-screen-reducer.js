@@ -1,7 +1,7 @@
 import { actionType } from "../actions/home-screen-action";
 
 const initialState = {
-  homeScreen: {},
+  homeScreen: [],
   status: "START",
   msg: ""
 };
@@ -19,7 +19,7 @@ export function homeScreen(state = initialState, action) {
       } else {
         return {
           ...state,
-          homeScreen: {},
+          homeScreen: [],
           status: "FAIL",
           msg: action.homeScreen.message
         };

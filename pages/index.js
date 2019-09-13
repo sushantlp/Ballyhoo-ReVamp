@@ -34,8 +34,8 @@ class Index extends React.Component {
     let cityLocalityJson = [];
     let homeScreenJson = [];
     try {
-      const { store, isServer, query } = ctx;
-  
+      const { store, isServer, query, res } = ctx;
+      
       // City Locality API
       cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
@@ -43,9 +43,13 @@ class Index extends React.Component {
       // Home Screen API
       homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=1`);
       homeScreenJson = await homeScreenJson.json();
-
+   
       store.dispatch(getHomeScreen(homeScreenJson));
       store.dispatch(getCityLocality(cityLocalityJson));
+
+    //   if(isServer) { res.redirect('/bengaluru'); }
+    //  else Router.push('/bengaluru');
+
     } catch (err) {
       console.log("ERROR");
       console.log(err);

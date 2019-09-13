@@ -8,7 +8,7 @@ import "./slidder.css";
 
 export default class Slidder extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       cityList: [],
       cityName: "Bengaluru"
@@ -17,17 +17,18 @@ export default class Slidder extends React.Component {
 
   UNSAFE_componentWillMount() {
     console.log("UNSAFE_componentWillMount")
-    if (this.props.cityLocality.cityLocality.length !== 0)
-    this.createCityList(this.props.cityLocality.cityLocality, "Bengaluru");
+    // console.log(this.props.cityLocality.cityLocality)
+  
   }
 
-  UNSAFE_componentDidMount() {
-    console.log("UNSAFE_componentDidMount")
+  componentDidMount() {
+     if (this.props.cityLocality.cityLocality.length !== 0)
+     this.createCityList(this.props.cityLocality.cityLocality, "Bengaluru");
+     Router.push({ pathname: '/', query: { city: "bengaluru"}},  'bengaluru');
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.cityLocality !== nextProps.cityLocality) {
-      console.log("Inside")
       this.createCityList(nextProps.cityLocality.cityLocality, "Bengaluru");
     }
   }
@@ -88,8 +89,8 @@ export default class Slidder extends React.Component {
     )
       return <Spinner />;
     
-      Router.push({ pathname: '/', query: { city: "bengaluru"}}, { shallow: true }, 'bengaluru');
-      
+    
+
     const empty = [];
     const carousel = this.props.homeScreen.homeScreen.carousel;
     const settings = {

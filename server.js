@@ -62,11 +62,11 @@ app.prepare().then(() => {
   server.use(`/static`, express.static("static"));
   server.use(handle);
 
-  server.listen(4000, err => {
+  server.listen(5000, err => {
     if (err) {
       throw err;
     }
-    console.log(`> Ready on http://localhost:4000`);
+    console.log(`> Ready on http://localhost:5000`);
   });
 
   // http
