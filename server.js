@@ -54,6 +54,10 @@ app.prepare().then(() => {
     return app.render(req, res, "/", { city: req.params.city });
   });
 
+  server.get("/:city/:city_id", (req, res) => {
+    return app.render(req, res, "/", { city: req.params.city, city_id: req.params.city_id });
+  });
+
   server.get("*", (req, res) => {
     return handle(req, res);
   });

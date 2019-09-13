@@ -47,9 +47,6 @@ class Index extends React.Component {
       store.dispatch(getHomeScreen(homeScreenJson));
       store.dispatch(getCityLocality(cityLocalityJson));
 
-    //   if(isServer) { res.redirect('/bengaluru'); }
-    //  else Router.push('/bengaluru');
-
     } catch (err) {
       console.log("ERROR");
       console.log(err);
@@ -62,7 +59,7 @@ class Index extends React.Component {
   //   super(props);
   // }
 
-  UNSAFE_componentDidMount() {
+  componentDidMount() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")

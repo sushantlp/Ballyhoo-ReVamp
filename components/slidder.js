@@ -15,26 +15,47 @@ export default class Slidder extends React.Component {
     };
   }
 
-  UNSAFE_componentWillMount() {
-    console.log("UNSAFE_componentWillMount")
-    // console.log(this.props.cityLocality.cityLocality)
+  // UNSAFE_componentWillMount() {
   
-  }
+  // }
 
   componentDidMount() {
-     if (this.props.cityLocality.cityLocality.length !== 0)
-     this.createCityList(this.props.cityLocality.cityLocality, "Bengaluru");
-     Router.push({ pathname: '/', query: { city: "bengaluru"}},  'bengaluru');
+     if (this.props.cityLocality.cityLocality.length !== 0) {
+      const { city, city_id } = Router.router.query
+      if (city !== undefined && city_id !== undefined ) {
+        const bunch = this.props.cityLocality.cityLocality.filter(obj => {
+          return parseInt(obj.city_id, 10) === parseInt(city_id,10)
+        });
+
+        this.createCityList(this.props.cityLocality.cityLocality);
+
+        if (bunch.length === 0) {
+          this.setCityName("Bengaluru");
+          Router.push({ pathname: '/', query: { city: "bengaluru", city_id: 1}}, `bengaluru/${1}`);
+        } else {
+          const city = bunch[0].city_name.replace(/ /g, "-").toLowerCase();
+          this.setCityName(bunch[0].city_name);
+          Router.replace({ pathname: '/', query: { city: city, city_id: bunch[0].city_id}}, `${city}/${bunch[0].city_id}`);
+        } 
+      } else {
+      this.createCityList(this.props.cityLocality.cityLocality);
+      this.setCityName("Bengaluru");
+      Router.push({ pathname: '/', query: { city: "bengaluru", city_id: 1}}, `bengaluru/${1}`);
+      }
+     }
+
+     
+   
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.cityLocality !== nextProps.cityLocality) {
       this.createCityList(nextProps.cityLocality.cityLocality, "Bengaluru");
     }
   }
 
   // Create City List
-  createCityList = (props, cityName) => {
+  createCityList = (props) => {
     const cityArray = props.map(obj => {
       const city = {};
       city.key = obj.city_id;
@@ -43,9 +64,7 @@ export default class Slidder extends React.Component {
       return city;
     });
 
-    // sessionStorage.setItem("CITY_LOCALITY", JSON.stringify(props));
-
-    this.setCityName(cityName, 1);
+    sessionStorage.setItem("CITY_LOCALITY", JSON.stringify(props));
     this.setState({
       cityList: cityArray
     });

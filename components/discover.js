@@ -79,7 +79,19 @@ export default class Discover extends React.Component {
 
     
     console.log(discover)
-  //   const id = 1;
+
+    if (parseInt(discover.response_type,10) === 1) 
+      sessionStorage.setItem("F&B", JSON.stringify({api_type : discover.api_type, key : discover.key, response_type : discover.response_type}));
+    else if (parseInt(discover.response_type,10) === 2)
+    sessionStorage.setItem("EVENT", JSON.stringify({api_type : discover.api_type, key : discover.key, response_type : discover.response_type}));
+    else if (parseInt(discover.response_type,10) === 3)
+    sessionStorage.setItem("ACTIVITY", JSON.stringify({api_type : discover.api_type, key : discover.key, response_type : discover.response_type}));
+    else if (parseInt(discover.response_type,10) === 2)
+    sessionStorage.setItem("ESCAPE", JSON.stringify({api_type : discover.api_type, key : discover.key, response_type : discover.response_type}));
+    else 
+    sessionStorage.setItem("SALOON", JSON.stringify({api_type : discover.api_type, key : discover.key, response_type : discover.response_type}));
+  
+    //   const id = 1;
   //   Router.push({
   //     pathname: '/list',
   //     query: { slug: id }

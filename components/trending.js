@@ -77,6 +77,12 @@ export default class Trending extends React.Component {
 
   trendingArray = json => {
     return json.map((trending, key) => {
+
+      let description = trending.offer_description;
+      if (description.length >= 60) {
+        description = description.slice(0, 60) + ' ...';
+      }
+
       return (
         <div className="trending-card" key={key}>
           <Card
@@ -119,7 +125,7 @@ export default class Trending extends React.Component {
                 className="product-title block"
                 href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
               >
-                {trending.offer_description}
+                {description}
               </a>
             </Card.Content>
           </Card>
@@ -137,6 +143,7 @@ export default class Trending extends React.Component {
       return <div />;
 
     const trending = this.props.homeScreen.homeScreen.trending_escapes;
+    if (trending.length === 0) return <div/>
     const settings = {
       dots: false,
       infinite: true,
@@ -155,7 +162,7 @@ export default class Trending extends React.Component {
             <h2 className="trending-header">Trending</h2>
             <div className="underscore" />
           </div>
-          <Slider {...settings}>{this.trendingArray(trending)}</Slider>
+          <Slider {...settings}>{this.trendingArray(trending)} </Slider>
         </div>
       </div>
     );

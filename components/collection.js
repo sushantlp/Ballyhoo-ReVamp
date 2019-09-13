@@ -75,9 +75,8 @@ export default class FoodBrewery extends React.Component {
         dots: false,
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 1,
         className: "trending-slick",
-        // centerPadding: "13px",
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
       }
