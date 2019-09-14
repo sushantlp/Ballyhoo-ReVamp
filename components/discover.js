@@ -125,6 +125,14 @@ export default class Discover extends React.Component {
       );
 
     const { city, city_id } = Router.router.query;
+    const title = discover.title.replace(/ /g, "-").toLowerCase();
+    Router.replace(
+      {
+        pathname: "/list",
+        query: { city: city, title: title, city_id: city_id }
+      },
+      `/${city}/${title}/${city_id}`
+    );
 
     //   const id = 1;
     //   Router.push({

@@ -46,6 +46,14 @@ app
       });
     });
 
+    server.get("/:city/:title/:city_id", (req, res) => {
+      return app.render(req, res, "/list", {
+        city: req.params.city,
+        title: req.param.title,
+        city_id: req.params.city_id
+      });
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
@@ -54,11 +62,11 @@ app
     server.use(`/static`, express.static("static"));
     server.use(handle);
 
-    server.listen(5000, err => {
+    server.listen(4000, err => {
       if (err) {
         throw err;
       }
-      console.log(`> Ready on http://localhost:5000`);
+      console.log(`> Ready on http://localhost:4000`);
     });
 
     // http
