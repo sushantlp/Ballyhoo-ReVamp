@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
@@ -14,10 +13,7 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 
 class List extends React.Component {
-  static async getInitialProps(ctx) {
-
- 
-  }
+  static async getInitialProps(ctx) {}
 
   constructor(props) {
     super(props);

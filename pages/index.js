@@ -34,19 +34,21 @@ class Index extends React.Component {
     let cityLocalityJson = [];
     let homeScreenJson = [];
     try {
-      const { store, isServer, query, res } = ctx;
-      
+      const { store, isServer, req } = ctx;
+
+      let cityId = 1;
+      if (req.params.city_id !== undefined) cityId = req.params.city_id;
+
       // City Locality API
       cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
 
       // Home Screen API
-      homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=1`);
+      homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=${cityId}`);
       homeScreenJson = await homeScreenJson.json();
-   
+
       store.dispatch(getHomeScreen(homeScreenJson));
       store.dispatch(getCityLocality(cityLocalityJson));
-
     } catch (err) {
       console.log("ERROR");
       console.log(err);
@@ -54,10 +56,6 @@ class Index extends React.Component {
 
     return { cityLocalityJson, homeScreenJson };
   }
-
-  // constructor(props) {
-  //   super(props);
-  // }
 
   componentDidMount() {
     if ("serviceWorker" in navigator) {
@@ -72,7 +70,7 @@ class Index extends React.Component {
     }
   }
 
-  cityChangeApiCall = (cityId) => {
+  cityChangeApiCall = cityId => {
     this.props.getHomeScreenApi(cityId);
   };
 
@@ -120,7 +118,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getHomeScreen: bindActionCreators(getHomeScreen, dispatch),
-    getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch),
+    getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch)
   };
 };
 
