@@ -1,31 +1,66 @@
+import Router from "next/router";
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
 import Similar from "./similar";
 import TrendingList from "./trending-list";
 
-const ParentList = props => {
-  return (
-    <React.Fragment>
-      <Search />
-      <section className="section">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-3">
-              <Filter scrolling={props.scrolling} />
+class ParentList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      response_type: 1,
+      page: 1,
+      cityId: 1
+    };
+  }
 
-              {/* <Similar /> */}
-            </div>
-            <div className="column is-8 is-offset-1">
-              <MainList />
+  componentDidMount() {
+    const { secret } = Router.router.query;
+    let slice = [];
+
+    // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
+    if (this.props.routeParam.length === 0) slice = secret.split("-");
+    else slice = this.props.routeParam.secret.split("-");
+
+    if (slice.length < 5) Router.push("/");
+
+    this.setState({
+      response_type: slice[3],
+      page: slice[4],
+      cityId: slice[0]
+    });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Search
+          cityLocality={this.props.cityLocality}
+          parentListState={this.state}
+        />
+        <section className="section">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-3">
+                <Filter scrolling={this.props.scrolling} />
+
+                {/* <Similar /> */}
+              </div>
+              <div className="column is-8 is-offset-1">
+                <MainList
+                  listData={this.props.listData}
+                  parentListState={this.state}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <TrendingList />
-    </React.Fragment>
-  );
-};
+        <TrendingList />
+      </React.Fragment>
+    );
+  }
+}
 
 export default ParentList;

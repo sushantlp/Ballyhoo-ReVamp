@@ -56,3 +56,7 @@
     margin-right: 30%;
   }
 }
+
+.search-container .ui.search.dropdown > .text {
+  margin-top: 0.5em;
+}

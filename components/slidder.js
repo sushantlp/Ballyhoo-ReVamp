@@ -16,10 +16,6 @@ export default class Slidder extends React.Component {
     };
   }
 
-  // UNSAFE_componentWillMount() {
-
-  // }
-
   componentDidMount() {
     if (this.props.cityLocality.cityLocality.length !== 0) {
       const { city, city_id } = Router.router.query;
@@ -90,7 +86,7 @@ export default class Slidder extends React.Component {
   };
 
   // Set City Name
-  setCityName = (name, id) => {
+  setCityName = name => {
     this.setState({
       cityName: name
     });
@@ -153,7 +149,7 @@ export default class Slidder extends React.Component {
                   fluid
                   selection
                   options={this.state.cityList}
-                  value={this.state.cityName}
+                  defaultValue={this.state.cityName}
                   onChange={(event, data) => this.onChangeCity(event, data)}
                   style={{ height: "50px" }}
                   icon={
@@ -177,7 +173,7 @@ export default class Slidder extends React.Component {
                   selection
                   style={{ height: "50px" }}
                   options={empty}
-                  value={empty}
+                  defaultValue={empty}
                   // onChange={}
                   icon={
                     <img

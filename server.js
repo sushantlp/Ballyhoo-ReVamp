@@ -46,16 +46,16 @@ app
       });
     });
 
-    server.get("/:city/:title/:city_id", (req, res) => {
+    server.get("/:city/:title/:secret", (req, res) => {
       return app.render(req, res, "/list", {
         city: req.params.city,
         title: req.param.title,
-        city_id: req.params.city_id
+        secret: req.param.secret
       });
     });
 
     server.get("*", (req, res) => {
-      return handle(req, res);
+      return app.render(req, res, "/");
     });
 
     // use next routes

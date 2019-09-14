@@ -76,8 +76,6 @@ export default class Discover extends React.Component {
   }
 
   onClickDiscover = discover => {
-    console.log(discover);
-
     if (parseInt(discover.response_type, 10) === 1)
       sessionStorage.setItem(
         "F&B",
@@ -126,20 +124,20 @@ export default class Discover extends React.Component {
 
     const { city, city_id } = Router.router.query;
     const title = discover.title.replace(/ /g, "-").toLowerCase();
+    const secret = `${city_id}-${discover.api_type}-${discover.key}-${
+      discover.response_type
+    }-${1}`;
     Router.replace(
       {
         pathname: "/list",
-        query: { city: city, title: title, city_id: city_id }
+        query: {
+          city: city,
+          title: title,
+          secret: secret
+        }
       },
-      `/${city}/${title}/${city_id}`
+      `/${city}/${title}/${secret}`
     );
-
-    //   const id = 1;
-    //   Router.push({
-    //     pathname: '/list',
-    //     query: { slug: id }
-
-    // }, '' + id);
   };
 
   discoverArray = json => {
