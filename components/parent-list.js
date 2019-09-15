@@ -35,6 +35,18 @@ class ParentList extends React.Component {
   }
 
   render() {
+    if (
+      this.props.cityLocality.status === "START" ||
+      this.props.cityLocality.status === "FAIL"
+    )
+      return <Spinner />;
+
+    if (
+      this.props.listData.status === "START" ||
+      this.props.listData.status === "FAIL"
+    )
+      return <Spinner />;
+
     return (
       <React.Fragment>
         <Search
