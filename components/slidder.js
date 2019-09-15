@@ -28,7 +28,7 @@ export default class Slidder extends React.Component {
 
         if (bunch.length === 0) {
           this.setCityName("Bengaluru");
-          Router.replace(
+          Router.push(
             {
               pathname: Router.router.route,
               query: { city: "bengaluru", city_id: 1 }
@@ -39,7 +39,7 @@ export default class Slidder extends React.Component {
         } else {
           const city = bunch[0].city_name.replace(/ /g, "-").toLowerCase();
           this.setCityName(bunch[0].city_name);
-          Router.replace(
+          Router.push(
             {
               pathname: Router.router.route,
               query: { city: city, city_id: bunch[0].city_id }
@@ -51,7 +51,7 @@ export default class Slidder extends React.Component {
       } else {
         this.createCityList(this.props.cityLocality.cityLocality);
         this.setCityName("Bengaluru");
-        Router.replace(
+        Router.push(
           {
             pathname: Router.router.route,
             query: { city: "bengaluru", city_id: 1 }
@@ -99,6 +99,17 @@ export default class Slidder extends React.Component {
     });
     this.setCityName(data.value);
     this.props.cityChangeApiCall(bunch[0].key);
+    console.log(bunch);
+    const city = bunch[0].text.replace(/ /g, "-").toLowerCase();
+    this.setCityName(bunch[0].text);
+    Router.push(
+      {
+        pathname: Router.router.route,
+        query: { city: city, city_id: bunch[0].key }
+      },
+      `/${city}/${bunch[0].key}`,
+      { shallow: true }
+    );
   };
 
   slidderImageArray = json => {

@@ -83,15 +83,22 @@ export default class FoodBrewery extends React.Component {
     };
   }
 
+  onClickCollection = collection => {
+    console.log(collection);
+  };
   innerCollection = json => {
-    return json.map((item, key) => {
+    return json.map((collection, key) => {
       return (
-        <div className="card" key={key}>
+        <div
+          className="card"
+          key={key}
+          onClick={() => this.onClickCollection(collection)}
+        >
           <div className="imgBx">
-            <img src={item.img} alt="images" />
+            <img src={collection.img} alt="images" />
           </div>
           <div className="details">
-            <h2>{item.title}</h2>
+            <h2>{collection.title}</h2>
           </div>
         </div>
       );
@@ -127,6 +134,7 @@ export default class FoodBrewery extends React.Component {
       return <div />;
 
     const collection = this.props.homeScreen.homeScreen.collection;
+    if (collection.length === 0) return <div />;
 
     return <div>{this.collectionArray(collection)}</div>;
   }
