@@ -41,7 +41,7 @@ const SpaList = props => {
     }
 
     return (
-      <React.Fragment>
+      <React.Fragment key={key}>
         <div className="box">
           <article className="media">
             <div className="media-left">
