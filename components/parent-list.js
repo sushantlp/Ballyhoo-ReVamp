@@ -1,8 +1,10 @@
 import Router from "next/router";
+
+import Spinner from "./spinner";
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
-import Similar from "./similar";
+// import Similar from "./similar";
 import TrendingList from "./trending-list";
 
 class ParentList extends React.Component {

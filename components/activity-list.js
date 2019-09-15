@@ -1,4 +1,7 @@
 const ActivityList = props => {
+  const listProps = props.listProps.listData;
+
+  console.log(listProps);
   return (
     <React.Fragment>
       <div className="box">

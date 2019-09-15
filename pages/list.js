@@ -28,18 +28,19 @@ class List extends React.Component {
     let routeParam = [];
 
     try {
-      const { store, isServer, req } = ctx;
+      const { store, isServer, req, query } = ctx;
 
-      routeParam = req.params;
+      if (isServer) routeParam = req.params;
+      else routeParam = query;
 
       let cityId = 1;
       let type = 1;
       let key = 1;
       let page = 1;
 
-      if (req.params.secret !== undefined) {
+      if (routeParam.secret !== undefined) {
         // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
-        const slice = req.params.secret.split("-");
+        const slice = routeParam.secret.split("-");
 
         if (slice.length === 5) {
           cityId = slice[0];
@@ -62,7 +63,7 @@ class List extends React.Component {
       store.dispatch(getListData(listJson));
       store.dispatch(getCityLocality(cityLocalityJson));
     } catch (err) {
-      console.log("ERROR");
+      console.log("listERROR");
       console.log(err);
     }
 

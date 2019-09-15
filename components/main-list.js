@@ -8,21 +8,20 @@ import FilterDisplay from "./filter-display";
 import "./main-list.css";
 
 const MainList = props => {
-  console.log(props.parentListState.response_type);
   return (
     <React.Fragment>
       <FilterDisplay />
       <div className="main-list-container">
         {parseInt(props.parentListState.response_type, 10) === 1 ? (
-          <FoodBreweryList />
+          <FoodBreweryList listProps={props.listData} />
         ) : parseInt(props.parentListState.response_type, 10) === 2 ? (
-          <EventList />
+          <EventList listProps={props.listData} />
         ) : parseInt(props.parentListState.response_type, 10) === 3 ? (
-          <ActivityList />
+          <ActivityList listProps={props.listData} />
         ) : parseInt(props.parentListState.response_type, 10) === 4 ? (
-          <EscapeList />
+          <EscapeList listProps={props.listData} />
         ) : (
-          <SpaList />
+          <SpaList listProps={props.listData} />
         )}
       </div>
     </React.Fragment>

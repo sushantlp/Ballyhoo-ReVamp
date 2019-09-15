@@ -78,7 +78,7 @@ export default class Discover extends React.Component {
   onClickDiscover = discover => {
     if (parseInt(discover.response_type, 10) === 1)
       sessionStorage.setItem(
-        "F&B",
+        "LIST_DATA",
         JSON.stringify({
           api_type: discover.api_type,
           key: discover.key,
@@ -87,7 +87,7 @@ export default class Discover extends React.Component {
       );
     else if (parseInt(discover.response_type, 10) === 2)
       sessionStorage.setItem(
-        "EVENT",
+        "LIST_DATA",
         JSON.stringify({
           api_type: discover.api_type,
           key: discover.key,
@@ -96,7 +96,7 @@ export default class Discover extends React.Component {
       );
     else if (parseInt(discover.response_type, 10) === 3)
       sessionStorage.setItem(
-        "ACTIVITY",
+        "LIST_DATA",
         JSON.stringify({
           api_type: discover.api_type,
           key: discover.key,
@@ -105,7 +105,7 @@ export default class Discover extends React.Component {
       );
     else if (parseInt(discover.response_type, 10) === 2)
       sessionStorage.setItem(
-        "ESCAPE",
+        "LIST_DATA",
         JSON.stringify({
           api_type: discover.api_type,
           key: discover.key,
@@ -114,7 +114,7 @@ export default class Discover extends React.Component {
       );
     else
       sessionStorage.setItem(
-        "SALOON",
+        "LIST_DATA",
         JSON.stringify({
           api_type: discover.api_type,
           key: discover.key,

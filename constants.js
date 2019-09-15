@@ -1,4 +1,4 @@
-export const host = "http://54.235.235.32:8080/";
+export const host = "http://52.90.237.189:8080/";
 
 export const COUNTRY_CODE = [
   { name: "Afghanistan", dial_code: "+93", code: "AF" },

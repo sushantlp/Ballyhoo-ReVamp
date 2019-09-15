@@ -47,6 +47,9 @@ app
     });
 
     server.get("/:city/:title/:secret", (req, res) => {
+      // const queryParams = Object.assign({}, req.params, req.query);
+      // return app.render(req, res, "/list",queryParams);
+
       return app.render(req, res, "/list", {
         city: req.params.city,
         title: req.param.title,
