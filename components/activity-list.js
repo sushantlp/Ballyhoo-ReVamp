@@ -1,5 +1,7 @@
 const ActivityList = props => {
   const list = props.listData.listData;
+
+  //src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_480,w_480/v1457670910/OTHER_CATEGORY/ACTIVITY/5.jpg"
   return (
     <React.Fragment>
       <div className="box">

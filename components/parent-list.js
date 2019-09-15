@@ -11,7 +11,7 @@ class ParentList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response_type: 1,
+      response_type: 0,
       page: 1,
       cityId: 1
     };
@@ -46,6 +46,8 @@ class ParentList extends React.Component {
       this.props.listData.status === "FAIL"
     )
       return <Spinner />;
+
+    if (this.state.response_type === 0) return <Spinner />;
 
     return (
       <React.Fragment>

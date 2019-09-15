@@ -11,7 +11,7 @@ import "./main-list.css";
 
 const MainList = props => {
   console.log(props);
-
+  console.log(props.parentListState.response_type);
   if (props.listData.listData.results.length === 0) return <Spinner />;
   return (
     <React.Fragment>
@@ -25,8 +25,10 @@ const MainList = props => {
           <ActivityList listData={props.listData} />
         ) : parseInt(props.parentListState.response_type, 10) === 4 ? (
           <EscapeList listData={props.listData} />
-        ) : (
+        ) : parseInt(props.parentListState.response_type, 10) === 5 ? (
           <SpaList listData={props.listData} />
+        ) : (
+          <div />
         )}
       </div>
     </React.Fragment>

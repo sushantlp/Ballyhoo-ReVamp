@@ -1,7 +1,7 @@
 const FoodBrewery = props => {
   const list = props.listData.listData.results;
 
-  return list.map(list => {
+  return list.map((list, key) => {
     let description = list.p_about;
     if (description.length >= 250) {
       description = description.slice(0, 250) + " ...";
@@ -40,7 +40,7 @@ const FoodBrewery = props => {
     }
 
     return (
-      <React.Fragment>
+      <React.Fragment key={key}>
         <div className="box">
           <article className="media">
             <div className="media-left">
@@ -48,9 +48,9 @@ const FoodBrewery = props => {
                 <img src={list.p_image} alt="Image" />
               </figure>
             </div>
-            <div className="ribbon ribbon-top-left">
+            {/* <div className="ribbon ribbon-top-left">
               <span>Featured</span>
-            </div>
+            </div> */}
             <div className="media-content">
               <div className="content">
                 <div className="columns mb0">
@@ -70,14 +70,20 @@ const FoodBrewery = props => {
                     <span className="rating">
                       {fullRating.map(function(i) {
                         return (
-                          <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
+                          <img
+                            src="https://img.icons8.com/color/20/000000/filled-star.png"
+                            key={i}
+                          />
                         );
                       })}
                       <span>{halfRating}</span>
                       <span>
                         {emptyRating.map(function(i) {
                           return (
-                            <img src="https://img.icons8.com/color/20/000000/star.png" />
+                            <img
+                              src="https://img.icons8.com/color/20/000000/star.png"
+                              key={i}
+                            />
                           );
                         })}
                       </span>
@@ -97,8 +103,12 @@ const FoodBrewery = props => {
                   <div className="column pl8 pt0">
                     <div className="package-tag-box">
                       <ul className="package-tags at_package_tags">
-                        {list.p_cuisines.map(cuisine => {
-                          return <li className="ellipsis">{cuisine}</li>;
+                        {list.p_cuisines.map((cuisine, key) => {
+                          return (
+                            <li className="ellipsis" key={key}>
+                              {cuisine}
+                            </li>
+                          );
                         })}
                       </ul>
                     </div>
