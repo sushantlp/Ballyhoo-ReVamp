@@ -18,7 +18,7 @@ import ParentList from "../components/parent-list";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
 
-import { getListData } from "../actions/list-action";
+import { getListData, getListDataApi } from "../actions/list-action";
 import { getCityLocality } from "../actions/city-locality-action";
 
 class List extends React.Component {
@@ -70,6 +70,10 @@ class List extends React.Component {
     return { listJson, cityLocalityJson, routeParam };
   }
 
+  onLoadMoreList = (cityId, type, key, nextPage) => {
+    this.props.getListDataApi(cityId, type, key, nextPage);
+  };
+
   render() {
     return (
       <div>
@@ -79,6 +83,7 @@ class List extends React.Component {
           cityLocality={this.props.cityLocality}
           listData={this.props.listData}
           routeParam={this.props.routeParam}
+          onLoadMoreList={this.onLoadMoreList}
         />
         <Headout />
         <Footer />
@@ -97,7 +102,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
-    getListData: bindActionCreators(getListData, dispatch)
+    getListData: bindActionCreators(getListData, dispatch),
+    getListDataApi: bindActionCreators(getListDataApi, dispatch)
   };
 };
 

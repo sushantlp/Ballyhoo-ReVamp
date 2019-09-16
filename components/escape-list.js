@@ -1,5 +1,5 @@
 const EscapeList = props => {
-  const list = props.listData.listData.results;
+  const list = props.listData.listData;
 
   return list.map((list, key) => {
     let description = list.offer_description;
@@ -68,7 +68,11 @@ const EscapeList = props => {
                 <div className="columns mb0">
                   <div className="column">
                     <p className="title google">{list.offer_title}</p>
-                    <p className="subtitle is-6 mb8 plh1">4 Days & 3 Nights</p>
+                    <p className="subtitle is-6 mb8 plh1">
+                      {list.tour_details.tour_duration != null
+                        ? list.tour_details.tour_duration
+                        : list.offer_address.locality}
+                    </p>
                   </div>
 
                   <div className="column">
@@ -108,16 +112,19 @@ const EscapeList = props => {
                   <div className="column pt0">
                     <span className="f12 fw4 m0 iblock">
                       <span className="mr24 pfc4">Starting from:</span>
-                      <span className="tag is-danger radius20 fw7">
-                        {list.offer_max_discount}% off
-                      </span>
+                      {list.offer_max_discount != null &&
+                      parseInt(list.offer_max_discount, 10) !== 0 ? (
+                        <span className="tag is-danger radius20 fw7">
+                          {list.offer_max_discount}% off
+                        </span>
+                      ) : null}
                     </span>
 
                     <h5
                       className="sfc3 m0 f24 fw9 flh28"
                       style={{ marginBottom: ".4em" }}
                     >
-                      margin-bottom: .4em; ₹ {list.offer_min_price}/-
+                      ₹ {list.offer_min_price}/-
                       {/* <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span> */}
                     </h5>
 

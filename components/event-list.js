@@ -1,108 +1,180 @@
 const EventList = props => {
-  return (
-    <React.Fragment>
-      <div className="box">
-        <article className="media">
-          <div className="media-left">
-            <figure className="image">
-              <img
-                src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_480,w_480/v1457670910/ballyhoo/EVENTS/LivePerformance/5.jpg"
-                alt="Image"
-              />
-            </figure>
-          </div>
+  const list = props.listData.listData;
 
-          <div className="ribbon ribbon-top-left">
-            <span>Featured</span>
-          </div>
-          <div className="media-content">
-            <div className="content">
-              <div className="columns mb0">
-                <div className="column">
-                  <p className="title google">The Comedy Club</p>
+  return list.map((list, key) => {
+    let description = list.offer_description;
+    if (description.length >= 250) {
+      description = description.slice(0, 250) + " ...";
+    }
 
-                  <p className="subtitle is-6 mb8 plh1">Koramangala</p>
-                </div>
+    let fullRating = [];
+    let emptyRating = [];
+    let topRating = 5;
+    let halfRating = undefined;
 
-                <div className="column">
-                  <span className="tag radius20 fw7">
-                    <img src="https://img.icons8.com/color/17/000000/hearts.png" />
-                    <span className="ellipsis pl0_5">71%</span>
-                  </span>
+    const rating = list.offer_rating + "";
+    const ratingSplit = rating.split(".");
 
-                  <span className="rating">
-                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                    <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                    <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
-                    <img src="https://img.icons8.com/color/20/000000/star.png" />
-                    <img src="https://img.icons8.com/color/20/000000/star.png" />
-                  </span>
-                </div>
+    // Half Star
+    if (ratingSplit[1] !== undefined) {
+      if (parseInt(ratingSplit[1], 10) === 0)
+        topRating = topRating - Number(ratingSplit[0]);
+      else {
+        topRating = topRating - Number(ratingSplit[0]);
+        topRating = topRating - 1;
+
+        halfRating = (
+          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+        );
+      }
+    } else topRating = topRating - Number(ratingSplit[0]);
+
+    // Full Star
+    for (let i = 0; i < Number(ratingSplit[0]); i++) {
+      fullRating.push(i);
+    }
+
+    // Empty Star
+    for (let i = 0; i < topRating; i++) {
+      emptyRating.push(i);
+    }
+
+    return (
+      <React.Fragment key={key}>
+        <div className="box">
+          <article className="media">
+            <div className="media-left">
+              <figure className="image">
+                <img src={list.offer_images} alt="Image" />
+              </figure>
+            </div>
+
+            {list.offer_promoted === 1 ? (
+              <div className="ribbon ribbon-top-left">
+                <span>Featured</span>
               </div>
-              <div className="columns mb0 ">
-                <div className="column pt0">
-                  <span className="f12 fw4 m0 pb8 iblock">
-                    <span className="mr24 pfc4">Starting from:</span>
-                    <span className="tag is-danger radius20 fw7">12% off</span>
-                  </span>
+            ) : null}
 
-                  <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
-                    ₹ 699.00/-
-                    <span className="f12">onwards</span>
-                    <span className="f12 pfc3 tdl ml8">₹ 500.00/-</span>
-                  </h5>
-                </div>
-                <div className="column pl8 pt0">
-                  <div className="package-tag-box">
-                    <ul className="package-tags at_package_tags">
-                      <li className="ellipsis">Comedy</li>
-                      <li className="ellipsis">StandupComedy</li>
-                    </ul>
+            <div className="media-content">
+              <div className="content">
+                <div className="columns mb0">
+                  <div className="column">
+                    <p className="title google">{list.offer_title}</p>
+                    <p className="subtitle is-6 mb8 plh1">
+                      {list.offer_address.locality}
+                    </p>
+                  </div>
+
+                  <div className="column">
+                    <span className="tag radius20 fw7">
+                      <img src="https://img.icons8.com/color/17/000000/hearts.png" />
+                      <span className="ellipsis pl0_5">
+                        {" "}
+                        {list.offer_popularity}%
+                      </span>
+                    </span>
+
+                    <span className="rating">
+                      {fullRating.map(function(i) {
+                        return (
+                          <img
+                            src="https://img.icons8.com/color/20/000000/filled-star.png"
+                            key={i}
+                          />
+                        );
+                      })}
+                      <span>{halfRating}</span>
+                      <span>
+                        {emptyRating.map(function(i) {
+                          return (
+                            <img
+                              src="https://img.icons8.com/color/20/000000/star.png"
+                              key={i}
+                            />
+                          );
+                        })}
+                      </span>
+                    </span>
                   </div>
                 </div>
-              </div>
+                <div className="columns mb0 ">
+                  <div className="column pt0">
+                    <span className="f12 fw4 m0 iblock">
+                      <span className="mr24 pfc4">Starting from:</span>
+                      {list.offer_max_discount != null &&
+                      parseInt(list.offer_max_discount, 10) !== 0 ? (
+                        <span className="tag is-danger radius20 fw7">
+                          {list.offer_max_discount}% off
+                        </span>
+                      ) : null}
+                    </span>
 
-              <div className="css-clzwav f12 pfc4 m0 fw4">
-                <p>
-                  Arena is the fully loaded nucleus of our being. There’s
-                  something for everyone — from zorbing to go-karting as well as
-                  sports like tennis, badminton, football, swimming , Go
-                  Karting, Segway, Bowling, Archery, Shooting, Wall climbing
-                  etc.
-                </p>
+                    <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
+                      ₹ {list.offer_min_price}/-
+                      <span className="f12">onwards</span>
+                      {/* <span className="f12 pfc3 tdl ml8">₹ 500.00/-</span> */}
+                    </h5>
+                  </div>
+                  <div className="column pl8 pt0">
+                    <div className="package-tag-box">
+                      <ul className="package-tags at_package_tags">
+                        {list.offer_hash_tags.map((tag, key) => {
+                          return (
+                            <li className="ellipsis" key={key}>
+                              {tag}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="css-clzwav f12 pfc4 m0 fw4">
+                  <p>{description}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <footer className="card-footer">
-          <div className="card-footer-item">
-            <span className="span-flex ">
-              <span>
-                <img src="https://img.icons8.com/cute-clipart/50/000000/date-to.png" />
-                <p>
-                  <code>Aug Sat 03</code>
-                </p>
+          <footer className="card-footer">
+            <div className="card-footer-item">
+              <span className="span-flex ">
+                <span>
+                  <img src="https://img.icons8.com/cute-clipart/50/000000/date-to.png" />
+                  <p>
+                    {list.offer_start_date != null &&
+                    list.offer_end_date != null ? (
+                      <span>
+                        {" "}
+                        <code>{list.offer_start_date}</code>{" "}
+                        <span>onwards</span>
+                      </span>
+                    ) : (
+                      <code>{list.offer_start_date}</code>
+                    )}
+                  </p>
+                </span>
               </span>
-            </span>
-          </div>
+            </div>
 
-          <div className="card-footer-item">
-            <p className="title google">The Humming Tree</p>
-          </div>
+            <div className="card-footer-item">
+              <p className="title google">{list.partner_details.p_name}</p>
+            </div>
 
-          <div className="card-footer-item">
-            <a className="button is-medium">
-              <span className="icon">
-                <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
-              </span>
-              <span>View Detail</span>
-            </a>
-          </div>
-        </footer>
-      </div>
-    </React.Fragment>
-  );
+            <div className="card-footer-item">
+              <a className="button is-medium">
+                <span className="icon">
+                  <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
+                </span>
+                <span>View Detail</span>
+              </a>
+            </div>
+          </footer>
+        </div>
+      </React.Fragment>
+    );
+  });
 };
 
 export default EventList;

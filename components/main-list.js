@@ -12,7 +12,7 @@ import "./main-list.css";
 const MainList = props => {
   console.log(props);
   console.log(props.parentListState.response_type);
-  if (props.listData.listData.results.length === 0) return <Spinner />;
+  if (props.listData.listData.length === 0) return <Spinner />;
   return (
     <React.Fragment>
       <FilterDisplay />
@@ -31,6 +31,31 @@ const MainList = props => {
           <div />
         )}
       </div>
+
+      <section className="section">
+        <div className="has-text-centered">
+          {props.listData.next_page !== null ? (
+            props.parentListState.isLoading ? (
+              <a className="button is-danger is-loading is-large">Load More</a>
+            ) : (
+              <a
+                className="button is-danger is-large"
+                onClick={() => props.onLoadMoreList(props.listData.next_page)}
+              >
+                Load More
+              </a>
+            )
+          ) : (
+            <a
+              className="button is-danger is-large"
+              title="Disabled button"
+              disabled
+            >
+              Load More
+            </a>
+          )}
+        </div>
+      </section>
     </React.Fragment>
   );
 };

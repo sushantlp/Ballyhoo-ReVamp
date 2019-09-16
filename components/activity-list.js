@@ -1,7 +1,6 @@
 const ActivityList = props => {
-  const list = props.listData.listData.results;
+  const list = props.listData.listData;
 
-  console.log(list);
   //src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_480,w_480/v1457670910/OTHER_CATEGORY/ACTIVITY/5.jpg"
   return list.map((list, key) => {
     let description = list.offer_description;
@@ -62,7 +61,9 @@ const ActivityList = props => {
                 <div className="columns mb0">
                   <div className="column">
                     <p className="title google">{list.offer_title}</p>
-                    <p className="subtitle is-6 mb8 plh1">Sarjapur</p>
+                    <p className="subtitle is-6 mb8 plh1">
+                      {list.offer_address.locality}
+                    </p>
                   </div>
 
                   <div className="column">
@@ -100,9 +101,12 @@ const ActivityList = props => {
                   <div className="column pt0">
                     <span className="f12 fw4 m0 iblock">
                       <span className="mr24 pfc4">Starting from:</span>
-                      <span className="tag is-danger radius20 fw7">
-                        {list.offer_max_discount}% off
-                      </span>
+                      {list.offer_max_discount != null &&
+                      parseInt(list.offer_max_discount, 10) !== 0 ? (
+                        <span className="tag is-danger radius20 fw7">
+                          {list.offer_max_discount}% off
+                        </span>
+                      ) : null}
                     </span>
 
                     <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">

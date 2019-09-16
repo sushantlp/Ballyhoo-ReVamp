@@ -13,11 +13,16 @@ class ParentList extends React.Component {
     this.state = {
       response_type: 0,
       page: 1,
-      cityId: 1
+      cityId: 1,
+      type: 1,
+      key: 1,
+      isLoading: false
     };
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const { secret } = Router.router.query;
     let slice = [];
 
@@ -29,10 +34,34 @@ class ParentList extends React.Component {
 
     this.setState({
       response_type: slice[3],
+      type: slice[1],
+      key: slice[2],
       page: slice[4],
       cityId: slice[0]
     });
   }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.listData !== nextProps.listData) {
+      this.updateisLoadingState(false);
+    }
+  }
+
+  updateisLoadingState = bool => {
+    this.setState({
+      isLoading: bool
+    });
+  };
+
+  onLoadMoreList = nextPage => {
+    this.updateisLoadingState(true);
+    this.props.onLoadMoreList(
+      this.state.cityId,
+      this.state.type,
+      this.state.key,
+      nextPage
+    );
+  };
 
   render() {
     if (
@@ -67,6 +96,7 @@ class ParentList extends React.Component {
                 <MainList
                   listData={this.props.listData}
                   parentListState={this.state}
+                  onLoadMoreList={this.onLoadMoreList}
                 />
               </div>
             </div>

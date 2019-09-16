@@ -1,5 +1,5 @@
 const SpaList = props => {
-  const list = props.listData.listData.results;
+  const list = props.listData.listData;
 
   console.log(list);
   return list.map((list, key) => {
@@ -50,9 +50,12 @@ const SpaList = props => {
               </figure>
             </div>
 
-            <div className="ribbon ribbon-top-left">
-              <span>Featured</span>
-            </div>
+            {list.offer_promoted === 1 ? (
+              <div className="ribbon ribbon-top-left">
+                <span>Featured</span>
+              </div>
+            ) : null}
+
             <div className="media-content">
               <div className="content">
                 <div className="columns mb0">
@@ -99,9 +102,12 @@ const SpaList = props => {
                     <span className="f12 fw4 m0 iblock">
                       {/* pb8 */}
                       <span className="mr24 pfc4">Starting from:</span>
-                      <span className="tag is-danger radius20 fw7">
-                        {list.offer_max_discount}% off
-                      </span>
+                      {list.offer_max_discount != null &&
+                      parseInt(list.offer_max_discount, 10) !== 0 ? (
+                        <span className="tag is-danger radius20 fw7">
+                          {list.offer_max_discount}% off
+                        </span>
+                      ) : null}
                     </span>
 
                     <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">

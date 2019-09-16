@@ -1,5 +1,5 @@
 const FoodBrewery = props => {
-  const list = props.listData.listData.results;
+  const list = props.listData.listData;
 
   return list.map((list, key) => {
     let description = list.p_about;
@@ -48,9 +48,13 @@ const FoodBrewery = props => {
                 <img src={list.p_image} alt="Image" />
               </figure>
             </div>
-            {/* <div className="ribbon ribbon-top-left">
-              <span>Featured</span>
-            </div> */}
+
+            {list.p_promoted === 1 ? (
+              <div className="ribbon ribbon-top-left">
+                <span>Featured</span>
+              </div>
+            ) : null}
+
             <div className="media-content">
               <div className="content">
                 <div className="columns mb0">
