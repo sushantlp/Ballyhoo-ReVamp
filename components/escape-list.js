@@ -45,7 +45,7 @@ const EscapeList = props => {
           <article className="media">
             <div className="media-left">
               <figure className="image">
-                <img src={list.offer_images} alt="Image" />
+                <img src={list.offer_preview_image} alt="Image" />
               </figure>
             </div>
 

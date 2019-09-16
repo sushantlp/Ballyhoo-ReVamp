@@ -2,7 +2,7 @@ import Overview from "./overview";
 import FoodList from "./food-list";
 import FoodEventList from "./food-event-list";
 import FoodOfferList from "./food-offer-list";
-import SaloonPackage from "./saloon-package";
+import ParentPackage from "./parent-package";
 import "./detail-tab.css";
 
 export default class DetailTab extends React.Component {
@@ -116,7 +116,7 @@ export default class DetailTab extends React.Component {
         {this.state.navigation === "Buffets" ? <FoodList /> : null}
 
         {this.state.navigation === "Packages" ? (
-          <SaloonPackage changeOpen={this.changeOpen} open={this.state.open} />
+          <ParentPackage changeOpen={this.changeOpen} open={this.state.open} />
         ) : null}
 
         {this.state.navigation === "Events" ? <FoodEventList /> : null}
