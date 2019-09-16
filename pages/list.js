@@ -70,6 +70,10 @@ class List extends React.Component {
     return { listJson, cityLocalityJson, routeParam };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   onLoadMoreList = (cityId, type, key, nextPage) => {
     this.props.getListDataApi(cityId, type, key, nextPage);
   };

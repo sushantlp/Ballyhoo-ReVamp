@@ -21,8 +21,6 @@ class ParentList extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-
     const { secret } = Router.router.query;
     let slice = [];
 

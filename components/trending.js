@@ -77,14 +77,17 @@ export default class Trending extends React.Component {
 
   trendingArray = json => {
     return json.map((trending, key) => {
-
       let description = trending.offer_description;
       if (description.length >= 60) {
-        description = description.slice(0, 60) + ' ...';
+        description = description.slice(0, 60) + " ...";
       }
 
       return (
-        <div className="trending-card" key={key}>
+        <div
+          className="trending-card"
+          key={key}
+          onClick={() => this.props.escapeTredingApiCall(trending.offer_id)}
+        >
           <Card
             raised
             style={{
@@ -135,7 +138,6 @@ export default class Trending extends React.Component {
   };
 
   render() {
-   
     if (
       this.props.homeScreen.status === "START" ||
       this.props.homeScreen.status === "FAIL"
@@ -143,7 +145,7 @@ export default class Trending extends React.Component {
       return <div />;
 
     const trending = this.props.homeScreen.homeScreen.trending_escapes;
-    if (trending.length === 0) return <div/>
+    if (trending.length === 0) return <div />;
     const settings = {
       dots: false,
       infinite: true,

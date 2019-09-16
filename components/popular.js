@@ -1,3 +1,4 @@
+import Router from "next/router";
 import "./popular.css";
 
 export default class Popular extends React.Component {

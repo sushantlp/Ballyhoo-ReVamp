@@ -1,7 +1,7 @@
 import { actionType } from "../actions/city-locality-action";
 
 const initialState = {
-  cityLocality: {},
+  cityLocality: [],
   status: "START",
   msg: ""
 };
@@ -9,7 +9,7 @@ const initialState = {
 export function cityLocality(state = initialState, action) {
   switch (action.type) {
     case actionType.cityLocality:
-     if (action.cityLocality.code === 200) {
+      if (action.cityLocality.code === 200) {
         return {
           ...state,
           cityLocality: action.cityLocality.data,
@@ -19,7 +19,7 @@ export function cityLocality(state = initialState, action) {
       } else {
         return {
           ...state,
-          cityLocality: {},
+          cityLocality: [],
           status: "FAIL",
           msg: action.cityLocality.message
         };

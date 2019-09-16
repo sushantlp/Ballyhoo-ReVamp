@@ -57,6 +57,15 @@ app
       });
     });
 
+    server.get("/:city/:partner/:title/:secret", (req, res) => {
+      return app.render(req, res, "/detail", {
+        city: req.params.city,
+        partner: req.params.partner,
+        title: req.param.title,
+        secret: req.param.secret
+      });
+    });
+
     server.get("*", (req, res) => {
       return app.render(req, res, "/");
     });

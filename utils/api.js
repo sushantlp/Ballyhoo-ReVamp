@@ -16,7 +16,6 @@ export default {
   },
 
   listDataApi: (cityId, type, key, page) => {
-    console.log("API");
     return new Promise((resolve, reject) => {
       fetch(
         `${host}api/v9/web/listing?city_id=${cityId}&type=${type}&q=${key}&page=${page}`
@@ -25,6 +24,19 @@ export default {
           response
             .json()
             .then(listData => resolve(listData))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  escapeDataApi: offerId => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/offers/${offerId}`)
+        .then(response => {
+          response
+            .json()
+            .then(escapeTrending => resolve(escapeTrending))
             .catch(error => console.log(error));
         })
         .catch(error => console.log(error));

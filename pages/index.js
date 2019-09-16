@@ -1,6 +1,7 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import Router from "next/router";
 
 import fetch from "isomorphic-unfetch";
 
@@ -27,6 +28,7 @@ import Footer from "../components/footer";
 import styled from "styled-components";
 
 import { getCityLocality } from "../actions/city-locality-action";
+import { getEscapeDataApi } from "../actions/escape-trending-action";
 import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
 
 class Index extends React.Component {
@@ -34,10 +36,23 @@ class Index extends React.Component {
     let cityLocalityJson = [];
     let homeScreenJson = [];
     try {
-      const { store, isServer, req } = ctx;
+      const { store, isServer, req, query } = ctx;
 
       let cityId = 1;
-      if (req.params.city_id !== undefined) cityId = req.params.city_id;
+
+      if (isServer) {
+        console.log(query);
+
+        if (
+          req.hasOwnProperty("params") &&
+          req.params.hasOwnProperty("city_id") &&
+          req.params !== undefined
+        )
+          cityId = req.params.city_id;
+      } else {
+        if (query.hasOwnProperty("city_id") && query.city_id !== undefined)
+          cityId = query.city_id;
+      }
 
       // City Locality API
       cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
@@ -70,8 +85,47 @@ class Index extends React.Component {
     }
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.escapeTrending !== nextProps.escapeTrending &&
+      nextProps.escapeTrending.status === "SUCCESS"
+    ) {
+      if (
+        nextProps.escapeTrending.escapeTrending.details.hasOwnProperty(
+          "offer_id"
+        )
+      ) {
+        const { city } = Router.router.query;
+        const partner = nextProps.escapeTrending.escapeTrending.details.partner_details.p_name
+          .replace(/ /g, "-")
+          .toLowerCase();
+        const title = nextProps.escapeTrending.escapeTrending.details.offer_title
+          .replace(/ /g, "-")
+          .toLowerCase();
+        const secret = `${nextProps.escapeTrending.escapeTrending.details.offer_id}-${nextProps.escapeTrending.escapeTrending.result_type}`;
+        Router.push(
+          {
+            pathname: "/detail",
+            query: {
+              city: city,
+              partner: partner,
+              title: title,
+              secret: secret
+            }
+          },
+          `/${city}/${partner}/${title}/${secret}`,
+          { shallow: true }
+        );
+      }
+    }
+  }
+
   cityChangeApiCall = cityId => {
     this.props.getHomeScreenApi(cityId);
+  };
+
+  escapeTredingApiCall = offerId => {
+    this.props.getEscapeDataApi(offerId);
   };
 
   render() {
@@ -97,7 +151,10 @@ class Index extends React.Component {
         <Discover homeScreen={this.props.homeScreen} />
         <Featured homeScreen={this.props.homeScreen} />
         <Popular homeScreen={this.props.homeScreen} />
-        <Trending homeScreen={this.props.homeScreen} />
+        <Trending
+          homeScreen={this.props.homeScreen}
+          escapeTredingApiCall={this.escapeTredingApiCall}
+        />
         <Collection homeScreen={this.props.homeScreen} />
         <Banner homeScreen={this.props.homeScreen} />
         <Headout />
@@ -110,7 +167,8 @@ class Index extends React.Component {
 const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
-    homeScreen: state.homeScreen
+    homeScreen: state.homeScreen,
+    escapeTrending: state.escapeTrending
   };
 };
 
@@ -118,7 +176,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getHomeScreen: bindActionCreators(getHomeScreen, dispatch),
-    getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch)
+    getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch),
+    getEscapeDataApi: bindActionCreators(getEscapeDataApi, dispatch)
   };
 };
 

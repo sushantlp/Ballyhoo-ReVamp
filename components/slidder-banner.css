@@ -1,13 +1,12 @@
-
-
 .slidder-banner-container .carousel {
-    background-size: cover;
-  }
-  
-  .slidder-banner-container .slick-list {
-    height: 25vh;
-  }
+  height: 200px;
+  object-fit: cover;
+}
 
-  .slidder-banner-container {
-      margin-bottom: 1em
-  }
+.slidder-banner-container .slick-list {
+  height: 25vh;
+}
+
+.slidder-banner-container {
+  margin-bottom: 1em;
+}

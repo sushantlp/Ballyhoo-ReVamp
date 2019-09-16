@@ -1,5 +1,5 @@
 // const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
-const withOffline = require('next-offline')
+const withOffline = require("next-offline");
 const withCSS = require("@zeit/next-css");
 
 // module.exports = withCSS({
@@ -31,6 +31,8 @@ const withCSS = require("@zeit/next-css");
 // };
 
 const nextConfig = withCSS({
+  target: "serverless",
+
   cssLoaderOptions: {
     url: false
   },
@@ -56,4 +58,4 @@ const nextConfig = withCSS({
   }
 });
 
-module.exports = withOffline(nextConfig)
+module.exports = withOffline(nextConfig);
