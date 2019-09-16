@@ -26,6 +26,71 @@ export default class Popular extends React.Component {
     else if (index === 8) this.setState({ hover8: !this.state.hover8 });
   };
 
+  onClickPopular = popular => {
+    if (parseInt(popular.response_type, 10) === 1)
+      sessionStorage.setItem(
+        "LIST_DATA",
+        JSON.stringify({
+          api_type: popular.api_type,
+          key: popular.key,
+          response_type: popular.response_type
+        })
+      );
+    else if (parseInt(popular.response_type, 10) === 2)
+      sessionStorage.setItem(
+        "LIST_DATA",
+        JSON.stringify({
+          api_type: popular.api_type,
+          key: popular.key,
+          response_type: popular.response_type
+        })
+      );
+    else if (parseInt(popular.response_type, 10) === 3)
+      sessionStorage.setItem(
+        "LIST_DATA",
+        JSON.stringify({
+          api_type: popular.api_type,
+          key: popular.key,
+          response_type: popular.response_type
+        })
+      );
+    else if (parseInt(popular.response_type, 10) === 2)
+      sessionStorage.setItem(
+        "LIST_DATA",
+        JSON.stringify({
+          api_type: popular.api_type,
+          key: popular.key,
+          response_type: popular.response_type
+        })
+      );
+    else
+      sessionStorage.setItem(
+        "LIST_DATA",
+        JSON.stringify({
+          api_type: popular.api_type,
+          key: popular.key,
+          response_type: popular.response_type
+        })
+      );
+
+    const { city, city_id } = Router.router.query;
+    const title = popular.title.replace(/ /g, "-").toLowerCase();
+    const secret = `${city_id}-${popular.api_type}-${popular.key}-${
+      popular.response_type
+    }-${1}`;
+    Router.push(
+      {
+        pathname: "/list",
+        query: {
+          city: city,
+          title: title,
+          secret: secret
+        }
+      },
+      `/${city}/${title}/${secret}`
+    );
+  };
+
   render() {
     if (
       this.props.homeScreen.status === "START" ||
@@ -55,6 +120,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(1)}
                 onMouseLeave={() => this.toggleHover(1)}
+                onClick={() => this.onClickPopular(popular[0])}
               >
                 <p
                   className={this.state.hover1 ? "tiletext-hover" : "tiletext"}
@@ -70,6 +136,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(2)}
                 onMouseLeave={() => this.toggleHover(2)}
+                onClick={() => this.onClickPopular(popular[1])}
               >
                 <p
                   className={this.state.hover2 ? "tiletext-hover" : "tiletext"}
@@ -86,6 +153,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(3)}
                 onMouseLeave={() => this.toggleHover(3)}
+                onClick={() => this.onClickPopular(popular[2])}
               >
                 <p
                   className={this.state.hover3 ? "tiletext-hover" : "tiletext"}
@@ -102,6 +170,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(4)}
                 onMouseLeave={() => this.toggleHover(4)}
+                onClick={() => this.onClickPopular(popular[3])}
               >
                 <p
                   className={this.state.hover4 ? "tiletext-hover" : "tiletext"}
@@ -120,6 +189,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(5)}
                 onMouseLeave={() => this.toggleHover(5)}
+                onClick={() => this.onClickPopular(popular[4])}
               >
                 <p
                   className={this.state.hover5 ? "tiletext-hover" : "tiletext"}
@@ -136,6 +206,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(6)}
                 onMouseLeave={() => this.toggleHover(6)}
+                onClick={() => this.onClickPopular(popular[5])}
               >
                 <p
                   className={this.state.hover6 ? "tiletext-hover" : "tiletext"}
@@ -152,6 +223,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(7)}
                 onMouseLeave={() => this.toggleHover(7)}
+                onClick={() => this.onClickPopular(popular[6])}
               >
                 <p
                   className={this.state.hover7 ? "tiletext-hover" : "tiletext"}
@@ -167,6 +239,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(8)}
                 onMouseLeave={() => this.toggleHover(8)}
+                onClick={() => this.onClickPopular(popular[7])}
               >
                 <p
                   className={this.state.hover8 ? "tiletext-hover" : "tiletext"}
