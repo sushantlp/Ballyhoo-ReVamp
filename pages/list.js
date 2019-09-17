@@ -83,7 +83,6 @@ class List extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
@@ -135,8 +134,6 @@ class List extends React.Component {
         this.props.foodCategoryData !== nextProps.foodCategoryData &&
         nextProps.foodCategoryData.status === "SUCCESS"
       ) {
-        console.log(nextProps.foodCategoryData);
-
         if (
           nextProps.foodCategoryData.foodCategoryData.details.hasOwnProperty(
             "partner_id"
@@ -153,7 +150,7 @@ class List extends React.Component {
             .replace(/ /g, "-")
             .toLowerCase();
 
-          const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.listUrlParam.api_type}`;
+          const secret = `${this.props.listUrlParam.key}-${nextProps.foodCategoryData.foodCategoryData.result_type}-${partnerId}-${this.props.listUrlParam.api_type}`;
 
           Router.push(
             {

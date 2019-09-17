@@ -9,20 +9,13 @@ export default class DetailTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navigation: "Overview",
-      open: false
+      navigation: "Overview"
     };
   }
 
   changeTab = text => {
     this.setState({
       navigation: text
-    });
-  };
-
-  changeOpen = () => {
-    this.setState({
-      open: !this.state.open
     });
   };
 
@@ -45,29 +38,37 @@ export default class DetailTab extends React.Component {
               </a>
             </li>
 
-            <li
-              className={this.state.navigation === "Offers" ? "is-active" : ""}
-              onClick={() => this.changeTab("Offers")}
-            >
-              <a>
-                <span className="icon is-medium">
-                  <img src="https://img.icons8.com/dusk/20/000000/sale.png" />
-                </span>
-                <span>Offers</span>
-              </a>
-            </li>
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+              <li
+                className={
+                  this.state.navigation === "Offers" ? "is-active" : ""
+                }
+                onClick={() => this.changeTab("Offers")}
+              >
+                <a>
+                  <span className="icon is-medium">
+                    <img src="https://img.icons8.com/dusk/20/000000/sale.png" />
+                  </span>
+                  <span>Offers</span>
+                </a>
+              </li>
+            ) : null}
 
-            <li
-              className={this.state.navigation === "Buffets" ? "is-active" : ""}
-              onClick={() => this.changeTab("Buffets")}
-            >
-              <a>
-                <span className="icon is-medium">
-                  <img src="https://img.icons8.com/bubbles/30/000000/restaurant.png" />
-                </span>
-                <span>Buffets</span>
-              </a>
-            </li>
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+              <li
+                className={
+                  this.state.navigation === "Buffets" ? "is-active" : ""
+                }
+                onClick={() => this.changeTab("Buffets")}
+              >
+                <a>
+                  <span className="icon is-medium">
+                    <img src="https://img.icons8.com/bubbles/30/000000/restaurant.png" />
+                  </span>
+                  <span>Buffets</span>
+                </a>
+              </li>
+            ) : null}
 
             <li
               className={
@@ -83,29 +84,37 @@ export default class DetailTab extends React.Component {
               </a>
             </li>
 
-            <li
-              className={this.state.navigation === "Events" ? "is-active" : ""}
-              onClick={() => this.changeTab("Events")}
-            >
-              <a>
-                <span className="icon is-medium">
-                  <img src="https://img.icons8.com/cute-clipart/22/000000/tear-off-calendar.png" />
-                </span>
-                <span>Events</span>
-              </a>
-            </li>
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+              <li
+                className={
+                  this.state.navigation === "Events" ? "is-active" : ""
+                }
+                onClick={() => this.changeTab("Events")}
+              >
+                <a>
+                  <span className="icon is-medium">
+                    <img src="https://img.icons8.com/cute-clipart/22/000000/tear-off-calendar.png" />
+                  </span>
+                  <span>Events</span>
+                </a>
+              </li>
+            ) : null}
 
-            <li
-              className={this.state.navigation === "Reviews" ? "is-active" : ""}
-              onClick={() => this.changeTab("Reviews")}
-            >
-              <a>
-                <span className="icon is-medium">
-                  <img src="https://img.icons8.com/cute-clipart/22/000000/survey.png" />
-                </span>
-                <span>Reviews</span>
-              </a>
-            </li>
+            {parseInt(this.props.detailUrlParam.result_type, 10) !== 2 ? (
+              <li
+                className={
+                  this.state.navigation === "Reviews" ? "is-active" : ""
+                }
+                onClick={() => this.changeTab("Reviews")}
+              >
+                <a>
+                  <span className="icon is-medium">
+                    <img src="https://img.icons8.com/cute-clipart/22/000000/survey.png" />
+                  </span>
+                  <span>Reviews</span>
+                </a>
+              </li>
+            ) : null}
           </ul>
         </div>
 
@@ -115,9 +124,7 @@ export default class DetailTab extends React.Component {
 
         {this.state.navigation === "Buffets" ? <FoodList /> : null}
 
-        {this.state.navigation === "Packages" ? (
-          <ParentPackage changeOpen={this.changeOpen} open={this.state.open} />
-        ) : null}
+        {this.state.navigation === "Packages" ? <ParentPackage /> : null}
 
         {this.state.navigation === "Events" ? <FoodEventList /> : null}
 

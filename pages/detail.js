@@ -83,11 +83,8 @@ class Detail extends React.Component {
     return { detailUrlParam };
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
+    window.scrollTo(0, 0);
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
