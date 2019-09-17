@@ -28,7 +28,7 @@ import Footer from "../components/footer";
 import styled from "styled-components";
 
 import { getCityLocality } from "../actions/city-locality-action";
-import { getEscapeDataApi } from "../actions/escape-trending-action";
+import { getCategoryDataApi } from "../actions/category-data-action";
 import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
 
 class Index extends React.Component {
@@ -41,8 +41,6 @@ class Index extends React.Component {
       let cityId = 1;
 
       if (isServer) {
-        console.log(query);
-
         if (
           req.hasOwnProperty("params") &&
           req.params.hasOwnProperty("city_id") &&
@@ -87,22 +85,23 @@ class Index extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
-      this.props.escapeTrending !== nextProps.escapeTrending &&
-      nextProps.escapeTrending.status === "SUCCESS"
+      this.props.categoryData !== nextProps.categoryData &&
+      nextProps.categoryData.status === "SUCCESS"
     ) {
       if (
-        nextProps.escapeTrending.escapeTrending.details.hasOwnProperty(
-          "offer_id"
-        )
+        nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
         const { city } = Router.router.query;
-        const partner = nextProps.escapeTrending.escapeTrending.details.partner_details.p_name
+
+        const partnerId =
+          nextProps.categoryData.categoryData.details.partner_details.p_id;
+        const partner = nextProps.categoryData.categoryData.details.partner_details.p_name
           .replace(/ /g, "-")
           .toLowerCase();
-        const title = nextProps.escapeTrending.escapeTrending.details.offer_title
+        const title = nextProps.categoryData.categoryData.details.offer_title
           .replace(/ /g, "-")
           .toLowerCase();
-        const secret = `${nextProps.escapeTrending.escapeTrending.details.offer_id}-${nextProps.escapeTrending.escapeTrending.result_type}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}`;
         Router.push(
           {
             pathname: "/detail",
@@ -124,8 +123,8 @@ class Index extends React.Component {
     this.props.getHomeScreenApi(cityId);
   };
 
-  escapeTredingApiCall = offerId => {
-    this.props.getEscapeDataApi(offerId);
+  categoryApiCall = offerId => {
+    this.props.getCategoryDataApi(offerId);
   };
 
   render() {
@@ -153,7 +152,7 @@ class Index extends React.Component {
         <Popular homeScreen={this.props.homeScreen} />
         <Trending
           homeScreen={this.props.homeScreen}
-          escapeTredingApiCall={this.escapeTredingApiCall}
+          categoryApiCall={this.categoryApiCall}
         />
         <Collection homeScreen={this.props.homeScreen} />
         <Banner homeScreen={this.props.homeScreen} />
@@ -168,7 +167,7 @@ const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
     homeScreen: state.homeScreen,
-    escapeTrending: state.escapeTrending
+    categoryData: state.categoryData
   };
 };
 
@@ -177,7 +176,7 @@ const mapDispatchToProps = dispatch => {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getHomeScreen: bindActionCreators(getHomeScreen, dispatch),
     getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch),
-    getEscapeDataApi: bindActionCreators(getEscapeDataApi, dispatch)
+    getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch)
   };
 };
 

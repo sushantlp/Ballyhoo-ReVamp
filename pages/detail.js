@@ -1,10 +1,13 @@
 import React from "react";
-import Link from "next/link";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { host } from "../constants";
 
 import Head from "../components/head";
 import Header from "../components/header";
@@ -15,27 +18,55 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
+import { getCategoryDataApi } from "../actions/category-data-action";
+
 class Detail extends React.Component {
-  // static async getInitialProps({ req, res, query }) {
-  //   let stories;
-  //   let page;
+  static async getInitialProps(ctx) {
+    const { store, isServer, req, query } = ctx;
+    let id = 1;
+    let partnerId = 1;
 
-  //   try {
-  //     page = Number(query.page) || 1;
-  //     const response = await fetch(
-  //       `https://node-hnapi.herokuapp.com/news?page=${page}`
-  //     );
-  //     stories = await response.json();
-  //   } catch (err) {
-  //     console.log(err);
-  //     stories = [];
-  //   }
+    if (isServer) {
+      if (
+        req.hasOwnProperty("params") &&
+        req.params.hasOwnProperty("secret") &&
+        req.params !== undefined &&
+        req.params.secret !== undefined
+      ) {
+        // Index Zero=id, One=resultType, Two=partnerId
+        const slice = req.params.secret.split("-");
 
-  //   return { page, stories };
-  // }
+        if (parseInt(slice[1], 10) === 1) {
+        } else {
+        }
+      }
+    } else {
+      if (query.hasOwnProperty("secret") && query.secret !== undefined) {
+        // Index Zero=id, One=resultType, Two=partnerId
+        const slice = query.secret.split("-");
+
+        if (parseInt(slice[1], 10) === 1) {
+        } else {
+        }
+      }
+    }
+  }
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(registration => {
+          console.log("service worker registration successful", registration);
+        })
+        .catch(err => {
+          console.warn("service worker registration failed", err.message);
+        });
+    }
   }
 
   render() {
@@ -43,9 +74,8 @@ class Detail extends React.Component {
       <React.Fragment>
         <Head title="Home" />
         <Header />
-      
         <DetailSlider />
-        <ParentDetail />
+        <ParentDetail categoryData={this.props.categoryData} />
         <Headout />
         <Footer />
       </React.Fragment>
@@ -53,4 +83,19 @@ class Detail extends React.Component {
   }
 }
 
-export default Detail;
+const mapStateToProps = state => {
+  return {
+    categoryData: state.categoryData
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Detail);

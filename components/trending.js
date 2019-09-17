@@ -86,7 +86,7 @@ export default class Trending extends React.Component {
         <div
           className="trending-card"
           key={key}
-          onClick={() => this.props.escapeTredingApiCall(trending.offer_id)}
+          onClick={() => this.props.categoryApiCall(trending.offer_id)}
         >
           <Card
             raised

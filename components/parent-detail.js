@@ -5,6 +5,7 @@ import TrendingDetail from "./trending-detail";
 import "./parent-detail.css";
 
 const ParentDetail = props => {
+  console.log(props);
   return (
     <React.Fragment>
       <section className="section">

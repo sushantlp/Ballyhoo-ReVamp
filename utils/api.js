@@ -30,13 +30,13 @@ export default {
     });
   },
 
-  escapeDataApi: offerId => {
+  categoryDataApi: offerId => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/offers/${offerId}`)
         .then(response => {
           response
             .json()
-            .then(escapeTrending => resolve(escapeTrending))
+            .then(categoryData => resolve(categoryData))
             .catch(error => console.log(error));
         })
         .catch(error => console.log(error));
