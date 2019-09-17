@@ -10,23 +10,37 @@ import FilterDisplay from "./filter-display";
 import "./main-list.css";
 
 const MainList = props => {
-  console.log(props);
-  console.log(props.parentListState.response_type);
   if (props.listData.listData.length === 0) return <Spinner />;
   return (
     <React.Fragment>
       <FilterDisplay />
       <div className="main-list-container">
         {parseInt(props.parentListState.response_type, 10) === 1 ? (
-          <FoodBreweryList listData={props.listData} />
+          <FoodBreweryList
+            listData={props.listData}
+            foodCategoryApiCall={props.foodCategoryApiCall}
+            listUrlParam={props.listUrlParam}
+          />
         ) : parseInt(props.parentListState.response_type, 10) === 2 ? (
-          <EventList listData={props.listData} />
+          <EventList
+            listData={props.listData}
+            categoryApiCall={props.categoryApiCall}
+          />
         ) : parseInt(props.parentListState.response_type, 10) === 3 ? (
-          <ActivityList listData={props.listData} />
+          <ActivityList
+            listData={props.listData}
+            categoryApiCall={props.categoryApiCall}
+          />
         ) : parseInt(props.parentListState.response_type, 10) === 4 ? (
-          <EscapeList listData={props.listData} />
+          <EscapeList
+            listData={props.listData}
+            categoryApiCall={props.categoryApiCall}
+          />
         ) : parseInt(props.parentListState.response_type, 10) === 5 ? (
-          <SpaList listData={props.listData} />
+          <SpaList
+            listData={props.listData}
+            categoryApiCall={props.categoryApiCall}
+          />
         ) : (
           <div />
         )}

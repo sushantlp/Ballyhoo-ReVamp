@@ -26,49 +26,61 @@ class Detail extends React.Component {
     const { store, isServer, req, query } = ctx;
     let categoryJson = [];
     let foodCategoryJson = [];
-    if (isServer) {
-      if (
-        req.hasOwnProperty("params") &&
-        req.params.hasOwnProperty("secret") &&
-        req.params !== undefined &&
-        req.params.secret !== undefined
-      ) {
-        // Index Zero=id, One=resultType, Two=partnerId
-        const slice = req.params.secret.split("-");
+    let detailUrlParam = {};
+    try {
+      if (isServer) {
+        if (
+          req.hasOwnProperty("params") &&
+          req.params.hasOwnProperty("secret") &&
+          req.params !== undefined &&
+          req.params.secret !== undefined
+        ) {
+          // Index Zero=id, One=resultType, Two=partnerId, Three=apiType,
+          const slice = req.params.secret.split("-");
 
-        if (parseInt(slice[1], 10) === 1) {
-          // Food Category Api
-          foodCategoryJson = await fetch(
-            `${host}api/v9/web/partners/${slice[2]}?key=${slice[0]}`
-          );
-          foodCategoryJson = await foodCategoryJson.json();
-        } else {
-          // Category Api
-          categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
-          categoryJson = await categoryJson.json();
+          detailUrlParam = {
+            id: slice[0],
+            result_type: slice[1],
+            partner_id: slice[2],
+            api_type: slice[3]
+          };
+
+          if (parseInt(slice[1], 10) === 1) {
+            const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[3];
+            // Food Category Api
+            foodCategoryJson = await fetch(
+              `${host}api/v9/web/partners/${slice[2]}?key=${key}`
+            );
+            foodCategoryJson = await foodCategoryJson.json();
+
+            store.dispatch(getFoodCategoryData(foodCategoryJson));
+          } else {
+            // Category Api
+            categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
+            categoryJson = await categoryJson.json();
+
+            store.dispatch(getCategoryData(categoryJson));
+          }
+        }
+      } else {
+        if (query.hasOwnProperty("secret") && query.secret !== undefined) {
+          // Index Zero=id, One=resultType, Two=partnerId, Three=apiType
+          const slice = query.secret.split("-");
+
+          detailUrlParam = {
+            id: slice[0],
+            result_type: slice[1],
+            partner_id: slice[2],
+            api_type: slice[3]
+          };
         }
       }
-    } else {
-      if (query.hasOwnProperty("secret") && query.secret !== undefined) {
-        // Index Zero=id, One=resultType, Two=partnerId
-        const slice = query.secret.split("-");
-
-        if (parseInt(slice[1], 10) === 1) {
-          // Food Category Api
-          foodCategoryJson = await fetch(
-            `${host}api/v9/web/partners/${slice[2]}?key=${slice[0]}`
-          );
-          foodCategoryJson = await foodCategoryJson.json();
-        } else {
-          // Category Api
-          categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
-          categoryJson = await categoryJson.json();
-        }
-      }
+    } catch (err) {
+      console.log("Detail_Error");
+      console.log(err);
     }
 
-    store.dispatch(getFoodCategoryData(foodCategoryJson));
-    store.dispatch(getCategoryData(categoryJson));
+    return { detailUrlParam };
   }
 
   constructor(props) {
@@ -97,6 +109,7 @@ class Detail extends React.Component {
         <ParentDetail
           categoryData={this.props.categoryData}
           foodCategoryData={this.props.foodCategoryData}
+          detailUrlParam={this.props.detailUrlParam}
         />
         <Headout />
         <Footer />

@@ -75,7 +75,7 @@ class ParentList extends React.Component {
       return <Spinner />;
 
     if (this.state.response_type === 0) return <Spinner />;
-    console.log(this.props);
+
     return (
       <React.Fragment>
         <Search
@@ -95,6 +95,9 @@ class ParentList extends React.Component {
                   listData={this.props.listData}
                   parentListState={this.state}
                   onLoadMoreList={this.onLoadMoreList}
+                  categoryApiCall={this.props.categoryApiCall}
+                  foodCategoryApiCall={this.props.foodCategoryApiCall}
+                  listUrlParam={this.props.listUrlParam}
                 />
               </div>
             </div>

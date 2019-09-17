@@ -151,7 +151,10 @@ const ActivityList = props => {
             </div>
 
             <div className="card-footer-item">
-              <a className="button is-medium">
+              <a
+                className="button is-medium"
+                onClick={() => props.categoryApiCall(list.offer_id)}
+              >
                 <span className="icon">
                   <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
                 </span>

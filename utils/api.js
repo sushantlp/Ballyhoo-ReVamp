@@ -45,7 +45,7 @@ export default {
 
   foodCategoryDataApi: (partnerId, key) => {
     return new Promise((resolve, reject) => {
-      fetch(`${host}api/v9/web/partners/${partnerId}?key=${offerId}`)
+      fetch(`${host}api/v9/web/partners/${partnerId}?key=${key}`)
         .then(response => {
           response
             .json()

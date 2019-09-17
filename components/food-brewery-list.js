@@ -175,7 +175,12 @@ const FoodBrewery = props => {
             </div>
 
             <div className="card-footer-item">
-              <a className="button is-medium">
+              <a
+                className="button is-medium"
+                onClick={() =>
+                  props.foodCategoryApiCall(list.p_id, props.listUrlParam.key)
+                }
+              >
                 <span className="icon">
                   <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
                 </span>

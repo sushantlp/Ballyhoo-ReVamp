@@ -1,7 +1,7 @@
 import React from "react";
+import Router from "next/router";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Router from "next/router";
 
 import fetch from "isomorphic-unfetch";
 
@@ -102,6 +102,7 @@ class Index extends React.Component {
           .replace(/ /g, "-")
           .toLowerCase();
         const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}`;
+
         Router.push(
           {
             pathname: "/detail",
