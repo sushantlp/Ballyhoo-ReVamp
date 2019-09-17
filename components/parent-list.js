@@ -75,7 +75,7 @@ class ParentList extends React.Component {
       return <Spinner />;
 
     if (this.state.response_type === 0) return <Spinner />;
-
+    console.log(this.props);
     return (
       <React.Fragment>
         <Search

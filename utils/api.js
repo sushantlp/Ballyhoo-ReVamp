@@ -41,5 +41,18 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  foodCategoryDataApi: (partnerId, key) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/partners/${partnerId}?key=${offerId}`)
+        .then(response => {
+          response
+            .json()
+            .then(foodCategoryData => resolve(foodCategoryData))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };

@@ -67,7 +67,7 @@ class List extends React.Component {
       console.log(err);
     }
 
-    return { listJson, cityLocalityJson, routeParam };
+    return { routeParam };
   }
 
   componentDidMount() {

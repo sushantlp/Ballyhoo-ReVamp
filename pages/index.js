@@ -67,7 +67,7 @@ class Index extends React.Component {
       console.log(err);
     }
 
-    return { cityLocalityJson, homeScreenJson };
+    return {};
   }
 
   componentDidMount() {
@@ -136,7 +136,7 @@ class Index extends React.Component {
     const Welcome = styled.h1`
       color: red;
     `;
-
+    console.log(this.props);
     return (
       <div>
         <Head title="Home" />

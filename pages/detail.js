@@ -18,14 +18,14 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
-import { getCategoryDataApi } from "../actions/category-data-action";
+import { getCategoryData } from "../actions/category-data-action";
+import { getFoodCategoryData } from "../actions/food-category-data-action";
 
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
     const { store, isServer, req, query } = ctx;
-    let id = 1;
-    let partnerId = 1;
-
+    let categoryJson = [];
+    let foodCategoryJson = [];
     if (isServer) {
       if (
         req.hasOwnProperty("params") &&
@@ -37,7 +37,15 @@ class Detail extends React.Component {
         const slice = req.params.secret.split("-");
 
         if (parseInt(slice[1], 10) === 1) {
+          // Food Category Api
+          foodCategoryJson = await fetch(
+            `${host}api/v9/web/partners/${slice[2]}?key=${slice[0]}`
+          );
+          foodCategoryJson = await foodCategoryJson.json();
         } else {
+          // Category Api
+          categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
+          categoryJson = await categoryJson.json();
         }
       }
     } else {
@@ -46,10 +54,21 @@ class Detail extends React.Component {
         const slice = query.secret.split("-");
 
         if (parseInt(slice[1], 10) === 1) {
+          // Food Category Api
+          foodCategoryJson = await fetch(
+            `${host}api/v9/web/partners/${slice[2]}?key=${slice[0]}`
+          );
+          foodCategoryJson = await foodCategoryJson.json();
         } else {
+          // Category Api
+          categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
+          categoryJson = await categoryJson.json();
         }
       }
     }
+
+    store.dispatch(getFoodCategoryData(foodCategoryJson));
+    store.dispatch(getCategoryData(categoryJson));
   }
 
   constructor(props) {
@@ -75,7 +94,10 @@ class Detail extends React.Component {
         <Head title="Home" />
         <Header />
         <DetailSlider />
-        <ParentDetail categoryData={this.props.categoryData} />
+        <ParentDetail
+          categoryData={this.props.categoryData}
+          foodCategoryData={this.props.foodCategoryData}
+        />
         <Headout />
         <Footer />
       </React.Fragment>
@@ -85,13 +107,15 @@ class Detail extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    categoryData: state.categoryData
+    categoryData: state.categoryData,
+    foodCategoryData: state.foodCategoryData
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch)
+    getCategoryData: bindActionCreators(getCategoryData, dispatch),
+    getFoodCategoryData: bindActionCreators(getFoodCategoryData, dispatch)
   };
 };
 
