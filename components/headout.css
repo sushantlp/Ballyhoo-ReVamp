@@ -6,7 +6,7 @@
 
 .download-section .iphone-wrapper,
 .download-section .android-wrapper {
-  margin-right: -12.5em;
+  /* margin-right: -12.5em; */
   /* right: 50%; */
 }
 
@@ -83,7 +83,7 @@ picture {
 
 .download-section .android-wrapper,
 .download-section .iphone-wrapper {
-  /* width: 23em; */
+  width: 50em;
   position: absolute;
   overflow: hidden;
   height: 47em;
@@ -102,10 +102,10 @@ picture {
   /* width: 100%; */
   background: none;
   object-fit: contain;
-  padding: 4.85em 1.33em 0 1.15em;
+  /* padding: 4.85em 1.33em 0 1.15em; */
 }
 
 .download-section .iphone-wrapper div.on-visible .image {
-   /* margin-left: 3em; */
-   right:7em;
+  /* margin-left: 3em; */
+  right: 7em;
 }
