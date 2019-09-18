@@ -18,6 +18,18 @@ const Text = props => {
               {props.detail}
             </ReadMoreAndLess>
           </h4>
+
+          {props.flag ? (
+            <ul className="package-tags">
+              {props.happyHour.map((tag, key) => {
+                return (
+                  <li className="ellipsis" key={key}>
+                    {tag.day} {tag.start_time} To {tag.end_time}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : null}
         </div>
       </div>
     </div>

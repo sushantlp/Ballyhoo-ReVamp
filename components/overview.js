@@ -2,6 +2,7 @@ import Lightbox from "lightbox-react";
 
 import Map from "./map";
 import Menu from "./menu-detail";
+
 import Zomato from "./zomato-rating";
 import CuisineTiming from "./cuisine-timing-detail";
 import Text from "./text-detail";
@@ -42,6 +43,101 @@ export default class Overview extends React.Component {
   };
 
   render() {
+    const offerRating =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.rating
+        : this.props.categoryData.categoryData.details.partner_details.p_name;
+
+    const popularity =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.popularity
+        : this.props.categoryData.categoryData.details.partner_details.p_name;
+
+    const price =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.cost_for_two
+        : this.props.categoryData.categoryData.details.partner_details.p_name;
+
+    const cuisineTag =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.cuisines
+        : this.props.categoryData.categoryData.details.partner_details.p_name;
+
+    const cuisineTagFlag =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? true : false;
+
+    const timing =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.working_hours
+        : [];
+    const about =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.description
+        : this.props.categoryData.categoryData.details.partner_details.p_name;
+    const highlight =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.highlight
+        : this.props.categoryData.categoryData.details.partner_details.p_name;
+
+    const where =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
+        : null;
+
+    const happy =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.happy_hours
+            .content
+        : null;
+
+    const happyHour =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.happy_hours.hours
+        : null;
+    const lat =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.address_details
+            .latitude
+        : null;
+
+    const lng =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.address_details
+            .longitude
+        : null;
+
+    let fullRating = [];
+    let emptyRating = [];
+    let topRating = 5;
+    let halfRating = undefined;
+
+    const rating = offerRating + "";
+    const ratingSplit = rating.split(".");
+
+    // Half Star
+    if (ratingSplit[1] !== undefined) {
+      if (parseInt(ratingSplit[1], 10) === 0)
+        topRating = topRating - Number(ratingSplit[0]);
+      else {
+        topRating = topRating - Number(ratingSplit[0]);
+        topRating = topRating - 1;
+
+        halfRating = (
+          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+        );
+      }
+    } else topRating = topRating - Number(ratingSplit[0]);
+
+    // Full Star
+    for (let i = 0; i < Number(ratingSplit[0]); i++) {
+      fullRating.push(i);
+    }
+
+    // Empty Star
+    for (let i = 0; i < topRating; i++) {
+      emptyRating.push(i);
+    }
+
     return (
       <div className="overview-container">
         <div className="box">
@@ -49,7 +145,7 @@ export default class Overview extends React.Component {
             <div className="column is-5">
               <h4 className="ffqs fw2">
                 Average cost for two :{" "}
-                <span className="fw7 sfc3"> &#8377; 2,365</span>
+                <span className="fw7 sfc3"> &#8377; {price}</span>
               </h4>
             </div>
 
@@ -61,18 +157,35 @@ export default class Overview extends React.Component {
                     src="https://img.icons8.com/plasticine/20/000000/hearts.png"
                     className="pl0_5"
                   />
-                  <span className="ellipsis pl0_5 fz1_4"> 71%</span>
+                  <span className="ellipsis pl0_5 fz1_4 pfc4">
+                    {" "}
+                    {popularity}%
+                  </span>
                 </span>
               </div>
             </div>
 
             <div className="column is-2 is-offset-1">
               <span className="rating">
-                <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                <img src="https://img.icons8.com/color/20/000000/filled-star.png" />
-                <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
-                <img src="https://img.icons8.com/color/20/000000/star.png" />
-                <img src="https://img.icons8.com/color/20/000000/star.png" />
+                {fullRating.map(function(i) {
+                  return (
+                    <img
+                      src="https://img.icons8.com/color/20/000000/filled-star.png"
+                      key={i}
+                    />
+                  );
+                })}
+                <span>{halfRating}</span>
+                <span>
+                  {emptyRating.map(function(i) {
+                    return (
+                      <img
+                        src="https://img.icons8.com/color/20/000000/star.png"
+                        key={i}
+                      />
+                    );
+                  })}
+                </span>
               </span>
             </div>
           </div>
@@ -80,49 +193,46 @@ export default class Overview extends React.Component {
 
         <hr className="spacer is-3" />
 
-        <CuisineTiming />
-
-        <div className="box">
-          <div className="columns">
-            <div className="column">
-              <h4 className="ffqs cuisine-title">About Merchant</h4>
-              <div className="about-underscore" />
-              <h4 className="fz1 pfc4 ffqs fw2 ls">
-                Passengers embark at North Cove Marina in lower Manhattan, and
-                the tour begins after a short safety briefing. The boat stops
-                for photos at the Freedom Tower, circles around Battery Park,
-                cruises up the East River and stops again for a photo
-                opportunity underneath the Brooklyn Bridge.
-              </h4>
-            </div>
-          </div>
-        </div>
-
+        <CuisineTiming
+          cuisineTag={cuisineTag}
+          cuisineTagFlag={cuisineTagFlag}
+          timing={timing}
+        />
+        <Text
+          ReadMore={this.ReadMore}
+          title="About Merchant"
+          detail={about}
+          flag={false}
+        />
         <Menu intializeImageArray={this.intializeImageArray} />
         <Text
           ReadMore={this.ReadMore}
           title="Offer Highlight"
-          detail="  This wonderful land of northeast India, is home to some of the
-              most picturesque honeymoon destinations with spellbinding tourist
-              attractions. This romantic 4 nights 5 days north east package from
-              Delhi, Kolkata, Mumbai and other major cities of India takes you
-              around some famous tourist places in northeast India including
-              Shillong and Mawlynnong Shillong and Mawlynnong."
+          detail={highlight}
+          flag={false}
         />
+
+        <div>
+          <Text
+            ReadMore={this.ReadMore}
+            title="Happy Hours"
+            detail={happy}
+            flag={true}
+            happyHour={happyHour}
+          />
+        </div>
 
         <div className="box">
           <div className="columns">
             <div className="column">
               <h4 className="ffqs cuisine-title">Where ?</h4>
               <div className="where-underscore" />
-              <h4 className="ff f10 f1-1 fw2">
-                C. d'Arístides Maillol, 12, 08028 Barcelona, Spain
-              </h4>
-              <Map />
+              <h4 className="ff f10 f1-1 fw2">{where}</h4>
+              <Map lat={lat} lng={lng} />
             </div>
           </div>
         </div>
-
+        {/* 
         <Text
           ReadMore={this.ReadMore}
           title="Terms"
@@ -132,7 +242,7 @@ export default class Overview extends React.Component {
           Delhi, Kolkata, Mumbai and other major cities of India takes you
           around some famous tourist places in northeast India including
           Shillong and Mawlynnong Shillong and Mawlynnong."
-        />
+        /> */}
 
         <Zomato ReadMore={this.ReadMore} />
         {this.state.lightBox && (

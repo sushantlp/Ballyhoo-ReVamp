@@ -118,7 +118,13 @@ export default class DetailTab extends React.Component {
           </ul>
         </div>
 
-        {this.state.navigation === "Overview" ? <Overview /> : null}
+        {this.state.navigation === "Overview" ? (
+          <Overview
+            categoryData={this.props.categoryData}
+            foodCategoryData={this.props.foodCategoryData}
+            detailUrlParam={this.props.detailUrlParam}
+          />
+        ) : null}
 
         {this.state.navigation === "Offers" ? <FoodOfferList /> : null}
 

@@ -6,6 +6,7 @@ import "./parent-detail.css";
 
 export default class ParentDetail extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <React.Fragment>
         <section className="section">
@@ -13,7 +14,21 @@ export default class ParentDetail extends React.Component {
             <div className="columns">
               <div className="column is-8">
                 <div className="column is-6">
-                  <h4 className="ffqs parent-detail-title">55 Wall Street</h4>
+                  <h4 className="ffqs parent-detail-title mb0-4">
+                    {parseInt(this.props.detailUrlParam.result_type, 10) === 1
+                      ? this.props.foodCategoryData.foodCategoryData.details
+                          .bname
+                      : this.props.categoryData.categoryData.details
+                          .partner_details.p_name}
+                  </h4>
+                  <h5 className="ffqs parent-detail-sub-title mt0-1">
+                    {" "}
+                    {parseInt(this.props.detailUrlParam.result_type, 10) === 1
+                      ? this.props.foodCategoryData.foodCategoryData.details
+                          .offering
+                      : this.props.categoryData.categoryData.details
+                          .offer_title}
+                  </h5>
                 </div>
                 <DetailTab
                   categoryData={this.props.categoryData}

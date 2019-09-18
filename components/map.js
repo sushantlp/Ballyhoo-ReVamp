@@ -21,9 +21,9 @@ export default class Map extends React.Component {
     )(props => (
       <GoogleMap
         defaultZoom={13}
-        defaultCenter={{ lat: 41.380898, lng: 2.12282 }}
+        defaultCenter={{ lat: this.props.lat, lng: this.props.lng }}
       >
-        <Marker position={{ lat: 41.380898, lng: 2.12282 }} />
+        <Marker position={{ lat: this.props.lat, lng: this.props.lng }} />
       </GoogleMap>
     ));
 

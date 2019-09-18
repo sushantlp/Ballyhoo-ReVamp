@@ -54,7 +54,7 @@ export default class Header extends React.Component {
             <div className="navbar-brand">
               <a className="navbar-item" href="/">
                 <img
-                  src="https://res.cloudinary.com/dp67gawk6/image/upload/v1568101757/BallyhooV3/WEB/2.jpg"
+                  src="https://res.cloudinary.com/dp67gawk6/image/upload/v1568735897/BallyhooV3/WEB/whitebox_logo.png"
                   alt="Bulma: Free, open source, &amp; modern CSS framework based on Flexbox"
                   // width="112"
                   // height="28"

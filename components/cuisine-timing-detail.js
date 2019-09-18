@@ -4,18 +4,18 @@ const CuisineTiming = props => {
       <div className="cuisine-container">
         <div className="columns">
           <div className="column is-6">
-            <h4 className="ffqs cuisine-title">Cuisines</h4>
+            <h4 className="ffqs cuisine-title">
+              {props.cuisineTagFlag ? "Cuisine" : "Hashtag"}
+            </h4>
             <div className="cuisine-underscore" />
             <ul className="package-tags">
-              <li className="ellipsis">Shikara Ride</li>
-              <li className="ellipsis">Nature</li>
-              <li className="ellipsis">Martand Temple</li>
-              <li className="ellipsis">Hill station</li>
-              <li className="ellipsis">Amusement Park</li>
-              <li className="ellipsis">Sightseeing</li>
-              <li className="ellipsis">Gondola Ride</li>
-              <li className="ellipsis">Family</li>
-              <li className="ellipsis">Budget</li>
+              {props.cuisineTag.map((tag, key) => {
+                return (
+                  <li className="ellipsis" key={key}>
+                    {props.cuisineTagFlag ? tag.cuisine_name : null}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -23,8 +23,13 @@ const CuisineTiming = props => {
             <h4 className="ffqs cuisine-title">Timings</h4>
             <div className="timing-underscore" />
             <ul className="package-tags">
-              <li className="ellipsis">Tue 11:30 AM To 12:30 AM</li>
-              <li className="ellipsis">Wed 11:30 AM To 12:30 AM</li>
+              {props.timing.map((tag, key) => {
+                return (
+                  <li className="ellipsis" key={key}>
+                    {tag.day}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

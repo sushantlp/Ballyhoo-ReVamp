@@ -8,3 +8,17 @@
   font-weight: 400;
   letter-spacing: 0.0175rem;
 }
+
+.parent-detail-sub-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.0175rem;
+}
+
+.mt0-1 {
+  margin-top: 0.1em;
+}
+
+.mb0-4 {
+  margin-bottom: 0.4em;
+}
