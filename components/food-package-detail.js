@@ -1,22 +1,27 @@
 import ReadMoreAndLess from "react-read-more-less";
 import "./food-list.css";
-const FoodList = props => {
-  return props.buffet.map((value, key) => {
+const FoodPackageDetail = props => {
+  return props.package.map((value, key) => {
     let price = 0;
     let cutPrice = 0;
     if (parseInt(value.discount, 10) === 0) price = value.price;
     else {
-      price = (parseInt(value.price, 10) * parseInt(value.discount, 10)) / 100;
-      price = parseInt(value.price, 10) - price;
+      price = (value.price * 100) / value.discount;
+      price = value.price - price;
       cutPrice = value.price;
     }
-
     return (
       <React.Fragment key={key}>
         <div className="food-list-container">
           <div className="columns">
             <div className="column">
-              <div className="box">
+              <div
+                className="box"
+                style={{
+                  boxShadow:
+                    "0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)"
+                }}
+              >
                 <article className="media">
                   <div className="media-left">
                     <figure className="image">
@@ -53,13 +58,13 @@ const FoodList = props => {
                               </span>
                             ) : (
                               <span>
-                                {" "}
                                 <span>
                                   <img
                                     src="https://img.icons8.com/color/48/000000/vegetarian-food-symbol.png"
                                     style={{ height: "1.5em" }}
                                   />
                                 </span>
+
                                 <span>
                                   <img
                                     src="https://img.icons8.com/color/48/000000/non-vegetarian-food-symbol.png"
@@ -77,7 +82,7 @@ const FoodList = props => {
                           <ReadMoreAndLess
                             ref={props.ReadMore}
                             className="read-more-content"
-                            charLimit={450}
+                            charLimit={400}
                             readMoreText="See more"
                             readLessText="See less"
                           >
@@ -95,9 +100,7 @@ const FoodList = props => {
                       <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
                         ₹ {price}/-
                         {cutPrice === 0 ? null : (
-                          <span className="f12 pfc3 tdl ml8">
-                            ₹ {cutPrice}/-
-                          </span>
+                          <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span>
                         )}
                       </h5>
                     </span>
@@ -118,4 +121,4 @@ const FoodList = props => {
   });
 };
 
-export default FoodList;
+export default FoodPackageDetail;

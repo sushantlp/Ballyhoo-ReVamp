@@ -163,12 +163,28 @@ const FoodBrewery = props => {
                       style={{ height: "1.5em" }}
                     />
                   </span>
-                ) : (
+                ) : parseInt(list.p_food_preference, 10) === 2 ? (
                   <span>
                     <img
                       src="https://img.icons8.com/color/48/000000/non-vegetarian-food-symbol.png"
                       style={{ height: "1.5em" }}
                     />
+                  </span>
+                ) : (
+                  <span>
+                    <span>
+                      <img
+                        src="https://img.icons8.com/color/48/000000/vegetarian-food-symbol.png"
+                        style={{ height: "1.5em" }}
+                      />
+                    </span>
+
+                    <span>
+                      <img
+                        src="https://img.icons8.com/color/48/000000/non-vegetarian-food-symbol.png"
+                        style={{ height: "1.5em" }}
+                      />
+                    </span>
                   </span>
                 )}
               </span>

@@ -102,7 +102,11 @@ class Detail extends React.Component {
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <DetailSlider />
+        <DetailSlider
+          categoryData={this.props.categoryData}
+          foodCategoryData={this.props.foodCategoryData}
+          detailUrlParam={this.props.detailUrlParam}
+        />
         <ParentDetail
           categoryData={this.props.categoryData}
           foodCategoryData={this.props.foodCategoryData}

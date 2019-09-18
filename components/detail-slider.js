@@ -10,18 +10,12 @@ export default class DetailSlider extends React.Component {
     this.state = {
       photoIndex: 0,
       lightBox: false,
-      bundleImage: [
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/fgnqmyilabm0v5q4ho3b.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/hu4nbdi0t2rmybyiv8bn.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/zvyyrmyaxucotwv5xftg.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/b2hxnhawzl33zqsokrmc.webp",
-        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_550,h_732/Mobile/City/zxa9xen670fegz4nnjpk.webp"
-      ]
+      bundleImage: []
     };
   }
 
-  intializeImageArray = bool => {
-    this.setState({ lightBox: bool });
+  intializeImageArray = (bool, bundleImage) => {
+    this.setState({ lightBox: bool, bundleImage });
   };
 
   movePrevRequest = (photoIndex, bundleImage) => {
@@ -48,18 +42,29 @@ export default class DetailSlider extends React.Component {
       fade: true
     };
 
+    const images =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.images.length > 0
+        ? this.props.foodCategoryData.foodCategoryData.details.images
+        : null;
+
     return (
       <div className="detail-slider-container">
-        <div className="top-left">
-          <p className="buttons" onClick={() => this.intializeImageArray(true)}>
-            <a className="button is-medium is-rounded">
-              <span className="icon">
-                <img src="https://img.icons8.com/color/20/000000/camera.png" />
-              </span>
-              <span className="text">See Gallery</span>
-            </a>
-          </p>
-        </div>
+        {images !== null ? (
+          <div className="top-left">
+            <p
+              className="buttons"
+              onClick={() => this.intializeImageArray(true, images)}
+            >
+              <a className="button is-medium is-rounded">
+                <span className="icon">
+                  <img src="https://img.icons8.com/color/20/000000/camera.png" />
+                </span>
+                <span className="text">See Gallery</span>
+              </a>
+            </p>
+          </div>
+        ) : null}
 
         <section className="hero is-medium">
           <Slider {...settings}>

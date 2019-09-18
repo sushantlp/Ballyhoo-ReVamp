@@ -16,18 +16,12 @@ export default class Overview extends React.Component {
     this.state = {
       photoIndex: 0,
       lightBox: false,
-      bundleImage: [
-        "https://b.zmtcdn.com/data/menus/410/18387410/c28fc94d82679806af3f1cf12b84b867.jpg?output-format=webp",
-        "https://b.zmtcdn.com/data/menus/410/18387410/732cc23f9107fcfea18555372c176f1c.jpg",
-        "https://b.zmtcdn.com/data/menus/410/18387410/4114c960cea71d7981bf0dc3358dbf9c.jpg",
-        "https://b.zmtcdn.com/data/menus/410/18387410/5315c87be1738af261da3501271dfa15.jpg",
-        "https://b.zmtcdn.com/data/menus/410/18387410/81c918ed61a86ecc2d16b66d18576909.jpg"
-      ]
+      bundleImage: []
     };
   }
 
-  intializeImageArray = bool => {
-    this.setState({ lightBox: bool });
+  intializeImageArray = (bool, bundleImage) => {
+    this.setState({ lightBox: bool, bundleImage });
   };
 
   movePrevRequest = (photoIndex, bundleImage) => {
@@ -46,65 +40,106 @@ export default class Overview extends React.Component {
     const offerRating =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.rating
-        : this.props.categoryData.categoryData.details.partner_details.p_name;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
+        : null;
 
     const popularity =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.popularity
-        : this.props.categoryData.categoryData.details.partner_details.p_name;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
+        : null;
 
     const price =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.cost_for_two
-        : this.props.categoryData.categoryData.details.partner_details.p_name;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
+        : null;
 
     const cuisineTag =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.cuisines.length > 0
         ? this.props.foodCategoryData.foodCategoryData.details.cuisines
-        : this.props.categoryData.categoryData.details.partner_details.p_name;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? []
+        : [];
 
     const cuisineTagFlag =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? true : false;
 
     const timing =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.working_hours
+        .length > 0
         ? this.props.foodCategoryData.foodCategoryData.details.working_hours
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
         : [];
     const about =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.description != null
         ? this.props.foodCategoryData.foodCategoryData.details.description
-        : this.props.categoryData.categoryData.details.partner_details.p_name;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
+        : null;
+
     const highlight =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.highlight != null
         ? this.props.foodCategoryData.foodCategoryData.details.highlight
-        : this.props.categoryData.categoryData.details.partner_details.p_name;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
+        : null;
 
     const where =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
         : null;
 
     const happy =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.happy_hours
+        .content != null
         ? this.props.foodCategoryData.foodCategoryData.details.happy_hours
             .content
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
         : null;
 
     const happyHour =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.happy_hours.hours
+        .length > 0
         ? this.props.foodCategoryData.foodCategoryData.details.happy_hours.hours
-        : null;
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? []
+        : [];
     const lat =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.address_details
             .latitude
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
         : null;
-
     const lng =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.address_details
             .longitude
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? null
         : null;
+    const menuImage =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+      this.props.foodCategoryData.foodCategoryData.details.menu_images.length >
+        0
+        ? this.props.foodCategoryData.foodCategoryData.details.menu_images
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? []
+        : [];
 
     let fullRating = [];
     let emptyRating = [];
@@ -148,6 +183,35 @@ export default class Overview extends React.Component {
                 <span className="fw7 sfc3"> &#8377; {price}</span>
               </h4>
             </div>
+
+            {/* {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ||
+            parseInt(this.props.detailUrlParam.result_type, 10) === 5 ? (
+              <div className="column is-3">
+                {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+                  <span>
+                    <span>
+                      <img src="https://img.icons8.com/color/20/000000/vegetarian-food-symbol.png" />
+                    </span>
+
+                    <span>
+                      <img src="https://img.icons8.com/color/20/000000/non-vegetarian-food-symbol.png" />
+                    </span>
+                  </span>
+                ) : null}
+
+                {parseInt(this.props.detailUrlParam.result_type, 10) === 5 ? (
+                  <span>
+                    <span>
+                      <img src="https://img.icons8.com/bubbles/25/000000/birthday-boy.png" />
+                    </span>
+
+                    <span>
+                      <img src="https://img.icons8.com/bubbles/25/000000/birthday-girl.png" />
+                    </span>
+                  </span>
+                ) : null}
+              </div>
+            ) : null} */}
 
             <div className="column is-4">
               <div>
@@ -193,26 +257,40 @@ export default class Overview extends React.Component {
 
         <hr className="spacer is-3" />
 
-        <CuisineTiming
-          cuisineTag={cuisineTag}
-          cuisineTagFlag={cuisineTagFlag}
-          timing={timing}
-        />
-        <Text
-          ReadMore={this.ReadMore}
-          title="About Merchant"
-          detail={about}
-          flag={false}
-        />
-        <Menu intializeImageArray={this.intializeImageArray} />
-        <Text
-          ReadMore={this.ReadMore}
-          title="Offer Highlight"
-          detail={highlight}
-          flag={false}
-        />
+        {cuisineTag.length > 0 ? (
+          <CuisineTiming
+            cuisineTag={cuisineTag}
+            cuisineTagFlag={cuisineTagFlag}
+            timing={timing}
+          />
+        ) : null}
 
-        <div>
+        {about != null ? (
+          <Text
+            ReadMore={this.ReadMore}
+            title="About Merchant"
+            detail={about}
+            flag={false}
+          />
+        ) : null}
+
+        {menuImage.length > 0 ? (
+          <Menu
+            intializeImageArray={this.intializeImageArray}
+            menuImage={menuImage}
+          />
+        ) : null}
+
+        {highlight != null ? (
+          <Text
+            ReadMore={this.ReadMore}
+            title="Offer Highlight"
+            detail={highlight}
+            flag={false}
+          />
+        ) : null}
+
+        {happy != null ? (
           <Text
             ReadMore={this.ReadMore}
             title="Happy Hours"
@@ -220,7 +298,7 @@ export default class Overview extends React.Component {
             flag={true}
             happyHour={happyHour}
           />
-        </div>
+        ) : null}
 
         <div className="box">
           <div className="columns">
@@ -244,7 +322,7 @@ export default class Overview extends React.Component {
           Shillong and Mawlynnong Shillong and Mawlynnong."
         /> */}
 
-        <Zomato ReadMore={this.ReadMore} />
+        {/* <Zomato ReadMore={this.ReadMore} /> */}
         {this.state.lightBox && (
           <Lightbox
             mainSrc={this.state.bundleImage[this.state.photoIndex]}

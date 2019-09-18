@@ -38,7 +38,8 @@ export default class DetailTab extends React.Component {
               </a>
             </li>
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+            this.props.foodCategoryData.foodCategoryData.offers.length > 0 ? (
               <li
                 className={
                   this.state.navigation === "Offers" ? "is-active" : ""
@@ -54,7 +55,8 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+            this.props.foodCategoryData.foodCategoryData.packages.length > 0 ? (
               <li
                 className={
                   this.state.navigation === "Buffets" ? "is-active" : ""
@@ -70,21 +72,39 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            <li
-              className={
-                this.state.navigation === "Packages" ? "is-active" : ""
-              }
-              onClick={() => this.changeTab("Packages")}
-            >
-              <a>
-                <span className="icon is-medium">
-                  <img src="https://img.icons8.com/plasticine/30/000000/box-love.png" />
-                </span>
-                <span>Packages</span>
-              </a>
-            </li>
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+            this.props.foodCategoryData.foodCategoryData.packages.length > 0 ? (
+              <li
+                className={
+                  this.state.navigation === "Packages" ? "is-active" : ""
+                }
+                onClick={() => this.changeTab("Packages")}
+              >
+                <a>
+                  <span className="icon is-medium">
+                    <img src="https://img.icons8.com/plasticine/30/000000/box-love.png" />
+                  </span>
+                  <span>Packages</span>
+                </a>
+              </li>
+            ) : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 ? (
+              <li
+                className={
+                  this.state.navigation === "Packages" ? "is-active" : ""
+                }
+                onClick={() => this.changeTab("Packages")}
+              >
+                <a>
+                  <span className="icon is-medium">
+                    <img src="https://img.icons8.com/plasticine/30/000000/box-love.png" />
+                  </span>
+                  <span>Packages</span>
+                </a>
+              </li>
+            ) : null}
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+            this.props.foodCategoryData.foodCategoryData.events.length > 0 ? (
               <li
                 className={
                   this.state.navigation === "Events" ? "is-active" : ""
@@ -100,7 +120,7 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) !== 2 ? (
+            {/* {parseInt(this.props.detailUrlParam.result_type, 10) !== 2 ? (
               <li
                 className={
                   this.state.navigation === "Reviews" ? "is-active" : ""
@@ -114,7 +134,7 @@ export default class DetailTab extends React.Component {
                   <span>Reviews</span>
                 </a>
               </li>
-            ) : null}
+            ) : null} */}
           </ul>
         </div>
 
@@ -126,13 +146,31 @@ export default class DetailTab extends React.Component {
           />
         ) : null}
 
-        {this.state.navigation === "Offers" ? <FoodOfferList /> : null}
+        {this.state.navigation === "Offers" ? (
+          <FoodOfferList
+            offer={this.props.foodCategoryData.foodCategoryData.offers}
+          />
+        ) : null}
 
-        {this.state.navigation === "Buffets" ? <FoodList /> : null}
+        {this.state.navigation === "Buffets" ? (
+          <FoodList
+            buffet={this.props.foodCategoryData.foodCategoryData.buffets}
+          />
+        ) : null}
 
-        {this.state.navigation === "Packages" ? <ParentPackage /> : null}
+        {this.state.navigation === "Packages" ? (
+          <ParentPackage
+            categoryData={this.props.categoryData}
+            foodCategoryData={this.props.foodCategoryData}
+            detailUrlParam={this.props.detailUrlParam}
+          />
+        ) : null}
 
-        {this.state.navigation === "Events" ? <FoodEventList /> : null}
+        {this.state.navigation === "Events" ? (
+          <FoodEventList
+            events={this.props.foodCategoryData.foodCategoryData.events}
+          />
+        ) : null}
 
         {this.state.navigation === "Reviews" ? <div /> : null}
       </div>
