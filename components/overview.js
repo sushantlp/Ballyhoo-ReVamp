@@ -41,21 +41,21 @@ export default class Overview extends React.Component {
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.rating
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? this.props.categoryData.categoryData.details.offer_rating
         : null;
 
     const popularity =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.popularity
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? this.props.categoryData.categoryData.details.offer_popularity
         : null;
 
     const price =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.cost_for_two
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? this.props.categoryData.categoryData.details.offer_min_price
         : null;
 
     const cuisineTag =
@@ -75,29 +75,31 @@ export default class Overview extends React.Component {
         .length > 0
         ? this.props.foodCategoryData.foodCategoryData.details.working_hours
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? []
         : [];
     const about =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
       this.props.foodCategoryData.foodCategoryData.details.description != null
         ? this.props.foodCategoryData.foodCategoryData.details.description
-        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 &&
+          this.props.categoryData.categoryData.details.offer_description != null
+        ? this.props.categoryData.categoryData.details.offer_description
         : null;
 
     const highlight =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
       this.props.foodCategoryData.foodCategoryData.details.highlight != null
-        ? this.props.foodCategoryData.foodCategoryData.details.highlight
-        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? this.props.foodCategoryData.foodCategoryData.details.highlight != null
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 &&
+          this.props.categoryData.categoryData.details.offer_highlights != null
+        ? this.props.categoryData.categoryData.details.offer_highlights
         : null;
 
     const where =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? `${this.props.categoryData.categoryData.details.offer_address.address_1}, ${this.props.categoryData.categoryData.details.offer_address.address_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
         : null;
 
     const happy =
@@ -123,14 +125,14 @@ export default class Overview extends React.Component {
         ? this.props.foodCategoryData.foodCategoryData.details.address_details
             .latitude
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? this.props.categoryData.categoryData.details.offer_address.latitude
         : null;
     const lng =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.address_details
             .longitude
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? null
+        ? this.props.categoryData.categoryData.details.offer_address.longitude
         : null;
     const menuImage =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
@@ -140,6 +142,14 @@ export default class Overview extends React.Component {
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
         ? []
         : [];
+    const terms =
+      parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? this.props.categoryData.categoryData.details.offer_terms
+        : null;
+    const faqs =
+      parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? this.props.categoryData.categoryData.details.offer_faqs
+        : null;
 
     let fullRating = [];
     let emptyRating = [];
@@ -297,6 +307,24 @@ export default class Overview extends React.Component {
             detail={happy}
             flag={true}
             happyHour={happyHour}
+          />
+        ) : null}
+
+        {terms != null ? (
+          <Text
+            ReadMore={this.ReadMore}
+            title="Terms"
+            detail={terms}
+            flag={false}
+          />
+        ) : null}
+
+        {faqs != null ? (
+          <Text
+            ReadMore={this.ReadMore}
+            title="Faqs"
+            detail={faqs}
+            flag={false}
           />
         ) : null}
 

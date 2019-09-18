@@ -46,6 +46,9 @@ export default class DetailSlider extends React.Component {
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
       this.props.foodCategoryData.foodCategoryData.details.images.length > 0
         ? this.props.foodCategoryData.foodCategoryData.details.images
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 &&
+          this.props.categoryData.categoryData.details.offer_images.length > 0
+        ? this.props.categoryData.categoryData.details.offer_images
         : null;
 
     return (
