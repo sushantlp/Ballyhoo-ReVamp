@@ -21,7 +21,7 @@ const ParentPackage = props => {
             ) : null}
             {parseInt(props.detailUrlParam.result_type, 10) === 3 ? (
               <ActivityPackage
-                package={props.categoryData.categoryData.offer_packages}
+                package={props.categoryData.categoryData.details.offer_packages}
               />
             ) : null}
             {parseInt(props.detailUrlParam.result_type, 10) === 4 ? (
@@ -30,17 +30,21 @@ const ParentPackage = props => {
                 10
               ) === 0 ? (
                 <EscapePackage
-                  package={props.categoryData.categoryData.offer_packages}
+                  package={
+                    props.categoryData.categoryData.details.offer_packages
+                  }
                 />
               ) : (
                 <ExculsiveEscapePackage
-                  package={props.categoryData.categoryData.offer_packages}
+                  package={
+                    props.categoryData.categoryData.details.offer_packages
+                  }
                 />
               )
             ) : null}
             {parseInt(props.detailUrlParam.result_type, 10) === 5 ? (
               <SaloonPackage
-                package={props.categoryData.categoryData.offer_packages}
+                package={props.categoryData.categoryData.details.offer_packages}
               />
             ) : null}
 
