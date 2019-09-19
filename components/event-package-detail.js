@@ -16,14 +16,14 @@ export default class EventPackage extends React.Component {
       obj.package_end_time = list.package_end_time;
       obj.package_start_date = list.package_start_date;
       obj.package_start_time = list.package_start_time;
-      obj.package_list = this.createPackageList(list.package_list);
+      obj.package_list = this.createPackageList(list.package_list, []);
 
       return obj;
     });
     this.changePackageState(packages);
   }
 
-  createPackageList = lists => {
+  createPackageList = (lists, price, packageId) => {
     return lists.map((list, key) => {
       let obj = {};
       obj.package_caption = list.package_caption;
@@ -32,7 +32,8 @@ export default class EventPackage extends React.Component {
       obj.package_inclusion = list.package_inclusion;
       obj.price_captions = list.price_captions;
       obj.price_ranges = list.price_ranges;
-      obj.price_list = [];
+      obj.price_list =
+        parseInt(list.package_id, 10) === parseInt(packageId, 10) ? price : [];
       return obj;
     });
   };
@@ -43,31 +44,42 @@ export default class EventPackage extends React.Component {
     });
   };
 
-  initializePriceList = key => {
+  initializePriceList = (dateId, packageId) => {
     let indexData = [];
-    let packages = [];
 
     for (let i = 0; i < this.props.package.length; i++) {
-      indexData =
-        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
-          ? this.props.package[i].price_list
-          : [];
+      if (
+        parseInt(this.props.package[i].package_date_id, 10) ===
+        parseInt(dateId, 10)
+      ) {
+        for (let j = 0; j < this.props.package[i].package_list.length; j++) {
+          indexData =
+            parseInt(this.props.package[i].package_list[j].package_id, 10) ===
+            parseInt(packageId, 10)
+              ? this.props.package[i].package_list[j].price_list
+              : [];
+
+          if (indexData.length !== 0) break;
+        }
+      }
     }
 
-    for (let i = 0; i < this.props.package.length; i++) {
+    console.log(indexData);
+    let packages = this.props.package.map((list, key) => {
       let obj = {};
-      obj.package_id = this.props.package[i].package_id;
-      obj.package_caption = this.props.package[i].package_caption;
-      obj.package_hash_tags = this.props.package[i].package_hash_tags;
-      obj.package_inclusion = this.props.package[i].package_inclusion;
-      obj.price_captions = this.props.package[i].price_captions;
-      obj.price_ranges = this.props.package[i].price_ranges;
-      obj.price_list =
-        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
-          ? indexData
-          : [];
-      packages.push(obj);
-    }
+      obj.package_date_id = list.package_date_id;
+      obj.package_end_date = list.package_end_date;
+      obj.package_end_time = list.package_end_time;
+      obj.package_start_date = list.package_start_date;
+      obj.package_start_time = list.package_start_time;
+      obj.package_list = this.createPackageList(
+        list.package_list,
+        indexData,
+        packageId
+      );
+
+      return obj;
+    });
 
     this.changePackageState(packages);
   };
@@ -247,7 +259,12 @@ export default class EventPackage extends React.Component {
 
                 <a
                   className="button is-outlined view-detail ffqs is-dark"
-                  onClick={() => this.initializePriceList()}
+                  onClick={() =>
+                    this.initializePriceList(
+                      value.package_date_id,
+                      list.package_id
+                    )
+                  }
                 >
                   <span>VIEW DETAILS</span>
                 </a>

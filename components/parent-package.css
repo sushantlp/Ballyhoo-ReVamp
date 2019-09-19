@@ -197,3 +197,12 @@
 .parent-package-container .mb1 {
   margin-bottom: 1em !important;
 }
+
+.blur {
+  -webkit-filter: blur(0.9px); /* Safari 6.0 - 9.0 */
+  filter: blur(0.9px);
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}

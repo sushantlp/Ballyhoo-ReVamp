@@ -38,6 +38,8 @@ export default class SaloonPackage extends React.Component {
         parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
           ? this.props.package[i].price_list
           : [];
+
+      if (indexData.length !== 0) break;
     }
 
     for (let i = 0; i < this.props.package.length; i++) {
