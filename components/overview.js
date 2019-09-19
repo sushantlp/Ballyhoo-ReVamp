@@ -99,7 +99,7 @@ export default class Overview extends React.Component {
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? `${this.props.categoryData.categoryData.details.offer_address.address_1}, ${this.props.categoryData.categoryData.details.offer_address.address_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
+        ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}, ${this.props.categoryData.categoryData.details.offer_address.address_line_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
         : null;
 
     const happy =
@@ -338,17 +338,6 @@ export default class Overview extends React.Component {
             </div>
           </div>
         </div>
-        {/* 
-        <Text
-          ReadMore={this.ReadMore}
-          title="Terms"
-          detail="This wonderful land of northeast India, is home to some of the
-          most picturesque honeymoon destinations with spellbinding tourist
-          attractions. This romantic 4 nights 5 days north east package from
-          Delhi, Kolkata, Mumbai and other major cities of India takes you
-          around some famous tourist places in northeast India including
-          Shillong and Mawlynnong Shillong and Mawlynnong."
-        /> */}
 
         {/* <Zomato ReadMore={this.ReadMore} /> */}
         {this.state.lightBox && (
