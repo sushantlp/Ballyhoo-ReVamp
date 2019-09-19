@@ -100,7 +100,9 @@ const FoodPackageDetail = props => {
                       <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
                         ₹ {price}/-
                         {cutPrice === 0 ? null : (
-                          <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span>
+                          <span className="f12 pfc3 tdl ml8">
+                            ₹ {cutPrice}/-
+                          </span>
                         )}
                       </h5>
                     </span>
