@@ -16,7 +16,7 @@ const ParentPackage = props => {
           <div className="column">
             {parseInt(props.detailUrlParam.result_type, 10) === 2 ? (
               <EventPackage
-                package={props.categoryData.categoryData.offer_packages}
+                package={props.categoryData.categoryData.details.offer_packages}
               />
             ) : null}
             {parseInt(props.detailUrlParam.result_type, 10) === 3 ? (

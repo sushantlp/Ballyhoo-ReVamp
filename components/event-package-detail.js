@@ -1,202 +1,261 @@
+import moment from "moment";
 import { Segment } from "semantic-ui-react";
 export default class EventPackage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      packages: []
     };
   }
 
-  changeOpen = () => {
-    this.setState({
-      open: !this.state.open
+  componentDidMount() {
+    let packages = this.props.package.map((list, key) => {
+      let obj = {};
+      obj.package_date_id = list.package_date_id;
+      obj.package_end_date = list.package_end_date;
+      obj.package_end_time = list.package_end_time;
+      obj.package_start_date = list.package_start_date;
+      obj.package_start_time = list.package_start_time;
+      obj.package_list = this.createPackageList(list.package_list);
+
+      return obj;
+    });
+    this.changePackageState(packages);
+  }
+
+  createPackageList = lists => {
+    return lists.map((list, key) => {
+      let obj = {};
+      obj.package_caption = list.package_caption;
+      obj.package_hash_tags = list.package_hash_tags;
+      obj.package_id = list.package_id;
+      obj.package_inclusion = list.package_inclusion;
+      obj.price_captions = list.price_captions;
+      obj.price_ranges = list.price_ranges;
+      obj.price_list = [];
+      return obj;
     });
   };
 
+  changePackageState = packages => {
+    this.setState({
+      packages
+    });
+  };
+
+  initializePriceList = key => {
+    let indexData = [];
+    let packages = [];
+
+    for (let i = 0; i < this.props.package.length; i++) {
+      indexData =
+        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
+          ? this.props.package[i].price_list
+          : [];
+    }
+
+    for (let i = 0; i < this.props.package.length; i++) {
+      let obj = {};
+      obj.package_id = this.props.package[i].package_id;
+      obj.package_caption = this.props.package[i].package_caption;
+      obj.package_hash_tags = this.props.package[i].package_hash_tags;
+      obj.package_inclusion = this.props.package[i].package_inclusion;
+      obj.price_captions = this.props.package[i].price_captions;
+      obj.price_ranges = this.props.package[i].price_ranges;
+      obj.price_list =
+        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
+          ? indexData
+          : [];
+      packages.push(obj);
+    }
+
+    this.changePackageState(packages);
+  };
+
   render() {
-    return (
-      <Segment style={{ backgroundColor: "#f1f1f1" }}>
-        <a className="button is-warning view-detail ffqs is-dark">
-          <span>AUG 21</span>
-        </a>
-        <Segment>
-          <div className="box">
-            <article className="media">
-              <div className="media-content">
-                <div className="content">
-                  <div className="columns mb0">
-                    <div className="column">
-                      <h4 className="ffqs list-title">Open Mic Night</h4>
+    return this.state.packages.map((value, key) => {
+      let beautyDate;
+      if (value.package_start_date != null && value.package_end_date != null) {
+        const start = moment(value.package_start_date).format("MMM D");
+        const end = moment(value.package_end_date).format("MMM D");
+        beautyDate = `${start} - ${end}`;
+      } else {
+        const start = moment(value.package_start_date).format("MMM D");
+        beautyDate = start;
+      }
 
-                      <h4 className="ffqs fw2 mt0-5 fs1">
-                        Price :{" "}
-                        <span className="sfc3 mt0-5 fs1-3">
-                          {" "}
-                          &#8377; 300.00
-                        </span>
-                      </h4>
-                    </div>
+      return (
+        <Segment style={{ backgroundColor: "#f1f1f1" }} key={key}>
+          <a className="button is-warning view-detail ffqs is-dark">
+            <span>{beautyDate}</span>
+          </a>
 
-                    <div className="column pl8 pt0">
-                      <div className="package-tag-box">
-                        <ul className="package-tags">
-                          <li className="ellipsis">Comedy</li>
-                          <li className="ellipsis">Music</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+          {value.package_list.map((list, key) => {
+            let lessPrice = 0;
+            let morePrice = 0;
+            if (list.price_ranges.length === 1) {
+              lessPrice = list.price_ranges;
+            } else if (list.price_ranges.length === 2) {
+              lessPrice = list.price_ranges[0];
+              morePrice = list.price_ranges[1];
+            } else {
+              for (let i = 0; i < list.price_ranges.length; i++) {
+                lessPrice = list.price_ranges[i];
+                morePrice = list.price_ranges[i];
 
-                  <div className="columns mb0">
-                    <div className="column">
-                      <h4 className="ffqs fw2 mt0-5 fs1">
-                        Price Caption :{" "}
-                        <span className="fw2 mt0-5 fs1-2"> Single</span>
-                      </h4>
-                    </div>
-                  </div>
+                for (let j = i + 1; j < list.price_ranges.length; j++) {
+                  if (lessPrice > list.price_ranges[j]) {
+                    lessPrice = list.price_ranges[j];
+                  }
+                }
 
-                  <div className="f14 ffqs">
-                    <p style={{ whiteSpace: "pre-line" }}>
-                      This one is all about you: You're on stage, You take over
-                      with your music, dance, beat box, spoken word, poetry.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
+                for (let j = i + 1; j < list.price_ranges.length; j++) {
+                  if (morePrice < list.price_ranges[j]) {
+                    morePrice = list.price_ranges[j];
+                  }
+                }
+              }
+            }
 
-          {this.state.open ? (
-            <React.Fragment>
-              <Segment>
-                <div className="package-container">
+            return (
+              <React.Fragment key={key}>
+                <div className="box">
                   <article className="media">
                     <div className="media-content">
                       <div className="content">
                         <div className="columns mb0">
-                          <div className="column is-10">
-                            <h4 className="ffqs list-title">Single</h4>
+                          <div className="column">
+                            <h4 className="ffqs list-title">
+                              {list.package_caption}
+                            </h4>
 
-                            <h5 className="fw2 sfc3 mt0-5 fs1-3">₹ 300.00/-</h5>
+                            <h4 className="fw2 fs1">
+                              Price Range :{" "}
+                              <span className="sfc3 fs1-1">
+                                {" "}
+                                &#8377;{lessPrice}
+                              </span>
+                              {morePrice !== 0 ? (
+                                <span>
+                                  -
+                                  <span className="sfc3 fs1-1">
+                                    &#8377;{morePrice}
+                                  </span>
+                                </span>
+                              ) : null}
+                            </h4>
                           </div>
 
-                          <div className="column is-2">
-                            <a className="button is-danger fr">BOOK</a>
+                          <div className="column pl8 pt0">
+                            <div className="package-tag-box">
+                              <ul className="package-tags">
+                                {list.package_hash_tags.map((value, key) => {
+                                  return (
+                                    <li className="ellipsis" key={key}>
+                                      {value}
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="columns mb0">
+                          <div className="column">
+                            <h4 className="fw2 fs1">
+                              Price Caption :{" "}
+                              {list.price_captions.map((value, key) => {
+                                return (
+                                  <span className="fw2 fs1-1" key={key}>
+                                    {value}
+                                  </span>
+                                );
+                              })}
+                            </h4>
                           </div>
                         </div>
 
                         <div className="f14 ffqs">
                           <p style={{ whiteSpace: "pre-line" }}>
-                            What we have at the venue (Tech Stuff): 1 * Guitar
-                            Amplifier 3 * Mics 1 * 5 piece Drum Kit.
+                            {list.package_inclusion}
                           </p>
                         </div>
                       </div>
                     </div>
                   </article>
                 </div>
-              </Segment>
-            </React.Fragment>
-          ) : null}
 
-          <a
-            className="button is-outlined view-detail ffqs is-dark"
-            onClick={() => this.changeOpen()}
-          >
-            <span>VIEW DETAILS</span>
-          </a>
-        </Segment>
+                {list.price_list.map((money, key) => {
+                  let price = 0;
+                  let cutPrice = 0;
+                  if (parseInt(money.price_discount, 10) === 0)
+                    price = money.price;
+                  else {
+                    price = (money.price * money.price_discount) / 100;
+                    price = money.price - price;
+                    cutPrice = money.price;
+                  }
 
-        <Segment>
-          <div className="box">
-            <article className="media">
-              <div className="media-content">
-                <div className="content">
-                  <div className="columns mb0">
-                    <div className="column">
-                      <h4 className="ffqs list-title">Open Mic Night</h4>
+                  return (
+                    <Segment key={key}>
+                      <div className="package-container">
+                        <article className="media">
+                          <div className="media-content">
+                            <div className="content">
+                              <div className="columns mb0">
+                                <div className="column is-10">
+                                  <h4 className="ffqs list-title">
+                                    {money.price_caption}
+                                  </h4>
 
-                      <h4 className="ffqs fw2 mt0-5 fs1">
-                        Price :{" "}
-                        <span className="sfc3 mt0-5 fs1-3">
-                          {" "}
-                          &#8377; 300.00
-                        </span>
-                      </h4>
-                    </div>
+                                  <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                                    ₹ {price}/-
+                                    {cutPrice === 0 ? null : (
+                                      <span>
+                                        <span
+                                          className="fw2 fs0-7 tdl ml8"
+                                          style={{ color: "#363636" }}
+                                        >
+                                          ₹ {cutPrice}/-
+                                        </span>
+                                        <span className="tag is-rounded is-warning ml8">
+                                          {money.price_discount}% off
+                                        </span>{" "}
+                                      </span>
+                                    )}
+                                  </h5>
+                                </div>
 
-                    <div className="column pl8 pt0">
-                      <div className="package-tag-box">
-                        <ul className="package-tags">
-                          <li className="ellipsis">Comedy</li>
-                          <li className="ellipsis">Music</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                                <div className="column is-2">
+                                  <a className="button is-danger fr">BOOK</a>
+                                </div>
+                              </div>
 
-                  <div className="columns mb0">
-                    <div className="column">
-                      <h4 className="ffqs fw2 mt0-5 fs1">
-                        Price Caption :{" "}
-                        <span className="fw2 mt0-5 fs1-2"> Single</span>
-                      </h4>
-                    </div>
-                  </div>
-
-                  <div className="f14 ffqs">
-                    <p style={{ whiteSpace: "pre-line" }}>
-                      This one is all about you: You're on stage, You take over
-                      with your music, dance, beat box, spoken word, poetry.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          {this.props.open ? (
-            <React.Fragment>
-              <Segment>
-                <div className="package-container">
-                  <article className="media">
-                    <div className="media-content">
-                      <div className="content">
-                        <div className="columns mb0">
-                          <div className="column is-10">
-                            <h4 className="ffqs list-title">Single</h4>
-
-                            <h5 className="fw2 sfc3 mt0-5 fs1-3">₹ 300.00/-</h5>
+                              <div className="f14 ffqs">
+                                <p style={{ whiteSpace: "pre-line" }}>
+                                  {money.price_inclusion}
+                                </p>
+                              </div>
+                            </div>
                           </div>
-
-                          <div className="column is-2">
-                            <a className="button is-danger fr">BOOK</a>
-                          </div>
-                        </div>
-
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            What we have at the venue (Tech Stuff): 1 * Guitar
-                            Amplifier 3 * Mics 1 * 5 piece Drum Kit.
-                          </p>
-                        </div>
+                        </article>
                       </div>
-                    </div>
-                  </article>
-                </div>
-              </Segment>
-            </React.Fragment>
-          ) : null}
+                    </Segment>
+                  );
+                })}
 
-          <a
-            className="button is-outlined view-detail ffqs is-dark"
-            onClick={() => this.changeOpen()}
-          >
-            <span>VIEW DETAILS</span>
-          </a>
+                <a
+                  className="button is-outlined view-detail ffqs is-dark"
+                  onClick={() => this.initializePriceList()}
+                >
+                  <span>VIEW DETAILS</span>
+                </a>
+              </React.Fragment>
+            );
+          })}
         </Segment>
-      </Segment>
-    );
+      );
+    });
   }
 }

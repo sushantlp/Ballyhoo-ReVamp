@@ -122,18 +122,26 @@ export default class Overview extends React.Component {
         : [];
     const lat =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
-        ? this.props.foodCategoryData.foodCategoryData.details.address_details
-            .latitude
+        ? parseFloat(
+            this.props.foodCategoryData.foodCategoryData.details.address_details
+              .latitude
+          )
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? this.props.categoryData.categoryData.details.offer_address.latitude
-        : null;
+        ? parseFloat(
+            this.props.categoryData.categoryData.details.offer_address.latitude
+          )
+        : 0;
     const lng =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
-        ? this.props.foodCategoryData.foodCategoryData.details.address_details
-            .longitude
+        ? parseFloat(
+            this.props.foodCategoryData.foodCategoryData.details.address_details
+              .longitude
+          )
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? this.props.categoryData.categoryData.details.offer_address.longitude
-        : null;
+        ? parseFloat(
+            this.props.categoryData.categoryData.details.offer_address.longitude
+          )
+        : 0;
     const menuImage =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
       this.props.foodCategoryData.foodCategoryData.details.menu_images.length >
