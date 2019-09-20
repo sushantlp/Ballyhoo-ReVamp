@@ -1,6 +1,7 @@
 .hero .carousel {
-  background-size: cover;
-  /* object-fit: cover; */
+  /* background-size: cover; */
+  object-fit: cover;
+  height: 50vh;
 }
 
 .hero .slick-list {

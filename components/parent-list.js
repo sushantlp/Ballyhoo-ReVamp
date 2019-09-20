@@ -21,23 +21,19 @@ class ParentList extends React.Component {
   }
 
   componentDidMount() {
-    const { secret } = Router.router.query;
-    let slice = [];
-
-    console.log(secret);
+    // const { secret } = Router.router.query;
+    // let slice = [];
     // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
-    if (this.props.routeParam.length === 0) slice = secret.split("-");
-    else slice = this.props.routeParam.secret.split("-");
-
-    if (slice.length < 5) Router.push("/");
-
-    this.setState({
-      response_type: slice[3],
-      type: slice[1],
-      key: slice[2],
-      page: slice[4],
-      cityId: slice[0]
-    });
+    // if (this.props.routeParam.length === 0) slice = secret.split("-");
+    // else slice = this.props.routeParam.secret.split("-");
+    // if (slice.length < 5) Router.push("/");
+    // this.setState({
+    //   response_type: slice[3],
+    //   type: slice[1],
+    //   key: slice[2],
+    //   page: slice[4],
+    //   cityId: slice[0]
+    // });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -55,9 +51,9 @@ class ParentList extends React.Component {
   onLoadMoreList = nextPage => {
     this.updateisLoadingState(true);
     this.props.onLoadMoreList(
-      this.state.cityId,
-      this.state.type,
-      this.state.key,
+      this.props.listUrlParam.city_id,
+      this.props.listUrlParam.api_type,
+      this.props.listUrlParam.key,
       nextPage
     );
   };
@@ -75,7 +71,7 @@ class ParentList extends React.Component {
     )
       return <Spinner />;
 
-    if (this.state.response_type === 0) return <Spinner />;
+    if (this.props.listUrlParam.response_type === 0) return <Spinner />;
 
     return (
       <React.Fragment>
@@ -83,6 +79,7 @@ class ParentList extends React.Component {
           cityLocality={this.props.cityLocality}
           slidderImage={this.props.slidderImage}
           parentListState={this.state}
+          listUrlParam={this.props.listUrlParam}
         />
         <section className="section">
           <div className="container">
@@ -106,7 +103,7 @@ class ParentList extends React.Component {
           </div>
         </section>
 
-        <TrendingList />
+        <TrendingList recommendation={this.props.recommendation} />
       </React.Fragment>
     );
   }

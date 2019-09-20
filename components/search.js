@@ -17,7 +17,7 @@ export default class Search extends React.Component {
       const bunch = this.props.cityLocality.cityLocality.filter(obj => {
         return (
           parseInt(obj.city_id, 10) ===
-          parseInt(this.props.parentListState.cityId, 10)
+          parseInt(this.props.listUrlParam.city_id, 10)
         );
       });
 
@@ -58,7 +58,7 @@ export default class Search extends React.Component {
 
   render() {
     const empty = [];
-    console.log(this.props.slidderImage.slidderImage);
+
     return (
       <div
         className="search-container"

@@ -35,6 +35,22 @@ app
       }
     });
 
+    server.get("/explore", (req, res) => {
+      return app.render(req, res, "/explore", {});
+    });
+
+    server.get("/profile", (req, res) => {
+      return app.render(req, res, "/profile", {});
+    });
+
+    server.get("/enquiry", (req, res) => {
+      return app.render(req, res, "/enquiry", {});
+    });
+
+    server.get("/explore", (req, res) => {
+      return app.render(req, res, "/explore", {});
+    });
+
     server.get("/:city", (req, res) => {
       return app.render(req, res, "/", { city: req.params.city });
     });

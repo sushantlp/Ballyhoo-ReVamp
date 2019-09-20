@@ -22,6 +22,8 @@ export default class SlidderBanner extends React.Component {
     if (this.props.homeScreen.homeScreen.banner.length === 0) return null;
 
     const banner = this.props.homeScreen.homeScreen.banner;
+
+    if (parseInt(banner.banner_type, 10) === 2) return null;
     const settings = {
       dots: true,
       infinite: true,

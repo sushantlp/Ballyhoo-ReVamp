@@ -71,8 +71,8 @@ export default class DetailSlider extends React.Component {
 
         <section className="hero is-medium">
           <Slider {...settings}>
-            {this.props.slidderImage.map((value, key) => {
-              return <img src={value} alt="" className="carousel" />;
+            {this.props.slidderImage.slidderImage.map((value, key) => {
+              return <img src={value} alt="" className="carousel" key={key} />;
             })}
             {/*            
             <img

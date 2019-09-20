@@ -78,12 +78,13 @@ class Detail extends React.Component {
       }
 
       // Slidder Image API
-      slidderJson = await fetch(
+      let slidderJson = await fetch(
         `${host}api/v9/web/carousel/images?type=${2}&category=${
           detailUrlParam.result_type
         }`
       );
       slidderJson = await slidderJson.json();
+      store.dispatch(getSlidderImage(slidderJson));
     } catch (err) {
       console.log("Detail_Error");
       console.log(err);

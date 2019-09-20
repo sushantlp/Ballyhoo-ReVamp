@@ -212,10 +212,7 @@ export default class Discover extends React.Component {
             <div className="underscore" />
           </div>
           <div>
-            <Slider {...settings}>
-              {this.discoverArray(discover)}
-              <div />
-            </Slider>
+            <Slider {...settings}>{this.discoverArray(discover)}</Slider>
           </div>
         </div>
       </div>

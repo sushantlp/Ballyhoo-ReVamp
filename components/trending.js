@@ -126,7 +126,7 @@ export default class Trending extends React.Component {
 
               <a
                 className="product-title block"
-                href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                // href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
               >
                 {description}
               </a>

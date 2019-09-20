@@ -102,7 +102,7 @@ export default class Overview extends React.Component {
           this.props.categoryData.categoryData.details.offer_highlights != null
         ? this.props.categoryData.categoryData.details.offer_highlights
         : null;
-    console.log(highlight);
+
     const where =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`

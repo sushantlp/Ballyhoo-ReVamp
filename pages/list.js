@@ -21,6 +21,10 @@ import Footer from "../components/footer";
 
 import { getListData, getListDataApi } from "../actions/list-action";
 import { getSlidderImage } from "../actions/slidder-image-action";
+import {
+  getrecommendation,
+  getRecommendationApi
+} from "../actions/recommendation-data-action";
 import { getCityLocality } from "../actions/city-locality-action";
 import { getCategoryDataApi } from "../actions/category-data-action";
 import { getFoodCategoryDataApi } from "../actions/food-category-data-action";
@@ -30,8 +34,14 @@ class List extends React.Component {
     let listJson = [];
     let slidderJson = [];
     let cityLocalityJson = [];
+    let recommendation = [];
     let routeParam = [];
-    let listUrlParam = {};
+    let listUrlParam = {
+      city_id: 1,
+      api_type: 1,
+      key: 1,
+      response_type: 1
+    };
 
     try {
       const { store, isServer, req, query } = ctx;
@@ -39,19 +49,13 @@ class List extends React.Component {
       if (isServer) routeParam = req.params;
       else routeParam = query;
 
-      let cityId = 1;
-      let type = 1;
-      let key = 1;
       let page = 1;
-
+      console.log(routeParam);
       if (routeParam.secret !== undefined) {
         // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
         const slice = routeParam.secret.split("-");
 
         if (slice.length === 5) {
-          cityId = slice[0];
-          type = slice[1];
-          key = slice[2];
           page = slice[4];
 
           listUrlParam = {
@@ -65,13 +69,15 @@ class List extends React.Component {
 
       // List API
       listJson = await fetch(
-        `${host}api/v9/web/listing?city_id=${cityId}&type=${type}&q=${key}&page=${page}`
+        `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`
       );
       listJson = await listJson.json();
 
       // Slidder Image API
       slidderJson = await fetch(
-        `${host}api/v9/web/carousel/images?type=${1}&category=${type}`
+        `${host}api/v9/web/carousel/images?type=${1}&category=${
+          listUrlParam.api_type
+        }`
       );
       slidderJson = await slidderJson.json();
 
@@ -79,9 +85,16 @@ class List extends React.Component {
       cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
 
+      // Recommendation API
+      recommendation = await fetch(
+        `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+      );
+      recommendation = await recommendation.json();
+
       store.dispatch(getListData(listJson));
       store.dispatch(getSlidderImage(slidderJson));
       store.dispatch(getCityLocality(cityLocalityJson));
+      store.dispatch(getrecommendation(recommendation));
     } catch (err) {
       console.log("List_Error");
       console.log(err);
@@ -205,6 +218,7 @@ class List extends React.Component {
           categoryApiCall={this.categoryApiCall}
           foodCategoryApiCall={this.foodCategoryApiCall}
           listUrlParam={this.props.listUrlParam}
+          recommendation={this.props.recommendation}
         />
         <Headout />
         <Footer />
@@ -219,7 +233,8 @@ const mapStateToProps = state => {
     listData: state.listData,
     slidderImage: state.slidderImage,
     foodCategoryData: state.foodCategoryData,
-    categoryData: state.categoryData
+    categoryData: state.categoryData,
+    recommendation: state.recommendation
   };
 };
 
@@ -230,7 +245,12 @@ const mapDispatchToProps = dispatch => {
     getSlidderImage: bindActionCreators(getSlidderImage, dispatch),
     getListDataApi: bindActionCreators(getListDataApi, dispatch),
     getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch),
-    getFoodCategoryDataApi: bindActionCreators(getFoodCategoryDataApi, dispatch)
+    getFoodCategoryDataApi: bindActionCreators(
+      getFoodCategoryDataApi,
+      dispatch
+    ),
+    getrecommendation: bindActionCreators(getrecommendation, dispatch),
+    getRecommendationApi: bindActionCreators(getRecommendationApi, dispatch)
   };
 };
 
