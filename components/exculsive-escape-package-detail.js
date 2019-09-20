@@ -5,9 +5,94 @@ export default class ExculsiveEscapePackage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: -1
+      activeIndex: -1,
+      packages: []
     };
   }
+
+  componentDidMount() {
+    let packages = [];
+    for (let i = 0; i < this.props.package.length; i++) {
+      let obj = {};
+
+      obj.package_available = this.props.package[i].package_available;
+      obj.package_caption = this.props.package[i].package_caption;
+      obj.package_destinations = this.props.package[i].package_destinations;
+      obj.package_description = this.props.package[i].package_description;
+      obj.package_discount = this.props.package[i].package_discount;
+      obj.package_id = this.props.package[i].package_id;
+      obj.package_inclusion_types = this.props.package[
+        i
+      ].package_inclusion_types;
+      obj.package_travel_time = this.props.package[i].package_travel_time;
+      obj.price = this.props.package[i].price;
+
+      obj.package_cancel_policy = null;
+      obj.package_accomodation = null;
+      obj.package_inclusion = null;
+      obj.package_terms = null;
+      obj.package_transportation = null;
+      obj.package_itenary = null;
+      obj.package_faqs = null;
+      obj.package_exclusion = null;
+
+      packages.push(obj);
+    }
+    this.changePackageState(packages);
+  }
+
+  changePackageState = packages => {
+    this.setState({
+      packages
+    });
+  };
+
+  initializePriceList = key => {
+    let packages = [];
+
+    for (let i = 0; i < this.props.package.length; i++) {
+      let obj = {};
+      obj.package_available = this.props.package[i].package_available;
+      obj.package_caption = this.props.package[i].package_caption;
+      obj.package_destinations = this.props.package[i].package_destinations;
+      obj.package_description = this.props.package[i].package_description;
+      obj.package_discount = this.props.package[i].package_discount;
+      obj.package_id = this.props.package[i].package_id;
+      obj.package_inclusion_types = this.props.package[
+        i
+      ].package_inclusion_types;
+      obj.package_travel_time = this.props.package[i].package_travel_time;
+      obj.price = this.props.package[i].price;
+
+      if (
+        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
+      ) {
+        obj.package_cancel_policy = this.props.package[i].package_cancel_policy;
+        obj.package_accomodation = this.props.package[i].package_accomodation;
+        obj.package_inclusion = this.props.package[i].package_inclusion;
+        obj.package_terms = this.props.package[i].package_terms;
+        obj.package_transportation = this.props.package[
+          i
+        ].package_transportation;
+        obj.package_itenary = this.props.package[i].package_itenary;
+        obj.package_faqs = this.props.package[i].package_faqs;
+        obj.package_exclusion = this.props.package[i].package_exclusion;
+      } else {
+        obj.package_cancel_policy = null;
+        obj.package_accomodation = null;
+        obj.package_inclusion = null;
+        obj.package_terms = null;
+        obj.package_transportation = null;
+        obj.package_itenary = null;
+        obj.package_faqs = null;
+        obj.package_exclusion = null;
+      }
+
+      packages.push(obj);
+    }
+
+    this.changePackageState(packages);
+  };
 
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -20,7 +105,7 @@ export default class ExculsiveEscapePackage extends React.Component {
   render() {
     const { activeIndex } = this.state;
 
-    return this.props.package.map((value, key) => {
+    return this.state.packages.map((value, key) => {
       let price = 0;
       let cutPrice = 0;
       let inclusionType = {
@@ -109,18 +194,16 @@ export default class ExculsiveEscapePackage extends React.Component {
                     </div>
                   </div>
 
-                  <div className="f14 ffqs">
-                    <p style={{ whiteSpace: "pre-line" }}>
-                      <ReadMoreAndLess
-                        ref={this.ReadMore}
-                        className="read-more-content"
-                        charLimit={300}
-                        readMoreText="See more"
-                        readLessText="See less"
-                      >
-                        {value.package_description}
-                      </ReadMoreAndLess>
-                    </p>
+                  <div className="f14 ffqs" style={{ whiteSpace: "pre-line" }}>
+                    <ReadMoreAndLess
+                      ref={this.ReadMore}
+                      className="read-more-content"
+                      charLimit={300}
+                      readMoreText="See more"
+                      readLessText="See less"
+                    >
+                      {value.package_description}
+                    </ReadMoreAndLess>
                   </div>
                 </div>
               </div>
@@ -217,122 +300,136 @@ export default class ExculsiveEscapePackage extends React.Component {
             </footer>
           </div>
 
-          <Segment>
-            <Accordion styled>
-              <Accordion.Title
-                active={activeIndex === 6}
-                index={6}
-                onClick={this.handleClick}
-              >
-                {/* Overview */}
-                <h4 className="ffqs accordion-title">
-                  <Icon name="dropdown" />
-                  Package Detail
-                </h4>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 6}>
-                <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">Itinerary : </h4>
+          {value.package_inclusion != null ||
+          value.package_exclusion != null ||
+          value.package_accomodation != null ||
+          value.package_itenary != null ||
+          value.package_transportation != null ||
+          value.package_terms != null ||
+          value.package_faqs != null ||
+          value.package_cancel_policy != null ||
+          value.package_inclusion != null ? (
+            <Segment>
+              <Accordion styled>
+                <Accordion.Title
+                  active={activeIndex === 1}
+                  index={1}
+                  onClick={this.handleClick}
+                >
+                  <h4 className="ffqs accordion-title">
+                    <Icon name="dropdown" />
+                    Package Detail
+                  </h4>
+                </Accordion.Title>
+                <Accordion.Content active={activeIndex === 1}>
+                  <h4 className="ffqs mt0-5 fs1-2 fw7 mb1">Itenary : </h4>
 
-                <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
-                  Nishane motte is a relatively less known peak in the Tala
-                  cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                  Bhagamandala in a range
-                </p>
-
-                <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">Inclusion : </h4>
-
-                <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
-                  Nishane motte is a relatively less known peak in the Tala
-                  cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                  Bhagamandala in a range
-                </p>
-
-                <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">Exclusion : </h4>
-
-                <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
-                  Nishane motte is a relatively less known peak in the Tala
-                  cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                  Bhagamandala in a range
-                </p>
-
-                <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">Accommodation : </h4>
-
-                <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
-                  Nishane motte is a relatively less known peak in the Tala
-                  cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                  Bhagamandala in a range
-                </p>
-
-                <h4 className="ffqs mt0-5 fs1-2 fw5 mb1">Transportation : </h4>
-
-                <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
-                  Nishane motte is a relatively less known peak in the Tala
-                  cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                  Bhagamandala in a range
-                </p>
-              </Accordion.Content>
-
-              <Accordion.Title
-                active={activeIndex === 7}
-                index={7}
-                onClick={this.handleClick}
-              >
-                <h4 className="ffqs accordion-title">
-                  <Icon name="dropdown" />
-                  Terms and Condition
-                </h4>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 7}>
-                <div className="f14 ffqs">
-                  <p style={{ whiteSpace: "pre-line" }}>
-                    Nishane motte is a relatively less known peak in the Tala
-                    cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                    Bhagamandala in a range
+                  <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
+                    {value.package_itenary}
                   </p>
-                </div>
-              </Accordion.Content>
 
-              <Accordion.Title
-                active={activeIndex === 8}
-                index={8}
-                onClick={this.handleClick}
-              >
-                <h4 className="ffqs accordion-title">
-                  <Icon name="dropdown" />
-                  Cancellation Policy
-                </h4>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 8}>
-                <div className="f14 ffqs">
-                  <p style={{ whiteSpace: "pre-line" }}>
-                    Nishane motte is a relatively less known peak in the Tala
-                    cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                    Bhagamandala in a range
-                  </p>
-                </div>
-              </Accordion.Content>
+                  <h4 className="ffqs mt0-5 fs1-2 fw7 mb1">Inclusion : </h4>
 
-              <Accordion.Title
-                active={activeIndex === 2}
-                index={2}
-                onClick={this.handleClick}
-              >
-                <h4 className="ffqs accordion-title">
-                  <Icon name="dropdown" />
-                  FAQS
-                </h4>
-              </Accordion.Title>
-              <Accordion.Content active={activeIndex === 2}>
-                <div className="f14 ffqs">
-                  <p style={{ whiteSpace: "pre-line" }}>
-                    Nishane motte is a relatively less known peak in the Tala
-                    cauvery/ Brahmagiri range of Coorg. It lies to the south of
-                    Bhagamandala in a range
+                  <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
+                    {value.package_inclusion}
                   </p>
-                </div>
-              </Accordion.Content>
-            </Accordion>
-          </Segment>
+
+                  <h4 className="ffqs mt0-5 fs1-2 fw7 mb1">Exclusion : </h4>
+
+                  <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
+                    {value.package_exclusion}
+                  </p>
+
+                  <h4 className="ffqs mt0-5 fs1-2 fw7 mb1">Accommodation : </h4>
+
+                  <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
+                    {value.package_accomodation}
+                  </p>
+
+                  <h4 className="ffqs mt0-5 fs1-2 fw7 mb1">
+                    Transportation :{" "}
+                  </h4>
+
+                  <p style={{ whiteSpace: "pre-line" }} className="fw2 ffqs">
+                    {value.package_transportation}
+                  </p>
+                </Accordion.Content>
+
+                {value.package_terms != null ? (
+                  <React.Fragment>
+                    <Accordion.Title
+                      active={activeIndex === 2}
+                      index={2}
+                      onClick={this.handleClick}
+                    >
+                      <h4 className="ffqs accordion-title">
+                        <Icon name="dropdown" />
+                        Terms
+                      </h4>
+                    </Accordion.Title>
+                    <Accordion.Content active={activeIndex === 2}>
+                      <div className="f14 ffqs">
+                        <p style={{ whiteSpace: "pre-line" }}>
+                          {value.package_terms}
+                        </p>
+                      </div>
+                    </Accordion.Content>
+                  </React.Fragment>
+                ) : null}
+
+                {value.package_cancel_policy != null ? (
+                  <React.Fragment>
+                    <Accordion.Title
+                      active={activeIndex === 3}
+                      index={3}
+                      onClick={this.handleClick}
+                    >
+                      <h4 className="ffqs accordion-title">
+                        <Icon name="dropdown" />
+                        Cancellation Policy
+                      </h4>
+                    </Accordion.Title>
+                    <Accordion.Content active={activeIndex === 3}>
+                      <div className="f14 ffqs">
+                        <p style={{ whiteSpace: "pre-line" }}>
+                          {value.package_cancel_policy}
+                        </p>
+                      </div>
+                    </Accordion.Content>
+                  </React.Fragment>
+                ) : null}
+
+                {value.package_faqs != null ? (
+                  <React.Fragment>
+                    <Accordion.Title
+                      active={activeIndex === 4}
+                      index={4}
+                      onClick={this.handleClick}
+                    >
+                      <h4 className="ffqs accordion-title">
+                        <Icon name="dropdown" />
+                        Faqs
+                      </h4>
+                    </Accordion.Title>
+                    <Accordion.Content active={activeIndex === 4}>
+                      <div className="f14 ffqs">
+                        <p style={{ whiteSpace: "pre-line" }}>
+                          {value.package_faqs}
+                        </p>
+                      </div>
+                    </Accordion.Content>
+                  </React.Fragment>
+                ) : null}
+              </Accordion>
+            </Segment>
+          ) : null}
+
+          <a
+            className="button is-outlined view-detail ffqs is-dark"
+            onClick={() => this.initializePriceList(value.package_id)}
+          >
+            <span>VIEW DETAILS</span>
+          </a>
         </Segment>
       );
     });
