@@ -24,6 +24,7 @@ class ParentList extends React.Component {
     const { secret } = Router.router.query;
     let slice = [];
 
+    console.log(secret);
     // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
     if (this.props.routeParam.length === 0) slice = secret.split("-");
     else slice = this.props.routeParam.secret.split("-");
@@ -80,6 +81,7 @@ class ParentList extends React.Component {
       <React.Fragment>
         <Search
           cityLocality={this.props.cityLocality}
+          slidderImage={this.props.slidderImage}
           parentListState={this.state}
         />
         <section className="section">

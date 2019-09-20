@@ -1,5 +1,6 @@
 import ReadMoreAndLess from "react-read-more-less";
 const Text = props => {
+  console.log(props);
   return (
     <div className="box">
       <div className="columns">

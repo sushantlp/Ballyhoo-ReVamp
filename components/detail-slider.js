@@ -71,6 +71,10 @@ export default class DetailSlider extends React.Component {
 
         <section className="hero is-medium">
           <Slider {...settings}>
+            {this.props.slidderImage.map((value, key) => {
+              return <img src={value} alt="" className="carousel" />;
+            })}
+            {/*            
             <img
               src="https://cdn.getyourguide.com/img/location_img-45-2534149437-88.jpg"
               alt=""
@@ -97,7 +101,7 @@ export default class DetailSlider extends React.Component {
               src="https://cdn.getyourguide.com/img/tour_img-2170432-99.jpg"
               alt=""
               className="carousel"
-            />
+            /> */}
           </Slider>
         </section>
 

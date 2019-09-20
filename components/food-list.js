@@ -72,18 +72,19 @@ const FoodList = props => {
                         </div>
                       </div>
 
-                      <div className="f14 ffqs plh1">
-                        <p style={{ whiteSpace: "pre-line" }}>
-                          <ReadMoreAndLess
-                            ref={props.ReadMore}
-                            className="read-more-content"
-                            charLimit={450}
-                            readMoreText="See more"
-                            readLessText="See less"
-                          >
-                            {value.description}
-                          </ReadMoreAndLess>
-                        </p>
+                      <div
+                        className="f14 ffqs plh1"
+                        style={{ whiteSpace: "pre-line" }}
+                      >
+                        <ReadMoreAndLess
+                          ref={props.ReadMore}
+                          className="read-more-content"
+                          charLimit={450}
+                          readMoreText="See more"
+                          readLessText="See less"
+                        >
+                          {value.description}
+                        </ReadMoreAndLess>
                       </div>
                     </div>
                   </div>

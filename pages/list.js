@@ -20,6 +20,7 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 
 import { getListData, getListDataApi } from "../actions/list-action";
+import { getSlidderImage } from "../actions/slidder-image-action";
 import { getCityLocality } from "../actions/city-locality-action";
 import { getCategoryDataApi } from "../actions/category-data-action";
 import { getFoodCategoryDataApi } from "../actions/food-category-data-action";
@@ -27,6 +28,7 @@ import { getFoodCategoryDataApi } from "../actions/food-category-data-action";
 class List extends React.Component {
   static async getInitialProps(ctx) {
     let listJson = [];
+    let slidderJson = [];
     let cityLocalityJson = [];
     let routeParam = [];
     let listUrlParam = {};
@@ -67,11 +69,18 @@ class List extends React.Component {
       );
       listJson = await listJson.json();
 
+      // Slidder Image API
+      slidderJson = await fetch(
+        `${host}api/v9/web/carousel/images?type=${1}&category=${type}`
+      );
+      slidderJson = await slidderJson.json();
+
       // City Locality API
       cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
 
       store.dispatch(getListData(listJson));
+      store.dispatch(getSlidderImage(slidderJson));
       store.dispatch(getCityLocality(cityLocalityJson));
     } catch (err) {
       console.log("List_Error");
@@ -190,6 +199,7 @@ class List extends React.Component {
         <ParentList
           cityLocality={this.props.cityLocality}
           listData={this.props.listData}
+          slidderImage={this.props.slidderImage}
           routeParam={this.props.routeParam}
           onLoadMoreList={this.onLoadMoreList}
           categoryApiCall={this.categoryApiCall}
@@ -207,6 +217,7 @@ const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
     listData: state.listData,
+    slidderImage: state.slidderImage,
     foodCategoryData: state.foodCategoryData,
     categoryData: state.categoryData
   };
@@ -216,6 +227,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getListData: bindActionCreators(getListData, dispatch),
+    getSlidderImage: bindActionCreators(getSlidderImage, dispatch),
     getListDataApi: bindActionCreators(getListDataApi, dispatch),
     getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch),
     getFoodCategoryDataApi: bindActionCreators(getFoodCategoryDataApi, dispatch)

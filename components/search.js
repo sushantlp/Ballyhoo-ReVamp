@@ -58,12 +58,12 @@ export default class Search extends React.Component {
 
   render() {
     const empty = [];
+    console.log(this.props.slidderImage.slidderImage);
     return (
       <div
         className="search-container"
         style={{
-          backgroundImage:
-            "url('https://res.cloudinary.com/dp67gawk6/image/upload/v1568281013/BallyhooV3/WEB/List-Image/3.jpg')"
+          backgroundImage: `url(${this.props.slidderImage.slidderImage[0]})`
         }}
       >
         <section>

@@ -1,9 +1,10 @@
 .search-container {
   width: auto;
   height: 12em;
-  background-size: cover;
+  object-fit: cover;
+  /* background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
 }
 
 .search-container .column .button {

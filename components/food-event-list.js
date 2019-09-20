@@ -4,7 +4,7 @@ import "./food-event-list.css";
 const FoodEventList = props => {
   return props.events.map((value, key) => {
     return (
-      <React.Fragment>
+      <React.Fragment key={key}>
         <div className="food-event-list-container">
           <div className="columns">
             <div className="column">
@@ -32,18 +32,19 @@ const FoodEventList = props => {
                           </div>
                         </div>
 
-                        <div className="f14 ffqs plh1">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            <ReadMoreAndLess
-                              ref={props.ReadMore}
-                              className="read-more-content"
-                              charLimit={400}
-                              readMoreText="See more"
-                              readLessText="See less"
-                            >
-                              {value.description}
-                            </ReadMoreAndLess>
-                          </p>
+                        <div
+                          className="f14 ffqs plh1"
+                          style={{ whiteSpace: "pre-line" }}
+                        >
+                          <ReadMoreAndLess
+                            ref={props.ReadMore}
+                            className="read-more-content"
+                            charLimit={400}
+                            readMoreText="See more"
+                            readLessText="See less"
+                          >
+                            {value.description}
+                          </ReadMoreAndLess>
                         </div>
                       </div>
                       <a className="button is-medium is-danger is-pulled-right">

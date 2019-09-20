@@ -1,6 +1,7 @@
 import Lightbox from "lightbox-react";
 
 import Map from "./map";
+import EscapeMap from "./escape-map";
 import Menu from "./menu-detail";
 
 import Zomato from "./zomato-rating";
@@ -17,7 +18,8 @@ export default class Overview extends React.Component {
     this.state = {
       photoIndex: 0,
       lightBox: false,
-      bundleImage: []
+      bundleImage: [],
+      selectedMarker: false
     };
   }
 
@@ -35,6 +37,11 @@ export default class Overview extends React.Component {
     this.setState({
       photoIndex: (photoIndex + 1) % bundleImage
     });
+  };
+
+  handleClick = (marker, event) => {
+    // console.log({ marker })
+    this.setState({ selectedMarker: marker });
   };
 
   render() {
@@ -90,12 +97,12 @@ export default class Overview extends React.Component {
     const highlight =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
       this.props.foodCategoryData.foodCategoryData.details.highlight != null
-        ? this.props.foodCategoryData.foodCategoryData.details.highlight != null
+        ? this.props.foodCategoryData.foodCategoryData.details.highlight
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 &&
           this.props.categoryData.categoryData.details.offer_highlights != null
         ? this.props.categoryData.categoryData.details.offer_highlights
         : null;
-
+    console.log(highlight);
     const where =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
@@ -363,7 +370,24 @@ export default class Overview extends React.Component {
               <h4 className="ffqs cuisine-title">Where ?</h4>
               <div className="overview-underscore" />
               <h4 className="ff f10 f1-1 fw2">{where}</h4>
-              <Map lat={lat} lng={lng} />
+              {where == null ? (
+                <EscapeMap
+                  markers={
+                    this.props.categoryData.categoryData.details.tour_details
+                      .tour_coordinates
+                  }
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQRnONwuHy906feS53jF2jvDahM7TNw1k&v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={
+                    <div style={{ height: `400px`, width: "auto" }} />
+                  }
+                  mapElement={<div style={{ height: `100%` }} />}
+                  selectedMarker={this.state.selectedMarker}
+                  onClick={this.handleClick}
+                />
+              ) : (
+                <Map lat={lat} lng={lng} />
+              )}
             </div>
           </div>
         </div>
