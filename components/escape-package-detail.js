@@ -355,184 +355,193 @@ export default class EscapePackage extends React.Component {
                     </div>
                   </article>
                 </div>
-                <Accordion styled>
-                  {list.price_inclusion != null ? (
-                    <React.Fragment>
-                      {" "}
-                      <Accordion.Title
-                        active={activeIndex === 0}
-                        index={0}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Inclusion
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 0}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_inclusion}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                {list.price_inclusion != null ||
+                list.price_exclusion != null ||
+                list.price_accomodation != null ||
+                list.price_itenary != null ||
+                list.price_transportation != null ||
+                list.price_terms != null ||
+                list.price_faqs != null ||
+                list.price_cancel_policy != null ? (
+                  <Accordion styled>
+                    {list.price_inclusion != null ? (
+                      <React.Fragment>
+                        {" "}
+                        <Accordion.Title
+                          active={activeIndex === 0}
+                          index={0}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Inclusion
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 0}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_inclusion}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_exclusion != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 1}
-                        index={1}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Exclusion
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 1}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_exclusion}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                    {list.price_exclusion != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 1}
+                          index={1}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Exclusion
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 1}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_exclusion}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_accomodation != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 2}
-                        index={2}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Accomodation
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 2}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_accomodation}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                    {list.price_accomodation != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 2}
+                          index={2}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Accomodation
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 2}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_accomodation}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_itenary != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 3}
-                        index={3}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Itenary
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 3}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_itenary}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                    {list.price_itenary != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 3}
+                          index={3}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Itenary
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 3}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_itenary}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_transportation != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 4}
-                        index={4}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Transportation
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 4}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_transportation}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                    {list.price_transportation != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 4}
+                          index={4}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Transportation
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 4}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_transportation}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_terms != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 5}
-                        index={5}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Terms
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 5}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_terms}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                    {list.price_terms != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 5}
+                          index={5}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Terms
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 5}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_terms}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_faqs != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 6}
-                        index={6}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Faqs
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 6}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_faqs}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
+                    {list.price_faqs != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 6}
+                          index={6}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Faqs
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 6}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_faqs}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
 
-                  {list.price_cancel_policy != null ? (
-                    <React.Fragment>
-                      <Accordion.Title
-                        active={activeIndex === 7}
-                        index={7}
-                        onClick={this.handleClick}
-                      >
-                        <h4 className="ffqs accordion-title">
-                          <Icon name="dropdown" />
-                          Cancel Policy
-                        </h4>
-                      </Accordion.Title>
-                      <Accordion.Content active={activeIndex === 7}>
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
-                            {list.price_cancel_policy}
-                          </p>
-                        </div>
-                      </Accordion.Content>
-                    </React.Fragment>
-                  ) : null}
-                </Accordion>
+                    {list.price_cancel_policy != null ? (
+                      <React.Fragment>
+                        <Accordion.Title
+                          active={activeIndex === 7}
+                          index={7}
+                          onClick={this.handleClick}
+                        >
+                          <h4 className="ffqs accordion-title">
+                            <Icon name="dropdown" />
+                            Cancel Policy
+                          </h4>
+                        </Accordion.Title>
+                        <Accordion.Content active={activeIndex === 7}>
+                          <div className="f14 ffqs">
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {list.price_cancel_policy}
+                            </p>
+                          </div>
+                        </Accordion.Content>
+                      </React.Fragment>
+                    ) : null}
+                  </Accordion>
+                ) : null}
               </Segment>
             );
           })}
