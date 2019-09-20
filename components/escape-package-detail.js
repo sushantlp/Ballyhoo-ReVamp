@@ -177,7 +177,7 @@ export default class EscapePackage extends React.Component {
                         <h4 className="ffqs fw2 fs1">
                           Travel Time :{" "}
                           <span className="fw2 fs1-1">
-                            {value.package_travel_time} hrs
+                            {value.package_travel_time} hr
                           </span>
                         </h4>
                       </div>

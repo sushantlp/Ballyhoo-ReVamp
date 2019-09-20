@@ -130,6 +130,10 @@
   margin-top: 0.3em;
 }
 
+.overview-container .mt1 {
+  margin-top: 1em;
+}
+
 .overview-container .load-more {
   padding-left: 40%;
   padding-right: 40%;
@@ -172,24 +176,8 @@
 .overview-container .readMoreText {
   padding-left: 1em;
 }
-.cuisine-underscore {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgb(39, 37, 37)),
-    to(#dee5ef)
-  );
-  /* margin-top: 0.2em; */
-  margin-bottom: 0.5em;
-  content: "";
-  height: 1px;
-  display: block;
-  box-sizing: border-box;
-  width: 4em;
-}
 
-.timing-underscore {
+.overview-underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -204,88 +192,6 @@
   display: block;
   box-sizing: border-box;
   width: 4em;
-}
-
-.about-underscore {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgb(39, 37, 37)),
-    to(#dee5ef)
-  );
-
-  content: "";
-  height: 1px;
-  display: block;
-  box-sizing: border-box;
-  width: 8em;
-}
-
-.menu-underscore {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgb(39, 37, 37)),
-    to(#dee5ef)
-  );
-
-  margin-bottom: 0.7em;
-  content: "";
-  height: 1px;
-  display: block;
-  box-sizing: border-box;
-  width: 2.9em;
-}
-
-.offer-underscore {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgb(39, 37, 37)),
-    to(#dee5ef)
-  );
-
-  content: "";
-  height: 1px;
-  display: block;
-  box-sizing: border-box;
-  width: 7.5em;
-}
-
-.where-underscore {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgb(39, 37, 37)),
-    to(#dee5ef)
-  );
-
-  content: "";
-  height: 1px;
-  display: block;
-  box-sizing: border-box;
-  width: 3.5em;
-}
-
-.rating-underscore {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgb(39, 37, 37)),
-    to(#dee5ef)
-  );
-
-  margin-bottom: 1em;
-  content: "";
-  height: 1px;
-  display: block;
-  box-sizing: border-box;
-  width: 7em;
 }
 
 .overview-container .f1-2 {

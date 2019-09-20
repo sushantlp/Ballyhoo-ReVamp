@@ -6,6 +6,7 @@ import Menu from "./menu-detail";
 import Zomato from "./zomato-rating";
 import CuisineTiming from "./cuisine-timing-detail";
 import Text from "./text-detail";
+import TourDetail from "./escape-tour-detail";
 
 import "lightbox-react/style.css";
 import "./overview.css";
@@ -98,7 +99,13 @@ export default class Overview extends React.Component {
     const where =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
-        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 &&
+          parseInt(this.props.detailUrlParam.result_type, 10) !== 4
+        ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}, ${this.props.categoryData.categoryData.details.offer_address.address_line_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
+        : parseInt(
+            this.props.categoryData.categoryData.details.offer_exclusive !== 1,
+            10
+          )
         ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}, ${this.props.categoryData.categoryData.details.offer_address.address_line_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
         : null;
 
@@ -157,6 +164,10 @@ export default class Overview extends React.Component {
     const faqs =
       parseInt(this.props.detailUrlParam.result_type, 10) !== 1
         ? this.props.categoryData.categoryData.details.offer_faqs
+        : null;
+    const tourDetail =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 4
+        ? this.props.categoryData.categoryData.details.tour_details
         : null;
 
     let fullRating = [];
@@ -291,6 +302,16 @@ export default class Overview extends React.Component {
             flag={false}
           />
         ) : null}
+        {tourDetail != null ? (
+          tourDetail.tour_destinations.length > 0 ||
+          tourDetail.tour_duration != null ||
+          tourDetail.tour_start_from != null ||
+          tourDetail.tour_total_distance != null ||
+          tourDetail.tour_travel_time != null ||
+          tourDetail.tour_type.length > 0 ? (
+            <TourDetail tourDetail={tourDetail} />
+          ) : null
+        ) : null}
 
         {menuImage.length > 0 ? (
           <Menu
@@ -340,7 +361,7 @@ export default class Overview extends React.Component {
           <div className="columns">
             <div className="column">
               <h4 className="ffqs cuisine-title">Where ?</h4>
-              <div className="where-underscore" />
+              <div className="overview-underscore" />
               <h4 className="ff f10 f1-1 fw2">{where}</h4>
               <Map lat={lat} lng={lng} />
             </div>

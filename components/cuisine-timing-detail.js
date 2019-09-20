@@ -7,7 +7,7 @@ const CuisineTiming = props => {
             <h4 className="ffqs cuisine-title">
               {props.cuisineTagFlag ? "Cuisine" : "Hashtag"}
             </h4>
-            <div className="cuisine-underscore" />
+            <div className="overview-underscore" />
             <ul className="package-tags">
               {props.cuisineTag.map((tag, key) => {
                 return (
@@ -21,7 +21,7 @@ const CuisineTiming = props => {
 
           <div className="column is-5 is-offset-1">
             <h4 className="ffqs cuisine-title">Timings</h4>
-            <div className="timing-underscore" />
+            <div className="overview-underscore" />
             <ul className="package-tags">
               {props.timing.map((tag, key) => {
                 return (

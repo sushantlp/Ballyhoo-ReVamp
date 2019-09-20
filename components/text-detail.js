@@ -5,7 +5,7 @@ const Text = props => {
       <div className="columns">
         <div className="column">
           <h4 className="ffqs cuisine-title">{props.title}</h4>
-          <div className="offer-underscore" />
+          <div className="overview-underscore" />
 
           <h4 className="fz1 pfc4 ffqs fw2 ls white-space">
             <ReadMoreAndLess

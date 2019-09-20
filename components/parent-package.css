@@ -110,6 +110,22 @@
   float: right;
 }
 
+.tdl {
+  text-decoration: line-through;
+}
+
+.ml8 {
+  margin-left: 8px !important;
+}
+
+.fs0-7 {
+  font-size: 0.7em;
+}
+
+.fr {
+  float: right;
+}
+
 .parent-package-container .pl8 {
   padding-left: 8px !important;
 }
