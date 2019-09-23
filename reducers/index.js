@@ -8,6 +8,7 @@ import { slidderImage } from "./slidder-image-reducer";
 import { recommendation } from "./recommendation-data-reducer";
 import { searchData } from "./search-data-reducer";
 import { urlParam } from "./url-param-reducer";
+import { featuring } from "./featuring-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -17,5 +18,6 @@ export default combineReducers({
   slidderImage,
   recommendation,
   searchData,
-  urlParam
+  urlParam,
+  featuring
 });

@@ -21,6 +21,7 @@ import styled from "styled-components";
 import { getSlidderImage } from "../actions/slidder-image-action";
 import { getCategoryData } from "../actions/category-data-action";
 import { getFoodCategoryData } from "../actions/food-category-data-action";
+import { getFeaturingData } from "../actions/featuring-action";
 
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
@@ -134,7 +135,8 @@ const mapStateToProps = state => {
   return {
     categoryData: state.categoryData,
     slidderImage: state.slidderImage,
-    foodCategoryData: state.foodCategoryData
+    foodCategoryData: state.foodCategoryData,
+    featuring: state.featuring
   };
 };
 
@@ -142,7 +144,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getCategoryData: bindActionCreators(getCategoryData, dispatch),
     getSlidderImage: bindActionCreators(getSlidderImage, dispatch),
-    getFoodCategoryData: bindActionCreators(getFoodCategoryData, dispatch)
+    getFoodCategoryData: bindActionCreators(getFoodCategoryData, dispatch),
+    getFeaturingData: bindActionCreators(getFeaturingData, dispatch)
   };
 };
 
