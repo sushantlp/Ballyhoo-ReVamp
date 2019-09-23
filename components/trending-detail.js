@@ -234,6 +234,70 @@ export default class TrendingDetail extends React.Component {
                 </Card.Content>
               </Card>
             </div>
+
+            <div className="trending-detail-card">
+              <Card
+                raised
+                style={{
+                  width: "250px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
+                <Image
+                  src="https://cdn-imgix.headout.com/tour/13905/TOUR-IMAGE/b23dc05c-1b19-4eb4-a205-fb9f0f2e29ab-7654-paris-Palace-of-Versailles-All-Access-Passport-Entry-with-Audioguide-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "250px",
+                    height: "210px"
+                  }}
+                />
+                <Card.Content>
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
+                  </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
+                </Card.Content>
+              </Card>
+            </div>
+
+            <div className="trending-detail-card">
+              <Card
+                raised
+                style={{
+                  width: "250px",
+                  height: "300px",
+                  marginBottom: "1em"
+                }}
+              >
+                <Image
+                  src="https://cdn-imgix.headout.com/tour/13905/TOUR-IMAGE/b23dc05c-1b19-4eb4-a205-fb9f0f2e29ab-7654-paris-Palace-of-Versailles-All-Access-Passport-Entry-with-Audioguide-01.jpg?auto=compress&fm=pjpg&w=510&h=315&crop=faces&fit=min"
+                  alt="image"
+                  style={{
+                    width: "250px",
+                    height: "210px"
+                  }}
+                />
+                <Card.Content>
+                  <Card.Header>
+                    <span className="city-title">NEW YORK</span>
+                  </Card.Header>
+
+                  <a
+                    className="product-title block"
+                    href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
+                  >
+                    Dubai Frame - Skip the Line Tickets
+                  </a>
+                </Card.Content>
+              </Card>
+            </div>
           </Slider>
         </div>
       </div>

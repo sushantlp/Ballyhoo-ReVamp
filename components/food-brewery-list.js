@@ -194,7 +194,7 @@ const FoodBrewery = props => {
               <a
                 className="button is-medium"
                 onClick={() =>
-                  props.foodCategoryApiCall(list.p_id, props.listUrlParam.key)
+                  props.foodCategoryApiCall(list.p_id, props.urlParam.key)
                 }
               >
                 <span className="icon">

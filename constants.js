@@ -1,6 +1,6 @@
-export const host = "http://3.83.44.102:8080/";
+//export const host = "http://18.206.248.86:8080/";
 
-//export const host = "https://ballyhoo.today/";
+export const host = "https://ballyhoo.today/";
 
 export const COUNTRY_CODE = [
   { name: "Afghanistan", dial_code: "+93", code: "AF" },

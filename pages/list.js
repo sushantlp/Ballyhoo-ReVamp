@@ -14,12 +14,17 @@ import { host } from "../constants";
 
 import Head from "../components/head";
 import Header from "../components/header";
-import SubHeader from "../components/sub-header";
+
 import ParentList from "../components/parent-list";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
 
-import { getListData, getListDataApi } from "../actions/list-action";
+import {
+  getListData,
+  getListDataApi,
+  getSearchListData,
+  getSearchListDataApi
+} from "../actions/list-action";
 import { getSlidderImage } from "../actions/slidder-image-action";
 import {
   getrecommendation,
@@ -28,50 +33,79 @@ import {
 import { getCityLocality } from "../actions/city-locality-action";
 import { getCategoryDataApi } from "../actions/category-data-action";
 import { getFoodCategoryDataApi } from "../actions/food-category-data-action";
+import { getsearchData } from "../actions/search-data-action";
+import { updateUrlParam } from "../actions/url-param-action";
 
 class List extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     city_id: 0,
+  //     api_type: 0,
+  //     key: 0,
+  //     response_type: 0,
+  //     flag: 0
+  //   };
+  // }
+
   static async getInitialProps(ctx) {
     let listJson = [];
     let slidderJson = [];
+    let searchJson = [];
     let cityLocalityJson = [];
     let recommendation = [];
     let routeParam = [];
+
     let listUrlParam = {
-      city_id: 1,
-      api_type: 1,
-      key: 1,
-      response_type: 1
+      city_id: 0,
+      api_type: 0,
+      key: 0,
+      response_type: 0,
+      flag: 0
     };
 
     try {
       const { store, isServer, req, query } = ctx;
+      store.dispatch(updateUrlParam(listUrlParam));
 
       if (isServer) routeParam = req.params;
       else routeParam = query;
-
       let page = 1;
-      console.log(routeParam);
+
       if (routeParam.secret !== undefined) {
         // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
         const slice = routeParam.secret.split("-");
 
-        if (slice.length === 5) {
+        if (slice.length === 6) {
           page = slice[4];
 
           listUrlParam = {
             city_id: slice[0],
             api_type: slice[1],
             key: slice[2],
-            response_type: slice[3]
+            response_type: slice[3],
+            flag: parseInt(slice[5], 10)
           };
         }
       }
 
-      // List API
-      listJson = await fetch(
-        `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`
-      );
+      if (listUrlParam.flag === 1) {
+        // Search List API
+        listJson = await fetch(
+          `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`
+        );
+      } else {
+        // List API
+        listJson = await fetch(
+          `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`
+        );
+      }
+
       listJson = await listJson.json();
+
+      listUrlParam.flag === 1
+        ? store.dispatch(getSearchListData(listJson))
+        : store.dispatch(getListData(listJson));
 
       // Slidder Image API
       slidderJson = await fetch(
@@ -91,16 +125,21 @@ class List extends React.Component {
       );
       recommendation = await recommendation.json();
 
-      store.dispatch(getListData(listJson));
+      // Search Data
+      searchJson = await fetch(`${host}api/v9/web/search-keys`);
+      searchJson = await searchJson.json();
+
+      store.dispatch(getsearchData(searchJson));
       store.dispatch(getSlidderImage(slidderJson));
       store.dispatch(getCityLocality(cityLocalityJson));
       store.dispatch(getrecommendation(recommendation));
+      store.dispatch(updateUrlParam(listUrlParam));
     } catch (err) {
       console.log("List_Error");
       console.log(err);
     }
 
-    return { routeParam, listUrlParam };
+    return { routeParam };
   }
 
   componentDidMount() {
@@ -135,7 +174,7 @@ class List extends React.Component {
         const title = nextProps.categoryData.categoryData.details.offer_title
           .replace(/ /g, "-")
           .toLowerCase();
-        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.listUrlParam.api_type}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.urlParam.api_type}`;
 
         Router.push(
           {
@@ -151,49 +190,50 @@ class List extends React.Component {
           { shallow: true }
         );
       }
-    } else {
+    }
+    if (
+      this.props.foodCategoryData !== nextProps.foodCategoryData &&
+      nextProps.foodCategoryData.status === "SUCCESS"
+    ) {
       if (
-        this.props.foodCategoryData !== nextProps.foodCategoryData &&
-        nextProps.foodCategoryData.status === "SUCCESS"
+        nextProps.foodCategoryData.foodCategoryData.details.hasOwnProperty(
+          "partner_id"
+        )
       ) {
-        if (
-          nextProps.foodCategoryData.foodCategoryData.details.hasOwnProperty(
-            "partner_id"
-          )
-        ) {
-          const { city } = Router.router.query;
+        const { city } = Router.router.query;
 
-          const partnerId =
-            nextProps.foodCategoryData.foodCategoryData.details.partner_id;
-          const partner = nextProps.foodCategoryData.foodCategoryData.details.bname
-            .replace(/ /g, "-")
-            .toLowerCase();
-          const title = nextProps.foodCategoryData.foodCategoryData.details.offering
-            .replace(/ /g, "-")
-            .toLowerCase();
+        const partnerId =
+          nextProps.foodCategoryData.foodCategoryData.details.partner_id;
+        const partner = nextProps.foodCategoryData.foodCategoryData.details.bname
+          .replace(/ /g, "-")
+          .toLowerCase();
+        const title = nextProps.foodCategoryData.foodCategoryData.details.offering
+          .replace(/ /g, "-")
+          .toLowerCase();
 
-          const secret = `${this.props.listUrlParam.key}-${nextProps.foodCategoryData.foodCategoryData.result_type}-${partnerId}-${this.props.listUrlParam.api_type}`;
+        const secret = `${this.props.urlParam.key}-${nextProps.foodCategoryData.foodCategoryData.result_type}-${partnerId}-${this.props.urlParam.api_type}`;
 
-          Router.push(
-            {
-              pathname: "/detail",
-              query: {
-                city: city,
-                partner: partner,
-                title: title,
-                secret: secret
-              }
-            },
-            `/${city}/${partner}/${title}/${secret}`,
-            { shallow: true }
-          );
-        }
+        Router.push(
+          {
+            pathname: "/detail",
+            query: {
+              city: city,
+              partner: partner,
+              title: title,
+              secret: secret
+            }
+          },
+          `/${city}/${partner}/${title}/${secret}`,
+          { shallow: true }
+        );
       }
     }
   }
 
   onLoadMoreList = (cityId, type, key, nextPage) => {
-    this.props.getListDataApi(cityId, type, key, nextPage);
+    this.props.urlParam.flag === 1
+      ? this.props.getSearchListDataApi(cityId, type, key, nextPage)
+      : this.props.getListDataApi(cityId, type, key, nextPage);
   };
 
   categoryApiCall = offerId => {
@@ -202,6 +242,33 @@ class List extends React.Component {
 
   foodCategoryApiCall = (partnerId, key) => {
     this.props.getFoodCategoryDataApi(partnerId, key);
+  };
+
+  onSearchKeyChange = async (
+    cityId,
+    apiType,
+    key,
+    responseType,
+    flag,
+    nextPage
+  ) => {
+    // const listUrlParam = {
+    //   city_id: cityId,
+    //   api_type: apiType,
+    //   key: key,
+    //   response_type: responseType,
+    //   flag: flag
+    // };
+    // this.setState({
+    //   city_id: cityId,
+    //   api_type: apiType,
+    //   key: key,
+    //   response_type: responseType,
+    //   flag: flag
+    // });
+
+    this.props.getSearchListDataApi(cityId, apiType, key, nextPage);
+    // this.props.updateUrlParam(listUrlParam);
   };
 
   render() {
@@ -217,8 +284,10 @@ class List extends React.Component {
           onLoadMoreList={this.onLoadMoreList}
           categoryApiCall={this.categoryApiCall}
           foodCategoryApiCall={this.foodCategoryApiCall}
-          listUrlParam={this.props.listUrlParam}
+          urlParam={this.props.urlParam.urlParam}
           recommendation={this.props.recommendation}
+          searchData={this.props.searchData}
+          onSearchKeyChange={this.onSearchKeyChange}
         />
         <Headout />
         <Footer />
@@ -234,12 +303,16 @@ const mapStateToProps = state => {
     slidderImage: state.slidderImage,
     foodCategoryData: state.foodCategoryData,
     categoryData: state.categoryData,
-    recommendation: state.recommendation
+    recommendation: state.recommendation,
+    searchData: state.searchData,
+    urlParam: state.urlParam
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    getSearchListData: bindActionCreators(getSearchListData, dispatch),
+    getSearchListDataApi: bindActionCreators(getSearchListDataApi, dispatch),
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getListData: bindActionCreators(getListData, dispatch),
     getSlidderImage: bindActionCreators(getSlidderImage, dispatch),
@@ -250,7 +323,9 @@ const mapDispatchToProps = dispatch => {
       dispatch
     ),
     getrecommendation: bindActionCreators(getrecommendation, dispatch),
-    getRecommendationApi: bindActionCreators(getRecommendationApi, dispatch)
+    getRecommendationApi: bindActionCreators(getRecommendationApi, dispatch),
+    getsearchData: bindActionCreators(getsearchData, dispatch),
+    updateUrlParam: bindActionCreators(updateUrlParam, dispatch)
   };
 };
 

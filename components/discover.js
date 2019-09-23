@@ -76,57 +76,57 @@ export default class Discover extends React.Component {
   }
 
   onClickDiscover = discover => {
-    if (parseInt(discover.response_type, 10) === 1)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: discover.api_type,
-          key: discover.key,
-          response_type: discover.response_type
-        })
-      );
-    else if (parseInt(discover.response_type, 10) === 2)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: discover.api_type,
-          key: discover.key,
-          response_type: discover.response_type
-        })
-      );
-    else if (parseInt(discover.response_type, 10) === 3)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: discover.api_type,
-          key: discover.key,
-          response_type: discover.response_type
-        })
-      );
-    else if (parseInt(discover.response_type, 10) === 2)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: discover.api_type,
-          key: discover.key,
-          response_type: discover.response_type
-        })
-      );
-    else
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: discover.api_type,
-          key: discover.key,
-          response_type: discover.response_type
-        })
-      );
+    // if (parseInt(discover.response_type, 10) === 1)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: discover.api_type,
+    //       key: discover.key,
+    //       response_type: discover.response_type
+    //     })
+    //   );
+    // else if (parseInt(discover.response_type, 10) === 2)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: discover.api_type,
+    //       key: discover.key,
+    //       response_type: discover.response_type
+    //     })
+    //   );
+    // else if (parseInt(discover.response_type, 10) === 3)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: discover.api_type,
+    //       key: discover.key,
+    //       response_type: discover.response_type
+    //     })
+    //   );
+    // else if (parseInt(discover.response_type, 10) === 2)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: discover.api_type,
+    //       key: discover.key,
+    //       response_type: discover.response_type
+    //     })
+    //   );
+    // else
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: discover.api_type,
+    //       key: discover.key,
+    //       response_type: discover.response_type
+    //     })
+    //   );
 
     const { city, city_id } = Router.router.query;
     const title = discover.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${discover.api_type}-${discover.key}-${
       discover.response_type
-    }-${1}`;
+    }-${1}-${0}`;
     Router.push(
       {
         pathname: "/list",

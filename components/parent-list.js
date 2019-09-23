@@ -1,5 +1,3 @@
-import Router from "next/router";
-
 import Spinner from "./spinner";
 import Search from "./search";
 import MainList from "./main-list";
@@ -11,29 +9,9 @@ class ParentList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response_type: 0,
       page: 1,
-      cityId: 1,
-      type: 1,
-      key: 1,
       isLoading: false
     };
-  }
-
-  componentDidMount() {
-    // const { secret } = Router.router.query;
-    // let slice = [];
-    // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
-    // if (this.props.routeParam.length === 0) slice = secret.split("-");
-    // else slice = this.props.routeParam.secret.split("-");
-    // if (slice.length < 5) Router.push("/");
-    // this.setState({
-    //   response_type: slice[3],
-    //   type: slice[1],
-    //   key: slice[2],
-    //   page: slice[4],
-    //   cityId: slice[0]
-    // });
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -51,9 +29,9 @@ class ParentList extends React.Component {
   onLoadMoreList = nextPage => {
     this.updateisLoadingState(true);
     this.props.onLoadMoreList(
-      this.props.listUrlParam.city_id,
-      this.props.listUrlParam.api_type,
-      this.props.listUrlParam.key,
+      this.props.urlParam.city_id,
+      this.props.urlParam.api_type,
+      this.props.urlParam.key,
       nextPage
     );
   };
@@ -71,15 +49,18 @@ class ParentList extends React.Component {
     )
       return <Spinner />;
 
-    if (this.props.listUrlParam.response_type === 0) return <Spinner />;
-
+    if (this.props.urlParam.response_type === 0) return <Spinner />;
+    console.log(this.props.listData);
+    console.log(this.props.urlParam);
     return (
       <React.Fragment>
         <Search
           cityLocality={this.props.cityLocality}
           slidderImage={this.props.slidderImage}
           parentListState={this.state}
-          listUrlParam={this.props.listUrlParam}
+          searchData={this.props.searchData}
+          urlParam={this.props.urlParam}
+          onSearchKeyChange={this.props.onSearchKeyChange}
         />
         <section className="section">
           <div className="container">
@@ -96,7 +77,7 @@ class ParentList extends React.Component {
                   onLoadMoreList={this.onLoadMoreList}
                   categoryApiCall={this.props.categoryApiCall}
                   foodCategoryApiCall={this.props.foodCategoryApiCall}
-                  listUrlParam={this.props.listUrlParam}
+                  urlParam={this.props.urlParam}
                 />
               </div>
             </div>

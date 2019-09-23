@@ -27,6 +27,7 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
+import { getsearchData } from "../actions/search-data-action";
 import { getCityLocality } from "../actions/city-locality-action";
 import { getCategoryDataApi } from "../actions/category-data-action";
 import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
@@ -34,6 +35,7 @@ import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
 class Index extends React.Component {
   static async getInitialProps(ctx) {
     let cityLocalityJson = [];
+    let searchJson = [];
     let homeScreenJson = [];
     try {
       const { store, isServer, req, query } = ctx;
@@ -60,6 +62,11 @@ class Index extends React.Component {
       homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=${cityId}`);
       homeScreenJson = await homeScreenJson.json();
 
+      // Search Data
+      searchJson = await fetch(`${host}api/v9/web/search-keys`);
+      searchJson = await searchJson.json();
+
+      store.dispatch(getsearchData(searchJson));
       store.dispatch(getHomeScreen(homeScreenJson));
       store.dispatch(getCityLocality(cityLocalityJson));
     } catch (err) {
@@ -146,6 +153,7 @@ class Index extends React.Component {
           cityLocality={this.props.cityLocality}
           homeScreen={this.props.homeScreen}
           cityChangeApiCall={this.cityChangeApiCall}
+          searchData={this.props.searchData}
         />
         <SlidderBanner homeScreen={this.props.homeScreen} />
         <Discover homeScreen={this.props.homeScreen} />
@@ -168,7 +176,8 @@ const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
     homeScreen: state.homeScreen,
-    categoryData: state.categoryData
+    categoryData: state.categoryData,
+    searchData: state.searchData
   };
 };
 
@@ -177,7 +186,8 @@ const mapDispatchToProps = dispatch => {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getHomeScreen: bindActionCreators(getHomeScreen, dispatch),
     getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch),
-    getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch)
+    getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch),
+    getsearchData: bindActionCreators(getsearchData, dispatch)
   };
 };
 

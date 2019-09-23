@@ -36,10 +36,18 @@ export default class Filter extends React.Component {
       <div
         className="filter-container"
         style={{
-          top: this.state.scrolling ? "6em" : "0"
+          top: this.state.scrolling ? "6em" : "0",
+          pointerEvents: "none",
+          cursor: "not-allowed"
         }}
       >
-        <div className="box">
+        <div
+          className="box"
+          style={{
+            pointerEvents: "none",
+            cursor: "not-allowed"
+          }}
+        >
           <h3 className="google">Categories </h3>
           <div className="columns is-desktop is-multiline is-narrow">
             <div className="field">

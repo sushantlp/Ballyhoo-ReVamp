@@ -11,32 +11,33 @@ import "./main-list.css";
 
 const MainList = props => {
   if (props.listData.listData.length === 0) return <Spinner />;
+
   return (
     <React.Fragment>
       <FilterDisplay />
       <div className="main-list-container">
-        {parseInt(props.listUrlParam.response_type, 10) === 1 ? (
+        {parseInt(props.urlParam.response_type, 10) === 1 ? (
           <FoodBreweryList
             listData={props.listData}
             foodCategoryApiCall={props.foodCategoryApiCall}
-            listUrlParam={props.listUrlParam}
+            urlParam={props.urlParam}
           />
-        ) : parseInt(props.listUrlParam.response_type, 10) === 2 ? (
+        ) : parseInt(props.urlParam.response_type, 10) === 2 ? (
           <EventList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
           />
-        ) : parseInt(props.listUrlParam.response_type, 10) === 3 ? (
+        ) : parseInt(props.urlParam.response_type, 10) === 3 ? (
           <ActivityList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
           />
-        ) : parseInt(props.listUrlParam.response_type, 10) === 4 ? (
+        ) : parseInt(props.urlParam.response_type, 10) === 4 ? (
           <EscapeList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
           />
-        ) : parseInt(props.listUrlParam.response_type, 10) === 5 ? (
+        ) : parseInt(props.urlParam.response_type, 10) === 5 ? (
           <SpaList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}

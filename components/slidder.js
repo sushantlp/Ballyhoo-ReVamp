@@ -11,7 +11,9 @@ export default class Slidder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectSearch: {},
       cityList: [],
+      searchList: [],
       cityName: "Bengaluru"
     };
   }
@@ -61,12 +63,16 @@ export default class Slidder extends React.Component {
         );
       }
     }
+    if (this.props.searchData.searchData.length !== 0)
+      this.createSearchList(this.props.searchData.searchData);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.cityLocality !== nextProps.cityLocality) {
+    if (this.props.cityLocality !== nextProps.cityLocality)
       this.createCityList(nextProps.cityLocality.cityLocality, "Bengaluru");
-    }
+
+    if (this.props.searchData !== nextProps.searchData)
+      this.createSearchList(nextProps.searchData.searchData);
   }
 
   // Create City List
@@ -92,6 +98,20 @@ export default class Slidder extends React.Component {
     });
   };
 
+  // Create Search List
+  createSearchList = props => {
+    const searchArray = props.map(obj => {
+      const search = {};
+      search.key = obj.key;
+      search.value = obj.keyword;
+      search.text = obj.keyword;
+      return search;
+    });
+    this.setState({
+      searchList: searchArray
+    });
+  };
+
   // On City Change
   onChangeCity = (e, data) => {
     const bunch = this.state.cityList.filter(obj => {
@@ -99,7 +119,6 @@ export default class Slidder extends React.Component {
     });
     this.setCityName(data.value);
     this.props.cityChangeApiCall(bunch[0].key);
-    console.log(bunch);
     const city = bunch[0].text.replace(/ /g, "-").toLowerCase();
     this.setCityName(bunch[0].text);
     Router.push(
@@ -112,10 +131,47 @@ export default class Slidder extends React.Component {
     );
   };
 
+  // On Search Change
+  onChangeSearch = (e, data) => {
+    const bunch = this.props.searchData.searchData.filter(obj => {
+      if (obj.keyword.toLowerCase() === data.value.toLowerCase()) return obj;
+    });
+
+    this.setState({
+      selectSearch: {
+        key: bunch[0].key,
+        keyword: bunch[0].keyword,
+        response_type: bunch[0].response_type,
+        type: bunch[0].type
+      }
+    });
+  };
+
   slidderImageArray = json => {
     return json.map((image, key) => {
       return <img src={image} alt="" className="carousel" key={key} />;
     });
+  };
+
+  onClickButton = () => {
+    const { city, city_id } = Router.router.query;
+    const title = this.state.selectSearch.keyword
+      .replace(/ /g, "-")
+      .toLowerCase();
+    const secret = `${city_id}-${this.state.selectSearch.type}-${
+      this.state.selectSearch.key
+    }-${this.state.selectSearch.response_type}-${1}-${1}`;
+    Router.push(
+      {
+        pathname: "/list",
+        query: {
+          city: city,
+          title: title,
+          secret: secret
+        }
+      },
+      `/${city}/${title}/${secret}`
+    );
   };
 
   render() {
@@ -131,7 +187,6 @@ export default class Slidder extends React.Component {
     )
       return <Spinner />;
 
-    const empty = [];
     const carousel = this.props.homeScreen.homeScreen.carousel;
     const settings = {
       dots: true,
@@ -178,14 +233,13 @@ export default class Slidder extends React.Component {
 
               <div className="column is-6">
                 <Dropdown
-                  placeholder="City"
+                  placeholder="Keyword"
                   search
                   fluid
                   selection
                   style={{ height: "50px" }}
-                  options={empty}
-                  defaultValue={empty}
-                  // onChange={}
+                  options={this.state.searchList}
+                  onChange={(event, data) => this.onChangeSearch(event, data)}
                   icon={
                     <img
                       src="https://img.icons8.com/wired/20/000000/search.png"
@@ -203,6 +257,7 @@ export default class Slidder extends React.Component {
                 <a
                   className="button is-danger"
                   style={{ height: "50px", fontWeight: "700" }}
+                  onClick={() => this.onClickButton()}
                 >
                   SUBMIT
                 </a>

@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { Dropdown } from "semantic-ui-react";
 import "./search.css";
 
@@ -5,24 +6,38 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectSearch: {},
       cityList: [],
-      cityName: "Bengaluru"
+      searchList: [],
+      cityName: ""
     };
   }
 
   componentDidMount() {
+    console.log(this.props.urlParam);
     if (this.props.cityLocality.cityLocality.length !== 0) {
       this.createCityList(this.props.cityLocality.cityLocality);
 
       const bunch = this.props.cityLocality.cityLocality.filter(obj => {
         return (
           parseInt(obj.city_id, 10) ===
-          parseInt(this.props.listUrlParam.city_id, 10)
+          parseInt(this.props.urlParam.city_id, 10)
         );
       });
 
       this.setCityName(bunch[0].city_name);
     }
+
+    if (this.props.searchData.searchData.length !== 0)
+      this.createSearchList(this.props.searchData.searchData);
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.cityLocality !== nextProps.cityLocality)
+      this.createCityList(nextProps.cityLocality.cityLocality, "Bengaluru");
+
+    if (this.props.searchData !== nextProps.searchData)
+      this.createSearchList(nextProps.searchData.searchData);
   }
 
   // Create City List
@@ -50,15 +65,78 @@ export default class Search extends React.Component {
 
   // On City Change
   onChangeCity = (e, data) => {
-    // const bunch = this.state.cityList.filter(obj => {
-    //   if (obj.value.toLowerCase() === data.value.toLowerCase()) return obj;
-    // });
     this.setCityName(data.value);
   };
 
-  render() {
-    const empty = [];
+  // Create Search List
+  createSearchList = props => {
+    const searchArray = props.map(obj => {
+      const search = {};
+      search.key = obj.key;
+      search.value = obj.keyword;
+      search.text = obj.keyword;
+      return search;
+    });
+    this.setState({
+      searchList: searchArray
+    });
+  };
 
+  // On Search Change
+  onChangeSearch = (e, data) => {
+    const bunch = this.props.searchData.searchData.filter(obj => {
+      if (obj.keyword.toLowerCase() === data.value.toLowerCase()) return obj;
+    });
+
+    this.setState({
+      selectSearch: {
+        key: bunch[0].key,
+        keyword: bunch[0].keyword,
+        response_type: bunch[0].response_type,
+        type: bunch[0].type
+      }
+    });
+  };
+
+  onClickButton = () => {
+    const bunch = this.state.cityList.filter(obj => {
+      if (obj.value.toLowerCase() === this.state.cityName.toLowerCase())
+        return obj;
+    });
+
+    const city = bunch[0].value.replace(/ /g, "-").toLowerCase();
+    const title = this.state.selectSearch.keyword
+      .replace(/ /g, "-")
+      .toLowerCase();
+
+    const secret = `${bunch[0].key}-${this.state.selectSearch.type}-${
+      this.state.selectSearch.key
+    }-${this.state.selectSearch.response_type}-${1}-${1}`;
+    Router.push(
+      {
+        pathname: "/list",
+        query: {
+          city: city,
+          title: title,
+          secret: secret
+        }
+      },
+      `/${city}/${title}/${secret}`,
+      { shallow: false }
+    );
+
+    // this.props.onSearchKeyChange(
+    //   bunch[0].key,
+    //   this.state.selectSearch.type,
+    //   this.state.selectSearch.key,
+    //   this.state.selectSearch.response_type,
+    //   1,
+    //   1
+    // );
+  };
+
+  render() {
+    if (this.state.cityName === "") return null;
     return (
       <div
         className="search-container"
@@ -95,14 +173,13 @@ export default class Search extends React.Component {
 
               <div className="column is-6">
                 <Dropdown
-                  placeholder="City"
+                  placeholder="Search"
                   search
                   fluid
                   selection
                   style={{ height: "50px" }}
-                  options={empty}
-                  defaultValue={empty}
-                  // onChange={}
+                  options={this.state.searchList}
+                  onChange={(event, data) => this.onChangeSearch(event, data)}
                   icon={
                     <img
                       src="https://img.icons8.com/wired/20/000000/search.png"
@@ -121,6 +198,7 @@ export default class Search extends React.Component {
                 <a
                   className="button is-danger"
                   style={{ height: "50px", fontWeight: "700" }}
+                  onClick={() => this.onClickButton()}
                 >
                   SUBMIT
                 </a>

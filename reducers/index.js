@@ -6,6 +6,8 @@ import { categoryData } from "./category-data-reducer";
 import { foodCategoryData } from "./food-category-data-reducer";
 import { slidderImage } from "./slidder-image-reducer";
 import { recommendation } from "./recommendation-data-reducer";
+import { searchData } from "./search-data-reducer";
+import { urlParam } from "./url-param-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -13,5 +15,7 @@ export default combineReducers({
   categoryData,
   foodCategoryData,
   slidderImage,
-  recommendation
+  recommendation,
+  searchData,
+  urlParam
 });

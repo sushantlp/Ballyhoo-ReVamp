@@ -85,57 +85,57 @@ export default class FoodBrewery extends React.Component {
   }
 
   onClickCollection = collection => {
-    if (parseInt(collection.response_type, 10) === 1)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: collection.api_type,
-          key: collection.key,
-          response_type: collection.response_type
-        })
-      );
-    else if (parseInt(collection.response_type, 10) === 2)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: collection.api_type,
-          key: collection.key,
-          response_type: collection.response_type
-        })
-      );
-    else if (parseInt(collection.response_type, 10) === 3)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: collection.api_type,
-          key: collection.key,
-          response_type: collection.response_type
-        })
-      );
-    else if (parseInt(collection.response_type, 10) === 2)
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: collection.api_type,
-          key: collection.key,
-          response_type: collection.response_type
-        })
-      );
-    else
-      sessionStorage.setItem(
-        "LIST_DATA",
-        JSON.stringify({
-          api_type: collection.api_type,
-          key: collection.key,
-          response_type: collection.response_type
-        })
-      );
+    // if (parseInt(collection.response_type, 10) === 1)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: collection.api_type,
+    //       key: collection.key,
+    //       response_type: collection.response_type
+    //     })
+    //   );
+    // else if (parseInt(collection.response_type, 10) === 2)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: collection.api_type,
+    //       key: collection.key,
+    //       response_type: collection.response_type
+    //     })
+    //   );
+    // else if (parseInt(collection.response_type, 10) === 3)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: collection.api_type,
+    //       key: collection.key,
+    //       response_type: collection.response_type
+    //     })
+    //   );
+    // else if (parseInt(collection.response_type, 10) === 2)
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: collection.api_type,
+    //       key: collection.key,
+    //       response_type: collection.response_type
+    //     })
+    //   );
+    // else
+    //   sessionStorage.setItem(
+    //     "LIST_DATA",
+    //     JSON.stringify({
+    //       api_type: collection.api_type,
+    //       key: collection.key,
+    //       response_type: collection.response_type
+    //     })
+    //   );
 
     const { city, city_id } = Router.router.query;
     const title = collection.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${collection.api_type}-${collection.key}-${
       collection.response_type
-    }-${1}`;
+    }-${1}-${0}`;
     Router.push(
       {
         pathname: "/list",

@@ -30,6 +30,21 @@ export default {
     });
   },
 
+  searchListDataApi: (cityId, type, key, page) => {
+    return new Promise((resolve, reject) => {
+      fetch(
+        `${host}api/v9/web/search?city_id=${cityId}&type=${type}&key=${key}&page=${page}`
+      )
+        .then(response => {
+          response
+            .json()
+            .then(listData => resolve(listData))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
   categoryDataApi: offerId => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/offers/${offerId}`)

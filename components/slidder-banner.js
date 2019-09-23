@@ -7,9 +7,11 @@ export default class SlidderBanner extends React.Component {
   }
 
   bannerImageArray = json => {
-    return json.map((image, key) => {
-      return <img src={image.img} alt="" className="carousel" key={key} />;
-    });
+    return json
+      .filter(image => parseInt(image.banner_type, 10) === 1)
+      .map((image, key) => {
+        return <img src={image.img} alt="" className="carousel" key={key} />;
+      });
   };
 
   render() {
@@ -21,9 +23,15 @@ export default class SlidderBanner extends React.Component {
 
     if (this.props.homeScreen.homeScreen.banner.length === 0) return null;
 
+    let flag = [];
     const banner = this.props.homeScreen.homeScreen.banner;
 
-    if (parseInt(banner.banner_type, 10) === 2) return null;
+    flag = banner.filter(function(image) {
+      return parseInt(image.banner_type, 10) === 1;
+    });
+
+    if (flag.length === 0) return null;
+
     const settings = {
       dots: true,
       infinite: true,

@@ -1,6 +1,6 @@
+import Router from "next/router";
 import Slider from "react-slick";
 import { Card, Image } from "semantic-ui-react";
-
 import "./trending-list.css";
 
 function SampleNextArrow(props) {
@@ -75,8 +75,32 @@ export default class TrendingList extends React.Component {
     super(props);
   }
 
+  onClickRecommendation = recommendation => {
+    console.log(recommendation);
+    console.log(Router.router.query);
+    const { city, secret } = Router.router.query;
+    const title = recommendation.title.replace(/ /g, "-").toLowerCase();
+
+    // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
+    const slice = secret.split("-");
+
+    const secrets = `${slice[0]}-${recommendation.api_type}-${
+      recommendation.key
+    }-${recommendation.response_type}-${1}-${0}`;
+    Router.push(
+      {
+        pathname: "/list",
+        query: {
+          city: city,
+          title: title,
+          secret: secrets
+        }
+      },
+      `/${city}/${title}/${secrets}`
+    );
+  };
+
   render() {
-    console.log(this.props.recommendation);
     const settings = {
       dots: false,
       infinite: true,
@@ -99,9 +123,13 @@ export default class TrendingList extends React.Component {
             <div className="underscore" />
           </div>
           <Slider {...settings}>
-            {recommendation.map((value, key) => {
+            {recommendation.map((recommendation, key) => {
               return (
-                <div className="trending-list-card" key={key}>
+                <div
+                  className="trending-list-card"
+                  key={key}
+                  onClick={() => this.onClickRecommendation(recommendation)}
+                >
                   <Card
                     raised
                     style={{
@@ -111,7 +139,7 @@ export default class TrendingList extends React.Component {
                     }}
                   >
                     <Image
-                      src={value.img}
+                      src={recommendation.img}
                       alt="image"
                       style={{
                         width: "250px",
@@ -120,7 +148,9 @@ export default class TrendingList extends React.Component {
                     />
                     <Card.Content>
                       <Card.Header>
-                        <span className="city-title">{value.title}</span>
+                        <span className="city-title">
+                          {recommendation.title}
+                        </span>
                       </Card.Header>
                     </Card.Content>
                   </Card>
