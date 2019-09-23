@@ -86,7 +86,7 @@ export default class TrendingDetail extends React.Component {
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
-
+    console.log(this.props);
     return (
       <div className="container">
         <div className="trending-detail-card">

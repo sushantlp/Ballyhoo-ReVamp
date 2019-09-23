@@ -164,6 +164,7 @@ class List extends React.Component {
       if (
         nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
+        console.log("categoryData");
         const { city } = Router.router.query;
 
         const partnerId =
@@ -174,7 +175,7 @@ class List extends React.Component {
         const title = nextProps.categoryData.categoryData.details.offer_title
           .replace(/ /g, "-")
           .toLowerCase();
-        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.urlParam.api_type}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.urlParam.urlParam.api_type}`;
 
         Router.push(
           {
@@ -200,6 +201,7 @@ class List extends React.Component {
           "partner_id"
         )
       ) {
+        console.log("foodCategoryData");
         const { city } = Router.router.query;
 
         const partnerId =
@@ -211,7 +213,7 @@ class List extends React.Component {
           .replace(/ /g, "-")
           .toLowerCase();
 
-        const secret = `${this.props.urlParam.key}-${nextProps.foodCategoryData.foodCategoryData.result_type}-${partnerId}-${this.props.urlParam.api_type}`;
+        const secret = `${this.props.urlParam.urlParam.key}-${nextProps.foodCategoryData.foodCategoryData.result_type}-${partnerId}-${this.props.urlParam.urlParam.api_type}`;
 
         Router.push(
           {
@@ -231,7 +233,7 @@ class List extends React.Component {
   }
 
   onLoadMoreList = (cityId, type, key, nextPage) => {
-    this.props.urlParam.flag === 1
+    this.props.urlParam.urlParam.flag === 1
       ? this.props.getSearchListDataApi(cityId, type, key, nextPage)
       : this.props.getListDataApi(cityId, type, key, nextPage);
   };

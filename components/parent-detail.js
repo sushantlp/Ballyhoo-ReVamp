@@ -6,7 +6,6 @@ import "./parent-detail.css";
 
 export default class ParentDetail extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
         <section className="section">
@@ -43,7 +42,7 @@ export default class ParentDetail extends React.Component {
           </div>
         </section>
 
-        <TrendingDetail />
+        <TrendingDetail featuring={this.props.featuring} />
       </React.Fragment>
     );
   }

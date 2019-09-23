@@ -1,5 +1,7 @@
 import Router from "next/router";
 import Slider from "react-slick";
+import { Card, Image } from "semantic-ui-react";
+
 import "./collection.css";
 
 function SampleNextArrow(props) {
@@ -85,52 +87,6 @@ export default class FoodBrewery extends React.Component {
   }
 
   onClickCollection = collection => {
-    // if (parseInt(collection.response_type, 10) === 1)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: collection.api_type,
-    //       key: collection.key,
-    //       response_type: collection.response_type
-    //     })
-    //   );
-    // else if (parseInt(collection.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: collection.api_type,
-    //       key: collection.key,
-    //       response_type: collection.response_type
-    //     })
-    //   );
-    // else if (parseInt(collection.response_type, 10) === 3)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: collection.api_type,
-    //       key: collection.key,
-    //       response_type: collection.response_type
-    //     })
-    //   );
-    // else if (parseInt(collection.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: collection.api_type,
-    //       key: collection.key,
-    //       response_type: collection.response_type
-    //     })
-    //   );
-    // else
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: collection.api_type,
-    //       key: collection.key,
-    //       response_type: collection.response_type
-    //     })
-    //   );
-
     const { city, city_id } = Router.router.query;
     const title = collection.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${collection.api_type}-${collection.key}-${
@@ -148,7 +104,8 @@ export default class FoodBrewery extends React.Component {
       `/${city}/${title}/${secret}`
     );
   };
-  innerCollection = json => {
+
+  innerCollectionEven = json => {
     return json.map((collection, key) => {
       return (
         <div
@@ -167,6 +124,27 @@ export default class FoodBrewery extends React.Component {
     });
   };
 
+  innerCollectionOdd = json => {
+    return json.map((collection, key) => {
+      return (
+        <div style={{ marginBottom: "3em" }}>
+          <div class="card">
+            <div class="card-image">
+              <img src={collection.img} alt="Placeholder image" />
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">{collection.title}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
   collectionArray = json => {
     return json.map((collection, key) => {
       return (
@@ -177,11 +155,17 @@ export default class FoodBrewery extends React.Component {
               <div className="underscore" />
             </div>
 
-            <div className="box">
+            {key % 2 === 0 ? (
+              <div className="box-even">
+                <Slider {...this.state.settings}>
+                  {this.innerCollectionEven(collection.collection_items)}
+                </Slider>
+              </div>
+            ) : (
               <Slider {...this.state.settings}>
-                {this.innerCollection(collection.collection_items)}
+                {this.innerCollectionOdd(collection.collection_items)}
               </Slider>
-            </div>
+            )}
           </div>
         </div>
       );

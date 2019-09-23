@@ -28,7 +28,9 @@ class Detail extends React.Component {
     const { store, isServer, req, query } = ctx;
     let categoryJson = [];
     let foodCategoryJson = [];
+    let featureJson = [];
     let detailUrlParam = {};
+    let slice = [];
     try {
       if (isServer) {
         if (
@@ -38,7 +40,7 @@ class Detail extends React.Component {
           req.params.secret !== undefined
         ) {
           // Index Zero=id, One=resultType, Two=partnerId, Three=apiType,
-          const slice = req.params.secret.split("-");
+          slice = req.params.secret.split("-");
 
           detailUrlParam = {
             id: slice[0],
@@ -47,8 +49,9 @@ class Detail extends React.Component {
             api_type: slice[3]
           };
 
+          const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[3];
+
           if (parseInt(slice[1], 10) === 1) {
-            const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[3];
             // Food Category Api
             foodCategoryJson = await fetch(
               `${host}api/v9/web/partners/${slice[2]}?key=${key}`
@@ -67,7 +70,7 @@ class Detail extends React.Component {
       } else {
         if (query.hasOwnProperty("secret") && query.secret !== undefined) {
           // Index Zero=id, One=resultType, Two=partnerId, Three=apiType
-          const slice = query.secret.split("-");
+          slice = query.secret.split("-");
 
           detailUrlParam = {
             id: slice[0],
@@ -77,6 +80,17 @@ class Detail extends React.Component {
           };
         }
       }
+
+      const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[3];
+
+      // Also Feature
+      featureJson = await fetch(
+        `${host}api/v9/web/all/featurings?category=${slice[1]}&q=${
+          slice[0]
+        }&key=${key}`
+      );
+      featureJson = await featureJson.json();
+      store.dispatch(getFeaturingData(featureJson));
 
       // Slidder Image API
       let slidderJson = await fetch(
@@ -123,6 +137,7 @@ class Detail extends React.Component {
           categoryData={this.props.categoryData}
           foodCategoryData={this.props.foodCategoryData}
           detailUrlParam={this.props.detailUrlParam}
+          featuring={this.props.featuring}
         />
         <Headout />
         <Footer />
