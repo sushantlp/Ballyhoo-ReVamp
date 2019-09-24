@@ -166,7 +166,7 @@ class Index extends React.Component {
         <Collection homeScreen={this.props.homeScreen} />
         <Banner homeScreen={this.props.homeScreen} />
         <Headout />
-        <Footer />
+        <Footer cityLocality={this.props.cityLocality} />
       </div>
     );
   }

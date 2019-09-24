@@ -50,8 +50,7 @@ class ParentList extends React.Component {
       return <Spinner />;
 
     if (this.props.urlParam.response_type === 0) return <Spinner />;
-    console.log(this.props.listData);
-    console.log(this.props.urlParam);
+
     return (
       <React.Fragment>
         <Search

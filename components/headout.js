@@ -11,10 +11,10 @@ const Headout = props => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-1.png"
+                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-2.png"
                   />
                   <img
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-1.png"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-2.png"
                     alt="iphone"
                     className="image"
                     // width="230"
@@ -83,10 +83,10 @@ const Headout = props => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-2.png"
+                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-1.png"
                   />
                   <img
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1568276206/BallyhooV3/WEB/phone-mockup-2.png"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-1.png"
                     alt="android"
                     className="image"
                     width="400"
