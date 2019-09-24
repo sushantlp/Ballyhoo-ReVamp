@@ -110,7 +110,7 @@ class List extends React.Component {
       // Slidder Image API
       slidderJson = await fetch(
         `${host}api/v9/web/carousel/images?type=${1}&category=${
-          listUrlParam.api_type
+          listUrlParam.response_type
         }`
       );
       slidderJson = await slidderJson.json();
