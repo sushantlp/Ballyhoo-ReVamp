@@ -71,13 +71,11 @@ function SamplePrevArrow(props) {
 }
 
 export default class TrendingList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   onClickRecommendation = recommendation => {
-    console.log(recommendation);
-    console.log(Router.router.query);
     const { city, secret } = Router.router.query;
     const title = recommendation.title.replace(/ /g, "-").toLowerCase();
 

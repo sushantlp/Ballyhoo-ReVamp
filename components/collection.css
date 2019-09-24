@@ -93,7 +93,7 @@
   margin-top: 5px;
 }
 
-.food-brewery-container .underscore {
+.collection-container .underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -107,16 +107,26 @@
   display: block;
   box-sizing: border-box;
   width: 4em;
+  margin-bottom: 1em;
 }
 
-.food-brewery-header-container .food-brewery-header {
+.collection-header-container .collection-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
 }
 
-.card {
+/* .card {
   width: 250px;
   height: 210px;
+} */
+
+.box-odd .city-title {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 200;
+}
+
+.box-odd .ui.card > .content {
+  padding: 2em 2em;
 }

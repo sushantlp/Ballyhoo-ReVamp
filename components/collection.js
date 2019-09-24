@@ -4,7 +4,7 @@ import { Card, Image } from "semantic-ui-react";
 
 import "./collection.css";
 
-function SampleNextArrow(props) {
+function EvenNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
@@ -37,7 +37,7 @@ function SampleNextArrow(props) {
   );
 }
 
-function SamplePrevArrow(props) {
+function EvenPrevArrow(props) {
   const { className, style, onClick } = props;
 
   return (
@@ -70,18 +70,93 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default class FoodBrewery extends React.Component {
+function OddNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        width: "40px",
+        height: "40px",
+        borderRadius: "50%",
+        position: "relative",
+        backgroundColor: "#ffffff",
+        boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+        float: "right",
+        right: "-4em",
+        top: "-11.5em",
+        zIndex: "1"
+      }}
+      onClick={onClick}
+    >
+      <img
+        src="https://img.icons8.com/ios/20/000000/more-than-filled.png"
+        style={{
+          color: "black",
+          fontSize: "1.4em",
+          paddingLeft: "0.5em",
+          paddingTop: "0.5em"
+        }}
+      />
+    </div>
+  );
+}
+
+function OddPrevArrow(props) {
+  const { className, style, onClick } = props;
+
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        width: "40px",
+        height: "40px",
+        borderRadius: "50%",
+        position: "relative",
+        backgroundColor: "#ffffff",
+        boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
+        top: "8em",
+        float: "left",
+        zIndex: "1"
+      }}
+      onClick={onClick}
+    >
+      <img
+        src="https://img.icons8.com/ios/20/000000/less-than-filled.png"
+        style={{
+          color: "black",
+          fontSize: "1.4em",
+          paddingLeft: "0.5em",
+          paddingTop: "0.5em"
+        }}
+      />
+    </div>
+  );
+}
+
+export default class Collection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      settings: {
+      even: {
         dots: false,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
         className: "trending-slick",
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        nextArrow: <EvenNextArrow />,
+        prevArrow: <EvenPrevArrow />
+      },
+      odd: {
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        className: "trending-slick",
+        nextArrow: <OddNextArrow />,
+        prevArrow: <OddPrevArrow />
       }
     };
   }
@@ -127,19 +202,29 @@ export default class FoodBrewery extends React.Component {
   innerCollectionOdd = json => {
     return json.map((collection, key) => {
       return (
-        <div style={{ marginBottom: "3em" }}>
-          <div class="card">
-            <div class="card-image">
-              <img src={collection.img} alt="Placeholder image" />
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">{collection.title}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div key={key}>
+          <Card
+            raised
+            style={{
+              width: "250px",
+              height: "280px",
+              marginBottom: "3em"
+            }}
+          >
+            <Image
+              src={collection.img}
+              alt="image"
+              style={{
+                width: "250px",
+                height: "210px"
+              }}
+            />
+            <Card.Content>
+              <Card.Header>
+                <span className="city-title">{collection.title}</span>
+              </Card.Header>
+            </Card.Content>
+          </Card>
         </div>
       );
     });
@@ -149,22 +234,27 @@ export default class FoodBrewery extends React.Component {
     return json.map((collection, key) => {
       return (
         <div className="container" key={key}>
-          <div className="food-brewery-container">
-            <div className="food-brewery-header-container">
-              <h2 className="food-brewery-header">{collection.title}</h2>
+          <div className="collection-container">
+            <div className="collection-header-container">
+              <h2 className="collection-header">{collection.title}</h2>
               <div className="underscore" />
             </div>
 
             {key % 2 === 0 ? (
               <div className="box-even">
-                <Slider {...this.state.settings}>
+                <Slider {...this.state.even}>
                   {this.innerCollectionEven(collection.collection_items)}
                 </Slider>
               </div>
             ) : (
-              <Slider {...this.state.settings}>
-                {this.innerCollectionOdd(collection.collection_items)}
-              </Slider>
+              <div
+                className="box-odd"
+                style={{ paddingLeft: "0.5em", outline: "none" }}
+              >
+                <Slider {...this.state.odd}>
+                  {this.innerCollectionOdd(collection.collection_items)}
+                </Slider>
+              </div>
             )}
           </div>
         </div>

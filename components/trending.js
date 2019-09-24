@@ -119,7 +119,7 @@ export default class Trending extends React.Component {
               </div>
             ) : null}
 
-            <Card.Content style={{ backgroundColor: "rgba(247, 247, 247, 1)" }}>
+            <Card.Content>
               <Card.Header>
                 <span className="city-title">{trending.offer_title}</span>
               </Card.Header>
