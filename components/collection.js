@@ -203,13 +203,14 @@ export default class Collection extends React.Component {
   };
 
   innerCollectionOdd = json => {
+    const calculate = json.length;
     return json.map((collection, key) => {
       return (
         <div key={key} onClick={() => this.onClickCollection(collection)}>
           <Card
             raised
             style={{
-              width: "250px",
+              width: calculate > 4 ? "250px" : "275px",
               height: "265px",
               marginBottom: "1em"
             }}
@@ -218,7 +219,7 @@ export default class Collection extends React.Component {
               src={collection.img}
               alt="image"
               style={{
-                width: "250px",
+                width: calculate > 4 ? "250px" : "275px",
                 height: "210px"
               }}
             />

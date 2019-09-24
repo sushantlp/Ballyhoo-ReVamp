@@ -61,7 +61,7 @@ export default class Popular extends React.Component {
     return (
       <div className="container">
         <div className="popular-header-container">
-          <h2 className="popular-header">Popular</h2>
+          <h2 className="popular-header">Plan your Escape</h2>
           <div className="underscore" />
         </div>
 

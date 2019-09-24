@@ -208,7 +208,7 @@ export default class Discover extends React.Component {
       <div className="container" style={{ marginBottom: "1em" }}>
         <div className="discover-container">
           <div className="discover-header-container">
-            <h2 className="discover-header">Discover</h2>
+            <h2 className="discover-header">Top Picks</h2>
             <div className="underscore" />
           </div>
           <div>
