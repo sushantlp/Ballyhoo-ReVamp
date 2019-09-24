@@ -19,7 +19,8 @@
   position: relative;
   width: 260px;
   height: 230px;
-  background: white;
+  background: rgba(247, 247, 251, 1);
+
   margin: 0 auto;
 
   /* border-radius: 4px; */

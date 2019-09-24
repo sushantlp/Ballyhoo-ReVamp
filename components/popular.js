@@ -95,7 +95,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover2 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "10vh" }}
+                  style={{ left: "14vh" }}
                 >
                   {popular[1].title}
                 </p>
@@ -148,7 +148,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover5 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "10vh" }}
+                  style={{ left: "20vh" }}
                 >
                   {popular[4].title}
                 </p>
@@ -165,7 +165,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover6 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "10vh" }}
+                  style={{ left: "14vh" }}
                 >
                   {popular[5].title}
                 </p>
@@ -174,32 +174,33 @@ export default class Popular extends React.Component {
               <div
                 className="column is-4 t7"
                 style={{
-                  backgroundImage: `url(${popular[6].img})`
+                  backgroundImage: `url(${popular[7].img})`
                 }}
                 onMouseEnter={() => this.toggleHover(7)}
                 onMouseLeave={() => this.toggleHover(7)}
-                onClick={() => this.onClickPopular(popular[6])}
+                onClick={() => this.onClickPopular(popular[7])}
               >
                 <p
                   className={this.state.hover7 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "20vh" }}
+                  style={{ left: "14vh" }}
                 >
-                  {popular[6].title}
+                  {popular[7].title}
                 </p>
               </div>
               <div
                 className="column is-2 t8"
                 style={{
-                  backgroundImage: `url(${popular[7].img})`
+                  backgroundImage: `url(${popular[6].img})`
                 }}
                 onMouseEnter={() => this.toggleHover(8)}
                 onMouseLeave={() => this.toggleHover(8)}
-                onClick={() => this.onClickPopular(popular[7])}
+                onClick={() => this.onClickPopular(popular[6])}
               >
                 <p
                   className={this.state.hover8 ? "tiletext-hover" : "tiletext"}
+                  style={{ left: "6vh" }}
                 >
-                  {popular[7].title}
+                  {popular[6].title}
                 </p>
               </div>
             </div>

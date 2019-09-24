@@ -76,6 +76,7 @@ export default class Trending extends React.Component {
   }
 
   trendingArray = json => {
+    const calculate = json.length;
     return json.map((trending, key) => {
       let description = trending.offer_description;
       if (description.length >= 60) {
@@ -91,7 +92,8 @@ export default class Trending extends React.Component {
           <Card
             raised
             style={{
-              width: "250px",
+              width: calculate > 4 ? "250px" : "275px",
+
               height: "300px",
               marginBottom: "2em"
             }}
@@ -100,7 +102,7 @@ export default class Trending extends React.Component {
               src={trending.img}
               alt="image"
               style={{
-                width: "250px",
+                width: calculate > 4 ? "250px" : "275px",
                 height: "210px"
               }}
             />
