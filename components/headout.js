@@ -11,10 +11,10 @@ const Headout = props => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-2.png"
+                    srcSet="https://res.cloudinary.com/dp67gawk6/image/upload/v1569318493/BallyhooV3/WEB/White-Phone-Mockup-3.png"
                   />
                   <img
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-2.png"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569318493/BallyhooV3/WEB/White-Phone-Mockup-3.png"
                     alt="iphone"
                     className="image"
                     // width="230"

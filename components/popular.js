@@ -28,52 +28,6 @@ export default class Popular extends React.Component {
   };
 
   onClickPopular = popular => {
-    // if (parseInt(popular.response_type, 10) === 1)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: popular.api_type,
-    //       key: popular.key,
-    //       response_type: popular.response_type
-    //     })
-    //   );
-    // else if (parseInt(popular.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: popular.api_type,
-    //       key: popular.key,
-    //       response_type: popular.response_type
-    //     })
-    //   );
-    // else if (parseInt(popular.response_type, 10) === 3)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: popular.api_type,
-    //       key: popular.key,
-    //       response_type: popular.response_type
-    //     })
-    //   );
-    // else if (parseInt(popular.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: popular.api_type,
-    //       key: popular.key,
-    //       response_type: popular.response_type
-    //     })
-    //   );
-    // else
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: popular.api_type,
-    //       key: popular.key,
-    //       response_type: popular.response_type
-    //     })
-    //   );
-
     const { city, city_id } = Router.router.query;
     const title = popular.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${popular.api_type}-${popular.key}-${

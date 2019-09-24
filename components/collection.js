@@ -86,7 +86,7 @@ function OddNextArrow(props) {
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
         // right: "-4em",
-        top: "-11.5em",
+        top: "-10.9em",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -185,10 +185,9 @@ export default class Collection extends React.Component {
   innerCollectionEven = json => {
     return json.map((collection, key) => {
       return (
-        <div>
+        <div key={key}>
           <div
             className="card"
-            key={key}
             onClick={() => this.onClickCollection(collection)}
           >
             <div className="imgBx">
@@ -211,7 +210,7 @@ export default class Collection extends React.Component {
             raised
             style={{
               width: "250px",
-              height: "280px",
+              height: "265px",
               marginBottom: "1em"
             }}
           >

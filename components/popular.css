@@ -22,8 +22,8 @@
   text-align: center;
   color: white;
   margin-top: 190px;
-  -webkit-text-stroke: 0.01em black;
-  text-stroke: 0.01em black;
+  -webkit-text-stroke: 0.01em #989090;
+  text-stroke: 0.01em #989090;
   font-size: 1.2em;
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
@@ -33,14 +33,14 @@
 
 .tiletext-hover {
   cursor: pointer;
-  background-color: black;
+  background-color: #989090;
   padding: 5px;
   vertical-align: middle;
   text-align: center;
   color: white;
   margin-top: 190px;
-  -webkit-text-stroke: 0.01em black;
-  text-stroke: 0.01em black;
+  -webkit-text-stroke: 0.01em #989090;
+  text-stroke: 0.01em #989090;
   font-size: 1.2em;
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
@@ -58,17 +58,17 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
   display: inline-block;
   object-fit: cover;
 }
 
 .t1:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
   transform: scale(1.1);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   cursor: pointer;
 }
 
@@ -77,17 +77,17 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
-  background-position: center;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
   transition: all 0.5s ease;
+  background-position: center;
   overflow: hidden;
   object-fit: cover;
 }
 
 .t2:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -97,17 +97,17 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
-  background-position: center left;
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
+  background-position: center left;
   overflow: hidden;
   object-fit: cover;
 }
 
 .t3:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -117,15 +117,15 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
   object-fit: cover;
 }
 
 .t4:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -135,15 +135,15 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
   object-fit: cover;
 }
 
 .t5:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -153,15 +153,16 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
+
   object-fit: cover;
 }
 
 .t6:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -171,15 +172,15 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
   object-fit: cover;
 }
 
 .t7:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -189,15 +190,15 @@
   height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
   transition: all 0.5s ease;
   object-fit: cover;
 }
 
 .t8:hover {
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(0%);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
   transform: scale(1.1);
   cursor: pointer;
 }

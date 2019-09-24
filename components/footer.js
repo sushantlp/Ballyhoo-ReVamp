@@ -62,7 +62,7 @@ const Footer = props => {
                     {city.map((value, key) => {
                       return (
                         <li key={key}>
-                          <a href="/">{value.city_name}</a>
+                          <a>{value.city_name}</a>
                         </li>
                       );
                     })}
