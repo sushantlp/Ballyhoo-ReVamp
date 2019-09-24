@@ -50,10 +50,11 @@ class Detail extends React.Component {
             id: slice[0],
             result_type: slice[1],
             partner_id: slice[2],
-            api_type: slice[3]
+            api_type: slice[3],
+            key: slice[4]
           };
 
-          const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[3];
+          const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
 
           if (parseInt(slice[1], 10) === 1) {
             // Food Category Api
@@ -75,25 +76,27 @@ class Detail extends React.Component {
         if (query.hasOwnProperty("secret") && query.secret !== undefined) {
           routeParam = query;
 
-          // Index Zero=id, One=resultType, Two=partnerId, Three=apiType
+          // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
           slice = query.secret.split("-");
 
           detailUrlParam = {
             id: slice[0],
             result_type: slice[1],
             partner_id: slice[2],
-            api_type: slice[3]
+            api_type: slice[3],
+            key: slice[4]
           };
         }
       }
 
-      const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[3];
-
+      const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
+      console.log(key);
+      const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
       // Also Feature
       featureJson = await fetch(
-        `${host}api/v9/web/all/featurings?category=${slice[1]}&q=${
-          slice[0]
-        }&key=${key}`
+        `${host}api/v9/web/all/featurings?category=${
+          slice[1]
+        }&q=${q}&key=${key}`
       );
       featureJson = await featureJson.json();
       store.dispatch(getFeaturingData(featureJson));

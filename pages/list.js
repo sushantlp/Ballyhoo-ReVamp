@@ -165,7 +165,7 @@ class List extends React.Component {
         nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
         const { city } = Router.router.query;
-
+        console.log(nextProps.categoryData.categoryData);
         const partnerId =
           nextProps.categoryData.categoryData.details.partner_details.p_id;
         const partner = nextProps.categoryData.categoryData.details.partner_details.p_name
@@ -174,7 +174,7 @@ class List extends React.Component {
         const title = nextProps.categoryData.categoryData.details.offer_title
           .replace(/ /g, "-")
           .toLowerCase();
-        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.urlParam.urlParam.api_type}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.urlParam.urlParam.api_type}-${this.props.urlParam.urlParam.key}`;
 
         Router.push(
           {
@@ -201,7 +201,7 @@ class List extends React.Component {
         )
       ) {
         const { city } = Router.router.query;
-
+        console.log(nextProps.foodCategoryData.foodCategoryData);
         const partnerId =
           nextProps.foodCategoryData.foodCategoryData.details.partner_id;
         const partner = nextProps.foodCategoryData.foodCategoryData.details.bname
@@ -211,7 +211,11 @@ class List extends React.Component {
           .replace(/ /g, "-")
           .toLowerCase();
 
-        const secret = `${this.props.urlParam.urlParam.key}-${nextProps.foodCategoryData.foodCategoryData.result_type}-${partnerId}-${this.props.urlParam.urlParam.api_type}`;
+        const secret = `${0}-${
+          nextProps.foodCategoryData.foodCategoryData.result_type
+        }-${partnerId}-${this.props.urlParam.urlParam.api_type}-${
+          this.props.urlParam.urlParam.key
+        }`;
 
         Router.push(
           {
