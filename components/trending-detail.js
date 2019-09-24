@@ -1,3 +1,4 @@
+import Router from "next/router";
 import Slider from "react-slick";
 import { Card, Image } from "semantic-ui-react";
 
@@ -75,20 +76,47 @@ export default class TrendingDetail extends React.Component {
   //   super(props);
   // }
 
-  trendingDetailComponent = json => {
+  onClickFeature = feature => {
+    const city = this.props.routeParam.city;
+    const title = feature.title.replace(/ /g, "-").toLowerCase();
+
+    const bunch = this.props.cityLocality.cityLocality.filter(obj => {
+      if (obj.city_name.toLowerCase() === city.toLowerCase()) return obj;
+    });
+
+    const secrets = `${bunch[0].city_id}-${feature.api_type}-${feature.key}-${
+      feature.response_type
+    }-${1}-${0}`;
+    Router.push(
+      {
+        pathname: "/list",
+        query: {
+          city: city,
+          title: title,
+          secret: secrets
+        }
+      },
+      `/${city}/${title}/${secrets}`
+    );
+  };
+
+  trendingDetailComponent = (json, bool) => {
     return json.map((feature, key) => {
       return (
         <div
           className="trending-detail-card"
           key={key}
           style={{
-            outline: "none"
+            outline: "none",
+            display: bool ? "inline-block" : "auto",
+            marginLeft: bool ? "1em" : "auto"
           }}
+          onClick={() => this.onClickFeature(feature)}
         >
           <Card
             raised
             style={{
-              width: "250px",
+              width: bool ? "280px" : "250px",
               height: "260px",
               marginBottom: "1em"
             }}
@@ -97,7 +125,7 @@ export default class TrendingDetail extends React.Component {
               src={feature.img}
               alt="image"
               style={{
-                width: "250px",
+                width: bool ? "280px" : "250px",
                 height: "210px"
               }}
             />
@@ -124,7 +152,11 @@ export default class TrendingDetail extends React.Component {
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
-    console.log(this.props);
+
+    const featuring = this.props.featuring.featuring;
+
+    if (featuring.length === 0) return null;
+
     return (
       <div className="container">
         <div className="trending-detail-card">
@@ -132,9 +164,14 @@ export default class TrendingDetail extends React.Component {
             <h2 className="trending-detail-header">Also Featuring</h2>
             <div className="underscore" />
           </div>
-          <Slider {...settings}>
-            {this.trendingDetailComponent(this.props.featuring.featuring)}
-          </Slider>
+
+          {featuring.length > 4 ? (
+            <Slider {...settings}>
+              {this.trendingDetailComponent(featuring, false)}
+            </Slider>
+          ) : (
+            this.trendingDetailComponent(featuring, true)
+          )}
         </div>
       </div>
     );

@@ -92,11 +92,11 @@ const Footer = props => {
                         Privacy Policy
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="/" target="_blank">
                         Contact Us
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <a href="/faq" target="_blank">
                         FAQ's

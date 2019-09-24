@@ -2,6 +2,7 @@ import Router from "next/router";
 import Slider from "react-slick";
 import { Card, Image } from "semantic-ui-react";
 import "./trending-list.css";
+import FilterDisplay from "./filter-display";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -99,14 +100,16 @@ export default class TrendingList extends React.Component {
     );
   };
 
-  trendingListComponent = json => {
+  trendingListComponent = (json, bool) => {
     return json.map((recommendation, key) => {
       return (
         <div
           className="trending-list-card"
           style={{
             paddingLeft: "0.5em",
-            outline: "none"
+            outline: "none",
+            display: bool ? "inline-block" : "auto",
+            marginLeft: bool ? "1em" : "auto"
           }}
           key={key}
           onClick={() => this.onClickRecommendation(recommendation)}
@@ -114,7 +117,7 @@ export default class TrendingList extends React.Component {
           <Card
             raised
             style={{
-              width: "250px",
+              width: bool ? "280px" : "250px",
               height: "260px",
               marginBottom: "1em"
             }}
@@ -123,7 +126,7 @@ export default class TrendingList extends React.Component {
               src={recommendation.img}
               alt="image"
               style={{
-                width: "250px",
+                width: bool ? "280px" : "250px",
                 height: "210px"
               }}
             />
@@ -162,10 +165,10 @@ export default class TrendingList extends React.Component {
           </div>
           {recommendation.length > 4 ? (
             <Slider {...settings}>
-              {this.trendingListComponent(recommendation)}
+              {this.trendingListComponent(recommendation, false)}
             </Slider>
           ) : (
-            this.trendingListComponent(recommendation)
+            this.trendingListComponent(recommendation, true)
           )}
         </div>
       </div>

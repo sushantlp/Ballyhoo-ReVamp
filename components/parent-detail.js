@@ -42,7 +42,11 @@ export default class ParentDetail extends React.Component {
           </div>
         </section>
 
-        <TrendingDetail featuring={this.props.featuring} />
+        <TrendingDetail
+          featuring={this.props.featuring}
+          routeParam={this.props.routeParam}
+          cityLocality={this.props.cityLocality}
+        />
       </React.Fragment>
     );
   }

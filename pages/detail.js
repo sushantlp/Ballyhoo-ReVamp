@@ -32,6 +32,7 @@ class Detail extends React.Component {
     let featureJson = [];
     let detailUrlParam = {};
     let slice = [];
+    let routeParam = [];
     try {
       if (isServer) {
         if (
@@ -40,6 +41,8 @@ class Detail extends React.Component {
           req.params !== undefined &&
           req.params.secret !== undefined
         ) {
+          routeParam = req.params;
+
           // Index Zero=id, One=resultType, Two=partnerId, Three=apiType,
           slice = req.params.secret.split("-");
 
@@ -70,6 +73,8 @@ class Detail extends React.Component {
         }
       } else {
         if (query.hasOwnProperty("secret") && query.secret !== undefined) {
+          routeParam = query;
+
           // Index Zero=id, One=resultType, Two=partnerId, Three=apiType
           slice = query.secret.split("-");
 
@@ -111,7 +116,7 @@ class Detail extends React.Component {
       console.log(err);
     }
 
-    return { detailUrlParam };
+    return { detailUrlParam, routeParam };
   }
 
   componentDidMount() {
@@ -144,6 +149,8 @@ class Detail extends React.Component {
           foodCategoryData={this.props.foodCategoryData}
           detailUrlParam={this.props.detailUrlParam}
           featuring={this.props.featuring}
+          routeParam={this.props.routeParam}
+          cityLocality={this.props.cityLocality}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
