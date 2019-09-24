@@ -18,7 +18,7 @@ function EvenNextArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
-        right: "-4em",
+        right: "-2.5em",
         top: "-7.5em",
         zIndex: "1"
       }}
@@ -52,6 +52,7 @@ function EvenPrevArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         top: "8em",
+        left: "0.2em",
         float: "left",
         zIndex: "1"
       }}
@@ -84,7 +85,7 @@ function OddNextArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
-        right: "-4em",
+        // right: "-4em",
         top: "-11.5em",
         zIndex: "1"
       }}
@@ -118,6 +119,7 @@ function OddPrevArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         top: "8em",
+        left: "-0.5em",
         float: "left",
         zIndex: "1"
       }}
@@ -204,7 +206,7 @@ export default class Collection extends React.Component {
   innerCollectionOdd = json => {
     return json.map((collection, key) => {
       return (
-        <div key={key}>
+        <div key={key} onClick={() => this.onClickCollection(collection)}>
           <Card
             raised
             style={{

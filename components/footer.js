@@ -1,7 +1,7 @@
 import "./footer.css";
 
 const Footer = props => {
-  console.log(props);
+  let city = props.cityLocality.cityLocality;
   return (
     <footer className="app-footer section is-medium">
       <div className="container">
@@ -14,7 +14,7 @@ const Footer = props => {
                     // style={{ width: "50px" }}
                     alt="Ballyhoo"
                     role="presentation"
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/ar_1:1,b_rgb:f2f6fb,bo_5px_solid_rgb:ff0000,c_fill,g_auto,r_max,w_1000/v1568101757/BallyhooV3/WEB/2.jpg"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
                   />
                 </div>
                 <div className="brand-content">
@@ -59,7 +59,7 @@ const Footer = props => {
                 <div className="menu">
                   <p className="menu-label"> Cities </p>
                   <ul className="menu-list">
-                    {props.cityLocality.cityLocality.map((value, key) => {
+                    {city.map((value, key) => {
                       return (
                         <li key={key}>
                           <a href="/">{value.city_name}</a>

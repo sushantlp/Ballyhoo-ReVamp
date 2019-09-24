@@ -18,6 +18,7 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 import styled from "styled-components";
 
+import { getCityLocality } from "../actions/city-locality-action";
 import { getSlidderImage } from "../actions/slidder-image-action";
 import { getCategoryData } from "../actions/category-data-action";
 import { getFoodCategoryData } from "../actions/food-category-data-action";
@@ -100,6 +101,11 @@ class Detail extends React.Component {
       );
       slidderJson = await slidderJson.json();
       store.dispatch(getSlidderImage(slidderJson));
+
+      // City Locality API
+      let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+      cityLocalityJson = await cityLocalityJson.json();
+      store.dispatch(getCityLocality(cityLocalityJson));
     } catch (err) {
       console.log("Detail_Error");
       console.log(err);
@@ -140,7 +146,7 @@ class Detail extends React.Component {
           featuring={this.props.featuring}
         />
         <Headout />
-        <Footer />
+        <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
     );
   }
@@ -148,6 +154,7 @@ class Detail extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    cityLocality: state.cityLocality,
     categoryData: state.categoryData,
     slidderImage: state.slidderImage,
     foodCategoryData: state.foodCategoryData,
@@ -157,6 +164,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    getCityLocality: bindActionCreators(getCityLocality, dispatch),
     getCategoryData: bindActionCreators(getCategoryData, dispatch),
     getSlidderImage: bindActionCreators(getSlidderImage, dispatch),
     getFoodCategoryData: bindActionCreators(getFoodCategoryData, dispatch),

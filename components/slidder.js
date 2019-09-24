@@ -85,7 +85,6 @@ export default class Slidder extends React.Component {
       return city;
     });
 
-    sessionStorage.setItem("CITY_LOCALITY", JSON.stringify(props));
     this.setState({
       cityList: cityArray
     });

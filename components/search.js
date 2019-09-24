@@ -77,6 +77,7 @@ export default class Search extends React.Component {
       search.text = obj.keyword;
       return search;
     });
+
     this.setState({
       searchList: searchArray
     });

@@ -93,7 +93,7 @@ export default class Trending extends React.Component {
             style={{
               width: "250px",
               height: "300px",
-              marginBottom: "1em"
+              marginBottom: "2em"
             }}
           >
             <Image

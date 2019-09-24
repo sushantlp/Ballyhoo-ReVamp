@@ -164,7 +164,6 @@ class List extends React.Component {
       if (
         nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
-        console.log("categoryData");
         const { city } = Router.router.query;
 
         const partnerId =
@@ -201,7 +200,6 @@ class List extends React.Component {
           "partner_id"
         )
       ) {
-        console.log("foodCategoryData");
         const { city } = Router.router.query;
 
         const partnerId =
@@ -292,7 +290,7 @@ class List extends React.Component {
           onSearchKeyChange={this.onSearchKeyChange}
         />
         <Headout />
-        <Footer />
+        <Footer cityLocality={this.props.cityLocality} />
       </div>
     );
   }

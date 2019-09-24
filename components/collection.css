@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.box-odd:hover {
+  cursor: pointer;
+}
+
 .box-even .card {
   position: relative;
   width: 260px;
