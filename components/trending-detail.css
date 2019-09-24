@@ -16,6 +16,9 @@
   width: 0px;
 }
 
+.slick-slider {
+  margin-left: 1em;
+}
 .trending-detail-card
   .trending-detail-header-container
   .trending-detail-header {
@@ -59,14 +62,13 @@
 
 .trending-detail-card .city-title {
   text-transform: uppercase;
-  color: #9a9a9a;
-  /* margin-top: 0.5em;
-  margin-bottom: 0.2em; */
-  font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 200;
+  color: black;
   opacity: 0.7;
   text-decoration: none;
   pointer-events: none;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 .trending-detail-card .product-title {

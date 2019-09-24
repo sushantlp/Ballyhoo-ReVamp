@@ -35,6 +35,18 @@ app
       }
     });
 
+    server.get("/terms", (req, res) => {
+      return app.render(req, res, "/explore", {});
+    });
+
+    server.get("/privacy", (req, res) => {
+      return app.render(req, res, "/explore", {});
+    });
+
+    server.get("/faq", (req, res) => {
+      return app.render(req, res, "/explore", {});
+    });
+
     server.get("/explore", (req, res) => {
       return app.render(req, res, "/explore", {});
     });

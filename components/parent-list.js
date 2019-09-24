@@ -83,7 +83,10 @@ class ParentList extends React.Component {
           </div>
         </section>
 
-        <TrendingList recommendation={this.props.recommendation} />
+        <TrendingList
+          recommendation={this.props.recommendation}
+          routeParam={this.props.routeParam}
+        />
       </React.Fragment>
     );
   }

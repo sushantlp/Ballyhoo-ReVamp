@@ -1,7 +1,11 @@
+import _ from "lodash";
 import "./footer.css";
 
 const Footer = props => {
-  let city = props.cityLocality.cityLocality;
+  let city = [];
+
+  if (!_.isEmpty(props)) city = props.cityLocality.cityLocality;
+
   return (
     <footer className="app-footer section is-medium">
       <div className="container">

@@ -17,7 +17,7 @@ function SampleNextArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
-        top: "-12.8em",
+        top: "-10.2em",
         left: "3em",
         // top: "-33.8em",
         zIndex: "1"
@@ -76,7 +76,8 @@ export default class TrendingList extends React.Component {
   // }
 
   onClickRecommendation = recommendation => {
-    const { city, secret } = Router.router.query;
+    const city = this.props.routeParam.city;
+    const secret = this.props.routeParam.secret;
     const title = recommendation.title.replace(/ /g, "-").toLowerCase();
 
     // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
@@ -96,6 +97,45 @@ export default class TrendingList extends React.Component {
       },
       `/${city}/${title}/${secrets}`
     );
+  };
+
+  trendingListComponent = json => {
+    return json.map((recommendation, key) => {
+      return (
+        <div
+          className="trending-list-card"
+          style={{
+            paddingLeft: "0.5em",
+            outline: "none"
+          }}
+          key={key}
+          onClick={() => this.onClickRecommendation(recommendation)}
+        >
+          <Card
+            raised
+            style={{
+              width: "250px",
+              height: "260px",
+              marginBottom: "1em"
+            }}
+          >
+            <Image
+              src={recommendation.img}
+              alt="image"
+              style={{
+                width: "250px",
+                height: "210px"
+              }}
+            />
+            <Card.Content>
+              <Card.Header>
+                <span className="city-title">{recommendation.title}</span>
+              </Card.Header>
+            </Card.Content>
+          </Card>
+        </div>
+      );
+    });
   };
 
   render() {
@@ -120,42 +160,13 @@ export default class TrendingList extends React.Component {
             <h2 className="trending-list-header">Recommendation</h2>
             <div className="underscore" />
           </div>
-          <Slider {...settings}>
-            {recommendation.map((recommendation, key) => {
-              return (
-                <div
-                  className="trending-list-card"
-                  key={key}
-                  onClick={() => this.onClickRecommendation(recommendation)}
-                >
-                  <Card
-                    raised
-                    style={{
-                      width: "250px",
-                      height: "280px",
-                      marginBottom: "1em"
-                    }}
-                  >
-                    <Image
-                      src={recommendation.img}
-                      alt="image"
-                      style={{
-                        width: "250px",
-                        height: "210px"
-                      }}
-                    />
-                    <Card.Content>
-                      <Card.Header>
-                        <span className="city-title">
-                          {recommendation.title}
-                        </span>
-                      </Card.Header>
-                    </Card.Content>
-                  </Card>
-                </div>
-              );
-            })}
-          </Slider>
+          {recommendation.length > 4 ? (
+            <Slider {...settings}>
+              {this.trendingListComponent(recommendation)}
+            </Slider>
+          ) : (
+            this.trendingListComponent(recommendation)
+          )}
         </div>
       </div>
     );

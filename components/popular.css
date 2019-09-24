@@ -20,6 +20,7 @@
   vertical-align: middle;
   text-align: center;
   color: white;
+  padding: 5px;
   margin-top: 190px;
   -webkit-text-stroke: 0.01em white;
   text-stroke: 0.01em white;
@@ -31,6 +32,7 @@
 }
 
 .tiletext-hover {
+  padding: 5px;
   cursor: pointer;
   background-color: white;
   vertical-align: middle;
