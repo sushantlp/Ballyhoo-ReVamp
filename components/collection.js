@@ -183,16 +183,18 @@ export default class Collection extends React.Component {
   innerCollectionEven = json => {
     return json.map((collection, key) => {
       return (
-        <div
-          className="card"
-          key={key}
-          onClick={() => this.onClickCollection(collection)}
-        >
-          <div className="imgBx">
-            <img src={collection.img} alt="images" />
-          </div>
-          <div className="details">
-            <h2>{collection.title}</h2>
+        <div>
+          <div
+            className="card"
+            key={key}
+            onClick={() => this.onClickCollection(collection)}
+          >
+            <div className="imgBx">
+              <img src={collection.img} alt="images" />
+            </div>
+            <div className="details">
+              <h2>{collection.title}</h2>
+            </div>
           </div>
         </div>
       );
@@ -208,7 +210,7 @@ export default class Collection extends React.Component {
             style={{
               width: "250px",
               height: "280px",
-              marginBottom: "3em"
+              marginBottom: "1em"
             }}
           >
             <Image
@@ -241,7 +243,7 @@ export default class Collection extends React.Component {
             </div>
 
             {key % 2 === 0 ? (
-              <div className="box-even">
+              <div className="box-even" style={{ marginBottom: "2em" }}>
                 <Slider {...this.state.even}>
                   {this.innerCollectionEven(collection.collection_items)}
                 </Slider>
@@ -249,7 +251,11 @@ export default class Collection extends React.Component {
             ) : (
               <div
                 className="box-odd"
-                style={{ paddingLeft: "0.5em", outline: "none" }}
+                style={{
+                  paddingLeft: "0.5em",
+                  outline: "none",
+                  marginBottom: "2em"
+                }}
               >
                 <Slider {...this.state.odd}>
                   {this.innerCollectionOdd(collection.collection_items)}

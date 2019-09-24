@@ -1,7 +1,7 @@
-.box-even {
+.box-even .card {
   /* width: 1200px; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   grid-gap: 15px;
   margin: 0 auto;
   box-shadow: none;
@@ -13,9 +13,9 @@
 
 .box-even .card {
   position: relative;
-  width: 230px;
+  width: 260px;
   height: 230px;
-  background: #ebebeb;
+  background: white;
   margin: 0 auto;
 
   /* border-radius: 4px; */
@@ -34,14 +34,14 @@
   transition: 0.5s;
   z-index: -1;
 }
-.box-even .card:hover:before {
+/* .box-even .card:hover:before {
   transform: rotate(20deg);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 .box-even .card:hover:after {
   transform: rotate(10deg);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-}
+} */
 .box-even .card .imgBx {
   position: absolute;
   top: 1px;
@@ -72,6 +72,7 @@
   right: 10px;
   bottom: 10px;
   height: 60px;
+  top: 180px;
   text-align: center;
 }
 
@@ -81,7 +82,7 @@
   font-weight: 200;
   font-size: 15px;
   font-family: "Quicksand", sans-serif;
-  color: #777;
+  color: black;
   text-transform: uppercase;
 }
 
