@@ -1,15 +1,15 @@
 import "./term.css";
 const TermComponent = () => (
   <div className="section">
-    <div className="faq-container">
-      <div className="container">
+    <div className="container">
+      <div className="term-container">
         <div>
-          <h4 className="faq-header">TERMS OF SERVICE</h4>
-          <div className="faq-underscore" />
+          <h4 className="term-header">TERMS OF SERVICE.</h4>
+          <div className="term-underscore" />
         </div>
 
-        <h3 className="ffqs">1. Your Acceptance</h3>
-        <h4 className="ffqs fw2 mt1">
+        <h3 className="ffqs mt1">1. Your Acceptance</h3>
+        <h4 className="ffqs fw2 mt1 lh1_7">
           This is an agreement between LiveIntuitions Technologies Pvt. Ltd., a
           Bangalore-based technology company ("liveintech"), the owner and
           operator of www.ballyhoo.today (the "Ballyhoo Site"), the Ballyhoo
@@ -23,8 +23,8 @@ const TermComponent = () => (
           not use the Service.
         </h4>
 
-        <h3 className="ffqs">2. Ballyhoo Service</h3>
-        <h4 className="ffqs fw2 mt1">
+        <h3 className="ffqs mt1">2. Ballyhoo Service</h3>
+        <h4 className="ffqs fw2 mt1 lh1_7">
           These Terms of Service apply to all users of the Ballyhoo Service.
           Information provided by our users through the Ballyhoo Service may
           contain links to third party websites that are not owned or controlled
@@ -37,27 +37,28 @@ const TermComponent = () => (
           or related to your use of any third-party website.
         </h4>
 
-        <h3 className="ffqs"> 3. Ballyhoo Access</h3>
-        <h4 className="ffqs fw2 mt1">
-          <strong>A.</strong> Subject to your compliance with these Terms of
-          Service, liveintech hereby grants you permission to use the Service,
-          provided that: (i) your use of the Service as permitted is solely for
-          your personal use, and you are not permitted to resell or charge
-          others for use of or access to the Service, or in any other manner
-          inconsistent with these Terms of Service; (ii) you will not duplicate,
-          transfer, give access to, copy or distribute any part of the Service
-          in any medium without liveintech's prior written authorization; (iii)
-          you will not attempt to reverse engineer, alter or modify any part of
-          the Service; and (iv) you will otherwise comply with the terms and
-          conditions of these Terms of Service and Privacy Policy.
+        <h3 className="ffqs mt1"> 3. Ballyhoo Access</h3>
+        <h4 className="ffqs fw2 mt1 lh1_7">
+          <strong className="fw7 ">A.</strong> Subject to your compliance with
+          these Terms of Service, liveintech hereby grants you permission to use
+          the Service, provided that: (i) your use of the Service as permitted
+          is solely for your personal use, and you are not permitted to resell
+          or charge others for use of or access to the Service, or in any other
+          manner inconsistent with these Terms of Service; (ii) you will not
+          duplicate, transfer, give access to, copy or distribute any part of
+          the Service in any medium without liveintech's prior written
+          authorization; (iii) you will not attempt to reverse engineer, alter
+          or modify any part of the Service; and (iv) you will otherwise comply
+          with the terms and conditions of these Terms of Service and Privacy
+          Policy.
         </h4>
 
-        <h4 className="ffqs fw2 mt1">
-          <strong>B.</strong> In order to access and use the features of the
-          Service, you acknowledge and agree that you will have to provide
-          liveintech with your mobile phone number. You expressly acknowledge
-          and agree that in order to provide the Service, liveintech may
-          periodically access your contact list and/or address book on your
+        <h4 className="ffqs fw2 mt1 lh1_7">
+          <strong className="fw7 ">B.</strong> In order to access and use the
+          features of the Service, you acknowledge and agree that you will have
+          to provide liveintech with your mobile phone number. You expressly
+          acknowledge and agree that in order to provide the Service, liveintech
+          may periodically access your contact list and/or address book on your
           mobile device to find and keep track of mobile phone numbers of other
           users of the Service. When providing your mobile phone number, you
           must provide accurate and complete information. You hereby give your
@@ -72,10 +73,10 @@ const TermComponent = () => (
           liveintech or others due to such unauthorized use.
         </h4>
 
-        <h4 className="ffqs fw2 mt1">
-          <strong>C.</strong> You agree not to use or launch any automated
-          system, including without limitation, "robots," "spiders," "offline
-          readers," etc. or "load testers" such as wget, apache bench,
+        <h4 className="ffqs fw2 mt1 lh1_7">
+          <strong className="fw7">C.</strong> You agree not to use or launch any
+          automated system, including without limitation, "robots," "spiders,"
+          "offline readers," etc. or "load testers" such as wget, apache bench,
           mswebstress, httpload, blitz, Xcode Automator, Android Monkey, etc.,
           that accesses the Service in a manner that sends more request messages
           to the liveintech servers in a given period of time than a human can
@@ -103,9 +104,9 @@ const TermComponent = () => (
           any users of the Service.
         </h4>
 
-        <h3 className="ffqs">4. Intellectual Property Rights</h3>
+        <h3 className="ffqs mt1">4. Intellectual Property Rights</h3>
 
-        <h4 className="ffqs fw2 mt1">
+        <h4 className="ffqs fw2 mt1 lh1_7">
           The design of the Ballyhoo Service along with all associated
           properties, are owned by or licensed to liveintech, subject to
           copyright and other intellectual property rights under Indian Law. The
@@ -118,8 +119,8 @@ const TermComponent = () => (
           commercial purposes.
         </h4>
 
-        <h3 className="ffqs">5. Governing Law</h3>
-        <h4 className="ffqs fw2 mt1">
+        <h3 className="ffqs mt1">5. Governing Law</h3>
+        <h4 className="ffqs fw2 mt1 lh1_7">
           These Terms of Service will be governed by the laws of India. You thus
           agree that any cause of action, suit or any other legal proceeding,
           you may have with respect to Ballyhoo shall be subject to the
@@ -133,9 +134,9 @@ const TermComponent = () => (
           the App if any breach of the Terms of Service is caused by a User.
         </h4>
 
-        <h4 className="ffqs fw2 mt1">
-          <strong>6.</strong> liveintech reserves the right to discontinue any
-          aspect of the Ballyhoo Service at any time.
+        <h4 className="ffqs fw2 mt1 lh1_7">
+          <strong className="fw7">6.</strong> liveintech reserves the right to
+          discontinue any aspect of the Ballyhoo Service at any time.
         </h4>
       </div>
     </div>

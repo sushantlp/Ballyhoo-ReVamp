@@ -1,4 +1,4 @@
-.term-container .term-underscore {
+.privacy-container .privacy-underscore {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -15,29 +15,29 @@
   width: 4em;
 }
 
-.term-container .term-header {
+.privacy-container .privacy-header {
   color: rgb(39, 37, 37);
   font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
 }
 
-.term-container .ffqs {
+.privacy-container .ffqs {
   font-family: "Quicksand", sans-serif;
 }
 
-.term-container .fw2 {
+.privacy-container .fw2 {
   font-weight: 100;
 }
 
-.term-container .fw7 {
+.privacy-container .fw7 {
   font-weight: 700;
 }
 
-.term-container .mt1 {
+.privacy-container .mt1 {
   margin-top: 1em;
 }
 
-.term-container .lh1_7 {
+.privacy-container .lh1_7 {
   line-height: 1.7;
 }

@@ -35,6 +35,10 @@ app
       }
     });
 
+    server.get("/about", (req, res) => {
+      return app.render(req, res, "/about", {});
+    });
+
     server.get("/term", (req, res) => {
       return app.render(req, res, "/term", {});
     });

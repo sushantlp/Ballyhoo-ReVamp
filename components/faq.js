@@ -4,7 +4,7 @@ const FaqComponent = () => (
     <div className="faq-container">
       <div className="container">
         <div>
-          <h4 className="faq-header">FAQ'S</h4>
+          <h4 className="faq-header">FAQ'S.</h4>
           <div className="faq-underscore" />
         </div>
 
