@@ -99,7 +99,7 @@ const ActivityList = props => {
                 </div>
                 <div className="columns mb0 ">
                   <div className="column pt0">
-                    <span className="f12 fw4 m0 iblock">
+                    <span className="fw4 m0 iblock">
                       <span className="mr24 pfc4">Starting from:</span>
                       {list.offer_max_discount != null &&
                       parseInt(list.offer_max_discount, 10) !== 0 ? (
@@ -109,14 +109,26 @@ const ActivityList = props => {
                       ) : null}
                     </span>
 
-                    <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
-                      ₹ {list.offer_min_price}/-
-                      <span className="f12">onwards</span>
-                      {/* <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span> */}
+                    <h5
+                      className=" m0 f20 fw9 flh28 mt0-5"
+                      style={{ color: "#635f5f" }}
+                    >
+                      ₹ {list.offer_min_price}/-{" "}
+                      <span className="f12"> onwards</span>
                     </h5>
                   </div>
                   <div className="column pl8 pt0">
-                    <div className="package-tag-box">
+                    <div className="tags package-tags">
+                      {list.offer_hash_tags.map((tag, key) => {
+                        return (
+                          <li className="tag is-rounded" key={key}>
+                            {tag}
+                          </li>
+                        );
+                      })}
+                    </div>
+
+                    {/* <div className="package-tag-box">
                       <ul className="package-tags at_package_tags">
                         {list.offer_hash_tags.map((tag, key) => {
                           return (
@@ -126,12 +138,12 @@ const ActivityList = props => {
                           );
                         })}
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
-                <div className="css-clzwav f12 pfc4 m0 fw4">
-                  <p>{description}</p>
+                <div className="css-clzwav f12 m0 fw4">
+                  <p className="lh1-7">{description}</p>
                 </div>
               </div>
             </div>
@@ -139,7 +151,10 @@ const ActivityList = props => {
 
           <footer className="card-footer">
             <div className="card-footer-item">
-              <span className="span-flex pt0-5 pb0-5">
+              <span
+                className="span-flex pt0-5 pb0-5 cursor"
+                onClick={() => props.categoryApiCall(list.offer_id)}
+              >
                 <span className="pr2">
                   <img
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjUiIGhlaWdodD0iMjUiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjRkY5ODAwIiBkPSJNMzgsMzlIMTBjLTEuMSwwLTItMC45LTItMlYxN2gzMnYyMEM0MCwzOC4xLDM5LjEsMzksMzgsMzl6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0ZGQTcyNiIgZD0iTTQyLDE3SDZ2LTZjMC0xLjEsMC45LTIsMi0yaDMyYzEuMSwwLDIsMC45LDIsMlYxN3oiPjwvcGF0aD48cGF0aCBmaWxsPSIjOUU1RTAwIiBkPSJNMjIgMTdIMjZWMzlIMjJ6TTMyIDNMMjggMyAyMiA5IDI2IDl6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0M3NzYwMCIgZD0iTTIwIDNMMTYgMyAyMiA5IDIyIDE3IDI2IDE3IDI2IDl6Ij48L3BhdGg+PC9zdmc+"
@@ -152,7 +167,7 @@ const ActivityList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium"
+                className="button is-medium is-danger is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="icon">

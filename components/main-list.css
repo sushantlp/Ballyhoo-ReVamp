@@ -32,8 +32,8 @@
 .main-list-container .plh1 {
   line-height: 1.7em;
 }
-.main-list-container .lh1-5 {
-  line-height: 1.5em;
+.main-list-container .lh1-7 {
+  line-height: 1.7em;
 }
 .main-list-container .mb8 {
   margin-bottom: 8px !important;
@@ -138,6 +138,11 @@
 .main-list-container .pfc3 {
   color: #3e3e3e !important;
 }
+
+/* .main-list-container .button:hover {
+  background-color: black;
+  color: white;
+} */
 
 .main-list-container .tdl {
   text-decoration: line-through;
@@ -319,4 +324,8 @@
   top: 13em;
   /* bottom: 30px; */
   /* transform: rotate(-225deg); */
+}
+
+.main-list-container .cursor:hover {
+  cursor: pointer;
 }

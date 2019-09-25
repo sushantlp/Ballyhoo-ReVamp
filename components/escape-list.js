@@ -110,8 +110,8 @@ const EscapeList = props => {
 
                 <div className="columns mb0 ">
                   <div className="column pt0">
-                    <span className="f12 fw4 m0 iblock">
-                      <span className="mr24 pfc4">Starting from:</span>
+                    <span className="fw4 m0 iblock">
+                      <span className="mr24">Starting from :</span>
                       {list.offer_max_discount != null &&
                       parseInt(list.offer_max_discount, 10) !== 0 ? (
                         <span className="tag is-danger radius20 fw7">
@@ -121,36 +121,19 @@ const EscapeList = props => {
                     </span>
 
                     <h5
-                      className="sfc3 m0 f24 fw9 flh28"
-                      style={{ marginBottom: ".4em" }}
+                      className="mt0-5 m0 f20 fw9 flh28"
+                      style={{ marginBottom: ".4em", color: "#635f5f" }}
                     >
                       ₹ {list.offer_min_price}/-
                       {/* <span className="f12 pfc3 tdl ml8">₹ 11,351/-</span> */}
                     </h5>
 
-                    <p className="f12 m0 pfc4 fw7">
-                      Per Person on twin sharing
-                    </p>
+                    {/* <p className="f12 pfc4 fw7">Per Person on twin sharing</p> */}
                   </div>
-                  {/* <div className="column pl8 pt0">
-                    <div className="package-tag-box">
-                      <ul className="package-tags">
-                        <li className="ellipsis">Shikara Ride</li>
-                        <li className="ellipsis">Nature</li>
-                        <li className="ellipsis">Martand Temple</li>
-                        <li className="ellipsis">Hill station</li>
-                        <li className="ellipsis">Amusement Park</li>
-                        <li className="ellipsis">Sightseeing</li>
-                        <li className="ellipsis">Gondola Ride</li>
-                        <li className="ellipsis">Family</li>
-                        <li className="ellipsis">Budget</li>
-                      </ul>
-                    </div>
-                  </div> */}
                 </div>
 
-                <div className="css-clzwav f12 pfc4 m0 fw4">
-                  <p>{description}</p>
+                <div className="css-clzwav f12 m0 fw4">
+                  <p className="lh1-7">{description}</p>
                 </div>
               </div>
             </div>
@@ -158,7 +141,10 @@ const EscapeList = props => {
 
           <footer className="card-footer">
             <div className="card-footer-item">
-              <span className="span-flex">
+              <span
+                className="span-flex cursor"
+                onClick={() => props.categoryApiCall(list.offer_id)}
+              >
                 <span className="pr2">
                   <img src="https://img.icons8.com/color/25/000000/3-star-hotel.png" />
 
@@ -201,7 +187,7 @@ const EscapeList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium"
+                className="button is-medium is-danger is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="icon">

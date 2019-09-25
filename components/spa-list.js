@@ -62,7 +62,7 @@ const SpaList = props => {
                   <div className="column">
                     <p className="title google">{list.offer_title}</p>
                     <p className="subtitle is-6 mb8 plh1">
-                      {list.offer_locality}
+                      {list.offer_address.locality}
                     </p>
                   </div>
 
@@ -99,9 +99,9 @@ const SpaList = props => {
                 </div>
                 <div className="columns mb0 ">
                   <div className="column pt0">
-                    <span className="f12 fw4 m0 iblock">
+                    <span className="fw4 m0 iblock">
                       {/* pb8 */}
-                      <span className="mr24 pfc4">Starting from:</span>
+                      <span className="mr24 pfc4">Starting from :</span>
                       {list.offer_max_discount != null &&
                       parseInt(list.offer_max_discount, 10) !== 0 ? (
                         <span className="tag is-danger radius20 fw7">
@@ -110,14 +110,26 @@ const SpaList = props => {
                       ) : null}
                     </span>
 
-                    <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
-                      ₹ {list.offer_min_price}/-
+                    <h5
+                      className="m0 f20 fw9 flh28 mt0-5"
+                      style={{ color: "#635f5f" }}
+                    >
+                      ₹ {list.offer_min_price}/-{" "}
                       <span className="f12">onwards</span>
                       {/* <span className="f12 pfc3 tdl ml8">₹ {offer_min_price}/-</span> */}
                     </h5>
                   </div>
                   <div className="column pl8 pt0">
-                    <div className="package-tag-box">
+                    <div className="tags package-tags">
+                      {list.offer_hash_tags.map((tag, key) => {
+                        return (
+                          <li className="tag is-rounded" key={key}>
+                            {tag}
+                          </li>
+                        );
+                      })}
+                    </div>
+                    {/* <div className="package-tag-box">
                       <ul className="package-tags at_package_tags">
                         {list.offer_hash_tags.map((tag, key) => {
                           return (
@@ -127,12 +139,12 @@ const SpaList = props => {
                           );
                         })}
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
-                <div className="css-clzwav f12 pfc4 m0 fw4">
-                  <p>{description}</p>
+                <div className="css-clzwav f12 m0 fw4">
+                  <p className="lh1-7">{description}</p>
                 </div>
               </div>
             </div>
@@ -140,7 +152,10 @@ const SpaList = props => {
 
           <footer className="card-footer">
             <div className="card-footer-item">
-              <span className="span-flex">
+              <span
+                className="span-flex cursor"
+                onClick={() => props.categoryApiCall(list.offer_id)}
+              >
                 {list.offer_gender_preference === 1 ? (
                   <span>
                     <img src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png" />
@@ -165,7 +180,7 @@ const SpaList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium"
+                className="button is-medium is-danger is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="icon">
