@@ -8,18 +8,6 @@
   content: "" !important;
 }
 
-/* .header-name {
-  background: transparent;
-  padding: 0.5em;
-  font-size: 1.2em;
-  color: black;
-} */
-
-/* .discover {
-  margin: 1em;
-  cursor: pointer;
-} */
-
 .slick-slide {
   width: 0px;
 }
@@ -61,13 +49,3 @@
 .discover-container .discover-slider {
   cursor: pointer;
 }
-/* .text {
-  position: absolute;
-  z-index: 999;
-  margin: 0 auto;
-  color: black;
-  font-weight: bold;
-  top: 70%; 
-  text-align: center;
-  width: 60%; 
-} */

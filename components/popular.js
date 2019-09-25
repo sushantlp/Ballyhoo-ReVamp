@@ -79,6 +79,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover1 ? "tiletext-hover" : "tiletext"}
+                  style={{ left: "1.5em" }}
                 >
                   {popular[0].title}
                 </p>
@@ -95,7 +96,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover2 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "14vh" }}
+                  style={{ left: "5em" }}
                 >
                   {popular[1].title}
                 </p>
@@ -112,7 +113,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover3 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "10vh" }}
+                  style={{ left: "4em" }}
                 >
                   {popular[2].title}
                 </p>
@@ -129,7 +130,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover4 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "20vh" }}
+                  style={{ left: "7em" }}
                 >
                   {popular[3].title}
                 </p>
@@ -148,7 +149,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover5 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "20vh" }}
+                  style={{ left: "7em" }}
                 >
                   {popular[4].title}
                 </p>
@@ -165,7 +166,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover6 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "14vh" }}
+                  style={{ left: "5em" }}
                 >
                   {popular[5].title}
                 </p>
@@ -182,7 +183,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover7 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "14vh" }}
+                  style={{ left: "5em" }}
                 >
                   {popular[7].title}
                 </p>
@@ -198,7 +199,7 @@ export default class Popular extends React.Component {
               >
                 <p
                   className={this.state.hover8 ? "tiletext-hover" : "tiletext"}
-                  style={{ left: "6vh" }}
+                  style={{ left: "2.5em" }}
                 >
                   {popular[6].title}
                 </p>

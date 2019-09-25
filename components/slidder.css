@@ -17,3 +17,7 @@
   width: 8em;
   height: 2.6em;
 }
+
+.slidder-container .ui.search.dropdown > .text {
+  top: 0.4em;
+}

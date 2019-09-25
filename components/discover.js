@@ -19,7 +19,7 @@ function SampleNextArrow(props) {
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
         float: "right",
-        top: "-8em",
+        top: "-7.2em",
         zIndex: "1"
       }}
       onClick={onClick}
@@ -71,57 +71,7 @@ function SamplePrevArrow(props) {
 }
 
 export default class Discover extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   onClickDiscover = discover => {
-    // if (parseInt(discover.response_type, 10) === 1)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: discover.api_type,
-    //       key: discover.key,
-    //       response_type: discover.response_type
-    //     })
-    //   );
-    // else if (parseInt(discover.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: discover.api_type,
-    //       key: discover.key,
-    //       response_type: discover.response_type
-    //     })
-    //   );
-    // else if (parseInt(discover.response_type, 10) === 3)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: discover.api_type,
-    //       key: discover.key,
-    //       response_type: discover.response_type
-    //     })
-    //   );
-    // else if (parseInt(discover.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: discover.api_type,
-    //       key: discover.key,
-    //       response_type: discover.response_type
-    //     })
-    //   );
-    // else
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: discover.api_type,
-    //       key: discover.key,
-    //       response_type: discover.response_type
-    //     })
-    //   );
-
     const { city, city_id } = Router.router.query;
     const title = discover.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${discover.api_type}-${discover.key}-${
@@ -142,6 +92,8 @@ export default class Discover extends React.Component {
 
   discoverArray = json => {
     return json.map((discover, key) => {
+      const titleLength = discover.title.length;
+      console.log(titleLength);
       return (
         // <Link
         //   href="/list?slug=something"
@@ -170,7 +122,7 @@ export default class Discover extends React.Component {
           <p
             style={{
               fontFamily: "Quicksand, sans-serif",
-              paddingLeft: "2em",
+              paddingLeft: titleLength > 7 ? "3em" : "4em",
               paddingTop: "1em"
             }}
           >

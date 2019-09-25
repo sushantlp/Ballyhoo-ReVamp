@@ -199,7 +199,7 @@ export default class Slidder extends React.Component {
     };
 
     return (
-      <React.Fragment>
+      <div className="slidder-container">
         <section className="hero is-medium">
           <Slider {...settings}>{this.slidderImageArray(carousel)}</Slider>
         </section>
@@ -221,6 +221,7 @@ export default class Slidder extends React.Component {
                     <img
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
                       style={{
+                        marginTop: "0.3em",
                         marginRight: "-2vh",
                         float: "right",
                         color: "grey"
@@ -243,6 +244,7 @@ export default class Slidder extends React.Component {
                     <img
                       src="https://img.icons8.com/wired/20/000000/search.png"
                       style={{
+                        marginTop: "0.3em",
                         marginRight: "-2vh",
                         float: "right",
                         color: "grey"
@@ -264,7 +266,7 @@ export default class Slidder extends React.Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

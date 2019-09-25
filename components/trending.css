@@ -65,12 +65,13 @@
   text-decoration: none;
   pointer-events: none;
   font-size: 0.7em;
+  color: black;
 }
 
 .trending-container .product-title {
   line-height: 1.5;
   font-size: 0.9em !important;
-  color: black;
+  color: #9a9a9a;
   font-family: "Quicksand", sans-serif;
   text-decoration: none;
   display: inline-block;

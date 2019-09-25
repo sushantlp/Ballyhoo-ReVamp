@@ -16,9 +16,10 @@
   width: 0px;
 }
 
-.slick-slider {
+.trending-detail-card .slick-slider {
   margin-left: 1em;
 }
+
 .trending-detail-card
   .trending-detail-header-container
   .trending-detail-header {
