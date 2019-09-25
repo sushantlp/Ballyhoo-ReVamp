@@ -130,7 +130,7 @@ export default class TrendingList extends React.Component {
                 height: "210px"
               }}
             />
-            <Card.Content>
+            <Card.Content style={{ textAlign: "center" }}>
               <Card.Header>
                 <span className="city-title">{recommendation.title}</span>
               </Card.Header>
