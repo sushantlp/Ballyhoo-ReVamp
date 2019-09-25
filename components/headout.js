@@ -40,7 +40,7 @@ const Headout = props => {
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="https://itunes.apple.com/us/app/tourlandish/id899327000?ls=1&amp;mt=8"
+                href="https://apps.apple.com/in/app/ballyhoo-food-drinks-offers/id1138306421"
               >
                 <div className="visible on-visible">
                   <picture>
@@ -59,7 +59,7 @@ const Headout = props => {
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="https://play.google.com/store/apps/details?id=com.tourlandish.chronos&amp;hl=en"
+                href="https://play.google.com/store/apps/details?id=com.sense.today.ballyhoo"
               >
                 <div className="visible on-visible">
                   <picture>

@@ -39,7 +39,7 @@ const Footer = props => {
               <hr className="spacer is-1" />
 
               <a
-                href="https://itunes.apple.com/us/app/bedtime-stories-read-tell/id1231933548"
+                href="https://apps.apple.com/in/app/ballyhoo-food-drinks-offers/id1138306421"
                 className="app-store-badge"
                 target="_blank"
               >
@@ -50,7 +50,7 @@ const Footer = props => {
               </a>
 
               <a
-                href="https://itunes.apple.com/us/app/bedtime-stories-read-tell/id1231933548"
+                href="https://play.google.com/store/apps/details?id=com.sense.today.ballyhoo"
                 className="app-store-badge"
                 target="_blank"
                 style={{ marginLeft: "0.5em" }}
@@ -83,7 +83,7 @@ const Footer = props => {
                   <p className="menu-label"> Company </p>
                   <ul className="menu-list">
                     <li>
-                      <a href="/" target="_blank">
+                      <a href="/about" target="_blank">
                         About Ballyhoo
                       </a>
                     </li>
@@ -122,7 +122,7 @@ const Footer = props => {
                       >
                         <img
                           role="presentation"
-                          src="https://getbedtimestories.com/assets/images/icons/social/facebook-f18752b0.svg?1553506572"
+                          src="https://img.icons8.com/color/25/000000/facebook.png"
                         />
                         Facebook
                       </a>
@@ -134,7 +134,7 @@ const Footer = props => {
                       >
                         <img
                           role="presentation"
-                          src="https://getbedtimestories.com/assets/images/icons/social/instagram-89cb51bf.svg?1553506572"
+                          src="https://img.icons8.com/color/25/000000/instagram.png"
                         />
                         Instagram
                       </a>
@@ -146,23 +146,23 @@ const Footer = props => {
                       >
                         <img
                           role="presentation"
-                          src="https://getbedtimestories.com/assets/images/icons/social/twitter-42c2f562.svg?1553506572"
+                          src="https://img.icons8.com/color/25/000000/twitter.png"
                         />
                         Twitter
                       </a>
                     </li>
-                    {/* <li>
+                    <li>
                       <a
-                        href="https://facebook.com/getbedtimestories"
+                        href="https://www.youtube.com/channel/UCJjD_ULskmt1pHxkztn2Zhg"
                         target="_blank"
                       >
                         <img
                           role="presentation"
-                          src="https://getbedtimestories.com/assets/images/icons/social/messenger-d2bb944d.svg?1553506572"
+                          src="https://img.icons8.com/color/25/000000/youtube-play.png"
                         />
-                        Messenger
+                        Youtube
                       </a>
-                    </li> */}
+                    </li>
                   </ul>
                 </div>
               </div>
