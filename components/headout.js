@@ -31,9 +31,10 @@ const Headout = props => {
             <div className="title">Ballyhoo on the go</div>
             <div className="line" />
             <div className="subtitle">
-              Download our mobile app for easier &amp; faster checkout.
+              Download the app and join hundreds of thousands of happy
               <br />
-              We can send you the download link to get started right away!
+              people and make every day more eventful &amp; more memorable with
+              Ballyhoo Today.
             </div>
             <div className="download-links">
               <a

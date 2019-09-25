@@ -28,8 +28,13 @@ const Footer = props => {
               </a>
               <hr className="spacer is-1" />
               <p className="short-story">
-                The storytelling app for families - read diverse &amp;
-                empowering stories or tell them in your own words.
+                Explore only the best happening places with reviews, photos,
+                prices and more all at once. Discover Urban Escapes or hidden
+                jewels in your city for exclusive eventful experiences. Find
+                some thing new everyday, be it - Club Parties, Weekend and Day
+                out Escape packages, Indoor & Outdoor activities, Fine Dinning
+                or Gastropub.
+                {/* &amp; */}
               </p>
               <hr className="spacer is-1" />
 
@@ -112,7 +117,7 @@ const Footer = props => {
                   <ul className="menu-list">
                     <li>
                       <a
-                        href="https://facebook.com/getbedtimestories"
+                        href="https://www.facebook.com/ballyhootoday/"
                         target="_blank"
                       >
                         <img
@@ -124,7 +129,7 @@ const Footer = props => {
                     </li>
                     <li>
                       <a
-                        href="https://facebook.com/getbedtimestories"
+                        href="https://www.instagram.com/ballyhootoday/"
                         target="_blank"
                       >
                         <img
@@ -136,7 +141,7 @@ const Footer = props => {
                     </li>
                     <li>
                       <a
-                        href="https://facebook.com/getbedtimestories"
+                        href="https://twitter.com/BallyhooToday"
                         target="_blank"
                       >
                         <img
@@ -146,7 +151,7 @@ const Footer = props => {
                         Twitter
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="https://facebook.com/getbedtimestories"
                         target="_blank"
@@ -157,7 +162,7 @@ const Footer = props => {
                         />
                         Messenger
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>

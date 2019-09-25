@@ -44,7 +44,7 @@ app
     });
 
     server.get("/faq", (req, res) => {
-      return app.render(req, res, "/explore", {});
+      return app.render(req, res, "/faq", {});
     });
 
     server.get("/explore", (req, res) => {
