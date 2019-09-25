@@ -97,6 +97,7 @@ body {
 .short-story {
   font-family: "Quicksand", sans-serif;
   font-size: 0.9em;
+  color: #7b7b7b;
 }
 
 .copyright {
@@ -105,4 +106,8 @@ body {
 
 .copyright strong {
   /* font-family: "Madeleina Sans", sans-serif; */
+}
+
+.lh1_7 {
+  line-height: 1.7;
 }

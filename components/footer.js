@@ -27,7 +27,7 @@ const Footer = props => {
                 </div>
               </a>
               <hr className="spacer is-1" />
-              <p className="short-story">
+              <p className="short-story lh1_7">
                 Explore only the best happening places with reviews, photos,
                 prices and more all at once. Discover Urban Escapes or hidden
                 jewels in your city for exclusive eventful experiences. Find
@@ -88,7 +88,7 @@ const Footer = props => {
                       </a>
                     </li>
                     <li>
-                      <a href="/terms" target="_blank">
+                      <a href="/term" target="_blank">
                         Terms &amp; Conditions
                       </a>
                     </li>

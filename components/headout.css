@@ -109,3 +109,7 @@ picture {
   /* margin-left: 3em; */
   right: 7em;
 }
+
+.lh1_5 {
+  line-height: 1.5;
+}

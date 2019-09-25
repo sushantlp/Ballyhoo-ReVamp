@@ -30,7 +30,7 @@ const Headout = props => {
           <div className="middle-content">
             <div className="title">Ballyhoo on the go</div>
             <div className="line" />
-            <div className="subtitle">
+            <div className="subtitle lh1_5">
               Download the app and join hundreds of thousands of happy
               <br />
               people and make every day more eventful &amp; more memorable with
