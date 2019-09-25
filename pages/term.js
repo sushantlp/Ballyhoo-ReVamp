@@ -6,20 +6,19 @@ import { connect } from "react-redux";
 import fetch from "isomorphic-unfetch";
 
 import "bulma/css/bulma.min.css";
-// import "semantic-ui-css/semantic.min.css";
 
 import { host } from "../constants";
 
 import Head from "../components/head";
 import Header from "../components/header";
 
-import FaqComponent from "../components/faq";
+import TermComponent from "../components/term";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
 
 import { getCityLocality } from "../actions/city-locality-action";
 
-class Faq extends React.Component {
+class Term extends React.Component {
   static async getInitialProps(ctx) {
     try {
       const { store } = ctx;
@@ -56,7 +55,7 @@ class Faq extends React.Component {
       <div>
         <Head title="Home" />
         <Header />
-        <FaqComponent />
+        <TermComponent />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
       </div>
@@ -79,4 +78,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Faq);
+)(Term);

@@ -1,6 +1,4 @@
-import { Header, Segment } from "semantic-ui-react";
 import "./faq.css";
-
 const FaqComponent = () => (
   <div className="section">
     <div className="faq-container">
@@ -115,56 +113,44 @@ const FaqComponent = () => (
           time would be very short.
         </h4>
 
-        <Segment>
-          <Header as="h4" style={{ color: "rgba(0,0,0,.68)" }}>
-            Can I cancel the deal after making a booking at the hotel or
-            wellness centre?
-          </Header>
-          <p>
-            Almost always NO. We work hard to get you an awesome deal and due to
-            its nature of real-time we do not offer any cancellations or refunds
-          </p>
-        </Segment>
-        <Segment>
-          <Header as="h4" style={{ color: "rgba(0,0,0,.68)" }}>
-            {" "}
-            How can I cancel the deal?
-          </Header>
-          <p>Not possible.</p>
-        </Segment>
-        <Segment>
-          <Header as="h4" style={{ color: "rgba(0,0,0,.68)" }}>
-            {" "}
-            Refund
-          </Header>
-          <p>
-            In a rare scenario where merchant is not abel to fulfill an agreed
-            obligation we will consider for refund? 48 hours.
-          </p>
-        </Segment>
-        <Segment>
-          <Header as="h4" style={{ color: "rgba(0,0,0,.68)" }}>
-            What do I do, if I don’t get my refund on time?
-          </Header>
-          <p>
-            Please write back to us at
-            <a href="mailto:contact@ballyhoo.today" target="_top">
-              &nbsp; contact@ballyhoo.today &nbsp;
-            </a>
-            Contact Us
-          </p>
-        </Segment>
-        <Segment>
-          <Header as="h4" style={{ color: "rgba(0,0,0,.68)" }}>
-            I have a problem, where and whom should I contact for it?
-          </Header>
-          <p>
-            Please reach out to us at
-            <a href="mailto:contact@ballyhoo.today" target="_top">
-              &nbsp; contact@ballyhoo.today .
-            </a>
-          </p>
-        </Segment>
+        <h3 className="ffqs">
+          Can I cancel the deal after making a booking at the hotel or wellness
+          centre?
+        </h3>
+        <h4 className="ffqs fw2 mt1">
+          Almost always NO. We work hard to get you an awesome deal and due to
+          its nature of real-time we do not offer any cancellations or refunds
+        </h4>
+
+        <h3 className="ffqs"> How can I cancel the deal?</h3>
+        <h4 className="ffqs fw2 mt1">Not possible. </h4>
+
+        <h3 className="ffqs"> Refund</h3>
+        <h4 className="ffqs fw2 mt1">
+          In a rare scenario where merchant is not abel to fulfill an agreed
+          obligation we will consider for refund? 48 hours.
+        </h4>
+
+        <h3 className="ffqs">
+          What do I do, if I don’t get my refund on time?
+        </h3>
+        <h4 className="ffqs fw2 mt1">
+          Please write back to us at
+          <a href="mailto:contact@ballyhoo.today" target="_top">
+            &nbsp; contact@ballyhoo.today &nbsp;
+          </a>
+          Contact Us
+        </h4>
+
+        <h3 className="ffqs">
+          I have a problem, where and whom should I contact for it?
+        </h3>
+        <h4 className="ffqs fw2 mt1">
+          Please reach out to us at
+          <a href="mailto:contact@ballyhoo.today" target="_top">
+            &nbsp; contact@ballyhoo.today .
+          </a>
+        </h4>
       </div>
     </div>
   </div>

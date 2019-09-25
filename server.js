@@ -35,12 +35,12 @@ app
       }
     });
 
-    server.get("/terms", (req, res) => {
-      return app.render(req, res, "/explore", {});
+    server.get("/term", (req, res) => {
+      return app.render(req, res, "/term", {});
     });
 
     server.get("/privacy", (req, res) => {
-      return app.render(req, res, "/explore", {});
+      return app.render(req, res, "/privacy", {});
     });
 
     server.get("/faq", (req, res) => {
