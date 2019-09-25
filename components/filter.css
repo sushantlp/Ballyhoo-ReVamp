@@ -21,3 +21,7 @@
   height: 0.01em;
   margin: 0 auto;
 }
+
+.filter-container .pb0-5 {
+  padding-bottom: 0.5em;
+}

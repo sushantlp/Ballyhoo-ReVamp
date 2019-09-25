@@ -1,6 +1,7 @@
 import ReadMoreAndLess from "react-read-more-less";
 import { Segment } from "semantic-ui-react";
 import "./food-event-list.css";
+
 const FoodEventList = props => {
   return props.events.map((value, key) => {
     return (

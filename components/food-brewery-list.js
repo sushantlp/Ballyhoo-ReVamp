@@ -96,16 +96,28 @@ const FoodBrewery = props => {
                 </div>
                 <div className="columns mb0 ">
                   <div className="column pt0">
-                    <span className="f12 fw4 m0 iblock">
-                      <span className="mr24 pfc4">Average cost for two:</span>
+                    <span className="fw4 m0 iblock">
+                      <span className="mr24">Average cost for two :</span>
                     </span>
 
-                    <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
+                    <h5
+                      className="m0 f20 fw9 flh28 mt0-5"
+                      style={{ color: "#635f5f" }}
+                    >
                       ₹ {list.p_cost_for_two}
                     </h5>
                   </div>
                   <div className="column pl8 pt0">
-                    <div className="package-tag-box">
+                    <div class="tags package-tags">
+                      {list.p_cuisines.map((cuisine, key) => {
+                        return (
+                          <li className="tag is-rounded" key={key}>
+                            {cuisine}
+                          </li>
+                        );
+                      })}
+                    </div>
+                    {/* <div className="package-tag-box">
                       <ul className="package-tags at_package_tags">
                         {list.p_cuisines.map((cuisine, key) => {
                           return (
@@ -115,12 +127,12 @@ const FoodBrewery = props => {
                           );
                         })}
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
-                <div className="css-clzwav f12 pfc4 m0 fw4">
-                  <p>{description}</p>
+                <div className="css-clzwav f12 m0 fw4">
+                  <p className="lh1-5">{description}</p>
                 </div>
               </div>
             </div>
