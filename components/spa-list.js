@@ -111,7 +111,7 @@ const SpaList = props => {
                     </span>
 
                     <h5
-                      className="m0 f20 fw9 flh28 mt0-5"
+                      className="m0 f20 fw9 flh28 mt0-2"
                       style={{ color: "#635f5f" }}
                     >
                       ₹ {list.offer_min_price}/-{" "}
@@ -122,11 +122,12 @@ const SpaList = props => {
                   <div className="column pl8 pt0">
                     <div className="tags package-tags">
                       {list.offer_hash_tags.map((tag, key) => {
-                        return (
-                          <li className="tag is-rounded" key={key}>
-                            {tag}
-                          </li>
-                        );
+                        if (key <= 4)
+                          return (
+                            <li className="tag is-rounded" key={key}>
+                              {tag}
+                            </li>
+                          );
                       })}
                     </div>
                     {/* <div className="package-tag-box">
@@ -180,7 +181,7 @@ const SpaList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium is-danger is-outlined"
+                className="button is-medium is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="icon">

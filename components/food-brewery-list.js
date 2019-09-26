@@ -101,7 +101,7 @@ const FoodBrewery = props => {
                     </span>
 
                     <h5
-                      className="m0 f20 fw9 flh28 mt0-5"
+                      className="m0 f20 fw9 flh28 mt0-2"
                       style={{ color: "#635f5f" }}
                     >
                       ₹ {list.p_cost_for_two}
@@ -110,11 +110,12 @@ const FoodBrewery = props => {
                   <div className="column pl8 pt0">
                     <div className="tags package-tags">
                       {list.p_cuisines.map((cuisine, key) => {
-                        return (
-                          <li className="tag is-rounded" key={key}>
-                            {cuisine}
-                          </li>
-                        );
+                        if (key <= 5)
+                          return (
+                            <li className="tag is-rounded" key={key}>
+                              {cuisine}
+                            </li>
+                          );
                       })}
                     </div>
                     {/* <div className="package-tag-box">
@@ -209,7 +210,7 @@ const FoodBrewery = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium is-danger is-outlined"
+                className="button is-medium is-outlined"
                 onClick={() =>
                   props.foodCategoryApiCall(list.p_id, props.urlParam.key)
                 }

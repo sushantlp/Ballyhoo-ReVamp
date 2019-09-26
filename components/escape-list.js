@@ -121,7 +121,7 @@ const EscapeList = props => {
                     </span>
 
                     <h5
-                      className="mt0-5 m0 f20 fw9 flh28"
+                      className="mt0-2 m0 f20 fw9 flh28"
                       style={{ marginBottom: ".4em", color: "#635f5f" }}
                     >
                       ₹ {list.offer_min_price}/-
@@ -187,7 +187,7 @@ const EscapeList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium is-danger is-outlined"
+                className="button is-medium is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="icon">

@@ -61,3 +61,17 @@
 .search-container .ui.search.dropdown > .text {
   margin-top: 0.5em;
 }
+
+.search-container .ui.search.dropdown > input.search {
+  background: none transparent !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  cursor: text;
+  top: 6px;
+  left: 1px;
+  width: 100%;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  padding: inherit;
+}

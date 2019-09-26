@@ -26,9 +26,6 @@
   color: #ff3860;
 }
 
-.main-list-container .mt0-5 {
-  margin-top: 0.5em;
-}
 .main-list-container .plh1 {
   line-height: 1.7em;
 }
@@ -328,4 +325,13 @@
 
 .main-list-container .cursor:hover {
   cursor: pointer;
+}
+
+.main-list-container .mt0-2 {
+  margin-top: 0.2em;
+}
+
+.main-list-container .button:hover {
+  background-color: #f5f5f5;
+  color: black;
 }
