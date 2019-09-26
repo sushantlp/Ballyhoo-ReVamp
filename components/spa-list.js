@@ -67,7 +67,7 @@ const SpaList = props => {
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7">
+                    <span className="tag radius20 fw7" id="li">
                       <img src="https://img.icons8.com/color/17/000000/hearts.png" />
                       <span className="ellipsis pl0_5">
                         {list.offer_popularity}%
@@ -124,7 +124,7 @@ const SpaList = props => {
                       {list.offer_hash_tags.map((tag, key) => {
                         if (key <= 4)
                           return (
-                            <li className="tag is-rounded" key={key}>
+                            <li className="tag is-rounded" key={key} id="li">
                               {tag}
                             </li>
                           );
@@ -159,20 +159,32 @@ const SpaList = props => {
               >
                 {list.offer_gender_preference === 1 ? (
                   <span>
-                    <img src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png" />
+                    <img
+                      src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png"
+                      id="spa-img"
+                    />
                   </span>
                 ) : list.offer_gender_preference === 2 ? (
                   <span>
-                    <img src="https://img.icons8.com/bubbles/50/000000/birthday-girl.png" />
+                    <img
+                      src="https://img.icons8.com/bubbles/50/000000/birthday-girl.png"
+                      id="spa-img"
+                    />
                   </span>
                 ) : (
                   <span>
                     {" "}
                     <span>
-                      <img src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png" />
+                      <img
+                        src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png"
+                        id="spa-img"
+                      />
                     </span>{" "}
                     <span>
-                      <img src="https://img.icons8.com/bubbles/50/000000/birthday-girl.png" />
+                      <img
+                        src="https://img.icons8.com/bubbles/50/000000/birthday-girl.png"
+                        id="spa-img"
+                      />
                     </span>
                   </span>
                 )}

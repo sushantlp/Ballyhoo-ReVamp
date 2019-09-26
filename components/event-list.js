@@ -66,7 +66,7 @@ const EventList = props => {
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7">
+                    <span className="tag radius20 fw7" id="li">
                       <img src="https://img.icons8.com/color/17/000000/hearts.png" />
                       <span className="ellipsis pl0_5">
                         {" "}
@@ -123,7 +123,7 @@ const EventList = props => {
                       {list.offer_hash_tags.map((tag, key) => {
                         if (key <= 5)
                           return (
-                            <li className="tag is-rounded" key={key}>
+                            <li className="tag is-rounded" key={key} id="li">
                               {tag}
                             </li>
                           );
@@ -158,7 +158,10 @@ const EventList = props => {
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span>
-                  <img src="https://img.icons8.com/cute-clipart/50/000000/date-to.png" />
+                  <img
+                    src="https://img.icons8.com/cute-clipart/30/000000/date-to.png"
+                    id="img"
+                  />
                   <p>
                     {list.offer_start_date != null &&
                     list.offer_end_date != null ? (

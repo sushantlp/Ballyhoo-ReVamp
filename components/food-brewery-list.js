@@ -64,7 +64,7 @@ const FoodBrewery = props => {
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7">
+                    <span className="tag radius20 fw7" id="li">
                       <img src="https://img.icons8.com/color/17/000000/hearts.png" />
                       <span className="ellipsis pl0_5">
                         {list.p_popularity} %
@@ -112,7 +112,7 @@ const FoodBrewery = props => {
                       {list.p_cuisines.map((cuisine, key) => {
                         if (key <= 5)
                           return (
-                            <li className="tag is-rounded" key={key}>
+                            <li className="tag is-rounded" key={key} id="li">
                               {cuisine}
                             </li>
                           );

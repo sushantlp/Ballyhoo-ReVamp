@@ -67,7 +67,7 @@ const ActivityList = props => {
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7">
+                    <span className="tag radius20 fw7" id="li">
                       <img src="https://img.icons8.com/color/17/000000/hearts.png" />
                       <span className="ellipsis pl0_5">
                         {list.offer_popularity}%
@@ -118,7 +118,7 @@ const ActivityList = props => {
                     </h5>
                   </div>
                   <div className="column pl8 pt0">
-                    <div className="tags package-tags">
+                    <div className="tags package-tags" id="li">
                       {list.offer_hash_tags.map((tag, key) => {
                         if (key <= 5)
                           return (
