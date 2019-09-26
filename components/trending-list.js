@@ -163,7 +163,7 @@ export default class TrendingList extends React.Component {
             <h2 className="trending-list-header">Recommendation</h2>
             <div className="underscore" />
           </div>
-          {recommendation.length > 4 ? (
+          {recommendation.length >= 4 ? (
             <Slider {...settings}>
               {this.trendingListComponent(recommendation, false)}
             </Slider>

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import Router from "next/router";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -86,7 +87,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
@@ -157,6 +158,7 @@ class Index extends React.Component {
   };
 
   changeLoadingState = () => {
+    window.scrollTo(0, 0);
     this.setState({
       isLoading: !this.state.isLoading
     });
@@ -166,6 +168,7 @@ class Index extends React.Component {
     if (this.state.isLoading)
       return (
         <React.Fragment>
+          <Head title="Home" />
           <Header />
           <Spinner />
           <Space />

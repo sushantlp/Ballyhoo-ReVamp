@@ -2,6 +2,7 @@ import Spinner from "./spinner";
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
+import Space from "./loading-space";
 // import Similar from "./similar";
 import TrendingList from "./trending-list";
 
@@ -49,7 +50,14 @@ class ParentList extends React.Component {
     )
       return <Spinner />;
 
-    if (this.props.urlParam.response_type === 0) return <Spinner />;
+    if (this.props.urlParam.response_type === 0)
+      return (
+        <React.Fragment>
+          {" "}
+          <Spinner />
+          <Space />
+        </React.Fragment>
+      );
 
     return (
       <React.Fragment>

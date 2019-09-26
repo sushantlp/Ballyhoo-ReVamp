@@ -118,11 +118,11 @@ const ActivityList = props => {
                     </h5>
                   </div>
                   <div className="column pl8 pt0">
-                    <div className="tags package-tags" id="li">
+                    <div className="tags package-tags">
                       {list.offer_hash_tags.map((tag, key) => {
                         if (key <= 5)
                           return (
-                            <li className="tag is-rounded" key={key}>
+                            <li className="tag is-rounded" key={key} id="li">
                               {tag}
                             </li>
                           );

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import Router from "next/router";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -18,6 +19,8 @@ import Header from "../components/header";
 import ParentList from "../components/parent-list";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
+import Space from "../components/loading-space";
+import Spinner from "../components/spinner";
 
 import {
   getListData,
@@ -37,17 +40,6 @@ import { getsearchData } from "../actions/search-data-action";
 import { updateUrlParam } from "../actions/url-param-action";
 
 class List extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     city_id: 0,
-  //     api_type: 0,
-  //     key: 0,
-  //     response_type: 0,
-  //     flag: 0
-  //   };
-  // }
-
   static async getInitialProps(ctx) {
     let listJson = [];
     let slidderJson = [];
@@ -142,8 +134,17 @@ class List extends React.Component {
     return { routeParam };
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false
+    };
+  }
+
   componentDidMount() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
+    ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
@@ -165,7 +166,7 @@ class List extends React.Component {
         nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
         const { city } = Router.router.query;
-        console.log(nextProps.categoryData.categoryData);
+
         const partnerId =
           nextProps.categoryData.categoryData.details.partner_details.p_id;
         const partner = nextProps.categoryData.categoryData.details.partner_details.p_name
@@ -201,7 +202,7 @@ class List extends React.Component {
         )
       ) {
         const { city } = Router.router.query;
-        console.log(nextProps.foodCategoryData.foodCategoryData);
+
         const partnerId =
           nextProps.foodCategoryData.foodCategoryData.details.partner_id;
         const partner = nextProps.foodCategoryData.foodCategoryData.details.bname
@@ -241,10 +242,12 @@ class List extends React.Component {
   };
 
   categoryApiCall = offerId => {
+    this.changeLoadingState();
     this.props.getCategoryDataApi(offerId);
   };
 
   foodCategoryApiCall = (partnerId, key) => {
+    this.changeLoadingState();
     this.props.getFoodCategoryDataApi(partnerId, key);
   };
 
@@ -275,7 +278,25 @@ class List extends React.Component {
     // this.props.updateUrlParam(listUrlParam);
   };
 
+  changeLoadingState = () => {
+    this.setState({
+      isLoading: !this.state.isLoading
+    });
+  };
+
   render() {
+    if (this.state.isLoading)
+      return (
+        <React.Fragment>
+          <Head title="Home" />
+          <Header />
+          <Spinner />
+          <Space />
+          <Headout />
+          <Footer cityLocality={this.props.cityLocality} />
+        </React.Fragment>
+      );
+
     return (
       <div>
         <Head title="Home" />

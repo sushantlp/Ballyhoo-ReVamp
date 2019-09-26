@@ -165,7 +165,7 @@ export default class TrendingDetail extends React.Component {
             <div className="underscore" />
           </div>
 
-          {featuring.length > 4 ? (
+          {featuring.length >= 4 ? (
             <Slider {...settings}>
               {this.trendingDetailComponent(featuring, false)}
             </Slider>
