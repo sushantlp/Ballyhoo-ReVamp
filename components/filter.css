@@ -10,7 +10,7 @@
 .filter-container .google {
   color: #424242;
   font-family: Google Sans;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.0175rem;
   line-height: 0;
@@ -22,6 +22,10 @@
   margin: 0 auto;
 }
 
-.filter-container .pb0-5 {
-  padding-bottom: 0.5em;
+.filter-container .mb1-5 {
+  margin-bottom: 1.5em;
+}
+
+.filter-container .mt0-5 {
+  margin-top: 0.5em;
 }

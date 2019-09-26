@@ -14,7 +14,7 @@ const MainList = props => {
 
   return (
     <React.Fragment>
-      <FilterDisplay />
+      {/* <FilterDisplay /> */}
       <div className="main-list-container">
         {parseInt(props.urlParam.response_type, 10) === 1 ? (
           <FoodBreweryList

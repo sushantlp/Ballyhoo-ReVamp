@@ -65,7 +65,10 @@ class ParentList extends React.Component {
           <div className="container">
             <div className="columns">
               <div className="column is-3">
-                <Filter scrolling={this.props.scrolling} />
+                <Filter
+                  scrolling={this.props.scrolling}
+                  urlParam={this.props.urlParam}
+                />
 
                 {/* <Similar /> */}
               </div>

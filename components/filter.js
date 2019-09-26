@@ -48,135 +48,328 @@ export default class Filter extends React.Component {
             cursor: "not-allowed"
           }}
         >
-          <h3 className="google pb0-5 ">Categories </h3>
-          <div className="columns is-desktop is-multiline is-narrow">
-            <div className="field">
-              <div className="column">
-                <input
-                  className="is-checkradio has-background-color is-danger"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                  checked="checked"
-                />
-                <label>Honeymoon</label>
+          {parseInt(this.props.urlParam.response_type, 10) === 1 ? (
+            <React.Fragment>
+              <h3 className="google mb1-5 mt0-5">Package</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Buffet</label>
+                  </div>
 
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>Family</label>
+                  <div className="column">
+                    {" "}
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Happy-Hour</label>
+                  </div>
+                  <div className="column">
+                    {" "}
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Events</label>
+                  </div>
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Packages</label>
+                  </div>
+                </div>
               </div>
+              {/* <div className="divider" /> */}
+              <h3 className="google mb1-5">Food</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Veg</label>
+                  </div>
 
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>Friends/Group</label>
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Non-Veg</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Both</label>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+              {/* <div className="divider" /> */}
+            </React.Fragment>
+          ) : null}
 
-          <div className="divider" />
+          {parseInt(this.props.urlParam.response_type, 10) === 2 ? null : null}
 
-          <h3 className="google pb0-5 ">Budget Per Person (in Rs.)</h3>
-          <div className="columns is-desktop is-multiline is-narrow">
-            <div className="field">
-              <div className="column">
-                <input
-                  className="is-checkradio has-background-color is-danger"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                  checked="checked"
-                />
-                <label>Less Than 10,000</label>
+          {parseInt(this.props.urlParam.response_type, 10) === 3 ? (
+            <React.Fragment>
+              {" "}
+              <h3 className="google mb1-5 mt0-5">Budget Per Person (in Rs.)</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Less then 500</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>500 - 1000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>1000 - 3000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>More then 3000</label>
+                  </div>
+                </div>
               </div>
+              {/* <div className="divider" /> */}
+            </React.Fragment>
+          ) : null}
 
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>10,000 - 20,000</label>
+          {parseInt(this.props.urlParam.response_type, 10) === 5 ? (
+            <React.Fragment>
+              {" "}
+              <h3 className="google mb1-5 mt0-5">Budget Per Person (in Rs.)</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Less then 500</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>500 - 1000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>1000 - 3000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>More then 3000</label>
+                  </div>
+                </div>
               </div>
+              <h3 className="google mb1-5">Gender</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Male</label>
+                  </div>
 
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>20,000 - 40,000</label>
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Female</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Both</label>
+                  </div>
+                </div>
               </div>
+            </React.Fragment>
+          ) : null}
 
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>40,000 - 60,000</label>
+          {parseInt(this.props.urlParam.response_type, 10) === 4 ? (
+            <React.Fragment>
+              {" "}
+              <h3 className="google mb1-5 mt0-5">Budget Per Person (in Rs.)</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Less then 500</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>500 - 1000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>1000 - 3000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>More then 3000</label>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+              <h3 className="google mb1-5">Escape</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Ballyhoo-Exculsive</label>
+                  </div>
 
-          <div className="divider" />
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Verified-Merchant</label>
+                  </div>
 
-          <h3 className="google pb0-5 ">Cities</h3>
-          <div className="columns is-desktop is-multiline is-narrow">
-            <div className="field">
-              <div className="column">
-                <input
-                  className="is-checkradio has-background-color is-danger"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                  checked="checked"
-                />
-                <label>Mahabaleshwar</label>
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Domestic</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>International</label>
+                  </div>
+                </div>
               </div>
-
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>Goa</label>
-              </div>
-
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>Colva</label>
-              </div>
-
-              <div className="column">
-                <input
-                  className="is-checkradio"
-                  id="exampleCheckboxBackgroundColorDanger"
-                  type="checkbox"
-                  name="exampleCheckboxBackgroundColorDanger"
-                />
-                <label>Candolim</label>
-              </div>
-            </div>
-          </div>
+            </React.Fragment>
+          ) : null}
         </div>
       </div>
     );
