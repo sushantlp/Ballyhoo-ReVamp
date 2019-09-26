@@ -41,7 +41,7 @@ const FoodBrewery = props => {
 
     return (
       <React.Fragment key={key}>
-        <div className="box">
+        <div className="box" id="child-list">
           <article className="media">
             <div className="media-left">
               <figure className="image">
