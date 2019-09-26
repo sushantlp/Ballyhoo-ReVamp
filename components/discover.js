@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Router from "next/router";
 import Slider from "react-slick";
 import { Image } from "semantic-ui-react";
@@ -71,7 +70,9 @@ function SamplePrevArrow(props) {
 }
 
 export default class Discover extends React.Component {
-  onClickDiscover = discover => {
+  onClickDiscover = (discover, props) => {
+    props.changeLoadingState();
+
     const { city, city_id } = Router.router.query;
     const title = discover.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${discover.api_type}-${discover.key}-${
@@ -90,10 +91,10 @@ export default class Discover extends React.Component {
     );
   };
 
-  discoverArray = json => {
+  discoverArray = (json, props) => {
     return json.map((discover, key) => {
       const titleLength = discover.title.length;
-      console.log(titleLength);
+
       return (
         // <Link
         //   href="/list?slug=something"
@@ -104,7 +105,7 @@ export default class Discover extends React.Component {
         <div
           className="discover-slider"
           key={key}
-          onClick={() => this.onClickDiscover(discover)}
+          onClick={() => this.onClickDiscover(discover, props)}
         >
           <Image
             src={discover.img}
@@ -164,7 +165,9 @@ export default class Discover extends React.Component {
             <div className="underscore" />
           </div>
           <div>
-            <Slider {...settings}>{this.discoverArray(discover)}</Slider>
+            <Slider {...settings}>
+              {this.discoverArray(discover, this.props)}
+            </Slider>
           </div>
         </div>
       </div>

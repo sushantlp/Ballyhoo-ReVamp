@@ -1,3 +1,4 @@
+import Link from "next/link";
 import _ from "lodash";
 import "./footer.css";
 
@@ -12,20 +13,22 @@ const Footer = props => {
         <div className="columns">
           <div className="column is-5 is-4-widescreen">
             <div className="footer-rightside-summary">
-              <a className="brand" href="/">
-                <div className="brand-icon">
-                  <img
-                    // style={{ width: "50px" }}
-                    alt="Ballyhoo"
-                    role="presentation"
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
-                  />
-                </div>
-                <div className="brand-content">
-                  <div className="brand-title"> Ballyhoo </div>
-                  {/* <div className="brand-subtitle">Just Konnect</div> */}
-                </div>
-              </a>
+              <Link href="/" prefetch>
+                <a className="brand" href="/">
+                  <div className="brand-icon">
+                    <img
+                      // style={{ width: "50px" }}
+                      alt="Ballyhoo"
+                      role="presentation"
+                      src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
+                    />
+                  </div>
+                  <div className="brand-content">
+                    <div className="brand-title"> Ballyhoo </div>
+                    {/* <div className="brand-subtitle">Just Konnect</div> */}
+                  </div>
+                </a>
+              </Link>
               <hr className="spacer is-1" />
               <p className="short-story lh1_7">
                 Explore only the best happening places with reviews, photos,
@@ -83,19 +86,25 @@ const Footer = props => {
                   <p className="menu-label"> Company </p>
                   <ul className="menu-list">
                     <li>
-                      <a href="/about" target="_blank">
+                      <Link href="/about" prefetch>
+                        {/* <a href="/about" target="_blank"> */}
                         About Ballyhoo
-                      </a>
+                        {/* </a> */}
+                      </Link>
                     </li>
                     <li>
-                      <a href="/term" target="_blank">
+                      <Link href="/term" prefetch>
+                        {/* <a href="/term" target="_blank"> */}
                         Terms &amp; Conditions
-                      </a>
+                        {/* </a> */}
+                      </Link>
                     </li>
                     <li>
-                      <a href="/privacy" target="_blank">
+                      <Link href="/privacy" prefetch>
+                        {/* <a href="/privacy" target="_blank"> */}
                         Privacy Policy
-                      </a>
+                        {/* </a> */}
+                      </Link>
                     </li>
                     {/* <li>
                       <a href="/" target="_blank">
@@ -103,9 +112,11 @@ const Footer = props => {
                       </a>
                     </li> */}
                     <li>
-                      <a href="/faq" target="_blank">
+                      <Link href="/faq" prefetch>
+                        {/* <a href="/faq" target="_blank"> */}
                         FAQ's
-                      </a>
+                        {/* </a> */}
+                      </Link>
                     </li>
                   </ul>
                 </div>

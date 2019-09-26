@@ -25,7 +25,8 @@ import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-import styled from "styled-components";
+import Space from "../components/loading-space";
+import Spinner from "../components/spinner";
 
 import { getsearchData } from "../actions/search-data-action";
 import { getCityLocality } from "../actions/city-locality-action";
@@ -77,7 +78,15 @@ class Index extends React.Component {
     return {};
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+  }
+
   componentDidMount() {
+    window.scrollTo(0, 0);
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
@@ -88,7 +97,18 @@ class Index extends React.Component {
           console.warn("service worker registration failed", err.message);
         });
     }
+
+    // Router.events.on("routeChangeStart", handleRouteChange);
   }
+
+  // handleRouteChange = url => {
+  //   console.log("App is changing to: ", url);
+  // };
+
+  // componentWillUnmount() {
+  //   //Router.events.off('routeChangeStart', handleRouteChange)
+  //   console.log("componentWillUnmount");
+  // }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
@@ -135,16 +155,24 @@ class Index extends React.Component {
     this.props.getCategoryDataApi(offerId);
   };
 
-  render() {
-    const Hero = styled.div`
-      width: 100%;
-      color: #333;
-    `;
+  changeLoadingState = () => {
+    this.setState({
+      isLoading: !this.state.isLoading
+    });
+  };
 
-    const Welcome = styled.h1`
-      color: red;
-    `;
-    console.log(this.props);
+  render() {
+    if (this.state.isLoading)
+      return (
+        <React.Fragment>
+          <Header />
+          <Spinner />
+          <Space />
+          <Headout />
+          <Footer cityLocality={this.props.cityLocality} />
+        </React.Fragment>
+      );
+
     return (
       <div>
         <Head title="Home" />
@@ -156,7 +184,10 @@ class Index extends React.Component {
           searchData={this.props.searchData}
         />
         <SlidderBanner homeScreen={this.props.homeScreen} />
-        <Discover homeScreen={this.props.homeScreen} />
+        <Discover
+          homeScreen={this.props.homeScreen}
+          changeLoadingState={this.changeLoadingState}
+        />
         <Featured homeScreen={this.props.homeScreen} />
         <Popular homeScreen={this.props.homeScreen} />
         <Trending
