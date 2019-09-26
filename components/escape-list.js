@@ -7,6 +7,13 @@ const EscapeList = props => {
       description = description.slice(0, 250) + " ...";
     }
 
+    let inclusionType = {
+      stay: false,
+      travel: false,
+      seeing: false,
+      breakfast: false,
+      activity: false
+    };
     let fullRating = [];
     let emptyRating = [];
     let topRating = 5;
@@ -37,6 +44,19 @@ const EscapeList = props => {
     // Empty Star
     for (let i = 0; i < topRating; i++) {
       emptyRating.push(i);
+    }
+
+    for (let i = 0; i < list.offer_inclusion_types.length; i++) {
+      if (parseInt(list.offer_inclusion_types[i]) === 1)
+        inclusionType.stay = true;
+      if (parseInt(list.offer_inclusion_types[i]) === 2)
+        inclusionType.travel = true;
+      if (parseInt(list.offer_inclusion_types[i]) === 3)
+        inclusionType.seeing = true;
+      if (parseInt(list.offer_inclusion_types[i]) === 4)
+        inclusionType.breakfast = true;
+      if (parseInt(list.offer_inclusion_types[i]) === 5)
+        inclusionType.activity = true;
     }
 
     return (
@@ -146,40 +166,83 @@ const EscapeList = props => {
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="pr2">
-                  <img src="https://img.icons8.com/color/25/000000/3-star-hotel.png" />
+                  {inclusionType.stay ? (
+                    <img src="https://img.icons8.com/color/25/000000/3-star-hotel.png" />
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/3-star-hotel.png"
+                      id="escape-img"
+                    />
+                  )}
 
                   <p className="f12">Stay</p>
                 </span>
 
                 <span className="pr2">
-                  <img
-                    src="https://img.icons8.com/color/25/000000/around-the-globe.png"
-                    style={{ paddingLeft: "0.3em" }}
-                  />
+                  {inclusionType.travel ? (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/around-the-globe.png"
+                      style={{ paddingLeft: "0.3em" }}
+                    />
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/around-the-globe.png"
+                      style={{ paddingLeft: "0.3em" }}
+                      id="escape-img"
+                    />
+                  )}
+
                   <p className="f12">Travel</p>
                 </span>
 
                 <span className="pr2">
-                  <img
-                    src="https://img.icons8.com/color/25/000000/tripadvisor.png"
-                    style={{ paddingLeft: "1.2em" }}
-                  />
+                  {inclusionType.seeing ? (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/tripadvisor.png"
+                      style={{ paddingLeft: "1.2em" }}
+                    />
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/tripadvisor.png"
+                      style={{ paddingLeft: "1.2em" }}
+                      id="escape-img"
+                    />
+                  )}
+
                   <p className="f12">SightSeeing</p>
                 </span>
 
                 <span className="pr2">
-                  <img
-                    src="https://img.icons8.com/color/25/000000/sandwich.png"
-                    style={{ paddingLeft: "0.9em" }}
-                  />
+                  {inclusionType.breakfast ? (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/sandwich.png"
+                      style={{ paddingLeft: "0.9em" }}
+                    />
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/sandwich.png"
+                      style={{ paddingLeft: "0.9em" }}
+                      id="escape-img"
+                    />
+                  )}
+
                   <p className="f12">BreakFast</p>
                 </span>
 
                 <span className="pr2">
-                  <img
-                    src="https://img.icons8.com/color/25/000000/parachute.png"
-                    style={{ paddingLeft: "0.8em" }}
-                  />
+                  {inclusionType.activity ? (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/parachute.png"
+                      style={{ paddingLeft: "0.8em" }}
+                    />
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/color/25/000000/parachute.png"
+                      style={{ paddingLeft: "0.8em" }}
+                      id="escape-img"
+                    />
+                  )}
+
                   <p className="f12">Activities</p>
                 </span>
               </span>

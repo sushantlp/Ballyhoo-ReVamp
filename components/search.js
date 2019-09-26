@@ -14,7 +14,6 @@ export default class Search extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.urlParam);
     if (this.props.cityLocality.cityLocality.length !== 0) {
       this.createCityList(this.props.cityLocality.cityLocality);
 
