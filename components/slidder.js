@@ -152,7 +152,8 @@ export default class Slidder extends React.Component {
     });
   };
 
-  onClickButton = () => {
+  onClickButton = props => {
+    props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = this.state.selectSearch.keyword
       .replace(/ /g, "-")
@@ -258,7 +259,7 @@ export default class Slidder extends React.Component {
                 <a
                   className="button is-danger"
                   style={{ height: "50px", fontWeight: "700" }}
-                  onClick={() => this.onClickButton()}
+                  onClick={() => this.onClickButton(this.props)}
                 >
                   SUBMIT
                 </a>

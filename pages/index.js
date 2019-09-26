@@ -152,6 +152,7 @@ class Index extends React.Component {
   };
 
   categoryApiCall = offerId => {
+    this.changeLoadingState();
     this.props.getCategoryDataApi(offerId);
   };
 
@@ -182,19 +183,30 @@ class Index extends React.Component {
           homeScreen={this.props.homeScreen}
           cityChangeApiCall={this.cityChangeApiCall}
           searchData={this.props.searchData}
+          changeLoadingState={this.changeLoadingState}
         />
         <SlidderBanner homeScreen={this.props.homeScreen} />
         <Discover
           homeScreen={this.props.homeScreen}
           changeLoadingState={this.changeLoadingState}
         />
-        <Featured homeScreen={this.props.homeScreen} />
-        <Popular homeScreen={this.props.homeScreen} />
+        <Featured
+          homeScreen={this.props.homeScreen}
+          changeLoadingState={this.changeLoadingState}
+        />
+        <Popular
+          homeScreen={this.props.homeScreen}
+          changeLoadingState={this.changeLoadingState}
+        />
         <Trending
           homeScreen={this.props.homeScreen}
           categoryApiCall={this.categoryApiCall}
+          changeLoadingState={this.changeLoadingState}
         />
-        <Collection homeScreen={this.props.homeScreen} />
+        <Collection
+          homeScreen={this.props.homeScreen}
+          changeLoadingState={this.changeLoadingState}
+        />
         <Banner homeScreen={this.props.homeScreen} />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

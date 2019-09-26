@@ -71,10 +71,6 @@ function SamplePrevArrow(props) {
 }
 
 export default class Trending extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   trendingArray = json => {
     const calculate = json.length;
     return json.map((trending, key) => {
@@ -166,7 +162,7 @@ export default class Trending extends React.Component {
             <h2 className="trending-header">Trending</h2>
             <div className="underscore" />
           </div>
-          <Slider {...settings}>{this.trendingArray(trending)} </Slider>
+          <Slider {...settings}>{this.trendingArray(trending)}</Slider>
         </div>
       </div>
     );

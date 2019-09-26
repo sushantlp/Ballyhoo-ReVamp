@@ -73,53 +73,8 @@ export default class Featured extends React.Component {
     super(props);
   }
 
-  onClickFeatured = featured => {
-    // if (parseInt(featured.response_type, 10) === 1)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: featured.api_type,
-    //       key: featured.key,
-    //       response_type: featured.response_type
-    //     })
-    //   );
-    // else if (parseInt(featured.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: featured.api_type,
-    //       key: featured.key,
-    //       response_type: featured.response_type
-    //     })
-    //   );
-    // else if (parseInt(featured.response_type, 10) === 3)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: featured.api_type,
-    //       key: featured.key,
-    //       response_type: featured.response_type
-    //     })
-    //   );
-    // else if (parseInt(featured.response_type, 10) === 2)
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: featured.api_type,
-    //       key: featured.key,
-    //       response_type: featured.response_type
-    //     })
-    //   );
-    // else
-    //   sessionStorage.setItem(
-    //     "LIST_DATA",
-    //     JSON.stringify({
-    //       api_type: featured.api_type,
-    //       key: featured.key,
-    //       response_type: featured.response_type
-    //     })
-    //   );
-
+  onClickFeatured = (featured, props) => {
+    props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = featured.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${featured.api_type}-${featured.key}-${
@@ -138,13 +93,13 @@ export default class Featured extends React.Component {
     );
   };
 
-  featuredArray = json => {
+  featuredArray = (json, props) => {
     return json.map((featured, key) => {
       return (
         <div
           className="featured-slider"
           key={key}
-          onClick={() => this.onClickFeatured(featured)}
+          onClick={() => this.onClickFeatured(featured, props)}
         >
           <Image
             src={featured.img}
@@ -193,7 +148,9 @@ export default class Featured extends React.Component {
             <h2 className="featured-header">Featured</h2>
             <div className="underscore" />
           </div>
-          <Slider {...settings}>{this.featuredArray(featured)}</Slider>
+          <Slider {...settings}>
+            {this.featuredArray(featured, this.props)}
+          </Slider>
         </div>
       </div>
     );

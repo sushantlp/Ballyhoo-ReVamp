@@ -27,7 +27,8 @@ export default class Popular extends React.Component {
     else if (index === 8) this.setState({ hover8: !this.state.hover8 });
   };
 
-  onClickPopular = popular => {
+  onClickPopular = (popular, props) => {
+    props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = popular.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${popular.api_type}-${popular.key}-${
@@ -75,7 +76,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(1)}
                 onMouseLeave={() => this.toggleHover(1)}
-                onClick={() => this.onClickPopular(popular[0])}
+                onClick={() => this.onClickPopular(popular[0], this.props)}
               >
                 <p
                   className={this.state.hover1 ? "tiletext-hover" : "tiletext"}
@@ -92,7 +93,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(2)}
                 onMouseLeave={() => this.toggleHover(2)}
-                onClick={() => this.onClickPopular(popular[1])}
+                onClick={() => this.onClickPopular(popular[1], this.props)}
               >
                 <p
                   className={this.state.hover2 ? "tiletext-hover" : "tiletext"}
@@ -109,7 +110,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(3)}
                 onMouseLeave={() => this.toggleHover(3)}
-                onClick={() => this.onClickPopular(popular[2])}
+                onClick={() => this.onClickPopular(popular[2], this.props)}
               >
                 <p
                   className={this.state.hover3 ? "tiletext-hover" : "tiletext"}
@@ -126,7 +127,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(4)}
                 onMouseLeave={() => this.toggleHover(4)}
-                onClick={() => this.onClickPopular(popular[3])}
+                onClick={() => this.onClickPopular(popular[3], this.props)}
               >
                 <p
                   className={this.state.hover4 ? "tiletext-hover" : "tiletext"}
@@ -145,7 +146,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(5)}
                 onMouseLeave={() => this.toggleHover(5)}
-                onClick={() => this.onClickPopular(popular[4])}
+                onClick={() => this.onClickPopular(popular[4], this.props)}
               >
                 <p
                   className={this.state.hover5 ? "tiletext-hover" : "tiletext"}
@@ -162,7 +163,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(6)}
                 onMouseLeave={() => this.toggleHover(6)}
-                onClick={() => this.onClickPopular(popular[5])}
+                onClick={() => this.onClickPopular(popular[5], this.props)}
               >
                 <p
                   className={this.state.hover6 ? "tiletext-hover" : "tiletext"}
@@ -179,7 +180,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(7)}
                 onMouseLeave={() => this.toggleHover(7)}
-                onClick={() => this.onClickPopular(popular[7])}
+                onClick={() => this.onClickPopular(popular[7], this.props)}
               >
                 <p
                   className={this.state.hover7 ? "tiletext-hover" : "tiletext"}
@@ -195,7 +196,7 @@ export default class Popular extends React.Component {
                 }}
                 onMouseEnter={() => this.toggleHover(8)}
                 onMouseLeave={() => this.toggleHover(8)}
-                onClick={() => this.onClickPopular(popular[6])}
+                onClick={() => this.onClickPopular(popular[6], this.props)}
               >
                 <p
                   className={this.state.hover8 ? "tiletext-hover" : "tiletext"}

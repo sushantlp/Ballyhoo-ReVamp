@@ -163,7 +163,8 @@ export default class Collection extends React.Component {
     };
   }
 
-  onClickCollection = collection => {
+  onClickCollection = (collection, props) => {
+    props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = collection.title.replace(/ /g, "-").toLowerCase();
     const secret = `${city_id}-${collection.api_type}-${collection.key}-${
@@ -182,13 +183,13 @@ export default class Collection extends React.Component {
     );
   };
 
-  innerCollectionEven = json => {
+  innerCollectionEven = (json, props) => {
     return json.map((collection, key) => {
       return (
         <div key={key}>
           <div
             className="card"
-            onClick={() => this.onClickCollection(collection)}
+            onClick={() => this.onClickCollection(collection, props)}
           >
             <div className="imgBx">
               <img src={collection.img} alt="images" />
@@ -202,11 +203,14 @@ export default class Collection extends React.Component {
     });
   };
 
-  innerCollectionOdd = json => {
+  innerCollectionOdd = (json, props) => {
     const calculate = json.length;
     return json.map((collection, key) => {
       return (
-        <div key={key} onClick={() => this.onClickCollection(collection)}>
+        <div
+          key={key}
+          onClick={() => this.onClickCollection(collection, props)}
+        >
           <Card
             raised
             style={{
@@ -234,7 +238,7 @@ export default class Collection extends React.Component {
     });
   };
 
-  collectionArray = json => {
+  collectionArray = (json, props) => {
     return json.map((collection, key) => {
       return (
         <div className="container" key={key}>
@@ -247,7 +251,7 @@ export default class Collection extends React.Component {
             {key % 2 === 0 ? (
               <div className="box-even" style={{ marginBottom: "2em" }}>
                 <Slider {...this.state.even}>
-                  {this.innerCollectionEven(collection.collection_items)}
+                  {this.innerCollectionEven(collection.collection_items, props)}
                 </Slider>
               </div>
             ) : (
@@ -260,7 +264,7 @@ export default class Collection extends React.Component {
                 }}
               >
                 <Slider {...this.state.odd}>
-                  {this.innerCollectionOdd(collection.collection_items)}
+                  {this.innerCollectionOdd(collection.collection_items, props)}
                 </Slider>
               </div>
             )}
@@ -280,6 +284,6 @@ export default class Collection extends React.Component {
     const collection = this.props.homeScreen.homeScreen.collection;
     if (collection.length === 0) return <div />;
 
-    return <div>{this.collectionArray(collection)}</div>;
+    return <div>{this.collectionArray(collection, this.props)}</div>;
   }
 }
