@@ -1,7 +1,6 @@
 const SpaList = props => {
   const list = props.listData.listData;
 
-  console.log(list);
   return list.map((list, key) => {
     let description = list.offer_description;
     if (description.length >= 250) {

@@ -216,7 +216,10 @@ export default class Overview extends React.Component {
             <div className="column is-5">
               <h4 className="ffqs fw2">
                 Average cost for two :{" "}
-                <span className="fw7 sfc3"> &#8377; {price}</span>
+                <span className="fw7" style={{ color: "#635f5f" }}>
+                  {" "}
+                  &#8377; {price}
+                </span>
               </h4>
             </div>
 

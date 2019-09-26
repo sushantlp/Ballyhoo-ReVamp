@@ -55,7 +55,7 @@ class ParentList extends React.Component {
         <React.Fragment>
           {" "}
           <Spinner />
-          <Space />
+          {/* <Space /> */}
         </React.Fragment>
       );
 

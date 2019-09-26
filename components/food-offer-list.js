@@ -26,7 +26,7 @@ const FoodList = props => {
                           </div>
 
                           <div
-                            className="f14 ffqs plh1"
+                            className="f14 ffqs lh1-7"
                             style={{ whiteSpace: "pre-line" }}
                           >
                             <ReadMoreAndLess

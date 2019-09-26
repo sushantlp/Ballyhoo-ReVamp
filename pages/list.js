@@ -279,6 +279,7 @@ class List extends React.Component {
   };
 
   changeLoadingState = () => {
+    ReactDOM.findDOMNode(this).scrollIntoView();
     this.setState({
       isLoading: !this.state.isLoading
     });
@@ -291,7 +292,7 @@ class List extends React.Component {
           <Head title="Home" />
           <Header />
           <Spinner />
-          <Space />
+          {/* <Space /> */}
           <Headout />
           <Footer cityLocality={this.props.cityLocality} />
         </React.Fragment>

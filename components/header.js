@@ -74,6 +74,12 @@ export default class Header extends React.Component {
 
             <div id="navMenuExpo" className="navbar-menu">
               <div className="navbar-end">
+                <div className="navbar-item">
+                  <div className="control" id="header">
+                    Ballyhoo Today
+                  </div>
+                </div>
+
                 {/* <div className="navbar-item">
                   <span className="call-now-img">
                     <img src="https://img.icons8.com/color/20/000000/ringer-volume.png" />

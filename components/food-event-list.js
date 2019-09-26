@@ -82,7 +82,7 @@ const FoodEventList = props => {
                           </div>
                         </div>
 
-                        <div className="f14 ffqs">
+                        <div className="f14 ffqs lh1-7">
                           <p style={{ whiteSpace: "pre-line" }}>
                             About Buffet:- Enjoy Authentic Cuisine with
                             Unlimited spread for Lunch Buffet @Cubbon Pavilion -

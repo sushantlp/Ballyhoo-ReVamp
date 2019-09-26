@@ -34,3 +34,8 @@
 .header-container .navbar-item img {
   max-height: 3rem;
 }
+
+.header-container #header {
+  font-size: 1.5em;
+  font-family: "Quicksand", sans-serif;
+}

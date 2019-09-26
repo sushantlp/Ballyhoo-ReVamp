@@ -72,7 +72,7 @@ export default class Filter extends React.Component {
                       type="checkbox"
                       name="exampleCheckboxBackgroundColorDanger"
                     />
-                    <label>Happy-Hour</label>
+                    <label>Happy hour</label>
                   </div>
                   <div className="column">
                     {" "}
@@ -117,7 +117,7 @@ export default class Filter extends React.Component {
                       type="checkbox"
                       name="exampleCheckboxBackgroundColorDanger"
                     />
-                    <label>Non-Veg</label>
+                    <label>Non veg</label>
                   </div>
 
                   <div className="column">
@@ -135,12 +135,86 @@ export default class Filter extends React.Component {
             </React.Fragment>
           ) : null}
 
-          {parseInt(this.props.urlParam.response_type, 10) === 2 ? null : null}
+          {parseInt(this.props.urlParam.response_type, 10) === 2 ? (
+            <React.Fragment>
+              {" "}
+              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Less then 500</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>500 - 1000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>1000 - 3000</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>More then 3000</label>
+                  </div>
+                </div>
+              </div>
+              <h3 className="google mb1-5">Date</h3>
+              <div className="columns is-desktop is-multiline is-narrow">
+                <div className="field">
+                  <div className="column">
+                    <input
+                      className="is-checkradio has-background-color is-danger"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                      checked="checked"
+                    />
+                    <label>Current month</label>
+                  </div>
+
+                  <div className="column">
+                    <input
+                      className="is-checkradio"
+                      id="exampleCheckboxBackgroundColorDanger"
+                      type="checkbox"
+                      name="exampleCheckboxBackgroundColorDanger"
+                    />
+                    <label>Next month</label>
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
+          ) : null}
 
           {parseInt(this.props.urlParam.response_type, 10) === 3 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person (in Rs.)</h3>
+              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
               <div className="columns is-desktop is-multiline is-narrow">
                 <div className="field">
                   <div className="column">
@@ -192,7 +266,7 @@ export default class Filter extends React.Component {
           {parseInt(this.props.urlParam.response_type, 10) === 5 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person (in Rs.)</h3>
+              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
               <div className="columns is-desktop is-multiline is-narrow">
                 <div className="field">
                   <div className="column">
@@ -278,7 +352,7 @@ export default class Filter extends React.Component {
           {parseInt(this.props.urlParam.response_type, 10) === 4 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person (in Rs.)</h3>
+              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
               <div className="columns is-desktop is-multiline is-narrow">
                 <div className="field">
                   <div className="column">
@@ -309,7 +383,7 @@ export default class Filter extends React.Component {
                       type="checkbox"
                       name="exampleCheckboxBackgroundColorDanger"
                     />
-                    <label>1000 - 3000</label>
+                    <label>1000 - 5000</label>
                   </div>
 
                   <div className="column">
@@ -319,7 +393,7 @@ export default class Filter extends React.Component {
                       type="checkbox"
                       name="exampleCheckboxBackgroundColorDanger"
                     />
-                    <label>More then 3000</label>
+                    <label>More then 5000</label>
                   </div>
                 </div>
               </div>
@@ -334,7 +408,7 @@ export default class Filter extends React.Component {
                       name="exampleCheckboxBackgroundColorDanger"
                       checked="checked"
                     />
-                    <label>Ballyhoo-Exculsive</label>
+                    <label>Ballyhoo exculsive</label>
                   </div>
 
                   <div className="column">
@@ -344,7 +418,7 @@ export default class Filter extends React.Component {
                       type="checkbox"
                       name="exampleCheckboxBackgroundColorDanger"
                     />
-                    <label>Verified-Merchant</label>
+                    <label>Verified merchant</label>
                   </div>
 
                   <div className="column">

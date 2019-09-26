@@ -24,7 +24,7 @@ const Footer = props => {
                     />
                   </div>
                   <div className="brand-content">
-                    <div className="brand-title"> Ballyhoo </div>
+                    <div className="brand-title">Ballyhoo Today</div>
                     {/* <div className="brand-subtitle">Just Konnect</div> */}
                   </div>
                 </a>

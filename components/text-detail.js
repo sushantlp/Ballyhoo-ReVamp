@@ -7,7 +7,7 @@ const Text = props => {
           <h4 className="ffqs cuisine-title">{props.title}</h4>
           <div className="overview-underscore" />
 
-          <h4 className="fz1 pfc4 ffqs fw2 ls white-space">
+          <h4 className="fz1 pfc4 ffqs fw2 ls white-space lh1-7">
             <ReadMoreAndLess
               ref={props.ReadMore}
               className="read-more-content"

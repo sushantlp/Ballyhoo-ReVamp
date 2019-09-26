@@ -8,15 +8,16 @@ const Menu = props => {
           <div className="menu-underscore" />
           <div className="menu-container">
             {props.menuImage.map(function(value, key) {
-              return (
-                <figure
-                  className="image"
-                  onClick={() => props.intializeImageArray(true)}
-                  key={key}
-                >
-                  <img src={value} className="menu-image" />
-                </figure>
-              );
+              if (key < 6)
+                return (
+                  <figure
+                    className="image"
+                    onClick={() => props.intializeImageArray(true)}
+                    key={key}
+                  >
+                    <img src={value} className="menu-image" />
+                  </figure>
+                );
             })}
 
             <span

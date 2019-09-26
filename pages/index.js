@@ -158,7 +158,7 @@ class Index extends React.Component {
   };
 
   changeLoadingState = () => {
-    window.scrollTo(0, 0);
+    ReactDOM.findDOMNode(this).scrollIntoView();
     this.setState({
       isLoading: !this.state.isLoading
     });
@@ -171,7 +171,7 @@ class Index extends React.Component {
           <Head title="Home" />
           <Header />
           <Spinner />
-          <Space />
+          {/* <Space /> */}
           <Headout />
           <Footer cityLocality={this.props.cityLocality} />
         </React.Fragment>
