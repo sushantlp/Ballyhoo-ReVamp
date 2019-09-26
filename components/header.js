@@ -81,14 +81,11 @@ export default class Header extends React.Component {
                   <span className="call-now-number">1800-123-5555</span>
                 </div> */}
 
-                <div className="navbar-item">
+                {/* <div className="navbar-item">
                   <Link href="/profile">
                     <div className="control">
                       <div className="buttons">
                         <a className="button is-rounded is-outlined">
-                          {/* <span class="icon">
-                          <img src="https://img.icons8.com/color/20/000000/story-book.png" />
-                        </span> */}
                           <span>STORIES</span>
                         </a>
                       </div>
@@ -101,9 +98,6 @@ export default class Header extends React.Component {
                     <div className="control">
                       <div className="buttons">
                         <a className="button is-rounded is-outlined">
-                          {/* <span class="icon">
-                          <img src="https://img.icons8.com/plasticine/100/000000/questions.png" />
-                        </span> */}
                           <span>ENQUIRY</span>
                         </a>
                       </div>
@@ -118,9 +112,6 @@ export default class Header extends React.Component {
                       onClick={() => this.updateLoginState(true)}
                     >
                       <a className="button is-rounded is-outlined">
-                        {/* <span class="icon">
-                          <img src="https://img.icons8.com/cotton/48/000000/login-rounded-right--v2.png" />
-                        </span> */}
                         <span>LOGIN</span>
                       </a>
                     </div>
@@ -135,7 +126,7 @@ export default class Header extends React.Component {
                       </a>
                     </div>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
