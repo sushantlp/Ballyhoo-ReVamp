@@ -100,11 +100,16 @@ export default class SaloonPackage extends React.Component {
 
                       <h4 className="fw2 fs1">
                         Price Range :{" "}
-                        <span className="sfc3 fs1-1">&#8377;{lessPrice}</span>
+                        <span className="fs1-1" style={{ color: "#635f5f" }}>
+                          &#8377;{lessPrice}
+                        </span>
                         {morePrice !== 0 ? (
                           <span>
                             -
-                            <span className="sfc3 fs1-1">
+                            <span
+                              className="fs1-1"
+                              style={{ color: "#635f5f" }}
+                            >
                               &#8377;{morePrice}
                             </span>
                           </span>
@@ -172,7 +177,10 @@ export default class SaloonPackage extends React.Component {
                               {value.price_caption}
                             </h4>
 
-                            <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                            <h5
+                              className="fw2 mt0-5 fs1-3"
+                              style={{ color: "#635f5f" }}
+                            >
                               ₹ {price}/-
                               {cutPrice === 0 ? null : (
                                 <span>
@@ -191,7 +199,9 @@ export default class SaloonPackage extends React.Component {
                           </div>
 
                           <div className="column is-2">
-                            <a className="button is-danger fr">BOOK</a>
+                            <a className="button is-danger fr" disabled>
+                              BOOK
+                            </a>
                           </div>
                         </div>
 

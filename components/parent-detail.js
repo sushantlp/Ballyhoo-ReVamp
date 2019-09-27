@@ -36,7 +36,11 @@ export default class ParentDetail extends React.Component {
                 />
               </div>
               <div className="column is-4 ">
-                <DetailCart />
+                <DetailCart
+                  categoryData={this.props.categoryData}
+                  foodCategoryData={this.props.foodCategoryData}
+                  detailUrlParam={this.props.detailUrlParam}
+                />
               </div>
             </div>
           </div>

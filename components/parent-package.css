@@ -222,3 +222,16 @@
 .not-allowed {
   cursor: not-allowed;
 }
+
+.parent-package-container .pr2:hover {
+  transform: scale(1.1);
+}
+
+.parent-package-container .pr3:hover {
+  transform: scale(1.1);
+}
+
+.parent-package-container #escape-img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}

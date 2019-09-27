@@ -38,8 +38,7 @@ export default class DetailTab extends React.Component {
               </a>
             </li>
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
-            this.props.foodCategoryData.foodCategoryData.offers.length > 0 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
               <li
                 className={
                   this.state.navigation === "Offers" ? "is-active" : ""
@@ -55,8 +54,7 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
-            this.props.foodCategoryData.foodCategoryData.packages.length > 0 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
               <li
                 className={
                   this.state.navigation === "Buffets" ? "is-active" : ""
@@ -72,8 +70,7 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
-            this.props.foodCategoryData.foodCategoryData.packages.length > 0 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
               <li
                 className={
                   this.state.navigation === "Packages" ? "is-active" : ""
@@ -103,8 +100,7 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
-            this.props.foodCategoryData.foodCategoryData.events.length > 0 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
               <li
                 className={
                   this.state.navigation === "Events" ? "is-active" : ""

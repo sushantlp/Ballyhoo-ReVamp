@@ -1,4 +1,5 @@
 import { Segment, Accordion, Icon } from "semantic-ui-react";
+import ReadMoreAndLess from "react-read-more-less";
 
 export default class EscapePackage extends React.Component {
   constructor(props) {
@@ -143,13 +144,18 @@ export default class EscapePackage extends React.Component {
                         {value.package_caption}
                       </h4>
 
-                      <h4 className="ffqs fw2 fs1">
-                        Price Range :{" "}
-                        <span className="sfc3 fs1-1">&#8377;{lessPrice}</span>
+                      <h4 className="ffqs fs1">
+                        <span> Price Range : </span>
+                        <span
+                          className="fs1-2 fw2"
+                          style={{ color: "#635f5f" }}
+                        >
+                          &#8377; {lessPrice}
+                        </span>
                         {morePrice !== 0 ? (
                           <span>
                             -
-                            <span className="sfc3 fs1-1">
+                            <span className="fs1-2 fw2">
                               &#8377;{morePrice}
                             </span>
                           </span>
@@ -186,8 +192,8 @@ export default class EscapePackage extends React.Component {
 
                   <div className="columns mb0">
                     <div className="column">
-                      <h4 className="ffqs fw2 fs1">
-                        Price Caption :{" "}
+                      <h4 className="ffqs fs1">
+                        <span>Price Caption : </span>
                         {value.price_captions.map((value, key) => {
                           return (
                             <span className="fw2 fs1-1" key={key}>
@@ -200,10 +206,23 @@ export default class EscapePackage extends React.Component {
                     </div>
                   </div>
 
-                  <div className="f14 ffqs">
+                  <div
+                    className="f14 ffqs plh1"
+                    style={{ whiteSpace: "pre-line" }}
+                  >
+                    <ReadMoreAndLess
+                      ref={this.ReadMore}
+                      className="read-more-content"
+                      charLimit={300}
+                      readMoreText="See more"
+                      readLessText="See less"
+                    >
+                      {value.package_inclusion}
+                    </ReadMoreAndLess>
+                    {/* 
                     <p style={{ whiteSpace: "pre-line" }}>
                       {value.package_inclusion}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -218,7 +237,7 @@ export default class EscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/bungalow.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                       />
                     )}
 
@@ -234,7 +253,7 @@ export default class EscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/around-the-globe.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "0.3em" }}
                       />
                     )}
@@ -251,7 +270,7 @@ export default class EscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/tripadvisor.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "1em" }}
                       />
                     )}
@@ -268,7 +287,7 @@ export default class EscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/sandwich.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "1em" }}
                       />
                     )}
@@ -285,7 +304,7 @@ export default class EscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/parachute.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "0.7em" }}
                       />
                     )}
@@ -319,7 +338,10 @@ export default class EscapePackage extends React.Component {
                               {list.price_caption}
                             </h4>
 
-                            <h5 className="fw2 sfc3 fs1-3">
+                            <h5
+                              className="fw2 fs1-3"
+                              style={{ color: "#635f5f" }}
+                            >
                               ₹ {price}/-
                               {cutPrice === 0 ? null : (
                                 <span>
@@ -338,11 +360,15 @@ export default class EscapePackage extends React.Component {
                           </div>
 
                           <div className="column is-2">
-                            <a className="button is-danger fr">BOOK</a>
+                            <a className="button is-danger fr" disabled>
+                              BOOK
+                            </a>
                           </div>
 
                           <div className="column is-2">
-                            <a className="button is-warning fr">SEND QUERY</a>
+                            <a className="button is-warning fr" disabled>
+                              SEND QUERY
+                            </a>
                           </div>
                         </div>
 

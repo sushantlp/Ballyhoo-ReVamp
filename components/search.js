@@ -173,7 +173,7 @@ export default class Search extends React.Component {
 
               <div className="column is-6">
                 <Dropdown
-                  placeholder="Search"
+                  placeholder="Explore"
                   search
                   fluid
                   selection

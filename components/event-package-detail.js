@@ -1,4 +1,5 @@
 import moment from "moment";
+import ReadMoreAndLess from "react-read-more-less";
 import { Segment } from "semantic-ui-react";
 export default class EventPackage extends React.Component {
   constructor(props) {
@@ -143,15 +144,21 @@ export default class EventPackage extends React.Component {
 
                             <h4 className="fw2 fs1">
                               Price Range :{" "}
-                              <span className="sfc3 fs1-1">
+                              <span
+                                className="fs1-1"
+                                style={{ color: "#635f5f" }}
+                              >
                                 {" "}
-                                &#8377;{lessPrice}
+                                &#8377; {lessPrice}
                               </span>
                               {morePrice !== 0 ? (
                                 <span>
                                   -
-                                  <span className="sfc3 fs1-1">
-                                    &#8377;{morePrice}
+                                  <span
+                                    className="fs1-1"
+                                    style={{ color: "#635f5f" }}
+                                  >
+                                    &#8377; {morePrice}
                                   </span>
                                 </span>
                               ) : null}
@@ -188,10 +195,19 @@ export default class EventPackage extends React.Component {
                           </div>
                         </div>
 
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
+                        <div
+                          className="f14 ffqs plh1"
+                          style={{ whiteSpace: "pre-line" }}
+                        >
+                          <ReadMoreAndLess
+                            ref={this.ReadMore}
+                            className="read-more-content"
+                            charLimit={300}
+                            readMoreText="See more"
+                            readLessText="See less"
+                          >
                             {list.package_inclusion}
-                          </p>
+                          </ReadMoreAndLess>
                         </div>
                       </div>
                     </div>
@@ -221,7 +237,10 @@ export default class EventPackage extends React.Component {
                                     {money.price_caption}
                                   </h4>
 
-                                  <h5 className="fw2 sfc3 mt0-5 fs1-3">
+                                  <h5
+                                    className="fw2 mt0-5 fs1-3"
+                                    style={{ color: "#635f5f" }}
+                                  >
                                     ₹ {price}/-
                                     {cutPrice === 0 ? null : (
                                       <span>
@@ -240,11 +259,13 @@ export default class EventPackage extends React.Component {
                                 </div>
 
                                 <div className="column is-2">
-                                  <a className="button is-danger fr">BOOK</a>
+                                  <a className="button is-danger fr" disabled>
+                                    BOOK
+                                  </a>
                                 </div>
                               </div>
 
-                              <div className="f14 ffqs">
+                              <div className="f14 ffqs plh1">
                                 <p style={{ whiteSpace: "pre-line" }}>
                                   {money.price_inclusion}
                                 </p>

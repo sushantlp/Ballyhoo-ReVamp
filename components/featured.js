@@ -69,10 +69,6 @@ function SamplePrevArrow(props) {
 }
 
 export default class Featured extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   onClickFeatured = (featured, props) => {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
@@ -106,8 +102,10 @@ export default class Featured extends React.Component {
             size="large"
             style={{
               // boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-              width: "230px",
-              height: "330px",
+              // width: "230px",
+              // height: "330px",
+              width: "85%",
+              height: "85%",
               borderWidth: "0.1em",
               borderStyle: "solid",
               borderColor: "rgba(60,59,59,1)"
@@ -131,7 +129,7 @@ export default class Featured extends React.Component {
 
     const settings = {
       dots: true,
-      infinite: false,
+      infinite: true,
       slidesToShow: 4,
       slidesToScroll: 4,
       className: "featured-slick",

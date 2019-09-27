@@ -84,7 +84,7 @@ const FoodPackageDetail = props => {
                         <ReadMoreAndLess
                           ref={props.ReadMore}
                           className="read-more-content"
-                          charLimit={400}
+                          charLimit={200}
                           readMoreText="See more"
                           readLessText="See less"
                         >
@@ -98,7 +98,10 @@ const FoodPackageDetail = props => {
                 <footer className="card-footer">
                   <div className="card-footer-item">
                     <span className="span-flex">
-                      <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
+                      <h5
+                        className="m0 f24 fw9 flh28"
+                        style={{ color: "#635f5f" }}
+                      >
                         ₹ {price}/-
                         {cutPrice === 0 ? null : (
                           <span className="f12 pfc3 tdl ml8">
@@ -110,7 +113,7 @@ const FoodPackageDetail = props => {
                   </div>
 
                   <div className="card-footer-item">
-                    <a className="button is-medium is-danger">
+                    <a className="button is-medium is-danger" disabled>
                       <span>Book</span>
                     </a>
                   </div>

@@ -151,7 +151,8 @@ export default class ExculsiveEscapePackage extends React.Component {
                       </h4>
 
                       <h5 className="fw2 ffqs fs1-3">
-                        Price : <span className="sfc3">₹ {price}/-</span>
+                        Price :{" "}
+                        <span style={{ color: "#635f5f" }}>₹ {price}/-</span>
                         {cutPrice === 0 ? null : (
                           <span>
                             <span
@@ -194,11 +195,14 @@ export default class ExculsiveEscapePackage extends React.Component {
                     </div>
                   </div>
 
-                  <div className="f14 ffqs" style={{ whiteSpace: "pre-line" }}>
+                  <div
+                    className="f14 ffqs plh1"
+                    style={{ whiteSpace: "pre-line" }}
+                  >
                     <ReadMoreAndLess
                       ref={this.ReadMore}
                       className="read-more-content"
-                      charLimit={300}
+                      charLimit={200}
                       readMoreText="See more"
                       readLessText="See less"
                     >
@@ -218,7 +222,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/25/000000/bungalow.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                       />
                     )}
                     <p className="f12 text-center">Stay</p>
@@ -233,7 +237,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/25/000000/around-the-globe.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "0.3em" }}
                       />
                     )}
@@ -249,7 +253,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/25/000000/tripadvisor.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "1.2em" }}
                       />
                     )}
@@ -265,7 +269,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/25/000000/sandwich.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "0.7em" }}
                       />
                     )}
@@ -281,7 +285,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                     ) : (
                       <img
                         src="https://img.icons8.com/color/25/000000/parachute.png"
-                        className="blur not-allowed"
+                        id="escape-img"
                         style={{ paddingLeft: "0.8em" }}
                       />
                     )}
@@ -291,11 +295,15 @@ export default class ExculsiveEscapePackage extends React.Component {
               </div>
 
               <div className="card-footer-item">
-                <a className="button is-danger fr">BOOK</a>
+                <a className="button is-danger fr" disabled>
+                  BOOK
+                </a>
               </div>
 
               <div className="card-footer-item">
-                <a className="button is-warning fr">SEND QUERY</a>
+                <a className="button is-warning fr" disabled>
+                  SEND QUERY
+                </a>
               </div>
             </footer>
           </div>

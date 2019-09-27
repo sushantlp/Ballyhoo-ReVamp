@@ -12,10 +12,12 @@ import "./detail-cart.css";
 export default class DetailCart extends React.Component {
   constructor(props) {
     super(props);
+    let date = new Date();
     this.state = {
       scrolling: false,
-      date: new Date(),
+      date: date,
       time: "10:00"
+      // time: `${date.getHours()}:${date.getMinutes()}`
     };
   }
 
@@ -42,6 +44,13 @@ export default class DetailCart extends React.Component {
   };
 
   render() {
+    const price =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.cost_for_two
+        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
+        ? this.props.categoryData.categoryData.details.offer_min_price
+        : null;
+
     return (
       <div
         className="detail-cart-container"
@@ -49,9 +58,7 @@ export default class DetailCart extends React.Component {
           top: this.state.scrolling ? "6em" : "0"
         }}
       >
-        <Segment style={{ borderTop: "4px solid #ff3860" }}>
-    
-
+        <Segment style={{ borderTop: "4px solid #ff3860" }} disabled>
           <div className="columns">
             <div className="column is-4">
               <h4 className="ffqs fs1-5 fw2">Date :</h4>
@@ -130,12 +137,14 @@ export default class DetailCart extends React.Component {
         
           </Segment> */}
 
-          <h4>
-            <span className="ffqs fw2 f24">Total : </span>
-            <span className="float-right fw2 f24">
-              <span> &#8377;</span> 2,365{" "}
-            </span>
-          </h4>
+          {price !== null ? (
+            <h4>
+              <span className="ffqs fw2 f24">Total : </span>
+              <span className="float-right fw2 f24">
+                <span> &#8377;</span> {price}{" "}
+              </span>
+            </h4>
+          ) : null}
 
           <a className="button cart-button ffqs">Procced</a>
           <p className="ffqs align">You won’t be charged yet</p>

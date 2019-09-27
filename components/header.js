@@ -98,7 +98,7 @@ export default class Header extends React.Component {
                   {/* <Link href="/profile"> */}
                   <div className="control">
                     <div className="buttons">
-                      <a className="button is-rounded is-outlined">
+                      <a className="button is-rounded is-outlined" disabled>
                         <span>STORIES</span>
                       </a>
                     </div>
@@ -110,7 +110,7 @@ export default class Header extends React.Component {
                   {/* <Link href="/enquiry"> */}
                   <div className="control">
                     <div className="buttons">
-                      <a className="button is-rounded is-outlined">
+                      <a className="button is-rounded is-outlined" disabled>
                         <span>ENQUIRY</span>
                       </a>
                     </div>
@@ -124,7 +124,7 @@ export default class Header extends React.Component {
                       className="buttons"
                       // onClick={() => this.updateLoginState(true)}
                     >
-                      <a className="button is-rounded is-outlined">
+                      <a className="button is-rounded is-outlined" disabled>
                         <span>LOGIN</span>
                       </a>
                     </div>
@@ -134,7 +134,7 @@ export default class Header extends React.Component {
                 <div className="navbar-item">
                   {/* <Link href="/explore"> */}
                   <div className="control">
-                    <a className="button is-outlined is-rounded">
+                    <a className="button is-outlined is-rounded" disabled>
                       PLAN MY HOLIDAY
                     </a>
                   </div>

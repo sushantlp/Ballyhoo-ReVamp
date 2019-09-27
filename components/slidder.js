@@ -234,7 +234,7 @@ export default class Slidder extends React.Component {
 
               <div className="column is-6">
                 <Dropdown
-                  placeholder="Keyword"
+                  placeholder="Explore"
                   search
                   fluid
                   selection

@@ -1,3 +1,4 @@
+import { Segment } from "semantic-ui-react";
 import "./filter.css";
 import "bulma-checkradio";
 
@@ -41,12 +42,12 @@ export default class Filter extends React.Component {
           cursor: "not-allowed"
         }}
       >
-        <div
-          className="box"
-          style={{
-            pointerEvents: "none",
-            cursor: "not-allowed"
-          }}
+        <Segment
+          disabled
+          // style={{
+          //   pointerEvents: "none",
+          //   cursor: "not-allowed"
+          // }}
         >
           {parseInt(this.props.urlParam.response_type, 10) === 1 ? (
             <React.Fragment>
@@ -444,7 +445,7 @@ export default class Filter extends React.Component {
               </div>
             </React.Fragment>
           ) : null}
-        </div>
+        </Segment>
       </div>
     );
   }
