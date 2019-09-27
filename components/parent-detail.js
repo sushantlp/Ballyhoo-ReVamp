@@ -50,6 +50,7 @@ export default class ParentDetail extends React.Component {
           featuring={this.props.featuring}
           routeParam={this.props.routeParam}
           cityLocality={this.props.cityLocality}
+          changeLoadingState={this.props.changeLoadingState}
         />
       </React.Fragment>
     );

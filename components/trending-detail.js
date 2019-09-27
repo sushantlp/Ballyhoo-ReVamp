@@ -77,6 +77,7 @@ export default class TrendingDetail extends React.Component {
   // }
 
   onClickFeature = feature => {
+    this.props.changeLoadingState();
     const city = this.props.routeParam.city;
     const title = feature.title.replace(/ /g, "-").toLowerCase();
 

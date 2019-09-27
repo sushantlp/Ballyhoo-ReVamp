@@ -15,7 +15,7 @@ import { host } from "../constants";
 
 import Head from "../components/head";
 import Header from "../components/header";
-import SubHeader from "../components/sub-header";
+// import SubHeader from "../components/sub-header";
 import Slidder from "../components/slidder";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
@@ -26,7 +26,7 @@ import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-import Space from "../components/loading-space";
+// import Space from "../components/loading-space";
 import Spinner from "../components/spinner";
 
 import { getsearchData } from "../actions/search-data-action";

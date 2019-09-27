@@ -12,12 +12,12 @@ import { host } from "../constants";
 
 import Head from "../components/head";
 import Header from "../components/header";
-import SubHeader from "../components/sub-header";
+// import SubHeader from "../components/sub-header";
 import DetailSlider from "../components/detail-slider";
 import ParentDetail from "../components/parent-detail";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-import styled from "styled-components";
+import Spinner from "../components/spinner";
 
 import { getCityLocality } from "../actions/city-locality-action";
 import { getSlidderImage } from "../actions/slidder-image-action";
@@ -37,7 +37,6 @@ class Detail extends React.Component {
 
     try {
       if (isServer) {
-        console.log("IFFFFFF");
         if (
           req.hasOwnProperty("params") &&
           req.params.hasOwnProperty("secret") &&
@@ -56,9 +55,8 @@ class Detail extends React.Component {
             api_type: slice[3],
             key: slice[4]
           };
-          console.log("Slicesssssssssssss" + slice[3]);
-          // const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
-          const key = 100;
+
+          const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
 
           if (parseInt(slice[1], 10) === 1) {
             // Food Category Api
@@ -126,6 +124,13 @@ class Detail extends React.Component {
     return { detailUrlParam, routeParam };
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+  }
+
   componentDidMount() {
     ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
@@ -140,7 +145,25 @@ class Detail extends React.Component {
     }
   }
 
+  changeLoadingState = () => {
+    ReactDOM.findDOMNode(this).scrollIntoView();
+    this.setState({
+      isLoading: !this.state.isLoading
+    });
+  };
+
   render() {
+    if (this.state.isLoading)
+      return (
+        <React.Fragment>
+          <Head title="Home" />
+          <Header />
+          <Spinner />
+          <Headout />
+          <Footer cityLocality={this.props.cityLocality} />
+        </React.Fragment>
+      );
+
     return (
       <React.Fragment>
         <Head title="Home" />
@@ -158,6 +181,7 @@ class Detail extends React.Component {
           featuring={this.props.featuring}
           routeParam={this.props.routeParam}
           cityLocality={this.props.cityLocality}
+          changeLoadingState={this.changeLoadingState}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

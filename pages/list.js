@@ -19,7 +19,7 @@ import Header from "../components/header";
 import ParentList from "../components/parent-list";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-import Space from "../components/loading-space";
+// import Space from "../components/loading-space";
 import Spinner from "../components/spinner";
 
 import {
@@ -248,6 +248,7 @@ class List extends React.Component {
 
   foodCategoryApiCall = (partnerId, key) => {
     this.changeLoadingState();
+    key = parseInt(this.props.urlParam.urlParam.api_type, 10) !== 3 ? 0 : key;
     this.props.getFoodCategoryDataApi(partnerId, key);
   };
 

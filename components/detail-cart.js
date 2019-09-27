@@ -12,12 +12,14 @@ import "./detail-cart.css";
 export default class DetailCart extends React.Component {
   constructor(props) {
     super(props);
+
     let date = new Date();
+
     this.state = {
       scrolling: false,
       date: date,
-      time: "10:00"
-      // time: `${date.getHours()}:${date.getMinutes()}`
+      //time: "10:00"
+      time: `${date.getHours()}:${date.getMinutes()}`
     };
   }
 
