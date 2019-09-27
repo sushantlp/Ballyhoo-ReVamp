@@ -3,8 +3,8 @@ const SpaList = props => {
 
   return list.map((list, key) => {
     let description = list.offer_description;
-    if (description.length >= 250) {
-      description = description.slice(0, 250) + " ...";
+    if (description.length >= 230) {
+      description = description.slice(0, 230) + " ...";
     }
 
     let fullRating = [];
@@ -143,8 +143,8 @@ const SpaList = props => {
                   </div>
                 </div>
 
-                <div className="css-clzwav f12 m0 fw4">
-                  <p className="lh1-7">{description}</p>
+                <div className="css-clzwav m0 fw4">
+                  <p className="fs1-1">{description}</p>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ const SpaList = props => {
           <footer className="card-footer">
             <div className="card-footer-item">
               <span
-                className="span-flex cursor"
+                className="span-flex"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 {list.offer_gender_preference === 1 ? (

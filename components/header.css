@@ -39,3 +39,20 @@
   font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
 }
+
+.header-container .brand-title {
+  font-size: 1.7rem;
+  color: #463853;
+  transition-duration: 172ms;
+  will-change: transform;
+  font-family: "Quicksand", sans-serif;
+  /* font-weight: 300; */
+}
+
+.header-container .brand-icon {
+  width: 56px;
+  /* height: 56px; */
+  margin-right: 1rem;
+  transition-duration: 172ms;
+  will-change: width, height, margin-right;
+}

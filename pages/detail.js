@@ -34,8 +34,10 @@ class Detail extends React.Component {
     let detailUrlParam = {};
     let slice = [];
     let routeParam = [];
+
     try {
       if (isServer) {
+        console.log("IFFFFFF");
         if (
           req.hasOwnProperty("params") &&
           req.params.hasOwnProperty("secret") &&
@@ -54,8 +56,9 @@ class Detail extends React.Component {
             api_type: slice[3],
             key: slice[4]
           };
-
-          const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
+          console.log("Slicesssssssssssss" + slice[3]);
+          // const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
+          const key = 100;
 
           if (parseInt(slice[1], 10) === 1) {
             // Food Category Api
@@ -91,7 +94,7 @@ class Detail extends React.Component {
       }
 
       const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
-      console.log(key);
+
       const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
       // Also Feature
       featureJson = await fetch(

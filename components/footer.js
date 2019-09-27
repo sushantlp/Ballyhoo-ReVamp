@@ -13,7 +13,7 @@ const Footer = props => {
         <div className="columns">
           <div className="column is-5 is-4-widescreen">
             <div className="footer-rightside-summary">
-              <Link href="/" prefetch>
+              <Link href="/">
                 <a className="brand" href="/">
                   <div className="brand-icon">
                     <img
@@ -74,7 +74,7 @@ const Footer = props => {
                     {city.map((value, key) => {
                       return (
                         <li key={key}>
-                          <a>{value.city_name}</a>
+                          <a href="/">{value.city_name}</a>
                         </li>
                       );
                     })}
@@ -86,25 +86,19 @@ const Footer = props => {
                   <p className="menu-label"> Company </p>
                   <ul className="menu-list">
                     <li>
-                      <Link href="/about" prefetch>
-                        {/* <a href="/about" target="_blank"> */}
+                      <a href="/about" target="_blank">
                         About Ballyhoo
-                        {/* </a> */}
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link href="/term" prefetch>
-                        {/* <a href="/term" target="_blank"> */}
+                      <a href="/term" target="_blank">
                         Terms &amp; Conditions
-                        {/* </a> */}
-                      </Link>
+                      </a>
                     </li>
                     <li>
-                      <Link href="/privacy" prefetch>
-                        {/* <a href="/privacy" target="_blank"> */}
+                      <a href="/privacy" target="_blank">
                         Privacy Policy
-                        {/* </a> */}
-                      </Link>
+                      </a>
                     </li>
                     {/* <li>
                       <a href="/" target="_blank">
@@ -112,11 +106,9 @@ const Footer = props => {
                       </a>
                     </li> */}
                     <li>
-                      <Link href="/faq" prefetch>
-                        {/* <a href="/faq" target="_blank"> */}
+                      <a href="/faq" target="_blank">
                         FAQ's
-                        {/* </a> */}
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -183,7 +175,8 @@ const Footer = props => {
 
         <div className="content has-text-centered">
           <p className="copyright">
-            Copyright © 2019, <strong>Ballyhoo</strong> All rights reserved.
+            Copyright © 2019, <strong>Ballyhoo Today</strong> All rights
+            reserved.
           </p>
         </div>
       </div>

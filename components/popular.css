@@ -17,18 +17,20 @@
 }
 
 .tiletext {
-  vertical-align: middle;
-  text-align: center;
+  /* vertical-align: middle;
+  text-align: center; */
   color: white;
-  padding: 5px;
-  margin-top: 190px;
+  /* padding: 5px; */
+  /* margin-top: 190px; */
+  margin-top: 7em;
   -webkit-text-stroke: 0.01em white;
   text-stroke: 0.01em white;
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
+  font-size: 120%;
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
   position: absolute;
-  bottom: 100px;
+  /* bottom: 100px; */
 }
 
 .tiletext-hover {
@@ -67,8 +69,8 @@
 
 .t1:hover {
   transform: scale(1.1);
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   cursor: pointer;
 }
 
@@ -86,8 +88,10 @@
 }
 
 .t2:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  /* -webkit-filter: grayscale(50%); 
+  filter: grayscale(50%); */
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -106,8 +110,8 @@
 }
 
 .t3:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -124,8 +128,8 @@
 }
 
 .t4:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -142,8 +146,8 @@
 }
 
 .t5:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -161,8 +165,8 @@
 }
 
 .t6:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -179,8 +183,8 @@
 }
 
 .t7:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -197,8 +201,8 @@
 }
 
 .t8:hover {
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(50%);
+  -webkit-filter: blur(0.2em);
+  filter: blur(0.2em);
   transform: scale(1.1);
   cursor: pointer;
 }

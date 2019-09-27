@@ -52,13 +52,26 @@ export default class Header extends React.Component {
         >
           <div className="container">
             <div className="navbar-brand">
-              <a className="navbar-item" href="/">
+              {/* <a className="navbar-item" href="/">
                 <img
                   src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
                   alt="Bulma: Free, open source, &amp; modern CSS framework based on Flexbox"
                   // width="112"
                   // height="28"
                 />
+              </a> */}
+
+              <a className="brand" href="/">
+                <div className="brand-icon">
+                  <img
+                    alt="Ballyhoo"
+                    role="presentation"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
+                  />
+                </div>
+                <div className="brand-content">
+                  <div className="brand-title">Ballyhoo Today</div>
+                </div>
               </a>
 
               <div
@@ -74,12 +87,6 @@ export default class Header extends React.Component {
 
             <div id="navMenuExpo" className="navbar-menu">
               <div className="navbar-end">
-                <div className="navbar-item">
-                  <div className="control" id="header">
-                    Ballyhoo Today
-                  </div>
-                </div>
-
                 {/* <div className="navbar-item">
                   <span className="call-now-img">
                     <img src="https://img.icons8.com/color/20/000000/ringer-volume.png" />
@@ -87,35 +94,35 @@ export default class Header extends React.Component {
                   <span className="call-now-number">1800-123-5555</span>
                 </div> */}
 
-                {/* <div className="navbar-item">
-                  <Link href="/profile">
-                    <div className="control">
-                      <div className="buttons">
-                        <a className="button is-rounded is-outlined">
-                          <span>STORIES</span>
-                        </a>
-                      </div>
+                <div className="navbar-item">
+                  {/* <Link href="/profile"> */}
+                  <div className="control">
+                    <div className="buttons">
+                      <a className="button is-rounded is-outlined">
+                        <span>STORIES</span>
+                      </a>
                     </div>
-                  </Link>
+                  </div>
+                  {/* </Link> */}
                 </div>
 
                 <div className="navbar-item">
-                  <Link href="/enquiry">
-                    <div className="control">
-                      <div className="buttons">
-                        <a className="button is-rounded is-outlined">
-                          <span>ENQUIRY</span>
-                        </a>
-                      </div>
+                  {/* <Link href="/enquiry"> */}
+                  <div className="control">
+                    <div className="buttons">
+                      <a className="button is-rounded is-outlined">
+                        <span>ENQUIRY</span>
+                      </a>
                     </div>
-                  </Link>
+                  </div>
+                  {/* </Link> */}
                 </div>
 
                 <div className="navbar-item">
                   <div className="control">
                     <div
                       className="buttons"
-                      onClick={() => this.updateLoginState(true)}
+                      // onClick={() => this.updateLoginState(true)}
                     >
                       <a className="button is-rounded is-outlined">
                         <span>LOGIN</span>
@@ -125,14 +132,14 @@ export default class Header extends React.Component {
                 </div>
 
                 <div className="navbar-item">
-                  <Link href="/explore">
-                    <div className="control">
-                      <a className="button is-outlined is-rounded">
-                        PLAN MY HOLIDAY
-                      </a>
-                    </div>
-                  </Link>
-                </div> */}
+                  {/* <Link href="/explore"> */}
+                  <div className="control">
+                    <a className="button is-outlined is-rounded">
+                      PLAN MY HOLIDAY
+                    </a>
+                  </div>
+                  {/* </Link> */}
+                </div>
               </div>
             </div>
           </div>
