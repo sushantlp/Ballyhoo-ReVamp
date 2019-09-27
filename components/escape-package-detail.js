@@ -6,7 +6,8 @@ export default class EscapePackage extends React.Component {
     super(props);
     this.state = {
       activeIndex: -1,
-      packages: []
+      packages: [],
+      keyIndex: -1
     };
   }
 
@@ -40,14 +41,20 @@ export default class EscapePackage extends React.Component {
     let indexData = [];
     let packages = [];
 
-    for (let i = 0; i < this.props.package.length; i++) {
-      indexData =
-        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
-          ? this.props.package[i].price_list
-          : [];
+    if (parseInt(this.state.keyIndex, 10) !== parseInt(key, 10)) {
+      for (let i = 0; i < this.props.package.length; i++) {
+        indexData =
+          parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
+            ? this.props.package[i].price_list
+            : [];
 
-      if (indexData.length !== 0) break;
+        if (indexData.length !== 0) break;
+      }
     }
+
+    this.setState({
+      keyIndex: key
+    });
 
     for (let i = 0; i < this.props.package.length; i++) {
       let obj = {};

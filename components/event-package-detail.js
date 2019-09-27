@@ -5,7 +5,8 @@ export default class EventPackage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      packages: []
+      packages: [],
+      keyIndex: -1
     };
   }
 
@@ -48,24 +49,29 @@ export default class EventPackage extends React.Component {
   initializePriceList = (dateId, packageId) => {
     let indexData = [];
 
-    for (let i = 0; i < this.props.package.length; i++) {
-      if (
-        parseInt(this.props.package[i].package_date_id, 10) ===
-        parseInt(dateId, 10)
-      ) {
-        for (let j = 0; j < this.props.package[i].package_list.length; j++) {
-          indexData =
-            parseInt(this.props.package[i].package_list[j].package_id, 10) ===
-            parseInt(packageId, 10)
-              ? this.props.package[i].package_list[j].price_list
-              : [];
+    if (parseInt(this.state.keyIndex, 10) !== parseInt(dateId, 10)) {
+      for (let i = 0; i < this.props.package.length; i++) {
+        if (
+          parseInt(this.props.package[i].package_date_id, 10) ===
+          parseInt(dateId, 10)
+        ) {
+          for (let j = 0; j < this.props.package[i].package_list.length; j++) {
+            indexData =
+              parseInt(this.props.package[i].package_list[j].package_id, 10) ===
+              parseInt(packageId, 10)
+                ? this.props.package[i].package_list[j].price_list
+                : [];
 
-          if (indexData.length !== 0) break;
+            if (indexData.length !== 0) break;
+          }
         }
       }
     }
 
-    console.log(indexData);
+    this.setState({
+      keyIndex: dateId
+    });
+
     let packages = this.props.package.map((list, key) => {
       let obj = {};
       obj.package_date_id = list.package_date_id;

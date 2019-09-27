@@ -4,7 +4,9 @@ export default class SaloonPackage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      packages: []
+      packages: [],
+      keyIndex: -1,
+      bool: true
     };
   }
 
@@ -18,6 +20,7 @@ export default class SaloonPackage extends React.Component {
       obj.package_inclusion = this.props.package[i].package_inclusion;
       obj.price_captions = this.props.package[i].price_captions;
       obj.price_ranges = this.props.package[i].price_ranges;
+
       obj.price_list = [];
       packages.push(obj);
     }
@@ -34,14 +37,20 @@ export default class SaloonPackage extends React.Component {
     let indexData = [];
     let packages = [];
 
-    for (let i = 0; i < this.props.package.length; i++) {
-      indexData =
-        parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
-          ? this.props.package[i].price_list
-          : [];
+    if (parseInt(this.state.keyIndex, 10) !== parseInt(key, 10)) {
+      for (let i = 0; i < this.props.package.length; i++) {
+        indexData =
+          parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
+            ? this.props.package[i].price_list
+            : [];
 
-      if (indexData.length !== 0) break;
+        if (indexData.length !== 0) break;
+      }
     }
+
+    this.setState({
+      keyIndex: key
+    });
 
     for (let i = 0; i < this.props.package.length; i++) {
       let obj = {};
