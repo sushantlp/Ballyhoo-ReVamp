@@ -64,8 +64,8 @@ const FoodBrewery = props => {
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7" id="li">
-                      <img src="https://img.icons8.com/color/17/000000/hearts.png" />
+                    <span className="tag radius20 fw7 padding1-4-1" id="li">
+                      <img src="https://img.icons8.com/color/20/000000/hearts.png" />
                       <span className="ellipsis pl0_5">
                         {list.p_popularity} %
                       </span>
@@ -143,9 +143,9 @@ const FoodBrewery = props => {
             <div className="card-footer-item">
               <span
                 className="span-flex pt0-5 pb0-5"
-                onClick={() =>
-                  props.foodCategoryApiCall(list.p_id, props.urlParam.key)
-                }
+                // onClick={() =>
+                //   props.foodCategoryApiCall(list.p_id, props.urlParam.key)
+                // }
               >
                 <span className="pr2">
                   <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjUiIGhlaWdodD0iMjUiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjQjBCRUM1IiBkPSJNNDYgMjFMNDMgMjEgNDMgMTggNDAgMTggNDAgMTUgNDYgMTV6TTQ2IDM2TDQzIDM2IDQzIDM5IDQwIDM5IDQwIDQyIDQ2IDQyek0xNiAzNkwxMyAzNiAxMyA0MiAxOSA0MiAxOSAzOSAxNiAzOXpNMTMgMzBIMTZWMzNIMTN6TTEzIDI0SDE2VjI3SDEzek00MyAzMEg0NlYzM0g0M3pNNDMgMjRINDZWMjdINDN6TTM0IDE1SDM3VjE4SDM0ek0zNCAzOUgzN1Y0MkgzNHpNMjggMTVIMzFWMThIMjh6TTIyIDE1SDI1VjE4SDIyek0yOCAzOUgzMVY0MkgyOHpNMjIgMzlIMjVWNDJIMjJ6Ij48L3BhdGg+PGc+PHBhdGggZmlsbD0iIzE1NjVDMCIgZD0iTTIsOWMwLDIuMjA5LDEuNzkxLDQsNCw0czQtMS43OTEsNC00UzguMjA5LDUsNiw1UzIsNi43OTEsMiw5eiBNNC40NDYsNy42MjFDNC43OTYsNy4yMjUsNS4zMDgsNyw1Ljg1Miw3YzEuMTEyLDAsMi4wMDgsMC43NjIsMi4xMzMsMS44MTRjMC4wNywwLjU4NC0wLjEwNSwxLjE2Ni0wLjQ4LDEuNTkyQzcuMTY1LDEwLjc4OSw2LjcwNiwxMSw2LjIwNiwxMWMtMS4wOCwwLTIuMDY0LTAuODc1LTIuMTkyLTEuOTQ3QzMuOTUsOC41Miw0LjEwNCw4LjAxMiw0LjQ0Niw3LjYyMXoiPjwvcGF0aD48cGF0aCBmaWxsPSIjMTU2NUMwIiBkPSJNNiwxMi43MDljLTAuMDI3LDAtMC4wNTItMC4wMDgtMC4wNzktMC4wMDhjMi4wNjIsMC44MTQsNC4xODYsMS42ODYsNS45MzgsNC44NzNjMC4wNCwwLjA3LDAuMDk0LDAuMTMzLDAuMTYsMC4xOGwxMC4zNjIsNy4yNDRjMC4wNTIsMC4wMzksMS41NjQsMC45OTgsMy40MjIsMC45OThjMS4wMTUsMCwxLjkzNC0wLjE2MiwyLjczNS0wLjgxOEwyOSwyNC42NThsLTE0LjU3OC0xMC41N2MtMC4xOTYtMC4xMjMtMy44OTgtMi4zNzctNC43ODQtMi44NTRjLTAuMDM2LTAuMDItMC4xODctMC4xMDUtMC4zODEtMC4yMTdDOC41MzIsMTIuMDM5LDcuMzQ3LDEyLjcwOSw2LDEyLjcwOXoiPjwvcGF0aD48L2c+PGc+PHBhdGggZmlsbD0iIzIxOTZGMyIgZD0iTTYsMjcuOTk2YzIuMjA5LDAsNC0xLjc5MSw0LTRzLTEuNzkxLTQtNC00cy00LDEuNzkxLTQsNFMzLjc5MSwyNy45OTYsNiwyNy45OTZ6IE00LjAxNCwyMy45NDNjMC4xMjgtMS4wNzIsMS4xMTItMS45NDcsMi4xOTItMS45NDdjMC41LDAsMC45NTksMC4yMTEsMS4yOTgsMC41OTRjMC4zNzUsMC40MjYsMC41NTEsMS4wMDgsMC40OCwxLjU5MmMtMC4xMjUsMS4wNTMtMS4wMjEsMS44MTQtMi4xMzMsMS44MTRjLTAuNTQ0LDAtMS4wNTYtMC4yMjUtMS40MDUtMC42MjFDNC4xMDQsMjQuOTg0LDMuOTUsMjQuNDc3LDQuMDE0LDIzLjk0M3oiPjwvcGF0aD48cGF0aCBmaWxsPSIjMjE5NkYzIiBkPSJNMjguNTM5LDcuODE4QzI3LjczNyw3LjE2MiwyNi44MTgsNywyNS44MDQsN2MtMS44NTcsMC0zLjM3LDAuOTU5LTMuNDIyLDAuOTk4TDEyLjAyLDE1LjI0MmMtMC4wNjYsMC4wNDctMC4xMiwwLjEwOS0wLjE2LDAuMThjLTEuNzUzLDMuMTg4LTMuODc3LDQuMDU5LTUuOTM4LDQuODczYzAuMDI3LDAsMC4wNTItMC4wMDgsMC4wNzktMC4wMDhjMS4zNDcsMCwyLjUzMiwwLjY3LDMuMjU3LDEuNjkxYzAuMTk0LTAuMTExLDAuMzQ1LTAuMTk3LDAuMzgxLTAuMjE3YzAuODg2LTAuNDc3LDQuNTg4LTIuNzMsNC43ODQtMi44NTRMMjksOC4zMzhMMjguNTM5LDcuODE4eiBNMTQuMzI1LDE2Ljk5NmMtMC4zNzMsMC0wLjY3Ni0wLjMwMy0wLjY3Ni0wLjY3NmMwLTAuMzcxLDAuMzAzLTAuNjc0LDAuNjc2LTAuNjc0YzAuMzcxLDAsMC42NzUsMC4zMDMsMC42NzUsMC42NzRDMTUsMTYuNjkzLDE0LjY5NiwxNi45OTYsMTQuMzI1LDE2Ljk5NnoiPjwvcGF0aD48L2c+PC9zdmc+" />

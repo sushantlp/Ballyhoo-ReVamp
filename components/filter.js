@@ -37,22 +37,20 @@ export default class Filter extends React.Component {
       <div
         className="filter-container"
         style={{
-          top: this.state.scrolling ? "1em" : "0",
-          pointerEvents: "none",
-          cursor: "not-allowed"
+          top: this.state.scrolling ? "1em" : "0"
         }}
       >
-        <Segment
-          disabled
-          // style={{
-          //   pointerEvents: "none",
-          //   cursor: "not-allowed"
-          // }}
-        >
+        <Segment disabled>
           {parseInt(this.props.urlParam.response_type, 10) === 1 ? (
             <React.Fragment>
               <h3 className="google mb1-5 mt0-5">Package</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -98,7 +96,13 @@ export default class Filter extends React.Component {
               </div>
               {/* <div className="divider" /> */}
               <h3 className="google mb1-5">Food</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -140,7 +144,13 @@ export default class Filter extends React.Component {
             <React.Fragment>
               {" "}
               <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -185,7 +195,13 @@ export default class Filter extends React.Component {
                 </div>
               </div>
               <h3 className="google mb1-5">Date</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -216,7 +232,13 @@ export default class Filter extends React.Component {
             <React.Fragment>
               {" "}
               <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -268,7 +290,13 @@ export default class Filter extends React.Component {
             <React.Fragment>
               {" "}
               <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -313,7 +341,13 @@ export default class Filter extends React.Component {
                 </div>
               </div>
               <h3 className="google mb1-5">Gender</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -354,7 +388,13 @@ export default class Filter extends React.Component {
             <React.Fragment>
               {" "}
               <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input
@@ -399,7 +439,13 @@ export default class Filter extends React.Component {
                 </div>
               </div>
               <h3 className="google mb1-5">Escape</h3>
-              <div className="columns is-desktop is-multiline is-narrow">
+              <div
+                className="columns is-desktop is-multiline is-narrow"
+                style={{
+                  pointerEvents: "none",
+                  cursor: "not-allowed"
+                }}
+              >
                 <div className="field">
                   <div className="column">
                     <input

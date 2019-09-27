@@ -1,12 +1,12 @@
-.hero .carousel {
-  height: 500px;
+.slidder-container .hero .carousel {
+  height: 400px;
   /* object-fit: cover */
   background-repeat: no-repeat;
   background-size: auto;
 }
 
-.hero .slick-list {
-  height: 70vh;
+.slidder-container .hero .slick-list {
+  height: 400px;
 }
 
 .Search .container {

@@ -9,7 +9,8 @@ export default class Search extends React.Component {
       selectSearch: {},
       cityList: [],
       searchList: [],
-      cityName: ""
+      cityName: "",
+      submit: true
     };
   }
 
@@ -87,6 +88,11 @@ export default class Search extends React.Component {
     const bunch = this.props.searchData.searchData.filter(obj => {
       if (obj.keyword.toLowerCase() === data.value.toLowerCase()) return obj;
     });
+
+    if (this.state.submit)
+      this.setState({
+        submit: false
+      });
 
     this.setState({
       selectSearch: {
@@ -195,13 +201,27 @@ export default class Search extends React.Component {
               </div>
 
               <div className="column is-2">
-                <a
-                  className="button is-danger"
-                  style={{ height: "50px", fontWeight: "700" }}
-                  onClick={() => this.onClickButton()}
-                >
-                  SUBMIT
-                </a>
+                {this.state.submit ? (
+                  <a
+                    className="button is-danger"
+                    style={{
+                      height: "50px",
+                      fontWeight: "700",
+                      cursor: "not-allowed",
+                      opacity: "0.80"
+                    }}
+                  >
+                    SUBMIT
+                  </a>
+                ) : (
+                  <a
+                    className="button is-danger"
+                    style={{ height: "50px", fontWeight: "700" }}
+                    onClick={() => this.onClickButton(this.props)}
+                  >
+                    SUBMIT
+                  </a>
+                )}
               </div>
             </div>
           </div>

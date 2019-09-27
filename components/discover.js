@@ -119,7 +119,7 @@ export default class Discover extends React.Component {
               height: "75%",
               borderWidth: "0.11em",
               borderStyle: "solid",
-              borderColor: "rgba(60,59,59,1)"
+              borderColor: "#ff3860"
             }}
           />
           <p

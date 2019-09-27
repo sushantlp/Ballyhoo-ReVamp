@@ -16,15 +16,26 @@ export default class Popular extends React.Component {
     };
   }
 
-  toggleHover = index => {
-    if (index === 1) this.setState({ hover1: !this.state.hover1 });
-    else if (index === 2) this.setState({ hover2: !this.state.hover2 });
-    else if (index === 3) this.setState({ hover3: !this.state.hover3 });
-    else if (index === 4) this.setState({ hover4: !this.state.hover4 });
-    else if (index === 5) this.setState({ hover5: !this.state.hover5 });
-    else if (index === 6) this.setState({ hover6: !this.state.hover6 });
-    else if (index === 7) this.setState({ hover7: !this.state.hover7 });
-    else if (index === 8) this.setState({ hover8: !this.state.hover8 });
+  toggleHoverEnter = index => {
+    if (index === 1) this.setState({ hover1: true });
+    else if (index === 2) this.setState({ hover2: true });
+    else if (index === 3) this.setState({ hover3: true });
+    else if (index === 4) this.setState({ hover4: true });
+    else if (index === 5) this.setState({ hover5: true });
+    else if (index === 6) this.setState({ hover6: true });
+    else if (index === 7) this.setState({ hover7: true });
+    else if (index === 8) this.setState({ hover8: true });
+  };
+
+  toggleHoverLeave = index => {
+    if (index === 1) this.setState({ hover1: false });
+    else if (index === 2) this.setState({ hover2: false });
+    else if (index === 3) this.setState({ hover3: false });
+    else if (index === 4) this.setState({ hover4: false });
+    else if (index === 5) this.setState({ hover5: false });
+    else if (index === 6) this.setState({ hover6: false });
+    else if (index === 7) this.setState({ hover7: false });
+    else if (index === 8) this.setState({ hover8: false });
   };
 
   onClickPopular = (popular, props) => {
@@ -74,68 +85,80 @@ export default class Popular extends React.Component {
                 style={{
                   backgroundImage: `url(${popular[0].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(1)}
-                // onMouseLeave={() => this.toggleHover(1)}
+                onMouseEnter={() => this.toggleHoverEnter(1)}
+                onMouseLeave={() => this.toggleHoverLeave(1)}
                 onClick={() => this.onClickPopular(popular[0], this.props)}
               ></div>
 
-              <p
-                className={this.state.hover1 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "1.3%" }}
-                id="not-blur"
-              >
-                {popular[0].title}
-              </p>
+              {this.state.hover1 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "1.3%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(1)}
+                >
+                  {popular[0].title}
+                </p>
+              ) : null}
 
               <div
                 className="column is-3 t2"
                 style={{
                   backgroundImage: `url(${popular[1].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(2)}
-                // onMouseLeave={() => this.toggleHover(2)}
+                onMouseEnter={() => this.toggleHoverEnter(2)}
+                onMouseLeave={() => this.toggleHoverLeave(2)}
                 onClick={() => this.onClickPopular(popular[1], this.props)}
               ></div>
 
-              <p
-                className={this.state.hover2 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "24%" }}
-              >
-                {popular[1].title}
-              </p>
+              {this.state.hover2 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "24%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(2)}
+                >
+                  {popular[1].title}
+                </p>
+              ) : null}
 
               <div
                 className="column is-3 t3"
                 style={{
                   backgroundImage: `url(${popular[2].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(3)}
-                // onMouseLeave={() => this.toggleHover(3)}
+                onMouseEnter={() => this.toggleHoverEnter(3)}
+                onMouseLeave={() => this.toggleHoverLeave(3)}
                 onClick={() => this.onClickPopular(popular[2], this.props)}
               ></div>
 
-              <p
-                className={this.state.hover3 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "48%" }}
-              >
-                {popular[2].title}
-              </p>
+              {this.state.hover3 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "48%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(3)}
+                >
+                  {popular[2].title}
+                </p>
+              ) : null}
 
               <div
                 className="column is-4 t4"
                 style={{
                   backgroundImage: `url(${popular[3].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(4)}
-                // onMouseLeave={() => this.toggleHover(4)}
+                onMouseEnter={() => this.toggleHoverEnter(4)}
+                onMouseLeave={() => this.toggleHoverLeave(4)}
                 onClick={() => this.onClickPopular(popular[3], this.props)}
               ></div>
-              <p
-                className={this.state.hover4 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "77%" }}
-              >
-                {popular[3].title}
-              </p>
+
+              {this.state.hover4 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "77%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(4)}
+                >
+                  {popular[3].title}
+                </p>
+              ) : null}
             </div>
 
             <div className="columns  is-mobile">
@@ -144,67 +167,86 @@ export default class Popular extends React.Component {
                 style={{
                   backgroundImage: `url(${popular[4].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(5)}
-                // onMouseLeave={() => this.toggleHover(5)}
+                onMouseEnter={() => this.toggleHoverEnter(5)}
+                onMouseLeave={() => this.toggleHoverLeave(5)}
                 onClick={() => this.onClickPopular(popular[4], this.props)}
               ></div>
 
-              <p
-                className={this.state.hover5 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "9%" }}
-              >
-                {popular[4].title}
-              </p>
+              {this.state.hover5 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "9%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(5)}
+                >
+                  {popular[4].title}
+                </p>
+              ) : null}
 
               <div
                 className="column is-3 t6"
                 style={{
                   backgroundImage: `url(${popular[5].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(6)}
-                // onMouseLeave={() => this.toggleHover(6)}
+                onMouseEnter={() => this.toggleHoverEnter(6)}
+                onMouseLeave={() => this.toggleHoverLeave(6)}
                 onClick={() => this.onClickPopular(popular[5], this.props)}
               ></div>
 
-              <p
-                className={this.state.hover6 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "33%" }}
-              >
-                {popular[5].title}
-              </p>
+              {this.state.hover6 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "33%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(6)}
+                >
+                  {popular[5].title}
+                </p>
+              ) : null}
 
               <div
                 className="column is-4 t7"
                 style={{
                   backgroundImage: `url(${popular[7].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(7)}
-                // onMouseLeave={() => this.toggleHover(7)}
+                onMouseEnter={() => this.toggleHoverEnter(8)}
+                onMouseLeave={() => this.toggleHoverLeave(8)}
                 onClick={() => this.onClickPopular(popular[7], this.props)}
               ></div>
 
-              <p
-                className={this.state.hover7 ? "tiletext-hover" : "tiletext"}
-                style={{ left: "57%" }}
-              >
-                {popular[7].title}
-              </p>
+              {this.state.hover8 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "57%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(8)}
+                >
+                  {popular[7].title}
+                </p>
+              ) : null}
+
               <div
                 className="column is-2 t8"
                 style={{
                   backgroundImage: `url(${popular[6].img})`
                 }}
-                // onMouseEnter={() => this.toggleHover(8)}
-                // onMouseLeave={() => this.toggleHover(8)}
+                onMouseEnter={() => this.toggleHoverEnter(7)}
+                onMouseLeave={() => this.toggleHoverLeave(7)}
                 onClick={() => this.onClickPopular(popular[6], this.props)}
               ></div>
 
-              <p
+              {this.state.hover7 ? (
+                <p
+                  className="tiletext"
+                  style={{ left: "88%" }}
+                  onMouseEnter={() => this.toggleHoverEnter(7)}
+                >
+                  {popular[6].title}
+                </p>
+              ) : null}
+              {/* <p
                 className={this.state.hover8 ? "tiletext-hover" : "tiletext"}
                 style={{ left: "88%" }}
               >
                 {popular[6].title}
-              </p>
+              </p> */}
             </div>
             <br />
             {/* <br /> */}

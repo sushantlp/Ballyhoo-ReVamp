@@ -59,16 +59,18 @@ const SpaList = props => {
               <div className="content">
                 <div className="columns mb0">
                   <div className="column">
-                    <p className="title google">{list.offer_title}</p>
+                    <p className="title google">
+                      {list.partner_details.p_name}
+                    </p>
                     <p className="subtitle is-6 mb8 plh1">
                       {list.offer_address.locality}
                     </p>
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7" id="li">
-                      <img src="https://img.icons8.com/color/17/000000/hearts.png" />
-                      <span className="ellipsis pl0_5">
+                    <span className="tag radius20 fw7 padding1-4-1" id="li">
+                      <img src="https://img.icons8.com/color/20/000000/hearts.png" />
+                      <span className="ellipsis pl0_5 fs1-4">
                         {list.offer_popularity}%
                       </span>
                     </span>
@@ -154,7 +156,7 @@ const SpaList = props => {
             <div className="card-footer-item">
               <span
                 className="span-flex"
-                onClick={() => props.categoryApiCall(list.offer_id)}
+                // onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 {list.offer_gender_preference === 1 ? (
                   <span>

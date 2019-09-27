@@ -29,3 +29,8 @@
 .filter-container .mt0-5 {
   margin-top: 0.5em;
 }
+
+.filter-container .ui.disabled.segment {
+  opacity: 0.8;
+  color: rgba(40, 40, 40, 0.3);
+}

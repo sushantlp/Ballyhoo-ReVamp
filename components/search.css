@@ -1,7 +1,10 @@
 .search-container {
   width: auto;
-  height: 12em;
-  object-fit: cover;
+  /* height: 12em; */
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: auto;
+  /* object-fit: cover; */
   /* background-size: cover;
   background-repeat: no-repeat;
   background-position: center; */

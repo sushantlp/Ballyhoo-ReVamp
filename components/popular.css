@@ -33,7 +33,7 @@
   /* bottom: 100px; */
 }
 
-.tiletext-hover {
+/* .tiletext-hover {
   padding: 5px;
   cursor: pointer;
   background-color: white;
@@ -48,7 +48,7 @@
   font-family: "Quicksand", sans-serif;
   position: absolute;
   bottom: 100px;
-}
+} */
 
 /* .tiletext:hover {
   background-color: black;

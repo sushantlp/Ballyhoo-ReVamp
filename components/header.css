@@ -41,7 +41,7 @@
 }
 
 .header-container .brand-title {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   color: #463853;
   transition-duration: 172ms;
   will-change: transform;
@@ -49,9 +49,9 @@
   /* font-weight: 300; */
 }
 
-.header-container .brand-icon {
-  width: 56px;
-  /* height: 56px; */
+.header-container .brand-icon-header {
+  /* width: 56px;
+  height: 56px; */
   margin-right: 1rem;
   transition-duration: 172ms;
   will-change: width, height, margin-right;

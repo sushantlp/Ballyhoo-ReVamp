@@ -1,6 +1,20 @@
+import Router from "next/router";
 import Link from "next/link";
 import _ from "lodash";
 import "./footer.css";
+
+// const changeCity = (cityId, cityName) => {
+//   const city = cityName.replace(/ /g, "-").toLowerCase();
+
+//   Router.push(
+//     {
+//       pathname: "/",
+//       query: { city: city, city_id: cityId }
+//     },
+//     `/${city}/${cityId}`,
+//     { shallow: false }
+//   );
+// };
 
 const Footer = props => {
   let city = [];
@@ -73,7 +87,12 @@ const Footer = props => {
                   <ul className="menu-list">
                     {city.map((value, key) => {
                       return (
-                        <li key={key}>
+                        <li
+                          key={key}
+                          // onClick={() =>
+                          //   changeCity(value.city_id, value.city_name)
+                          // }
+                        >
                           <a href="/">{value.city_name}</a>
                         </li>
                       );

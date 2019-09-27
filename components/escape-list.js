@@ -59,6 +59,11 @@ const EscapeList = props => {
         inclusionType.activity = true;
     }
 
+    const title =
+      parseInt(list.offer_exclusive, 10) === 1
+        ? list.offer_title
+        : list.partner_details.p_name;
+
     return (
       <React.Fragment key={key}>
         <div className="box" id="child-list">
@@ -69,13 +74,13 @@ const EscapeList = props => {
               </figure>
             </div>
 
-            {list.offer_promoted === 1 ? (
+            {parseInt(list.offer_promoted, 10) === 1 ? (
               <div className="ribbon ribbon-top-left">
                 <span>Featured</span>
               </div>
             ) : null}
 
-            {list.offer_exclusive === 1 ? (
+            {parseInt(list.offer_exclusive, 10) === 1 ? (
               <div className="ribbon ribbon-bottom-right">
                 <span style={{ backgroundColor: "#ffdd57", color: "black" }}>
                   Exculsive
@@ -87,16 +92,23 @@ const EscapeList = props => {
               <div className="content">
                 <div className="columns mb0">
                   <div className="column">
-                    <p className="title google">{list.offer_title}</p>
-                    <p className="subtitle is-6 mb8 plh1">
-                      {list.tour_details.tour_duration != null
-                        ? list.tour_details.tour_duration
-                        : list.offer_address.locality}
-                    </p>
+                    <p className="title google">{title}</p>
+
+                    {parseInt(list.offer_exclusive, 10) === 1 ? (
+                      <p className="subtitle is-6 mb8 plh1">
+                        {list.tour_details.tour_duration != null
+                          ? list.tour_details.tour_duration
+                          : list.offer_address.locality}
+                      </p>
+                    ) : (
+                      <p className="subtitle is-6 mb8 plh1">
+                        {list.offer_title}
+                      </p>
+                    )}
                   </div>
 
                   <div className="column">
-                    <span className="tag radius20 fw7" id="li">
+                    <span className="tag radius20 fw7 padding1-4-1" id="li">
                       <img src="https://img.icons8.com/color/17/000000/hearts.png" />
                       <span className="ellipsis pl0_5">
                         {" "}
@@ -163,7 +175,7 @@ const EscapeList = props => {
             <div className="card-footer-item">
               <span
                 className="span-flex"
-                onClick={() => props.categoryApiCall(list.offer_id)}
+                // onClick={() => props.categoryApiCall(list.offer_id)}
               >
                 <span className="pr2">
                   {inclusionType.stay ? (

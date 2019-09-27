@@ -14,7 +14,8 @@ export default class Slidder extends React.Component {
       selectSearch: {},
       cityList: [],
       searchList: [],
-      cityName: "Bengaluru"
+      cityName: "",
+      submit: true
     };
   }
 
@@ -69,7 +70,7 @@ export default class Slidder extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.cityLocality !== nextProps.cityLocality)
-      this.createCityList(nextProps.cityLocality.cityLocality, "Bengaluru");
+      this.createCityList(nextProps.cityLocality.cityLocality);
 
     if (this.props.searchData !== nextProps.searchData)
       this.createSearchList(nextProps.searchData.searchData);
@@ -136,6 +137,11 @@ export default class Slidder extends React.Component {
       if (obj.keyword.toLowerCase() === data.value.toLowerCase()) return obj;
     });
 
+    if (this.state.submit)
+      this.setState({
+        submit: false
+      });
+
     this.setState({
       selectSearch: {
         key: bunch[0].key,
@@ -186,7 +192,7 @@ export default class Slidder extends React.Component {
       this.props.homeScreen.status === "FAIL"
     )
       return <Spinner />;
-
+    if (this.state.cityName === "") return null;
     const carousel = this.props.homeScreen.homeScreen.carousel;
     const settings = {
       dots: true,
@@ -256,13 +262,27 @@ export default class Slidder extends React.Component {
               </div>
 
               <div className="column is-2">
-                <a
-                  className="button is-danger"
-                  style={{ height: "50px", fontWeight: "700" }}
-                  onClick={() => this.onClickButton(this.props)}
-                >
-                  SUBMIT
-                </a>
+                {this.state.submit ? (
+                  <a
+                    className="button is-danger"
+                    style={{
+                      height: "50px",
+                      fontWeight: "700",
+                      cursor: "not-allowed",
+                      opacity: "0.80"
+                    }}
+                  >
+                    SUBMIT
+                  </a>
+                ) : (
+                  <a
+                    className="button is-danger"
+                    style={{ height: "50px", fontWeight: "700" }}
+                    onClick={() => this.onClickButton(this.props)}
+                  >
+                    SUBMIT
+                  </a>
+                )}
               </div>
             </div>
           </div>

@@ -62,11 +62,11 @@ export default class Header extends React.Component {
               </a> */}
 
               <a className="brand" href="/">
-                <div className="brand-icon">
+                <div className="brand-icon-header">
                   <img
                     alt="Ballyhoo"
                     role="presentation"
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_39,w_30/v1569584342/BallyhooV3/WEB/blacklogo.png"
                   />
                 </div>
                 <div className="brand-content">
@@ -99,24 +99,24 @@ export default class Header extends React.Component {
                   <div className="control">
                     <div className="buttons">
                       <a className="button is-rounded is-outlined" disabled>
-                        <span>STORIES</span>
+                        <span>Story</span>
                       </a>
                     </div>
                   </div>
                   {/* </Link> */}
                 </div>
-
+                {/* 
                 <div className="navbar-item">
-                  {/* <Link href="/enquiry"> */}
+                  <Link href="/enquiry">
                   <div className="control">
                     <div className="buttons">
                       <a className="button is-rounded is-outlined" disabled>
-                        <span>ENQUIRY</span>
+                        <span>Enquiry</span>
                       </a>
                     </div>
                   </div>
-                  {/* </Link> */}
-                </div>
+                  </Link>
+                </div> */}
 
                 <div className="navbar-item">
                   <div className="control">
@@ -125,21 +125,21 @@ export default class Header extends React.Component {
                       // onClick={() => this.updateLoginState(true)}
                     >
                       <a className="button is-rounded is-outlined" disabled>
-                        <span>LOGIN</span>
+                        <span>Login</span>
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div className="navbar-item">
-                  {/* <Link href="/explore"> */}
+                {/* <div className="navbar-item">
+                   <Link href="/explore"> 
                   <div className="control">
                     <a className="button is-outlined is-rounded" disabled>
-                      PLAN MY HOLIDAY
+                      Plan my holiday
                     </a>
                   </div>
-                  {/* </Link> */}
-                </div>
+                  </Link> 
+                </div> */}
               </div>
             </div>
           </div>
