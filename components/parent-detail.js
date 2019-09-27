@@ -20,14 +20,12 @@ export default class ParentDetail extends React.Component {
                       : this.props.categoryData.categoryData.details
                           .partner_details.p_name}
                   </h4>
-                  <h5 className="ffqs parent-detail-sub-title mt0-1">
-                    {" "}
-                    {parseInt(this.props.detailUrlParam.result_type, 10) === 1
-                      ? this.props.foodCategoryData.foodCategoryData.details
-                          .offering
-                      : this.props.categoryData.categoryData.details
-                          .offer_title}
-                  </h5>
+
+                  {parseInt(this.props.detailUrlParam.result_type, 10) === 2 ? (
+                    <h5 className="ffqs parent-detail-sub-title mt0-1">
+                      {this.props.categoryData.categoryData.details.offer_title}
+                    </h5>
+                  ) : null}
                 </div>
                 <DetailTab
                   categoryData={this.props.categoryData}

@@ -8,7 +8,6 @@ import FoodPackage from "./food-package-detail";
 import "./parent-package.css";
 
 const ParentPackage = props => {
-  console.log(props);
   return (
     <React.Fragment>
       <div className="parent-package-container">

@@ -156,7 +156,7 @@ export default class EscapePackage extends React.Component {
                           <span>
                             -
                             <span className="fs1-2 fw2">
-                              &#8377;{morePrice}
+                              &#8377; {morePrice}
                             </span>
                           </span>
                         ) : null}
@@ -213,16 +213,12 @@ export default class EscapePackage extends React.Component {
                     <ReadMoreAndLess
                       ref={this.ReadMore}
                       className="read-more-content"
-                      charLimit={300}
+                      charLimit={100}
                       readMoreText="See more"
                       readLessText="See less"
                     >
                       {value.package_inclusion}
                     </ReadMoreAndLess>
-                    {/* 
-                    <p style={{ whiteSpace: "pre-line" }}>
-                      {value.package_inclusion}
-                    </p> */}
                   </div>
                 </div>
               </div>
@@ -372,10 +368,19 @@ export default class EscapePackage extends React.Component {
                           </div>
                         </div>
 
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
+                        <div
+                          className="f14 ffqs plh1"
+                          style={{ whiteSpace: "pre-line" }}
+                        >
+                          <ReadMoreAndLess
+                            ref={this.ReadMore}
+                            className="read-more-content"
+                            charLimit={100}
+                            readMoreText="See more"
+                            readLessText="See less"
+                          >
                             {list.price_description}
-                          </p>
+                          </ReadMoreAndLess>
                         </div>
                       </div>
                     </div>

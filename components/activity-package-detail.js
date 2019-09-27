@@ -1,3 +1,4 @@
+import ReadMoreAndLess from "react-read-more-less";
 import { Segment } from "semantic-ui-react";
 export default class ActivityPackage extends React.Component {
   constructor(props) {
@@ -143,10 +144,19 @@ export default class ActivityPackage extends React.Component {
                       </h4>
                     </div>
                   </div>
-                  <div className="f14 ffqs">
-                    <p style={{ whiteSpace: "pre-line" }}>
+                  <div
+                    className="f14 ffqs plh1"
+                    style={{ whiteSpace: "pre-line" }}
+                  >
+                    <ReadMoreAndLess
+                      ref={this.ReadMore}
+                      className="read-more-content"
+                      charLimit={100}
+                      readMoreText="See more"
+                      readLessText="See less"
+                    >
                       {value.package_inclusion}
-                    </p>
+                    </ReadMoreAndLess>
                   </div>
                 </div>
               </div>
@@ -202,10 +212,19 @@ export default class ActivityPackage extends React.Component {
                           </div>
                         </div>
 
-                        <div className="f14 ffqs">
-                          <p style={{ whiteSpace: "pre-line" }}>
+                        <div
+                          className="f14 ffqs plh1"
+                          style={{ whiteSpace: "pre-line" }}
+                        >
+                          <ReadMoreAndLess
+                            ref={this.ReadMore}
+                            className="read-more-content"
+                            charLimit={100}
+                            readMoreText="See more"
+                            readLessText="See less"
+                          >
                             {value.price_inclusion}
-                          </p>
+                          </ReadMoreAndLess>
                         </div>
                       </div>
                     </div>

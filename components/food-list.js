@@ -79,7 +79,7 @@ const FoodList = props => {
                         <ReadMoreAndLess
                           ref={props.ReadMore}
                           className="read-more-content"
-                          charLimit={300}
+                          charLimit={100}
                           readMoreText="See more"
                           readLessText="See less"
                         >

@@ -3,7 +3,6 @@ import { Segment } from "semantic-ui-react";
 import "./food-event-list.css";
 
 const FoodEventList = props => {
-  console.log(props);
   return props.events.map((value, key) => {
     return (
       <React.Fragment key={key}>

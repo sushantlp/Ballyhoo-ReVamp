@@ -18,8 +18,8 @@ export default class DetailCart extends React.Component {
     this.state = {
       scrolling: false,
       date: date,
-      //time: "10:00"
-      time: `${date.getHours()}:${date.getMinutes()}`
+      time: "10:00"
+      //time: `${date.getHours()}:${date.getMinutes()}`
     };
   }
 

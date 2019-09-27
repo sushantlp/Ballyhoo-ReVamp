@@ -202,7 +202,7 @@ export default class EventPackage extends React.Component {
                           <ReadMoreAndLess
                             ref={this.ReadMore}
                             className="read-more-content"
-                            charLimit={300}
+                            charLimit={100}
                             readMoreText="See more"
                             readLessText="See less"
                           >
@@ -265,10 +265,19 @@ export default class EventPackage extends React.Component {
                                 </div>
                               </div>
 
-                              <div className="f14 ffqs plh1">
-                                <p style={{ whiteSpace: "pre-line" }}>
+                              <div
+                                className="f14 ffqs plh1"
+                                style={{ whiteSpace: "pre-line" }}
+                              >
+                                <ReadMoreAndLess
+                                  ref={this.ReadMore}
+                                  className="read-more-content"
+                                  charLimit={100}
+                                  readMoreText="See more"
+                                  readLessText="See less"
+                                >
                                   {money.price_inclusion}
-                                </p>
+                                </ReadMoreAndLess>
                               </div>
                             </div>
                           </div>
