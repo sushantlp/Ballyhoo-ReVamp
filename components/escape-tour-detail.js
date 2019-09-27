@@ -33,15 +33,20 @@ const TourDetail = props => {
 
         <div className="column is-4 is-offset-1">
           <div className="tags">
-            <ul className="package-tags">
-              {props.tourDetail.tour_type.map((city, key) => {
-                return (
-                  <li className="ellipsis" key={key}>
-                    {city}
-                  </li>
-                );
-              })}
-            </ul>
+            {/* <ul className="package-tags"> */}
+            {props.tourDetail.tour_type.map((city, key) => {
+              return (
+                <span className="tag is-rounded is-danger" key={key}>
+                  {city}
+                </span>
+              );
+              // return (
+              //   <li className="ellipsis" key={key}>
+              //     {city}
+              //   </li>
+              // );
+            })}
+            {/* </ul> */}
           </div>
 
           <div className="tags">

@@ -105,7 +105,7 @@ const FoodList = props => {
                   </div>
 
                   <div className="card-footer-item">
-                    <a className="button is-medium is-danger">
+                    <a className="button is-medium is-danger" disabled>
                       <span>Book</span>
                     </a>
                   </div>

@@ -215,7 +215,10 @@ export default class Overview extends React.Component {
           <div className="columns">
             <div className="column is-5">
               <h4 className="ffqs fw2">
-                Average cost for two :{" "}
+                {parseInt(this.props.detailUrlParam.result_type, 10) === 1
+                  ? "Average cost for two :"
+                  : "Price :"}
+
                 <span className="fw7" style={{ color: "#635f5f" }}>
                   {" "}
                   &#8377; {price}

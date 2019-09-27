@@ -116,7 +116,7 @@ export default class DetailTab extends React.Component {
               </li>
             ) : null}
 
-            {/* {parseInt(this.props.detailUrlParam.result_type, 10) !== 2 ? (
+            {parseInt(this.props.detailUrlParam.result_type, 10) !== 2 ? (
               <li
                 className={
                   this.state.navigation === "Reviews" ? "is-active" : ""
@@ -130,7 +130,7 @@ export default class DetailTab extends React.Component {
                   <span>Reviews</span>
                 </a>
               </li>
-            ) : null} */}
+            ) : null}
           </ul>
         </div>
 

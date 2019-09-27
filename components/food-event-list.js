@@ -49,7 +49,10 @@ const FoodEventList = props => {
                           </ReadMoreAndLess>
                         </div>
                       </div>
-                      <a className="button is-medium is-danger is-pulled-right">
+                      <a
+                        className="button is-medium is-danger is-pulled-right"
+                        disabled
+                      >
                         <span>RSVP</span>
                       </a>
                     </div>
