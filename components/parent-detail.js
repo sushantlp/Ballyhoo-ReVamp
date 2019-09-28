@@ -31,6 +31,8 @@ export default class ParentDetail extends React.Component {
                   categoryData={this.props.categoryData}
                   foodCategoryData={this.props.foodCategoryData}
                   detailUrlParam={this.props.detailUrlParam}
+                  zomatoData={this.props.zomatoData}
+                  getZomatoDataApi={this.props.getZomatoDataApi}
                 />
               </div>
               <div className="column is-4 ">

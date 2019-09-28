@@ -143,7 +143,7 @@ export default class Featured extends React.Component {
       <div className="container" style={{ marginBottom: "1em" }}>
         <div className="featured-container">
           <div className="featured-header-container">
-            <h2 className="featured-header">Featured</h2>
+            <h2 className="featured-header">What's Hot in Town</h2>
             <div className="underscore" />
           </div>
           <Slider {...settings}>

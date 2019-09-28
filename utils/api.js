@@ -69,5 +69,20 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  zomatoDataApi: (partnerId, page) => {
+    return new Promise((resolve, reject) => {
+      fetch(
+        `${host}api/v9/web/partners/${partnerId}/zomato-reviews?page=${page}`
+      )
+        .then(response => {
+          response
+            .json()
+            .then(zomatoData => resolve(zomatoData))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };

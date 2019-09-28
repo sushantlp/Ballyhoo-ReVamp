@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { host } from "../constants";
 
+import Spinner from "../components/spinner";
 import Head from "../components/head";
 import Header from "../components/header";
 // import SubHeader from "../components/sub-header";
@@ -27,7 +28,6 @@ import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
 // import Space from "../components/loading-space";
-import Spinner from "../components/spinner";
 
 import { getsearchData } from "../actions/search-data-action";
 import { getCityLocality } from "../actions/city-locality-action";

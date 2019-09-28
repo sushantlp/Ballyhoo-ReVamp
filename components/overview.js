@@ -19,8 +19,18 @@ export default class Overview extends React.Component {
       photoIndex: 0,
       lightBox: false,
       bundleImage: [],
-      selectedMarker: false
+      selectedMarker: false,
+      isLoading: false
     };
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.zomatoData !== nextProps.zomatoData &&
+      nextProps.zomatoData.status === "SUCCESS"
+    ) {
+      this.updateIsLoading();
+    }
   }
 
   intializeImageArray = (bool, bundleImage) => {
@@ -42,6 +52,15 @@ export default class Overview extends React.Component {
   handleClick = (marker, event) => {
     // console.log({ marker })
     this.setState({ selectedMarker: marker });
+  };
+
+  updateIsLoading = () => {
+    this.setState({ isLoading: !this.state.isLoading });
+  };
+
+  zomatoApiCall = page => {
+    this.updateIsLoading();
+    this.props.getZomatoDataApi(this.props.detailUrlParam.partner_id, page);
   };
 
   render() {
@@ -375,7 +394,7 @@ export default class Overview extends React.Component {
             <div className="column">
               <h4 className="ffqs cuisine-title">Where ?</h4>
               <div className="overview-underscore" />
-              <h4 className="ff f10 f1-1 fw2">{where}</h4>
+              <h4 className="ff f10 f1-1 fw2 lh1-7">{where}</h4>
               {where == null ? (
                 <EscapeMap
                   markers={
@@ -398,7 +417,20 @@ export default class Overview extends React.Component {
           </div>
         </div>
 
-        {/* <Zomato ReadMore={this.ReadMore} /> */}
+        {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+          <div className="box">
+            <div className="columns">
+              <div className="column">
+                <Zomato
+                  zomatoData={this.props.zomatoData}
+                  zomatoApiCall={this.zomatoApiCall}
+                  isLoading={this.state.isLoading}
+                />
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         {this.state.lightBox && (
           <Lightbox
             mainSrc={this.state.bundleImage[this.state.photoIndex]}

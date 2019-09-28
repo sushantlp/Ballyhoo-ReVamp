@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { host } from "../constants";
 
+import Spinner from "../components/spinner";
 import Head from "../components/head";
 import Header from "../components/header";
 // import SubHeader from "../components/sub-header";
@@ -17,13 +18,13 @@ import DetailSlider from "../components/detail-slider";
 import ParentDetail from "../components/parent-detail";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-import Spinner from "../components/spinner";
 
 import { getCityLocality } from "../actions/city-locality-action";
 import { getSlidderImage } from "../actions/slidder-image-action";
 import { getCategoryData } from "../actions/category-data-action";
 import { getFoodCategoryData } from "../actions/food-category-data-action";
 import { getFeaturingData } from "../actions/featuring-action";
+import { getZomatoData, getZomatoDataApi } from "../actions/zomato-action";
 
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
@@ -31,6 +32,7 @@ class Detail extends React.Component {
     let categoryJson = [];
     let foodCategoryJson = [];
     let featureJson = [];
+    let zomatoJson = [];
     let detailUrlParam = {};
     let slice = [];
     let routeParam = [];
@@ -89,6 +91,17 @@ class Detail extends React.Component {
             key: slice[4]
           };
         }
+      }
+
+      if (parseInt(detailUrlParam.result_type, 10) === 1) {
+        // Zomato API
+        zomatoJson = await fetch(
+          `${host}api/v9/web/partners/${
+            detailUrlParam.partner_id
+          }/zomato-reviews?page=${1}`
+        );
+        zomatoJson = await zomatoJson.json();
+        store.dispatch(getZomatoData(zomatoJson));
       }
 
       const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
@@ -182,6 +195,8 @@ class Detail extends React.Component {
           routeParam={this.props.routeParam}
           cityLocality={this.props.cityLocality}
           changeLoadingState={this.changeLoadingState}
+          zomatoData={this.props.zomatoData}
+          getZomatoDataApi={this.props.getZomatoDataApi}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
@@ -196,7 +211,8 @@ const mapStateToProps = state => {
     categoryData: state.categoryData,
     slidderImage: state.slidderImage,
     foodCategoryData: state.foodCategoryData,
-    featuring: state.featuring
+    featuring: state.featuring,
+    zomatoData: state.zomatoData
   };
 };
 
@@ -206,7 +222,9 @@ const mapDispatchToProps = dispatch => {
     getCategoryData: bindActionCreators(getCategoryData, dispatch),
     getSlidderImage: bindActionCreators(getSlidderImage, dispatch),
     getFoodCategoryData: bindActionCreators(getFoodCategoryData, dispatch),
-    getFeaturingData: bindActionCreators(getFeaturingData, dispatch)
+    getFeaturingData: bindActionCreators(getFeaturingData, dispatch),
+    getZomatoData: bindActionCreators(getZomatoData, dispatch),
+    getZomatoDataApi: bindActionCreators(getZomatoDataApi, dispatch)
   };
 };
 

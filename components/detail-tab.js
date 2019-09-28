@@ -139,6 +139,8 @@ export default class DetailTab extends React.Component {
             categoryData={this.props.categoryData}
             foodCategoryData={this.props.foodCategoryData}
             detailUrlParam={this.props.detailUrlParam}
+            zomatoData={this.props.zomatoData}
+            getZomatoDataApi={this.props.getZomatoDataApi}
           />
         ) : null}
 

@@ -159,7 +159,7 @@ export default class Trending extends React.Component {
       <div className="container">
         <div className="trending-container">
           <div className="trending-header-container">
-            <h2 className="trending-header">Trending</h2>
+            <h2 className="trending-header">Trending Packages</h2>
             <div className="underscore" />
           </div>
           <Slider {...settings}>{this.trendingArray(trending)}</Slider>

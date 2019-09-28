@@ -33,9 +33,9 @@
   /* bottom: 100px; */
 }
 
-/* .tiletext-hover {
-  padding: 5px;
-  cursor: pointer;
+.tiletext-hover {
+  /* cursor: pointer; */
+  /* padding: 5px;
   background-color: white;
   vertical-align: middle;
   text-align: center;
@@ -47,12 +47,12 @@
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
   position: absolute;
-  bottom: 100px;
-} */
+  bottom: 100px; */
+}
 
-/* .tiletext:hover {
-  background-color: black;
-} */
+.tiletext:hover {
+  cursor: pointer;
+}
 
 .t1 {
   width: 250px;
