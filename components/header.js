@@ -66,7 +66,7 @@ export default class Header extends React.Component {
                   <img
                     alt="Ballyhoo"
                     role="presentation"
-                    src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_39,w_30/v1569584342/BallyhooV3/WEB/blacklogo.png"
+                    src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_40/v1569659435/BallyhooV3/WEB/ballyhoo.png"
                   />
                 </div>
                 <div className="brand-content">

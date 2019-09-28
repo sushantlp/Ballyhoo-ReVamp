@@ -1,10 +1,10 @@
 .slidder-banner-container .carousel {
   height: 200px;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .slidder-banner-container .slick-list {
-  height: 25vh;
+  height: 200px;
 }
 
 .slidder-banner-container {
