@@ -34,7 +34,7 @@ const Footer = props => {
                       // style={{ width: "50px" }}
                       alt="Ballyhoo"
                       role="presentation"
-                      src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
+                      src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569824870/BallyhooV3/WEB/Logo.png"
                     />
                   </div>
                   <div className="brand-content">

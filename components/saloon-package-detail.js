@@ -5,8 +5,10 @@ export default class SaloonPackage extends React.Component {
     super(props);
     this.state = {
       packages: [],
-      keyIndex: -1,
-      bool: true
+      toggle: {
+        index: -1,
+        door: false
+      }
     };
   }
 
@@ -35,9 +37,21 @@ export default class SaloonPackage extends React.Component {
 
   initializePriceList = key => {
     let indexData = [];
-    let packages = [];
 
-    if (parseInt(this.state.keyIndex, 10) !== parseInt(key, 10)) {
+    if (parseInt(this.state.toggle.index, 10) === parseInt(key, 10)) {
+      if (this.state.toggle.door) {
+        indexData = [];
+      } else {
+        for (let i = 0; i < this.props.package.length; i++) {
+          indexData =
+            parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
+              ? this.props.package[i].price_list
+              : [];
+
+          if (indexData.length !== 0) break;
+        }
+      }
+    } else {
       for (let i = 0; i < this.props.package.length; i++) {
         indexData =
           parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
@@ -48,10 +62,21 @@ export default class SaloonPackage extends React.Component {
       }
     }
 
-    this.setState({
-      keyIndex: key
-    });
+    this.setState(
+      {
+        toggle: {
+          index: key,
+          door: !this.state.toggle.door
+        }
+      },
+      function() {
+        this.toggleCallback(key, indexData);
+      }
+    );
+  };
 
+  toggleCallback = (key, indexData) => {
+    let packages = [];
     for (let i = 0; i < this.props.package.length; i++) {
       let obj = {};
       obj.package_id = this.props.package[i].package_id;
