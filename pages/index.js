@@ -98,18 +98,7 @@ class Index extends React.Component {
           console.warn("service worker registration failed", err.message);
         });
     }
-
-    // Router.events.on("routeChangeStart", handleRouteChange);
   }
-
-  // handleRouteChange = url => {
-  //   console.log("App is changing to: ", url);
-  // };
-
-  // componentWillUnmount() {
-  //   //Router.events.off('routeChangeStart', handleRouteChange)
-  //   console.log("componentWillUnmount");
-  // }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (

@@ -66,16 +66,19 @@ class Detail extends React.Component {
               `${host}api/v9/web/partners/${slice[2]}?key=${key}`
             );
             foodCategoryJson = await foodCategoryJson.json();
-
             store.dispatch(getFoodCategoryData(foodCategoryJson));
           } else {
             // Category Api
             categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
             categoryJson = await categoryJson.json();
-
             store.dispatch(getCategoryData(categoryJson));
           }
         }
+
+        // City Locality API
+        let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+        cityLocalityJson = await cityLocalityJson.json();
+        store.dispatch(getCityLocality(cityLocalityJson));
       } else {
         if (query.hasOwnProperty("secret") && query.secret !== undefined) {
           routeParam = query;
@@ -124,11 +127,6 @@ class Detail extends React.Component {
       );
       slidderJson = await slidderJson.json();
       store.dispatch(getSlidderImage(slidderJson));
-
-      // City Locality API
-      let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-      cityLocalityJson = await cityLocalityJson.json();
-      store.dispatch(getCityLocality(cityLocalityJson));
     } catch (err) {
       console.log("Detail_Error");
       console.log(err);

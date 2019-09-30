@@ -107,6 +107,7 @@ export default class Slidder extends React.Component {
       search.text = obj.keyword;
       return search;
     });
+
     this.setState({
       searchList: searchArray
     });

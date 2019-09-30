@@ -21,13 +21,14 @@ import { getCityLocality } from "../actions/city-locality-action";
 class Term extends React.Component {
   static async getInitialProps(ctx) {
     try {
-      const { store } = ctx;
+      const { store, isServer } = ctx;
 
-      // City Locality API
-      let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-      cityLocalityJson = await cityLocalityJson.json();
-
-      store.dispatch(getCityLocality(cityLocalityJson));
+      if (isServer) {
+        // City Locality API
+        let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+        cityLocalityJson = await cityLocalityJson.json();
+        store.dispatch(getCityLocality(cityLocalityJson));
+      }
     } catch (err) {
       console.log("Faq_Error");
       console.log(err);

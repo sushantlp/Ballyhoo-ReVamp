@@ -64,6 +64,18 @@ class List extends React.Component {
       else routeParam = query;
       let page = 1;
 
+      if (isServer) {
+        // City Locality API
+        cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+        cityLocalityJson = await cityLocalityJson.json();
+        store.dispatch(getCityLocality(cityLocalityJson));
+
+        // Search Data
+        searchJson = await fetch(`${host}api/v9/web/search-keys`);
+        searchJson = await searchJson.json();
+        store.dispatch(getsearchData(searchJson));
+      }
+
       if (routeParam.secret !== undefined) {
         // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
         const slice = routeParam.secret.split("b");
@@ -107,23 +119,13 @@ class List extends React.Component {
       );
       slidderJson = await slidderJson.json();
 
-      // City Locality API
-      cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-      cityLocalityJson = await cityLocalityJson.json();
-
       // Recommendation API
       recommendation = await fetch(
         `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
       );
       recommendation = await recommendation.json();
 
-      // Search Data
-      searchJson = await fetch(`${host}api/v9/web/search-keys`);
-      searchJson = await searchJson.json();
-
-      store.dispatch(getsearchData(searchJson));
       store.dispatch(getSlidderImage(slidderJson));
-      store.dispatch(getCityLocality(cityLocalityJson));
       store.dispatch(getrecommendation(recommendation));
       store.dispatch(updateUrlParam(listUrlParam));
     } catch (err) {
