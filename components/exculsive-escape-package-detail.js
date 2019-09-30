@@ -6,7 +6,11 @@ export default class ExculsiveEscapePackage extends React.Component {
     super(props);
     this.state = {
       activeIndex: -1,
-      packages: []
+      packages: [],
+      toggle: {
+        index: -1,
+        door: false
+      }
     };
   }
 
@@ -67,6 +71,30 @@ export default class ExculsiveEscapePackage extends React.Component {
       if (
         parseInt(this.props.package[i].package_id, 10) === parseInt(key, 10)
       ) {
+        if (this.state.toggle.door) {
+          obj.package_cancel_policy = null;
+          obj.package_accomodation = null;
+          obj.package_inclusion = null;
+          obj.package_terms = null;
+          obj.package_transportation = null;
+          obj.package_itenary = null;
+          obj.package_faqs = null;
+          obj.package_exclusion = null;
+        } else {
+          obj.package_cancel_policy = this.props.package[
+            i
+          ].package_cancel_policy;
+          obj.package_accomodation = this.props.package[i].package_accomodation;
+          obj.package_inclusion = this.props.package[i].package_inclusion;
+          obj.package_terms = this.props.package[i].package_terms;
+          obj.package_transportation = this.props.package[
+            i
+          ].package_transportation;
+          obj.package_itenary = this.props.package[i].package_itenary;
+          obj.package_faqs = this.props.package[i].package_faqs;
+          obj.package_exclusion = this.props.package[i].package_exclusion;
+        }
+      } else {
         obj.package_cancel_policy = this.props.package[i].package_cancel_policy;
         obj.package_accomodation = this.props.package[i].package_accomodation;
         obj.package_inclusion = this.props.package[i].package_inclusion;
@@ -77,19 +105,17 @@ export default class ExculsiveEscapePackage extends React.Component {
         obj.package_itenary = this.props.package[i].package_itenary;
         obj.package_faqs = this.props.package[i].package_faqs;
         obj.package_exclusion = this.props.package[i].package_exclusion;
-      } else {
-        obj.package_cancel_policy = null;
-        obj.package_accomodation = null;
-        obj.package_inclusion = null;
-        obj.package_terms = null;
-        obj.package_transportation = null;
-        obj.package_itenary = null;
-        obj.package_faqs = null;
-        obj.package_exclusion = null;
       }
 
       packages.push(obj);
     }
+
+    this.setState({
+      toggle: {
+        index: key,
+        door: !this.state.toggle.door
+      }
+    });
 
     this.changePackageState(packages);
   };
