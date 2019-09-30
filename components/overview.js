@@ -124,15 +124,15 @@ export default class Overview extends React.Component {
 
     const where =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
-        ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}, ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
+        ? `${this.props.foodCategoryData.foodCategoryData.details.address_details.address_1}  ${this.props.foodCategoryData.foodCategoryData.details.address_details.address_2}  ${this.props.foodCategoryData.foodCategoryData.details.address_details.locality}  ${this.props.foodCategoryData.foodCategoryData.details.address_details.city}`
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1 &&
           parseInt(this.props.detailUrlParam.result_type, 10) !== 4
-        ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}, ${this.props.categoryData.categoryData.details.offer_address.address_line_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
+        ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}  ${this.props.categoryData.categoryData.details.offer_address.address_line_2}  ${this.props.categoryData.categoryData.details.offer_address.locality}  ${this.props.categoryData.categoryData.details.offer_address.city}`
         : parseInt(
             this.props.categoryData.categoryData.details.offer_exclusive !== 1,
             10
           )
-        ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}, ${this.props.categoryData.categoryData.details.offer_address.address_line_2}, ${this.props.categoryData.categoryData.details.offer_address.locality}, ${this.props.categoryData.categoryData.details.offer_address.city}`
+        ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}  ${this.props.categoryData.categoryData.details.offer_address.address_line_2}  ${this.props.categoryData.categoryData.details.offer_address.locality}  ${this.props.categoryData.categoryData.details.offer_address.city}`
         : null;
 
     const happy =
