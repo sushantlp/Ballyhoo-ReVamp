@@ -48,7 +48,7 @@ class Detail extends React.Component {
           routeParam = req.params;
 
           // Index Zero=id, One=resultType, Two=partnerId, Three=apiType,
-          slice = req.params.secret.split("-");
+          slice = req.params.secret.split("b");
 
           detailUrlParam = {
             id: slice[0],
@@ -81,7 +81,7 @@ class Detail extends React.Component {
           routeParam = query;
 
           // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
-          slice = query.secret.split("-");
+          slice = query.secret.split("b");
 
           detailUrlParam = {
             id: slice[0],

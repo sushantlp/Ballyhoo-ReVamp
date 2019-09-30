@@ -73,9 +73,9 @@ export default class Featured extends React.Component {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = featured.title.replace(/ /g, "-").toLowerCase();
-    const secret = `${city_id}-${featured.api_type}-${featured.key}-${
+    const secret = `${city_id}b${featured.api_type}b${featured.key}b${
       featured.response_type
-    }-${1}-${0}`;
+    }b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",

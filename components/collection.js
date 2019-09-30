@@ -167,9 +167,9 @@ export default class Collection extends React.Component {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = collection.title.replace(/ /g, "-").toLowerCase();
-    const secret = `${city_id}-${collection.api_type}-${collection.key}-${
+    const secret = `${city_id}b${collection.api_type}b${collection.key}b${
       collection.response_type
-    }-${1}-${0}`;
+    }b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",

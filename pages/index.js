@@ -45,7 +45,6 @@ class Index extends React.Component {
       let cityId = 1;
 
       if (isServer) {
-        console.log(req.params);
         if (
           req.hasOwnProperty("params") &&
           req.params.hasOwnProperty("city_id") &&
@@ -53,7 +52,6 @@ class Index extends React.Component {
         )
           cityId = req.params.city_id;
       } else {
-        console.log(query);
         if (query.hasOwnProperty("city_id") && query.city_id !== undefined)
           cityId = query.city_id;
       }
@@ -131,7 +129,7 @@ class Index extends React.Component {
         const title = nextProps.categoryData.categoryData.details.offer_title
           .replace(/ /g, "-")
           .toLowerCase();
-        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}b${nextProps.categoryData.categoryData.result_type}b${partnerId}`;
 
         Router.push(
           {

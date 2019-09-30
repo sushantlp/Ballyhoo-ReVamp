@@ -66,7 +66,7 @@ class List extends React.Component {
 
       if (routeParam.secret !== undefined) {
         // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
-        const slice = routeParam.secret.split("-");
+        const slice = routeParam.secret.split("b");
 
         if (slice.length === 6) {
           page = slice[4];
@@ -175,7 +175,7 @@ class List extends React.Component {
         const title = nextProps.categoryData.categoryData.details.offer_title
           .replace(/ /g, "-")
           .toLowerCase();
-        const secret = `${nextProps.categoryData.categoryData.details.offer_id}-${nextProps.categoryData.categoryData.result_type}-${partnerId}-${this.props.urlParam.urlParam.api_type}-${this.props.urlParam.urlParam.key}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}b${nextProps.categoryData.categoryData.result_type}b${partnerId}b${this.props.urlParam.urlParam.api_type}b${this.props.urlParam.urlParam.key}`;
 
         Router.push(
           {
@@ -214,7 +214,7 @@ class List extends React.Component {
 
         const secret = `${0}-${
           nextProps.foodCategoryData.foodCategoryData.result_type
-        }-${partnerId}-${this.props.urlParam.urlParam.api_type}-${
+        }b${partnerId}b${this.props.urlParam.urlParam.api_type}b${
           this.props.urlParam.urlParam.key
         }`;
 

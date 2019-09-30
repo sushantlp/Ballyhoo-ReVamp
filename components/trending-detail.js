@@ -85,9 +85,9 @@ export default class TrendingDetail extends React.Component {
       if (obj.city_name.toLowerCase() === city.toLowerCase()) return obj;
     });
 
-    const secrets = `${bunch[0].city_id}-${feature.api_type}-${feature.key}-${
+    const secrets = `${bunch[0].city_id}b${feature.api_type}b${feature.key}b${
       feature.response_type
-    }-${1}-${0}`;
+    }b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",

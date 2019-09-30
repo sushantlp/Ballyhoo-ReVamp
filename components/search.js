@@ -115,9 +115,9 @@ export default class Search extends React.Component {
       .replace(/ /g, "-")
       .toLowerCase();
 
-    const secret = `${bunch[0].key}-${this.state.selectSearch.type}-${
+    const secret = `${bunch[0].key}b${this.state.selectSearch.type}b${
       this.state.selectSearch.key
-    }-${this.state.selectSearch.response_type}-${1}-${1}`;
+    }b${this.state.selectSearch.response_type}b${1}b${1}`;
     Router.push(
       {
         pathname: "/list",

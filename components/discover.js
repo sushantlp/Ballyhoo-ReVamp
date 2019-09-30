@@ -75,9 +75,9 @@ export default class Discover extends React.Component {
 
     const { city, city_id } = Router.router.query;
     const title = discover.title.replace(/ /g, "-").toLowerCase();
-    const secret = `${city_id}-${discover.api_type}-${discover.key}-${
+    const secret = `${city_id}b${discover.api_type}b${discover.key}b${
       discover.response_type
-    }-${1}-${0}`;
+    }b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",

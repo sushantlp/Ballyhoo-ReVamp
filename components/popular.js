@@ -42,9 +42,9 @@ export default class Popular extends React.Component {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
     const title = popular.title.replace(/ /g, "-").toLowerCase();
-    const secret = `${city_id}-${popular.api_type}-${popular.key}-${
+    const secret = `${city_id}b${popular.api_type}b${popular.key}b${
       popular.response_type
-    }-${1}-${0}`;
+    }b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",
@@ -95,6 +95,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "1.3%" }}
                   onMouseEnter={() => this.toggleHoverEnter(1)}
+                  onClick={() => this.onClickPopular(popular[0], this.props)}
                 >
                   {popular[0].title}
                 </p>
@@ -115,6 +116,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "24%" }}
                   onMouseEnter={() => this.toggleHoverEnter(2)}
+                  onClick={() => this.onClickPopular(popular[1], this.props)}
                 >
                   {popular[1].title}
                 </p>
@@ -135,6 +137,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "48%" }}
                   onMouseEnter={() => this.toggleHoverEnter(3)}
+                  onClick={() => this.onClickPopular(popular[2], this.props)}
                 >
                   {popular[2].title}
                 </p>
@@ -155,6 +158,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "77%" }}
                   onMouseEnter={() => this.toggleHoverEnter(4)}
+                  onClick={() => this.onClickPopular(popular[3], this.props)}
                 >
                   {popular[3].title}
                 </p>
@@ -177,6 +181,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "9%" }}
                   onMouseEnter={() => this.toggleHoverEnter(5)}
+                  onClick={() => this.onClickPopular(popular[4], this.props)}
                 >
                   {popular[4].title}
                 </p>
@@ -197,6 +202,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "33%" }}
                   onMouseEnter={() => this.toggleHoverEnter(6)}
+                  onClick={() => this.onClickPopular(popular[5], this.props)}
                 >
                   {popular[5].title}
                 </p>
@@ -217,6 +223,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "57%" }}
                   onMouseEnter={() => this.toggleHoverEnter(8)}
+                  onClick={() => this.onClickPopular(popular[7], this.props)}
                 >
                   {popular[7].title}
                 </p>
@@ -237,6 +244,7 @@ export default class Popular extends React.Component {
                   className="tiletext"
                   style={{ left: "88%" }}
                   onMouseEnter={() => this.toggleHoverEnter(7)}
+                  onClick={() => this.onClickPopular(popular[6], this.props)}
                 >
                   {popular[6].title}
                 </p>

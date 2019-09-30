@@ -188,7 +188,10 @@ export default class EscapePackage extends React.Component {
                         {morePrice !== 0 ? (
                           <span>
                             {"  "}-{"  "}
-                            <span className="fs1-2 fw2">
+                            <span
+                              className="fs1-2 fw2"
+                              style={{ color: "#635f5f" }}
+                            >
                               &#8377; {morePrice}
                             </span>
                           </span>

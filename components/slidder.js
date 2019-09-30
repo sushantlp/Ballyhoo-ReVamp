@@ -164,9 +164,9 @@ export default class Slidder extends React.Component {
     const title = this.state.selectSearch.keyword
       .replace(/ /g, "-")
       .toLowerCase();
-    const secret = `${city_id}-${this.state.selectSearch.type}-${
+    const secret = `${city_id}b${this.state.selectSearch.type}b${
       this.state.selectSearch.key
-    }-${this.state.selectSearch.response_type}-${1}-${1}`;
+    }b${this.state.selectSearch.response_type}b${1}b${1}`;
     Router.push(
       {
         pathname: "/list",
