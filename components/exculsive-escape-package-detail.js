@@ -177,7 +177,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                       </h4>
 
                       <h5 className="fw2 ffqs fs1-3">
-                        Price :{" "}
+                        Price :{"  "}
                         <span style={{ color: "#635f5f" }}>₹ {price}/-</span>
                         {cutPrice === 0 ? null : (
                           <span>
@@ -185,11 +185,13 @@ export default class ExculsiveEscapePackage extends React.Component {
                               className="fw2 fs0-7 tdl ml8"
                               style={{ color: "#363636" }}
                             >
-                              ₹ {cutPrice}/-
+                              &#8377; {"  "}
+                              {cutPrice}/-
                             </span>
                             <span className="tag is-rounded is-warning ml8">
                               {value.package_discount}% off
-                            </span>{" "}
+                            </span>
+                            {"  "}
                           </span>
                         )}
                       </h5>
@@ -213,7 +215,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                   <div className="columns mb0">
                     <div className="column">
                       <h4 className="ffqs fw2">
-                        Travel Duration :{" "}
+                        Travel Duration :{"  "}
                         <span className="tag is-rounded is-danger">
                           {value.package_travel_time} hours
                         </span>

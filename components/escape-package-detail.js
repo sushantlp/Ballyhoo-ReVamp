@@ -148,19 +148,19 @@ export default class EscapePackage extends React.Component {
         morePrice = value.price_ranges[1];
       } else {
         for (let i = 0; i < value.price_ranges.length; i++) {
-          lessPrice = value.price_ranges[i];
-          morePrice = value.price_ranges[i];
-
-          for (let j = i + 1; j < value.price_ranges.length; j++) {
-            if (lessPrice > value.price_ranges[j]) {
-              lessPrice = value.price_ranges[j];
-            }
+          if (i === 0) {
+            lessPrice = value.price_ranges[i];
+            morePrice = value.price_ranges[i];
           }
 
           for (let j = i + 1; j < value.price_ranges.length; j++) {
-            if (morePrice < value.price_ranges[j]) {
+            if (lessPrice > value.price_ranges[j])
+              lessPrice = value.price_ranges[j];
+          }
+
+          for (let j = i + 1; j < value.price_ranges.length; j++) {
+            if (morePrice < value.price_ranges[j])
               morePrice = value.price_ranges[j];
-            }
           }
         }
       }
@@ -178,7 +178,7 @@ export default class EscapePackage extends React.Component {
                       </h4>
 
                       <h4 className="ffqs fs1">
-                        <span> Price Range : </span>
+                        <span> Price Range : {"  "}</span>
                         <span
                           className="fs1-2 fw2"
                           style={{ color: "#635f5f" }}
@@ -187,7 +187,7 @@ export default class EscapePackage extends React.Component {
                         </span>
                         {morePrice !== 0 ? (
                           <span>
-                            -
+                            {"  "}-{"  "}
                             <span className="fs1-2 fw2">
                               &#8377; {morePrice}
                             </span>
@@ -214,7 +214,7 @@ export default class EscapePackage extends React.Component {
                     <div className="columns mb0">
                       <div className="column">
                         <h4 className="ffqs fw2 fs1">
-                          Travel Time :{" "}
+                          Travel Time :{"  "}
                           <span className="fw2 fs1-1">
                             {value.package_travel_time} hr
                           </span>

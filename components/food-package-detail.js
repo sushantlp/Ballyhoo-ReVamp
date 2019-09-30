@@ -35,7 +35,7 @@ const FoodPackageDetail = props => {
                         <div className="column is-10">
                           <h4 className="ffqs list-title">{value.title}</h4>
                           <h4 className="mb8 plh1 list-subtitle">
-                            {value.days} {value.times.start_time} To{" "}
+                            {value.days} {value.times.start_time} To{"  "}
                             {value.times.end_time}
                           </h4>
                         </div>
@@ -102,10 +102,10 @@ const FoodPackageDetail = props => {
                         className="m0 f24 fw9 flh28"
                         style={{ color: "#635f5f" }}
                       >
-                        ₹ {price}/-
+                        &#8377; {"  "} {price}/-
                         {cutPrice === 0 ? null : (
                           <span className="f12 pfc3 tdl ml8">
-                            ₹ {cutPrice}/-
+                            &#8377; {"  "} {cutPrice}/-
                           </span>
                         )}
                       </h5>

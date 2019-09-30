@@ -106,19 +106,18 @@ export default class SaloonPackage extends React.Component {
         morePrice = value.price_ranges[1];
       } else {
         for (let i = 0; i < value.price_ranges.length; i++) {
-          lessPrice = value.price_ranges[i];
-          morePrice = value.price_ranges[i];
-
+          if (i === 0) {
+            lessPrice = value.price_ranges[i];
+            morePrice = value.price_ranges[i];
+          }
           for (let j = i + 1; j < value.price_ranges.length; j++) {
-            if (lessPrice > value.price_ranges[j]) {
+            if (lessPrice > value.price_ranges[j])
               lessPrice = value.price_ranges[j];
-            }
           }
 
           for (let j = i + 1; j < value.price_ranges.length; j++) {
-            if (morePrice < value.price_ranges[j]) {
+            if (morePrice < value.price_ranges[j])
               morePrice = value.price_ranges[j];
-            }
           }
         }
       }
@@ -134,9 +133,10 @@ export default class SaloonPackage extends React.Component {
                       <h4 className="list-title">{value.package_caption}</h4>
 
                       <h4 className="fw2 fs1">
-                        Price Range :{" "}
+                        Price Range :{"  "}
                         <span className="fs1-1" style={{ color: "#635f5f" }}>
-                          &#8377;{lessPrice}
+                          &#8377; {"  "}
+                          {lessPrice}
                         </span>
                         {morePrice !== 0 ? (
                           <span>
@@ -145,7 +145,8 @@ export default class SaloonPackage extends React.Component {
                               className="fs1-1"
                               style={{ color: "#635f5f" }}
                             >
-                              &#8377;{morePrice}
+                              &#8377; {"  "}
+                              {morePrice}
                             </span>
                           </span>
                         ) : null}
@@ -170,7 +171,7 @@ export default class SaloonPackage extends React.Component {
                   <div className="columns mb0">
                     <div className="column">
                       <h4 className="fw2 fs1">
-                        Price Caption :{" "}
+                        Price Caption :{"  "}
                         {value.price_captions.map((value, key) => {
                           return (
                             <span className="fw2 fs1-1" key={key}>
@@ -216,18 +217,19 @@ export default class SaloonPackage extends React.Component {
                               className="fw2 mt0-5 fs1-3"
                               style={{ color: "#635f5f" }}
                             >
-                              ₹ {price}/-
+                              &#8377; {"  "} {price}/-
                               {cutPrice === 0 ? null : (
                                 <span>
                                   <span
                                     className="fw2 fs0-7 tdl ml8"
                                     style={{ color: "#363636" }}
                                   >
-                                    ₹ {cutPrice}/-
+                                    &#8377; {"  "} {cutPrice}/-
                                   </span>
                                   <span className="tag is-rounded is-warning ml8">
                                     {value.price_discount}% off
-                                  </span>{" "}
+                                  </span>
+                                  {"  "}
                                 </span>
                               )}
                             </h5>

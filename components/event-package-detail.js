@@ -133,11 +133,13 @@ export default class EventPackage extends React.Component {
 
   render() {
     return this.state.packages.map((value, key) => {
+      let lessPrice = 0;
+      let morePrice = 0;
       let beautyDate;
       if (value.package_start_date != null && value.package_end_date != null) {
         const start = moment(value.package_start_date).format("MMM D");
         const end = moment(value.package_end_date).format("MMM D");
-        beautyDate = `${start} - ${end}`;
+        beautyDate = `${start}  -  ${end}`;
       } else {
         const start = moment(value.package_start_date).format("MMM D");
         beautyDate = start;
@@ -150,8 +152,6 @@ export default class EventPackage extends React.Component {
           </a>
 
           {value.package_list.map((list, key) => {
-            let lessPrice = 0;
-            let morePrice = 0;
             if (list.price_ranges.length === 1) {
               lessPrice = list.price_ranges;
             } else if (list.price_ranges.length === 2) {
@@ -159,19 +159,18 @@ export default class EventPackage extends React.Component {
               morePrice = list.price_ranges[1];
             } else {
               for (let i = 0; i < list.price_ranges.length; i++) {
-                lessPrice = list.price_ranges[i];
-                morePrice = list.price_ranges[i];
-
-                for (let j = i + 1; j < list.price_ranges.length; j++) {
-                  if (lessPrice > list.price_ranges[j]) {
+                if (i === 0) {
+                  lessPrice = list.price_ranges[i];
+                  morePrice = list.price_ranges[i];
+                }
+                for (let j = i; j < list.price_ranges.length; j++) {
+                  if (lessPrice > list.price_ranges[j])
                     lessPrice = list.price_ranges[j];
-                  }
                 }
 
-                for (let j = i + 1; j < list.price_ranges.length; j++) {
-                  if (morePrice < list.price_ranges[j]) {
+                for (let j = i; j < list.price_ranges.length; j++) {
+                  if (morePrice < list.price_ranges[j])
                     morePrice = list.price_ranges[j];
-                  }
                 }
               }
             }
@@ -189,17 +188,17 @@ export default class EventPackage extends React.Component {
                             </h4>
 
                             <h4 className="fw2 fs1">
-                              Price Range :{" "}
+                              Price Range : {"  "}
                               <span
                                 className="fs1-1"
                                 style={{ color: "#635f5f" }}
                               >
-                                {" "}
+                                {"  "}
                                 &#8377; {lessPrice}
                               </span>
                               {morePrice !== 0 ? (
                                 <span>
-                                  -
+                                  {"  "}-{"  "}
                                   <span
                                     className="fs1-1"
                                     style={{ color: "#635f5f" }}
@@ -229,7 +228,7 @@ export default class EventPackage extends React.Component {
                         <div className="columns mb0">
                           <div className="column">
                             <h4 className="fw2 fs1">
-                              Price Caption :{" "}
+                              Price Caption : {"  "}
                               {list.price_captions.map((value, key) => {
                                 return (
                                   <span className="fw2 fs1-1" key={key}>
