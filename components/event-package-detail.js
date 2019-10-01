@@ -175,6 +175,8 @@ export default class EventPackage extends React.Component {
               }
             }
 
+            const priceCaptionLength = list.price_captions.length;
+
             return (
               <React.Fragment key={key}>
                 <div className="box">
@@ -188,21 +190,19 @@ export default class EventPackage extends React.Component {
                             </h4>
 
                             <h4 className="fw2 fs1">
-                              Price Range : {"  "}
-                              <span
-                                className="fs1-1"
-                                style={{ color: "#635f5f" }}
-                              >
+                              <span className="ffqs fs1-3 fw2">
+                                {" "}
+                                Price Range : {"  "}
+                              </span>
+
+                              <span className="fs1-3 fw2">
                                 {"  "}
                                 &#8377; {lessPrice}
                               </span>
                               {morePrice !== 0 ? (
                                 <span>
                                   {"  "}-{"  "}
-                                  <span
-                                    className="fs1-1"
-                                    style={{ color: "#635f5f" }}
-                                  >
+                                  <span className="fs1-3 fw2">
                                     &#8377; {morePrice}
                                   </span>
                                 </span>
@@ -228,11 +228,18 @@ export default class EventPackage extends React.Component {
                         <div className="columns mb0">
                           <div className="column">
                             <h4 className="fw2 fs1">
-                              Price Caption : {"  "}
+                              <span className="ffqs fs1-3 fw2">
+                                Price Caption :{" "}
+                              </span>
                               {list.price_captions.map((value, key) => {
                                 return (
-                                  <span className="fw2 fs1-1" key={key}>
-                                    {value}
+                                  <span className="fw2 fs1-3" key={key}>
+                                    {value} {"  "}
+                                    {"  "}
+                                    {priceCaptionLength === key + 1
+                                      ? ". "
+                                      : ", "}
+                                    {"  "}
                                   </span>
                                 );
                               })}
@@ -241,13 +248,13 @@ export default class EventPackage extends React.Component {
                         </div>
 
                         <div
-                          className="f14 ffqs plh1"
+                          className="fs1-1 ffqs plh1"
                           style={{ whiteSpace: "pre-line" }}
                         >
                           <ReadMoreAndLess
                             ref={this.ReadMore}
                             className="read-more-content"
-                            charLimit={100}
+                            charLimit={200}
                             readMoreText="See more"
                             readLessText="See less"
                           >
@@ -282,10 +289,7 @@ export default class EventPackage extends React.Component {
                                     {money.price_caption}
                                   </h4>
 
-                                  <h5
-                                    className="fw2 mt0-5 fs1-3"
-                                    style={{ color: "#635f5f" }}
-                                  >
+                                  <h5 className="fw2 mt0-5 fs1-3">
                                     ₹ {price}/-
                                     {cutPrice === 0 ? null : (
                                       <span>

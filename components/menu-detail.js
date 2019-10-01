@@ -12,7 +12,9 @@ const Menu = props => {
                 return (
                   <figure
                     className="image"
-                    onClick={() => props.intializeImageArray(true)}
+                    onClick={() =>
+                      props.intializeImageArray(true, props.menuImage)
+                    }
                     key={key}
                   >
                     <img src={value} className="menu-image" />

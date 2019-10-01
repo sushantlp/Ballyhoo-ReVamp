@@ -23,8 +23,8 @@
 .trending-detail-card
   .trending-detail-header-container
   .trending-detail-header {
-  color: rgb(39, 37, 37);
-  font-size: 1.5em;
+  color: black;
+  font-size: 28px;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
 }
@@ -42,7 +42,7 @@
   height: 1px;
   display: block;
   box-sizing: border-box;
-  width: 5em;
+  width: 90px;
 }
 
 .trending-detail-card .trending-detail-card:hover {
@@ -113,9 +113,9 @@
   position: absolute;
   display: block;
   width: 225px;
-  background-color: #ff3860;
+  background-color: #7fff00;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
+  color: black;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-align: center;
   font-family: "Quicksand", sans-serif;

@@ -99,6 +99,7 @@ export default class SaloonPackage extends React.Component {
     return this.state.packages.map((value, key) => {
       let lessPrice = 0;
       let morePrice = 0;
+      const priceCaptionLength = value.price_captions.length;
       if (value.price_ranges.length === 1) {
         lessPrice = value.price_ranges;
       } else if (value.price_ranges.length === 2) {
@@ -133,18 +134,18 @@ export default class SaloonPackage extends React.Component {
                       <h4 className="list-title">{value.package_caption}</h4>
 
                       <h4 className="fw2 fs1">
-                        Price Range :{"  "}
-                        <span className="fs1-1" style={{ color: "#635f5f" }}>
+                        <span className="ffqs fs1-3 fw2">
+                          Price Range :{"  "}
+                        </span>
+
+                        <span className="fs1-3 fw2">
                           &#8377; {"  "}
                           {lessPrice}
                         </span>
                         {morePrice !== 0 ? (
                           <span>
                             -
-                            <span
-                              className="fs1-1"
-                              style={{ color: "#635f5f" }}
-                            >
+                            <span className="fs1-3 fw2">
                               &#8377; {"  "}
                               {morePrice}
                             </span>
@@ -171,18 +172,23 @@ export default class SaloonPackage extends React.Component {
                   <div className="columns mb0">
                     <div className="column">
                       <h4 className="fw2 fs1">
-                        Price Caption :{"  "}
+                        <span className="ffqs fs1-3 fw2">
+                          Price Caption :{"  "}{" "}
+                        </span>
                         {value.price_captions.map((value, key) => {
                           return (
                             <span className="fw2 fs1-1" key={key}>
                               {value} {"  "}
+                              {"  "}
+                              {priceCaptionLength === key + 1 ? ". " : ", "}
+                              {"  "}
                             </span>
                           );
                         })}
                       </h4>
                     </div>
                   </div>
-                  <div className="f14 ffqs">
+                  <div className="fs1-1 ffqs">
                     <p style={{ whiteSpace: "pre-line" }}>
                       {value.package_inclusion}
                     </p>
@@ -213,10 +219,7 @@ export default class SaloonPackage extends React.Component {
                               {value.price_caption}
                             </h4>
 
-                            <h5
-                              className="fw2 mt0-5 fs1-3"
-                              style={{ color: "#635f5f" }}
-                            >
+                            <h5 className="fw2 mt0-5 fs1-3">
                               &#8377; {"  "} {price}/-
                               {cutPrice === 0 ? null : (
                                 <span>

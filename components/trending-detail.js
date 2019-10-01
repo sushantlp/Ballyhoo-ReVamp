@@ -162,7 +162,7 @@ export default class TrendingDetail extends React.Component {
       <div className="container">
         <div className="trending-detail-card">
           <div className="trending-detail-header-container">
-            <h2 className="trending-detail-header">Also Featuring</h2>
+            <h2 className="trending-detail-header">You May Also Like</h2>
             <div className="underscore" />
           </div>
 

@@ -142,7 +142,7 @@ export default class EscapePackage extends React.Component {
           inclusionType.activity = true;
       }
 
-      let priceCaptionLength = value.price_captions.length;
+      const priceCaptionLength = value.price_captions.length;
       if (value.price_ranges.length === 1) {
         lessPrice = value.price_ranges;
       } else if (value.price_ranges.length === 2) {
@@ -252,7 +252,7 @@ export default class EscapePackage extends React.Component {
                   </div>
 
                   <div
-                    className="f14 ffqs plh1"
+                    className="fs1-1 ffqs plh1"
                     style={{ whiteSpace: "pre-line" }}
                   >
                     <ReadMoreAndLess
@@ -399,10 +399,7 @@ export default class EscapePackage extends React.Component {
                               {list.price_caption}
                             </h4>
 
-                            <h5
-                              className="fw2 fs1-3"
-                              style={{ color: "#635f5f" }}
-                            >
+                            <h5 className="fw2 fs1-3">
                               ₹ {price}/-
                               {cutPrice === 0 ? null : (
                                 <span>
