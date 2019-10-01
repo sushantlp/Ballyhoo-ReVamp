@@ -32,6 +32,7 @@
     "react-read-more-less": "^0.1.6",
     "react-redux": "^7.1.1",
     "react-slick": "^0.24.0",
+    "react-text-more-less": "^0.4.0",
     "react-time-picker": "^3.7.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",

@@ -22,3 +22,18 @@
 .mb0-4 {
   margin-bottom: 0.4em;
 }
+
+.tabs li.is-active a {
+  border-bottom-color: #4a4a4a;
+  color: #4a4a4a;
+}
+
+.show-more-text {
+  cursor: pointer;
+  color: #ff3860;
+  font-weight: bold;
+}
+
+.js-show-less-text .show-more-text {
+  padding-left: 10px;
+}

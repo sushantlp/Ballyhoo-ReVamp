@@ -20,7 +20,8 @@ export default class Overview extends React.Component {
       lightBox: false,
       bundleImage: [],
       selectedMarker: false,
-      isLoading: false
+      isLoading: false,
+      collapsed: true
     };
   }
 
@@ -58,12 +59,17 @@ export default class Overview extends React.Component {
     this.setState({ isLoading: !this.state.isLoading });
   };
 
+  updateCollapsed = () => {
+    this.setState({ collapsed: !this.state.collapsed });
+  };
+
   zomatoApiCall = page => {
     this.updateIsLoading();
     this.props.getZomatoDataApi(this.props.detailUrlParam.partner_id, page);
   };
 
   render() {
+    console.log(this.props.categoryData.categoryData);
     const offerRating =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.rating
@@ -193,7 +199,28 @@ export default class Overview extends React.Component {
         : null;
     const tourDetail =
       parseInt(this.props.detailUrlParam.result_type, 10) === 4
-        ? this.props.categoryData.categoryData.details.tour_details
+        ? parseInt(
+            this.props.categoryData.categoryData.details.offer_exclusive,
+            10
+          ) === 0
+          ? this.props.categoryData.categoryData.details.tour_details.tour_type
+              .length > 0
+            ? this.props.categoryData.categoryData.details.tour_details
+            : null
+          : this.props.categoryData.categoryData.details.tour_details
+              .tour_destinations.length === 0 &&
+            this.props.categoryData.categoryData.details.tour_details
+              .tour_type === 0 &&
+            this.props.categoryData.categoryData.details.tour_details
+              .tour_duration == null &&
+            this.props.categoryData.categoryData.details.tour_details
+              .tour_start_from == null &&
+            this.props.categoryData.categoryData.details.tour_details
+              .tour_total_distance == null &&
+            this.props.categoryData.categoryData.details.tour_details
+              .tour_travel_time == null
+          ? null
+          : this.props.categoryData.categoryData.details.tour_details
         : null;
 
     let fullRating = [];
@@ -238,41 +265,12 @@ export default class Overview extends React.Component {
                   ? "Average cost for two :"
                   : "Price :"}
 
-                <span className="fw7" style={{ color: "#635f5f" }}>
+                <span style={{ color: "black", fontSize: "18px" }}>
                   {" "}
                   &#8377; {price}
                 </span>
               </h4>
             </div>
-
-            {/* {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ||
-            parseInt(this.props.detailUrlParam.result_type, 10) === 5 ? (
-              <div className="column is-3">
-                {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
-                  <span>
-                    <span>
-                      <img src="https://img.icons8.com/color/20/000000/vegetarian-food-symbol.png" />
-                    </span>
-
-                    <span>
-                      <img src="https://img.icons8.com/color/20/000000/non-vegetarian-food-symbol.png" />
-                    </span>
-                  </span>
-                ) : null}
-
-                {parseInt(this.props.detailUrlParam.result_type, 10) === 5 ? (
-                  <span>
-                    <span>
-                      <img src="https://img.icons8.com/bubbles/25/000000/birthday-boy.png" />
-                    </span>
-
-                    <span>
-                      <img src="https://img.icons8.com/bubbles/25/000000/birthday-girl.png" />
-                    </span>
-                  </span>
-                ) : null}
-              </div>
-            ) : null} */}
 
             <div className="column is-4">
               <div>
@@ -291,27 +289,37 @@ export default class Overview extends React.Component {
             </div>
 
             <div className="column is-2 is-offset-1">
-              <span className="rating">
-                {fullRating.map(function(i) {
-                  return (
-                    <img
-                      src="https://img.icons8.com/color/20/000000/filled-star.png"
-                      key={i}
-                    />
-                  );
-                })}
-                <span>{halfRating}</span>
-                <span>
-                  {emptyRating.map(function(i) {
+              {parseInt(this.props.detailUrlParam.result_type, 10) === 4 &&
+              parseInt(
+                this.props.categoryData.categoryData.details.offer_verified,
+                10
+              ) === 1 ? (
+                <span className="tag is-rounded is-medium is-success">
+                  Verified
+                </span>
+              ) : (
+                <span className="rating">
+                  {fullRating.map(function(i) {
                     return (
                       <img
-                        src="https://img.icons8.com/color/20/000000/star.png"
+                        src="https://img.icons8.com/color/20/000000/filled-star.png"
                         key={i}
                       />
                     );
                   })}
+                  <span>{halfRating}</span>
+                  <span>
+                    {emptyRating.map(function(i) {
+                      return (
+                        <img
+                          src="https://img.icons8.com/color/20/000000/star.png"
+                          key={i}
+                        />
+                      );
+                    })}
+                  </span>
                 </span>
-              </span>
+              )}
             </div>
           </div>
         </div>
@@ -329,20 +337,24 @@ export default class Overview extends React.Component {
         {about != null ? (
           <Text
             ReadMore={this.ReadMore}
-            title="About Merchant"
+            title={
+              parseInt(this.props.detailUrlParam.result_type, 10) === 4
+                ? "Description"
+                : "About Merchant"
+            }
             detail={about}
             flag={false}
+            collapsed={this.state.collapsed}
+            updateCollapsed={this.updateCollapsed}
           />
         ) : null}
         {tourDetail != null ? (
-          tourDetail.tour_destinations.length > 0 ||
-          tourDetail.tour_duration != null ||
-          tourDetail.tour_start_from != null ||
-          tourDetail.tour_total_distance != null ||
-          tourDetail.tour_travel_time != null ||
-          tourDetail.tour_type.length > 0 ? (
-            <TourDetail tourDetail={tourDetail} />
-          ) : null
+          <TourDetail
+            tourDetail={tourDetail}
+            exclusive={
+              this.props.categoryData.categoryData.details.offer_exclusive
+            }
+          />
         ) : null}
 
         {menuImage.length > 0 ? (
@@ -355,9 +367,15 @@ export default class Overview extends React.Component {
         {highlight != null ? (
           <Text
             ReadMore={this.ReadMore}
-            title="Offer Highlight"
+            title={
+              parseInt(this.props.detailUrlParam.result_type, 10) === 4
+                ? "Highlight"
+                : "Offer Highlight"
+            }
             detail={highlight}
             flag={false}
+            collapsed={this.state.collapsed}
+            updateCollapsed={this.updateCollapsed}
           />
         ) : null}
 
@@ -368,6 +386,8 @@ export default class Overview extends React.Component {
             detail={happy}
             flag={true}
             happyHour={happyHour}
+            collapsed={this.state.collapsed}
+            updateCollapsed={this.updateCollapsed}
           />
         ) : null}
 
@@ -377,6 +397,8 @@ export default class Overview extends React.Component {
             title="Terms"
             detail={terms}
             flag={false}
+            collapsed={this.state.collapsed}
+            updateCollapsed={this.updateCollapsed}
           />
         ) : null}
 
@@ -386,6 +408,8 @@ export default class Overview extends React.Component {
             title="Faqs"
             detail={faqs}
             flag={false}
+            collapsed={this.state.collapsed}
+            updateCollapsed={this.updateCollapsed}
           />
         ) : null}
 
