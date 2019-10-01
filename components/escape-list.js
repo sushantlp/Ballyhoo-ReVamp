@@ -3,8 +3,8 @@ const EscapeList = props => {
 
   return list.map((list, key) => {
     let description = list.offer_description;
-    if (description.length >= 230) {
-      description = description.slice(0, 230) + " ...";
+    if (description.length >= 200) {
+      description = description.slice(0, 200) + " ...";
     }
 
     let inclusionType = {
@@ -95,15 +95,13 @@ const EscapeList = props => {
                     <p className="title google">{title}</p>
 
                     {parseInt(list.offer_exclusive, 10) === 1 ? (
-                      <p className="subtitle is-6 mb8 plh1">
+                      <p className="subtitle is-6 mb8">
                         {list.tour_details.tour_duration != null
                           ? list.tour_details.tour_duration
                           : list.offer_address.locality}
                       </p>
                     ) : (
-                      <p className="subtitle is-6 mb8 plh1">
-                        {list.offer_title}
-                      </p>
+                      <p className="subtitle is-6 mb8">{list.offer_title}</p>
                     )}
                   </div>
 
@@ -153,7 +151,7 @@ const EscapeList = props => {
                     </span>
 
                     <h5
-                      className="mt0-2 m0 f20 fw9 flh28"
+                      className="mt0-2 m0 f17 fw9 flh28"
                       style={{ marginBottom: ".4em", color: "#635f5f" }}
                     >
                       ₹ {list.offer_min_price}/-
@@ -262,12 +260,12 @@ const EscapeList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium is-outlined"
+                className="button is-medium is-black is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
-                <span className="icon">
+                {/* <span className="icon">
                   <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
-                </span>
+                </span> */}
                 <span>View Detail</span>
               </a>
             </div>

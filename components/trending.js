@@ -75,8 +75,8 @@ export default class Trending extends React.Component {
     const calculate = json.length;
     return json.map((trending, key) => {
       let description = trending.offer_description;
-      if (description.length >= 50) {
-        description = description.slice(0, 50) + " ...";
+      if (description.length >= 35) {
+        description = description.slice(0, 35) + " ...";
       }
 
       return (

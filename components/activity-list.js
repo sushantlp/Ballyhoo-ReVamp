@@ -4,8 +4,8 @@ const ActivityList = props => {
   //src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_480,w_480/v1457670910/OTHER_CATEGORY/ACTIVITY/5.jpg"
   return list.map((list, key) => {
     let description = list.offer_description;
-    if (description.length >= 230) {
-      description = description.slice(0, 230) + " ...";
+    if (description.length >= 200) {
+      description = description.slice(0, 200) + " ...";
     }
 
     let fullRating = [];
@@ -63,7 +63,7 @@ const ActivityList = props => {
                     <p className="title google">
                       {list.partner_details.p_name}
                     </p>
-                    <p className="subtitle is-6 mb8 plh1">
+                    <p className="subtitle is-6 mb8">
                       {list.offer_address.locality}
                     </p>
                   </div>
@@ -102,7 +102,7 @@ const ActivityList = props => {
                 <div className="columns mb0 ">
                   <div className="column pt0">
                     <span className="fw4 m0 iblock">
-                      <span className="mr24 pfc4">Starting from:</span>
+                      <span className="mr24">Starting from:</span>
                       {list.offer_max_discount != null &&
                       parseInt(list.offer_max_discount, 10) !== 0 ? (
                         <span className="tag is-danger radius20 fw7">
@@ -112,7 +112,7 @@ const ActivityList = props => {
                     </span>
 
                     <h5
-                      className=" m0 f20 fw9 flh28 mt0-2"
+                      className=" m0 f18 fw9 flh28 mt0-2"
                       style={{ color: "#635f5f" }}
                     >
                       ₹ {list.offer_min_price}/-{" "}
@@ -170,12 +170,12 @@ const ActivityList = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium is-outlined"
+                className="button is-medium is-black is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
-                <span className="icon">
+                {/* <span className="icon">
                   <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
-                </span>
+                </span> */}
                 <span>View Detail</span>
               </a>
             </div>

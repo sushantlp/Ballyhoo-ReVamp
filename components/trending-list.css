@@ -17,8 +17,8 @@
 }
 
 .trending-list-container .trending-list-header-container .trending-list-header {
-  color: rgb(39, 37, 37);
-  font-size: 1.5em;
+  color: black;
+  font-size: 28px;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
 }
@@ -36,7 +36,7 @@
   height: 1px;
   display: block;
   box-sizing: border-box;
-  width: 5em;
+  width: 90px;
 }
 
 .trending-list-container .trending-list-card:hover {
@@ -59,11 +59,13 @@
   text-transform: uppercase;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
-  color: black;
+
   opacity: 0.7;
   text-decoration: none;
   pointer-events: none;
-  font-size: 0.9em;
+
+  /* color: black;
+  font-size: 0.9em; */
 }
 
 .trending-list-container .trending-list-header-container {

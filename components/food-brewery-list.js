@@ -3,8 +3,8 @@ const FoodBrewery = props => {
 
   return list.map((list, key) => {
     let description = list.p_about;
-    if (description.length >= 230) {
-      description = description.slice(0, 230) + " ...";
+    if (description.length >= 200) {
+      description = description.slice(0, 200) + " ...";
     }
 
     let fullRating = [];
@@ -60,7 +60,7 @@ const FoodBrewery = props => {
                 <div className="columns mb0">
                   <div className="column">
                     <p className="title google">{list.p_name}</p>
-                    <p className="subtitle is-6 mb8 plh1">{list.p_locality}</p>
+                    <p className="subtitle is-6 mb8">{list.p_locality}</p>
                   </div>
 
                   <div className="column">
@@ -101,7 +101,7 @@ const FoodBrewery = props => {
                     </span>
 
                     <h5
-                      className="m0 f20 fw9 flh28 mt0-2"
+                      className="m0 f17 fw9 flh28 mt0-2"
                       style={{ color: "#635f5f" }}
                     >
                       ₹ {list.p_cost_for_two}
@@ -210,14 +210,14 @@ const FoodBrewery = props => {
 
             <div className="card-footer-item">
               <a
-                className="button is-medium is-outlined"
+                className="button is-medium is-black is-outlined"
                 onClick={() =>
                   props.foodCategoryApiCall(list.p_id, props.urlParam.key)
                 }
               >
-                <span className="icon">
+                {/* <span className="icon">
                   <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
-                </span>
+                </span> */}
                 <span>View Detail</span>
               </a>
             </div>
