@@ -28,7 +28,8 @@ const FoodEventList = props => {
                           <div className="column is-10">
                             <h4 className="ffqs list-title">{value.title}</h4>
                             <h4 className="mb8 plh1 list-subtitle">
-                              {value.times.start_time} To {value.times.end_time}
+                              {value.times.start_time} {"  "} To {"  "}{" "}
+                              {value.times.end_time}
                             </h4>
                           </div>
                         </div>

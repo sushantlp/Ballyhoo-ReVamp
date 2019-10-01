@@ -30,7 +30,8 @@ const FoodList = props => {
                         <div className="column is-10">
                           <h4 className="ffqs list-title">{value.title}</h4>
                           <h4 className="mb8 plh1 list-subtitle">
-                            {value.days} {value.times.start_time} To{" "}
+                            {value.days} {value.times.start_time}
+                            {"  "} To {"  "}
                             {value.times.end_time}
                           </h4>
                         </div>
@@ -93,7 +94,10 @@ const FoodList = props => {
                 <footer className="card-footer">
                   <div className="card-footer-item">
                     <span className="span-flex">
-                      <h5 className="sfc3 m0 f24 fw9 flh28 priceVal at_newprice">
+                      <h5
+                        className="m0 f24 fw9 flh28"
+                        style={{ color: "#635f5f" }}
+                      >
                         ₹ {price}/-
                         {cutPrice === 0 ? null : (
                           <span className="f12 pfc3 tdl ml8">

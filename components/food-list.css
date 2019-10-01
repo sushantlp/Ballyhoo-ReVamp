@@ -28,8 +28,9 @@
 
 .food-list-container .list-title {
   font-weight: 400;
-  font-size: 1.4em;
+  font-size: 1.6em;
   margin: 0;
+  color: black;
 }
 
 .food-list-container .mb8 {

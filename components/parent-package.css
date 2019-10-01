@@ -16,8 +16,9 @@
 
 .parent-package-container .list-title {
   font-weight: 400;
-  font-size: 1.8em;
+  font-size: 1.6em;
   margin: 0;
+  color: black;
 }
 
 .parent-package-container .mb8 {
@@ -90,8 +91,9 @@
 
 .parent-package-container .package-container .list-title {
   font-weight: 400;
-  font-size: 1.3em;
+  font-size: 1.6em;
   margin: 0;
+  color: black;
 }
 
 .parent-package-container .package-container .tdl {

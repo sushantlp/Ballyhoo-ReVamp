@@ -1,6 +1,6 @@
 import { Segment, Accordion, Icon } from "semantic-ui-react";
 import ReadMoreAndLess from "react-read-more-less";
-
+// import ReactTextMoreLess from "react-text-more-less";
 export default class EscapePackage extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +10,9 @@ export default class EscapePackage extends React.Component {
       toggle: {
         index: -1,
         door: false
-      }
+      },
+      collapsed: true,
+      dynamic: []
     };
   }
 
@@ -178,10 +180,13 @@ export default class EscapePackage extends React.Component {
                       </h4>
 
                       <h4 className="ffqs fs1">
-                        <span> Price Range : {"  "}</span>
+                        <span className="ffqs fs1-3 fw2">
+                          {" "}
+                          Price Range : {"  "}
+                        </span>
                         <span
-                          className="fs1-2 fw2"
-                          style={{ color: "#635f5f" }}
+                          className="fs1-3 fw2"
+                          // style={{ color: "#635f5f" }}
                         >
                           &#8377; {lessPrice}
                         </span>
@@ -189,8 +194,8 @@ export default class EscapePackage extends React.Component {
                           <span>
                             {"  "}-{"  "}
                             <span
-                              className="fs1-2 fw2"
-                              style={{ color: "#635f5f" }}
+                              className="fs1-3 fw2"
+                              // style={{ color: "#635f5f" }}
                             >
                               &#8377; {morePrice}
                             </span>
@@ -217,8 +222,12 @@ export default class EscapePackage extends React.Component {
                     <div className="columns mb0">
                       <div className="column">
                         <h4 className="ffqs fw2 fs1">
-                          Travel Time :{"  "}
-                          <span className="fw2 fs1-1">
+                          <span className="ffqs fs1-3 fw2">
+                            {" "}
+                            Travel Time : {"  "}
+                          </span>
+
+                          <span className="fw2 fs1-3">
                             {value.package_travel_time} hr
                           </span>
                         </h4>
@@ -229,10 +238,10 @@ export default class EscapePackage extends React.Component {
                   <div className="columns mb0">
                     <div className="column">
                       <h4 className="ffqs fs1">
-                        <span>Price Caption : </span>
+                        <span className="ffqs fs1-3 fw2">Price Caption : </span>
                         {value.price_captions.map((value, key) => {
                           return (
-                            <span className="fw2 fs1-1" key={key}>
+                            <span className="fw2 fs1-3" key={key}>
                               {value} {"  "}{" "}
                               {priceCaptionLength === key + 1 ? "." : ","}
                             </span>
@@ -249,12 +258,30 @@ export default class EscapePackage extends React.Component {
                     <ReadMoreAndLess
                       ref={this.ReadMore}
                       className="read-more-content"
-                      charLimit={100}
+                      charLimit={300}
                       readMoreText="See more"
                       readLessText="See less"
                     >
                       {value.package_inclusion}
                     </ReadMoreAndLess>
+
+                    {/* <ReactTextMoreLess
+                      collapsed={this.state.collapsed}
+                      text={value.package_inclusion}
+                      lessHeight={100}
+                      showMoreText="... show more"
+                      showMoreElement={
+                        <span>
+                          ... <span className="show-more-text">show more</span>
+                        </span>
+                      }
+                      showLessElement={
+                        <span className="show-more-text">show less</span>
+                      }
+                      onClick={() => {
+                        this.setState({ collapsed: !this.state.collapsed });
+                      }}
+                    /> */}
                   </div>
                 </div>
               </div>
@@ -358,6 +385,8 @@ export default class EscapePackage extends React.Component {
               cutPrice = list.price;
             }
 
+            // this.state.dynamic.push({ bool: true });
+
             return (
               <Segment key={key}>
                 <div className="package-container">
@@ -411,12 +440,35 @@ export default class EscapePackage extends React.Component {
                           <ReadMoreAndLess
                             ref={this.ReadMore}
                             className="read-more-content"
-                            charLimit={100}
+                            charLimit={200}
                             readMoreText="See more"
                             readLessText="See less"
                           >
                             {list.price_description}
                           </ReadMoreAndLess>
+
+                          {/* <ReactTextMoreLess
+                            collapsed={this.state.dynamic[key].bool}
+                            text={list.price_description}
+                            lessHeight={100}
+                            showMoreText="... show more"
+                            showMoreElement={
+                              <span>
+                                ...{" "}
+                                <span className="show-more-text">
+                                  show more
+                                </span>
+                              </span>
+                            }
+                            showLessElement={
+                              <span className="show-more-text">show less</span>
+                            }
+                            onClick={() => {
+                              this.setState({
+                                collapsed: !this.state.dynamic[key].bool
+                              });
+                            }}
+                          /> */}
                         </div>
                       </div>
                     </div>
@@ -439,7 +491,10 @@ export default class EscapePackage extends React.Component {
                           index={0}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Inclusion
                           </h4>
@@ -461,7 +516,10 @@ export default class EscapePackage extends React.Component {
                           index={1}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Exclusion
                           </h4>
@@ -483,7 +541,10 @@ export default class EscapePackage extends React.Component {
                           index={2}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Accomodation
                           </h4>
@@ -505,7 +566,10 @@ export default class EscapePackage extends React.Component {
                           index={3}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Itenary
                           </h4>
@@ -527,7 +591,10 @@ export default class EscapePackage extends React.Component {
                           index={4}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Transportation
                           </h4>
@@ -549,7 +616,10 @@ export default class EscapePackage extends React.Component {
                           index={5}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Terms
                           </h4>
@@ -571,7 +641,10 @@ export default class EscapePackage extends React.Component {
                           index={6}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Faqs
                           </h4>
@@ -593,7 +666,10 @@ export default class EscapePackage extends React.Component {
                           index={7}
                           onClick={this.handleClick}
                         >
-                          <h4 className="ffqs accordion-title">
+                          <h4
+                            className="ffqs accordion-title"
+                            style={{ color: "black", fontWeight: "bold" }}
+                          >
                             <Icon name="dropdown" />
                             Cancel Policy
                           </h4>

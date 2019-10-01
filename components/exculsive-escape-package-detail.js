@@ -216,7 +216,7 @@ export default class ExculsiveEscapePackage extends React.Component {
                     <div className="column">
                       <h4 className="ffqs fw2">
                         Travel Duration :{"  "}
-                        <span className="tag is-rounded is-danger">
+                        <span className="tag is-rounded is-warning">
                           {value.package_travel_time} hours
                         </span>
                       </h4>
@@ -352,7 +352,10 @@ export default class ExculsiveEscapePackage extends React.Component {
                   index={1}
                   onClick={this.handleClick}
                 >
-                  <h4 className="ffqs accordion-title">
+                  <h4
+                    className="ffqs accordion-title"
+                    style={{ color: "black", fontWeight: "bold" }}
+                  >
                     <Icon name="dropdown" />
                     Package Detail
                   </h4>
@@ -398,7 +401,10 @@ export default class ExculsiveEscapePackage extends React.Component {
                       index={2}
                       onClick={this.handleClick}
                     >
-                      <h4 className="ffqs accordion-title">
+                      <h4
+                        className="ffqs accordion-title"
+                        style={{ color: "black", fontWeight: "bold" }}
+                      >
                         <Icon name="dropdown" />
                         Terms
                       </h4>
@@ -420,7 +426,10 @@ export default class ExculsiveEscapePackage extends React.Component {
                       index={3}
                       onClick={this.handleClick}
                     >
-                      <h4 className="ffqs accordion-title">
+                      <h4
+                        className="ffqs accordion-title"
+                        style={{ color: "black", fontWeight: "bold" }}
+                      >
                         <Icon name="dropdown" />
                         Cancellation Policy
                       </h4>
@@ -442,7 +451,10 @@ export default class ExculsiveEscapePackage extends React.Component {
                       index={4}
                       onClick={this.handleClick}
                     >
-                      <h4 className="ffqs accordion-title">
+                      <h4
+                        className="ffqs accordion-title"
+                        style={{ color: "black", fontWeight: "bold" }}
+                      >
                         <Icon name="dropdown" />
                         Faqs
                       </h4>

@@ -16,8 +16,9 @@
 
 .food-offer-list-container .list-title {
   font-weight: 400;
-  font-size: 1.8em;
+  font-size: 1.6em;
   margin: 0;
+  color: black;
 }
 
 .food-offer-list-container .mb8 {

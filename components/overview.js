@@ -69,7 +69,6 @@ export default class Overview extends React.Component {
   };
 
   render() {
-    console.log(this.props.categoryData.categoryData);
     const offerRating =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.rating
@@ -294,9 +293,7 @@ export default class Overview extends React.Component {
                 this.props.categoryData.categoryData.details.offer_verified,
                 10
               ) === 1 ? (
-                <span className="tag is-rounded is-medium is-success">
-                  Verified
-                </span>
+                <span className="tag is-rounded is-success">Verified</span>
               ) : (
                 <span className="rating">
                   {fullRating.map(function(i) {

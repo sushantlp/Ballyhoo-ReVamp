@@ -3,22 +3,26 @@ const TourDetail = props => {
     <div className="box">
       <h4 className="ffqs cuisine-title">Tour Detail</h4>
       <div className="overview-underscore" />
+      {/* <br /> */}
       {parseInt(props.exclusive, 10) !== 1 ? (
-        <div className="columns">
-          <div className="column">
-            <h4 className="ffqs fw2 mt1">Type of tour :</h4>
+        <React.Fragment>
+          <br />
+          <div className="columns">
+            <div className="column">
+              <h4 className="ffqs fw2">Type of tour :</h4>
 
-            <div className="tags">
-              {props.tourDetail.tour_type.map((city, key) => {
-                return (
-                  <span className="tag is-rounded is-warning" key={key}>
-                    {city}
-                  </span>
-                );
-              })}
+              <div className="tags">
+                {props.tourDetail.tour_type.map((city, key) => {
+                  return (
+                    <span className="tag is-rounded is-warning" key={key}>
+                      {city}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        </React.Fragment>
       ) : props.tourDetail.tour_duration == null &&
         props.tourDetail.tour_start_from == null &&
         props.tourDetail.tour_total_distance == null &&
@@ -26,7 +30,7 @@ const TourDetail = props => {
         <div className="columns">
           {props.tourDetail.tour_type.length > 0 ? (
             <div className="column">
-              <h4 className="ffqs fw2 mt1">Type of tour :</h4>
+              <h4 className="ffqs fw2">Type of tour :</h4>
 
               <div className="tags">
                 {props.tourDetail.tour_type.map((city, key) => {
@@ -42,7 +46,7 @@ const TourDetail = props => {
 
           {props.tourDetail.tour_destinations.length > 0 ? (
             <div className="column">
-              <h4 className="ffqs fw2 mt1">Tour Destination :</h4>
+              <h4 className="ffqs fw2 ">Tour Destination :</h4>
 
               <div className="tags">
                 {props.tourDetail.tour_destinations.map((city, key) => {
@@ -60,7 +64,7 @@ const TourDetail = props => {
         <div className="columns">
           <div className="column is-7">
             {props.tourDetail.tour_duration == null ? null : (
-              <h4 className="ffqs fw2">
+              <h4 className="ffqs fw2 mt1">
                 Tour Duration :{" "}
                 <span className="fw2 sfc3">
                   {props.tourDetail.tour_duration}
@@ -99,7 +103,7 @@ const TourDetail = props => {
           <div className="column is-4 is-offset-1">
             {props.tourDetail.tour_type.length > 0 ? (
               <React.Fragment>
-                <h4 className="ffqs fw2 mt1">Type of tour :</h4>
+                <h4 className="ffqs fw2">Type of tour :</h4>
 
                 <div className="tags">
                   {props.tourDetail.tour_type.map((city, key) => {
@@ -115,7 +119,7 @@ const TourDetail = props => {
 
             {props.tourDetail.tour_destinations.length > 0 ? (
               <React.Fragment>
-                <h4 className="ffqs fw2 mt1">Tour Destination :</h4>
+                <h4 className="ffqs fw2">Tour Destination :</h4>
 
                 <div className="tags">
                   {props.tourDetail.tour_destinations.map((city, key) => {
