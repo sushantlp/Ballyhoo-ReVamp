@@ -1,7 +1,7 @@
 import Router from "next/router";
+import Slider from "react-slick";
 
 import { Dropdown } from "semantic-ui-react";
-import Slider from "react-slick";
 
 import Spinner from "./spinner";
 

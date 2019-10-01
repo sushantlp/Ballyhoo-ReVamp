@@ -212,8 +212,8 @@
 }
 
 .popular-header {
-  color: rgb(39, 37, 37);
-  font-size: 1.5em;
+  color: black;
+  font-size: 28px;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
 }
@@ -231,6 +231,6 @@
   height: 1px;
   display: block;
   box-sizing: border-box;
-  width: 5em;
+  width: 90px;
   margin-bottom: 2em;
 }

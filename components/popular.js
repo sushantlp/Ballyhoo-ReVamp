@@ -71,7 +71,7 @@ export default class Popular extends React.Component {
     const popular = this.props.homeScreen.homeScreen.popular_escapes;
 
     return (
-      <div className="container">
+      <div className="container" style={{ marginTop: "3em" }}>
         <div className="popular-header-container">
           <h2 className="popular-header">Plan your Escape</h2>
           <div className="underscore" />

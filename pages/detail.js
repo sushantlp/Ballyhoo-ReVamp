@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import "bulma/css/bulma.min.css";
-import "semantic-ui-css/semantic.min.css";
+// import "bulma/css/bulma.min.css";
+// import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -13,7 +13,7 @@ import { host } from "../constants";
 import Spinner from "../components/spinner";
 import Head from "../components/head";
 import Header from "../components/header";
-// import SubHeader from "../components/sub-header";
+
 import DetailSlider from "../components/detail-slider";
 import ParentDetail from "../components/parent-detail";
 import Headout from "../components/headout";
@@ -96,6 +96,7 @@ class Detail extends React.Component {
         }
       }
 
+      console.log(detailUrlParam);
       if (parseInt(detailUrlParam.result_type, 10) === 1) {
         // Zomato API
         zomatoJson = await fetch(

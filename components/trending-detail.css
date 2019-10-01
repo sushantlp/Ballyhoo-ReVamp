@@ -87,8 +87,12 @@
 
 /* .trending-detail-card .slick-slide {margin-left:0px}  */
 
-.trending-detail-card .slick-detail {
+/* .trending-detail-card .slick-detail {
   padding-left: 0.3em;
+} */
+
+.trending-detail-container .slick-list {
+  padding-left: 0.4em;
 }
 
 .ribbon {

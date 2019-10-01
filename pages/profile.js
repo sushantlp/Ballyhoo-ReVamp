@@ -1,8 +1,8 @@
 import React from "react";
 import moment from "moment-timezone";
 
-import "bulma/css/bulma.min.css";
-import "semantic-ui-css/semantic.min.css";
+// import "bulma/css/bulma.min.css";
+// import "semantic-ui-css/semantic.min.css";
 
 import ProfileComponent from "../components/profile";
 import Head from "../components/head";

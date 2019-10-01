@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-import "bulma/css/bulma.min.css";
+// import "bulma/css/bulma.min.css";
 
 import { host } from "../constants";
 

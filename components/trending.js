@@ -75,8 +75,8 @@ export default class Trending extends React.Component {
     const calculate = json.length;
     return json.map((trending, key) => {
       let description = trending.offer_description;
-      if (description.length >= 60) {
-        description = description.slice(0, 60) + " ...";
+      if (description.length >= 50) {
+        description = description.slice(0, 50) + " ...";
       }
 
       return (
@@ -118,7 +118,7 @@ export default class Trending extends React.Component {
             ) : null}
 
             <Card.Content>
-              <Card.Header>
+              <Card.Header style={{ fontSize: "1.1em", color: "black" }}>
                 <span className="city-title">{trending.offer_title}</span>
               </Card.Header>
 
@@ -156,7 +156,7 @@ export default class Trending extends React.Component {
     };
 
     return (
-      <div className="container">
+      <div className="container" style={{ marginTop: "1em" }}>
         <div className="trending-container">
           <div className="trending-header-container">
             <h2 className="trending-header">Trending Packages</h2>

@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-import "bulma/css/bulma.min.css";
-import "semantic-ui-css/semantic.min.css";
+// import "bulma/css/bulma.min.css";
+// import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -20,7 +20,6 @@ import Header from "../components/header";
 import ParentList from "../components/parent-list";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-// import Space from "../components/loading-space";
 
 import {
   getListData,
@@ -214,7 +213,7 @@ class List extends React.Component {
           .replace(/ /g, "-")
           .toLowerCase();
 
-        const secret = `${0}-${
+        const secret = `${0}b${
           nextProps.foodCategoryData.foodCategoryData.result_type
         }b${partnerId}b${this.props.urlParam.urlParam.api_type}b${
           this.props.urlParam.urlParam.key

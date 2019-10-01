@@ -228,7 +228,7 @@ export default class Collection extends React.Component {
               }}
             />
             <Card.Content style={{ textAlign: "center" }}>
-              <Card.Header>
+              <Card.Header style={{ fontSize: "20px", color: "black" }}>
                 <span className="city-title">{collection.title}</span>
               </Card.Header>
             </Card.Content>
@@ -241,7 +241,7 @@ export default class Collection extends React.Component {
   collectionArray = (json, props) => {
     return json.map((collection, key) => {
       return (
-        <div className="container" key={key}>
+        <div className="container" key={key} style={{ marginTop: "2em" }}>
           <div className="collection-container">
             <div className="collection-header-container">
               <h2 className="collection-header">{collection.title}</h2>
@@ -249,7 +249,7 @@ export default class Collection extends React.Component {
             </div>
 
             {key % 2 === 0 ? (
-              <div className="box-even" style={{ marginBottom: "2em" }}>
+              <div className="box-even" style={{}}>
                 <Slider {...this.state.even}>
                   {this.innerCollectionEven(collection.collection_items, props)}
                 </Slider>
@@ -259,8 +259,8 @@ export default class Collection extends React.Component {
                 className="box-odd"
                 style={{
                   paddingLeft: "0.5em",
-                  outline: "none",
-                  marginBottom: "2em"
+                  outline: "none"
+                  // marginBottom: "3em"
                 }}
               >
                 <Slider {...this.state.odd}>

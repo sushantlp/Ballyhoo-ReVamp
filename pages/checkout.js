@@ -1,7 +1,7 @@
 import React from "react";
 
-import "bulma/css/bulma.min.css";
-import "semantic-ui-css/semantic.min.css";
+// import "bulma/css/bulma.min.css";
+// import "semantic-ui-css/semantic.min.css";
 
 import CheckoutComponent from "../components/checkout";
 import Head from "../components/head";

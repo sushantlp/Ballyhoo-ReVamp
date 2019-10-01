@@ -125,8 +125,10 @@ export default class Discover extends React.Component {
           <p
             style={{
               fontFamily: "Quicksand, sans-serif",
-              paddingLeft: titleLength > 7 ? "3em" : "4em",
-              paddingTop: "1em"
+              paddingLeft: titleLength > 7 ? "1.7em" : "2.5em",
+              paddingTop: "0.5em",
+              fontSize: "18px",
+              color: "black"
             }}
           >
             {discover.title}
@@ -160,7 +162,7 @@ export default class Discover extends React.Component {
     };
 
     return (
-      <div className="container" style={{ marginBottom: "1em" }}>
+      <div className="container" style={{ marginTop: "3em" }}>
         <div className="discover-container">
           <div className="discover-header-container">
             <h2 className="discover-header">Top Picks</h2>

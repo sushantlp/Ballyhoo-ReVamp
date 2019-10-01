@@ -17,8 +17,8 @@
 }
 
 .trending-container .trending-header-container .trending-header {
-  color: rgb(39, 37, 37);
-  font-size: 1.5em;
+  color: black;
+  font-size: 28px;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;
 }
@@ -36,7 +36,7 @@
   height: 1px;
   display: block;
   box-sizing: border-box;
-  width: 5em;
+  width: 90px;
 }
 
 .trending-container .trending-card:hover {
@@ -64,14 +64,13 @@
   opacity: 0.7;
   text-decoration: none;
   pointer-events: none;
-  font-size: 0.7em;
-  color: black;
 }
 
 .trending-container .product-title {
+  margin-top: 0.5em;
   line-height: 1.5;
-  font-size: 0.9em !important;
-  color: #9a9a9a;
+  font-size: 1em !important;
+  color: #575454;
   font-family: "Quicksand", sans-serif;
   text-decoration: none;
   display: inline-block;
@@ -105,9 +104,9 @@
   position: absolute;
   display: block;
   width: 225px;
-  background-color: #ff3860;
+  background-color: #7fff00;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
+  color: black;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-align: center;
   font-family: "Quicksand", sans-serif;
@@ -157,7 +156,7 @@
 
 .trending-container .ribbon-bottom-right span {
   left: -40px;
-  top: 13.6em;
+  top: 13em;
   /* bottom: 30px; */
   /* transform: rotate(-225deg); */
 }

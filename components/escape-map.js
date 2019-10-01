@@ -12,7 +12,7 @@ const MapWithAMarker = compose(
   withGoogleMap
 )(props => {
   const onClick = props.onClick.bind(this, props.marker);
-  console.log(props.markers);
+
   return (
     <GoogleMap
       defaultZoom={3}
