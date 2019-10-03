@@ -101,14 +101,15 @@
   cursor: pointer;
 }
 
-.detail-cart-container .react-date-picker__wrapper {
+/* .detail-cart-container .react-date-picker__wrapper {
   width: 11.2em;
   height: 2.5em;
 }
 
 .detail-cart-container .react-time-picker__wrapper {
+  width: 11.2em;
   height: 2.5em;
-}
+} */
 
 .detail-cart-container .position-absolute {
   position: absolute;
@@ -120,4 +121,73 @@
 
 .detail-cart-container .float-right {
   float: right;
+}
+
+.detail-cart-container .SingleDatePickerInput__withBorder {
+  width: 15em;
+  border-bottom: 2px solid #ff3860;
+}
+
+.detail-cart-container .DateInput_input__focused {
+  border-bottom: 0px;
+}
+
+.detail-cart-container .CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #ff3860;
+  border: 1px double #ff3860;
+  color: #fff;
+}
+
+.detail-cart-container .DayPicker_weekHeader_ul {
+  margin-top: -2px;
+}
+
+.detail-cart-container .DayPickerKeyboardShortcuts_show__bottomRight::before {
+  bottom: 0px;
+  right: 0px;
+  border-top: 26px solid transparent;
+  border-right: 33px solid #ff3860;
+}
+
+.detail-cart-container .picker_container {
+  width: 240px;
+  height: 260px;
+  margin: 0px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.detail-cart-container .time_picker_preview {
+  width: 15em;
+  border-bottom: 2px solid #ff3860;
+}
+
+.detail-cart-container .time_picker_modal_header,
+.time_picker_modal_footer,
+.timezone_picker_modal_header {
+  background-color: #ff3860;
+}
+
+.detail-cart-container .picker_pointer .pointer_drag {
+  background-color: #ff3860;
+}
+
+.detail-cart-container .picker_pointer {
+  background-color: #ff3860;
+}
+
+.detail-cart-container .picker_center {
+  background-color: #ff3860;
+}
+
+.detail-cart-container .preview_container {
+  font-size: 19px;
+  left: 18%;
+}
+
+.detail-cart-container .preview_container.without_icon {
+  padding-right: 0;
 }

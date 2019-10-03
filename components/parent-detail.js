@@ -9,7 +9,7 @@ export default class ParentDetail extends React.Component {
     return (
       <React.Fragment>
         <section className="section">
-          <div className="container">
+          <div className="container is-fluid">
             <div className="columns">
               <div className="column is-8">
                 <div className="column is-6">
@@ -46,7 +46,7 @@ export default class ParentDetail extends React.Component {
                   getZomatoDataApi={this.props.getZomatoDataApi}
                 />
               </div>
-              <div className="column is-4 ">
+              <div className="column is-4">
                 <DetailCart
                   categoryData={this.props.categoryData}
                   foodCategoryData={this.props.foodCategoryData}

@@ -4,8 +4,10 @@ const Menu = props => {
     <div className="box">
       <div className="columns">
         <div className="column">
-          <h4 className="ffqs cuisine-title">Menu</h4>
-          <div className="menu-underscore" />
+          <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+            Menu
+          </h4>
+          <div className="overview-underscore" />
           <div className="menu-container">
             {props.menuImage.map(function(value, key) {
               if (key < 6)

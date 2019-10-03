@@ -1,25 +1,33 @@
+import "react-dates/initialize";
 import { Segment } from "semantic-ui-react";
 
-import DatePicker from "react-date-picker/dist/entry.nostyle";
-import TimePicker from "react-time-picker/dist/entry.nostyle";
+import moment from "moment-timezone";
 
-import "../node_modules/react-date-picker/dist/DatePicker.css";
-import "../node_modules/react-time-picker/dist/TimePicker.css";
-import "../node_modules/react-calendar/dist/Calendar.css";
+import { SingleDatePicker } from "react-dates";
+// import DatePicker from "react-date-picker/dist/entry.nostyle";
+// import TimePicker from "react-time-picker/dist/entry.nostyle";
 
+// import "../node_modules/react-date-picker/dist/DatePicker.css";
+// import "../node_modules/react-time-picker/dist/TimePicker.css";
+// import "../node_modules/react-calendar/dist/Calendar.css";
+
+import TimePicker from "react-times";
+
+// use material theme
+import "react-times/css/material/default.css";
+
+import "react-dates/lib/css/_datepicker.css";
 import "./detail-cart.css";
 
 export default class DetailCart extends React.Component {
   constructor(props) {
     super(props);
-
-    let date = new Date();
-
     this.state = {
       scrolling: false,
-      date: date,
-      time: "10:00"
-      //time: `${date.getHours()}:${date.getMinutes()}`
+      // date: new Date(),
+      time: moment().format("HH:mm"),
+      date: moment(),
+      focused: false
     };
   }
 
@@ -30,6 +38,18 @@ export default class DetailCart extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll, true);
   }
+
+  onChangeDate = date => {
+    this.setState({ date: moment(date) });
+  };
+
+  onChangeTime = time => {
+    const times = time.hour + ":" + time.minute + " " + time.meridiem;
+
+    this.setState({
+      time: times
+    });
+  };
 
   handleScroll = event => {
     if (document.body.scrollTop > 212) {
@@ -60,24 +80,42 @@ export default class DetailCart extends React.Component {
           top: this.state.scrolling ? "6em" : "0"
         }}
       >
-        <Segment style={{ borderTop: "4px solid #ff3860" }} disabled>
+        <Segment style={{ borderTop: "4px solid #ff3860" }}>
           <div className="columns">
             <div className="column is-4">
-              <h4 className="ffqs fs1-5 fw2">Date :</h4>
+              <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                Time :
+              </h4>
             </div>
 
             <div className="column is-8">
-              <DatePicker value={this.state.date} format="d MM y" />
+              <TimePicker
+                withoutIcon="false"
+                time={this.state.time} // initial time, default current time
+                theme="material"
+                onTimeChange={time => this.onChangeTime(time)}
+                timeMode="12"
+                timezone="America/New_York"
+              />
             </div>
           </div>
 
           <div className="columns">
             <div className="column is-4">
-              <h4 className="ffqs fs1-5 fw2">Time :</h4>
+              <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                Date :
+              </h4>
             </div>
 
             <div className="column is-8">
-              <TimePicker value={this.state.time} />
+              <SingleDatePicker
+                date={this.state.date}
+                id="date"
+                onDateChange={date => this.onChangeDate(date)}
+                focused={this.state.focused}
+                onFocusChange={({ focused }) => this.setState({ focused })}
+                displayFormat="MM-DD-YYYY"
+              />
             </div>
           </div>
 
@@ -148,7 +186,9 @@ export default class DetailCart extends React.Component {
             </h4>
           ) : null}
 
-          <a className="button cart-button ffqs">Procced</a>
+          <div class="has-text-centered">
+            <a className="button cart-button ffqs">Procced</a>
+          </div>
           <p className="ffqs align">You won’t be charged yet</p>
         </Segment>
       </div>
