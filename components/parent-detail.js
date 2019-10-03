@@ -6,8 +6,6 @@ import "./parent-detail.css";
 
 export default class ParentDetail extends React.Component {
   render() {
-    console.log(this.props.detailUrlParam);
-    console.log(this.props.categoryData.categoryData);
     return (
       <React.Fragment>
         <section className="section">

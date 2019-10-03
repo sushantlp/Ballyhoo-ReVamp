@@ -39,64 +39,127 @@ class Detail extends React.Component {
 
     try {
       if (isServer) {
-        if (
-          req.hasOwnProperty("params") &&
-          req.params.hasOwnProperty("secret") &&
-          req.params !== undefined &&
-          req.params.secret !== undefined
-        ) {
-          routeParam = req.params;
+        // if (
+        //   req.hasOwnProperty("params") &&
+        //   req.params.hasOwnProperty("secret") &&
+        //   req.params !== undefined &&
+        //   req.params.secret !== undefined
+        // ) {
 
-          // Index Zero=id, One=resultType, Two=partnerId, Three=apiType,
-          slice = req.params.secret.split("b");
+        let dynamicUrl;
+        routeParam = req.params;
 
-          detailUrlParam = {
-            id: slice[0],
-            result_type: slice[1],
-            partner_id: slice[2],
-            api_type: slice[3],
-            key: slice[4]
-          };
+        // Index Zero=id, One=resultType, Two=partnerId, Three=apiType,
+        slice = req.params.secret.split("b");
 
-          const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
+        detailUrlParam = {
+          id: slice[0],
+          result_type: slice[1],
+          partner_id: slice[2],
+          api_type: slice[3],
+          key: slice[4]
+        };
 
-          if (parseInt(slice[1], 10) === 1) {
-            // Food Category Api
-            foodCategoryJson = await fetch(
-              `${host}api/v9/web/partners/${slice[2]}?key=${key}`
-            );
-            foodCategoryJson = await foodCategoryJson.json();
-            store.dispatch(getFoodCategoryData(foodCategoryJson));
-          } else {
-            // Category Api
-            categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
-            categoryJson = await categoryJson.json();
-            store.dispatch(getCategoryData(categoryJson));
-          }
+        // const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
+        // const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
+
+        const key =
+          parseInt(detailUrlParam.api_type, 10) !== 3 ? 0 : detailUrlParam.key;
+        const q =
+          parseInt(detailUrlParam.result_type, 10) === 1
+            ? detailUrlParam.partner_id
+            : detailUrlParam.id;
+
+        if (parseInt(slice[1], 10) === 1) {
+          dynamicUrl = `${host}api/v9/web/partners/${slice[2]}?key=${key}`;
+
+          // Food Category Api
+          // foodCategoryJson = await fetch(
+          //   `${host}api/v9/web/partners/${slice[2]}?key=${key}`
+          // );
+          // foodCategoryJson = await foodCategoryJson.json();
+          // store.dispatch(getFoodCategoryData(foodCategoryJson));
+        } else {
+          dynamicUrl = `${host}api/v9/web/offers/${slice[0]}`;
+          // Category Api
+          // categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
+          // categoryJson = await categoryJson.json();
+          // store.dispatch(getCategoryData(categoryJson));
         }
+        // }
+
+        const [
+          categoryJson,
+          cityLocalityJson,
+          featureJson,
+          slidderJson
+        ] = await Promise.all([
+          fetch(dynamicUrl).then(r => r.json()),
+          fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/all/featurings?category=${
+              slice[1]
+            }&q=${q}&key=${key}`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/carousel/images?type=${2}&category=${
+              detailUrlParam.result_type
+            }`
+          ).then(r => r.json())
+        ]);
 
         // City Locality API
-        let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-        cityLocalityJson = await cityLocalityJson.json();
+        // let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+        // cityLocalityJson = await cityLocalityJson.json();
+
+        if (parseInt(slice[1], 10) === 1)
+          store.dispatch(getFoodCategoryData(categoryJson));
+        else store.dispatch(getCategoryData(categoryJson));
+
         store.dispatch(getCityLocality(cityLocalityJson));
+        store.dispatch(getFeaturingData(featureJson));
+        store.dispatch(getSlidderImage(slidderJson));
       } else {
-        if (query.hasOwnProperty("secret") && query.secret !== undefined) {
-          routeParam = query;
+        // if (query.hasOwnProperty("secret") && query.secret !== undefined) {
+        routeParam = query;
 
-          // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
-          slice = query.secret.split("b");
+        // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
+        slice = query.secret.split("b");
 
-          detailUrlParam = {
-            id: slice[0],
-            result_type: slice[1],
-            partner_id: slice[2],
-            api_type: slice[3],
-            key: slice[4]
-          };
-        }
+        detailUrlParam = {
+          id: slice[0],
+          result_type: slice[1],
+          partner_id: slice[2],
+          api_type: slice[3],
+          key: slice[4]
+        };
+
+        const key =
+          parseInt(detailUrlParam.api_type, 10) !== 3 ? 0 : detailUrlParam.key;
+        const q =
+          parseInt(detailUrlParam.result_type, 10) === 1
+            ? detailUrlParam.partner_id
+            : detailUrlParam.id;
+
+        // }
+
+        const [featureJson, slidderJson] = await Promise.all([
+          fetch(
+            `${host}api/v9/web/all/featurings?category=${
+              slice[1]
+            }&q=${q}&key=${key}`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/carousel/images?type=${2}&category=${
+              detailUrlParam.result_type
+            }`
+          ).then(r => r.json())
+        ]);
+
+        store.dispatch(getFeaturingData(featureJson));
+        store.dispatch(getSlidderImage(slidderJson));
       }
 
-      console.log(detailUrlParam);
       if (parseInt(detailUrlParam.result_type, 10) === 1) {
         // Zomato API
         zomatoJson = await fetch(
@@ -108,26 +171,27 @@ class Detail extends React.Component {
         store.dispatch(getZomatoData(zomatoJson));
       }
 
-      const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
+      // const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
 
-      const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
+      // const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
+
       // Also Feature
-      featureJson = await fetch(
-        `${host}api/v9/web/all/featurings?category=${
-          slice[1]
-        }&q=${q}&key=${key}`
-      );
-      featureJson = await featureJson.json();
-      store.dispatch(getFeaturingData(featureJson));
+      // featureJson = await fetch(
+      //   `${host}api/v9/web/all/featurings?category=${
+      //     slice[1]
+      //   }&q=${q}&key=${key}`
+      // );
+      // featureJson = await featureJson.json();
+      // store.dispatch(getFeaturingData(featureJson));
 
       // Slidder Image API
-      let slidderJson = await fetch(
-        `${host}api/v9/web/carousel/images?type=${2}&category=${
-          detailUrlParam.result_type
-        }`
-      );
-      slidderJson = await slidderJson.json();
-      store.dispatch(getSlidderImage(slidderJson));
+      // let slidderJson = await fetch(
+      //   `${host}api/v9/web/carousel/images?type=${2}&category=${
+      //     detailUrlParam.result_type
+      //   }`
+      // );
+      // slidderJson = await slidderJson.json();
+      // store.dispatch(getSlidderImage(slidderJson));
     } catch (err) {
       console.log("Detail_Error");
       console.log(err);

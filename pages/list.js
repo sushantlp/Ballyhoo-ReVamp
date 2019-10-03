@@ -40,11 +40,11 @@ import { updateUrlParam } from "../actions/url-param-action";
 
 class List extends React.Component {
   static async getInitialProps(ctx) {
-    let listJson = [];
-    let slidderJson = [];
+    // let listJson = [];
+    // let slidderJson = [];
     // let searchJson = [];
     // let cityLocalityJson = [];
-    let recommendation = [];
+    // let recommendation = [];
     let routeParam = [];
 
     let listUrlParam = {
