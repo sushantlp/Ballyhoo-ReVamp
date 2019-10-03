@@ -77,7 +77,7 @@ const zomatoUiRender = props => {
 const Zomato = props => {
   return (
     <div className="zomato-container">
-      <h4 className="ffqs cuisine-title">
+      <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
         Rating <span className="fs0-7 light-red">(By Zomato) </span>
       </h4>
       <div className="overview-underscore" />

@@ -1,7 +1,9 @@
 const TourDetail = props => {
   return (
     <div className="box">
-      <h4 className="ffqs cuisine-title">Tour Detail</h4>
+      <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+        Tour Detail
+      </h4>
       <div className="overview-underscore" />
       {/* <br /> */}
       {parseInt(props.exclusive, 10) !== 1 ? (
@@ -66,25 +68,21 @@ const TourDetail = props => {
             {props.tourDetail.tour_duration == null ? null : (
               <h4 className="ffqs fw2 mt1">
                 Tour Duration :{" "}
-                <span className="fw2 sfc3">
-                  {props.tourDetail.tour_duration}
-                </span>
+                <span className="fw7">{props.tourDetail.tour_duration}</span>
               </h4>
             )}
 
             {props.tourDetail.tour_start_from == null ? null : (
               <h4 className="ffqs fw2 mt1">
                 Tour Start :{" "}
-                <span className="fw2 sfc3">
-                  {props.tourDetail.tour_start_from}
-                </span>
+                <span className="fw7">{props.tourDetail.tour_start_from}</span>
               </h4>
             )}
 
             {props.tourDetail.tour_total_distance == null ? null : (
               <h4 className="ffqs fw2 mt1">
                 Tour Distance :{" "}
-                <span className="fw2 sfc3">
+                <span className="fw7">
                   {props.tourDetail.tour_total_distance} km
                 </span>
               </h4>
@@ -93,7 +91,7 @@ const TourDetail = props => {
             {props.tourDetail.tour_travel_time == null ? null : (
               <h4 className="ffqs fw2 mt1">
                 Travel Time :{" "}
-                <span className="fw2 sfc3">
+                <span className="fw7">
                   {props.tourDetail.tour_travel_time} hr
                 </span>
               </h4>

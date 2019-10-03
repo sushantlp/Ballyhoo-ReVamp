@@ -413,7 +413,9 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="ffqs cuisine-title">Where ?</h4>
+              <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+                Where ?
+              </h4>
               <div className="overview-underscore" />
               <h4 className="ff f10 f1-1 fw2 lh1-7">{where}</h4>
               {where == null ? (

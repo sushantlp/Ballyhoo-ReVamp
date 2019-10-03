@@ -82,7 +82,7 @@ export default class TrendingList extends React.Component {
     const title = recommendation.title.replace(/ /g, "-").toLowerCase();
 
     // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
-    const slice = secret.split("-");
+    const slice = secret.split("b");
 
     const secrets = `${slice[0]}b${recommendation.api_type}b${
       recommendation.key

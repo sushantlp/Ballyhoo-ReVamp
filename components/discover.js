@@ -78,6 +78,7 @@ export default class Discover extends React.Component {
     const secret = `${city_id}b${discover.api_type}b${discover.key}b${
       discover.response_type
     }b${1}b${0}`;
+
     Router.push(
       {
         pathname: "/list",
