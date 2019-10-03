@@ -36,9 +36,9 @@ import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
-    let cityLocalityJson = [];
-    let searchJson = [];
-    let homeScreenJson = [];
+    // let cityLocalityJson = [];
+    // let searchJson = [];
+    // let homeScreenJson = [];
     try {
       const { store, isServer, req, query } = ctx;
 
@@ -56,17 +56,23 @@ class Index extends React.Component {
           cityId = query.city_id;
       }
 
+      const [cityLocalityJson, homeScreenJson, searchJson] = await Promise.all([
+        fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
+        fetch(`${host}api/v9/web/home?city_id=${cityId}`).then(r => r.json()),
+        fetch(`${host}api/v9/web/search-keys`).then(r => r.json())
+      ]);
+
       // City Locality API
-      cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-      cityLocalityJson = await cityLocalityJson.json();
+      // cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+      // cityLocalityJson = await cityLocalityJson.json();
 
       // Home Screen API
-      homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=${cityId}`);
-      homeScreenJson = await homeScreenJson.json();
+      // homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=${cityId}`);
+      // homeScreenJson = await homeScreenJson.json();
 
       // Search Data
-      searchJson = await fetch(`${host}api/v9/web/search-keys`);
-      searchJson = await searchJson.json();
+      // searchJson = await fetch(`${host}api/v9/web/search-keys`);
+      // searchJson = await searchJson.json();
 
       store.dispatch(getsearchData(searchJson));
       store.dispatch(getHomeScreen(homeScreenJson));

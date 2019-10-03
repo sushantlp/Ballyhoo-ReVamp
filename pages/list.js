@@ -42,8 +42,8 @@ class List extends React.Component {
   static async getInitialProps(ctx) {
     let listJson = [];
     let slidderJson = [];
-    let searchJson = [];
-    let cityLocalityJson = [];
+    // let searchJson = [];
+    // let cityLocalityJson = [];
     let recommendation = [];
     let routeParam = [];
 
@@ -58,22 +58,10 @@ class List extends React.Component {
     try {
       const { store, isServer, req, query } = ctx;
       store.dispatch(updateUrlParam(listUrlParam));
-
+      let dynamicUrl;
       if (isServer) routeParam = req.params;
       else routeParam = query;
       let page = 1;
-
-      if (isServer) {
-        // City Locality API
-        cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-        cityLocalityJson = await cityLocalityJson.json();
-        store.dispatch(getCityLocality(cityLocalityJson));
-
-        // Search Data
-        searchJson = await fetch(`${host}api/v9/web/search-keys`);
-        searchJson = await searchJson.json();
-        store.dispatch(getsearchData(searchJson));
-      }
 
       if (routeParam.secret !== undefined) {
         // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
@@ -93,39 +81,104 @@ class List extends React.Component {
       }
 
       if (listUrlParam.flag === 1) {
-        // Search List API
-        listJson = await fetch(
-          `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`
-        );
+        dynamicUrl = `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`;
       } else {
-        // List API
-        listJson = await fetch(
-          `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`
-        );
+        dynamicUrl = `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`;
       }
 
-      listJson = await listJson.json();
+      if (isServer) {
+        const [
+          cityLocalityJson,
+          searchJson,
+          listJson,
+          slidderJson,
+          recommendation
+        ] = await Promise.all([
+          fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
+          fetch(`${host}api/v9/web/search-keys`).then(r => r.json()),
+          fetch(dynamicUrl).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/carousel/images?type=${1}&category=${
+              listUrlParam.response_type
+            }`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+          ).then(r => r.json())
+        ]);
 
-      listUrlParam.flag === 1
-        ? store.dispatch(getSearchListData(listJson))
-        : store.dispatch(getListData(listJson));
+        // City Locality API
+        // cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+        // cityLocalityJson = await cityLocalityJson.json();
+
+        // Search Data
+        // searchJson = await fetch(`${host}api/v9/web/search-keys`);
+        // searchJson = await searchJson.json();
+
+        store.dispatch(getCityLocality(cityLocalityJson));
+        store.dispatch(getsearchData(searchJson));
+
+        listUrlParam.flag === 1
+          ? store.dispatch(getSearchListData(listJson))
+          : store.dispatch(getListData(listJson));
+
+        store.dispatch(getSlidderImage(slidderJson));
+        store.dispatch(getrecommendation(recommendation));
+      } else {
+        const [listJson, slidderJson, recommendation] = await Promise.all([
+          fetch(dynamicUrl).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/carousel/images?type=${1}&category=${
+              listUrlParam.response_type
+            }`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+          ).then(r => r.json())
+        ]);
+
+        listUrlParam.flag === 1
+          ? store.dispatch(getSearchListData(listJson))
+          : store.dispatch(getListData(listJson));
+
+        store.dispatch(getSlidderImage(slidderJson));
+        store.dispatch(getrecommendation(recommendation));
+      }
+
+      // if (listUrlParam.flag === 1) {
+      //   // Search List API
+      //   listJson = await fetch(
+      //     `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`
+      //   );
+      // } else {
+      //   // List API
+      //   listJson = await fetch(
+      //     `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`
+      //   );
+      // }
+
+      // listJson = await listJson.json();
 
       // Slidder Image API
-      slidderJson = await fetch(
-        `${host}api/v9/web/carousel/images?type=${1}&category=${
-          listUrlParam.response_type
-        }`
-      );
-      slidderJson = await slidderJson.json();
+      // slidderJson = await fetch(
+      //   `${host}api/v9/web/carousel/images?type=${1}&category=${
+      //     listUrlParam.response_type
+      //   }`
+      // );
+      // slidderJson = await slidderJson.json();
 
       // Recommendation API
-      recommendation = await fetch(
-        `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
-      );
-      recommendation = await recommendation.json();
+      // recommendation = await fetch(
+      //   `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+      // );
+      // recommendation = await recommendation.json();
 
-      store.dispatch(getSlidderImage(slidderJson));
-      store.dispatch(getrecommendation(recommendation));
+      // listUrlParam.flag === 1
+      // ? store.dispatch(getSearchListData(listJson))
+      // : store.dispatch(getListData(listJson));
+
+      // store.dispatch(getSlidderImage(slidderJson));
+      // store.dispatch(getrecommendation(recommendation));
       store.dispatch(updateUrlParam(listUrlParam));
     } catch (err) {
       console.log("List_Error");
