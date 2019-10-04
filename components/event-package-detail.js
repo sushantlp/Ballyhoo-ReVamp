@@ -308,9 +308,13 @@ export default class EventPackage extends React.Component {
                                 </div>
 
                                 <div className="column is-2">
-                                  <a className="button is-danger fr" disabled>
-                                    BOOK
-                                  </a>
+                                  {this.props.bookingButton ? (
+                                    <a className="button is-danger fr">BOOK</a>
+                                  ) : (
+                                    <a className="button is-danger fr" disabled>
+                                      BOOK
+                                    </a>
+                                  )}
                                 </div>
                               </div>
 

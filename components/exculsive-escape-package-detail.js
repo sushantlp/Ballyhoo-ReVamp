@@ -323,15 +323,23 @@ export default class ExculsiveEscapePackage extends React.Component {
               </div>
 
               <div className="card-footer-item">
-                <a className="button is-danger fr" disabled>
-                  BOOK
-                </a>
+                {this.props.bookingButton ? (
+                  <a className="button is-danger fr">BOOK</a>
+                ) : (
+                  <a className="button is-danger fr" disabled>
+                    BOOK
+                  </a>
+                )}
               </div>
 
               <div className="card-footer-item">
-                <a className="button is-warning fr" disabled>
-                  SEND QUERY
-                </a>
+                {this.props.queryButton ? (
+                  <a className="button is-warning fr">SEND QUERY</a>
+                ) : (
+                  <a className="button is-warning fr" disabled>
+                    SEND QUERY
+                  </a>
+                )}
               </div>
             </footer>
           </div>

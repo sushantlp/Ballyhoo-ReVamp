@@ -1,15 +1,7 @@
 import "react-dates/initialize";
 import { Segment } from "semantic-ui-react";
 
-import moment from "moment-timezone";
-
 import { SingleDatePicker } from "react-dates";
-// import DatePicker from "react-date-picker/dist/entry.nostyle";
-// import TimePicker from "react-time-picker/dist/entry.nostyle";
-
-// import "../node_modules/react-date-picker/dist/DatePicker.css";
-// import "../node_modules/react-time-picker/dist/TimePicker.css";
-// import "../node_modules/react-calendar/dist/Calendar.css";
 
 import TimePicker from "react-times";
 
@@ -24,10 +16,8 @@ export default class DetailCart extends React.Component {
     super(props);
     this.state = {
       scrolling: false,
-      // date: new Date(),
-      time: moment().format("HH:mm"),
-      date: moment(),
-      focused: false
+      focused: false,
+      quantity: 1
     };
   }
 
@@ -38,18 +28,6 @@ export default class DetailCart extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll, true);
   }
-
-  onChangeDate = date => {
-    this.setState({ date: moment(date) });
-  };
-
-  onChangeTime = time => {
-    const times = time.hour + ":" + time.minute + " " + time.meridiem;
-
-    this.setState({
-      time: times
-    });
-  };
 
   handleScroll = event => {
     if (document.body.scrollTop > 212) {
@@ -65,6 +43,19 @@ export default class DetailCart extends React.Component {
     }
   };
 
+  onClickMinus = () => {
+    if (this.state.quantity > 1) {
+      this.setState({
+        quantity: this.state.quantity - 1
+      });
+    }
+  };
+
+  onClickPlus = () => {
+    this.setState({
+      quantity: this.state.quantity + 1
+    });
+  };
   render() {
     const price =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
@@ -72,6 +63,24 @@ export default class DetailCart extends React.Component {
         : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
         ? this.props.categoryData.categoryData.details.offer_min_price
         : null;
+
+    const buttonText = this.props.parentState.booking
+      ? "Procced"
+      : parseInt(this.props.detailUrlParam.result_type, 10) === 1
+      ? "Reservation"
+      : parseInt(this.props.detailUrlParam.result_type, 10) === 5
+      ? "Appointment"
+      : "Procced";
+
+    const disabledLogic =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? parseInt(
+            this.props.foodCategoryData.foodCategoryData.details.rsvp,
+            10
+          )
+        : parseInt(this.props.detailUrlParam.result_type, 10) === 5
+        ? this.props.categoryData.categoryData.details.offer_appointment_status
+        : 0;
 
     return (
       <div
@@ -90,10 +99,10 @@ export default class DetailCart extends React.Component {
 
             <div className="column is-8">
               <TimePicker
-                withoutIcon="false"
-                time={this.state.time} // initial time, default current time
+                withoutIcon={true}
+                time={this.props.parentState.time} // initial time, default current time
                 theme="material"
-                onTimeChange={time => this.onChangeTime(time)}
+                onTimeChange={time => this.props.onChangeTime(time)}
                 timeMode="12"
                 timezone="America/New_York"
               />
@@ -109,15 +118,46 @@ export default class DetailCart extends React.Component {
 
             <div className="column is-8">
               <SingleDatePicker
-                date={this.state.date}
+                date={this.props.parentState.date}
                 id="date"
-                onDateChange={date => this.onChangeDate(date)}
+                onDateChange={date => this.props.onChangeDate(date)}
                 focused={this.state.focused}
                 onFocusChange={({ focused }) => this.setState({ focused })}
                 displayFormat="MM-DD-YYYY"
               />
             </div>
           </div>
+
+          {disabledLogic === 1 &&
+          parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+            <div className="columns">
+              <div className="column is-6">
+                <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                  No of Guests :
+                </h4>
+              </div>
+
+              <div className="column is-6" style={{ paddingTop: "1.3em" }}>
+                <span
+                  className="icon is-medium cursor-pointer"
+                  onClick={() => this.onClickMinus()}
+                >
+                  <img src="https://img.icons8.com/ios/25/000000/minus.png" />
+                </span>
+
+                <span className="ffqs fs2 fw2 pr0-7 pl0-7">
+                  {this.state.quantity}
+                </span>
+
+                <span
+                  className="icon is-medium cursor-pointer"
+                  onClick={() => this.onClickPlus()}
+                >
+                  <img src="https://img.icons8.com/ios/25/000000/plus.png" />
+                </span>
+              </div>
+            </div>
+          ) : null}
 
           {/* <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
             <Segment>
@@ -173,8 +213,6 @@ export default class DetailCart extends React.Component {
                 </div>
               </div>
             </Segment>
-
-        
           </Segment> */}
 
           {price !== null ? (
@@ -186,8 +224,18 @@ export default class DetailCart extends React.Component {
             </h4>
           ) : null}
 
-          <div class="has-text-centered">
-            <a className="button cart-button ffqs">Procced</a>
+          <div className="has-text-centered">
+            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+              disabledLogic === 1 ? (
+                <a className="button cart-button ffqs">{buttonText}</a>
+              ) : (
+                <a className="button cart-button-disabled ffqs" disabled>
+                  {buttonText}
+                </a>
+              )
+            ) : (
+              <a className="button cart-button ffqs">{buttonText}</a>
+            )}
           </div>
           <p className="ffqs align">You won’t be charged yet</p>
         </Segment>

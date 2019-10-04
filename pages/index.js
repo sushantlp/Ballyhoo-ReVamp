@@ -8,8 +8,8 @@ import fetch from "isomorphic-unfetch";
 
 // import "bulma/css/bulma.min.css";
 // import "semantic-ui-css/semantic.min.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 import { host } from "../constants";
 

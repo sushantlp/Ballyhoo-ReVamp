@@ -418,15 +418,23 @@ export default class EscapePackage extends React.Component {
                           </div>
 
                           <div className="column is-2">
-                            <a className="button is-danger fr" disabled>
-                              BOOK
-                            </a>
+                            {this.props.bookingButton ? (
+                              <a className="button is-danger fr">BOOK</a>
+                            ) : (
+                              <a className="button is-danger fr" disabled>
+                                BOOK
+                              </a>
+                            )}
                           </div>
 
                           <div className="column is-2">
-                            <a className="button is-warning fr" disabled>
-                              SEND QUERY
-                            </a>
+                            {this.props.queryButton ? (
+                              <a className="button is-warning fr">SEND QUERY</a>
+                            ) : (
+                              <a className="button is-warning fr" disabled>
+                                SEND QUERY
+                              </a>
+                            )}
                           </div>
                         </div>
 

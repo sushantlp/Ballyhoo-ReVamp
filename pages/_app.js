@@ -7,6 +7,9 @@ import { initStore } from "../redux";
 import "bulma/css/bulma.min.css";
 import "semantic-ui-css/semantic.min.css";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 // if (process.env.NODE_ENV !== "production") {
 Router.events.on("routeChangeComplete", () => {
   const path = "/_next/static/css/styles.chunk.css";

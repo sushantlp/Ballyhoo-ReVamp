@@ -18,6 +18,17 @@
   margin-bottom: 0.5em;
 }
 
+.detail-cart-container .cart-button-disabled {
+  background-color: #fdb6c4;
+  color: white;
+  opacity: 1;
+  width: 17.2em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
 .detail-cart-container .align {
   text-align: center;
 }
@@ -85,6 +96,14 @@
   padding-right: 0.3em;
 }
 
+.detail-cart-container .pl0-7 {
+  padding-left: 0.7em;
+}
+
+.detail-cart-container .pr0-7 {
+  padding-right: 0.7em;
+}
+
 .detail-cart-container .mr1-5 {
   margin-left: 1.5em;
 }
@@ -100,16 +119,6 @@
 .detail-cart-container .cursor-pointer {
   cursor: pointer;
 }
-
-/* .detail-cart-container .react-date-picker__wrapper {
-  width: 11.2em;
-  height: 2.5em;
-}
-
-.detail-cart-container .react-time-picker__wrapper {
-  width: 11.2em;
-  height: 2.5em;
-} */
 
 .detail-cart-container .position-absolute {
   position: absolute;

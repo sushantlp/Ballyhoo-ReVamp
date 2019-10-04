@@ -132,7 +132,7 @@ export default class TrendingDetail extends React.Component {
             />
 
             <Card.Content style={{ textAlign: "center" }}>
-              <Card.Header>
+              <Card.Header style={{ color: "black" }}>
                 <span className="city-title">{feature.title}</span>
               </Card.Header>
             </Card.Content>
