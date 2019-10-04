@@ -29,9 +29,7 @@ import { getZomatoData, getZomatoDataApi } from "../actions/zomato-action";
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
     const { store, isServer, req, query } = ctx;
-    let categoryJson = [];
-    let foodCategoryJson = [];
-    let featureJson = [];
+
     let zomatoJson = [];
     let detailUrlParam = {};
     let slice = [];

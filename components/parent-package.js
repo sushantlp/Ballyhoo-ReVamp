@@ -73,6 +73,7 @@ const ParentPackage = props => {
             {parseInt(props.detailUrlParam.result_type, 10) === 1 ? (
               <FoodPackage
                 package={props.foodCategoryData.foodCategoryData.packages}
+                dayInNumber={props.dayInNumber}
               />
             ) : null}
           </div>

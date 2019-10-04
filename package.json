@@ -1,9 +1,9 @@
 {
   "name": "Ballyhoo Today",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node BallyWeb.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node BallyWeb.js"
   },
   "repository": {
     "type": "git",

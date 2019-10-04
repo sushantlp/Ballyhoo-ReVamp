@@ -150,7 +150,10 @@ const DetailTab = props => {
       ) : null}
 
       {props.parentState.navigation === "Buffets" ? (
-        <FoodList buffet={props.foodCategoryData.foodCategoryData.buffets} />
+        <FoodList
+          buffet={props.foodCategoryData.foodCategoryData.buffets}
+          dayInNumber={props.parentState.dayInNumber}
+        />
       ) : null}
 
       {props.parentState.navigation === "Packages" ? (
@@ -158,12 +161,14 @@ const DetailTab = props => {
           categoryData={props.categoryData}
           foodCategoryData={props.foodCategoryData}
           detailUrlParam={props.detailUrlParam}
+          dayInNumber={props.parentState.dayInNumber}
         />
       ) : null}
 
       {props.parentState.navigation === "Events" ? (
         <FoodEventList
           events={props.foodCategoryData.foodCategoryData.events}
+          dayInNumber={props.parentState.dayInNumber}
         />
       ) : null}
 

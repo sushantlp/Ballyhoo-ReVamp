@@ -8,7 +8,7 @@ import "./parent-detail.css";
 export default class ParentDetail extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+
     this.state = {
       navigation: "Overview",
       booking: false,
@@ -16,6 +16,33 @@ export default class ParentDetail extends React.Component {
       time: moment().format("HH:mm"),
       date: moment()
     };
+  }
+
+  componentDidMount() {
+    if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
+      if (
+        this.props.foodCategoryData.foodCategoryData.details.offering ===
+        "FNB Package"
+      ) {
+        this.setState({
+          navigation: "Packages"
+        });
+      } else if (
+        this.props.foodCategoryData.foodCategoryData.details.offering ===
+        "Buffets"
+      ) {
+        this.setState({
+          navigation: "Buffets"
+        });
+      } else if (
+        this.props.foodCategoryData.foodCategoryData.details.offering ===
+        "Events"
+      ) {
+        this.setState({
+          navigation: "Events"
+        });
+      }
+    }
   }
 
   onChangeDate = date => {

@@ -1,22 +1,37 @@
 import ReadMoreAndLess from "react-read-more-less";
 import "./food-list.css";
 const FoodList = props => {
-  return props.buffet.map((value, key) => {
-    let price = 0;
-    let cutPrice = 0;
-    if (parseInt(value.discount, 10) === 0) price = value.price;
-    else {
-      price = (parseInt(value.price, 10) * parseInt(value.discount, 10)) / 100;
-      price = parseInt(value.price, 10) - price;
-      cutPrice = value.price;
-    }
+  return (
+    <div className="food-list-container">
+      <div className="columns">
+        <div className="column">
+          {props.buffet.map((value, key) => {
+            let price = 0;
+            let cutPrice = 0;
+            let bookButton = false;
+            if (parseInt(value.discount, 10) === 0) price = value.price;
+            else {
+              price =
+                (parseInt(value.price, 10) * parseInt(value.discount, 10)) /
+                100;
+              price = parseInt(value.price, 10) - price;
+              cutPrice = value.price;
+            }
 
-    return (
-      <React.Fragment key={key}>
-        <div className="food-list-container">
-          <div className="columns">
-            <div className="column">
-              <div className="box">
+            if (parseInt(value.purchase_status, 10) !== 0) {
+              for (let i = 0; i < value.day_list; i++) {
+                if (
+                  parseInt(props.dayInNumber, 10) ===
+                  parseInt(value.day_list[i], 10)
+                ) {
+                  bookButton = true;
+                  break;
+                }
+              }
+            }
+
+            return (
+              <div className="box" key={key}>
                 <article className="media">
                   <div className="media-left">
                     <figure className="image">
@@ -98,29 +113,36 @@ const FoodList = props => {
                         className="m0 f24 fw9 flh28"
                         style={{ color: "#635f5f" }}
                       >
-                        ₹ {price}/-
+                        ₹ {price}
                         {cutPrice === 0 ? null : (
-                          <span className="f12 pfc3 tdl ml8">
-                            ₹ {cutPrice}/-
-                          </span>
+                          <span className="f12 pfc3 tdl ml8">₹ {cutPrice}</span>
                         )}
+                        {parseInt(value.tax_inclusive, 10) === 1 ? (
+                          <span className="f24 ml8">+ TAX</span>
+                        ) : null}
                       </h5>
                     </span>
                   </div>
 
                   <div className="card-footer-item">
-                    <a className="button is-medium is-danger" disabled>
-                      <span>Book</span>
-                    </a>
+                    {bookButton ? (
+                      <a className="button is-medium is-danger" disabled>
+                        <span>Book</span>
+                      </a>
+                    ) : (
+                      <a className="button is-medium is-danger">
+                        <span>Book</span>
+                      </a>
+                    )}
                   </div>
                 </footer>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
-      </React.Fragment>
-    );
-  });
+      </div>
+    </div>
+  );
 };
 
 export default FoodList;
