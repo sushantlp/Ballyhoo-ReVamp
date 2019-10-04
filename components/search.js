@@ -111,9 +111,9 @@ export default class Search extends React.Component {
     });
 
     const city = bunch[0].value.replace(/ /g, "-").toLowerCase();
-    const title = this.state.selectSearch.keyword
-      .replace(/ /g, "-")
-      .toLowerCase();
+
+    let title = this.state.selectSearch.keyword.replace(/[^a-zA-Z ]/g, "");
+    title = title.replace(/ /g, "-").toLowerCase();
 
     const secret = `${bunch[0].key}b${this.state.selectSearch.type}b${
       this.state.selectSearch.key

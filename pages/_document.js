@@ -2,24 +2,15 @@ import Document, { Head, Main, NextScript } from "next/document";
 // import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
-  // static getInitialProps({ renderPage }) {
-  // Step 1: Create an instance of ServerStyleSheet
-  //const sheet = new ServerStyleSheet();
-  // Step 2: Retrieve styles from components in the page
-  // const page = renderPage(App => props =>
-  //   sheet.collectStyles(<App {...props} />)
-  // );
-  // Step 3: Extract the styles as <style> tags
-  //const styleTags = sheet.getStyleElement();
-  // Step 4: Pass styleTags as a prop
-  //return { ...page, styleTags };
-  //}
-
   render() {
     return (
       <html lang="en-US" style={{ overflowX: "hidden", overflowY: "hidden" }}>
         <Head>
           <link rel="manifest" href="/static/manifest.json" />
+          {/* <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+          /> */}
 
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-capable" content="yes" />

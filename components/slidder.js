@@ -162,9 +162,10 @@ export default class Slidder extends React.Component {
   onClickButton = props => {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
-    const title = this.state.selectSearch.keyword
-      .replace(/ /g, "-")
-      .toLowerCase();
+
+    let title = this.state.selectSearch.keyword.replace(/[^a-zA-Z ]/g, "");
+    title = title.replace(/ /g, "-").toLowerCase();
+
     const secret = `${city_id}b${this.state.selectSearch.type}b${
       this.state.selectSearch.key
     }b${this.state.selectSearch.response_type}b${1}b${1}`;
