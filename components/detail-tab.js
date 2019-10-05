@@ -5,21 +5,6 @@ import FoodOfferList from "./food-offer-list";
 import ParentPackage from "./parent-package";
 import "./detail-tab.css";
 
-// export default class DetailTab extends React.Component {
-// constructor(props) {
-//   super(props);
-//    props.parentState = {
-//     navigation: "Overview"
-//   };
-// }
-
-// changeTab = text => {
-//    props.setState({
-//     navigation: text
-//   });
-// };
-
-// render() {
 const DetailTab = props => {
   return (
     <div>
@@ -153,6 +138,7 @@ const DetailTab = props => {
         <FoodList
           buffet={props.foodCategoryData.foodCategoryData.buffets}
           dayInNumber={props.parentState.dayInNumber}
+          expiry={props.foodCategoryData.foodCategoryData.details.expired}
         />
       ) : null}
 
@@ -169,6 +155,7 @@ const DetailTab = props => {
         <FoodEventList
           events={props.foodCategoryData.foodCategoryData.events}
           dayInNumber={props.parentState.dayInNumber}
+          expiry={props.foodCategoryData.foodCategoryData.details.expired}
         />
       ) : null}
 
@@ -176,7 +163,5 @@ const DetailTab = props => {
     </div>
   );
 };
-//   }
-// }
 
 export default DetailTab;

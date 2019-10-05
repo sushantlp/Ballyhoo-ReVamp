@@ -8,7 +8,7 @@ const FoodPackageDetail = props => {
           {props.package.map((value, key) => {
             let price = 0;
             let cutPrice = 0;
-            let bookButton = false;
+            let bookButton = true;
             if (parseInt(value.discount, 10) === 0) price = value.price;
             else {
               price = (value.price * 100) / value.discount;
@@ -22,11 +22,13 @@ const FoodPackageDetail = props => {
                   parseInt(props.dayInNumber, 10) ===
                   parseInt(value.day_list[i], 10)
                 ) {
-                  bookButton = true;
+                  bookButton = false;
                   break;
                 }
               }
             }
+
+            console.log(bookButton);
             return (
               <div
                 key={key}

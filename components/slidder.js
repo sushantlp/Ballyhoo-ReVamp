@@ -194,6 +194,7 @@ export default class Slidder extends React.Component {
       this.props.homeScreen.status === "FAIL"
     )
       return <Spinner />;
+
     if (this.state.cityName === "") return null;
     const carousel = this.props.homeScreen.homeScreen.carousel;
     const settings = {

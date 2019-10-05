@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Login from "./login";
 import Signup from "./signup";
+import Login from "./login";
+
 import Forget from "./forget";
 
 import "./header.css";

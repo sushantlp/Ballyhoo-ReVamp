@@ -8,7 +8,7 @@ const FoodList = props => {
           {props.buffet.map((value, key) => {
             let price = 0;
             let cutPrice = 0;
-            let bookButton = false;
+            let bookButton = true;
             if (parseInt(value.discount, 10) === 0) price = value.price;
             else {
               price =
@@ -18,14 +18,16 @@ const FoodList = props => {
               cutPrice = value.price;
             }
 
-            if (parseInt(value.purchase_status, 10) !== 0) {
-              for (let i = 0; i < value.day_list; i++) {
-                if (
-                  parseInt(props.dayInNumber, 10) ===
-                  parseInt(value.day_list[i], 10)
-                ) {
-                  bookButton = true;
-                  break;
+            if (parseInt(props.expiry, 10) === 1) {
+              if (parseInt(value.purchase_status, 10) === 1) {
+                for (let i = 0; i < value.day_list; i++) {
+                  if (
+                    parseInt(props.dayInNumber, 10) ===
+                    parseInt(value.day_list[i], 10)
+                  ) {
+                    bookButton = false;
+                    break;
+                  }
                 }
               }
             }

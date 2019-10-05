@@ -57,6 +57,10 @@ export default class DetailCart extends React.Component {
     });
   };
   render() {
+    const expiry =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 1
+        ? this.props.foodCategoryData.foodCategoryData.details.expired
+        : this.props.categoryData.categoryData.details.expired;
     const price =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.cost_for_two
@@ -225,7 +229,11 @@ export default class DetailCart extends React.Component {
           ) : null}
 
           <div className="has-text-centered">
-            {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+            {parseInt(expiry, 10) === 1 ? (
+              <a className="button cart-button-disabled ffqs" disabled>
+                {buttonText}
+              </a>
+            ) : parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
               disabledLogic === 1 ? (
                 <a className="button cart-button ffqs">{buttonText}</a>
               ) : (
