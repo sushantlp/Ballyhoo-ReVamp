@@ -95,6 +95,12 @@ export default class ActivityPackage extends React.Component {
   };
 
   render() {
+    const buttonBlock =
+      parseInt(this.props.expiry, 10) === 1
+        ? true
+        : parseInt(this.props.purchaseStatus, 10) === 0
+        ? true
+        : false;
     return this.state.packages.map((value, key) => {
       let lessPrice = 0;
       let morePrice = 0;
@@ -246,12 +252,12 @@ export default class ActivityPackage extends React.Component {
                           </div>
 
                           <div className="column is-2">
-                            {this.props.bookingButton ? (
-                              <a className="button is-danger fr">BOOK</a>
-                            ) : (
+                            {buttonBlock ? (
                               <a className="button is-danger fr" disabled>
                                 BOOK
                               </a>
+                            ) : (
+                              <a className="button is-danger fr">BOOK</a>
                             )}
                           </div>
                         </div>

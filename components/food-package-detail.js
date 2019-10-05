@@ -16,19 +16,20 @@ const FoodPackageDetail = props => {
               cutPrice = value.price;
             }
 
-            if (parseInt(value.purchase_status, 10) !== 0) {
-              for (let i = 0; i < value.day_list; i++) {
-                if (
-                  parseInt(props.dayInNumber, 10) ===
-                  parseInt(value.day_list[i], 10)
-                ) {
-                  bookButton = false;
-                  break;
+            if (parseInt(props.expiry, 10) === 1) {
+              if (parseInt(value.purchase_status, 10) === 1) {
+                for (let i = 0; i < value.day_list; i++) {
+                  if (
+                    parseInt(props.dayInNumber, 10) ===
+                    parseInt(value.day_list[i], 10)
+                  ) {
+                    bookButton = false;
+                    break;
+                  }
                 }
               }
             }
 
-            console.log(bookButton);
             return (
               <div
                 key={key}

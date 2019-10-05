@@ -130,6 +130,12 @@ export default class ExculsiveEscapePackage extends React.Component {
 
   render() {
     const { activeIndex } = this.state;
+    const buttonBlock =
+      parseInt(this.props.expiry, 10) === 1
+        ? true
+        : parseInt(this.props.purchaseStatus, 10) === 0
+        ? true
+        : false;
 
     return this.state.packages.map((value, key) => {
       let price = 0;
@@ -323,12 +329,12 @@ export default class ExculsiveEscapePackage extends React.Component {
               </div>
 
               <div className="card-footer-item">
-                {this.props.bookingButton ? (
-                  <a className="button is-danger fr">BOOK</a>
-                ) : (
+                {buttonBlock ? (
                   <a className="button is-danger fr" disabled>
                     BOOK
                   </a>
+                ) : (
+                  <a className="button is-danger fr">BOOK</a>
                 )}
               </div>
 

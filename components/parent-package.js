@@ -16,7 +16,8 @@ const ParentPackage = props => {
             {parseInt(props.detailUrlParam.result_type, 10) === 2 ? (
               <EventPackage
                 package={props.categoryData.categoryData.details.offer_packages}
-                bookingButton={
+                expiry={props.categoryData.categoryData.details.expired}
+                purchaseStatus={
                   props.categoryData.categoryData.details.offer_purchase_status
                 }
               />
@@ -24,7 +25,8 @@ const ParentPackage = props => {
             {parseInt(props.detailUrlParam.result_type, 10) === 3 ? (
               <ActivityPackage
                 package={props.categoryData.categoryData.details.offer_packages}
-                bookingButton={
+                expiry={props.categoryData.categoryData.details.expired}
+                purchaseStatus={
                   props.categoryData.categoryData.details.offer_purchase_status
                 }
               />
@@ -38,12 +40,13 @@ const ParentPackage = props => {
                   package={
                     props.categoryData.categoryData.details.offer_packages
                   }
-                  bookingButton={
-                    props.categoryData.categoryData.details
-                      .offer_purchase_status
-                  }
                   queryButton={
                     props.categoryData.categoryData.details.offer_enquiry_status
+                  }
+                  expiry={props.categoryData.categoryData.details.expired}
+                  purchaseStatus={
+                    props.categoryData.categoryData.details
+                      .offer_purchase_status
                   }
                 />
               ) : (
@@ -51,12 +54,13 @@ const ParentPackage = props => {
                   package={
                     props.categoryData.categoryData.details.offer_packages
                   }
-                  bookingButton={
-                    props.categoryData.categoryData.details
-                      .offer_purchase_status
-                  }
                   queryButton={
                     props.categoryData.categoryData.details.offer_enquiry_status
+                  }
+                  expiry={props.categoryData.categoryData.details.expired}
+                  purchaseStatus={
+                    props.categoryData.categoryData.details
+                      .offer_purchase_status
                   }
                 />
               )
@@ -64,7 +68,8 @@ const ParentPackage = props => {
             {parseInt(props.detailUrlParam.result_type, 10) === 5 ? (
               <SaloonPackage
                 package={props.categoryData.categoryData.details.offer_packages}
-                bookingButton={
+                expiry={props.categoryData.categoryData.details.expired}
+                purchaseStatus={
                   props.categoryData.categoryData.details.offer_purchase_status
                 }
               />
@@ -74,6 +79,7 @@ const ParentPackage = props => {
               <FoodPackage
                 package={props.foodCategoryData.foodCategoryData.packages}
                 dayInNumber={props.dayInNumber}
+                expiry={props.foodCategoryData.foodCategoryData.details.expired}
               />
             ) : null}
           </div>
