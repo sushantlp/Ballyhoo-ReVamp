@@ -29,7 +29,6 @@ const Login = props => {
                   </div>
                 </div>
               </div>
-              {/* <hr className="spacer is-1" /> */}
 
               <div className="field">
                 <div className="field-body">
@@ -50,6 +49,10 @@ const Login = props => {
                     </div>
                   </div>
                 </div>
+
+                {props.errorStatus ? (
+                  <p class="help is-danger">{props.errorMsg}</p>
+                ) : null}
               </div>
 
               <div style={{ textAlign: "right" }}>

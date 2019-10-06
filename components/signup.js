@@ -26,6 +26,7 @@ const Signup = props => {
                         className="input is-large br0"
                         type="text"
                         placeholder="Email"
+                        onChange={e => props.updateSignupEmail(e)}
                       />
                     </div>
                   </div>
@@ -38,11 +39,18 @@ const Signup = props => {
                   <div className="field">
                     <div className="control ffqs fw2">
                       <div className="columns is-gapless">
-                        <div className="column is-2">
+                        <div className="column is-3">
                           <div className="select is-large br0">
                             <select className="br0">
-                              <option>+91</option>
-                              <option>+43</option>
+                              {COUNTRY_CODE.map((value, key) => {
+                                return value.dial_code === "+91" ? (
+                                  <option key={key} selected>
+                                    {value.dial_code}
+                                  </option>
+                                ) : (
+                                  <option key={key}>{value.dial_code}</option>
+                                );
+                              })}
                             </select>
                           </div>
                         </div>
@@ -66,10 +74,14 @@ const Signup = props => {
                     <div className="control is-expanded has-icons-right">
                       <input
                         className="input is-large br0"
-                        type="email"
+                        type={props.signupPassDisplay ? "email" : "password"}
                         placeholder="Password"
+                        onChange={e => props.updateSignupPassword(e)}
                       />
-                      <span className="pointer icon is-small is-right">
+                      <span
+                        className="pointer icon is-small is-right"
+                        onClick={() => props.updateSignupPassDisplay()}
+                      >
                         <img src="https://img.icons8.com/wired/20/000000/show-password.png" />
                       </span>
                     </div>
@@ -83,15 +95,25 @@ const Signup = props => {
                     <div className="control is-expanded has-icons-right">
                       <input
                         className="input is-large br0"
-                        type="email"
+                        type={
+                          props.signupConfirmPassDisplay ? "email" : "password"
+                        }
                         placeholder="Confirm Password"
+                        onChange={e => props.updateSignupConfirmPassword(e)}
                       />
-                      <span className="pointer icon is-small is-right">
+                      <span
+                        className="pointer icon is-small is-right"
+                        onClick={() => props.updateSignupConfirmPassDisplay()}
+                      >
                         <img src="https://img.icons8.com/wired/20/000000/show-password.png" />
                       </span>
                     </div>
                   </div>
                 </div>
+
+                {props.errorStatus ? (
+                  <p class="help is-danger">{props.errorMsg}</p>
+                ) : null}
               </div>
 
               <div className="field">
@@ -109,16 +131,26 @@ const Signup = props => {
                       htmlFor="exampleCheckboxDefault1"
                       className="ffqs fw2"
                     >
-                      I agree to the <a href="#">Terms and Privacy</a>
+                      I agree to the <a href="/term">Terms and Privacy</a>
                     </label>
                   </label>
                 </div>
               </div>
             </section>
             <footer className="modal-card-foot">
-              <button className="button is-danger is-active signup-button">
-                SIGNUP
-              </button>
+              {props.loginButton ? (
+                <button className="button is-danger is-active signup-button">
+                  SIGNUP
+                </button>
+              ) : (
+                <button
+                  style={{ backgroundColor: "#fdb6c4" }}
+                  className="button is-danger is-active signup-button"
+                  disabled
+                >
+                  SIGNUP
+                </button>
+              )}
             </footer>
           </div>
         </div>

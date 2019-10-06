@@ -17,9 +17,107 @@ export default class Header extends React.Component {
       loginEmail: "",
       loginPassword: "",
       loginButton: false,
-      loginPassDisplay: false
+      loginPassDisplay: false,
+
+      signupEmail: "",
+      signupMobile: "",
+      signupPassword: "",
+      signupConfirmPassword: "",
+      signupButton: false,
+      signupPassDisplay: false,
+      signupConfirmPassDisplay: false,
+
+      errorStatus: false,
+      errorMsg: ""
     };
   }
+
+  /**
+   * Start Signup Function
+   **/
+
+  updateSignupPassDisplay = () => {
+    this.setState({
+      signupPassDisplay: !this.state.signupPassDisplay
+    });
+  };
+
+  updateSignupConfirmPassDisplay = () => {
+    this.setState({
+      signupConfirmPassDisplay: !this.state.signupConfirmPassDisplay
+    });
+  };
+
+  updateSignupEmail = e => {
+    if (e.target.value === "")
+      this.setState({
+        signupButton: false
+      });
+
+    this.setState({
+      signupEmail: e.target.value
+    });
+
+    if (
+      e.target.value !== "" &&
+      this.state.signupPassword !== "" &&
+      this.state.signupConfirmPassword !== "" &&
+      !this.state.signupButton
+    )
+      this.setState({
+        signupButton: true
+      });
+  };
+
+  updateSignupPassword = e => {
+    if (e.target.value === "")
+      this.setState({
+        signupButton: false
+      });
+
+    this.setState({
+      signupPassword: e.target.value
+    });
+
+    if (
+      this.state.signupEmail !== "" &&
+      e.target.value !== "" &&
+      this.state.signupConfirmPassword !== "" &&
+      !this.state.signupButton
+    )
+      this.setState({
+        signupButton: true
+      });
+  };
+
+  updateSignupConfirmPassword = e => {
+    if (e.target.value === "")
+      this.setState({
+        signupButton: false
+      });
+
+    this.setState({
+      signupConfirmPassword: e.target.value
+    });
+
+    if (
+      this.state.signupEmail !== "" &&
+      e.target.value !== "" &&
+      this.state.signupPassword !== "" &&
+      !this.state.signupButton
+    )
+      this.setState({
+        signupButton: true
+      });
+  };
+
+  /**
+   * End Signup Function
+   **/
+
+  /**
+   * Start Login Function
+   **/
 
   updateLoginPassDisplay = () => {
     this.setState({
@@ -72,6 +170,10 @@ export default class Header extends React.Component {
       loginOpen: bool
     });
   };
+
+  /**
+   * End Login Function
+   **/
 
   updateSignupState = bool => {
     this.setState({
@@ -208,6 +310,8 @@ export default class Header extends React.Component {
             loginPassword={this.state.loginPassword}
             loginEmail={this.state.loginEmail}
             loginPassDisplay={this.state.loginPassDisplay}
+            errorStatus={this.state.errorStatus}
+            errorMsg={this.state.errorMsg}
             updateLoginPassword={this.updateLoginPassword}
             updateLoginEmail={this.updateLoginEmail}
             updateLoginPassDisplay={this.updateLoginPassDisplay}
@@ -218,6 +322,16 @@ export default class Header extends React.Component {
           <Signup
             signupOpen={this.state.signupOpen}
             updateSignupState={this.updateSignupState}
+            signupButton={this.state.signupButton}
+            signupPassDisplay={this.state.signupPassDisplay}
+            signupConfirmPassDisplay={this.state.signupConfirmPassDisplay}
+            errorStatus={this.state.errorStatus}
+            errorMsg={this.state.errorMsg}
+            updateSignupPassDisplay={this.updateSignupPassDisplay}
+            updateSignupConfirmPassDisplay={this.updateSignupConfirmPassDisplay}
+            updateSignupEmail={this.updateSignupEmail}
+            updateSignupPassword={this.updateSignupPassword}
+            updateSignupConfirmPassword={this.updateSignupConfirmPassword}
           />
         ) : null}
 
