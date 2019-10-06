@@ -1,9 +1,15 @@
 import Link from "next/link";
+
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
+
 import Signup from "./signup";
 import Login from "./login";
-
 import Forget from "./forget";
 
+import "react-notifications/lib/notifications.css";
 import "./header.css";
 
 export default class Header extends React.Component {
@@ -37,7 +43,7 @@ export default class Header extends React.Component {
   }
 
   /**
-   * Start Signup Function
+   * Start Forget Function
    **/
 
   updateForgetEmail = e => {
@@ -56,8 +62,16 @@ export default class Header extends React.Component {
       });
   };
 
+  onClickForgetButton = () => {
+    this.setState({
+      forgetButton: false
+    });
+    this.updateForgetState(false);
+    NotificationManager.success("Successful", "Successful");
+  };
+
   /**
-   * End Signup Function
+   * End Forget Function
    **/
 
   /**
@@ -260,6 +274,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="header-container">
+        <NotificationContainer />
         <nav
           id="navbar"
           className="navbar has-shadow"
@@ -403,6 +418,7 @@ export default class Header extends React.Component {
             forgetButton={this.state.forgetButton}
             updateForgetState={this.updateForgetState}
             updateForgetEmail={this.updateForgetEmail}
+            onClickForgetButton={this.onClickForgetButton}
           />
         ) : null}
       </div>

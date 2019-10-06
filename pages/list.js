@@ -1,15 +1,9 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import Router from "next/router";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
-
-// import "bulma/css/bulma.min.css";
-// import "semantic-ui-css/semantic.min.css";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 
 import { host } from "../constants";
 
@@ -190,7 +184,6 @@ class List extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       isLoading: false
     };

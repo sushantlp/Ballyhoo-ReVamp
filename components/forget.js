@@ -36,7 +36,10 @@ const Forget = props => {
             </section>
             <footer className="modal-card-foot">
               {props.forgetButton ? (
-                <button className="button is-danger is-active submit-button">
+                <button
+                  className="button is-danger is-active submit-button"
+                  onClick={() => props.onClickForgetButton()}
+                >
                   SUBMIT
                 </button>
               ) : (
