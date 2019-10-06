@@ -23,6 +23,7 @@ const Login = props => {
                         className="input is-large br0"
                         type="text"
                         placeholder="Email"
+                        onChange={props.onChangeEmail}
                       />
                     </div>
                   </div>
@@ -36,10 +37,14 @@ const Login = props => {
                     <div className="control is-expanded has-icons-right">
                       <input
                         className="input is-large br0"
-                        type="email"
+                        type={props.loginPassDisplay ? "email" : "password"}
                         placeholder="Password"
+                        onChange={props.onChangePassword}
                       />
-                      <span className="pointer icon is-small is-right">
+                      <span
+                        className="pointer icon is-small is-right"
+                        onClick={() => props.updateLoginPassDisplay()}
+                      >
                         <img src="https://img.icons8.com/wired/20/000000/show-password.png" />
                       </span>
                     </div>
@@ -60,9 +65,20 @@ const Login = props => {
               </div>
             </section>
             <footer className="modal-card-foot">
-              <button className="button is-danger is-active login-button">
-                LOGIN
-              </button>
+              {props.loginButton ? (
+                <button className="button is-danger is-active login-button">
+                  LOGIN
+                </button>
+              ) : (
+                <button
+                  style={{ backgroundColor: "#fdb6c4" }}
+                  className="button is-danger is-active login-button"
+                  disabled
+                >
+                  LOGIN
+                </button>
+              )}
+
               <label>
                 {" "}
                 New to Ballyhoo ?{" "}

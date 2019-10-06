@@ -12,9 +12,32 @@ export default class Header extends React.Component {
     this.state = {
       loginOpen: false,
       signupOpen: false,
-      forgetOpen: false
+      forgetOpen: false,
+
+      loginEmail: "",
+      loginPassword: "",
+      loginButton: false,
+      loginPassDisplay: false
     };
   }
+
+  updateLoginPassDisplay = () => {
+    this.setState({
+      loginPassDisplay: !this.state.loginPassDisplay
+    });
+  };
+
+  updateLoginEmail = e => {
+    this.setState({
+      loginEmail: e.target.value
+    });
+  };
+
+  updateLoginPassword = e => {
+    this.setState({
+      loginPassword: e.target.value
+    });
+  };
 
   updateLoginState = bool => {
     this.setState({
@@ -43,6 +66,7 @@ export default class Header extends React.Component {
     this.updateLoginState(false);
     this.updateSignupState(true);
   };
+
   render() {
     return (
       <div className="header-container">
@@ -106,41 +130,41 @@ export default class Header extends React.Component {
                   </div>
                   {/* </Link> */}
                 </div>
-                {/* 
+
                 <div className="navbar-item">
                   <Link href="/enquiry">
-                  <div className="control">
-                    <div className="buttons">
-                      <a className="button is-rounded is-outlined" disabled>
-                        <span>Enquiry</span>
-                      </a>
+                    <div className="control">
+                      <div className="buttons">
+                        <a className="button is-rounded is-outlined">
+                          <span>Enquiry</span>
+                        </a>
+                      </div>
                     </div>
-                  </div>
                   </Link>
-                </div> */}
+                </div>
 
                 <div className="navbar-item">
                   <div className="control">
                     <div
                       className="buttons"
-                      // onClick={() => this.updateLoginState(true)}
+                      onClick={() => this.updateLoginState(true)}
                     >
-                      <a className="button is-rounded is-outlined" disabled>
+                      <a className="button is-rounded is-outlined">
                         <span>Login</span>
                       </a>
                     </div>
                   </div>
                 </div>
 
-                {/* <div className="navbar-item">
-                   <Link href="/explore"> 
-                  <div className="control">
-                    <a className="button is-outlined is-rounded" disabled>
-                      Plan my holiday
-                    </a>
-                  </div>
-                  </Link> 
-                </div> */}
+                <div className="navbar-item">
+                  <Link href="/explore">
+                    <div className="control">
+                      <a className="button is-outlined is-rounded">
+                        Plan my holiday
+                      </a>
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -152,6 +176,13 @@ export default class Header extends React.Component {
             updateLoginState={this.updateLoginState}
             moveToSignup={this.moveToSignup}
             moveToForget={this.moveToForget}
+            loginButton={this.state.loginButton}
+            loginPassword={this.state.loginPassword}
+            loginEmail={this.state.loginEmail}
+            loginPassDisplay={this.state.loginPassDisplay}
+            updateLoginPassword={this.updateLoginPassword}
+            updateLoginEmail={this.updateLoginEmail}
+            updateLoginPassDisplay={this.updateLoginPassDisplay}
           />
         ) : null}
 
