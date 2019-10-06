@@ -23,7 +23,7 @@ const Login = props => {
                         className="input is-large br0"
                         type="text"
                         placeholder="Email"
-                        onChange={props.onChangeEmail}
+                        onChange={e => props.updateLoginEmail(e)}
                       />
                     </div>
                   </div>
@@ -39,7 +39,7 @@ const Login = props => {
                         className="input is-large br0"
                         type={props.loginPassDisplay ? "email" : "password"}
                         placeholder="Password"
-                        onChange={props.onChangePassword}
+                        onChange={e => props.updateLoginPassword(e)}
                       />
                       <span
                         className="pointer icon is-small is-right"

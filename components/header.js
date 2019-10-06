@@ -28,15 +28,43 @@ export default class Header extends React.Component {
   };
 
   updateLoginEmail = e => {
+    if (e.target.value === "")
+      this.setState({
+        loginButton: false
+      });
+
     this.setState({
       loginEmail: e.target.value
     });
+
+    if (
+      e.target.value !== "" &&
+      this.state.loginPassword !== "" &&
+      !this.state.loginButton
+    )
+      this.setState({
+        loginButton: true
+      });
   };
 
   updateLoginPassword = e => {
+    if (e.target.value === "")
+      this.setState({
+        loginButton: false
+      });
+
     this.setState({
       loginPassword: e.target.value
     });
+
+    if (
+      this.state.loginEmail !== "" &&
+      e.target.value !== "" &&
+      !this.state.loginButton
+    )
+      this.setState({
+        loginButton: true
+      });
   };
 
   updateLoginState = bool => {
