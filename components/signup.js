@@ -41,7 +41,11 @@ const Signup = props => {
                       <div className="columns is-gapless">
                         <div className="column is-3">
                           <div className="select is-large br0">
-                            <select className="br0">
+                            <select
+                              className="br0"
+                              defaultValue="+91"
+                              onChange={e => props.updateSignupCode(e)}
+                            >
                               {COUNTRY_CODE.map((value, key) => {
                                 return value.dial_code === "+91" ? (
                                   <option key={key} selected>
@@ -60,6 +64,7 @@ const Signup = props => {
                             className="input is-large br0"
                             type="number"
                             placeholder="Mobile"
+                            onChange={e => props.updateSignupMobile(e)}
                           />
                         </div>
                       </div>
@@ -131,14 +136,17 @@ const Signup = props => {
                       htmlFor="exampleCheckboxDefault1"
                       className="ffqs fw2"
                     >
-                      I agree to the <a href="/term">Terms and Privacy</a>
+                      I agree to the{" "}
+                      <a href="/term" target="_blank">
+                        Terms and Privacy
+                      </a>
                     </label>
                   </label>
                 </div>
               </div>
             </section>
             <footer className="modal-card-foot">
-              {props.loginButton ? (
+              {props.signupButton ? (
                 <button className="button is-danger is-active signup-button">
                   SIGNUP
                 </button>

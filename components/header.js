@@ -21,11 +21,15 @@ export default class Header extends React.Component {
 
       signupEmail: "",
       signupMobile: "",
+      signupCode: "+91",
       signupPassword: "",
       signupConfirmPassword: "",
       signupButton: false,
       signupPassDisplay: false,
       signupConfirmPassDisplay: false,
+
+      forgetEmail: "",
+      forgetButton: false,
 
       errorStatus: false,
       errorMsg: ""
@@ -35,6 +39,37 @@ export default class Header extends React.Component {
   /**
    * Start Signup Function
    **/
+
+  updateForgetEmail = e => {
+    if (e.target.value === "")
+      this.setState({
+        forgetButton: false
+      });
+
+    this.setState({
+      forgetEmail: e.target.value
+    });
+
+    if (!this.state.forgetButton)
+      this.setState({
+        forgetButton: true
+      });
+  };
+
+  /**
+   * End Signup Function
+   **/
+
+  /**
+   * Start Signup Function
+   **/
+
+  updateSignupCode = e => {
+    console.log(e.target.value);
+    this.setState({
+      signupCode: e.target.value
+    });
+  };
 
   updateSignupPassDisplay = () => {
     this.setState({
@@ -60,6 +95,29 @@ export default class Header extends React.Component {
 
     if (
       e.target.value !== "" &&
+      this.state.signupMobile !== "" &&
+      this.state.signupPassword !== "" &&
+      this.state.signupConfirmPassword !== "" &&
+      !this.state.signupButton
+    )
+      this.setState({
+        signupButton: true
+      });
+  };
+
+  updateSignupMobile = e => {
+    if (e.target.value === "")
+      this.setState({
+        signupButton: false
+      });
+
+    this.setState({
+      signupMobile: e.target.value
+    });
+
+    if (
+      e.target.value !== "" &&
+      this.state.signupEmail !== "" &&
       this.state.signupPassword !== "" &&
       this.state.signupConfirmPassword !== "" &&
       !this.state.signupButton
@@ -81,6 +139,7 @@ export default class Header extends React.Component {
 
     if (
       this.state.signupEmail !== "" &&
+      this.state.signupMobile !== "" &&
       e.target.value !== "" &&
       this.state.signupConfirmPassword !== "" &&
       !this.state.signupButton
@@ -103,6 +162,7 @@ export default class Header extends React.Component {
     if (
       this.state.signupEmail !== "" &&
       e.target.value !== "" &&
+      this.state.signupMobile !== "" &&
       this.state.signupPassword !== "" &&
       !this.state.signupButton
     )
@@ -330,6 +390,8 @@ export default class Header extends React.Component {
             updateSignupPassDisplay={this.updateSignupPassDisplay}
             updateSignupConfirmPassDisplay={this.updateSignupConfirmPassDisplay}
             updateSignupEmail={this.updateSignupEmail}
+            updateSignupMobile={this.updateSignupMobile}
+            updateSignupCode={this.updateSignupCode}
             updateSignupPassword={this.updateSignupPassword}
             updateSignupConfirmPassword={this.updateSignupConfirmPassword}
           />
@@ -338,7 +400,9 @@ export default class Header extends React.Component {
         {this.state.forgetOpen ? (
           <Forget
             forgetOpen={this.state.forgetOpen}
+            forgetButton={this.state.forgetButton}
             updateForgetState={this.updateForgetState}
+            updateForgetEmail={this.updateForgetEmail}
           />
         ) : null}
       </div>

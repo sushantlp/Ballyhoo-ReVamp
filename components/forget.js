@@ -27,6 +27,7 @@ const Forget = props => {
                         className="input is-large br0"
                         type="text"
                         placeholder="Email"
+                        onChange={e => props.updateForgetEmail(e)}
                       />
                     </div>
                   </div>
@@ -34,9 +35,19 @@ const Forget = props => {
               </div>
             </section>
             <footer className="modal-card-foot">
-              <button className="button is-danger is-active submit-button">
-                SUBMIT
-              </button>
+              {props.forgetButton ? (
+                <button className="button is-danger is-active submit-button">
+                  SUBMIT
+                </button>
+              ) : (
+                <button
+                  className="button is-danger is-active submit-button"
+                  disabled
+                  style={{ backgroundColor: "#fdb6c4" }}
+                >
+                  SUBMIT
+                </button>
+              )}
             </footer>
           </div>
         </div>
