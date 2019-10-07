@@ -37,14 +37,31 @@ class Enquiry extends React.Component {
       enquiryName: "",
       enquiryEmail: "",
       enquiryMobile: "",
-      enquiryOccasion: "",
-      enquiryPartyDate: "",
-      enquiryPartyTime: "",
-      enquiryFoodPreference: "",
+      enquiryMobileCode: "+91",
+      enquiryOccasion: "Birthday",
+      enquiryPartyDate: new Date(),
+      enquiryPartyTime: "Lunch",
+      enquiryFoodPreference: "Veg",
+      enquiryFoodPreferenceAlcohol: "No",
       enquiryGuest: "",
-      enquiryCost: "",
+      enquiryCost: "500 - 1000",
       enquiryRequest: "",
-      enquiryButton: false
+      enquiryButton: false,
+
+      enquiryName: {
+        flag: false,
+        msg: ""
+      },
+
+      enquiryEmail: {
+        flag: false,
+        msg: ""
+      },
+
+      enquiryMobile: {
+        flag: false,
+        msg: ""
+      }
     };
   }
 
@@ -67,7 +84,10 @@ class Enquiry extends React.Component {
       <React.Fragment>
         <Head title="Home" />
         <Header />
-        <EnquiryComponent enquiryState={this.state} />
+        <EnquiryComponent
+          enquiryState={this.state}
+          enquiryLooking={this.enquiryLooking}
+        />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>

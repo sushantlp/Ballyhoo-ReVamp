@@ -2,15 +2,14 @@ import { Segment } from "semantic-ui-react";
 
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 
+import { COUNTRY_CODE } from "../constants";
+
 import "../node_modules/react-date-picker/dist/DatePicker.css";
 import "../node_modules/react-calendar/dist/Calendar.css";
 import "bulma-checkradio";
 import "./enquiry.css";
 
-import { getCityLocality } from "../actions/city-locality-action";
-
 const Enquiry = props => {
-  const date = new Date();
   return (
     <React.Fragment>
       <div className="enquiry-container">
@@ -55,6 +54,48 @@ const Enquiry = props => {
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">Phone</label>
+                    <div className="field-body">
+                      <div className="field">
+                        <div className="control ffqs fw2">
+                          <div className="columns is-gapless">
+                            <div className="column is-3">
+                              <div className="select is-large br0">
+                                <select
+                                  className="br0"
+                                  defaultValue="+91"
+                                  onChange={e => props.updateSignupCode(e)}
+                                >
+                                  {COUNTRY_CODE.map((value, key) => {
+                                    return value.dial_code === "+91" ? (
+                                      <option key={key} selected>
+                                        {value.dial_code}
+                                      </option>
+                                    ) : (
+                                      <option key={key}>
+                                        {value.dial_code}
+                                      </option>
+                                    );
+                                  })}
+                                </select>
+                              </div>
+                            </div>
+
+                            <div className="column">
+                              <input
+                                className="input is-large br0"
+                                type="number"
+                                placeholder="Mobile"
+                                // onChange={e => props.updateSignupMobile(e)}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* <div className="field">
+                    <label className="label is-medium ffqs fw2">Phone</label>
 
                     <div className="field-body">
                       <div className="field">
@@ -67,7 +108,7 @@ const Enquiry = props => {
                         </label>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="field">
                     <label className="label is-medium ffqs fw2">
@@ -75,83 +116,84 @@ const Enquiry = props => {
                     </label>
 
                     <div className="field-body">
-                      <div className="field ">
-                        <div className="control">
-                          <Segment>
-                            <div className="field">
-                              <input
-                                className="is-checkradio"
-                                id="exampleRtlRadioInline1"
-                                type="radio"
-                                name="looking"
-                              />
-                              <label
-                                htmlFor="exampleRtlRadioInline1"
-                                className="ffqs fw2"
-                              >
-                                Birthday
-                              </label>
+                      {/* <div className="field "> */}
+                      <div className="control">
+                        <Segment>
+                          {/* <div className="field"> */}
+                          <input
+                            className="is-checkradio"
+                            id="Birthday"
+                            type="radio"
+                            name="looking"
+                            value="Birthday"
+                            onChange={event => props.enquiryLooking(event)}
+                          />
+                          <label htmlFor="Birthday" className="ffqs fw2">
+                            Birthday
+                          </label>
 
-                              <input
-                                className="is-checkradio"
-                                id="exampleRtlRadioInline2"
-                                type="radio"
-                                name="looking"
-                                style={{ paddingLeft: "1em" }}
-                              />
-                              <label
-                                htmlFor="exampleRtlRadioInline2"
-                                className="ffqs fw2"
-                              >
-                                Bachelor/Bachelorette
-                              </label>
+                          <input
+                            className="is-checkradio"
+                            id="Bachelor/Bachelorette"
+                            type="radio"
+                            name="looking"
+                            value="Bachelor/Bachelorette"
+                            style={{ paddingLeft: "1em" }}
+                            onChange={event => props.enquiryLooking(event)}
+                          />
+                          <label
+                            htmlFor="Bachelor/Bachelorette"
+                            className="ffqs fw2"
+                          >
+                            Bachelor/Bachelorette
+                          </label>
 
-                              <input
-                                className="is-checkradio"
-                                id="exampleRtlRadioInline3"
-                                type="radio"
-                                name="looking"
-                                style={{ paddingLeft: "1em" }}
-                              />
-                              <label
-                                htmlFor="exampleRtlRadioInline3"
-                                className="ffqs fw2"
-                              >
-                                Anniversary
-                              </label>
-                            </div>
+                          <input
+                            className="is-checkradio"
+                            id="Anniversary"
+                            type="radio"
+                            name="looking"
+                            value="Anniversary"
+                            style={{ paddingLeft: "1em" }}
+                            onChange={event => props.enquiryLooking(event)}
+                          />
+                          <label htmlFor="Anniversary" className="ffqs fw2">
+                            Anniversary
+                          </label>
+                          {/* </div> */}
 
-                            <div className="field mt1">
-                              <input
-                                className="is-checkradio"
-                                id="exampleRtlRadioInline4"
-                                type="radio"
-                                name="looking"
-                              />
-                              <label
-                                htmlFor="exampleRtlRadioInline4"
-                                className="ffqs fw2"
-                              >
-                                Social Gathering
-                              </label>
+                          <div className="field mt1">
+                            <input
+                              className="is-checkradio"
+                              id="Social Gathering"
+                              type="radio"
+                              name="looking"
+                              value="Social Gathering"
+                              onChange={event => props.enquiryLooking(event)}
+                            />
+                            <label
+                              htmlFor="Social Gathering"
+                              className="ffqs fw2"
+                            >
+                              Social Gathering
+                            </label>
 
-                              <input
-                                className="is-checkradio"
-                                id="exampleRtlRadioInline5"
-                                type="radio"
-                                name="looking"
-                                style={{ paddingLeft: "1em" }}
-                              />
-                              <label
-                                htmlFor="exampleRtlRadioInline5"
-                                className="ffqs fw2"
-                              >
-                                Others
-                              </label>
-                            </div>
-                          </Segment>
-                        </div>
+                            <input
+                              className="is-checkradio"
+                              id="Others"
+                              type="radio"
+                              name="looking"
+                              value="Others"
+                              style={{ paddingLeft: "1em" }}
+                              onChange={event => props.enquiryLooking(event)}
+                            />
+                            <label htmlFor="Others" className="ffqs fw2">
+                              Others
+                            </label>
+                          </div>
+                        </Segment>
                       </div>
+                      {/* </div> */}
                     </div>
                   </div>
 
@@ -163,7 +205,9 @@ const Enquiry = props => {
                     <div className="field-body">
                       <div className="field ">
                         <div className="control">
-                          <DatePicker value={date} />
+                          <DatePicker
+                            value={props.enquiryState.enquiryPartyDate}
+                          />
                         </div>
                       </div>
                     </div>
