@@ -30,6 +30,7 @@ const Enquiry = props => {
                             className="input is-large"
                             type="text"
                             placeholder="Aaron Swartz"
+                            onChange={event => props.onChangeName(event)}
                           />
                         </label>
                       </div>
@@ -52,6 +53,7 @@ const Enquiry = props => {
                             className="input is-large"
                             type="text"
                             placeholder="Open@Code"
+                            onChange={event => props.onChangeEmail(event)}
                           />
                         </label>
                       </div>
@@ -97,7 +99,7 @@ const Enquiry = props => {
                                 className="input is-large br0"
                                 type="number"
                                 placeholder="Mobile"
-                                // onChange={e => props.updateSignupMobile(e)}
+                                onChange={e => props.onChangeMobile(e)}
                               />
                             </div>
                           </div>
@@ -134,10 +136,8 @@ const Enquiry = props => {
                     </label>
 
                     <div className="field-body">
-                      {/* <div className="field "> */}
                       <div className="control">
                         <Segment>
-                          {/* <div className="field"> */}
                           <input
                             className="is-checkradio"
                             id="Birthday"
@@ -179,7 +179,6 @@ const Enquiry = props => {
                           <label htmlFor="Anniversary" className="ffqs fw2">
                             Anniversary
                           </label>
-                          {/* </div> */}
 
                           <div className="field mt1">
                             <input
@@ -212,7 +211,6 @@ const Enquiry = props => {
                           </div>
                         </Segment>
                       </div>
-                      {/* </div> */}
                     </div>
                   </div>
 
@@ -226,6 +224,7 @@ const Enquiry = props => {
                         <div className="control">
                           <DatePicker
                             value={props.enquiryState.enquiryPartyDate}
+                            onChange={event => props.onChangePartyDate(event)}
                           />
                         </div>
                       </div>
@@ -248,6 +247,9 @@ const Enquiry = props => {
                                 type="radio"
                                 name="time"
                                 defaultChecked
+                                onChange={event =>
+                                  props.onChangePartyTime(event)
+                                }
                               />
                               <label htmlFor="Lunch" className="ffqs fw2">
                                 Lunch
@@ -259,6 +261,9 @@ const Enquiry = props => {
                                 type="radio"
                                 name="time"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event =>
+                                  props.onChangePartyTime(event)
+                                }
                               />
                               <label htmlFor="Dinner" className="ffqs fw2">
                                 Dinner
@@ -286,6 +291,9 @@ const Enquiry = props => {
                                 type="radio"
                                 name="food"
                                 defaultChecked
+                                onChange={event =>
+                                  props.onChangeFoodPreference(event)
+                                }
                               />
                               <label htmlFor="Veg" className="ffqs fw2">
                                 Veg
@@ -297,6 +305,9 @@ const Enquiry = props => {
                                 type="radio"
                                 name="food"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event =>
+                                  props.onChangeFoodPreference(event)
+                                }
                               />
                               <label htmlFor="Non-Veg" className="ffqs fw2">
                                 Non Veg
@@ -308,6 +319,9 @@ const Enquiry = props => {
                                 type="radio"
                                 name="food"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event =>
+                                  props.onChangeFoodPreference(event)
+                                }
                               />
                               <label htmlFor="Both" className="ffqs fw2">
                                 Both
@@ -319,6 +333,9 @@ const Enquiry = props => {
                                 type="checkbox"
                                 name="alcohol"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event =>
+                                  props.enquiryFoodPreferenceAlcohol(event)
+                                }
                               />
                               <label htmlFor="Alcohol" className="ffqs fw2">
                                 Alcohol
@@ -342,6 +359,7 @@ const Enquiry = props => {
                             className="input is-large"
                             type="number"
                             placeholder="Guests"
+                            onChange={event => props.onChangeGuest(event)}
                           />
                         </label>
                       </div>
@@ -364,6 +382,7 @@ const Enquiry = props => {
                                 type="radio"
                                 name="cost"
                                 defaultChecked
+                                onChange={event => props.onChangeCost(event)}
                               />
                               <label htmlFor="500-1000" className="ffqs fw2">
                                 500 - 1000
@@ -375,6 +394,7 @@ const Enquiry = props => {
                                 type="radio"
                                 name="cost"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event => props.onChangeCost(event)}
                               />
                               <label htmlFor="1000-1500" className="ffqs fw2">
                                 1000 - 1500
@@ -386,6 +406,7 @@ const Enquiry = props => {
                                 type="radio"
                                 name="cost"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event => props.onChangeCost(event)}
                               />
                               <label htmlFor="1500-2000" className="ffqs fw2">
                                 1500 - 2000
@@ -397,6 +418,7 @@ const Enquiry = props => {
                                 type="radio"
                                 name="cost"
                                 style={{ paddingLeft: "1em" }}
+                                onChange={event => props.onChangeCost(event)}
                               />
                               <label htmlFor="2000-4000" className="ffqs fw2">
                                 2000 - 4000
@@ -419,6 +441,7 @@ const Enquiry = props => {
                           <textarea
                             className="textarea"
                             placeholder="Any Request"
+                            onChange={event => props.onChangeRequest(event)}
                           />
                         </div>
                       </div>

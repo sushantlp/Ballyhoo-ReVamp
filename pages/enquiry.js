@@ -205,6 +205,12 @@ class Enquiry extends React.Component {
     });
   };
 
+  enquiryFoodPreferenceAlcohol = e => {
+    console.log(e.target.value);
+    this.setState({
+      enquiryFoodPreferenceAlcohol: e.target.value
+    });
+  };
   render() {
     return (
       <React.Fragment>
@@ -212,8 +218,18 @@ class Enquiry extends React.Component {
         <Header />
         <EnquiryComponent
           enquiryState={this.state}
-          onChangeOccasion={this.onChangeOccasion}
+          onChangeName={this.onChangeName}
+          onChangeEmail={this.onChangeEmail}
+          onChangeMobile={this.onChangeMobile}
           onChangeMobileCode={this.onChangeMobileCode}
+          onChangeOccasion={this.onChangeOccasion}
+          onChangePartyDate={this.onChangePartyDate}
+          onChangePartyTime={this.onChangePartyTime}
+          onChangeFoodPreference={this.onChangeFoodPreference}
+          enquiryFoodPreferenceAlcohol={this.enquiryFoodPreferenceAlcohol}
+          onChangeGuest={this.onChangeGuest}
+          onChangeCost={this.onChangeCost}
+          onChangeRequest={this.onChangeRequest}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
