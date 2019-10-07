@@ -1,3 +1,4 @@
+import moment from "moment-timezone";
 import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -34,12 +35,13 @@ class Enquiry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      focused: false,
       enquiryName: "",
       enquiryEmail: "",
       enquiryMobile: "",
       enquiryMobileCode: "+91",
       enquiryOccasion: "Birthday",
-      enquiryPartyDate: new Date(),
+      enquiryPartyDate: moment(),
       enquiryPartyTime: "Lunch",
       enquiryFoodPreference: "Veg",
       enquiryFoodPreferenceAlcohol: "No",
@@ -78,6 +80,12 @@ class Enquiry extends React.Component {
         });
     }
   }
+
+  onChangeFocused = () => {
+    this.setState({
+      focused: !this.state.focused
+    });
+  };
 
   onChangeName = e => {
     if (e.target.value === "")
@@ -154,9 +162,9 @@ class Enquiry extends React.Component {
     });
   };
 
-  onChangePartyDate = e => {
+  onChangePartyDate = date => {
     this.setState({
-      enquiryPartyDate: e.target.value
+      enquiryPartyDate: moment(date).format("YYYY-MM-DD")
     });
   };
 
@@ -206,11 +214,28 @@ class Enquiry extends React.Component {
   };
 
   enquiryFoodPreferenceAlcohol = e => {
-    console.log(e.target.value);
+    const bool = document.getElementById("Alcohol").checked;
     this.setState({
-      enquiryFoodPreferenceAlcohol: e.target.value
+      enquiryFoodPreferenceAlcohol: bool ? 1 : 0
     });
   };
+
+  onChangeAgree = e => {
+    const bool = document.getElementById("Agree").checked;
+
+    if (!bool) {
+      this.setState({
+        enquiryButton: false
+      });
+    } else {
+      if (!this.state.enquiryButton) {
+        this.setState({
+          enquiryButton: true
+        });
+      }
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -230,6 +255,8 @@ class Enquiry extends React.Component {
           onChangeGuest={this.onChangeGuest}
           onChangeCost={this.onChangeCost}
           onChangeRequest={this.onChangeRequest}
+          onChangeAgree={this.onChangeAgree}
+          onChangeFocused={this.onChangeFocused}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

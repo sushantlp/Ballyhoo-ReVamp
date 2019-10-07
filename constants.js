@@ -1,7 +1,7 @@
 //export const host = "http://18.206.248.86:8080/";
 
 export const host = "https://ballyhoo.today/";
-
+export const EMAIL = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const COUNTRY_CODE = [
   { name: "Afghanistan", dial_code: "+93", code: "AF" },
   { name: "Åland Islands", dial_code: "+358", code: "AX" },

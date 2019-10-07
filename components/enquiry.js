@@ -1,11 +1,10 @@
+import "react-dates/initialize";
+
 import { Segment } from "semantic-ui-react";
-
-import DatePicker from "react-date-picker/dist/entry.nostyle";
-
+import { SingleDatePicker } from "react-dates";
 import { COUNTRY_CODE } from "../constants";
 
-import "../node_modules/react-date-picker/dist/DatePicker.css";
-import "../node_modules/react-calendar/dist/Calendar.css";
+import "react-dates/lib/css/_datepicker.css";
 import "bulma-checkradio";
 import "./enquiry.css";
 
@@ -81,7 +80,7 @@ const Enquiry = props => {
                                 >
                                   {COUNTRY_CODE.map((value, key) => {
                                     return value.dial_code === "+91" ? (
-                                      <option key={key} selected>
+                                      <option key={key} defaultChecked>
                                         {value.dial_code}
                                       </option>
                                     ) : (
@@ -114,22 +113,6 @@ const Enquiry = props => {
                     ) : null}
                   </div>
 
-                  {/* <div className="field">
-                    <label className="label is-medium ffqs fw2">Phone</label>
-
-                    <div className="field-body">
-                      <div className="field">
-                        <label className="control is-expanded">
-                          <input
-                            className="input is-large"
-                            type="number"
-                            placeholder="+91"
-                          />
-                        </label>
-                      </div>
-                    </div>
-                  </div> */}
-
                   <div className="field">
                     <label className="label is-medium ffqs fw2">
                       Your Occasion ?
@@ -139,7 +122,7 @@ const Enquiry = props => {
                       <div className="control">
                         <Segment>
                           <input
-                            className="is-checkradio"
+                            className="is-checkradio is-danger"
                             id="Birthday"
                             type="radio"
                             name="looking"
@@ -152,7 +135,7 @@ const Enquiry = props => {
                           </label>
 
                           <input
-                            className="is-checkradio"
+                            className="is-checkradio is-danger"
                             id="Bachelor/Bachelorette"
                             type="radio"
                             name="looking"
@@ -168,7 +151,7 @@ const Enquiry = props => {
                           </label>
 
                           <input
-                            className="is-checkradio"
+                            className="is-checkradio is-danger"
                             id="Anniversary"
                             type="radio"
                             name="looking"
@@ -182,7 +165,7 @@ const Enquiry = props => {
 
                           <div className="field mt1">
                             <input
-                              className="is-checkradio"
+                              className="is-checkradio is-danger"
                               id="Social-Gathering"
                               type="radio"
                               name="looking"
@@ -197,7 +180,7 @@ const Enquiry = props => {
                             </label>
 
                             <input
-                              className="is-checkradio"
+                              className="is-checkradio is-danger"
                               id="Others"
                               type="radio"
                               name="looking"
@@ -222,9 +205,16 @@ const Enquiry = props => {
                     <div className="field-body">
                       <div className="field ">
                         <div className="control">
-                          <DatePicker
-                            value={props.enquiryState.enquiryPartyDate}
-                            onChange={event => props.onChangePartyDate(event)}
+                          <SingleDatePicker
+                            showDefaultInputIcon={true}
+                            date={props.enquiryState.enquiryPartyDate}
+                            id="date"
+                            onDateChange={date => props.onChangePartyDate(date)}
+                            focused={props.enquiryState.focused}
+                            onFocusChange={focused =>
+                              props.onChangeFocused(focused)
+                            }
+                            displayFormat="DD-MM-YYYY"
                           />
                         </div>
                       </div>
@@ -242,10 +232,11 @@ const Enquiry = props => {
                           <Segment>
                             <div className="field">
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="Lunch"
                                 type="radio"
                                 name="time"
+                                value="Lunch"
                                 defaultChecked
                                 onChange={event =>
                                   props.onChangePartyTime(event)
@@ -256,10 +247,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="Dinner"
                                 type="radio"
                                 name="time"
+                                value="Dinner"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event =>
                                   props.onChangePartyTime(event)
@@ -286,10 +278,11 @@ const Enquiry = props => {
                           <Segment>
                             <div className="field">
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="Veg"
                                 type="radio"
                                 name="food"
+                                value="Veg"
                                 defaultChecked
                                 onChange={event =>
                                   props.onChangeFoodPreference(event)
@@ -300,10 +293,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="Non-Veg"
                                 type="radio"
                                 name="food"
+                                value="Non-Veg"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event =>
                                   props.onChangeFoodPreference(event)
@@ -314,10 +308,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="Both"
                                 type="radio"
                                 name="food"
+                                value="Both"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event =>
                                   props.onChangeFoodPreference(event)
@@ -328,10 +323,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="Alcohol"
                                 type="checkbox"
                                 name="alcohol"
+                                value="Alcohol"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event =>
                                   props.enquiryFoodPreferenceAlcohol(event)
@@ -377,10 +373,11 @@ const Enquiry = props => {
                           <Segment>
                             <div className="field">
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="500-1000"
                                 type="radio"
                                 name="cost"
+                                value="500-1000"
                                 defaultChecked
                                 onChange={event => props.onChangeCost(event)}
                               />
@@ -389,10 +386,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="1000-1500"
                                 type="radio"
                                 name="cost"
+                                value="1000-1500"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event => props.onChangeCost(event)}
                               />
@@ -401,10 +399,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="1500-2000"
                                 type="radio"
                                 name="cost"
+                                value="1500-2000"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event => props.onChangeCost(event)}
                               />
@@ -413,10 +412,11 @@ const Enquiry = props => {
                               </label>
 
                               <input
-                                className="is-checkradio"
+                                className="is-checkradio is-danger"
                                 id="2000-4000"
                                 type="radio"
                                 name="cost"
+                                value="2000-4000"
                                 style={{ paddingLeft: "1em" }}
                                 onChange={event => props.onChangeCost(event)}
                               />
@@ -453,17 +453,18 @@ const Enquiry = props => {
                       <label className="checkbox">
                         <input
                           className="is-checkradio has-background-color is-danger"
-                          id="exampleCheckboxDefault1"
+                          id="Agree"
                           type="checkbox"
-                          name="alcohol"
-                          checked="checked"
+                          name="term"
+                          defaultChecked
                           style={{ paddingLeft: "1em" }}
+                          onChange={event => props.onChangeAgree(event)}
                         />
-                        <label
-                          htmlFor="exampleCheckboxDefault1"
-                          className="ffqs fw2"
-                        >
-                          I agree to the <a href="#">terms and conditions</a>
+                        <label htmlFor="Agree" className="ffqs fw2">
+                          I agree to the{" "}
+                          <a href="/term" target="_blank">
+                            terms and conditions
+                          </a>
                         </label>
                       </label>
                     </div>
@@ -471,7 +472,17 @@ const Enquiry = props => {
                 </div>
               </div>
 
-              <a className="button ff">SUBMIT</a>
+              {props.enquiryState.enquiryButton ? (
+                <a className="button ff">SUBMIT</a>
+              ) : (
+                <a
+                  className="button ff"
+                  disabled
+                  style={{ backgroundColor: "#fdb6c4" }}
+                >
+                  SUBMIT
+                </a>
+              )}
             </Segment>
           </div>
         </div>
