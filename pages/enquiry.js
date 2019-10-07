@@ -79,6 +79,132 @@ class Enquiry extends React.Component {
     }
   }
 
+  onChangeName = e => {
+    if (e.target.value === "")
+      this.setState({
+        enquiryButton: false
+      });
+
+    this.setState({
+      enquiryName: e.target.value
+    });
+
+    if (
+      e.target.value !== "" &&
+      this.state.enquiryEmail !== "" &&
+      this.state.enquiryMobile !== "" &&
+      this.state.enquiryGuest !== ""
+    )
+      this.setState({
+        enquiryButton: true
+      });
+  };
+
+  onChangeEmail = e => {
+    if (e.target.value === "")
+      this.setState({
+        enquiryButton: false
+      });
+
+    this.setState({
+      enquiryEmail: e.target.value
+    });
+
+    if (
+      e.target.value !== "" &&
+      this.state.enquiryName !== "" &&
+      this.state.enquiryMobile !== "" &&
+      this.state.enquiryGuest !== ""
+    )
+      this.setState({
+        enquiryButton: true
+      });
+  };
+
+  onChangeMobile = e => {
+    if (e.target.value === "")
+      this.setState({
+        enquiryButton: false
+      });
+
+    this.setState({
+      enquiryMobile: e.target.value
+    });
+
+    if (
+      e.target.value !== "" &&
+      this.state.enquiryName !== "" &&
+      this.state.enquiryEmail !== "" &&
+      this.state.enquiryGuest !== ""
+    )
+      this.setState({
+        enquiryButton: true
+      });
+  };
+
+  onChangeMobileCode = e => {
+    this.setState({
+      enquiryMobileCode: e.target.value
+    });
+  };
+
+  onChangeOccasion = e => {
+    this.setState({
+      enquiryOccasion: e.target.value
+    });
+  };
+
+  onChangePartyDate = e => {
+    this.setState({
+      enquiryPartyDate: e.target.value
+    });
+  };
+
+  onChangePartyTime = e => {
+    this.setState({
+      enquiryPartyTime: e.target.value
+    });
+  };
+
+  onChangeFoodPreference = e => {
+    this.setState({
+      enquiryFoodPreference: e.target.value
+    });
+  };
+
+  onChangeGuest = e => {
+    if (e.target.value === "")
+      this.setState({
+        enquiryButton: false
+      });
+
+    this.setState({
+      enquiryGuest: e.target.value
+    });
+
+    if (
+      e.target.value !== "" &&
+      this.state.enquiryName !== "" &&
+      this.state.enquiryEmail !== "" &&
+      this.state.enquiryMobile !== ""
+    )
+      this.setState({
+        enquiryButton: true
+      });
+  };
+
+  onChangeCost = e => {
+    this.setState({
+      enquiryCost: e.target.value
+    });
+  };
+
+  onChangeRequest = e => {
+    this.setState({
+      enquiryRequest: e.target.value
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -86,7 +212,8 @@ class Enquiry extends React.Component {
         <Header />
         <EnquiryComponent
           enquiryState={this.state}
-          enquiryLooking={this.enquiryLooking}
+          onChangeOccasion={this.onChangeOccasion}
+          onChangeMobileCode={this.onChangeMobileCode}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

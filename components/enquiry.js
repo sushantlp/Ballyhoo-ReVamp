@@ -34,6 +34,12 @@ const Enquiry = props => {
                         </label>
                       </div>
                     </div>
+
+                    {props.enquiryState.enquiryName.flag ? (
+                      <p class="help is-danger">
+                        {props.enquiryState.enquiryName.msg}
+                      </p>
+                    ) : null}
                   </div>
 
                   <div className="field">
@@ -50,6 +56,12 @@ const Enquiry = props => {
                         </label>
                       </div>
                     </div>
+
+                    {props.enquiryState.enquiryEmail.flag ? (
+                      <p class="help is-danger">
+                        {props.enquiryState.enquiryEmail.msg}
+                      </p>
+                    ) : null}
                   </div>
 
                   <div className="field">
@@ -63,7 +75,7 @@ const Enquiry = props => {
                                 <select
                                   className="br0"
                                   defaultValue="+91"
-                                  onChange={e => props.updateSignupCode(e)}
+                                  onChange={e => props.onChangeMobileCode(e)}
                                 >
                                   {COUNTRY_CODE.map((value, key) => {
                                     return value.dial_code === "+91" ? (
@@ -92,6 +104,12 @@ const Enquiry = props => {
                         </div>
                       </div>
                     </div>
+
+                    {props.enquiryState.enquiryMobile.flag ? (
+                      <p class="help is-danger">
+                        {props.enquiryState.enquiryMobile.msg}
+                      </p>
+                    ) : null}
                   </div>
 
                   {/* <div className="field">
@@ -126,7 +144,8 @@ const Enquiry = props => {
                             type="radio"
                             name="looking"
                             value="Birthday"
-                            onChange={event => props.enquiryLooking(event)}
+                            defaultChecked
+                            onChange={event => props.onChangeOccasion(event)}
                           />
                           <label htmlFor="Birthday" className="ffqs fw2">
                             Birthday
@@ -139,7 +158,7 @@ const Enquiry = props => {
                             name="looking"
                             value="Bachelor/Bachelorette"
                             style={{ paddingLeft: "1em" }}
-                            onChange={event => props.enquiryLooking(event)}
+                            onChange={event => props.onChangeOccasion(event)}
                           />
                           <label
                             htmlFor="Bachelor/Bachelorette"
@@ -155,7 +174,7 @@ const Enquiry = props => {
                             name="looking"
                             value="Anniversary"
                             style={{ paddingLeft: "1em" }}
-                            onChange={event => props.enquiryLooking(event)}
+                            onChange={event => props.onChangeOccasion(event)}
                           />
                           <label htmlFor="Anniversary" className="ffqs fw2">
                             Anniversary
@@ -165,14 +184,14 @@ const Enquiry = props => {
                           <div className="field mt1">
                             <input
                               className="is-checkradio"
-                              id="Social Gathering"
+                              id="Social-Gathering"
                               type="radio"
                               name="looking"
                               value="Social Gathering"
-                              onChange={event => props.enquiryLooking(event)}
+                              onChange={event => props.onChangeOccasion(event)}
                             />
                             <label
-                              htmlFor="Social Gathering"
+                              htmlFor="Social-Gathering"
                               className="ffqs fw2"
                             >
                               Social Gathering
@@ -185,7 +204,7 @@ const Enquiry = props => {
                               name="looking"
                               value="Others"
                               style={{ paddingLeft: "1em" }}
-                              onChange={event => props.enquiryLooking(event)}
+                              onChange={event => props.onChangeOccasion(event)}
                             />
                             <label htmlFor="Others" className="ffqs fw2">
                               Others
@@ -225,28 +244,23 @@ const Enquiry = props => {
                             <div className="field">
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline6"
+                                id="Lunch"
                                 type="radio"
                                 name="time"
+                                defaultChecked
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline6"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="Lunch" className="ffqs fw2">
                                 Lunch
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline7"
+                                id="Dinner"
                                 type="radio"
                                 name="time"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline7"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="Dinner" className="ffqs fw2">
                                 Dinner
                               </label>
                             </div>
@@ -268,56 +282,45 @@ const Enquiry = props => {
                             <div className="field">
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline8"
+                                id="Veg"
                                 type="radio"
                                 name="food"
+                                defaultChecked
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline8"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="Veg" className="ffqs fw2">
                                 Veg
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline9"
+                                id="Non-Veg"
                                 type="radio"
                                 name="food"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline9"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="Non-Veg" className="ffqs fw2">
                                 Non Veg
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline10"
+                                id="Both"
                                 type="radio"
                                 name="food"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline10"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="Both" className="ffqs fw2">
                                 Both
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleCheckboxDefault"
+                                id="Alcohol"
                                 type="checkbox"
                                 name="alcohol"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleCheckboxDefault"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="Alcohol" className="ffqs fw2">
                                 Alcohol
                               </label>
                             </div>
@@ -357,56 +360,45 @@ const Enquiry = props => {
                             <div className="field">
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline11"
+                                id="500-1000"
                                 type="radio"
                                 name="cost"
+                                defaultChecked
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline11"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="500-1000" className="ffqs fw2">
                                 500 - 1000
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline12"
+                                id="1000-1500"
                                 type="radio"
                                 name="cost"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline12"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="1000-1500" className="ffqs fw2">
                                 1000 - 1500
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline13"
+                                id="1500-2000"
                                 type="radio"
                                 name="cost"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline13"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="1500-2000" className="ffqs fw2">
                                 1500 - 2000
                               </label>
 
                               <input
                                 className="is-checkradio"
-                                id="exampleRtlRadioInline14"
+                                id="2000-4000"
                                 type="radio"
                                 name="cost"
                                 style={{ paddingLeft: "1em" }}
                               />
-                              <label
-                                htmlFor="exampleRtlRadioInline14"
-                                className="ffqs fw2"
-                              >
+                              <label htmlFor="2000-4000" className="ffqs fw2">
                                 2000 - 4000
                               </label>
                             </div>

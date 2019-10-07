@@ -79,7 +79,6 @@ export default class Header extends React.Component {
    **/
 
   updateSignupCode = e => {
-    console.log(e.target.value);
     this.setState({
       signupCode: e.target.value
     });
