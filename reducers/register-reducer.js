@@ -1,27 +1,27 @@
-import { actionType } from "../actions/login-action";
+import { actionType } from "../actions/register-action";
 
 const initialState = {
-  login: [],
+  register: [],
   status: "START",
   msg: ""
 };
 
-export function login(state = initialState, action) {
+export function register(state = initialState, action) {
   switch (action.type) {
-    case actionType.login:
-      if (action.login.code === 200) {
+    case actionType.register:
+      if (action.register.code === 200) {
         return {
           ...state,
-          login: action.login.data,
+          register: action.register.data,
           status: "SUCCESS",
           msg: "successful"
         };
       } else {
         return {
           ...state,
-          login: [],
+          register: [],
           status: "FAIL",
-          msg: action.login.message
+          msg: action.register.message
         };
       }
     default:

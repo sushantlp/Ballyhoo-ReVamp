@@ -12,7 +12,7 @@ export function postEnquiry(state = initialState, action) {
       if (action.postEnquiry.code === 200) {
         return {
           ...state,
-          postEnquiry: action.featuring.data,
+          postEnquiry: action.postEnquiry.data,
           status: "SUCCESS",
           msg: "successful"
         };

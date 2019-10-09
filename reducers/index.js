@@ -12,6 +12,7 @@ import { featuring } from "./featuring-reducer";
 import { zomatoData } from "./zomato-reducer";
 import { postEnquiry } from "./enquiry-reducer";
 import { login } from "./login-reducer";
+import { register } from "./register-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -25,5 +26,6 @@ export default combineReducers({
   featuring,
   zomatoData,
   postEnquiry,
-  login
+  login,
+  register
 });
