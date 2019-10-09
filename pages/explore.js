@@ -13,6 +13,7 @@ import {
   NotificationManager
 } from "react-notifications";
 
+import Spinner from "../components/spinner";
 import ExploreComponent from "../components/explore";
 import Head from "../components/head";
 import Header from "../components/header";
@@ -86,6 +87,31 @@ class Explore extends React.Component {
         });
     }
   }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.postExplore !== nextProps.postExplore &&
+      nextProps.postExplore.status === "SUCCESS"
+    ) {
+      this.updateIsLoading();
+      NotificationManager.success(
+        "Successful",
+        nextProps.postExplore.postExplore.msg,
+        300,
+        this.enquiryRouteChange()
+      );
+    } else if (
+      this.props.postExplore !== nextProps.postExplore &&
+      nextProps.postExplore.status === "FAIL"
+    ) {
+      this.updateIsLoading();
+      NotificationManager.error("Error", nextProps.postExplore.postExplore.msg);
+    }
+  }
+
+  enquiryRouteChange = () => {
+    Router.push("/");
+  };
 
   onChangeGate = bool => {
     if (bool) this.setState({ gate: bool });
@@ -195,6 +221,7 @@ class Explore extends React.Component {
   };
 
   onChangeTourType = e => {
+    console.log(e.target.value);
     this.setState({
       exploreTourType: e.target.value
     });
@@ -237,8 +264,9 @@ class Explore extends React.Component {
   };
 
   onChangeCabService = e => {
+    console.log(e.target.value);
     this.setState({
-      exploreCabService: e.target.value === "Yes" ? 1 : 0
+      exploreCabService: e.target.value === "Yes-Cab" ? 1 : 0
     });
   };
 
@@ -265,9 +293,40 @@ class Explore extends React.Component {
 
     const mobileCode = this.state.exploreMobileCode.slice(1);
     const mobile = `${mobileCode}${this.state.exploreMobile}`;
+    const coordinator = this.state.exploreTourCoordination === "Yes" ? 1 : 0;
+
+    this.props.postExploreApi(
+      this.state.exploreName,
+      mobile,
+      this.state.exploreEmail,
+      this.state.exploreEscapeType,
+      this.state.exploreTourType,
+      coordinator,
+      this.state.exploreTourDuration,
+      this.state.exploreTourDateApi,
+      this.state.exploreAdult,
+      this.state.exploreChildren,
+      this.state.explorePet,
+      this.state.exploreAccomodation,
+      this.state.exploreCabService,
+      this.state.exploreDestination,
+      this.state.exploreSightSeeing
+    );
   };
 
   render() {
+    if (this.state.isLoading)
+      return (
+        <React.Fragment>
+          <Head title="Home" />
+          <Header />
+          <Spinner />
+
+          <Headout />
+          <Footer cityLocality={this.props.cityLocality} />
+        </React.Fragment>
+      );
+
     return (
       <React.Fragment>
         <Head title="Home" />
@@ -295,6 +354,7 @@ class Explore extends React.Component {
           onChangeDate={this.onChangeDate}
         />
         <Headout />
+        <NotificationContainer />
         <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
     );

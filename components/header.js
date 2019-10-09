@@ -5,6 +5,8 @@ import {
   NotificationManager
 } from "react-notifications";
 
+import { EMAIL } from "../constants";
+
 import Signup from "./signup";
 import Login from "./login";
 import Forget from "./forget";
@@ -56,10 +58,17 @@ export default class Header extends React.Component {
       forgetEmail: e.target.value
     });
 
-    if (!this.state.forgetButton)
-      this.setState({
-        forgetButton: true
-      });
+    if (!EMAIL.test(e.target.value)) {
+      if (this.state.forgetButton)
+        this.setState({
+          forgetButton: false
+        });
+    } else {
+      if (!this.state.forgetButton)
+        this.setState({
+          forgetButton: true
+        });
+    }
   };
 
   onClickForgetButton = () => {
@@ -106,16 +115,22 @@ export default class Header extends React.Component {
       signupEmail: e.target.value
     });
 
-    if (
-      e.target.value !== "" &&
-      this.state.signupMobile !== "" &&
-      this.state.signupPassword !== "" &&
-      this.state.signupConfirmPassword !== "" &&
-      !this.state.signupButton
-    )
-      this.setState({
-        signupButton: true
-      });
+    if (!EMAIL.test(e.target.value)) {
+      if (this.state.signupButton)
+        this.setState({
+          signupButton: false
+        });
+    } else {
+      if (
+        this.state.signupMobile !== "" &&
+        this.state.signupPassword !== "" &&
+        this.state.signupConfirmPassword !== "" &&
+        !this.state.signupButton
+      )
+        this.setState({
+          signupButton: true
+        });
+    }
   };
 
   updateSignupMobile = e => {
@@ -128,16 +143,22 @@ export default class Header extends React.Component {
       signupMobile: e.target.value
     });
 
-    if (
-      e.target.value !== "" &&
-      this.state.signupEmail !== "" &&
-      this.state.signupPassword !== "" &&
-      this.state.signupConfirmPassword !== "" &&
-      !this.state.signupButton
-    )
-      this.setState({
-        signupButton: true
-      });
+    if (!EMAIL.test(this.state.signupEmail)) {
+      if (this.state.signupButton)
+        this.setState({
+          signupButton: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.signupPassword !== "" &&
+        this.state.signupConfirmPassword !== "" &&
+        !this.state.signupButton
+      )
+        this.setState({
+          signupButton: true
+        });
+    }
   };
 
   updateSignupPassword = e => {
@@ -150,16 +171,22 @@ export default class Header extends React.Component {
       signupPassword: e.target.value
     });
 
-    if (
-      this.state.signupEmail !== "" &&
-      this.state.signupMobile !== "" &&
-      e.target.value !== "" &&
-      this.state.signupConfirmPassword !== "" &&
-      !this.state.signupButton
-    )
-      this.setState({
-        signupButton: true
-      });
+    if (!EMAIL.test(this.state.signupEmail)) {
+      if (this.state.signupButton)
+        this.setState({
+          signupButton: false
+        });
+    } else {
+      if (
+        this.state.signupMobile !== "" &&
+        e.target.value !== "" &&
+        this.state.signupConfirmPassword !== "" &&
+        !this.state.signupButton
+      )
+        this.setState({
+          signupButton: true
+        });
+    }
   };
 
   updateSignupConfirmPassword = e => {
@@ -172,16 +199,22 @@ export default class Header extends React.Component {
       signupConfirmPassword: e.target.value
     });
 
-    if (
-      this.state.signupEmail !== "" &&
-      e.target.value !== "" &&
-      this.state.signupMobile !== "" &&
-      this.state.signupPassword !== "" &&
-      !this.state.signupButton
-    )
-      this.setState({
-        signupButton: true
-      });
+    if (!EMAIL.test(this.state.signupEmail)) {
+      if (this.state.signupButton)
+        this.setState({
+          signupButton: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.signupMobile !== "" &&
+        this.state.signupPassword !== "" &&
+        !this.state.signupButton
+      )
+        this.setState({
+          signupButton: true
+        });
+    }
   };
 
   /**
@@ -208,14 +241,21 @@ export default class Header extends React.Component {
       loginEmail: e.target.value
     });
 
-    if (
-      e.target.value !== "" &&
-      this.state.loginPassword !== "" &&
-      !this.state.loginButton
-    )
-      this.setState({
-        loginButton: true
-      });
+    if (!EMAIL.test(e.target.value)) {
+      if (this.state.loginButton)
+        this.setState({
+          loginButton: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.loginPassword !== "" &&
+        !this.state.loginButton
+      )
+        this.setState({
+          loginButton: true
+        });
+    }
   };
 
   updateLoginPassword = e => {
@@ -228,14 +268,21 @@ export default class Header extends React.Component {
       loginPassword: e.target.value
     });
 
-    if (
-      this.state.loginEmail !== "" &&
-      e.target.value !== "" &&
-      !this.state.loginButton
-    )
-      this.setState({
-        loginButton: true
-      });
+    if (!EMAIL.test(this.state.loginEmail)) {
+      if (this.state.loginButton)
+        this.setState({
+          loginButton: false
+        });
+    } else {
+      if (
+        this.state.loginEmail !== "" &&
+        e.target.value !== "" &&
+        !this.state.loginButton
+      )
+        this.setState({
+          loginButton: true
+        });
+    }
   };
 
   updateLoginState = bool => {
@@ -281,15 +328,6 @@ export default class Header extends React.Component {
         >
           <div className="container">
             <div className="navbar-brand">
-              {/* <a className="navbar-item" href="/">
-                <img
-                  src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569315724/BallyhooV3/WEB/logo.png"
-                  alt="Bulma: Free, open source, &amp; modern CSS framework based on Flexbox"
-                  // width="112"
-                  // height="28"
-                />
-              </a> */}
-
               <a className="brand" href="/">
                 <div className="brand-icon-header">
                   <img

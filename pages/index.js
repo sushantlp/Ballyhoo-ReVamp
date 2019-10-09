@@ -6,11 +6,6 @@ import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-// import "bulma/css/bulma.min.css";
-// import "semantic-ui-css/semantic.min.css";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-
 import { host } from "../constants";
 
 import Spinner from "../components/spinner";
@@ -33,12 +28,12 @@ import { getsearchData } from "../actions/search-data-action";
 import { getCityLocality } from "../actions/city-locality-action";
 import { getCategoryDataApi } from "../actions/category-data-action";
 import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
+import { postLogin } from "../actions/login-action";
+import { postRegister } from "../actions/register-action";
+import { postForget } from "../actions/forget-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
-    // let cityLocalityJson = [];
-    // let searchJson = [];
-    // let homeScreenJson = [];
     try {
       const { store, isServer, req, query } = ctx;
 
@@ -61,18 +56,6 @@ class Index extends React.Component {
         fetch(`${host}api/v9/web/home?city_id=${cityId}`).then(r => r.json()),
         fetch(`${host}api/v9/web/search-keys`).then(r => r.json())
       ]);
-
-      // City Locality API
-      // cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-      // cityLocalityJson = await cityLocalityJson.json();
-
-      // Home Screen API
-      // homeScreenJson = await fetch(`${host}api/v9/web/home?city_id=${cityId}`);
-      // homeScreenJson = await homeScreenJson.json();
-
-      // Search Data
-      // searchJson = await fetch(`${host}api/v9/web/search-keys`);
-      // searchJson = await searchJson.json();
 
       store.dispatch(getsearchData(searchJson));
       store.dispatch(getHomeScreen(homeScreenJson));
@@ -175,7 +158,11 @@ class Index extends React.Component {
     return (
       <div>
         <Head title="Home" />
-        <Header />
+        <Header
+          postLogin={this.props.postLogin}
+          postRegister={this.props.postRegister}
+          postForget={this.props.postForget}
+        />
         <Slidder
           cityLocality={this.props.cityLocality}
           homeScreen={this.props.homeScreen}
@@ -219,7 +206,10 @@ const mapStateToProps = state => {
     cityLocality: state.cityLocality,
     homeScreen: state.homeScreen,
     categoryData: state.categoryData,
-    searchData: state.searchData
+    searchData: state.searchData,
+    login: state.login,
+    register: state.register,
+    forget: state.forget
   };
 };
 
@@ -229,7 +219,10 @@ const mapDispatchToProps = dispatch => {
     getHomeScreen: bindActionCreators(getHomeScreen, dispatch),
     getHomeScreenApi: bindActionCreators(getHomeScreenApi, dispatch),
     getCategoryDataApi: bindActionCreators(getCategoryDataApi, dispatch),
-    getsearchData: bindActionCreators(getsearchData, dispatch)
+    getsearchData: bindActionCreators(getsearchData, dispatch),
+    postLogin: bindActionCreators(postLogin, dispatch),
+    postRegister: bindActionCreators(postRegister, dispatch),
+    postForget: bindActionCreators(postForget, dispatch)
   };
 };
 

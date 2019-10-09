@@ -336,7 +336,7 @@ const Explore = props => {
                                     value="Yes"
                                     defaultChecked
                                     onChange={event =>
-                                      props.onChangeTourType(event)
+                                      props.onChangeTourCoordination(event)
                                     }
                                   />
                                   <label htmlFor="Yes" className="ffqs fw2">
@@ -350,7 +350,7 @@ const Explore = props => {
                                     name="guided"
                                     value="No"
                                     onChange={event =>
-                                      props.onChangeTourType(event)
+                                      props.onChangeTourCoordination(event)
                                     }
                                     style={{ paddingLeft: "1em" }}
                                   />
@@ -470,18 +470,18 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
+                                    defaultChecked
                                     className="is-checkradio is-danger"
-                                    id="Basic-Amenities"
+                                    id="Amenities"
                                     type="radio"
                                     name="accommodation"
                                     value="Basic Amenities"
-                                    defaultChecked
                                     onChange={event =>
                                       props.onChangeAccomodation(event)
                                     }
                                   />
                                   <label
-                                    htmlFor="Basic-Amenities"
+                                    htmlFor="Amenities"
                                     className="ffqs fw2"
                                   >
                                     Basic Amenities
@@ -529,7 +529,7 @@ const Explore = props => {
                                     }
                                   />
                                   <label
-                                    htmlFor="LuxuryStay"
+                                    htmlFor="Luxury-Stay"
                                     className="ffqs fw2"
                                   >
                                     Luxury Stay
@@ -554,31 +554,31 @@ const Explore = props => {
                                 <div className="field">
                                   <input
                                     className="is-checkradio is-danger"
-                                    id="Yes"
+                                    id="Yes-Cab"
                                     type="radio"
                                     name="cab"
-                                    value="Yes"
+                                    value="Yes-Cab"
                                     defaultChecked
                                     onChange={event =>
                                       props.onChangeCabService(event)
                                     }
                                   />
-                                  <label htmlFor="Yes" className="ffqs fw2">
+                                  <label htmlFor="Yes-Cab" className="ffqs fw2">
                                     Yes
                                   </label>
 
                                   <input
                                     className="is-checkradio is-danger"
-                                    id="No"
+                                    id="No-Cab"
                                     type="radio"
                                     name="cab"
-                                    value="No"
+                                    value="No-Cab"
                                     style={{ paddingLeft: "1em" }}
                                     onChange={event =>
                                       props.onChangeCabService(event)
                                     }
                                   />
-                                  <label htmlFor="No" className="ffqs fw2">
+                                  <label htmlFor="No-Cab" className="ffqs fw2">
                                     No
                                   </label>
                                 </div>
@@ -622,7 +622,7 @@ const Explore = props => {
                                 <div className="field">
                                   <input
                                     className="is-checkradio is-danger"
-                                    id="Yes"
+                                    id="Yes-sight"
                                     type="radio"
                                     name="destination"
                                     value="Yes"
@@ -631,13 +631,16 @@ const Explore = props => {
                                       props.onChangeSightSeeing(event)
                                     }
                                   />
-                                  <label htmlFor="Yes" className="ffqs fw2">
+                                  <label
+                                    htmlFor="Yes-sight"
+                                    className="ffqs fw2"
+                                  >
                                     Yes
                                   </label>
 
                                   <input
                                     className="is-checkradio is-danger"
-                                    id="No"
+                                    id="No-sight"
                                     type="radio"
                                     name="destination"
                                     value="No"
@@ -646,7 +649,10 @@ const Explore = props => {
                                       props.onChangeSightSeeing(event)
                                     }
                                   />
-                                  <label htmlFor="No" className="ffqs fw2">
+                                  <label
+                                    htmlFor="No-sight"
+                                    className="ffqs fw2"
+                                  >
                                     No
                                   </label>
                                 </div>

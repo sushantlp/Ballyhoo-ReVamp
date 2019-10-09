@@ -124,7 +124,6 @@ export default {
         .catch(error => console.log(error));
     });
   },
-
   exploreApi: (
     name,
     contact,
@@ -167,6 +166,64 @@ export default {
           response
             .json()
             .then(postExplore => resolve(postExplore))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+  loginApi: (email, password) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/signin`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(login => resolve(login))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+  registerApi: (mobile, email, password, fname, lname, sex, dob) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/register`, {
+        method: "POST",
+        body: JSON.stringify({
+          mobile,
+          email,
+          password,
+          fname,
+          lname,
+          sex,
+          dob
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(register => resolve(register))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+  forgetApi: email => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/password/reset`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: email
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(forget => resolve(forget))
             .catch(error => console.log(error));
         })
         .catch(error => console.log(error));
