@@ -13,6 +13,7 @@ import { zomatoData } from "./zomato-reducer";
 import { postEnquiry } from "./enquiry-reducer";
 import { login } from "./login-reducer";
 import { register } from "./register-reducer";
+import { forget } from "./forget-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -27,5 +28,6 @@ export default combineReducers({
   zomatoData,
   postEnquiry,
   login,
-  register
+  register,
+  forget
 });

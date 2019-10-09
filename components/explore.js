@@ -1,15 +1,14 @@
+import "react-dates/initialize";
 import { Segment } from "semantic-ui-react";
-import DatePicker from "react-date-picker/dist/entry.nostyle";
+import { SingleDatePicker } from "react-dates";
+import { COUNTRY_CODE } from "../constants";
 
-import "../node_modules/react-date-picker/dist/DatePicker.css";
-import "../node_modules/react-calendar/dist/Calendar.css";
+import "react-dates/lib/css/_datepicker.css";
 import "bulma-checkradio";
 
 import "./explore.css";
 
 const Explore = props => {
-  const date = new Date();
-
   return (
     <React.Fragment>
       <div className="explore-container">
@@ -20,7 +19,7 @@ const Explore = props => {
                 <div className="column is-8 is-offset-one-fifth">
                   <h4 className="ffqs explore-title">Plan Your Trip</h4>
 
-                  {props.gate ? (
+                  {props.exploreState.gate ? (
                     <React.Fragment>
                       <div className="field">
                         <label className="label is-medium ffqs fw2">Name</label>
@@ -32,10 +31,8 @@ const Explore = props => {
                                 className="input is-large"
                                 type="text"
                                 placeholder="Aaron Swartz"
+                                onChange={event => props.onChangeName(event)}
                               />
-                              {/* <span className="icon  is-left">
-                            <img src="https://img.icons8.com/bubbles/50/000000/employee-card.png" />
-                          </span> */}
                             </p>
                           </div>
                         </div>
@@ -50,35 +47,68 @@ const Explore = props => {
                           <div className="field">
                             <p className="control is-expanded">
                               <input
-                                className="input is-large"
+                                className={
+                                  props.exploreState.exploreEmailError.flag
+                                    ? "input is-large is-danger"
+                                    : "input is-large"
+                                }
                                 type="text"
                                 placeholder="Open@Code"
+                                onChange={event => props.onChangeEmail(event)}
                               />
-                              {/* <span className="icon is-left">
-                            <img src="https://img.icons8.com/bubbles/50/000000/email.png" />
-                          </span> */}
                             </p>
                           </div>
                         </div>
+
+                        {props.exploreState.exploreEmailError.flag ? (
+                          <p class="help is-danger">
+                            {props.exploreState.exploreEmailError.msg}
+                          </p>
+                        ) : null}
                       </div>
 
                       <div className="field">
                         <label className="label is-medium ffqs fw2">
                           Phone
                         </label>
-
                         <div className="field-body">
                           <div className="field">
-                            <p className="control is-expanded">
-                              <input
-                                className="input is-large"
-                                type="number"
-                                placeholder="+91"
-                              />
-                              {/* <span className="icon is-left">
-                            <img src="https://img.icons8.com/bubbles/50/000000/phone.png" />
-                          </span> */}
-                            </p>
+                            <div className="control ffqs fw2">
+                              <div className="columns is-gapless">
+                                <div className="column is-3">
+                                  <div className="select is-large br0">
+                                    <select
+                                      className="br0"
+                                      defaultValue="+91"
+                                      onChange={e =>
+                                        props.onChangeMobileCode(e)
+                                      }
+                                    >
+                                      {COUNTRY_CODE.map((value, key) => {
+                                        return value.dial_code === "+91" ? (
+                                          <option key={key} defaultChecked>
+                                            {value.dial_code}
+                                          </option>
+                                        ) : (
+                                          <option key={key}>
+                                            {value.dial_code}
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div className="column">
+                                  <input
+                                    className="input is-large br0"
+                                    type="number"
+                                    placeholder="Mobile"
+                                    onChange={e => props.onChangeMobile(e)}
+                                  />
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -94,41 +124,45 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline1"
+                                    className="is-checkradio is-danger"
+                                    id="Incity-Escape"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Incity Escape"
+                                    defaultChecked
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline1"
+                                    htmlFor="Incity-Escape"
                                     className="ffqs fw2"
                                   >
                                     Incity Escape
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline2"
+                                    className="is-checkradio is-danger"
+                                    id="Outstation"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Outstation"
                                     style={{ paddingLeft: "1em" }}
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline2"
+                                    htmlFor="Outstation"
                                     className="ffqs fw2"
                                   >
                                     Outstation
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline3"
+                                    className="is-checkradio is-danger"
+                                    id="Wonderlust/Nature"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Wonderlust/Nature"
                                     style={{ paddingLeft: "1em" }}
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline3"
+                                    htmlFor="Wonderlust/Nature"
                                     className="ffqs fw2"
                                   >
                                     Wonderlust/Nature
@@ -137,41 +171,44 @@ const Explore = props => {
 
                                 <div className="field mt1">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline4"
+                                    className="is-checkradio is-danger"
+                                    id="Backpacking"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Backpacking"
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline4"
+                                    htmlFor="Backpacking"
                                     className="ffqs fw2"
                                   >
                                     Backpacking
                                   </label>
 
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline5"
+                                    className="is-checkradio is-danger"
+                                    id="Group-Outing"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Group Outing"
                                     style={{ paddingLeft: "1em" }}
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline5"
+                                    htmlFor="Group-Outing"
                                     className="ffqs fw2"
                                   >
                                     Group Outing
                                   </label>
 
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline6"
+                                    className="is-checkradio is-danger"
+                                    id="Adventurous"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Adventurous"
                                     style={{ paddingLeft: "1em" }}
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline6"
+                                    htmlFor="Adventurous"
                                     className="ffqs fw2"
                                   >
                                     Adventurous
@@ -180,29 +217,28 @@ const Explore = props => {
 
                                 <div className="field mt1">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline7"
+                                    className="is-checkradio is-danger"
+                                    id="Religious"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Religious"
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline7"
+                                    htmlFor="Religious"
                                     className="ffqs fw2"
                                   >
                                     Religious
                                   </label>
 
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline8"
+                                    className="is-checkradio is-danger"
+                                    id="Luxury"
                                     type="radio"
-                                    name="looking"
+                                    name="escape"
+                                    value="Luxury"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline8"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="Luxury" className="ffqs fw2">
                                     Luxury
                                   </label>
                                 </div>
@@ -223,29 +259,26 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline9"
+                                    defaultChecked
+                                    className="is-checkradio is-danger"
+                                    id="Yes"
                                     type="radio"
                                     name="tour"
+                                    value="Yes"
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline9"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline10"
+                                    className="is-checkradio is-danger"
+                                    id="No"
                                     type="radio"
                                     name="tour"
+                                    value="No"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline10"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="No" className="ffqs fw2">
                                     No
                                   </label>
                                 </div>
@@ -266,29 +299,26 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline11"
+                                    className="is-checkradio is-danger"
+                                    id="Yes"
                                     type="radio"
                                     name="guided"
+                                    value="Yes"
+                                    defaultChecked
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline11"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline12"
+                                    className="is-checkradio is-danger"
+                                    id="No"
                                     type="radio"
                                     name="guided"
+                                    value="No"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline12"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="No" className="ffqs fw2">
                                     No
                                   </label>
                                 </div>
@@ -308,7 +338,17 @@ const Explore = props => {
                         <div className="field-body">
                           <div className="field ">
                             <div className="control">
-                              <DatePicker value={date} />
+                              <SingleDatePicker
+                                showDefaultInputIcon={true}
+                                date={props.exploreState.exploreTourDate}
+                                id="date"
+                                onDateChange={date => props.onChangeDate(date)}
+                                focused={props.exploreState.focused}
+                                onFocusChange={focused =>
+                                  props.onChangeFocused(focused)
+                                }
+                                displayFormat="DD-MM-YYYY"
+                              />
                             </div>
                           </div>
                         </div>
@@ -344,6 +384,7 @@ const Explore = props => {
                                   className="input is-medium"
                                   type="number"
                                   placeholder="Adult"
+                                  value={props.exploreState.exploreAdult}
                                 />
                               </p>
                             </div>
@@ -354,6 +395,7 @@ const Explore = props => {
                                   className="input is-medium"
                                   type="number"
                                   placeholder="Children"
+                                  value={props.exploreState.exploreChildren}
                                 />
                               </p>
                             </div>
@@ -364,6 +406,7 @@ const Explore = props => {
                                   className="input is-medium"
                                   type="number"
                                   placeholder="Pet"
+                                  value={props.exploreState.explorePet}
                                 />
                               </p>
                             </div>
@@ -382,55 +425,54 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline13"
+                                    className="is-checkradio is-danger"
+                                    id="Basic-Amenities"
                                     type="radio"
                                     name="accommodation"
+                                    value="Basic Amenities"
+                                    defaultChecked
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline13"
+                                    htmlFor="Basic-Amenities"
                                     className="ffqs fw2"
                                   >
-                                    Basic amenities
+                                    Basic Amenities
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline14"
+                                    className="is-checkradio is-danger"
+                                    id="3-star"
                                     type="radio"
                                     name="accommodation"
+                                    value="3 star"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline14"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="3-star" className="ffqs fw2">
                                     3 star
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline15"
+                                    className="is-checkradio is-danger"
+                                    id="5-star"
                                     type="radio"
                                     name="accommodation"
+                                    value="5 star"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline15"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="5-star" className="ffqs fw2">
                                     5 star
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline16"
+                                    className="is-checkradio is-danger"
+                                    id="Luxury-Stay"
                                     type="radio"
                                     name="accommodation"
+                                    value="Luxury Stay"
                                     style={{ paddingLeft: "1em" }}
                                   />
                                   <label
-                                    htmlFor="exampleRtlRadioInline16"
+                                    htmlFor="LuxuryStay"
                                     className="ffqs fw2"
                                   >
                                     Luxury Stay
@@ -454,29 +496,26 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline17"
+                                    className="is-checkradio is-danger"
+                                    id="Yes"
                                     type="radio"
                                     name="cab"
+                                    value="Yes"
+                                    defaultChecked
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline17"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline18"
+                                    className="is-checkradio is-danger"
+                                    id="No"
                                     type="radio"
                                     name="cab"
+                                    value="No"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline18"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="No" className="ffqs fw2">
                                     No
                                   </label>
                                 </div>
@@ -516,29 +555,26 @@ const Explore = props => {
                               <Segment>
                                 <div className="field">
                                   <input
-                                    className="is-checkradio "
-                                    id="exampleRtlRadioInline19"
+                                    className="is-checkradio is-danger"
+                                    id="Yes"
                                     type="radio"
                                     name="destination"
+                                    value="Yes"
+                                    defaultChecked
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline19"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
                                   </label>
 
                                   <input
-                                    className="is-checkradio  "
-                                    id="exampleRtlRadioInline20"
+                                    className="is-checkradio is-danger"
+                                    id="No"
                                     type="radio"
                                     name="destination"
+                                    value="No"
                                     style={{ paddingLeft: "1em" }}
                                   />
-                                  <label
-                                    htmlFor="exampleRtlRadioInline20"
-                                    className="ffqs fw2"
-                                  >
+                                  <label htmlFor="No" className="ffqs fw2">
                                     No
                                   </label>
                                 </div>
@@ -552,25 +588,36 @@ const Explore = props => {
                 </div>
               </div>
 
-              {props.gate ? (
+              {props.exploreState.gate ? (
                 <button className="button is-danger button-previous-disabled ff">
                   PREVIOUS
                 </button>
               ) : (
                 <a
                   className="button is-danger button-previous ff"
-                  onClick={() => props.changeGate(true)}
+                  onClick={() => props.onChangeGate(true)}
                 >
                   PREVIOUS
                 </a>
               )}
 
-              <a
-                className="button is-warning button-next ff"
-                onClick={() => props.changeGate(false)}
-              >
-                NEXT
-              </a>
+              {props.exploreState.exploreNextButton ? (
+                <a
+                  className="button is-warning button-next ff"
+                  onClick={() => props.onChangeGate(false)}
+                >
+                  {props.exploreState.gate ? "NEXT" : "SUBMIT"}
+                </a>
+              ) : (
+                <a
+                  className="button is-warning button-next ff"
+                  onClick={() => props.onChangeGate(false)}
+                  disabled
+                  style={{ backgroundColor: "#fdeeb5" }}
+                >
+                  {props.exploreState.gate ? "NEXT" : "SUBMIT"}
+                </a>
+              )}
             </Segment>
           </div>
         </div>
