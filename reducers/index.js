@@ -11,6 +11,7 @@ import { urlParam } from "./url-param-reducer";
 import { featuring } from "./featuring-reducer";
 import { zomatoData } from "./zomato-reducer";
 import { postEnquiry } from "./enquiry-reducer";
+import { login } from "./login-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -23,5 +24,6 @@ export default combineReducers({
   urlParam,
   featuring,
   zomatoData,
-  postEnquiry
+  postEnquiry,
+  login
 });
