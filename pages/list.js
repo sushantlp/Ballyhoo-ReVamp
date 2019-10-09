@@ -31,6 +31,9 @@ import { getCategoryDataApi } from "../actions/category-data-action";
 import { getFoodCategoryDataApi } from "../actions/food-category-data-action";
 import { getsearchData } from "../actions/search-data-action";
 import { updateUrlParam } from "../actions/url-param-action";
+import { postLogin } from "../actions/login-action";
+import { postRegister } from "../actions/register-action";
+import { postForget } from "../actions/forget-action";
 
 class List extends React.Component {
   static async getInitialProps(ctx) {
@@ -289,7 +292,11 @@ class List extends React.Component {
       return (
         <React.Fragment>
           <Head title="Home" />
-          <Header />
+          <Header
+            postLogin={this.props.postLogin}
+            postRegister={this.props.postRegister}
+            postForget={this.props.postForget}
+          />
           <Spinner />
           {/* <Space /> */}
           <Headout />
@@ -300,7 +307,11 @@ class List extends React.Component {
     return (
       <div>
         <Head title="Home" />
-        <Header />
+        <Header
+          postLogin={this.props.postLogin}
+          postRegister={this.props.postRegister}
+          postForget={this.props.postForget}
+        />
         <ParentList
           cityLocality={this.props.cityLocality}
           listData={this.props.listData}
@@ -330,7 +341,10 @@ const mapStateToProps = state => {
     categoryData: state.categoryData,
     recommendation: state.recommendation,
     searchData: state.searchData,
-    urlParam: state.urlParam
+    urlParam: state.urlParam,
+    login: state.login,
+    register: state.register,
+    forget: state.forget
   };
 };
 
@@ -350,7 +364,10 @@ const mapDispatchToProps = dispatch => {
     getrecommendation: bindActionCreators(getrecommendation, dispatch),
     getRecommendationApi: bindActionCreators(getRecommendationApi, dispatch),
     getsearchData: bindActionCreators(getsearchData, dispatch),
-    updateUrlParam: bindActionCreators(updateUrlParam, dispatch)
+    updateUrlParam: bindActionCreators(updateUrlParam, dispatch),
+    postLogin: bindActionCreators(postLogin, dispatch),
+    postRegister: bindActionCreators(postRegister, dispatch),
+    postForget: bindActionCreators(postForget, dispatch)
   };
 };
 

@@ -147,7 +147,11 @@ class Index extends React.Component {
       return (
         <React.Fragment>
           <Head title="Home" />
-          <Header />
+          <Header
+            postLogin={this.props.postLogin}
+            postRegister={this.props.postRegister}
+            postForget={this.props.postForget}
+          />
           <Spinner />
           {/* <Space /> */}
           <Headout />

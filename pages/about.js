@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-// import "bulma/css/bulma.min.css";
-
 import { host } from "../constants";
 
 import Head from "../components/head";
@@ -17,6 +15,9 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 
 import { getCityLocality } from "../actions/city-locality-action";
+import { postLogin } from "../actions/login-action";
+import { postRegister } from "../actions/register-action";
+import { postForget } from "../actions/forget-action";
 
 class About extends React.Component {
   static async getInitialProps(ctx) {
@@ -55,7 +56,11 @@ class About extends React.Component {
     return (
       <div>
         <Head title="Home" />
-        <Header />
+        <Header
+          postLogin={this.props.postLogin}
+          postRegister={this.props.postRegister}
+          postForget={this.props.postForget}
+        />
         <AboutComponent />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
@@ -66,13 +71,19 @@ class About extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cityLocality: state.cityLocality
+    cityLocality: state.cityLocality,
+    login: state.login,
+    register: state.register,
+    forget: state.forget
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCityLocality: bindActionCreators(getCityLocality, dispatch)
+    getCityLocality: bindActionCreators(getCityLocality, dispatch),
+    postLogin: bindActionCreators(postLogin, dispatch),
+    postRegister: bindActionCreators(postRegister, dispatch),
+    postForget: bindActionCreators(postForget, dispatch)
   };
 };
 

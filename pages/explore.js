@@ -22,6 +22,9 @@ import Footer from "../components/footer";
 
 import { getCityLocality } from "../actions/city-locality-action";
 import { postExploreApi } from "../actions/explore-action";
+import { postLogin } from "../actions/login-action";
+import { postRegister } from "../actions/register-action";
+import { postForget } from "../actions/forget-action";
 
 class Explore extends React.Component {
   static async getInitialProps(ctx) {
@@ -264,7 +267,6 @@ class Explore extends React.Component {
   };
 
   onChangeCabService = e => {
-    console.log(e.target.value);
     this.setState({
       exploreCabService: e.target.value === "Yes-Cab" ? 1 : 0
     });
@@ -319,7 +321,11 @@ class Explore extends React.Component {
       return (
         <React.Fragment>
           <Head title="Home" />
-          <Header />
+          <Header
+            postLogin={this.props.postLogin}
+            postRegister={this.props.postRegister}
+            postForget={this.props.postForget}
+          />
           <Spinner />
 
           <Headout />
@@ -330,7 +336,11 @@ class Explore extends React.Component {
     return (
       <React.Fragment>
         <Head title="Home" />
-        <Header />
+        <Header
+          postLogin={this.props.postLogin}
+          postRegister={this.props.postRegister}
+          postForget={this.props.postForget}
+        />
         <ExploreComponent
           exploreState={this.state}
           onChangeGate={this.onChangeGate}
@@ -364,14 +374,20 @@ class Explore extends React.Component {
 const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
-    postExplore: state.postExplore
+    postExplore: state.postExplore,
+    login: state.login,
+    register: state.register,
+    forget: state.forget
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
-    postExploreApi: bindActionCreators(postExploreApi, dispatch)
+    postExploreApi: bindActionCreators(postExploreApi, dispatch),
+    postLogin: bindActionCreators(postLogin, dispatch),
+    postRegister: bindActionCreators(postRegister, dispatch),
+    postForget: bindActionCreators(postForget, dispatch)
   };
 };
 

@@ -23,6 +23,10 @@ import Footer from "../components/footer";
 import { getCityLocality } from "../actions/city-locality-action";
 import { postEnquiryApi } from "../actions/enquiry-action";
 
+import { postLogin } from "../actions/login-action";
+import { postRegister } from "../actions/register-action";
+import { postForget } from "../actions/forget-action";
+
 import "react-notifications/lib/notifications.css";
 
 class Enquiry extends React.Component {
@@ -311,7 +315,11 @@ class Enquiry extends React.Component {
       return (
         <React.Fragment>
           <Head title="Home" />
-          <Header />
+          <Header
+            postLogin={this.props.postLogin}
+            postRegister={this.props.postRegister}
+            postForget={this.props.postForget}
+          />
           <Spinner />
 
           <Headout />
@@ -322,7 +330,11 @@ class Enquiry extends React.Component {
     return (
       <React.Fragment>
         <Head title="Home" />
-        <Header />
+        <Header
+          postLogin={this.props.postLogin}
+          postRegister={this.props.postRegister}
+          postForget={this.props.postForget}
+        />
         <EnquiryComponent
           enquiryState={this.state}
           onChangeName={this.onChangeName}
@@ -353,14 +365,20 @@ class Enquiry extends React.Component {
 const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
-    postEnquiry: state.postEnquiry
+    postEnquiry: state.postEnquiry,
+    login: state.login,
+    register: state.register,
+    forget: state.forget
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
-    postEnquiryApi: bindActionCreators(postEnquiryApi, dispatch)
+    postEnquiryApi: bindActionCreators(postEnquiryApi, dispatch),
+    postLogin: bindActionCreators(postLogin, dispatch),
+    postRegister: bindActionCreators(postRegister, dispatch),
+    postForget: bindActionCreators(postForget, dispatch)
   };
 };
 

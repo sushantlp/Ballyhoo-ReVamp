@@ -3,11 +3,6 @@ import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-// import "bulma/css/bulma.min.css";
-// import "semantic-ui-css/semantic.min.css";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-
 import { host } from "../constants";
 
 import Spinner from "../components/spinner";
@@ -25,6 +20,9 @@ import { getCategoryData } from "../actions/category-data-action";
 import { getFoodCategoryData } from "../actions/food-category-data-action";
 import { getFeaturingData } from "../actions/featuring-action";
 import { getZomatoData, getZomatoDataApi } from "../actions/zomato-action";
+import { postLogin } from "../actions/login-action";
+import { postRegister } from "../actions/register-action";
+import { postForget } from "../actions/forget-action";
 
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
@@ -37,13 +35,6 @@ class Detail extends React.Component {
 
     try {
       if (isServer) {
-        // if (
-        //   req.hasOwnProperty("params") &&
-        //   req.params.hasOwnProperty("secret") &&
-        //   req.params !== undefined &&
-        //   req.params.secret !== undefined
-        // ) {
-
         let dynamicUrl;
         routeParam = req.params;
 
@@ -58,9 +49,6 @@ class Detail extends React.Component {
           key: slice[4]
         };
 
-        // const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
-        // const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
-
         const key =
           parseInt(detailUrlParam.api_type, 10) !== 3 ? 0 : detailUrlParam.key;
         const q =
@@ -70,21 +58,9 @@ class Detail extends React.Component {
 
         if (parseInt(slice[1], 10) === 1) {
           dynamicUrl = `${host}api/v9/web/partners/${slice[2]}?key=${key}`;
-
-          // Food Category Api
-          // foodCategoryJson = await fetch(
-          //   `${host}api/v9/web/partners/${slice[2]}?key=${key}`
-          // );
-          // foodCategoryJson = await foodCategoryJson.json();
-          // store.dispatch(getFoodCategoryData(foodCategoryJson));
         } else {
           dynamicUrl = `${host}api/v9/web/offers/${slice[0]}`;
-          // Category Api
-          // categoryJson = await fetch(`${host}api/v9/web/offers/${slice[0]}`);
-          // categoryJson = await categoryJson.json();
-          // store.dispatch(getCategoryData(categoryJson));
         }
-        // }
 
         const [
           categoryJson,
@@ -106,10 +82,6 @@ class Detail extends React.Component {
           ).then(r => r.json())
         ]);
 
-        // City Locality API
-        // let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-        // cityLocalityJson = await cityLocalityJson.json();
-
         if (parseInt(slice[1], 10) === 1)
           store.dispatch(getFoodCategoryData(categoryJson));
         else store.dispatch(getCategoryData(categoryJson));
@@ -118,7 +90,6 @@ class Detail extends React.Component {
         store.dispatch(getFeaturingData(featureJson));
         store.dispatch(getSlidderImage(slidderJson));
       } else {
-        // if (query.hasOwnProperty("secret") && query.secret !== undefined) {
         routeParam = query;
 
         // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
@@ -138,8 +109,6 @@ class Detail extends React.Component {
           parseInt(detailUrlParam.result_type, 10) === 1
             ? detailUrlParam.partner_id
             : detailUrlParam.id;
-
-        // }
 
         const [featureJson, slidderJson] = await Promise.all([
           fetch(
@@ -168,28 +137,6 @@ class Detail extends React.Component {
         zomatoJson = await zomatoJson.json();
         store.dispatch(getZomatoData(zomatoJson));
       }
-
-      // const key = parseInt(slice[3], 10) !== 3 ? 0 : slice[4];
-
-      // const q = parseInt(slice[1], 10) === 1 ? slice[2] : slice[0];
-
-      // Also Feature
-      // featureJson = await fetch(
-      //   `${host}api/v9/web/all/featurings?category=${
-      //     slice[1]
-      //   }&q=${q}&key=${key}`
-      // );
-      // featureJson = await featureJson.json();
-      // store.dispatch(getFeaturingData(featureJson));
-
-      // Slidder Image API
-      // let slidderJson = await fetch(
-      //   `${host}api/v9/web/carousel/images?type=${2}&category=${
-      //     detailUrlParam.result_type
-      //   }`
-      // );
-      // slidderJson = await slidderJson.json();
-      // store.dispatch(getSlidderImage(slidderJson));
     } catch (err) {
       console.log("Detail_Error");
       console.log(err);
@@ -231,7 +178,11 @@ class Detail extends React.Component {
       return (
         <React.Fragment>
           <Head title="Home" />
-          <Header />
+          <Header
+            postLogin={this.props.postLogin}
+            postRegister={this.props.postRegister}
+            postForget={this.props.postForget}
+          />
           <Spinner />
           <Headout />
           <Footer cityLocality={this.props.cityLocality} />
@@ -241,7 +192,11 @@ class Detail extends React.Component {
     return (
       <React.Fragment>
         <Head title="Home" />
-        <Header />
+        <Header
+          postLogin={this.props.postLogin}
+          postRegister={this.props.postRegister}
+          postForget={this.props.postForget}
+        />
         <DetailSlider
           slidderImage={this.props.slidderImage}
           categoryData={this.props.categoryData}
@@ -273,7 +228,10 @@ const mapStateToProps = state => {
     slidderImage: state.slidderImage,
     foodCategoryData: state.foodCategoryData,
     featuring: state.featuring,
-    zomatoData: state.zomatoData
+    zomatoData: state.zomatoData,
+    login: state.login,
+    register: state.register,
+    forget: state.forget
   };
 };
 
@@ -285,7 +243,10 @@ const mapDispatchToProps = dispatch => {
     getFoodCategoryData: bindActionCreators(getFoodCategoryData, dispatch),
     getFeaturingData: bindActionCreators(getFeaturingData, dispatch),
     getZomatoData: bindActionCreators(getZomatoData, dispatch),
-    getZomatoDataApi: bindActionCreators(getZomatoDataApi, dispatch)
+    getZomatoDataApi: bindActionCreators(getZomatoDataApi, dispatch),
+    postLogin: bindActionCreators(postLogin, dispatch),
+    postRegister: bindActionCreators(postRegister, dispatch),
+    postForget: bindActionCreators(postForget, dispatch)
   };
 };
 
