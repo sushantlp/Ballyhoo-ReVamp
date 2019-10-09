@@ -123,5 +123,53 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  exploreApi: (
+    name,
+    contact,
+    email,
+    escapeType,
+    tourType,
+    tourCoordinator,
+    tourDuration,
+    tourDate,
+    adult,
+    children,
+    pet,
+    accomodation,
+    cabService,
+    destination,
+    sightSeeing
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/enquire/escape/trip`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          contact: contact,
+          email: email,
+          escape_type: escapeType,
+          tour_type: tourType,
+          tour_coordinator: tourCoordinator,
+          tour_duration: tourDuration,
+          tour_date: tourDate,
+          no_of_adults: adult,
+          no_of_childrens: children,
+          no_of_pets: pet,
+          accomodation_type: accomodation,
+          cab_service: cabService,
+          preferred_destinations: destination,
+          include_sight_seeing: sightSeeing
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(postExplore => resolve(postExplore))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };

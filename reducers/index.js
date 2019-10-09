@@ -14,6 +14,7 @@ import { postEnquiry } from "./enquiry-reducer";
 import { login } from "./login-reducer";
 import { register } from "./register-reducer";
 import { forget } from "./forget-reducer";
+import { postExplore } from "./explore-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -29,5 +30,6 @@ export default combineReducers({
   postEnquiry,
   login,
   register,
-  forget
+  forget,
+  postExplore
 });

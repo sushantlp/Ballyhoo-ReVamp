@@ -283,7 +283,7 @@ class Enquiry extends React.Component {
     });
   };
 
-  onclickEnquiryButton = () => {
+  onClickEnquiryButton = () => {
     if (!EMAIL.test(this.state.enquiryEmail))
       this.updateEnquiryEmailError(true, "Wrong email");
 

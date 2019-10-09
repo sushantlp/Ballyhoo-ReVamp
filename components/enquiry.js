@@ -467,7 +467,7 @@ const Enquiry = props => {
               {props.enquiryState.enquiryButton ? (
                 <a
                   className="button ff"
-                  onClick={() => props.onclickEnquiryButton()}
+                  onClick={() => props.onClickEnquiryButton()}
                 >
                   SUBMIT
                 </a>

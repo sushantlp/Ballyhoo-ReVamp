@@ -130,6 +130,9 @@ const Explore = props => {
                                     name="escape"
                                     value="Incity Escape"
                                     defaultChecked
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Incity-Escape"
@@ -145,6 +148,9 @@ const Explore = props => {
                                     name="escape"
                                     value="Outstation"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Outstation"
@@ -160,6 +166,9 @@ const Explore = props => {
                                     name="escape"
                                     value="Wonderlust/Nature"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Wonderlust/Nature"
@@ -176,6 +185,9 @@ const Explore = props => {
                                     type="radio"
                                     name="escape"
                                     value="Backpacking"
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Backpacking"
@@ -191,6 +203,9 @@ const Explore = props => {
                                     name="escape"
                                     value="Group Outing"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Group-Outing"
@@ -206,6 +221,9 @@ const Explore = props => {
                                     name="escape"
                                     value="Adventurous"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Adventurous"
@@ -222,6 +240,9 @@ const Explore = props => {
                                     type="radio"
                                     name="escape"
                                     value="Religious"
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Religious"
@@ -237,6 +258,9 @@ const Explore = props => {
                                     name="escape"
                                     value="Luxury"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeEscapeType(event)
+                                    }
                                   />
                                   <label htmlFor="Luxury" className="ffqs fw2">
                                     Luxury
@@ -261,25 +285,31 @@ const Explore = props => {
                                   <input
                                     defaultChecked
                                     className="is-checkradio is-danger"
-                                    id="Yes"
+                                    id="Private"
                                     type="radio"
                                     name="tour"
-                                    value="Yes"
+                                    value="Private"
+                                    onChange={event =>
+                                      props.onChangeTourType(event)
+                                    }
                                   />
-                                  <label htmlFor="Yes" className="ffqs fw2">
-                                    Yes
+                                  <label htmlFor="Private" className="ffqs fw2">
+                                    Private
                                   </label>
 
                                   <input
                                     className="is-checkradio is-danger"
-                                    id="No"
+                                    id="Group"
                                     type="radio"
                                     name="tour"
-                                    value="No"
+                                    value="Group"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeTourType(event)
+                                    }
                                   />
-                                  <label htmlFor="No" className="ffqs fw2">
-                                    No
+                                  <label htmlFor="Group" className="ffqs fw2">
+                                    Group
                                   </label>
                                 </div>
                               </Segment>
@@ -305,6 +335,9 @@ const Explore = props => {
                                     name="guided"
                                     value="Yes"
                                     defaultChecked
+                                    onChange={event =>
+                                      props.onChangeTourType(event)
+                                    }
                                   />
                                   <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
@@ -316,6 +349,9 @@ const Explore = props => {
                                     type="radio"
                                     name="guided"
                                     value="No"
+                                    onChange={event =>
+                                      props.onChangeTourType(event)
+                                    }
                                     style={{ paddingLeft: "1em" }}
                                   />
                                   <label htmlFor="No" className="ffqs fw2">
@@ -366,6 +402,10 @@ const Explore = props => {
                                 className="input is-medium"
                                 type="text"
                                 placeholder="3-days 4-nights"
+                                value={props.exploreState.exploreTourDuration}
+                                onChange={event =>
+                                  props.onChangeTourDuration(event)
+                                }
                               />
                             </p>
                           </div>
@@ -385,6 +425,7 @@ const Explore = props => {
                                   type="number"
                                   placeholder="Adult"
                                   value={props.exploreState.exploreAdult}
+                                  onChange={event => props.onChangeAdult(event)}
                                 />
                               </p>
                             </div>
@@ -396,6 +437,9 @@ const Explore = props => {
                                   type="number"
                                   placeholder="Children"
                                   value={props.exploreState.exploreChildren}
+                                  onChange={event =>
+                                    props.onChangeChildren(event)
+                                  }
                                 />
                               </p>
                             </div>
@@ -407,6 +451,7 @@ const Explore = props => {
                                   type="number"
                                   placeholder="Pet"
                                   value={props.exploreState.explorePet}
+                                  onChange={event => props.onChangePet(event)}
                                 />
                               </p>
                             </div>
@@ -431,6 +476,9 @@ const Explore = props => {
                                     name="accommodation"
                                     value="Basic Amenities"
                                     defaultChecked
+                                    onChange={event =>
+                                      props.onChangeAccomodation(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="Basic-Amenities"
@@ -446,6 +494,9 @@ const Explore = props => {
                                     name="accommodation"
                                     value="3 star"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeAccomodation(event)
+                                    }
                                   />
                                   <label htmlFor="3-star" className="ffqs fw2">
                                     3 star
@@ -458,6 +509,9 @@ const Explore = props => {
                                     name="accommodation"
                                     value="5 star"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeAccomodation(event)
+                                    }
                                   />
                                   <label htmlFor="5-star" className="ffqs fw2">
                                     5 star
@@ -470,6 +524,9 @@ const Explore = props => {
                                     name="accommodation"
                                     value="Luxury Stay"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeAccomodation(event)
+                                    }
                                   />
                                   <label
                                     htmlFor="LuxuryStay"
@@ -502,6 +559,9 @@ const Explore = props => {
                                     name="cab"
                                     value="Yes"
                                     defaultChecked
+                                    onChange={event =>
+                                      props.onChangeCabService(event)
+                                    }
                                   />
                                   <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
@@ -514,6 +574,9 @@ const Explore = props => {
                                     name="cab"
                                     value="No"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeCabService(event)
+                                    }
                                   />
                                   <label htmlFor="No" className="ffqs fw2">
                                     No
@@ -537,6 +600,9 @@ const Explore = props => {
                                 className="input is-medium"
                                 type="text"
                                 placeholder="Goa, Delhi ..."
+                                onChange={event =>
+                                  props.onChangeDestination(event)
+                                }
                               />
                             </p>
                           </div>
@@ -561,6 +627,9 @@ const Explore = props => {
                                     name="destination"
                                     value="Yes"
                                     defaultChecked
+                                    onChange={event =>
+                                      props.onChangeSightSeeing(event)
+                                    }
                                   />
                                   <label htmlFor="Yes" className="ffqs fw2">
                                     Yes
@@ -573,6 +642,9 @@ const Explore = props => {
                                     name="destination"
                                     value="No"
                                     style={{ paddingLeft: "1em" }}
+                                    onChange={event =>
+                                      props.onChangeSightSeeing(event)
+                                    }
                                   />
                                   <label htmlFor="No" className="ffqs fw2">
                                     No
@@ -589,9 +661,13 @@ const Explore = props => {
               </div>
 
               {props.exploreState.gate ? (
-                <button className="button is-danger button-previous-disabled ff">
+                <a
+                  className="button is-danger button-previous ff"
+                  style={{ backgroundColor: "#fdb6c4" }}
+                  disabled
+                >
                   PREVIOUS
-                </button>
+                </a>
               ) : (
                 <a
                   className="button is-danger button-previous ff"
@@ -604,14 +680,17 @@ const Explore = props => {
               {props.exploreState.exploreNextButton ? (
                 <a
                   className="button is-warning button-next ff"
-                  onClick={() => props.onChangeGate(false)}
+                  onClick={
+                    props.exploreState.gate
+                      ? () => props.onChangeGate(false)
+                      : () => props.onClickExploreButton()
+                  }
                 >
                   {props.exploreState.gate ? "NEXT" : "SUBMIT"}
                 </a>
               ) : (
                 <a
                   className="button is-warning button-next ff"
-                  onClick={() => props.onChangeGate(false)}
                   disabled
                   style={{ backgroundColor: "#fdeeb5" }}
                 >

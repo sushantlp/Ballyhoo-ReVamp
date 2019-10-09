@@ -33,7 +33,7 @@
   margin-left: 12em;
 }
 
-.explore-container .button-previous-disabled {
+/* .explore-container .button-previous-disabled {
   background-color: #e8c2c9;
   opacity: 1;
   width: 8em;
@@ -47,7 +47,7 @@
 
 .explore-container .button-previous-disabled:hover {
   background-color: #e8c2c9;
-}
+} */
 
 .explore-container .button-next {
   opacity: 1;

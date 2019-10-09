@@ -1,6 +1,8 @@
 import moment from "moment-timezone";
 import Router from "next/router";
 import ReactDOM from "react-dom";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
@@ -17,7 +19,26 @@ import Header from "../components/header";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
 
+import { getCityLocality } from "../actions/city-locality-action";
+import { postExploreApi } from "../actions/explore-action";
+
 class Explore extends React.Component {
+  static async getInitialProps(ctx) {
+    try {
+      const { store, isServer } = ctx;
+
+      if (isServer) {
+        // City Locality API
+        let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+        cityLocalityJson = await cityLocalityJson.json();
+        store.dispatch(getCityLocality(cityLocalityJson));
+      }
+    } catch (err) {
+      console.log("Enquiry_Error");
+      console.log(err);
+    }
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,16 +50,16 @@ class Explore extends React.Component {
       exploreEmail: "",
       exploreMobile: "",
       exploreMobileCode: "+91",
-      exploreEscapeType: "",
-      exploreTourType: "",
-      exploreTourCoordination: "",
+      exploreEscapeType: "Incity Escape",
+      exploreTourType: "Private",
+      exploreTourCoordination: "Yes",
       exploreTourDuration: "",
       exploreTourDate: moment(),
-      exploreTourDateApi: moment(),
+      exploreTourDateApi: moment().format("YYYY-MM-DD"),
       exploreAdult: 1,
       exploreChildren: 0,
       explorePet: 0,
-      exploreAccomodation: "",
+      exploreAccomodation: "Basic Amenities",
       exploreCabService: 0,
       exploreDestination: "",
       exploreSightSeeing: 1,
@@ -52,8 +73,27 @@ class Explore extends React.Component {
     };
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this).scrollIntoView();
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(registration => {
+          console.log("service worker registration successful", registration);
+        })
+        .catch(err => {
+          console.warn("service worker registration failed", err.message);
+        });
+    }
+  }
+
   onChangeGate = bool => {
-    this.setState({ gate: bool });
+    if (bool) this.setState({ gate: bool });
+    else {
+      if (!EMAIL.test(this.state.exploreEmail))
+        this.updateExploreEmailError(true, "Wrong email");
+      else this.setState({ gate: bool });
+    }
   };
 
   onChangeFocused = () => {
@@ -148,6 +188,85 @@ class Explore extends React.Component {
     });
   };
 
+  onChangeEscapeType = e => {
+    this.setState({
+      exploreEscapeType: e.target.value
+    });
+  };
+
+  onChangeTourType = e => {
+    this.setState({
+      exploreTourType: e.target.value
+    });
+  };
+
+  onChangeTourCoordination = e => {
+    this.setState({
+      exploreTourCoordination: e.target.value === "Yes" ? 1 : 0
+    });
+  };
+
+  onChangeAdult = e => {
+    this.setState({
+      exploreAdult: e.target.value
+    });
+  };
+
+  onChangeChildren = e => {
+    this.setState({
+      exploreChildren: e.target.value
+    });
+  };
+
+  onChangePet = e => {
+    this.setState({
+      explorePet: e.target.value
+    });
+  };
+
+  onChangeTourDuration = e => {
+    this.setState({
+      exploreTourDuration: e.target.value
+    });
+  };
+
+  onChangeAccomodation = e => {
+    this.setState({
+      exploreAccomodation: e.target.value
+    });
+  };
+
+  onChangeCabService = e => {
+    this.setState({
+      exploreCabService: e.target.value === "Yes" ? 1 : 0
+    });
+  };
+
+  onChangeDestination = e => {
+    this.setState({
+      exploreDestination: e.target.value
+    });
+  };
+
+  onChangeSightSeeing = e => {
+    this.setState({
+      exploreSightSeeing: e.target.value === "Yes" ? 1 : 0
+    });
+  };
+
+  updateIsLoading = () => {
+    this.setState({
+      isLoading: !this.state.isLoading
+    });
+  };
+
+  onClickExploreButton = () => {
+    this.updateIsLoading();
+
+    const mobileCode = this.state.exploreMobileCode.slice(1);
+    const mobile = `${mobileCode}${this.state.exploreMobile}`;
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -161,12 +280,42 @@ class Explore extends React.Component {
           onChangeEmail={this.onChangeEmail}
           onChangeMobile={this.onChangeMobile}
           onChangeMobileCode={this.onChangeMobileCode}
+          onChangeEscapeType={this.onChangeEscapeType}
+          onChangeTourType={this.onChangeTourType}
+          onChangeTourCoordination={this.onChangeTourCoordination}
+          onChangeAdult={this.onChangeAdult}
+          onChangeChildren={this.onChangeChildren}
+          onChangePet={this.onChangePet}
+          onChangeTourDuration={this.onChangeTourDuration}
+          onChangeAccomodation={this.onChangeAccomodation}
+          onChangeCabService={this.onChangeCabService}
+          onChangeDestination={this.onChangeDestination}
+          onChangeSightSeeing={this.onChangeSightSeeing}
+          onClickExploreButton={this.onClickExploreButton}
+          onChangeDate={this.onChangeDate}
         />
         <Headout />
-        <Footer />
+        <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
     );
   }
 }
 
-export default Explore;
+const mapStateToProps = state => {
+  return {
+    cityLocality: state.cityLocality,
+    postExplore: state.postExplore
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCityLocality: bindActionCreators(getCityLocality, dispatch),
+    postExploreApi: bindActionCreators(postExploreApi, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Explore);
