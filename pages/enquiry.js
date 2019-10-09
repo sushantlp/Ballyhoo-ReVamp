@@ -1,12 +1,19 @@
 import moment from "moment-timezone";
+import Router from "next/router";
 import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-import { host } from "../constants";
+import { host, EMAIL } from "../constants";
 
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
+
+import Spinner from "../components/spinner";
 import EnquiryComponent from "../components/enquiry";
 import Head from "../components/head";
 import Header from "../components/header";
@@ -14,6 +21,9 @@ import Headout from "../components/headout";
 import Footer from "../components/footer";
 
 import { getCityLocality } from "../actions/city-locality-action";
+import { postEnquiryApi } from "../actions/enquiry-action";
+
+import "react-notifications/lib/notifications.css";
 
 class Enquiry extends React.Component {
   static async getInitialProps(ctx) {
@@ -35,6 +45,7 @@ class Enquiry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       focused: false,
       enquiryName: "",
       enquiryEmail: "",
@@ -42,25 +53,16 @@ class Enquiry extends React.Component {
       enquiryMobileCode: "+91",
       enquiryOccasion: "Birthday",
       enquiryPartyDate: moment(),
+      enquiryApiPartyDate: moment(),
       enquiryPartyTime: "Lunch",
       enquiryFoodPreference: "Veg",
-      enquiryFoodPreferenceAlcohol: "No",
-      enquiryGuest: "",
-      enquiryCost: "500 - 1000",
+      enquiryFoodPreferenceAlcohol: 0,
+      enquiryGuest: 1,
+      enquiryCost: "500-1000",
       enquiryRequest: "",
       enquiryButton: false,
 
-      enquiryName: {
-        flag: false,
-        msg: ""
-      },
-
-      enquiryEmail: {
-        flag: false,
-        msg: ""
-      },
-
-      enquiryMobile: {
+      enquiryEmailError: {
         flag: false,
         msg: ""
       }
@@ -80,6 +82,31 @@ class Enquiry extends React.Component {
         });
     }
   }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.postEnquiry !== nextProps.postEnquiry &&
+      nextProps.postEnquiry.status === "SUCCESS"
+    ) {
+      this.updateIsLoading();
+      NotificationManager.success(
+        "Successful",
+        nextProps.postEnquiry.postEnquiry.msg,
+        300,
+        this.enquiryRouteChange()
+      );
+    } else if (
+      this.props.postEnquiry !== nextProps.postEnquiry &&
+      nextProps.postEnquiry.status === "FAIL"
+    ) {
+      this.updateIsLoading();
+      NotificationManager.error("Error", nextProps.postEnquiry.postEnquiry.msg);
+    }
+  }
+
+  enquiryRouteChange = () => {
+    Router.push("/");
+  };
 
   onChangeFocused = () => {
     this.setState({
@@ -117,6 +144,9 @@ class Enquiry extends React.Component {
     this.setState({
       enquiryEmail: e.target.value
     });
+
+    if (this.state.enquiryEmailError.flag)
+      this.updateEnquiryEmailError(false, "");
 
     if (
       e.target.value !== "" &&
@@ -164,7 +194,8 @@ class Enquiry extends React.Component {
 
   onChangePartyDate = date => {
     this.setState({
-      enquiryPartyDate: moment(date).format("YYYY-MM-DD")
+      enquiryPartyDate: date,
+      enquiryApiPartyDate: moment(date).format("YYYY-MM-DD")
     });
   };
 
@@ -236,7 +267,58 @@ class Enquiry extends React.Component {
     }
   };
 
+  updateEnquiryEmailError = (flag, msg) => {
+    const obj = {
+      flag,
+      msg
+    };
+    this.setState({
+      enquiryEmailError: obj
+    });
+  };
+
+  updateIsLoading = () => {
+    this.setState({
+      isLoading: !this.state.isLoading
+    });
+  };
+
+  onclickEnquiryButton = () => {
+    if (!EMAIL.test(this.state.enquiryEmail))
+      this.updateEnquiryEmailError(true, "Wrong email");
+
+    this.updateIsLoading();
+
+    const mobileCode = this.state.enquiryMobileCode.slice(1);
+    const mobile = `${mobileCode}${this.state.enquiryMobile}`;
+    this.props.postEnquiryApi(
+      this.state.enquiryName,
+      mobile,
+      this.state.enquiryEmail,
+      this.state.enquiryOccasion,
+      this.state.enquiryApiPartyDate,
+      this.state.enquiryPartyTime,
+      this.state.enquiryFoodPreference,
+      this.state.enquiryFoodPreferenceAlcohol,
+      this.state.enquiryGuest,
+      this.state.enquiryCost,
+      this.state.enquiryRequest
+    );
+  };
+
   render() {
+    if (this.state.isLoading)
+      return (
+        <React.Fragment>
+          <Head title="Home" />
+          <Header />
+          <Spinner />
+
+          <Headout />
+          <Footer cityLocality={this.props.cityLocality} />
+        </React.Fragment>
+      );
+
     return (
       <React.Fragment>
         <Head title="Home" />
@@ -257,9 +339,12 @@ class Enquiry extends React.Component {
           onChangeRequest={this.onChangeRequest}
           onChangeAgree={this.onChangeAgree}
           onChangeFocused={this.onChangeFocused}
+          onclickEnquiryButton={this.onclickEnquiryButton}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
+
+        <NotificationContainer />
       </React.Fragment>
     );
   }
@@ -267,13 +352,15 @@ class Enquiry extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cityLocality: state.cityLocality
+    cityLocality: state.cityLocality,
+    postEnquiry: state.postEnquiry
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCityLocality: bindActionCreators(getCityLocality, dispatch)
+    getCityLocality: bindActionCreators(getCityLocality, dispatch),
+    postEnquiryApi: bindActionCreators(postEnquiryApi, dispatch)
   };
 };
 

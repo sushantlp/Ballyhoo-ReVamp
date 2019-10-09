@@ -10,6 +10,7 @@ import { searchData } from "./search-data-reducer";
 import { urlParam } from "./url-param-reducer";
 import { featuring } from "./featuring-reducer";
 import { zomatoData } from "./zomato-reducer";
+import { postEnquiry } from "./enquiry-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -21,5 +22,6 @@ export default combineReducers({
   searchData,
   urlParam,
   featuring,
-  zomatoData
+  zomatoData,
+  postEnquiry
 });

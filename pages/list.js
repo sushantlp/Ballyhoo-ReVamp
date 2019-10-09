@@ -34,13 +34,7 @@ import { updateUrlParam } from "../actions/url-param-action";
 
 class List extends React.Component {
   static async getInitialProps(ctx) {
-    // let listJson = [];
-    // let slidderJson = [];
-    // let searchJson = [];
-    // let cityLocalityJson = [];
-    // let recommendation = [];
     let routeParam = [];
-
     let listUrlParam = {
       city_id: 0,
       api_type: 0,
@@ -101,14 +95,6 @@ class List extends React.Component {
           ).then(r => r.json())
         ]);
 
-        // City Locality API
-        // cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-        // cityLocalityJson = await cityLocalityJson.json();
-
-        // Search Data
-        // searchJson = await fetch(`${host}api/v9/web/search-keys`);
-        // searchJson = await searchJson.json();
-
         store.dispatch(getCityLocality(cityLocalityJson));
         store.dispatch(getsearchData(searchJson));
 
@@ -139,40 +125,6 @@ class List extends React.Component {
         store.dispatch(getrecommendation(recommendation));
       }
 
-      // if (listUrlParam.flag === 1) {
-      //   // Search List API
-      //   listJson = await fetch(
-      //     `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`
-      //   );
-      // } else {
-      //   // List API
-      //   listJson = await fetch(
-      //     `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`
-      //   );
-      // }
-
-      // listJson = await listJson.json();
-
-      // Slidder Image API
-      // slidderJson = await fetch(
-      //   `${host}api/v9/web/carousel/images?type=${1}&category=${
-      //     listUrlParam.response_type
-      //   }`
-      // );
-      // slidderJson = await slidderJson.json();
-
-      // Recommendation API
-      // recommendation = await fetch(
-      //   `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
-      // );
-      // recommendation = await recommendation.json();
-
-      // listUrlParam.flag === 1
-      // ? store.dispatch(getSearchListData(listJson))
-      // : store.dispatch(getListData(listJson));
-
-      // store.dispatch(getSlidderImage(slidderJson));
-      // store.dispatch(getrecommendation(recommendation));
       store.dispatch(updateUrlParam(listUrlParam));
     } catch (err) {
       console.log("List_Error");
@@ -190,7 +142,6 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    // window.scrollTo(0, 0);
     ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker

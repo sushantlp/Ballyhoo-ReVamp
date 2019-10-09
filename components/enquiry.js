@@ -34,12 +34,6 @@ const Enquiry = props => {
                         </label>
                       </div>
                     </div>
-
-                    {props.enquiryState.enquiryName.flag ? (
-                      <p class="help is-danger">
-                        {props.enquiryState.enquiryName.msg}
-                      </p>
-                    ) : null}
                   </div>
 
                   <div className="field">
@@ -49,7 +43,11 @@ const Enquiry = props => {
                       <div className="field">
                         <label className="control is-expanded">
                           <input
-                            className="input is-large"
+                            className={
+                              props.enquiryState.enquiryEmailError.flag
+                                ? "input is-large is-danger"
+                                : "input is-large"
+                            }
                             type="text"
                             placeholder="Open@Code"
                             onChange={event => props.onChangeEmail(event)}
@@ -58,9 +56,9 @@ const Enquiry = props => {
                       </div>
                     </div>
 
-                    {props.enquiryState.enquiryEmail.flag ? (
+                    {props.enquiryState.enquiryEmailError.flag ? (
                       <p class="help is-danger">
-                        {props.enquiryState.enquiryEmail.msg}
+                        {props.enquiryState.enquiryEmailError.msg}
                       </p>
                     ) : null}
                   </div>
@@ -105,12 +103,6 @@ const Enquiry = props => {
                         </div>
                       </div>
                     </div>
-
-                    {props.enquiryState.enquiryMobile.flag ? (
-                      <p class="help is-danger">
-                        {props.enquiryState.enquiryMobile.msg}
-                      </p>
-                    ) : null}
                   </div>
 
                   <div className="field">
@@ -473,7 +465,12 @@ const Enquiry = props => {
               </div>
 
               {props.enquiryState.enquiryButton ? (
-                <a className="button ff">SUBMIT</a>
+                <a
+                  className="button ff"
+                  onClick={() => props.onclickEnquiryButton()}
+                >
+                  SUBMIT
+                </a>
               ) : (
                 <a
                   className="button ff"

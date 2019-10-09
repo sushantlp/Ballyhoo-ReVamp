@@ -84,5 +84,44 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+  enquiryApi: (
+    name,
+    contact,
+    email,
+    occasionName,
+    occasionDate,
+    occasionTime,
+    preference,
+    alcohol,
+    guest,
+    avgCost,
+    request
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/enquire/group/bookings`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          contact: contact,
+          email: email,
+          occasion_name: occasionName,
+          occasion_date: occasionDate,
+          occasion_time: occasionTime,
+          food_preference: preference,
+          alcohol: alcohol,
+          no_of_guest: guest,
+          avg_cost_per_head: avgCost,
+          special_request: request
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(postEnquiry => resolve(postEnquiry))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };
