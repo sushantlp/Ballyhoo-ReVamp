@@ -16,6 +16,10 @@ const Login = props => {
             </header>
             <section className="modal-card-body">
               <div className="field">
+                {props.errorStatus ? (
+                  <p class="help is-danger">{props.errorMsg}</p>
+                ) : null}
+
                 <div className="field-body">
                   <div className="field">
                     <div className="control is-expanded ffqs fw2">
@@ -69,7 +73,10 @@ const Login = props => {
             </section>
             <footer className="modal-card-foot">
               {props.loginButton ? (
-                <button className="button is-danger is-active login-button">
+                <button
+                  className="button is-danger is-active login-button"
+                  onClick={() => props.onClickLoginButton()}
+                >
                   LOGIN
                 </button>
               ) : (

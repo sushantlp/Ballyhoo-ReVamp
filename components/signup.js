@@ -147,7 +147,10 @@ const Signup = props => {
             </section>
             <footer className="modal-card-foot">
               {props.signupButton ? (
-                <button className="button is-danger is-active signup-button">
+                <button
+                  className="button is-danger is-active signup-button"
+                  onClick={() => props.onClickSignupButton()}
+                >
                   SIGNUP
                 </button>
               ) : (

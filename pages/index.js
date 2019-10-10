@@ -153,7 +153,6 @@ class Index extends React.Component {
             postForget={this.props.postForget}
           />
           <Spinner />
-          {/* <Space /> */}
           <Headout />
           <Footer cityLocality={this.props.cityLocality} />
         </React.Fragment>

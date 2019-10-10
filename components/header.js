@@ -44,6 +44,40 @@ export default class Header extends React.Component {
     };
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.login !== nextProps.login) {
+      if (nextProps.login.status === "SUCCESS") {
+        this.updateLoginState(false);
+        NotificationManager.success("Successful", "Successful");
+      } else {
+        this.setState({
+          errorStatus: true,
+          errorMsg: nextProps.login.login.msg
+        });
+      }
+    } else if (this.props.register !== nextProps.register) {
+      if (nextProps.register.status === "SUCCESS") {
+        this.updateSignupState(false);
+        NotificationManager.success("Successful", "Successful");
+      } else {
+        this.setState({
+          errorStatus: true,
+          errorMsg: nextProps.register.register.msg
+        });
+      }
+    } else if (this.props.forget !== nextProps.forget) {
+      if (nextProps.forget.status === "SUCCESS") {
+        this.updateForgetState(false);
+        NotificationManager.success("Successful", "Successful");
+      } else {
+        this.setState({
+          errorStatus: true,
+          errorMsg: nextProps.forget.forget.msg
+        });
+      }
+    }
+  }
+
   /**
    * Start Forget Function
    **/
@@ -71,12 +105,18 @@ export default class Header extends React.Component {
     }
   };
 
+  updateForgetState = bool => {
+    this.setState({
+      forgetOpen: bool
+    });
+  };
+
   onClickForgetButton = () => {
     this.setState({
       forgetButton: false
     });
-    this.updateForgetState(false);
-    NotificationManager.success("Successful", "Successful");
+
+    this.props.postForget(this.state.forgetEmail);
   };
 
   /**
@@ -217,6 +257,30 @@ export default class Header extends React.Component {
     }
   };
 
+  updateSignupState = bool => {
+    this.setState({
+      signupOpen: bool
+    });
+  };
+
+  onClickSignupButton = () => {
+    this.setState({
+      signupButton: false
+    });
+    const mobileCode = this.state.signupCode.slice(1);
+    const mobile = `${mobileCode}${this.state.signupMobile}`;
+
+    this.props.postRegister(
+      mobile,
+      this.state.signupEmail,
+      this.state.signupPassword,
+      null,
+      null,
+      null,
+      null
+    );
+  };
+
   /**
    * End Signup Function
    **/
@@ -291,21 +355,16 @@ export default class Header extends React.Component {
     });
   };
 
+  onClickLoginButton = () => {
+    this.setState({
+      loginButton: false
+    });
+    this.props.postLogin(this.state.loginEmail, this.state.loginPassword);
+  };
+
   /**
    * End Login Function
    **/
-
-  updateSignupState = bool => {
-    this.setState({
-      signupOpen: bool
-    });
-  };
-
-  updateForgetState = bool => {
-    this.setState({
-      forgetOpen: bool
-    });
-  };
 
   moveToForget = () => {
     this.updateLoginState(false);
@@ -427,6 +486,7 @@ export default class Header extends React.Component {
             updateLoginPassword={this.updateLoginPassword}
             updateLoginEmail={this.updateLoginEmail}
             updateLoginPassDisplay={this.updateLoginPassDisplay}
+            onClickLoginButton={this.onClickLoginButton}
           />
         ) : null}
 
@@ -446,6 +506,7 @@ export default class Header extends React.Component {
             updateSignupCode={this.updateSignupCode}
             updateSignupPassword={this.updateSignupPassword}
             updateSignupConfirmPassword={this.updateSignupConfirmPassword}
+            onClickSignupButton={this.onClickSignupButton}
           />
         ) : null}
 
