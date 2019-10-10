@@ -85,6 +85,7 @@ export default {
         .catch(error => console.log(error));
     });
   },
+
   enquiryApi: (
     name,
     contact,
@@ -124,6 +125,7 @@ export default {
         .catch(error => console.log(error));
     });
   },
+
   exploreApi: (
     name,
     contact,
@@ -171,6 +173,7 @@ export default {
         .catch(error => console.log(error));
     });
   },
+
   loginApi: (email, password) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/signin`, {
@@ -189,6 +192,7 @@ export default {
         .catch(error => console.log(error));
     });
   },
+
   registerApi: (mobile, email, password, fname, lname, sex, dob) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/register`, {
@@ -212,6 +216,7 @@ export default {
         .catch(error => console.log(error));
     });
   },
+
   forgetApi: email => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/password/reset`, {
@@ -224,6 +229,40 @@ export default {
           response
             .json()
             .then(forget => resolve(forget))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  getProfileApi: customerId => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/customers/${customerId}`)
+        .then(response => {
+          response
+            .json()
+            .then(profile => resolve(profile))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  putProfileApi: (customerId, firstName, lastName, sex, dob) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/customers/${customerId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          fname: firstName,
+          lname: lastName,
+          sex: sex,
+          dob: dob
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(profile => resolve(profile))
             .catch(error => console.log(error));
         })
         .catch(error => console.log(error));

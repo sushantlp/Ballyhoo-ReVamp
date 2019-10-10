@@ -6,12 +6,9 @@ import { connect } from "react-redux";
 import moment from "moment-timezone";
 import fetch from "isomorphic-unfetch";
 
-import { host, EMAIL } from "../constants";
+import { host } from "../constants";
 
-import {
-  NotificationContainer,
-  NotificationManager
-} from "react-notifications";
+import { ToastContainer, toast } from "react-toastify";
 
 import ProfileComponent from "../components/profile";
 import Head from "../components/head";
@@ -26,6 +23,7 @@ import { postForget } from "../actions/forget-action";
 import { getProfile, putProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 
+import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
 
 class Profile extends React.Component {
@@ -54,18 +52,21 @@ class Profile extends React.Component {
       lastName: "",
       email: "",
       mobile: "",
-      gender: "Male"
+      gender: "Male",
+      loyality: 0,
+      isLoading: false
     };
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
   }
 
   componentDidMount() {
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
-      // NotificationManager.error(
-      //   "Login",
-      //   "Please login",
-      //   3000,
-      //   this.enquiryRouteChange()
-      // );
+      toast.error("Please login !", {
+        onClose: () => this.enquiryRouteChange()
+      });
     } else {
       this.props.getProfile(this.props.customerData.customerData.customer_id);
     }
@@ -85,18 +86,78 @@ class Profile extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.profileData !== nextProps.profileData) {
-      let date = moment();
-      if (nextProps.profileData.profileData.dob == null)
-        date = moment(nextProps.profileData.profileData.dob);
-      this.setState({
-        date: date,
-        firstName: nextProps.profileData.profileData.fname,
-        lastName: nextProps.profileData.profileData.lname,
-        email: nextProps.profileData.profileData.email,
-        mobile: nextProps.profileData.profileData.mobile,
-        gender: nextProps.profileData.profileData ? "Male" : "Female"
-      });
+      if (nextProps.profileData.status === "SUCCESS") {
+        let date = moment();
+        if (nextProps.profileData.profile.dob !== null)
+          date = moment(nextProps.profileData.profile.dob);
+        this.setState({
+          date: date,
+          firstName:
+            nextProps.profileData.profile.fname === null
+              ? ""
+              : nextProps.profileData.profile.fname,
+          lastName:
+            nextProps.profileData.profile.lname === null
+              ? ""
+              : nextProps.profileData.profile.lname,
+          email:
+            nextProps.profileData.profile.email === null
+              ? ""
+              : nextProps.profileData.profile.email,
+          mobile:
+            nextProps.profileData.profile.mobile === null
+              ? ""
+              : nextProps.profileData.profile.mobile,
+          gender:
+            parseInt(nextProps.profileData.profile.sex, 10) === 1
+              ? "Male"
+              : "Female",
+          loyality: nextProps.profileData.profile.loyalty_points
+        });
+
+        const customerData = {
+          customer_id: this.props.customerData.customerData.customer_id,
+          first_name: nextProps.profileData.profile.fname,
+          last_name: nextProps.profileData.profile.lname,
+          email: nextProps.profileData.profile.email,
+          mobile: nextProps.profileData.profile.mobile,
+          gender: nextProps.profileData.profile ? "Male" : "Female",
+          birthday: this.props.customerData.customerData.birthday,
+          mobile_active: this.props.customerData.customerData.mobile_active,
+          email_active: this.props.customerData.customerData.email_active,
+          loyality: nextProps.profileData.loyalty_points
+        };
+
+        this.props.updateCustomerData(customerData);
+      } else {
+        toast.error(`${nextProps.profileData.profile.msg} !`);
+      }
     } else if (this.props.profileUpdate !== nextProps.profileUpdate) {
+      this.setState({
+        isLoading: false
+      });
+
+      if (nextProps.profileUpdate.status === "SUCCESS") {
+        const customerData = {
+          customer_id: this.props.customerData.customerData.customer_id,
+          first_name: this.state.firstName,
+          last_name: this.state.lastName,
+          email: this.props.customerData.customerData.email,
+          mobile: this.props.customerData.customerData.mobile,
+          gender: this.state.gender === "Male" ? 1 : 2,
+          birthday: this.state.birthday,
+          mobile_active: this.props.customerData.customerData.mobile_active,
+          email_active: this.props.customerData.customerData.email_active,
+          loyality: this.props.customerData.customerData.loyality
+        };
+        this.props.updateCustomerData(customerData);
+
+        toast.success("Profile update successful", {
+          onClose: () => this.enquiryRouteChange()
+        });
+      } else {
+        toast.error(`${nextProps.profileUpdate.profile.msg} !`);
+      }
     }
   }
 
@@ -105,7 +166,7 @@ class Profile extends React.Component {
   };
 
   onDateChange = date => {
-    this.setState({ date: date, birthday: moment(date).format("YYYY-MM-DD") });
+    this.setState({ date: date, birthday: moment(date) });
   };
 
   onFocusChange = bool => {
@@ -130,6 +191,21 @@ class Profile extends React.Component {
     });
   };
 
+  onClickProfileButton = () => {
+    this.setState({
+      isLoading: true
+    });
+    const sex = this.state.gender === "Male" ? 1 : 2;
+    const birthday = moment(this.state.birthday).format("YYYY-MM-DD");
+    this.props.putProfile(
+      this.props.customerData.customerData.customer_id,
+      this.state.firstName,
+      this.state.lastName,
+      sex,
+      birthday
+    );
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -140,7 +216,9 @@ class Profile extends React.Component {
           postForget={this.props.postForget}
         />
         <ProfileComponent
+          isLoading={this.state.isLoading}
           date={this.state.date}
+          loyality={this.state.loyality}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
           email={this.state.email}
@@ -152,10 +230,12 @@ class Profile extends React.Component {
           onChangeFirstName={this.onChangeFirstName}
           onChangeLastName={this.onChangeLastName}
           onChangeGender={this.onChangeGender}
+          onClickProfileButton={this.onClickProfileButton}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
-        <NotificationContainer />
+
+        <ToastContainer autoClose={3000} />
       </React.Fragment>
     );
   }

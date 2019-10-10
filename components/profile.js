@@ -2,8 +2,9 @@ import "react-dates/initialize";
 import { Segment } from "semantic-ui-react";
 import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
-import "./profile.css";
 import "bulma-checkradio";
+
+import "./profile.css";
 
 const Profile = props => {
   return (
@@ -21,7 +22,7 @@ const Profile = props => {
                       <span className="loyality-title">
                         Loyality Points :{" "}
                       </span>{" "}
-                      <span className="loyality-price">2000 </span>
+                      <span className="loyality-price">{props.loyality}</span>
                     </h4>
                   </div>
                   <div className="field">
@@ -168,7 +169,16 @@ const Profile = props => {
                 </div>
               </div>
 
-              <a className="button ff">SUBMIT</a>
+              {props.isLoading ? (
+                <a className="button is-loading ff">SUBMIT</a>
+              ) : (
+                <a
+                  className="button ff"
+                  onClick={() => props.onClickProfileButton()}
+                >
+                  SUBMIT
+                </a>
+              )}
             </Segment>
           </div>
         </div>

@@ -1,8 +1,7 @@
 import { actionType } from "../actions/profile-action";
 
 const initialState = {
-  profileData: [],
-  profileUpdate: [],
+  profile: [],
   status: "START",
   msg: ""
 };
@@ -10,19 +9,19 @@ const initialState = {
 export function profileData(state = initialState, action) {
   switch (action.type) {
     case actionType.profileData:
-      if (action.profileData.code === 200) {
+      if (action.profile.code === 200) {
         return {
           ...state,
-          profileData: action.profileData.data,
+          profile: action.profile.data,
           status: "SUCCESS",
           msg: "successful"
         };
       } else {
         return {
           ...state,
-          profileData: [],
+          profile: [],
           status: "FAIL",
-          msg: action.profileData.message
+          msg: action.profile.message
         };
       }
     default:
@@ -33,19 +32,19 @@ export function profileData(state = initialState, action) {
 export function profileUpdate(state = initialState, action) {
   switch (action.type) {
     case actionType.profileUpdate:
-      if (action.profileUpdate.code === 200) {
+      if (action.profile.code === 200) {
         return {
           ...state,
-          profileUpdate: action.profileUpdate.data,
+          profile: action.profile.data,
           status: "SUCCESS",
           msg: "successful"
         };
       } else {
         return {
           ...state,
-          profileUpdate: [],
+          profile: [],
           status: "FAIL",
-          msg: action.profileUpdate.message
+          msg: action.profile.message
         };
       }
     default:
