@@ -267,5 +267,24 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  tokenApi: (email, password) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/token`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(token => resolve(token))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };

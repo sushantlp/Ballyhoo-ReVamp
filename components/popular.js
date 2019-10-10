@@ -41,7 +41,11 @@ export default class Popular extends React.Component {
   onClickPopular = (popular, props) => {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
-    const title = popular.title.replace(/ /g, "-").toLowerCase();
+
+    let title = popular.title.replace(/[^a-zA-Z ]/g, "");
+    title = title.replace(/ /g, "-").toLowerCase();
+    title = title.replace(/-+/gi, "-");
+
     const secret = `${city_id}b${popular.api_type}b${popular.key}b${
       popular.response_type
     }b${1}b${0}`;

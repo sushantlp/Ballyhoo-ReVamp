@@ -1,9 +1,6 @@
 import Link from "next/link";
 
-import {
-  NotificationContainer,
-  NotificationManager
-} from "react-notifications";
+import { ToastContainer, toast } from "react-toastify";
 
 import { EMAIL } from "../constants";
 
@@ -11,7 +8,8 @@ import Signup from "./signup";
 import Login from "./login";
 import Forget from "./forget";
 
-import "react-notifications/lib/notifications.css";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./header.css";
 
 export default class Header extends React.Component {
@@ -21,7 +19,7 @@ export default class Header extends React.Component {
       loginOpen: false,
       signupOpen: false,
       forgetOpen: false,
-      profileOpen: true,
+      profileOpen: false,
 
       loginEmail: "",
       loginPassword: "",
@@ -66,7 +64,7 @@ export default class Header extends React.Component {
         });
         this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
-        NotificationManager.success("Successful", "Successful");
+        toast.success("Successful");
       } else {
         this.setState({
           errorStatus: true,
@@ -92,7 +90,8 @@ export default class Header extends React.Component {
 
         this.props.updateCustomerData(customerData);
         this.updateSignupState(false);
-        NotificationManager.success("Successful", "Successful");
+
+        toast.success("Successful");
       } else {
         this.setState({
           errorStatus: true,
@@ -102,7 +101,7 @@ export default class Header extends React.Component {
     } else if (this.props.forget !== nextProps.forget) {
       if (nextProps.forget.status === "SUCCESS") {
         this.updateForgetState(false);
-        NotificationManager.success("Successful", "Successful");
+        toast.success("Successful");
       } else {
         this.setState({
           errorStatus: true,
@@ -413,7 +412,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="header-container">
-        <NotificationContainer />
+        <ToastContainer autoClose={3000} />
         <nav
           id="navbar"
           className="navbar has-shadow"

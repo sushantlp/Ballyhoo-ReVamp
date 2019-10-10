@@ -165,6 +165,7 @@ export default class Slidder extends React.Component {
 
     let title = this.state.selectSearch.keyword.replace(/[^a-zA-Z ]/g, "");
     title = title.replace(/ /g, "-").toLowerCase();
+    title = title.replace(/-+/gi, "-");
 
     const secret = `${city_id}b${this.state.selectSearch.type}b${
       this.state.selectSearch.key

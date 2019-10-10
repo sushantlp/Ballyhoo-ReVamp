@@ -72,7 +72,11 @@ export default class Featured extends React.Component {
   onClickFeatured = (featured, props) => {
     props.changeLoadingState();
     const { city, city_id } = Router.router.query;
-    const title = featured.title.replace(/ /g, "-").toLowerCase();
+
+    let title = featured.title.replace(/[^a-zA-Z ]/g, "");
+    title = title.replace(/ /g, "-").toLowerCase();
+    title = title.replace(/-+/gi, "-");
+
     const secret = `${city_id}b${featured.api_type}b${featured.key}b${
       featured.response_type
     }b${1}b${0}`;

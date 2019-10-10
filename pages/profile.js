@@ -24,7 +24,6 @@ import { getProfile, putProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 
 import "react-toastify/dist/ReactToastify.css";
-import "react-notifications/lib/notifications.css";
 
 class Profile extends React.Component {
   static async getInitialProps(ctx) {

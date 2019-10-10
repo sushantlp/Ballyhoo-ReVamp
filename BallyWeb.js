@@ -5,7 +5,8 @@ const Path = require("path");
 const express = require("express");
 
 const port = process.env.PORT || 4000;
-const dev = process.env.NODE_ENV !== "production";
+// const dev = process.env.NODE_ENV !== "production";
+const dev = false;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 

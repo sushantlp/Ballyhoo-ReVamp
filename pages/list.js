@@ -170,12 +170,21 @@ class List extends React.Component {
 
         const partnerId =
           nextProps.categoryData.categoryData.details.partner_details.p_id;
-        const partner = nextProps.categoryData.categoryData.details.partner_details.p_name
-          .replace(/ /g, "-")
-          .toLowerCase();
-        const title = nextProps.categoryData.categoryData.details.offer_title
-          .replace(/ /g, "-")
-          .toLowerCase();
+
+        let partner = nextProps.categoryData.categoryData.details.partner_details.p_name.replace(
+          /[^a-zA-Z ]/g,
+          ""
+        );
+        partner = partner.replace(/ /g, "-").toLowerCase();
+        partner = partner.replace(/-+/gi, "-");
+
+        let title = nextProps.categoryData.categoryData.details.offer_title.replace(
+          /[^a-zA-Z ]/g,
+          ""
+        );
+        title = title.replace(/ /g, "-").toLowerCase();
+        title = title.replace(/-+/gi, "-");
+
         const secret = `${nextProps.categoryData.categoryData.details.offer_id}b${nextProps.categoryData.categoryData.result_type}b${partnerId}b${this.props.urlParam.urlParam.api_type}b${this.props.urlParam.urlParam.key}`;
 
         Router.push(
@@ -206,12 +215,17 @@ class List extends React.Component {
 
         const partnerId =
           nextProps.foodCategoryData.foodCategoryData.details.partner_id;
-        const partner = nextProps.foodCategoryData.foodCategoryData.details.bname
-          .replace(/ /g, "-")
-          .toLowerCase();
-        const title = nextProps.foodCategoryData.foodCategoryData.details.offering
-          .replace(/ /g, "-")
-          .toLowerCase();
+        let partner = nextProps.foodCategoryData.foodCategoryData.details.bname.replace(
+          /[^a-zA-Z ]/g,
+          ""
+        );
+        partner = partner.replace(/ /g, "-").toLowerCase();
+
+        let title = nextProps.foodCategoryData.foodCategoryData.details.offering.replace(
+          /[^a-zA-Z ]/g,
+          ""
+        );
+        title = title.replace(/ /g, "-").toLowerCase();
 
         const secret = `${0}b${
           nextProps.foodCategoryData.foodCategoryData.result_type

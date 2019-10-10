@@ -74,7 +74,11 @@ export default class Discover extends React.Component {
     props.changeLoadingState();
 
     const { city, city_id } = Router.router.query;
-    const title = discover.title.replace(/ /g, "-").toLowerCase();
+
+    let title = discover.title.replace(/[^a-zA-Z ]/g, "");
+    title = title.replace(/ /g, "-").toLowerCase();
+    title = title.replace(/-+/gi, "-");
+
     const secret = `${city_id}b${discover.api_type}b${discover.key}b${
       discover.response_type
     }b${1}b${0}`;

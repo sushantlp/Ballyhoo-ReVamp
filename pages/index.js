@@ -102,12 +102,22 @@ class Index extends React.Component {
 
         const partnerId =
           nextProps.categoryData.categoryData.details.partner_details.p_id;
-        const partner = nextProps.categoryData.categoryData.details.partner_details.p_name
-          .replace(/ /g, "-")
-          .toLowerCase();
-        const title = nextProps.categoryData.categoryData.details.offer_title
-          .replace(/ /g, "-")
-          .toLowerCase();
+
+        let partner = nextProps.categoryData.categoryData.details.partner_details.p_name.replace(
+          /[^a-zA-Z ]/g,
+          ""
+        );
+
+        partner = partner.replace(/ /g, "-").toLowerCase();
+        partner = partner.replace(/-+/gi, "-");
+
+        let title = nextProps.categoryData.categoryData.details.offer_title.replace(
+          /[^a-zA-Z ]/g,
+          ""
+        );
+        title = title.replace(/ /g, "-").toLowerCase();
+        title = title.replace(/-+/gi, "-");
+
         const secret = `${nextProps.categoryData.categoryData.details.offer_id}b${nextProps.categoryData.categoryData.result_type}b${partnerId}`;
 
         Router.push(
