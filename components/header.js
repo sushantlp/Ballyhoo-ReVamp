@@ -56,7 +56,9 @@ export default class Header extends React.Component {
           email: this.state.signupEmail,
           mobile: this.props.customerData.customerData.mobile,
           gender: this.props.customerData.customerData.gender,
-          birthday: this.props.customerData.customerData.birthday
+          birthday: this.props.customerData.customerData.birthday,
+          mobile_active: this.props.customerData.customerData.mobile_active,
+          email_active: this.props.customerData.customerData.email_active
         };
 
         this.setState({
@@ -83,7 +85,9 @@ export default class Header extends React.Component {
           email: this.state.signupEmail,
           mobile: mobile,
           gender: this.props.customerData.customerData.gender,
-          birthday: this.props.customerData.customerData.birthday
+          birthday: this.props.customerData.customerData.birthday,
+          mobile_active: this.props.customerData.customerData.mobile_active,
+          email_active: this.props.customerData.customerData.email_active
         };
 
         this.props.updateCustomerData(customerData);

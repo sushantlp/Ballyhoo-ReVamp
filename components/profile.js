@@ -32,6 +32,8 @@ const Profile = props => {
                             className="input is-large br0"
                             type="text"
                             placeholder="Aaron"
+                            value={props.firstName}
+                            onChange={event => props.onChangeFirstName(event)}
                           />
                         </label>
                       </div>
@@ -46,6 +48,8 @@ const Profile = props => {
                             className="input is-large br0"
                             type="text"
                             placeholder="Swartz"
+                            value={props.lastName}
+                            onChange={event => props.onChangeLastName(event)}
                           />
                         </label>
                       </div>
@@ -61,6 +65,7 @@ const Profile = props => {
                             type="text"
                             placeholder="Open@Code"
                             disabled
+                            value={props.email}
                           />
                         </label>
                       </div>
@@ -72,20 +77,21 @@ const Profile = props => {
                       <div className="field">
                         <div className="control ffqs fw2">
                           <div className="columns is-gapless">
-                            <div className="column is-3">
+                            {/* <div className="column is-3">
                               <div className="select is-large br0">
                                 <select className="br0" disabled>
                                   <option>+91</option>
                                 </select>
                               </div>
-                            </div>
+                            </div> */}
 
-                            <div className="column is-9">
+                            <div className="column is-12">
                               <input
                                 className="input is-large br0"
                                 type="number"
                                 placeholder="Mobile"
                                 disabled
+                                value={props.mobile}
                               />
                             </div>
                           </div>
@@ -125,22 +131,32 @@ const Profile = props => {
                             <div className="field">
                               <input
                                 className="is-checkradio is-danger"
-                                id="male"
+                                id="Male"
                                 type="radio"
                                 name="gender"
+                                value={props.gender}
+                                defaultChecked={
+                                  props.gender === "Male" ? true : false
+                                }
+                                onChange={() => props.onChangeGender("Male")}
                               />
-                              <label htmlFor="male" className="ffqs fw2">
+                              <label htmlFor="Male" className="ffqs fw2">
                                 Male
                               </label>
 
                               <input
                                 className="is-checkradio is-danger"
-                                id="female"
+                                id="Female"
                                 type="radio"
                                 name="gender"
                                 style={{ paddingLeft: "1em" }}
+                                value={props.gender}
+                                defaultChecked={
+                                  props.gender === "Female" ? true : false
+                                }
+                                onChange={() => props.onChangeGender("Female")}
                               />
-                              <label htmlFor="female" className="ffqs fw2">
+                              <label htmlFor="Female" className="ffqs fw2">
                                 Female
                               </label>
                             </div>

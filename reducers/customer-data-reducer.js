@@ -9,7 +9,9 @@ const initialState = {
     mobile: "",
     gender: 0,
     birthday: "",
-    loyality: 0
+    loyality: 0,
+    mobile_active: 0,
+    email_active: 0
   }
 };
 

@@ -47,22 +47,29 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      birthday: moment(),
       date: moment(),
-      focused: false
+      focused: false,
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      gender: "Male"
     };
   }
 
   componentDidMount() {
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
-      NotificationManager.error(
-        "Login",
-        "Please login",
-        3000,
-        this.enquiryRouteChange()
-      );
+      // NotificationManager.error(
+      //   "Login",
+      //   "Please login",
+      //   3000,
+      //   this.enquiryRouteChange()
+      // );
     } else {
       this.props.getProfile(this.props.customerData.customerData.customer_id);
     }
+
     ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
@@ -76,16 +83,51 @@ class Profile extends React.Component {
     }
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.profileData !== nextProps.profileData) {
+      let date = moment();
+      if (nextProps.profileData.profileData.dob == null)
+        date = moment(nextProps.profileData.profileData.dob);
+      this.setState({
+        date: date,
+        firstName: nextProps.profileData.profileData.fname,
+        lastName: nextProps.profileData.profileData.lname,
+        email: nextProps.profileData.profileData.email,
+        mobile: nextProps.profileData.profileData.mobile,
+        gender: nextProps.profileData.profileData ? "Male" : "Female"
+      });
+    } else if (this.props.profileUpdate !== nextProps.profileUpdate) {
+    }
+  }
+
   enquiryRouteChange = () => {
     Router.push("/");
   };
 
   onDateChange = date => {
-    this.setState({ date: date });
+    this.setState({ date: date, birthday: moment(date).format("YYYY-MM-DD") });
   };
 
   onFocusChange = bool => {
     this.setState({ focused: bool.focused });
+  };
+
+  onChangeFirstName = e => {
+    this.setState({
+      firstName: e.target.value
+    });
+  };
+
+  onChangeLastName = e => {
+    this.setState({
+      lastName: e.target.value
+    });
+  };
+
+  onChangeGender = gender => {
+    this.setState({
+      gender: gender
+    });
   };
 
   render() {
@@ -99,9 +141,17 @@ class Profile extends React.Component {
         />
         <ProfileComponent
           date={this.state.date}
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
+          email={this.state.email}
+          mobile={this.state.mobile}
+          gender={this.state.gender}
           focused={this.state.focused}
           onDateChange={this.onDateChange}
           onFocusChange={this.onFocusChange}
+          onChangeFirstName={this.onChangeFirstName}
+          onChangeLastName={this.onChangeLastName}
+          onChangeGender={this.onChangeGender}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
