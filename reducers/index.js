@@ -17,6 +17,8 @@ import { forget } from "./forget-reducer";
 import { postExplore } from "./explore-reducer";
 import { customerData } from "./customer-data-reducer";
 import { profileData, profileUpdate } from "./profile-reducer";
+import { payment } from "./payment-option-reducer";
+import { escapeEnquiry } from "./escape-enquiry-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -36,5 +38,7 @@ export default combineReducers({
   postExplore,
   customerData,
   profileData,
-  profileUpdate
+  profileUpdate,
+  payment,
+  escapeEnquiry
 });

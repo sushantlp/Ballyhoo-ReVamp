@@ -286,5 +286,51 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  paymentOptionApi: partnerId => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/partners/${partnerId}/payment-options`)
+        .then(response => {
+          response
+            .json()
+            .then(payment => resolve(payment))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  escapeEnquiryApi: (
+    offerId,
+    name,
+    mobile,
+    email,
+    queryDate,
+    guest,
+    query,
+    queryPackage
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/enquire/escape/offers/${offerId}`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          contact: mobile,
+          email: email,
+          query_date: queryDate,
+          no_of_guest: guest,
+          queries: query,
+          query_package: queryPackage
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(escapeEnquiry => resolve(escapeEnquiry))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };
