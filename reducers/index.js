@@ -15,6 +15,8 @@ import { login } from "./login-reducer";
 import { register } from "./register-reducer";
 import { forget } from "./forget-reducer";
 import { postExplore } from "./explore-reducer";
+import { customerData } from "./customer-data-reducer";
+import { profileData, profileUpdate } from "./profile-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -31,5 +33,8 @@ export default combineReducers({
   login,
   register,
   forget,
-  postExplore
+  postExplore,
+  customerData,
+  profileData,
+  profileUpdate
 });

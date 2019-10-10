@@ -67,3 +67,43 @@
 .mb1 {
   margin-bottom: 1em;
 }
+
+.profile-container .select:not(.is-multiple):not(.is-loading):hover::after {
+  color: #ff3860;
+}
+
+.profile-container .select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #ff3860;
+}
+
+.profile-container .SingleDatePickerInput__withBorder {
+  width: 20em;
+  border-bottom: 2px solid #ff3860;
+}
+
+.profile-container .DateInput_input__focused {
+  border-bottom: 0px;
+}
+
+.profile-container .CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #ff3860;
+  border: 1px double #ff3860;
+  color: #fff;
+}
+
+.profile-container .DayPicker_weekHeader_ul {
+  margin-top: -2px;
+}
+
+.profile-container .DayPickerKeyboardShortcuts_show__bottomRight::before {
+  bottom: 0px;
+  right: 0px;
+  border-top: 26px solid transparent;
+  border-right: 33px solid #ff3860;
+}
+
+.profile-container .DateInput {
+  width: 16em;
+}

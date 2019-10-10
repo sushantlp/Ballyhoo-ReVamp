@@ -31,6 +31,7 @@ import { getHomeScreen, getHomeScreenApi } from "../actions/home-screen-action";
 import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
+import { updateCustomerData } from "../actions/customer-data-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
@@ -165,6 +166,8 @@ class Index extends React.Component {
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
           postForget={this.props.postForget}
+          updateCustomerData={this.props.updateCustomerData}
+          customerData={this.props.customerData}
         />
         <Slidder
           cityLocality={this.props.cityLocality}
@@ -212,7 +215,8 @@ const mapStateToProps = state => {
     searchData: state.searchData,
     login: state.login,
     register: state.register,
-    forget: state.forget
+    forget: state.forget,
+    customerData: state.customerData
   };
 };
 
@@ -225,7 +229,8 @@ const mapDispatchToProps = dispatch => {
     getsearchData: bindActionCreators(getsearchData, dispatch),
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
-    postForget: bindActionCreators(postForget, dispatch)
+    postForget: bindActionCreators(postForget, dispatch),
+    updateCustomerData: bindActionCreators(updateCustomerData, dispatch)
   };
 };
 

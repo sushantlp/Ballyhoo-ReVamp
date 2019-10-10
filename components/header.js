@@ -21,6 +21,7 @@ export default class Header extends React.Component {
       loginOpen: false,
       signupOpen: false,
       forgetOpen: false,
+      profileOpen: true,
 
       loginEmail: "",
       loginPassword: "",
@@ -47,6 +48,21 @@ export default class Header extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.login !== nextProps.login) {
       if (nextProps.login.status === "SUCCESS") {
+        console.log(nextProps.login.login);
+        const customerData = {
+          customer_id: nextProps.login.login.c_id,
+          first_name: this.props.customerData.customerData.first_name,
+          last_name: this.props.customerData.customerData.last_name,
+          email: this.state.signupEmail,
+          mobile: this.props.customerData.customerData.mobile,
+          gender: this.props.customerData.customerData.gender,
+          birthday: this.props.customerData.customerData.birthday
+        };
+
+        this.setState({
+          profileOpen: true
+        });
+        this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
         NotificationManager.success("Successful", "Successful");
       } else {
@@ -57,6 +73,20 @@ export default class Header extends React.Component {
       }
     } else if (this.props.register !== nextProps.register) {
       if (nextProps.register.status === "SUCCESS") {
+        const mobileCode = this.state.signupCode.slice(1);
+        const mobile = `${mobileCode}${this.state.signupMobile}`;
+
+        const customerData = {
+          customer_id: this.props.customerData.customerData.customer_id,
+          first_name: this.props.customerData.customerData.first_name,
+          last_name: this.props.customerData.customerData.last_name,
+          email: this.state.signupEmail,
+          mobile: mobile,
+          gender: this.props.customerData.customerData.gender,
+          birthday: this.props.customerData.customerData.birthday
+        };
+
+        this.props.updateCustomerData(customerData);
         this.updateSignupState(false);
         NotificationManager.success("Successful", "Successful");
       } else {
@@ -413,15 +443,7 @@ export default class Header extends React.Component {
 
             <div id="navMenuExpo" className="navbar-menu">
               <div className="navbar-end">
-                {/* <div className="navbar-item">
-                  <span className="call-now-img">
-                    <img src="https://img.icons8.com/color/20/000000/ringer-volume.png" />
-                  </span>
-                  <span className="call-now-number">1800-123-5555</span>
-                </div> */}
-
                 <div className="navbar-item">
-                  {/* <Link href="/profile"> */}
                   <div className="control">
                     <div className="buttons">
                       <a className="button is-rounded is-outlined" disabled>
@@ -429,7 +451,6 @@ export default class Header extends React.Component {
                       </a>
                     </div>
                   </div>
-                  {/* </Link> */}
                 </div>
 
                 <div className="navbar-item">
@@ -444,18 +465,34 @@ export default class Header extends React.Component {
                   </Link>
                 </div>
 
-                <div className="navbar-item">
-                  <div className="control">
-                    <div
-                      className="buttons"
-                      onClick={() => this.updateLoginState(true)}
-                    >
-                      <a className="button is-rounded is-outlined">
-                        <span>Login</span>
-                      </a>
+                {this.state.profileOpen ? null : (
+                  <div className="navbar-item">
+                    <div className="control">
+                      <div
+                        className="buttons"
+                        onClick={() => this.updateLoginState(true)}
+                      >
+                        <a className="button is-rounded is-outlined">
+                          <span>Login</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
+
+                {this.state.profileOpen ? (
+                  <div className="navbar-item">
+                    <Link href="/profile">
+                      <div className="control">
+                        <div className="buttons">
+                          <a className="button is-rounded is-outlined">
+                            <span>Profile</span>
+                          </a>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ) : null}
 
                 <div className="navbar-item">
                   <Link href="/explore">

@@ -96,7 +96,7 @@ class Enquiry extends React.Component {
       NotificationManager.success(
         "Successful",
         nextProps.postEnquiry.postEnquiry.msg,
-        300,
+        3000,
         this.enquiryRouteChange()
       );
     } else if (

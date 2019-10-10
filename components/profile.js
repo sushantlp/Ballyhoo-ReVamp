@@ -60,6 +60,7 @@ const Profile = props => {
                             className="input is-large br0"
                             type="text"
                             placeholder="Open@Code"
+                            disabled
                           />
                         </label>
                       </div>
@@ -73,9 +74,8 @@ const Profile = props => {
                           <div className="columns is-gapless">
                             <div className="column is-3">
                               <div className="select is-large br0">
-                                <select className="br0">
+                                <select className="br0" disabled>
                                   <option>+91</option>
-                                  <option>+43</option>
                                 </select>
                               </div>
                             </div>
@@ -85,6 +85,7 @@ const Profile = props => {
                                 className="input is-large br0"
                                 type="number"
                                 placeholder="Mobile"
+                                disabled
                               />
                             </div>
                           </div>
@@ -98,15 +99,15 @@ const Profile = props => {
                       <div className="field">
                         <label className="control is-expanded">
                           <SingleDatePicker
-                            date={props.date} // momentPropTypes.momentObj or null
-                            onDateChange={date => props.onDateChange(date)} // PropTypes.func.isRequired
-                            focused={props.focused} // PropTypes.bool
+                            showDefaultInputIcon={true}
+                            date={props.date}
+                            id="date"
+                            onDateChange={date => props.onDateChange(date)}
+                            focused={props.focused}
                             onFocusChange={focused =>
                               props.onFocusChange(focused)
-                            } // PropTypes.func.isRequired
-                            id="1" // PropTypes.string.isRequired,
-                            showDefaultInputIcon={true}
-                            displayFormat="MMM DD YYYY"
+                            }
+                            displayFormat="DD-MM-YYYY"
                           />
                         </label>
                       </div>
