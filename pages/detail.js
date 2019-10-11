@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { host } from "../constants";
+import { host, hostWithoutSlash } from "../constants";
 
 import Spinner from "../components/spinner";
 import Head from "../components/head";
@@ -23,6 +23,7 @@ import { getZomatoData, getZomatoDataApi } from "../actions/zomato-action";
 import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
+import { getSeo } from "../actions/seo-data-action";
 
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
@@ -32,6 +33,7 @@ class Detail extends React.Component {
     let detailUrlParam = {};
     let slice = [];
     let routeParam = [];
+    let currentImage = "";
 
     try {
       if (isServer) {
@@ -67,7 +69,8 @@ class Detail extends React.Component {
           categoryJson,
           cityLocalityJson,
           featureJson,
-          slidderJson
+          slidderJson,
+          seoJson
         ] = await Promise.all([
           fetch(dynamicUrl).then(r => r.json()),
           fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
@@ -80,6 +83,9 @@ class Detail extends React.Component {
             `${host}api/v9/web/carousel/images?type=${2}&category=${
               detailUrlParam.result_type
             }`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/seo?city=${detailUrlParam.city_id}&category=${detailUrlParam.response_type}&partner=${detailUrlParam.partner_id}`
           ).then(r => r.json())
         ]);
 
@@ -90,6 +96,7 @@ class Detail extends React.Component {
         store.dispatch(getCityLocality(cityLocalityJson));
         store.dispatch(getFeaturingData(featureJson));
         store.dispatch(getSlidderImage(slidderJson));
+        store.dispatch(getSeo(seoJson));
       } else {
         routeParam = query;
 
@@ -112,7 +119,7 @@ class Detail extends React.Component {
             ? detailUrlParam.partner_id
             : detailUrlParam.id;
 
-        const [featureJson, slidderJson] = await Promise.all([
+        const [featureJson, slidderJson, seoJson] = await Promise.all([
           fetch(
             `${host}api/v9/web/all/featurings?category=${
               slice[1]
@@ -122,12 +129,32 @@ class Detail extends React.Component {
             `${host}api/v9/web/carousel/images?type=${2}&category=${
               detailUrlParam.result_type
             }`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/seo?city=${detailUrlParam.city_id}&category=${detailUrlParam.response_type}&partner=${detailUrlParam.partner_id}`
           ).then(r => r.json())
         ]);
 
         store.dispatch(getFeaturingData(featureJson));
         store.dispatch(getSlidderImage(slidderJson));
+        store.dispatch(getSeo(seoJson));
       }
+
+      if (parseInt(detailUrlParam.response_type, 10) === 1)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1474443270/ballyhoo/BREAKFAST/21.jpg";
+      else if (parseInt(detailUrlParam.response_type, 10) === 2)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525270867/OTHER_CATEGORY/EVENT/8.jpg";
+      else if (parseInt(detailUrlParam.response_type, 10) === 3)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271107/OTHER_CATEGORY/ACTIVITY/5.jpg";
+      else if (parseInt(detailUrlParam.response_type, 10) === 4)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271481/OTHER_CATEGORY/GETAWAY/7.jpg";
+      else if (parseInt(detailUrlParam.response_type, 10) === 5)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271817/OTHER_CATEGORY/SALOON/7.jpg";
 
       if (parseInt(detailUrlParam.result_type, 10) === 1) {
         // Zomato API
@@ -144,7 +171,7 @@ class Detail extends React.Component {
       console.log(err);
     }
 
-    return { detailUrlParam, routeParam };
+    return { detailUrlParam, routeParam, currentImage };
   }
 
   constructor(props) {
@@ -176,10 +203,15 @@ class Detail extends React.Component {
   };
 
   render() {
+    let keyword = "";
+
+    for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
+      keyword = `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+    }
+
     if (this.state.isLoading)
       return (
         <React.Fragment>
-          <Head title="Home" />
           <Header
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
@@ -193,7 +225,13 @@ class Detail extends React.Component {
 
     return (
       <React.Fragment>
-        <Head title="Home" />
+        <Head
+          title="Ballyhoo Today"
+          ogImage={this.props.currentImage}
+          url={`${hostWithoutSlash}${this.props.currentUrl}`}
+          description={this.props.seo.seo.description}
+          keyword={keyword}
+        />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
@@ -233,7 +271,8 @@ const mapStateToProps = state => {
     zomatoData: state.zomatoData,
     login: state.login,
     register: state.register,
-    forget: state.forget
+    forget: state.forget,
+    seo: state.seo
   };
 };
 
@@ -248,7 +287,8 @@ const mapDispatchToProps = dispatch => {
     getZomatoDataApi: bindActionCreators(getZomatoDataApi, dispatch),
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
-    postForget: bindActionCreators(postForget, dispatch)
+    postForget: bindActionCreators(postForget, dispatch),
+    getSeo: bindActionCreators(getSeo, dispatch)
   };
 };
 

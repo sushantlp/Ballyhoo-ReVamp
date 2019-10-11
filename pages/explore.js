@@ -320,7 +320,6 @@ class Explore extends React.Component {
     if (this.state.isLoading)
       return (
         <React.Fragment>
-          <Head title="Home" />
           <Header
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
@@ -335,7 +334,6 @@ class Explore extends React.Component {
 
     return (
       <React.Fragment>
-        <Head title="Home" />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}

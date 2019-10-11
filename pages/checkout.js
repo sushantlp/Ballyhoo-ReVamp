@@ -35,7 +35,6 @@ class Checkout extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Head title="Home" />
         <Header />
         <CheckoutComponent />
         <Headout />

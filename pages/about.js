@@ -55,7 +55,6 @@ class About extends React.Component {
   render() {
     return (
       <div>
-        <Head title="Home" />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}

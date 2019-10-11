@@ -35,7 +35,6 @@ class Order extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Head title="Home" />
         <Header />
         <OrderComponent />
         <Headout />

@@ -208,7 +208,6 @@ class Profile extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Head title="Home" />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}

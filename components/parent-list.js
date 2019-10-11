@@ -50,14 +50,7 @@ class ParentList extends React.Component {
     )
       return <Spinner />;
 
-    if (this.props.urlParam.response_type === 0)
-      return (
-        <React.Fragment>
-          {" "}
-          <Spinner />
-          {/* <Space /> */}
-        </React.Fragment>
-      );
+    if (this.props.urlParam.response_type === 0) return <Spinner />;
 
     return (
       <React.Fragment>
@@ -97,6 +90,7 @@ class ParentList extends React.Component {
         <TrendingList
           recommendation={this.props.recommendation}
           routeParam={this.props.routeParam}
+          urlParam={this.props.urlParam}
         />
       </React.Fragment>
     );

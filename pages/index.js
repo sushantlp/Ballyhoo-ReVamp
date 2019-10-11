@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Router from "next/router";
+
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-import { host } from "../constants";
+import { host, hostWithoutSlash } from "../constants";
 
 import Spinner from "../components/spinner";
 import Head from "../components/head";
@@ -32,15 +33,18 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { updateCustomerData } from "../actions/customer-data-action";
+import { getSeo } from "../actions/seo-data-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
+    let currentUrl = [];
     try {
-      const { store, isServer, req, query } = ctx;
+      const { store, isServer, req, query, asPath } = ctx;
 
       let cityId = 1;
 
       if (isServer) {
+        currentUrl = req.url;
         if (
           req.hasOwnProperty("params") &&
           req.params.hasOwnProperty("city_id") &&
@@ -48,25 +52,33 @@ class Index extends React.Component {
         )
           cityId = req.params.city_id;
       } else {
+        currentUrl = asPath;
         if (query.hasOwnProperty("city_id") && query.city_id !== undefined)
           cityId = query.city_id;
       }
 
-      const [cityLocalityJson, homeScreenJson, searchJson] = await Promise.all([
+      const [
+        cityLocalityJson,
+        homeScreenJson,
+        searchJson,
+        seoJson
+      ] = await Promise.all([
         fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
         fetch(`${host}api/v9/web/home?city_id=${cityId}`).then(r => r.json()),
-        fetch(`${host}api/v9/web/search-keys`).then(r => r.json())
+        fetch(`${host}api/v9/web/search-keys`).then(r => r.json()),
+        fetch(`${host}api/v9/web/seo?city=${cityId}`).then(r => r.json())
       ]);
 
       store.dispatch(getsearchData(searchJson));
       store.dispatch(getHomeScreen(homeScreenJson));
       store.dispatch(getCityLocality(cityLocalityJson));
+      store.dispatch(getSeo(seoJson));
     } catch (err) {
       console.log("ERROR");
       console.log(err);
     }
 
-    return {};
+    return { currentUrl };
   }
 
   constructor(props) {
@@ -154,10 +166,14 @@ class Index extends React.Component {
   };
 
   render() {
+    let keyword = "";
+    for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
+      keyword = `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+    }
+
     if (this.state.isLoading)
       return (
         <React.Fragment>
-          <Head title="Home" />
           <Header
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
@@ -171,7 +187,13 @@ class Index extends React.Component {
 
     return (
       <div>
-        <Head title="Home" />
+        <Head
+          title="Ballyhoo Today"
+          ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
+          url={`${hostWithoutSlash}${this.props.currentUrl}`}
+          description={this.props.seo.seo.description}
+          keyword={keyword}
+        />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
@@ -185,6 +207,7 @@ class Index extends React.Component {
           cityChangeApiCall={this.cityChangeApiCall}
           searchData={this.props.searchData}
           changeLoadingState={this.changeLoadingState}
+          seo={this.props.seo}
         />
         <SlidderBanner homeScreen={this.props.homeScreen} />
         <Discover
@@ -226,7 +249,8 @@ const mapStateToProps = state => {
     login: state.login,
     register: state.register,
     forget: state.forget,
-    customerData: state.customerData
+    customerData: state.customerData,
+    seo: state.seo
   };
 };
 
@@ -240,7 +264,8 @@ const mapDispatchToProps = dispatch => {
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
     postForget: bindActionCreators(postForget, dispatch),
-    updateCustomerData: bindActionCreators(updateCustomerData, dispatch)
+    updateCustomerData: bindActionCreators(updateCustomerData, dispatch),
+    getSeo: bindActionCreators(getSeo, dispatch)
   };
 };
 

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-import { host } from "../constants";
+import { host, hostWithoutSlash } from "../constants";
 
 import Spinner from "../components/spinner";
 import Head from "../components/head";
@@ -35,9 +35,13 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 
+import { getSeo } from "../actions/seo-data-action";
+
 class List extends React.Component {
   static async getInitialProps(ctx) {
     let routeParam = [];
+    let currentUrl = "";
+    let currentImage = "";
     let listUrlParam = {
       city_id: 0,
       api_type: 0,
@@ -47,11 +51,17 @@ class List extends React.Component {
     };
 
     try {
-      const { store, isServer, req, query } = ctx;
+      const { store, isServer, req, query, asPath } = ctx;
+
       store.dispatch(updateUrlParam(listUrlParam));
       let dynamicUrl;
-      if (isServer) routeParam = req.params;
-      else routeParam = query;
+      if (isServer) {
+        routeParam = req.params;
+        currentUrl = req.url;
+      } else {
+        routeParam = query;
+        currentUrl = asPath;
+      }
       let page = 1;
 
       if (routeParam.secret !== undefined) {
@@ -71,6 +81,22 @@ class List extends React.Component {
         }
       }
 
+      if (parseInt(listUrlParam.response_type, 10) === 1)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1474443270/ballyhoo/BREAKFAST/21.jpg";
+      else if (parseInt(listUrlParam.response_type, 10) === 2)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525270867/OTHER_CATEGORY/EVENT/8.jpg";
+      else if (parseInt(listUrlParam.response_type, 10) === 3)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271107/OTHER_CATEGORY/ACTIVITY/5.jpg";
+      else if (parseInt(listUrlParam.response_type, 10) === 4)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271481/OTHER_CATEGORY/GETAWAY/7.jpg";
+      else if (parseInt(listUrlParam.response_type, 10) === 5)
+        currentImage =
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271817/OTHER_CATEGORY/SALOON/7.jpg";
+
       if (listUrlParam.flag === 1) {
         dynamicUrl = `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`;
       } else {
@@ -83,7 +109,8 @@ class List extends React.Component {
           searchJson,
           listJson,
           slidderJson,
-          recommendation
+          recommendation,
+          seoJson
         ] = await Promise.all([
           fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
           fetch(`${host}api/v9/web/search-keys`).then(r => r.json()),
@@ -95,6 +122,9 @@ class List extends React.Component {
           ).then(r => r.json()),
           fetch(
             `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/seo?city=${listUrlParam.city_id}&category=${listUrlParam.response_type}`
           ).then(r => r.json())
         ]);
 
@@ -107,8 +137,14 @@ class List extends React.Component {
 
         store.dispatch(getSlidderImage(slidderJson));
         store.dispatch(getrecommendation(recommendation));
+        store.dispatch(getSeo(seoJson));
       } else {
-        const [listJson, slidderJson, recommendation] = await Promise.all([
+        const [
+          listJson,
+          slidderJson,
+          recommendation,
+          seoJson
+        ] = await Promise.all([
           fetch(dynamicUrl).then(r => r.json()),
           fetch(
             `${host}api/v9/web/carousel/images?type=${1}&category=${
@@ -117,6 +153,9 @@ class List extends React.Component {
           ).then(r => r.json()),
           fetch(
             `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+          ).then(r => r.json()),
+          fetch(
+            `${host}api/v9/web/seo?city=${listUrlParam.city_id}&category=${listUrlParam.response_type}`
           ).then(r => r.json())
         ]);
 
@@ -126,6 +165,7 @@ class List extends React.Component {
 
         store.dispatch(getSlidderImage(slidderJson));
         store.dispatch(getrecommendation(recommendation));
+        store.dispatch(getSeo(seoJson));
       }
 
       store.dispatch(updateUrlParam(listUrlParam));
@@ -134,7 +174,7 @@ class List extends React.Component {
       console.log(err);
     }
 
-    return { routeParam };
+    return { routeParam, currentUrl, currentImage };
   }
 
   constructor(props) {
@@ -272,23 +312,7 @@ class List extends React.Component {
     flag,
     nextPage
   ) => {
-    // const listUrlParam = {
-    //   city_id: cityId,
-    //   api_type: apiType,
-    //   key: key,
-    //   response_type: responseType,
-    //   flag: flag
-    // };
-    // this.setState({
-    //   city_id: cityId,
-    //   api_type: apiType,
-    //   key: key,
-    //   response_type: responseType,
-    //   flag: flag
-    // });
-
     this.props.getSearchListDataApi(cityId, apiType, key, nextPage);
-    // this.props.updateUrlParam(listUrlParam);
   };
 
   changeLoadingState = () => {
@@ -299,17 +323,22 @@ class List extends React.Component {
   };
 
   render() {
+    let keyword = "";
+
+    for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
+      keyword = `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+    }
+
     if (this.state.isLoading)
       return (
         <React.Fragment>
-          <Head title="Home" />
           <Header
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
             postForget={this.props.postForget}
           />
           <Spinner />
-          {/* <Space /> */}
+
           <Headout />
           <Footer cityLocality={this.props.cityLocality} />
         </React.Fragment>
@@ -317,7 +346,13 @@ class List extends React.Component {
 
     return (
       <div>
-        <Head title="Home" />
+        <Head
+          title="Ballyhoo Today"
+          ogImage={this.props.currentImage}
+          url={`${hostWithoutSlash}${this.props.currentUrl}`}
+          description={this.props.seo.seo.description}
+          keyword={keyword}
+        />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
@@ -355,7 +390,8 @@ const mapStateToProps = state => {
     urlParam: state.urlParam,
     login: state.login,
     register: state.register,
-    forget: state.forget
+    forget: state.forget,
+    seo: state.seo
   };
 };
 
@@ -378,7 +414,8 @@ const mapDispatchToProps = dispatch => {
     updateUrlParam: bindActionCreators(updateUrlParam, dispatch),
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
-    postForget: bindActionCreators(postForget, dispatch)
+    postForget: bindActionCreators(postForget, dispatch),
+    getSeo: bindActionCreators(getSeo, dispatch)
   };
 };
 

@@ -89,9 +89,9 @@ export default class TrendingList extends React.Component {
     // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
     const slice = secret.split("b");
 
-    const secrets = `${slice[0]}b${recommendation.api_type}b${
-      recommendation.key
-    }b${recommendation.response_type}b${1}b${0}`;
+    const secrets = `${this.props.urlParam.city_id}b${
+      recommendation.api_type
+    }b${recommendation.key}b${recommendation.response_type}b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",
