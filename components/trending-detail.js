@@ -79,7 +79,7 @@ export default class TrendingDetail extends React.Component {
   onClickFeature = feature => {
     this.props.changeLoadingState();
     const city = this.props.routeParam.city.replace(/ /g, "-").toLowerCase();
-
+    console.log(this.props.detailUrlParam);
     let title = feature.title.replace(/[^a-zA-Z ]/g, "");
     title = title.replace(/ /g, "-").toLowerCase();
     title = title.replace(/-+/gi, "-");
@@ -88,9 +88,9 @@ export default class TrendingDetail extends React.Component {
     //   if (obj.city_name.toLowerCase() === city.toLowerCase()) return obj;
     // });
 
-    const secrets = `${this.props.detailUrlParam.detailUrlParam.city_id}b${
-      feature.api_type
-    }b${feature.key}b${feature.response_type}b${1}b${0}`;
+    const secrets = `${this.props.detailUrlParam.city_id}b${feature.api_type}b${
+      feature.key
+    }b${feature.response_type}b${1}b${0}`;
     Router.push(
       {
         pathname: "/list",
