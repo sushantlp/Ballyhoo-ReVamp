@@ -84,8 +84,11 @@ class Profile extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (this.props.profileData !== nextProps.profileData) {
+      console.log("INSIDE profileData");
       if (nextProps.profileData.status === "SUCCESS") {
+        console.log("INSIDE profileData SUCCESS");
         let date = moment();
         if (nextProps.profileData.profile.dob !== null)
           date = moment(nextProps.profileData.profile.dob);
@@ -129,14 +132,17 @@ class Profile extends React.Component {
 
         this.props.updateCustomerData(customerData);
       } else {
+        console.log("INSIDE profileData FAIL");
         toast.error(`${nextProps.profileData.profile.msg} !`);
       }
     } else if (this.props.profileUpdate !== nextProps.profileUpdate) {
+      console.log("INSIDE profileUpdate");
       this.setState({
         isLoading: false
       });
 
       if (nextProps.profileUpdate.status === "SUCCESS") {
+        console.log("INSIDE profileUpdate SUCCESS");
         const customerData = {
           customer_id: this.props.customerData.customerData.customer_id,
           first_name: this.state.firstName,
@@ -155,6 +161,7 @@ class Profile extends React.Component {
           onClose: () => this.enquiryRouteChange()
         });
       } else {
+        console.log("INSIDE profileUpdate FAIL");
         toast.error(`${nextProps.profileUpdate.profile.msg} !`);
       }
     }

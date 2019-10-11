@@ -69,6 +69,7 @@ export default class Overview extends React.Component {
   };
 
   render() {
+    const keyword = this.props.keyword;
     const offerRating =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1
         ? this.props.foodCategoryData.foodCategoryData.details.rating
@@ -134,9 +135,9 @@ export default class Overview extends React.Component {
           parseInt(this.props.detailUrlParam.result_type, 10) !== 4
         ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}  ${this.props.categoryData.categoryData.details.offer_address.address_line_2}  ${this.props.categoryData.categoryData.details.offer_address.locality}  ${this.props.categoryData.categoryData.details.offer_address.city}`
         : parseInt(
-            this.props.categoryData.categoryData.details.offer_exclusive !== 1,
+            this.props.categoryData.categoryData.details.offer_exclusive,
             10
-          )
+          ) === 0
         ? `${this.props.categoryData.categoryData.details.offer_address.address_line_1}  ${this.props.categoryData.categoryData.details.offer_address.address_line_2}  ${this.props.categoryData.categoryData.details.offer_address.locality}  ${this.props.categoryData.categoryData.details.offer_address.city}`
         : null;
 
@@ -241,7 +242,7 @@ export default class Overview extends React.Component {
         halfRating = (
           <img
             src="https://img.icons8.com/color/20/000000/star-half-empty.png"
-            alt={this.props.keyword}
+            alt={keyword}
           />
         );
       }
@@ -256,7 +257,8 @@ export default class Overview extends React.Component {
     for (let i = 0; i < topRating; i++) {
       emptyRating.push(i);
     }
-
+    console.log(this.props.categoryData.categoryData.details);
+    console.log(where);
     return (
       <div className="overview-container">
         <div className="box">
@@ -280,7 +282,7 @@ export default class Overview extends React.Component {
                   <span className="ffqs fw2 f1-2">Popularity : </span>
                   <img
                     src="https://img.icons8.com/plasticine/20/000000/hearts.png"
-                    alt={this.props.keyword}
+                    alt={keyword}
                     className="pl0_5"
                   />
                   <span className="ellipsis pl0_5 fz1_4 pfc4">
@@ -304,8 +306,8 @@ export default class Overview extends React.Component {
                     return (
                       <img
                         src="https://img.icons8.com/color/20/000000/filled-star.png"
-                        alt={this.props.keyword}
                         key={i}
+                        alt={keyword}
                       />
                     );
                   })}
@@ -315,8 +317,8 @@ export default class Overview extends React.Component {
                       return (
                         <img
                           src="https://img.icons8.com/color/20/000000/star.png"
-                          alt={this.props.keyword}
                           key={i}
+                          alt={keyword}
                         />
                       );
                     })}

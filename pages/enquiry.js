@@ -88,10 +88,12 @@ class Enquiry extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (
       this.props.postEnquiry !== nextProps.postEnquiry &&
       nextProps.postEnquiry.status === "SUCCESS"
     ) {
+      console.log("INSIDE postEnquiry SUCCESS");
       this.updateIsLoading();
       NotificationManager.success(
         "Successful",
@@ -103,6 +105,7 @@ class Enquiry extends React.Component {
       this.props.postEnquiry !== nextProps.postEnquiry &&
       nextProps.postEnquiry.status === "FAIL"
     ) {
+      console.log("INSIDE postEnquiry FAIL");
       this.updateIsLoading();
       NotificationManager.error("Error", nextProps.postEnquiry.postEnquiry.msg);
     }
@@ -199,7 +202,7 @@ class Enquiry extends React.Component {
   onChangePartyDate = date => {
     this.setState({
       enquiryPartyDate: date,
-      enquiryApiPartyDate: moment(date).format("YYYY-MM-DD")
+      enquiryApiPartyDate: date
     });
   };
 
@@ -295,12 +298,14 @@ class Enquiry extends React.Component {
 
     const mobileCode = this.state.enquiryMobileCode.slice(1);
     const mobile = `${mobileCode}${this.state.enquiryMobile}`;
+    const date = moment(this.state.enquiryApiPartyDate).format("YYYY-MM-DD");
+
     this.props.postEnquiryApi(
       this.state.enquiryName,
       mobile,
       this.state.enquiryEmail,
       this.state.enquiryOccasion,
-      this.state.enquiryApiPartyDate,
+      date,
       this.state.enquiryPartyTime,
       this.state.enquiryFoodPreference,
       this.state.enquiryFoodPreferenceAlcohol,

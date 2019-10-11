@@ -45,8 +45,11 @@ export default class Header extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (this.props.login !== nextProps.login) {
+      console.log("INSIDE nextProps.login");
       if (nextProps.login.status === "SUCCESS") {
+        console.log("INSIDE nextProps.login SUCCESS");
         console.log(nextProps.login.login);
         const customerData = {
           customer_id: nextProps.login.login.c_id,
@@ -68,6 +71,7 @@ export default class Header extends React.Component {
         this.updateLoginState(false);
         toast.success("Successful");
       } else {
+        console.log("INSIDE nextProps.login FAIL");
         this.setState({
           isLoading: false,
           errorStatus: true,
@@ -75,7 +79,9 @@ export default class Header extends React.Component {
         });
       }
     } else if (this.props.register !== nextProps.register) {
+      console.log("INSIDE nextProps.register");
       if (nextProps.register.status === "SUCCESS") {
+        console.log("INSIDE nextProps.register SUCCESS");
         const mobileCode = this.state.signupCode.slice(1);
         const mobile = `${mobileCode}${this.state.signupMobile}`;
 
@@ -100,6 +106,7 @@ export default class Header extends React.Component {
 
         toast.success("Successful");
       } else {
+        console.log("INSIDE nextProps.register FAIL");
         this.setState({
           isLoading: false,
           errorStatus: true,
@@ -107,7 +114,9 @@ export default class Header extends React.Component {
         });
       }
     } else if (this.props.forget !== nextProps.forget) {
+      console.log("INSIDE nextProps.forget");
       if (nextProps.forget.status === "SUCCESS") {
+        console.log("INSIDE nextProps.forget SUCCESS");
         this.setState({
           isLoading: false
         });
@@ -115,6 +124,7 @@ export default class Header extends React.Component {
         this.updateForgetState(false);
         toast.success("Successful");
       } else {
+        console.log("INSIDE nextProps.forget FAIL");
         this.setState({
           isLoading: false,
           errorStatus: true,

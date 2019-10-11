@@ -59,7 +59,7 @@ class Explore extends React.Component {
       exploreTourCoordination: "Yes",
       exploreTourDuration: "",
       exploreTourDate: moment(),
-      exploreTourDateApi: moment().format("YYYY-MM-DD"),
+      exploreTourDateApi: moment(),
       exploreAdult: 1,
       exploreChildren: 0,
       explorePet: 0,
@@ -92,10 +92,12 @@ class Explore extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (
       this.props.postExplore !== nextProps.postExplore &&
       nextProps.postExplore.status === "SUCCESS"
     ) {
+      console.log("INSIDE postExplore SUCCESS");
       this.updateIsLoading();
       NotificationManager.success(
         "Successful",
@@ -107,6 +109,7 @@ class Explore extends React.Component {
       this.props.postExplore !== nextProps.postExplore &&
       nextProps.postExplore.status === "FAIL"
     ) {
+      console.log("INSIDE postExplore FAIL");
       this.updateIsLoading();
       NotificationManager.error("Error", nextProps.postExplore.postExplore.msg);
     }
@@ -134,7 +137,7 @@ class Explore extends React.Component {
   onChangeDate = date => {
     this.setState({
       exploreTourDate: date,
-      exploreTourDateApi: moment(date).format("YYYY-MM-DD")
+      exploreTourDateApi: date
     });
   };
 
@@ -296,6 +299,7 @@ class Explore extends React.Component {
     const mobileCode = this.state.exploreMobileCode.slice(1);
     const mobile = `${mobileCode}${this.state.exploreMobile}`;
     const coordinator = this.state.exploreTourCoordination === "Yes" ? 1 : 0;
+    const date = moment(this.state.exploreTourDateApi).format("YYYY-MM-DD");
 
     this.props.postExploreApi(
       this.state.exploreName,
@@ -305,7 +309,7 @@ class Explore extends React.Component {
       this.state.exploreTourType,
       coordinator,
       this.state.exploreTourDuration,
-      this.state.exploreTourDateApi,
+      date,
       this.state.exploreAdult,
       this.state.exploreChildren,
       this.state.explorePet,
