@@ -101,6 +101,9 @@ export default {
   ) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/enquire/group/bookings`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -145,6 +148,9 @@ export default {
   ) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/enquire/escape/trip`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -177,6 +183,9 @@ export default {
   loginApi: (email, password) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/signin`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           email: email,
@@ -196,6 +205,9 @@ export default {
   registerApi: (mobile, email, password, fname, lname, sex, dob) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/register`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           mobile,
@@ -220,6 +232,9 @@ export default {
   forgetApi: email => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/password/reset`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           email: email
@@ -251,6 +266,9 @@ export default {
   putProfileApi: (customerId, firstName, lastName, sex, dob) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/customers/${customerId}`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "PUT",
         body: JSON.stringify({
           fname: firstName,
@@ -272,6 +290,9 @@ export default {
   tokenApi: (email, password) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/token`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           email: email,
@@ -313,6 +334,9 @@ export default {
   ) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/enquire/escape/offers/${offerId}`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -343,6 +367,9 @@ export default {
   ) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/partners/${partnerId}/fnb/rsvp`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           customer_id: customerId,
@@ -370,6 +397,9 @@ export default {
   ) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/partners/${partnerId}/sns/appointment`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: "POST",
         body: JSON.stringify({
           customer_id: customerId,

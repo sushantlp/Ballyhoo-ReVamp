@@ -16,6 +16,7 @@ export default class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       loginOpen: false,
       signupOpen: false,
       forgetOpen: false,
@@ -60,13 +61,15 @@ export default class Header extends React.Component {
         };
 
         this.setState({
-          profileOpen: true
+          profileOpen: true,
+          isLoading: false
         });
         this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
         toast.success("Successful");
       } else {
         this.setState({
+          isLoading: false,
           errorStatus: true,
           errorMsg: nextProps.login.login.msg
         });
@@ -88,22 +91,32 @@ export default class Header extends React.Component {
           email_active: this.props.customerData.customerData.email_active
         };
 
+        this.setState({
+          isLoading: false
+        });
+
         this.props.updateCustomerData(customerData);
         this.updateSignupState(false);
 
         toast.success("Successful");
       } else {
         this.setState({
+          isLoading: false,
           errorStatus: true,
           errorMsg: nextProps.register.register.msg
         });
       }
     } else if (this.props.forget !== nextProps.forget) {
       if (nextProps.forget.status === "SUCCESS") {
+        this.setState({
+          isLoading: false
+        });
+
         this.updateForgetState(false);
         toast.success("Successful");
       } else {
         this.setState({
+          isLoading: false,
           errorStatus: true,
           errorMsg: nextProps.forget.forget.msg
         });
@@ -146,7 +159,8 @@ export default class Header extends React.Component {
 
   onClickForgetButton = () => {
     this.setState({
-      forgetButton: false
+      forgetButton: false,
+      isLoading: true
     });
 
     this.props.postForget(this.state.forgetEmail);
@@ -279,6 +293,7 @@ export default class Header extends React.Component {
         });
     } else {
       if (
+        this.state.signupPassword === e.target.value &&
         e.target.value !== "" &&
         this.state.signupMobile !== "" &&
         this.state.signupPassword !== "" &&
@@ -298,7 +313,8 @@ export default class Header extends React.Component {
 
   onClickSignupButton = () => {
     this.setState({
-      signupButton: false
+      signupButton: false,
+      isLoading: true
     });
     const mobileCode = this.state.signupCode.slice(1);
     const mobile = `${mobileCode}${this.state.signupMobile}`;
@@ -390,7 +406,8 @@ export default class Header extends React.Component {
 
   onClickLoginButton = () => {
     this.setState({
-      loginButton: false
+      loginButton: false,
+      isLoading: true
     });
     this.props.postLogin(this.state.loginEmail, this.state.loginPassword);
   };
@@ -513,6 +530,7 @@ export default class Header extends React.Component {
 
         {this.state.loginOpen ? (
           <Login
+            isLoading={this.state.isLoading}
             loginOpen={this.state.loginOpen}
             updateLoginState={this.updateLoginState}
             moveToSignup={this.moveToSignup}
@@ -532,6 +550,7 @@ export default class Header extends React.Component {
 
         {this.state.signupOpen ? (
           <Signup
+            isLoading={this.state.isLoading}
             signupOpen={this.state.signupOpen}
             updateSignupState={this.updateSignupState}
             signupButton={this.state.signupButton}
@@ -552,6 +571,7 @@ export default class Header extends React.Component {
 
         {this.state.forgetOpen ? (
           <Forget
+            isLoading={this.state.isLoading}
             forgetOpen={this.state.forgetOpen}
             forgetButton={this.state.forgetButton}
             updateForgetState={this.updateForgetState}

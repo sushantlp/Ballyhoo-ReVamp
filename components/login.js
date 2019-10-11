@@ -72,7 +72,15 @@ const Login = props => {
               </div>
             </section>
             <footer className="modal-card-foot">
-              {props.loginButton ? (
+              {props.isLoading ? (
+                <button
+                  className="button is-danger is-active login-button is-loading"
+                  disabled
+                  style={{ backgroundColor: "#fdb6c4" }}
+                >
+                  LOGIN
+                </button>
+              ) : props.loginButton ? (
                 <button
                   className="button is-danger is-active login-button"
                   onClick={() => props.onClickLoginButton()}

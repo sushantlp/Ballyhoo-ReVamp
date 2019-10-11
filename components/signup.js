@@ -146,7 +146,15 @@ const Signup = props => {
               </div>
             </section>
             <footer className="modal-card-foot">
-              {props.signupButton ? (
+              {props.isLoading ? (
+                <button
+                  className="button is-danger is-active login-button is-loading"
+                  disabled
+                  style={{ backgroundColor: "#fdb6c4" }}
+                >
+                  SIGNUP
+                </button>
+              ) : props.signupButton ? (
                 <button
                   className="button is-danger is-active signup-button"
                   onClick={() => props.onClickSignupButton()}
