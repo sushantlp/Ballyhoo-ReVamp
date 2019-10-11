@@ -18,7 +18,10 @@ const DetailTab = props => {
           >
             <a>
               <span className="icon is-medium">
-                <img src="https://img.icons8.com/cotton/20/000000/red-file--v1.png" />
+                <img
+                  src="https://img.icons8.com/cotton/20/000000/red-file--v1.png"
+                  alt={props.keyword}
+                />
               </span>
               <span>Overview</span>
             </a>
@@ -33,7 +36,10 @@ const DetailTab = props => {
             >
               <a>
                 <span className="icon is-medium">
-                  <img src="https://img.icons8.com/dusk/20/000000/sale.png" />
+                  <img
+                    src="https://img.icons8.com/dusk/20/000000/sale.png"
+                    alt={props.keyword}
+                  />
                 </span>
                 <span>Offers</span>
               </a>
@@ -49,7 +55,10 @@ const DetailTab = props => {
             >
               <a>
                 <span className="icon is-medium">
-                  <img src="https://img.icons8.com/bubbles/30/000000/restaurant.png" />
+                  <img
+                    src="https://img.icons8.com/bubbles/30/000000/restaurant.png"
+                    alt={props.keyword}
+                  />
                 </span>
                 <span>Buffets</span>
               </a>
@@ -65,7 +74,10 @@ const DetailTab = props => {
             >
               <a>
                 <span className="icon is-medium">
-                  <img src="https://img.icons8.com/plasticine/30/000000/box-love.png" />
+                  <img
+                    src="https://img.icons8.com/plasticine/30/000000/box-love.png"
+                    alt={props.keyword}
+                  />
                 </span>
                 <span>Packages</span>
               </a>
@@ -79,7 +91,10 @@ const DetailTab = props => {
             >
               <a>
                 <span className="icon is-medium">
-                  <img src="https://img.icons8.com/plasticine/30/000000/box-love.png" />
+                  <img
+                    src="https://img.icons8.com/plasticine/30/000000/box-love.png"
+                    alt={props.keyword}
+                  />
                 </span>
                 <span>Packages</span>
               </a>
@@ -95,7 +110,10 @@ const DetailTab = props => {
             >
               <a>
                 <span className="icon is-medium">
-                  <img src="https://img.icons8.com/cute-clipart/22/000000/tear-off-calendar.png" />
+                  <img
+                    src="https://img.icons8.com/cute-clipart/22/000000/tear-off-calendar.png"
+                    alt={props.keyword}
+                  />
                 </span>
                 <span>Events</span>
               </a>
@@ -111,7 +129,10 @@ const DetailTab = props => {
             >
               <a>
                 <span className="icon is-medium">
-                  <img src="https://img.icons8.com/cute-clipart/22/000000/survey.png" />
+                  <img
+                    src="https://img.icons8.com/cute-clipart/22/000000/survey.png"
+                    alt={props.keyword}
+                  />
                 </span>
                 <span>Reviews</span>
               </a>
@@ -127,6 +148,7 @@ const DetailTab = props => {
           detailUrlParam={props.detailUrlParam}
           zomatoData={props.zomatoData}
           getZomatoDataApi={props.getZomatoDataApi}
+          keyword={props.keyword}
         />
       ) : null}
 
@@ -139,6 +161,7 @@ const DetailTab = props => {
           buffet={props.foodCategoryData.foodCategoryData.buffets}
           dayInNumber={props.parentState.dayInNumber}
           expiry={props.foodCategoryData.foodCategoryData.details.expired}
+          keyword={props.keyword}
         />
       ) : null}
 
@@ -148,6 +171,7 @@ const DetailTab = props => {
           foodCategoryData={props.foodCategoryData}
           detailUrlParam={props.detailUrlParam}
           dayInNumber={props.parentState.dayInNumber}
+          keyword={props.keyword}
         />
       ) : null}
 
@@ -156,6 +180,7 @@ const DetailTab = props => {
           events={props.foodCategoryData.foodCategoryData.events}
           dayInNumber={props.parentState.dayInNumber}
           expiry={props.foodCategoryData.foodCategoryData.details.expired}
+          keyword={props.keyword}
         />
       ) : null}
 

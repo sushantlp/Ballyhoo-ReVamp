@@ -239,7 +239,10 @@ export default class Overview extends React.Component {
         topRating = topRating - 1;
 
         halfRating = (
-          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+          <img
+            src="https://img.icons8.com/color/20/000000/star-half-empty.png"
+            alt={this.props.keyword}
+          />
         );
       }
     } else topRating = topRating - Number(ratingSplit[0]);
@@ -277,6 +280,7 @@ export default class Overview extends React.Component {
                   <span className="ffqs fw2 f1-2">Popularity : </span>
                   <img
                     src="https://img.icons8.com/plasticine/20/000000/hearts.png"
+                    alt={this.props.keyword}
                     className="pl0_5"
                   />
                   <span className="ellipsis pl0_5 fz1_4 pfc4">
@@ -300,6 +304,7 @@ export default class Overview extends React.Component {
                     return (
                       <img
                         src="https://img.icons8.com/color/20/000000/filled-star.png"
+                        alt={this.props.keyword}
                         key={i}
                       />
                     );
@@ -310,6 +315,7 @@ export default class Overview extends React.Component {
                       return (
                         <img
                           src="https://img.icons8.com/color/20/000000/star.png"
+                          alt={this.props.keyword}
                           key={i}
                         />
                       );
@@ -358,6 +364,7 @@ export default class Overview extends React.Component {
           <Menu
             intializeImageArray={this.intializeImageArray}
             menuImage={menuImage}
+            keyword={this.props.keyword}
           />
         ) : null}
 

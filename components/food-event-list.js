@@ -29,7 +29,7 @@ const FoodEventList = props => {
                   <article className="media">
                     <div className="media-left">
                       <figure className="image">
-                        <img src={value.img} alt="Image" />
+                        <img src={value.img} alt={props.keyword} />
                       </figure>
                     </div>
 

@@ -104,6 +104,7 @@ export default class ParentDetail extends React.Component {
                   getZomatoDataApi={this.props.getZomatoDataApi}
                   parentState={this.state}
                   changeTab={this.changeTab}
+                  keyword={this.props.keyword}
                 />
               </div>
               <div className="column is-4">
@@ -126,6 +127,7 @@ export default class ParentDetail extends React.Component {
           cityLocality={this.props.cityLocality}
           changeLoadingState={this.props.changeLoadingState}
           detailUrlParam={this.props.detailUrlParam}
+          keyword={this.props.keyword}
         />
       </React.Fragment>
     );

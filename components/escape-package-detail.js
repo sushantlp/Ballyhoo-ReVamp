@@ -299,11 +299,15 @@ export default class EscapePackage extends React.Component {
                 <span className="span-flex">
                   <span className="pr3">
                     {inclusionType.stay ? (
-                      <img src="https://img.icons8.com/color/30/000000/bungalow.png" />
+                      <img
+                        src="https://img.icons8.com/color/30/000000/bungalow.png"
+                        alt={this.props.keyword}
+                      />
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/bungalow.png"
                         id="escape-img"
+                        alt={this.props.keyword}
                       />
                     )}
 
@@ -315,12 +319,14 @@ export default class EscapePackage extends React.Component {
                       <img
                         src="https://img.icons8.com/color/30/000000/around-the-globe.png"
                         style={{ paddingLeft: "0.3em" }}
+                        alt={this.props.keyword}
                       />
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/around-the-globe.png"
                         id="escape-img"
                         style={{ paddingLeft: "0.3em" }}
+                        alt={this.props.keyword}
                       />
                     )}
 
@@ -332,12 +338,14 @@ export default class EscapePackage extends React.Component {
                       <img
                         src="https://img.icons8.com/color/30/000000/tripadvisor.png"
                         style={{ paddingLeft: "1em" }}
+                        alt={this.props.keyword}
                       />
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/tripadvisor.png"
                         id="escape-img"
                         style={{ paddingLeft: "1em" }}
+                        alt={this.props.keyword}
                       />
                     )}
 
@@ -349,12 +357,14 @@ export default class EscapePackage extends React.Component {
                       <img
                         src="https://img.icons8.com/color/30/000000/sandwich.png"
                         style={{ paddingLeft: "1em" }}
+                        alt={this.props.keyword}
                       />
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/sandwich.png"
                         id="escape-img"
                         style={{ paddingLeft: "1em" }}
+                        alt={this.props.keyword}
                       />
                     )}
 
@@ -366,12 +376,14 @@ export default class EscapePackage extends React.Component {
                       <img
                         src="https://img.icons8.com/color/30/000000/parachute.png"
                         style={{ paddingLeft: "0.7em" }}
+                        alt={this.props.keyword}
                       />
                     ) : (
                       <img
                         src="https://img.icons8.com/color/30/000000/parachute.png"
                         id="escape-img"
                         style={{ paddingLeft: "0.7em" }}
+                        alt={this.props.keyword}
                       />
                     )}
 

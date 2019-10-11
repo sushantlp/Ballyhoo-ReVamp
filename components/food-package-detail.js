@@ -42,7 +42,7 @@ const FoodPackageDetail = props => {
                 <article className="media">
                   <div className="media-left">
                     <figure className="image">
-                      <img src={value.img} alt="Image" />
+                      <img src={value.img} alt={props.keyword} />
                     </figure>
                   </div>
 
@@ -64,6 +64,7 @@ const FoodPackageDetail = props => {
                                 <img
                                   src="https://img.icons8.com/color/48/000000/vegetarian-food-symbol.png"
                                   style={{ height: "1.5em" }}
+                                  alt={props.keyword}
                                 />
                               </span>
                             ) : parseInt(value.food_preference, 10) === 2 ? (
@@ -71,6 +72,7 @@ const FoodPackageDetail = props => {
                                 <img
                                   src="https://img.icons8.com/color/48/000000/non-vegetarian-food-symbol.png"
                                   style={{ height: "1.5em" }}
+                                  alt={props.keyword}
                                 />
                               </span>
                             ) : (
@@ -79,6 +81,7 @@ const FoodPackageDetail = props => {
                                   <img
                                     src="https://img.icons8.com/color/48/000000/vegetarian-food-symbol.png"
                                     style={{ height: "1.5em" }}
+                                    alt={props.keyword}
                                   />
                                 </span>
 
@@ -86,6 +89,7 @@ const FoodPackageDetail = props => {
                                   <img
                                     src="https://img.icons8.com/color/48/000000/non-vegetarian-food-symbol.png"
                                     style={{ height: "1.5em" }}
+                                    alt={props.keyword}
                                   />
                                 </span>
                               </span>

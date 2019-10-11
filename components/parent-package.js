@@ -48,6 +48,7 @@ const ParentPackage = props => {
                     props.categoryData.categoryData.details
                       .offer_purchase_status
                   }
+                  keyword={props.keyword}
                 />
               ) : (
                 <ExculsiveEscapePackage
@@ -62,6 +63,7 @@ const ParentPackage = props => {
                     props.categoryData.categoryData.details
                       .offer_purchase_status
                   }
+                  keyword={props.keyword}
                 />
               )
             ) : null}
@@ -80,6 +82,7 @@ const ParentPackage = props => {
                 package={props.foodCategoryData.foodCategoryData.packages}
                 dayInNumber={props.dayInNumber}
                 expiry={props.foodCategoryData.foodCategoryData.details.expired}
+                keyword={props.keyword}
               />
             ) : null}
           </div>

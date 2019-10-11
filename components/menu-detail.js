@@ -19,7 +19,11 @@ const Menu = props => {
                     }
                     key={key}
                   >
-                    <img src={value} className="menu-image" />
+                    <img
+                      src={value}
+                      className="menu-image"
+                      alt={props.keyword}
+                    />
                   </figure>
                 );
             })}

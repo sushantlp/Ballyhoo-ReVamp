@@ -61,7 +61,10 @@ export default class DetailSlider extends React.Component {
             >
               <a className="button is-medium is-rounded">
                 <span className="icon">
-                  <img src="https://img.icons8.com/color/20/000000/camera.png" />
+                  <img
+                    src="https://img.icons8.com/color/20/000000/camera.png"
+                    alt={this.props.keyword}
+                  />
                 </span>
                 <span className="text">See Gallery</span>
               </a>
@@ -72,36 +75,15 @@ export default class DetailSlider extends React.Component {
         <section className="hero is-medium">
           <Slider {...settings}>
             {this.props.slidderImage.slidderImage.map((value, key) => {
-              return <img src={value} alt="" className="carousel" key={key} />;
+              return (
+                <img
+                  src={value}
+                  alt={this.props.keyword}
+                  className="carousel"
+                  key={key}
+                />
+              );
             })}
-            {/*            
-            <img
-              src="https://cdn.getyourguide.com/img/location_img-45-2534149437-88.jpg"
-              alt=""
-              className="carousel"
-            />
-            <img
-              src="https://cdn.getyourguide.com/img/tour_img-1883457-99.jpg"
-              alt=""
-              className="carousel"
-            />
-            <img
-              src="https://cdn.getyourguide.com/img/tour_img-1883417-99.jpg"
-              alt=""
-              className="carousel"
-            />
-
-            <img
-              src="https://cdn.getyourguide.com/img/tour_img-1883442-99.jpg"
-              alt=""
-              className="carousel"
-            />
-
-            <img
-              src="https://cdn.getyourguide.com/img/tour_img-2170432-99.jpg"
-              alt=""
-              className="carousel"
-            /> */}
           </Slider>
         </section>
 

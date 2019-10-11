@@ -72,21 +72,13 @@ function SamplePrevArrow(props) {
 }
 
 export default class TrendingDetail extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   onClickFeature = feature => {
     this.props.changeLoadingState();
     const city = this.props.routeParam.city.replace(/ /g, "-").toLowerCase();
-    console.log(this.props.detailUrlParam);
+
     let title = feature.title.replace(/[^a-zA-Z ]/g, "");
     title = title.replace(/ /g, "-").toLowerCase();
     title = title.replace(/-+/gi, "-");
-    // console.log(this.props.detailUrlParam);
-    // const bunch = this.props.cityLocality.cityLocality.filter(obj => {
-    //   if (obj.city_name.toLowerCase() === city.toLowerCase()) return obj;
-    // });
 
     const secrets = `${this.props.detailUrlParam.city_id}b${feature.api_type}b${
       feature.key
@@ -104,7 +96,7 @@ export default class TrendingDetail extends React.Component {
     );
   };
 
-  trendingDetailComponent = (json, bool) => {
+  trendingDetailComponent = (json, bool, keyword) => {
     return json.map((feature, key) => {
       return (
         <div
@@ -127,7 +119,7 @@ export default class TrendingDetail extends React.Component {
           >
             <Image
               src={feature.img}
-              alt="image"
+              alt={keyword}
               style={{
                 width: bool ? "280px" : "250px",
                 height: "210px"
@@ -171,10 +163,14 @@ export default class TrendingDetail extends React.Component {
 
           {featuring.length >= 4 ? (
             <Slider {...settings}>
-              {this.trendingDetailComponent(featuring, false)}
+              {this.trendingDetailComponent(
+                featuring,
+                false,
+                this.props.keyword
+              )}
             </Slider>
           ) : (
-            this.trendingDetailComponent(featuring, true)
+            this.trendingDetailComponent(featuring, true, this.props.keyword)
           )}
         </div>
       </div>
