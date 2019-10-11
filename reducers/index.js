@@ -19,6 +19,8 @@ import { customerData } from "./customer-data-reducer";
 import { profileData, profileUpdate } from "./profile-reducer";
 import { payment } from "./payment-option-reducer";
 import { escapeEnquiry } from "./escape-enquiry-reducer";
+import { fnbReservation } from "./fnb-reservation-reducer";
+import { saloonAppointment } from "./saloon-appointment-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -40,5 +42,7 @@ export default combineReducers({
   profileData,
   profileUpdate,
   payment,
-  escapeEnquiry
+  escapeEnquiry,
+  fnbReservation,
+  saloonAppointment
 });

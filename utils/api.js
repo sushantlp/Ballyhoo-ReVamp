@@ -332,5 +332,59 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  fnbReservationApi: (
+    partnerId,
+    customerId,
+    reservationDate,
+    reservationTime,
+    guest
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/partners/${partnerId}/fnb/rsvp`, {
+        method: "POST",
+        body: JSON.stringify({
+          customer_id: customerId,
+          reservation_date: reservationDate,
+          reservation_time: reservationTime,
+          no_of_guest: guest
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(fnbReservation => resolve(fnbReservation))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  saloonAppointmentApi: (
+    partnerId,
+    customerId,
+    appointmentDate,
+    appointmentTime,
+    appointmentItem
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/partners/${partnerId}/sns/appointment`, {
+        method: "POST",
+        body: JSON.stringify({
+          customer_id: customerId,
+          appointment_date: appointmentDate,
+          appointment_time: appointmentTime,
+          appointment_items: appointmentItem
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(saloonAppointment => resolve(saloonAppointment))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };

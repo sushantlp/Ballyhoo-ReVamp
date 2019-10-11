@@ -351,7 +351,7 @@ class Enquiry extends React.Component {
           onChangeRequest={this.onChangeRequest}
           onChangeAgree={this.onChangeAgree}
           onChangeFocused={this.onChangeFocused}
-          onclickEnquiryButton={this.onclickEnquiryButton}
+          onClickEnquiryButton={this.onClickEnquiryButton}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
