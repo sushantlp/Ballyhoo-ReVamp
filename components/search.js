@@ -131,15 +131,6 @@ export default class Search extends React.Component {
       `/${city}/${title}/${secret}`,
       { shallow: false }
     );
-
-    // this.props.onSearchKeyChange(
-    //   bunch[0].key,
-    //   this.state.selectSearch.type,
-    //   this.state.selectSearch.key,
-    //   this.state.selectSearch.response_type,
-    //   1,
-    //   1
-    // );
   };
 
   render() {
@@ -167,6 +158,7 @@ export default class Search extends React.Component {
                   icon={
                     <img
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
+                      alt={this.props.keyword}
                       style={{
                         marginRight: "-1.1em",
                         marginTop: "0.3em",
@@ -190,6 +182,7 @@ export default class Search extends React.Component {
                   icon={
                     <img
                       src="https://img.icons8.com/wired/20/000000/search.png"
+                      alt={this.props.keyword}
                       style={{
                         marginRight: "-1.1em",
                         marginTop: "0.3em",

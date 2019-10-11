@@ -153,9 +153,9 @@ export default class Slidder extends React.Component {
     });
   };
 
-  slidderImageArray = json => {
+  slidderImageArray = (json, keyword) => {
     return json.map((image, key) => {
-      return <img src={image} alt="" className="carousel" key={key} />;
+      return <img src={image} alt={keyword} className="carousel" key={key} />;
     });
   };
 
@@ -212,7 +212,9 @@ export default class Slidder extends React.Component {
     return (
       <div className="slidder-container">
         <section className="hero is-medium">
-          <Slider {...settings}>{this.slidderImageArray(carousel)}</Slider>
+          <Slider {...settings}>
+            {this.slidderImageArray(carousel, this.props.keyword)}
+          </Slider>
         </section>
 
         <div className="Search">
@@ -231,6 +233,7 @@ export default class Slidder extends React.Component {
                   icon={
                     <img
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
+                      alt={this.props.keyword}
                       style={{
                         marginTop: "0.3em",
                         marginRight: "-2vh",
@@ -254,6 +257,7 @@ export default class Slidder extends React.Component {
                   icon={
                     <img
                       src="https://img.icons8.com/wired/20/000000/search.png"
+                      alt={this.props.keyword}
                       style={{
                         marginTop: "0.3em",
                         marginRight: "-2vh",

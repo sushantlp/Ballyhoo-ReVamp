@@ -323,10 +323,13 @@ class List extends React.Component {
   };
 
   render() {
-    let keyword = "";
+    let keyword;
 
     for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
-      keyword = `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+      keyword =
+        keyword === undefined
+          ? this.props.seo.seo.keywords[i]
+          : `${keyword}, ${this.props.seo.seo.keywords[i]}`;
     }
 
     if (this.state.isLoading)
@@ -338,7 +341,6 @@ class List extends React.Component {
             postForget={this.props.postForget}
           />
           <Spinner />
-
           <Headout />
           <Footer cityLocality={this.props.cityLocality} />
         </React.Fragment>
@@ -370,6 +372,7 @@ class List extends React.Component {
           recommendation={this.props.recommendation}
           searchData={this.props.searchData}
           onSearchKeyChange={this.onSearchKeyChange}
+          keyword={keyword}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

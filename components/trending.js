@@ -71,7 +71,7 @@ function SamplePrevArrow(props) {
 }
 
 export default class Trending extends React.Component {
-  trendingArray = json => {
+  trendingArray = (json, keyword) => {
     const calculate = json.length;
     return json.map((trending, key) => {
       let description = trending.offer_description;
@@ -96,7 +96,7 @@ export default class Trending extends React.Component {
           >
             <Image
               src={trending.img}
-              alt="image"
+              alt={keyword}
               style={{
                 width: calculate > 4 ? "250px" : "275px",
                 height: "210px"
@@ -162,7 +162,9 @@ export default class Trending extends React.Component {
             <h2 className="trending-header">Trending Packages</h2>
             <div className="underscore" />
           </div>
-          <Slider {...settings}>{this.trendingArray(trending)}</Slider>
+          <Slider {...settings}>
+            {this.trendingArray(trending, this.props.keyword)}
+          </Slider>
         </div>
       </div>
     );

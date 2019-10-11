@@ -2,15 +2,13 @@ import Slider from "react-slick";
 import "./slidder-banner.css";
 
 export default class SlidderBanner extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  bannerImageArray = json => {
+  bannerImageArray = (json, keyword) => {
     return json
       .filter(image => parseInt(image.banner_type, 10) === 1)
       .map((image, key) => {
-        return <img src={image.img} alt="" className="carousel" key={key} />;
+        return (
+          <img src={image.img} alt={keyword} className="carousel" key={key} />
+        );
       });
   };
 
@@ -47,7 +45,9 @@ export default class SlidderBanner extends React.Component {
       <div className="slidder-banner-container">
         <section>
           <div className="container">
-            <Slider {...settings}>{this.bannerImageArray(banner)}</Slider>
+            <Slider {...settings}>
+              {this.bannerImageArray(banner, this.props.keyword)}
+            </Slider>
           </div>
         </section>
       </div>

@@ -166,9 +166,12 @@ class Index extends React.Component {
   };
 
   render() {
-    let keyword = "";
+    let keyword;
     for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
-      keyword = `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+      keyword =
+        keyword === undefined
+          ? this.props.seo.seo.keywords[i]
+          : `${keyword}, ${this.props.seo.seo.keywords[i]}`;
     }
 
     if (this.state.isLoading)
@@ -208,15 +211,18 @@ class Index extends React.Component {
           searchData={this.props.searchData}
           changeLoadingState={this.changeLoadingState}
           seo={this.props.seo}
+          keyword={keyword}
         />
-        <SlidderBanner homeScreen={this.props.homeScreen} />
+        <SlidderBanner homeScreen={this.props.homeScreen} keyword={keyword} />
         <Discover
           homeScreen={this.props.homeScreen}
           changeLoadingState={this.changeLoadingState}
+          keyword={keyword}
         />
         <Featured
           homeScreen={this.props.homeScreen}
           changeLoadingState={this.changeLoadingState}
+          keyword={keyword}
         />
         <Popular
           homeScreen={this.props.homeScreen}
@@ -226,12 +232,14 @@ class Index extends React.Component {
           homeScreen={this.props.homeScreen}
           categoryApiCall={this.categoryApiCall}
           changeLoadingState={this.changeLoadingState}
+          keyword={keyword}
         />
         <Collection
           homeScreen={this.props.homeScreen}
           changeLoadingState={this.changeLoadingState}
+          keyword={keyword}
         />
-        <Banner homeScreen={this.props.homeScreen} />
+        <Banner homeScreen={this.props.homeScreen} keyword={keyword} />
         <Headout />
 
         <Footer cityLocality={this.props.cityLocality} />

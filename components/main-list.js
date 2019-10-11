@@ -21,26 +21,31 @@ const MainList = props => {
             listData={props.listData}
             foodCategoryApiCall={props.foodCategoryApiCall}
             urlParam={props.urlParam}
+            keyword={props.keyword}
           />
         ) : parseInt(props.urlParam.response_type, 10) === 2 ? (
           <EventList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
+            keyword={props.keyword}
           />
         ) : parseInt(props.urlParam.response_type, 10) === 3 ? (
           <ActivityList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
+            keyword={props.keyword}
           />
         ) : parseInt(props.urlParam.response_type, 10) === 4 ? (
           <EscapeList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
+            keyword={props.keyword}
           />
         ) : parseInt(props.urlParam.response_type, 10) === 5 ? (
           <SpaList
             listData={props.listData}
             categoryApiCall={props.categoryApiCall}
+            keyword={props.keyword}
           />
         ) : (
           <div />

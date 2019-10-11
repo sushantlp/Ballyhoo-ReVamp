@@ -24,7 +24,10 @@ const EventList = props => {
         topRating = topRating - 1;
 
         halfRating = (
-          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+          <img
+            src="https://img.icons8.com/color/20/000000/star-half-empty.png"
+            alt={props.keyword}
+          />
         );
       }
     } else topRating = topRating - Number(ratingSplit[0]);
@@ -45,7 +48,7 @@ const EventList = props => {
           <article className="media">
             <div className="media-left">
               <figure className="image">
-                <img src={list.offer_preview_image} alt="Image" />
+                <img src={list.offer_preview_image} alt={props.keyword} />
               </figure>
             </div>
 
@@ -67,7 +70,10 @@ const EventList = props => {
 
                   <div className="column">
                     <span className="tag radius20 fw7 padding1-4-1" id="li">
-                      <img src="https://img.icons8.com/color/20/000000/hearts.png" />
+                      <img
+                        src="https://img.icons8.com/color/20/000000/hearts.png"
+                        alt={props.keyword}
+                      />
                       <span className="ellipsis pl0_5 fs1-4">
                         {" "}
                         {list.offer_popularity}%
@@ -80,6 +86,7 @@ const EventList = props => {
                           <img
                             src="https://img.icons8.com/color/20/000000/filled-star.png"
                             key={i}
+                            alt={props.keyword}
                           />
                         );
                       })}
@@ -90,6 +97,7 @@ const EventList = props => {
                             <img
                               src="https://img.icons8.com/color/20/000000/star.png"
                               key={i}
+                              alt={props.keyword}
                             />
                           );
                         })}
@@ -129,18 +137,6 @@ const EventList = props => {
                           );
                       })}
                     </div>
-
-                    {/* <div className="package-tag-box">
-                      <ul className="package-tags at_package_tags">
-                        {list.offer_hash_tags.map((tag, key) => {
-                          return (
-                            <li className="ellipsis" key={key}>
-                              {tag}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div> */}
                   </div>
                 </div>
 
@@ -161,6 +157,7 @@ const EventList = props => {
                   <img
                     src="https://img.icons8.com/cute-clipart/30/000000/date-to.png"
                     id="img"
+                    alt={props.keyword}
                   />
                   <p>
                     {list.offer_start_date != null &&

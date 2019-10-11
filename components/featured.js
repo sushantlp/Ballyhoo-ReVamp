@@ -103,6 +103,7 @@ export default class Featured extends React.Component {
         >
           <Image
             src={featured.img}
+            alt={props.keyword}
             size="large"
             style={{
               // boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",

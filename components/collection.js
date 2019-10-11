@@ -196,7 +196,7 @@ export default class Collection extends React.Component {
             onClick={() => this.onClickCollection(collection, props)}
           >
             <div className="imgBx">
-              <img src={collection.img} alt="images" />
+              <img src={collection.img} alt={props.keyword} />
             </div>
             <div className="details">
               <h2>{collection.title}</h2>
@@ -225,7 +225,7 @@ export default class Collection extends React.Component {
           >
             <Image
               src={collection.img}
-              alt="image"
+              alt={props.keyword}
               style={{
                 width: calculate > 4 ? "250px" : "275px",
                 height: "210px"

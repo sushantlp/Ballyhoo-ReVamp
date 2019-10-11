@@ -31,7 +31,10 @@ const EscapeList = props => {
         topRating = topRating - 1;
 
         halfRating = (
-          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+          <img
+            src="https://img.icons8.com/color/20/000000/star-half-empty.png"
+            alt={props.keyword}
+          />
         );
       }
     } else topRating = topRating - Number(ratingSplit[0]);
@@ -70,7 +73,7 @@ const EscapeList = props => {
           <article className="media">
             <div className="media-left">
               <figure className="image">
-                <img src={list.offer_preview_image} alt="Image" />
+                <img src={list.offer_preview_image} alt={props.keyword} />
               </figure>
             </div>
 
@@ -107,7 +110,10 @@ const EscapeList = props => {
 
                   <div className="column">
                     <span className="tag radius20 fw7 padding1-4-1" id="li">
-                      <img src="https://img.icons8.com/color/17/000000/hearts.png" />
+                      <img
+                        src="https://img.icons8.com/color/17/000000/hearts.png"
+                        alt={props.keyword}
+                      />
                       <span className="ellipsis pl0_5">
                         {" "}
                         {list.offer_popularity}%
@@ -120,6 +126,7 @@ const EscapeList = props => {
                           <img
                             src="https://img.icons8.com/color/20/000000/filled-star.png"
                             key={i}
+                            alt={props.keyword}
                           />
                         );
                       })}
@@ -130,6 +137,7 @@ const EscapeList = props => {
                             <img
                               src="https://img.icons8.com/color/20/000000/star.png"
                               key={i}
+                              alt={props.keyword}
                             />
                           );
                         })}
@@ -177,11 +185,15 @@ const EscapeList = props => {
               >
                 <span className="pr2">
                   {inclusionType.stay ? (
-                    <img src="https://img.icons8.com/color/25/000000/3-star-hotel.png" />
+                    <img
+                      src="https://img.icons8.com/color/25/000000/3-star-hotel.png"
+                      alt={props.keyword}
+                    />
                   ) : (
                     <img
                       src="https://img.icons8.com/color/25/000000/3-star-hotel.png"
                       id="escape-img"
+                      alt={props.keyword}
                     />
                   )}
 
@@ -193,12 +205,14 @@ const EscapeList = props => {
                     <img
                       src="https://img.icons8.com/color/25/000000/around-the-globe.png"
                       style={{ paddingLeft: "0.3em" }}
+                      alt={props.keyword}
                     />
                   ) : (
                     <img
                       src="https://img.icons8.com/color/25/000000/around-the-globe.png"
                       style={{ paddingLeft: "0.3em" }}
                       id="escape-img"
+                      alt={props.keyword}
                     />
                   )}
 
@@ -210,12 +224,14 @@ const EscapeList = props => {
                     <img
                       src="https://img.icons8.com/color/25/000000/tripadvisor.png"
                       style={{ paddingLeft: "1.2em" }}
+                      alt={props.keyword}
                     />
                   ) : (
                     <img
                       src="https://img.icons8.com/color/25/000000/tripadvisor.png"
                       style={{ paddingLeft: "1.2em" }}
                       id="escape-img"
+                      alt={props.keyword}
                     />
                   )}
 
@@ -227,12 +243,14 @@ const EscapeList = props => {
                     <img
                       src="https://img.icons8.com/color/25/000000/sandwich.png"
                       style={{ paddingLeft: "0.9em" }}
+                      alt={props.keyword}
                     />
                   ) : (
                     <img
                       src="https://img.icons8.com/color/25/000000/sandwich.png"
                       style={{ paddingLeft: "0.9em" }}
                       id="escape-img"
+                      alt={props.keyword}
                     />
                   )}
 
@@ -244,12 +262,14 @@ const EscapeList = props => {
                     <img
                       src="https://img.icons8.com/color/25/000000/parachute.png"
                       style={{ paddingLeft: "0.8em" }}
+                      alt={props.keyword}
                     />
                   ) : (
                     <img
                       src="https://img.icons8.com/color/25/000000/parachute.png"
                       style={{ paddingLeft: "0.8em" }}
                       id="escape-img"
+                      alt={props.keyword}
                     />
                   )}
 

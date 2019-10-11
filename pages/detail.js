@@ -142,19 +142,19 @@ class Detail extends React.Component {
 
       if (parseInt(detailUrlParam.response_type, 10) === 1)
         currentImage =
-          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1474443270/ballyhoo/BREAKFAST/21.jpg";
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1510745225/ballyhoo/WALK-IN/4.jpg";
       else if (parseInt(detailUrlParam.response_type, 10) === 2)
         currentImage =
-          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525270867/OTHER_CATEGORY/EVENT/8.jpg";
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525270865/OTHER_CATEGORY/EVENT/6.jpg";
       else if (parseInt(detailUrlParam.response_type, 10) === 3)
         currentImage =
-          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271107/OTHER_CATEGORY/ACTIVITY/5.jpg";
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271105/OTHER_CATEGORY/ACTIVITY/7.jpg";
       else if (parseInt(detailUrlParam.response_type, 10) === 4)
         currentImage =
-          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271481/OTHER_CATEGORY/GETAWAY/7.jpg";
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271482/OTHER_CATEGORY/GETAWAY/3.jpg";
       else if (parseInt(detailUrlParam.response_type, 10) === 5)
         currentImage =
-          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271817/OTHER_CATEGORY/SALOON/7.jpg";
+          "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271818/OTHER_CATEGORY/SALOON/6.jpg";
 
       if (parseInt(detailUrlParam.result_type, 10) === 1) {
         // Zomato API
@@ -203,10 +203,13 @@ class Detail extends React.Component {
   };
 
   render() {
-    let keyword = "";
+    let keyword;
 
     for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
-      keyword = `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+      keyword =
+        keyword === undefined
+          ? this.props.seo.seo.keywords[i]
+          : `${keyword}, ${this.props.seo.seo.keywords[i]}`;
     }
 
     if (this.state.isLoading)

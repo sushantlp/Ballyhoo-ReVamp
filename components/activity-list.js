@@ -1,7 +1,6 @@
 const ActivityList = props => {
   const list = props.listData.listData;
 
-  //src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_480,w_480/v1457670910/OTHER_CATEGORY/ACTIVITY/5.jpg"
   return list.map((list, key) => {
     let description = list.offer_description;
     if (description.length >= 200) {
@@ -25,7 +24,10 @@ const ActivityList = props => {
         topRating = topRating - 1;
 
         halfRating = (
-          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+          <img
+            src="https://img.icons8.com/color/20/000000/star-half-empty.png"
+            alt={props.keyword}
+          />
         );
       }
     } else topRating = topRating - Number(ratingSplit[0]);
@@ -46,7 +48,7 @@ const ActivityList = props => {
           <article className="media">
             <div className="media-left">
               <figure className="image">
-                <img src={list.offer_preview_image} alt="Image" />
+                <img src={list.offer_preview_image} alt={props.keyword} />
               </figure>
             </div>
 
@@ -70,7 +72,10 @@ const ActivityList = props => {
 
                   <div className="column">
                     <span className="tag radius20 fw7 padding1-4-1" id="li">
-                      <img src="https://img.icons8.com/color/20/000000/hearts.png" />
+                      <img
+                        src="https://img.icons8.com/color/20/000000/hearts.png"
+                        alt={props.keyword}
+                      />
                       <span className="ellipsis pl0_5 fs1-4">
                         {list.offer_popularity}%
                       </span>
@@ -82,6 +87,7 @@ const ActivityList = props => {
                           <img
                             src="https://img.icons8.com/color/20/000000/filled-star.png"
                             key={i}
+                            alt={props.keyword}
                           />
                         );
                       })}
@@ -92,6 +98,7 @@ const ActivityList = props => {
                             <img
                               src="https://img.icons8.com/color/20/000000/star.png"
                               key={i}
+                              alt={props.keyword}
                             />
                           );
                         })}
@@ -130,18 +137,6 @@ const ActivityList = props => {
                           );
                       })}
                     </div>
-
-                    {/* <div className="package-tag-box">
-                      <ul className="package-tags at_package_tags">
-                        {list.offer_hash_tags.map((tag, key) => {
-                          return (
-                            <li className="ellipsis" key={key}>
-                              {tag}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div> */}
                   </div>
                 </div>
 
@@ -162,6 +157,7 @@ const ActivityList = props => {
                   <img
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjUiIGhlaWdodD0iMjUiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBmaWxsPSIjRkY5ODAwIiBkPSJNMzgsMzlIMTBjLTEuMSwwLTItMC45LTItMlYxN2gzMnYyMEM0MCwzOC4xLDM5LjEsMzksMzgsMzl6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0ZGQTcyNiIgZD0iTTQyLDE3SDZ2LTZjMC0xLjEsMC45LTIsMi0yaDMyYzEuMSwwLDIsMC45LDIsMlYxN3oiPjwvcGF0aD48cGF0aCBmaWxsPSIjOUU1RTAwIiBkPSJNMjIgMTdIMjZWMzlIMjJ6TTMyIDNMMjggMyAyMiA5IDI2IDl6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0M3NzYwMCIgZD0iTTIwIDNMMTYgMyAyMiA5IDIyIDE3IDI2IDE3IDI2IDl6Ij48L3BhdGg+PC9zdmc+"
                     style={{ paddingLeft: "0.6em" }}
+                    alt={props.keyword}
                   />
                   <p className="f12">Package</p>
                 </span>

@@ -101,12 +101,6 @@ export default class Discover extends React.Component {
       const titleLength = discover.title.length;
 
       return (
-        // <Link
-        //   href="/list?slug=something"
-        //   as="/something"
-        //   key={key}
-        //   prefetch
-        // >
         <div
           className="discover-slider"
           key={key}
@@ -116,10 +110,10 @@ export default class Discover extends React.Component {
             src={discover.img}
             size="small"
             circular
+            alt={props.keyword}
             style={{
               boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-              // width: "150px",
-              // height: "150px",
+
               width: "75%",
               height: "75%",
               borderWidth: "0.11em",
@@ -139,7 +133,6 @@ export default class Discover extends React.Component {
             {discover.title}
           </p>
         </div>
-        // </Link>
       );
     });
   };

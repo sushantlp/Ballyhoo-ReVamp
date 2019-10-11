@@ -24,7 +24,10 @@ const SpaList = props => {
         topRating = topRating - 1;
 
         halfRating = (
-          <img src="https://img.icons8.com/color/20/000000/star-half-empty.png" />
+          <img
+            src="https://img.icons8.com/color/20/000000/star-half-empty.png"
+            alt={props.keyword}
+          />
         );
       }
     } else topRating = topRating - Number(ratingSplit[0]);
@@ -45,7 +48,7 @@ const SpaList = props => {
           <article className="media">
             <div className="media-left">
               <figure className="image">
-                <img src={list.offer_preview_image} alt="Image" />
+                <img src={list.offer_preview_image} alt={props.keyword} />
               </figure>
             </div>
 
@@ -69,7 +72,10 @@ const SpaList = props => {
 
                   <div className="column">
                     <span className="tag radius20 fw7 padding1-4-1" id="li">
-                      <img src="https://img.icons8.com/color/20/000000/hearts.png" />
+                      <img
+                        src="https://img.icons8.com/color/20/000000/hearts.png"
+                        alt={props.keyword}
+                      />
                       <span className="ellipsis pl0_5 fs1-4">
                         {list.offer_popularity}%
                       </span>
@@ -81,6 +87,7 @@ const SpaList = props => {
                           <img
                             src="https://img.icons8.com/color/20/000000/filled-star.png"
                             key={i}
+                            alt={props.keyword}
                           />
                         );
                       })}
@@ -91,6 +98,7 @@ const SpaList = props => {
                             <img
                               src="https://img.icons8.com/color/20/000000/star.png"
                               key={i}
+                              alt={props.keyword}
                             />
                           );
                         })}
@@ -131,17 +139,6 @@ const SpaList = props => {
                           );
                       })}
                     </div>
-                    {/* <div className="package-tag-box">
-                      <ul className="package-tags at_package_tags">
-                        {list.offer_hash_tags.map((tag, key) => {
-                          return (
-                            <li className="ellipsis" key={key}>
-                              {tag}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div> */}
                   </div>
                 </div>
 
@@ -163,6 +160,7 @@ const SpaList = props => {
                     <img
                       src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png"
                       id="spa-img"
+                      alt={props.keyword}
                     />
                   </span>
                 ) : list.offer_gender_preference === 2 ? (
@@ -170,6 +168,7 @@ const SpaList = props => {
                     <img
                       src="https://img.icons8.com/bubbles/50/000000/birthday-girl.png"
                       id="spa-img"
+                      alt={props.keyword}
                     />
                   </span>
                 ) : (
@@ -179,12 +178,14 @@ const SpaList = props => {
                       <img
                         src="https://img.icons8.com/bubbles/50/000000/birthday-boy.png"
                         id="spa-img"
+                        alt={props.keyword}
                       />
                     </span>{" "}
                     <span>
                       <img
                         src="https://img.icons8.com/bubbles/50/000000/birthday-girl.png"
                         id="spa-img"
+                        alt={props.keyword}
                       />
                     </span>
                   </span>
@@ -197,9 +198,6 @@ const SpaList = props => {
                 className="button is-medium is-black is-outlined"
                 onClick={() => props.categoryApiCall(list.offer_id)}
               >
-                {/* <span className="icon">
-                  <img src="https://img.icons8.com/bubbles/50/000000/visible.png" />
-                </span> */}
                 <span>View Detail</span>
               </a>
             </div>

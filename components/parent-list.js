@@ -61,6 +61,7 @@ class ParentList extends React.Component {
           searchData={this.props.searchData}
           urlParam={this.props.urlParam}
           onSearchKeyChange={this.props.onSearchKeyChange}
+          keyword={this.props.keyword}
         />
         <section className="section">
           <div className="container">
@@ -81,6 +82,7 @@ class ParentList extends React.Component {
                   categoryApiCall={this.props.categoryApiCall}
                   foodCategoryApiCall={this.props.foodCategoryApiCall}
                   urlParam={this.props.urlParam}
+                  keyword={this.props.keyword}
                 />
               </div>
             </div>
@@ -91,6 +93,7 @@ class ParentList extends React.Component {
           recommendation={this.props.recommendation}
           routeParam={this.props.routeParam}
           urlParam={this.props.urlParam}
+          keyword={this.props.keyword}
         />
       </React.Fragment>
     );

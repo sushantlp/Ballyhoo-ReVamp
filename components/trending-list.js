@@ -105,7 +105,7 @@ export default class TrendingList extends React.Component {
     );
   };
 
-  trendingListComponent = (json, bool) => {
+  trendingListComponent = (json, bool, keyword) => {
     return json.map((recommendation, key) => {
       return (
         <div
@@ -129,7 +129,7 @@ export default class TrendingList extends React.Component {
           >
             <Image
               src={recommendation.img}
-              alt="image"
+              alt={keyword}
               style={{
                 width: bool ? "280px" : "250px",
                 height: "210px"
@@ -170,10 +170,14 @@ export default class TrendingList extends React.Component {
           </div>
           {recommendation.length >= 4 ? (
             <Slider {...settings}>
-              {this.trendingListComponent(recommendation, false)}
+              {this.trendingListComponent(
+                recommendation,
+                false,
+                this.props.keyword
+              )}
             </Slider>
           ) : (
-            this.trendingListComponent(recommendation, true)
+            this.trendingListComponent(recommendation, true, this.props.keyword)
           )}
         </div>
       </div>
