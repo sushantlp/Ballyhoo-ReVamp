@@ -32,7 +32,7 @@ const Footer = props => {
                   <div className="brand-icon">
                     <img
                       // style={{ width: "50px" }}
-                      alt="Ballyhoo"
+                      alt={props.keyword}
                       role="presentation"
                       src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569824870/BallyhooV3/WEB/Logo.png"
                     />
@@ -61,6 +61,7 @@ const Footer = props => {
                 target="_blank"
               >
                 <img
+                  alt={props.keyword}
                   role="presentation"
                   src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_40,w_120/v1481790564/ballyhoo/EMAIL/appstore1.png"
                 />
@@ -73,6 +74,7 @@ const Footer = props => {
                 style={{ marginLeft: "0.5em" }}
               >
                 <img
+                  alt={props.keyword}
                   role="presentation"
                   src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_40,w_120/v1481790565/ballyhoo/EMAIL/playstore1.png"
                 />
@@ -145,6 +147,7 @@ const Footer = props => {
                         <img
                           role="presentation"
                           src="https://img.icons8.com/color/25/000000/facebook.png"
+                          alt={props.keyword}
                         />
                         Facebook
                       </a>
@@ -157,6 +160,7 @@ const Footer = props => {
                         <img
                           role="presentation"
                           src="https://img.icons8.com/color/25/000000/instagram.png"
+                          alt={props.keyword}
                         />
                         Instagram
                       </a>
@@ -169,6 +173,7 @@ const Footer = props => {
                         <img
                           role="presentation"
                           src="https://img.icons8.com/color/25/000000/twitter.png"
+                          alt={props.keyword}
                         />
                         Twitter
                       </a>
@@ -181,6 +186,7 @@ const Footer = props => {
                         <img
                           role="presentation"
                           src="https://img.icons8.com/color/25/000000/youtube-play.png"
+                          alt={props.keyword}
                         />
                         Youtube
                       </a>

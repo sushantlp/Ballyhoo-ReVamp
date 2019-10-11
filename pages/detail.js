@@ -245,6 +245,7 @@ class Detail extends React.Component {
           categoryData={this.props.categoryData}
           foodCategoryData={this.props.foodCategoryData}
           detailUrlParam={this.props.detailUrlParam}
+          keyword={keyword}
         />
         <ParentDetail
           categoryData={this.props.categoryData}
@@ -256,9 +257,10 @@ class Detail extends React.Component {
           changeLoadingState={this.changeLoadingState}
           zomatoData={this.props.zomatoData}
           getZomatoDataApi={this.props.getZomatoDataApi}
+          keyword={keyword}
         />
-        <Headout />
-        <Footer cityLocality={this.props.cityLocality} />
+        <Headout keyword={keyword} />
+        <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
       </React.Fragment>
     );
   }

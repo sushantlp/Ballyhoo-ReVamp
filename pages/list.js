@@ -374,8 +374,8 @@ class List extends React.Component {
           onSearchKeyChange={this.onSearchKeyChange}
           keyword={keyword}
         />
-        <Headout />
-        <Footer cityLocality={this.props.cityLocality} />
+        <Headout keyword={keyword} />
+        <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
       </div>
     );
   }

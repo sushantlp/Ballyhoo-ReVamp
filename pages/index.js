@@ -240,9 +240,9 @@ class Index extends React.Component {
           keyword={keyword}
         />
         <Banner homeScreen={this.props.homeScreen} keyword={keyword} />
-        <Headout />
+        <Headout keyword={keyword} />
 
-        <Footer cityLocality={this.props.cityLocality} />
+        <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
       </div>
     );
   }

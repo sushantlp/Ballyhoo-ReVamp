@@ -15,7 +15,7 @@ const Headout = props => {
                   />
                   <img
                     src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569318493/BallyhooV3/WEB/White-Phone-Mockup-3.png"
-                    alt="iphone"
+                    alt={props.keyword}
                     className="image"
                     // width="230"
                     width="400"
@@ -50,7 +50,7 @@ const Headout = props => {
                     />
                     <img
                       src="https://cdn-imgix.headout.com/assets/images/badges/apple-store-badge.svg?auto=compress&amp;fm=pjpg&amp;h=96&amp;crop=faces&amp;fit=min"
-                      alt="Download iPhone app"
+                      alt={props.keyword}
                       height="64"
                     />
                   </picture>
@@ -69,7 +69,7 @@ const Headout = props => {
                     />
                     <img
                       src="https://cdn-imgix.headout.com/assets/images/badges/google-play-store-badge.svg?auto=compress&amp;fm=pjpg&amp;h=96&amp;crop=faces&amp;fit=min"
-                      alt="Download Android app"
+                      alt={props.keyword}
                       height="64"
                     />
                   </picture>
@@ -88,7 +88,7 @@ const Headout = props => {
                   />
                   <img
                     src="https://res.cloudinary.com/dp67gawk6/image/upload/v1569307337/BallyhooV3/WEB/White-Phone-Mockup-1.png"
-                    alt="android"
+                    alt={props.keyword}
                     className="image"
                     width="400"
                     height="470"
