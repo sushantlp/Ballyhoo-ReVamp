@@ -46,7 +46,8 @@ class Detail extends React.Component {
           result_type: slice[1],
           partner_id: slice[2],
           api_type: slice[3],
-          key: slice[4]
+          key: slice[4],
+          city_id: parseInt(slice[1], 10) === 1 ? slice[0] : slice[5]
         };
 
         const key =
@@ -100,7 +101,8 @@ class Detail extends React.Component {
           result_type: slice[1],
           partner_id: slice[2],
           api_type: slice[3],
-          key: slice[4]
+          key: slice[4],
+          city_id: parseInt(slice[1], 10) === 1 ? slice[0] : slice[5]
         };
 
         const key =

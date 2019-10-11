@@ -79,7 +79,12 @@ export default class TrendingList extends React.Component {
   onClickRecommendation = recommendation => {
     const city = this.props.routeParam.city;
     const secret = this.props.routeParam.secret;
-    const title = recommendation.title.replace(/ /g, "-").toLowerCase();
+
+    // const title = recommendation.title.replace(/ /g, "-").toLowerCase();
+
+    let title = recommendation.title.replace(/[^a-zA-Z ]/g, "");
+    title = title.replace(/ /g, "-").toLowerCase();
+    title = title.replace(/-+/gi, "-");
 
     // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
     const slice = secret.split("b");

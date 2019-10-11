@@ -166,6 +166,7 @@ class List extends React.Component {
       if (
         nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
+        console.log(this.props.urlParam.urlParam.city_id);
         const { city } = Router.router.query;
 
         const partnerId =
@@ -185,7 +186,7 @@ class List extends React.Component {
         title = title.replace(/ /g, "-").toLowerCase();
         title = title.replace(/-+/gi, "-");
 
-        const secret = `${nextProps.categoryData.categoryData.details.offer_id}b${nextProps.categoryData.categoryData.result_type}b${partnerId}b${this.props.urlParam.urlParam.api_type}b${this.props.urlParam.urlParam.key}`;
+        const secret = `${nextProps.categoryData.categoryData.details.offer_id}b${nextProps.categoryData.categoryData.result_type}b${partnerId}b${this.props.urlParam.urlParam.api_type}b${this.props.urlParam.urlParam.key}b${this.props.urlParam.urlParam.city_id}`;
 
         Router.push(
           {
@@ -227,11 +228,7 @@ class List extends React.Component {
         );
         title = title.replace(/ /g, "-").toLowerCase();
 
-        const secret = `${0}b${
-          nextProps.foodCategoryData.foodCategoryData.result_type
-        }b${partnerId}b${this.props.urlParam.urlParam.api_type}b${
-          this.props.urlParam.urlParam.key
-        }`;
+        const secret = `${this.props.urlParam.urlParam.city_id}b${nextProps.foodCategoryData.foodCategoryData.result_type}b${partnerId}b${this.props.urlParam.urlParam.api_type}b${this.props.urlParam.urlParam.key}`;
 
         Router.push(
           {

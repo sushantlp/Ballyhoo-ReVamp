@@ -125,6 +125,7 @@ export default class ParentDetail extends React.Component {
           routeParam={this.props.routeParam}
           cityLocality={this.props.cityLocality}
           changeLoadingState={this.props.changeLoadingState}
+          detailUrlParam={this.props.detailUrlParam}
         />
       </React.Fragment>
     );

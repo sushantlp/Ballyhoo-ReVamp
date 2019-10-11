@@ -416,5 +416,20 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  seoApi: (cityId, categoryId, partnerId) => {
+    return new Promise((resolve, reject) => {
+      fetch(
+        `${host}api/v9/web/seo?city=${cityId}&category=${categoryId}&partner=${partnerId}`
+      )
+        .then(response => {
+          response
+            .json()
+            .then(seo => resolve(seo))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };
