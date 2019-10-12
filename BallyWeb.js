@@ -6,8 +6,8 @@ const express = require("express");
 
 const port = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== "production";
-//const dev = false;
-const app = next({ dev });
+// const dev = false;
+const app = next({ dev, quiet: true });
 const handle = app.getRequestHandler();
 
 app

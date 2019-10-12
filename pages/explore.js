@@ -8,10 +8,7 @@ import fetch from "isomorphic-unfetch";
 
 import { host, EMAIL } from "../constants";
 
-import {
-  NotificationContainer,
-  NotificationManager
-} from "react-notifications";
+import { ToastContainer, toast } from "react-toastify";
 
 import Spinner from "../components/spinner";
 import ExploreComponent from "../components/explore";
@@ -25,6 +22,8 @@ import { postExploreApi } from "../actions/explore-action";
 import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
+
+import "react-toastify/dist/ReactToastify.css";
 
 class Explore extends React.Component {
   static async getInitialProps(ctx) {
@@ -92,26 +91,21 @@ class Explore extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (
       this.props.postExplore !== nextProps.postExplore &&
       nextProps.postExplore.status === "SUCCESS"
     ) {
-      console.log("INSIDE postExplore SUCCESS");
       this.updateIsLoading();
-      NotificationManager.success(
-        "Successful",
-        nextProps.postExplore.postExplore.msg,
-        300,
-        this.enquiryRouteChange()
-      );
+
+      toast.success(nextProps.postExplore.postExplore.msg, {
+        onClose: () => this.enquiryRouteChange()
+      });
     } else if (
       this.props.postExplore !== nextProps.postExplore &&
       nextProps.postExplore.status === "FAIL"
     ) {
-      console.log("INSIDE postExplore FAIL");
       this.updateIsLoading();
-      NotificationManager.error("Error", nextProps.postExplore.postExplore.msg);
+      toast.error(`${nextProps.postExplore.postExplore.msg} !`);
     }
   }
 
@@ -227,7 +221,6 @@ class Explore extends React.Component {
   };
 
   onChangeTourType = e => {
-    console.log(e.target.value);
     this.setState({
       exploreTourType: e.target.value
     });
@@ -376,7 +369,7 @@ class Explore extends React.Component {
           onChangeDate={this.onChangeDate}
         />
         <Headout />
-        <NotificationContainer />
+        <ToastContainer autoClose={3000} />
         <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
     );

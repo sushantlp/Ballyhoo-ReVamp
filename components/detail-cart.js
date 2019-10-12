@@ -235,7 +235,10 @@ export default class DetailCart extends React.Component {
               </a>
             ) : parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
               disabledLogic === 1 ? (
-                <a className="button cart-button ffqs">{buttonText}</a>
+                // <a className="button cart-button ffqs">{buttonText}</a>
+                <a className="button cart-button-disabled ffqs" disabled>
+                  {buttonText}
+                </a>
               ) : (
                 <a className="button cart-button-disabled ffqs" disabled>
                   {buttonText}

@@ -114,7 +114,9 @@ const Profile = props => {
                             onFocusChange={focused =>
                               props.onFocusChange(focused)
                             }
-                            displayFormat="DD-MM-YYYY"
+                            displayFormat="DD/MM/YYYY"
+                            isOutsideRange={function noRefCheck() {}}
+                            renderMonthElement={props.renderMonthElement}
                           />
                         </label>
                       </div>

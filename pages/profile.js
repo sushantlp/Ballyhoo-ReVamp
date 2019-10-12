@@ -57,15 +57,14 @@ class Profile extends React.Component {
     };
   }
 
-  componentWillUnmount() {
-    console.log("componentWillUnmount");
-  }
+  componentWillUnmount() {}
 
   componentDidMount() {
+    this.props.getProfile(1);
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
-      toast.error("Please login !", {
-        onClose: () => this.enquiryRouteChange()
-      });
+      // toast.error("Please login !", {
+      //   onClose: () => this.enquiryRouteChange()
+      // });
     } else {
       this.props.getProfile(this.props.customerData.customerData.customer_id);
     }
@@ -84,11 +83,8 @@ class Profile extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (this.props.profileData !== nextProps.profileData) {
-      console.log("INSIDE profileData");
       if (nextProps.profileData.status === "SUCCESS") {
-        console.log("INSIDE profileData SUCCESS");
         let date = moment();
         if (nextProps.profileData.profile.dob !== null)
           date = moment(nextProps.profileData.profile.dob);
@@ -132,17 +128,15 @@ class Profile extends React.Component {
 
         this.props.updateCustomerData(customerData);
       } else {
-        console.log("INSIDE profileData FAIL");
         toast.error(`${nextProps.profileData.profile.msg} !`);
       }
     } else if (this.props.profileUpdate !== nextProps.profileUpdate) {
-      console.log("INSIDE profileUpdate");
       this.setState({
         isLoading: false
       });
 
       if (nextProps.profileUpdate.status === "SUCCESS") {
-        console.log("INSIDE profileUpdate SUCCESS");
+        console.log(nextProps.profileUpdate);
         const customerData = {
           customer_id: this.props.customerData.customerData.customer_id,
           first_name: this.state.firstName,
@@ -161,7 +155,7 @@ class Profile extends React.Component {
           onClose: () => this.enquiryRouteChange()
         });
       } else {
-        console.log("INSIDE profileUpdate FAIL");
+        console.log(nextProps.profileUpdate);
         toast.error(`${nextProps.profileUpdate.profile.msg} !`);
       }
     }
@@ -172,7 +166,8 @@ class Profile extends React.Component {
   };
 
   onDateChange = date => {
-    this.setState({ date: date, birthday: moment(date) });
+    console.log(date);
+    this.setState({ date: date, birthday: date });
   };
 
   onFocusChange = bool => {
@@ -202,6 +197,7 @@ class Profile extends React.Component {
       isLoading: true
     });
     const sex = this.state.gender === "Male" ? 1 : 2;
+    console.log(this.state.birthday);
     const birthday = moment(this.state.birthday).format("YYYY-MM-DD");
     this.props.putProfile(
       this.props.customerData.customerData.customer_id,
@@ -211,6 +207,39 @@ class Profile extends React.Component {
       birthday
     );
   };
+
+  returnYears = () => {
+    let years = [];
+    for (let i = moment().year() - 100; i <= moment().year(); i++) {
+      years.push(<option value={i}>{i}</option>);
+    }
+    return years;
+  };
+
+  renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div>
+        <select
+          value={month.month()}
+          onChange={e => onMonthSelect(month, e.target.value)}
+        >
+          {moment.months().map((label, value) => (
+            <option value={value} key={label}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <select
+          value={month.year()}
+          onChange={e => onYearSelect(month, e.target.value)}
+        >
+          {this.returnYears()}
+        </select>
+      </div>
+    </div>
+  );
 
   render() {
     return (
@@ -246,6 +275,7 @@ class Profile extends React.Component {
           onChangeLastName={this.onChangeLastName}
           onChangeGender={this.onChangeGender}
           onClickProfileButton={this.onClickProfileButton}
+          renderMonthElement={this.renderMonthElement}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

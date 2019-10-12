@@ -8,10 +8,7 @@ import fetch from "isomorphic-unfetch";
 
 import { host, EMAIL } from "../constants";
 
-import {
-  NotificationContainer,
-  NotificationManager
-} from "react-notifications";
+import { ToastContainer, toast } from "react-toastify";
 
 import Spinner from "../components/spinner";
 import EnquiryComponent from "../components/enquiry";
@@ -27,7 +24,7 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 
-import "react-notifications/lib/notifications.css";
+import "react-toastify/dist/ReactToastify.css";
 
 class Enquiry extends React.Component {
   static async getInitialProps(ctx) {
@@ -88,26 +85,21 @@ class Enquiry extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("INSIDE UNSAFE_componentWillReceiveProps");
     if (
       this.props.postEnquiry !== nextProps.postEnquiry &&
       nextProps.postEnquiry.status === "SUCCESS"
     ) {
-      console.log("INSIDE postEnquiry SUCCESS");
       this.updateIsLoading();
-      NotificationManager.success(
-        "Successful",
-        nextProps.postEnquiry.postEnquiry.msg,
-        3000,
-        this.enquiryRouteChange()
-      );
+
+      toast.success(nextProps.postEnquiry.postEnquiry.msg, {
+        onClose: () => this.enquiryRouteChange()
+      });
     } else if (
       this.props.postEnquiry !== nextProps.postEnquiry &&
       nextProps.postEnquiry.status === "FAIL"
     ) {
-      console.log("INSIDE postEnquiry FAIL");
       this.updateIsLoading();
-      NotificationManager.error("Error", nextProps.postEnquiry.postEnquiry.msg);
+      toast.error(`${nextProps.postEnquiry.postEnquiry.msg} !`);
     }
   }
 
@@ -369,7 +361,7 @@ class Enquiry extends React.Component {
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
 
-        <NotificationContainer />
+        <ToastContainer autoClose={3000} />
       </React.Fragment>
     );
   }
