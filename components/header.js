@@ -45,7 +45,7 @@ export default class Header extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("INSIDE UNSAFE_componentWillReceiveProps");
+    console.log("INSIDE UNSAFE_componentWillReceiveProps HEADER");
     if (this.props.login !== nextProps.login) {
       console.log("INSIDE nextProps.login");
       if (nextProps.login.status === "SUCCESS") {

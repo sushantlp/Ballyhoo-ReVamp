@@ -239,6 +239,9 @@ class Detail extends React.Component {
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
           postForget={this.props.postForget}
+          login={this.props.login}
+          register={this.props.register}
+          forget={this.props.forget}
         />
         <DetailSlider
           slidderImage={this.props.slidderImage}

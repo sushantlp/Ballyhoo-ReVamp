@@ -189,7 +189,7 @@ class Index extends React.Component {
       );
 
     return (
-      <div>
+      <React.Fragment>
         <Head
           title="Ballyhoo Today"
           ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
@@ -203,6 +203,9 @@ class Index extends React.Component {
           postForget={this.props.postForget}
           updateCustomerData={this.props.updateCustomerData}
           customerData={this.props.customerData}
+          login={this.props.login}
+          register={this.props.register}
+          forget={this.props.forget}
         />
         <Slidder
           cityLocality={this.props.cityLocality}
@@ -243,7 +246,7 @@ class Index extends React.Component {
         <Headout keyword={keyword} />
 
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
-      </div>
+      </React.Fragment>
     );
   }
 }

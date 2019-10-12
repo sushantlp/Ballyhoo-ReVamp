@@ -347,7 +347,7 @@ class List extends React.Component {
       );
 
     return (
-      <div>
+      <React.Fragment>
         <Head
           title="Ballyhoo Today"
           ogImage={this.props.currentImage}
@@ -359,6 +359,9 @@ class List extends React.Component {
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
           postForget={this.props.postForget}
+          login={this.props.login}
+          register={this.props.register}
+          forget={this.props.forget}
         />
         <ParentList
           cityLocality={this.props.cityLocality}
@@ -376,7 +379,7 @@ class List extends React.Component {
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
-      </div>
+      </React.Fragment>
     );
   }
 }
