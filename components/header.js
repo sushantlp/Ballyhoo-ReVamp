@@ -20,7 +20,7 @@ export default class Header extends React.Component {
       loginOpen: false,
       signupOpen: false,
       forgetOpen: false,
-      profileOpen: true,
+      profileOpen: false,
 
       loginEmail: "",
       loginPassword: "",

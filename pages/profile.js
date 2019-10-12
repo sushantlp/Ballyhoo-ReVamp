@@ -280,7 +280,7 @@ class Profile extends React.Component {
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
 
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={1000} />
       </React.Fragment>
     );
   }
