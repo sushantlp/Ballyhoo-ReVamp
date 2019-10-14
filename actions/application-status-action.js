@@ -2,6 +2,6 @@ export const actionType = {
   applicationStatus: "APPLICATION_STATUS"
 };
 
-export const applicationStatus = applicationStatus => dispatch => {
+export const applicationStatusAction = applicationStatus => dispatch => {
   return dispatch({ type: actionType.applicationStatus, applicationStatus });
 };

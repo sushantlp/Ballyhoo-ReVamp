@@ -34,7 +34,7 @@ import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { getSeo } from "../actions/seo-data-action";
-import { getSeo } from "../actions/application-status-action";
+import { applicationStatusAction } from "../actions/application-status-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
@@ -182,6 +182,13 @@ class Index extends React.Component {
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
             postForget={this.props.postForget}
+            updateCustomerData={this.props.updateCustomerData}
+            customerData={this.props.customerData}
+            login={this.props.login}
+            register={this.props.register}
+            forget={this.props.forget}
+            applicationStatus={this.props.applicationStatus}
+            applicationStatusAction={this.props.applicationStatusAction}
           />
           <Spinner />
           <Headout />
@@ -207,6 +214,8 @@ class Index extends React.Component {
           login={this.props.login}
           register={this.props.register}
           forget={this.props.forget}
+          applicationStatus={this.props.applicationStatus}
+          applicationStatusAction={this.props.applicationStatusAction}
         />
         <Slidder
           cityLocality={this.props.cityLocality}
@@ -262,7 +271,8 @@ const mapStateToProps = state => {
     register: state.register,
     forget: state.forget,
     customerData: state.customerData,
-    seo: state.seo
+    seo: state.seo,
+    applicationStatus: state.applicationStatus
   };
 };
 
@@ -277,7 +287,11 @@ const mapDispatchToProps = dispatch => {
     postRegister: bindActionCreators(postRegister, dispatch),
     postForget: bindActionCreators(postForget, dispatch),
     updateCustomerData: bindActionCreators(updateCustomerData, dispatch),
-    getSeo: bindActionCreators(getSeo, dispatch)
+    getSeo: bindActionCreators(getSeo, dispatch),
+    applicationStatusAction: bindActionCreators(
+      applicationStatusAction,
+      dispatch
+    )
   };
 };
 

@@ -44,6 +44,14 @@ export default class Header extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props.applicationStatus);
+    if (this.props.applicationStatus.applicationStatus.login)
+      this.setState({
+        profileOpen: this.props.applicationStatus.applicationStatus.login
+      });
+  }
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.login !== nextProps.login) {
       if (nextProps.login.status === "SUCCESS") {
@@ -64,6 +72,11 @@ export default class Header extends React.Component {
           isLoading: false
         });
 
+        const applicationStatus = {
+          login: true
+        };
+
+        this.props.applicationStatusAction(applicationStatus);
         this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
         toast.success("Successful");

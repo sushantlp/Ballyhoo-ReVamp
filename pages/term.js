@@ -21,6 +21,9 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 
+import { updateCustomerData } from "../actions/customer-data-action";
+import { applicationStatusAction } from "../actions/application-status-action";
+
 class Term extends React.Component {
   static async getInitialProps(ctx) {
     try {
@@ -71,6 +74,10 @@ class Term extends React.Component {
           login={this.props.login}
           register={this.props.register}
           forget={this.props.forget}
+          updateCustomerData={this.props.updateCustomerData}
+          customerData={this.props.customerData}
+          applicationStatus={this.props.applicationStatus}
+          applicationStatusAction={this.props.applicationStatusAction}
         />
         <TermComponent />
         <Headout />
@@ -85,7 +92,9 @@ const mapStateToProps = state => {
     cityLocality: state.cityLocality,
     login: state.login,
     register: state.register,
-    forget: state.forget
+    forget: state.forget,
+    customerData: state.customerData,
+    applicationStatus: state.applicationStatus
   };
 };
 
@@ -94,7 +103,12 @@ const mapDispatchToProps = dispatch => {
     getCityLocality: bindActionCreators(getCityLocality, dispatch),
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
-    postForget: bindActionCreators(postForget, dispatch)
+    postForget: bindActionCreators(postForget, dispatch),
+    updateCustomerData: bindActionCreators(updateCustomerData, dispatch),
+    applicationStatusAction: bindActionCreators(
+      applicationStatusAction,
+      dispatch
+    )
   };
 };
 

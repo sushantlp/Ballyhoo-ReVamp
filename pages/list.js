@@ -34,8 +34,10 @@ import { updateUrlParam } from "../actions/url-param-action";
 import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
-
 import { getSeo } from "../actions/seo-data-action";
+
+import { updateCustomerData } from "../actions/customer-data-action";
+import { applicationStatusAction } from "../actions/application-status-action";
 
 class List extends React.Component {
   static async getInitialProps(ctx) {
@@ -339,6 +341,13 @@ class List extends React.Component {
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
             postForget={this.props.postForget}
+            updateCustomerData={this.props.updateCustomerData}
+            customerData={this.props.customerData}
+            login={this.props.login}
+            register={this.props.register}
+            forget={this.props.forget}
+            applicationStatus={this.props.applicationStatus}
+            applicationStatusAction={this.props.applicationStatusAction}
           />
           <Spinner />
           <Headout />
@@ -362,6 +371,10 @@ class List extends React.Component {
           login={this.props.login}
           register={this.props.register}
           forget={this.props.forget}
+          updateCustomerData={this.props.updateCustomerData}
+          customerData={this.props.customerData}
+          applicationStatus={this.props.applicationStatus}
+          applicationStatusAction={this.props.applicationStatusAction}
         />
         <ParentList
           cityLocality={this.props.cityLocality}
@@ -397,7 +410,9 @@ const mapStateToProps = state => {
     login: state.login,
     register: state.register,
     forget: state.forget,
-    seo: state.seo
+    seo: state.seo,
+    customerData: state.customerData,
+    applicationStatus: state.applicationStatus
   };
 };
 
@@ -421,7 +436,12 @@ const mapDispatchToProps = dispatch => {
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
     postForget: bindActionCreators(postForget, dispatch),
-    getSeo: bindActionCreators(getSeo, dispatch)
+    getSeo: bindActionCreators(getSeo, dispatch),
+    updateCustomerData: bindActionCreators(updateCustomerData, dispatch),
+    applicationStatusAction: bindActionCreators(
+      applicationStatusAction,
+      dispatch
+    )
   };
 };
 

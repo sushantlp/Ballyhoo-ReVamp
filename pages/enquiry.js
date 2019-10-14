@@ -24,6 +24,9 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 
+import { updateCustomerData } from "../actions/customer-data-action";
+import { applicationStatusAction } from "../actions/application-status-action";
+
 import "react-toastify/dist/ReactToastify.css";
 
 class Enquiry extends React.Component {
@@ -337,6 +340,13 @@ class Enquiry extends React.Component {
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}
           postForget={this.props.postForget}
+          login={this.props.login}
+          register={this.props.register}
+          forget={this.props.forget}
+          updateCustomerData={this.props.updateCustomerData}
+          customerData={this.props.customerData}
+          applicationStatus={this.props.applicationStatus}
+          applicationStatusAction={this.props.applicationStatusAction}
         />
         <EnquiryComponent
           enquiryState={this.state}
@@ -369,7 +379,9 @@ const mapStateToProps = state => {
     postEnquiry: state.postEnquiry,
     login: state.login,
     register: state.register,
-    forget: state.forget
+    forget: state.forget,
+    customerData: state.customerData,
+    applicationStatus: state.applicationStatus
   };
 };
 
@@ -379,7 +391,12 @@ const mapDispatchToProps = dispatch => {
     postEnquiryApi: bindActionCreators(postEnquiryApi, dispatch),
     postLogin: bindActionCreators(postLogin, dispatch),
     postRegister: bindActionCreators(postRegister, dispatch),
-    postForget: bindActionCreators(postForget, dispatch)
+    postForget: bindActionCreators(postForget, dispatch),
+    updateCustomerData: bindActionCreators(updateCustomerData, dispatch),
+    applicationStatusAction: bindActionCreators(
+      applicationStatusAction,
+      dispatch
+    )
   };
 };
 

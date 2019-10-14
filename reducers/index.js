@@ -22,6 +22,7 @@ import { escapeEnquiry } from "./escape-enquiry-reducer";
 import { fnbReservation } from "./fnb-reservation-reducer";
 import { saloonAppointment } from "./saloon-appointment-reducer";
 import { seo } from "./seo-data-reducer";
+import { applicationStatus } from "./application-status-reducer";
 export default combineReducers({
   cityLocality,
   homeScreen,
@@ -46,5 +47,6 @@ export default combineReducers({
   escapeEnquiry,
   fnbReservation,
   saloonAppointment,
-  seo
+  seo,
+  applicationStatus
 });
