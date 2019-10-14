@@ -37,7 +37,7 @@ const Forget = props => {
             <footer className="modal-card-foot">
               {props.isLoading ? (
                 <button
-                  className="button is-danger is-active login-button is-loading"
+                  className="button is-danger is-active submit-button is-loading"
                   disabled
                   style={{ backgroundColor: "#fdb6c4" }}
                 >

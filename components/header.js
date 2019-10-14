@@ -47,6 +47,10 @@ export default class Header extends React.Component {
   componentDidMount() {
     let loginStatus = sessionStorage.getItem("LOGIN");
     loginStatus = JSON.parse(loginStatus);
+
+    let customerData = sessionStorage.getItem("CUSTOMER_DATA");
+    customerData = JSON.parse(customerData);
+
     if (loginStatus) {
       const applicationStatus = {
         login: true
@@ -55,12 +59,15 @@ export default class Header extends React.Component {
         profileOpen: true
       });
       this.props.applicationStatusAction(applicationStatus);
+      this.props.updateCustomerData(customerData);
     } else {
       if (this.props.applicationStatus.applicationStatus.login) {
         sessionStorage.setItem("LOGIN", true);
         this.setState({
           profileOpen: this.props.applicationStatus.applicationStatus.login
         });
+
+        this.props.updateCustomerData(customerData);
       }
     }
   }
@@ -89,6 +96,7 @@ export default class Header extends React.Component {
           login: true
         };
 
+        sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
         sessionStorage.setItem("LOGIN", true);
         this.props.applicationStatusAction(applicationStatus);
         this.props.updateCustomerData(customerData);
@@ -122,6 +130,7 @@ export default class Header extends React.Component {
           isLoading: false
         });
 
+        sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
         this.props.updateCustomerData(customerData);
         this.updateSignupState(false);
 

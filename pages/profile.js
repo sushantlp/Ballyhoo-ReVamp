@@ -62,12 +62,21 @@ class Profile extends React.Component {
   componentWillUnmount() {}
 
   componentDidMount() {
+    let customerId = 0;
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
+      let customerData = sessionStorage.getItem("CUSTOMER_DATA");
+      customerData = JSON.parse(customerData);
+      customerId = customerData.customer_id;
+    } else {
+      customerId = this.props.customerData.customerData.customer_id;
+    }
+
+    if (parseInt(customerId, 10) === 0) {
       toast.error("Please login !", {
         onClose: () => this.routeChange()
       });
     } else {
-      this.props.getProfile(this.props.customerData.customerData.customer_id);
+      this.props.getProfile(customerId);
     }
 
     ReactDOM.findDOMNode(this).scrollIntoView();
@@ -87,8 +96,16 @@ class Profile extends React.Component {
     if (this.props.profileData !== nextProps.profileData) {
       if (nextProps.profileData.status === "SUCCESS") {
         let date = moment();
-        if (nextProps.profileData.profile.dob !== null)
-          date = moment(nextProps.profileData.profile.dob);
+
+        if (nextProps.profileData.profile.dob !== null) {
+          console.log("HELLLO");
+          console.log(nextProps.profileData.profile.dob);
+
+          date = moment(nextProps.profileData.profile.dob, "DD/MM/YYYY");
+          date = moment(date);
+          console.log(date);
+        }
+
         this.setState({
           date: date,
           firstName:
@@ -137,7 +154,6 @@ class Profile extends React.Component {
       });
 
       if (nextProps.profileUpdate.status === "SUCCESS") {
-        console.log(nextProps.profileUpdate);
         const customerData = {
           customer_id: this.props.customerData.customerData.customer_id,
           first_name: this.state.firstName,
@@ -166,7 +182,6 @@ class Profile extends React.Component {
   };
 
   onDateChange = date => {
-    console.log(date);
     this.setState({ date: date, birthday: date });
   };
 
@@ -197,7 +212,7 @@ class Profile extends React.Component {
       isLoading: true
     });
     const sex = this.state.gender === "Male" ? 1 : 2;
-    console.log(this.state.birthday);
+
     const birthday = moment(this.state.birthday).format("YYYY-MM-DD");
     this.props.putProfile(
       this.props.customerData.customerData.customer_id,
@@ -224,7 +239,7 @@ class Profile extends React.Component {
           onChange={e => onMonthSelect(month, e.target.value)}
         >
           {moment.months().map((label, value) => (
-            <option value={value} key={label}>
+            <option value={value} key={value}>
               {label}
             </option>
           ))}
