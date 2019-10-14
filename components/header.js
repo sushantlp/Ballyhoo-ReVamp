@@ -45,11 +45,24 @@ export default class Header extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.applicationStatus);
-    if (this.props.applicationStatus.applicationStatus.login)
+    let loginStatus = sessionStorage.getItem("LOGIN");
+    loginStatus = JSON.parse(loginStatus);
+    if (loginStatus) {
+      const applicationStatus = {
+        login: true
+      };
       this.setState({
-        profileOpen: this.props.applicationStatus.applicationStatus.login
+        profileOpen: true
       });
+      this.props.applicationStatusAction(applicationStatus);
+    } else {
+      if (this.props.applicationStatus.applicationStatus.login) {
+        sessionStorage.setItem("LOGIN", true);
+        this.setState({
+          profileOpen: this.props.applicationStatus.applicationStatus.login
+        });
+      }
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -76,6 +89,7 @@ export default class Header extends React.Component {
           login: true
         };
 
+        sessionStorage.setItem("LOGIN", true);
         this.props.applicationStatusAction(applicationStatus);
         this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
