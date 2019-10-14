@@ -117,7 +117,7 @@ const Signup = props => {
                 </div>
 
                 {props.errorStatus ? (
-                  <p class="help is-danger">{props.errorMsg}</p>
+                  <p className="help is-danger">{props.errorMsg}</p>
                 ) : null}
               </div>
 
@@ -126,16 +126,13 @@ const Signup = props => {
                   <label className="checkbox">
                     <input
                       className="is-checkradio has-background-color is-danger"
-                      id="exampleCheckboxDefault1"
+                      id="terms-condition"
                       type="checkbox"
-                      name="alcohol"
-                      checked="checked"
+                      name="terms"
+                      defaultChecked
                       style={{ paddingLeft: "1em" }}
                     />
-                    <label
-                      htmlFor="exampleCheckboxDefault1"
-                      className="ffqs fw2"
-                    >
+                    <label htmlFor="terms-condition" className="ffqs fw2">
                       I agree to the{" "}
                       <a href="/term" target="_blank">
                         Terms and Privacy
@@ -148,7 +145,7 @@ const Signup = props => {
             <footer className="modal-card-foot">
               {props.isLoading ? (
                 <button
-                  className="button is-danger is-active login-button is-loading"
+                  className="button is-danger is-active signup-button is-loading"
                   disabled
                   style={{ backgroundColor: "#fdb6c4" }}
                 >

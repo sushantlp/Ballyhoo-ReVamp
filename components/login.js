@@ -16,10 +16,6 @@ const Login = props => {
             </header>
             <section className="modal-card-body">
               <div className="field">
-                {props.errorStatus ? (
-                  <p class="help is-danger">{props.errorMsg}</p>
-                ) : null}
-
                 <div className="field-body">
                   <div className="field">
                     <div className="control is-expanded ffqs fw2">

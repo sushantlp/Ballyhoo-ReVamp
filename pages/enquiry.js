@@ -85,25 +85,22 @@ class Enquiry extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      this.props.postEnquiry !== nextProps.postEnquiry &&
-      nextProps.postEnquiry.status === "SUCCESS"
-    ) {
-      this.updateIsLoading();
+    ReactDOM.findDOMNode(this).scrollIntoView();
+    if (this.props.postEnquiry !== nextProps.postEnquiry) {
+      if (nextProps.postEnquiry.status === "SUCCESS") {
+        this.updateIsLoading();
 
-      toast.success(nextProps.postEnquiry.postEnquiry.msg, {
-        onClose: () => this.enquiryRouteChange()
-      });
-    } else if (
-      this.props.postEnquiry !== nextProps.postEnquiry &&
-      nextProps.postEnquiry.status === "FAIL"
-    ) {
-      this.updateIsLoading();
-      toast.error(`${nextProps.postEnquiry.postEnquiry.msg} !`);
+        toast.success(nextProps.postEnquiry.msg, {
+          onClose: () => this.routeChange()
+        });
+      } else {
+        this.updateIsLoading();
+        toast.error(`${nextProps.postEnquiry.msg} !`);
+      }
     }
   }
 
-  enquiryRouteChange = () => {
+  routeChange = () => {
     Router.push("/");
   };
 
@@ -308,26 +305,27 @@ class Enquiry extends React.Component {
   };
 
   render() {
-    if (this.state.isLoading)
-      return (
-        <React.Fragment>
-          <Header
-            postLogin={this.props.postLogin}
-            postRegister={this.props.postRegister}
-            postForget={this.props.postForget}
-            login={this.props.login}
-            register={this.props.register}
-            forget={this.props.forget}
-          />
-          <Spinner />
+    // if (this.state.isLoading)
+    //   return (
+    //     <React.Fragment>
+    //       <Header
+    //         postLogin={this.props.postLogin}
+    //         postRegister={this.props.postRegister}
+    //         postForget={this.props.postForget}
+    //         login={this.props.login}
+    //         register={this.props.register}
+    //         forget={this.props.forget}
+    //       />
+    //       <Spinner />
 
-          <Headout />
-          <Footer cityLocality={this.props.cityLocality} />
-        </React.Fragment>
-      );
+    //       <Headout />
+    //       <Footer cityLocality={this.props.cityLocality} />
+    //     </React.Fragment>
+    //   );
 
     return (
       <React.Fragment>
+        <ToastContainer autoClose={1000} />
         <Head
           title="Ballyhoo Today"
           ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
@@ -360,8 +358,6 @@ class Enquiry extends React.Component {
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
-
-        <ToastContainer autoClose={3000} />
       </React.Fragment>
     );
   }

@@ -34,6 +34,7 @@ import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { getSeo } from "../actions/seo-data-action";
+import { getSeo } from "../actions/application-status-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {

@@ -14,7 +14,7 @@ export function postEnquiry(state = initialState, action) {
           ...state,
           postEnquiry: action.postEnquiry.data,
           status: "SUCCESS",
-          msg: "successful"
+          msg: action.postEnquiry.message
         };
       } else {
         return {

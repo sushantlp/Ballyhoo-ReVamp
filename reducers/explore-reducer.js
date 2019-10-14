@@ -14,7 +14,7 @@ export function postExplore(state = initialState, action) {
           ...state,
           postExplore: action.postExplore.data,
           status: "SUCCESS",
-          msg: "successful"
+          msg: action.postExplore.message
         };
       } else {
         return {

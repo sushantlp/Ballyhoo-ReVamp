@@ -91,25 +91,22 @@ class Explore extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      this.props.postExplore !== nextProps.postExplore &&
-      nextProps.postExplore.status === "SUCCESS"
-    ) {
-      this.updateIsLoading();
-
-      toast.success(nextProps.postExplore.postExplore.msg, {
-        onClose: () => this.enquiryRouteChange()
-      });
-    } else if (
-      this.props.postExplore !== nextProps.postExplore &&
-      nextProps.postExplore.status === "FAIL"
-    ) {
-      this.updateIsLoading();
-      toast.error(`${nextProps.postExplore.postExplore.msg} !`);
+    ReactDOM.findDOMNode(this).scrollIntoView();
+    if (this.props.postExplore !== nextProps.postExplore) {
+      if (nextProps.postExplore.status === "SUCCESS") {
+        console.log("INSIDE");
+        this.updateIsLoading();
+        toast.success("Successful", {
+          onClose: () => this.routeChange()
+        });
+      } else {
+        this.updateIsLoading();
+        toast.error(`${nextProps.postExplore.msg} !`);
+      }
     }
   }
 
-  enquiryRouteChange = () => {
+  routeChange = () => {
     Router.push("/");
   };
 
@@ -317,13 +314,6 @@ class Explore extends React.Component {
     if (this.state.isLoading)
       return (
         <React.Fragment>
-          <Head
-            title="Ballyhoo Today"
-            ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
-            url="https://ballyhoo.today"
-            description="Ballyhoo Today is a recommendation app to help you discover curated premium Urban Experiences in your city.\n We understand that you like to explore best of the best hence, we have sorted only the popular ones to choose from - \n Travel & Leisure, Events, Activities, Restaurants, Gastropub, Breweries, Nightlife Club Parties, Spa and much more."
-            keyword="Things to do, Day out, Food and drinks near me, Happy Hours near me, Best buffet, Octoberfest, Book India packages, top 10 luxury destinations, Cocktail bar, Microbrewery, Trending Club night parties, Best Bollywood Parties, best beach resort, Rejuvenate, Spa near me, Spa packages, Tourist attraction, Best bar, Unlimited Food & Drinks offers, Upcoming events, Comedy show, Standup comedy, Live gigs, Ladies night parties, Karaoke night, Best DJ night parties, Weekend getaway, Team Outing, Group packages"
-          />
           <Header
             postLogin={this.props.postLogin}
             postRegister={this.props.postRegister}
@@ -341,6 +331,13 @@ class Explore extends React.Component {
 
     return (
       <React.Fragment>
+        <Head
+          title="Ballyhoo Today"
+          ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
+          url="https://ballyhoo.today"
+          description="Ballyhoo Today is a recommendation app to help you discover curated premium Urban Experiences in your city.\n We understand that you like to explore best of the best hence, we have sorted only the popular ones to choose from - \n Travel & Leisure, Events, Activities, Restaurants, Gastropub, Breweries, Nightlife Club Parties, Spa and much more."
+          keyword="Things to do, Day out, Food and drinks near me, Happy Hours near me, Best buffet, Octoberfest, Book India packages, top 10 luxury destinations, Cocktail bar, Microbrewery, Trending Club night parties, Best Bollywood Parties, best beach resort, Rejuvenate, Spa near me, Spa packages, Tourist attraction, Best bar, Unlimited Food & Drinks offers, Upcoming events, Comedy show, Standup comedy, Live gigs, Ladies night parties, Karaoke night, Best DJ night parties, Weekend getaway, Team Outing, Group packages"
+        />
         <Header
           postLogin={this.props.postLogin}
           postRegister={this.props.postRegister}

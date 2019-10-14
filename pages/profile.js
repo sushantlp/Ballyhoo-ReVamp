@@ -60,11 +60,10 @@ class Profile extends React.Component {
   componentWillUnmount() {}
 
   componentDidMount() {
-    this.props.getProfile(1);
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
-      // toast.error("Please login !", {
-      //   onClose: () => this.enquiryRouteChange()
-      // });
+      toast.error("Please login !", {
+        onClose: () => this.routeChange()
+      });
     } else {
       this.props.getProfile(this.props.customerData.customerData.customer_id);
     }
@@ -152,16 +151,15 @@ class Profile extends React.Component {
         this.props.updateCustomerData(customerData);
 
         toast.success("Profile update successful", {
-          onClose: () => this.enquiryRouteChange()
+          onClose: () => this.routeChange()
         });
       } else {
-        console.log(nextProps.profileUpdate);
         toast.error(`${nextProps.profileUpdate.profile.msg} !`);
       }
     }
   }
 
-  enquiryRouteChange = () => {
+  routeChange = () => {
     Router.push("/");
   };
 
@@ -244,6 +242,7 @@ class Profile extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <ToastContainer autoClose={1000} />
         <Head
           title="Ballyhoo Today"
           ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
@@ -279,8 +278,6 @@ class Profile extends React.Component {
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
-
-        <ToastContainer autoClose={1000} />
       </React.Fragment>
     );
   }

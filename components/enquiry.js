@@ -464,7 +464,14 @@ const Enquiry = props => {
                 </div>
               </div>
 
-              {props.enquiryState.enquiryButton ? (
+              {props.enquiryState.isLoading ? (
+                <a
+                  className="button is-loading ff"
+                  onClick={() => props.onClickEnquiryButton()}
+                >
+                  SUBMIT
+                </a>
+              ) : props.enquiryState.enquiryButton ? (
                 <a
                   className="button ff"
                   onClick={() => props.onClickEnquiryButton()}

@@ -63,6 +63,7 @@ export default class Header extends React.Component {
           profileOpen: true,
           isLoading: false
         });
+
         this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
         toast.success("Successful");
@@ -70,7 +71,7 @@ export default class Header extends React.Component {
         this.setState({
           isLoading: false,
           errorStatus: true,
-          errorMsg: nextProps.login.login.msg
+          errorMsg: nextProps.login.msg
         });
       }
     } else if (this.props.register !== nextProps.register) {
@@ -102,7 +103,7 @@ export default class Header extends React.Component {
         this.setState({
           isLoading: false,
           errorStatus: true,
-          errorMsg: nextProps.register.register.msg
+          errorMsg: nextProps.register.msg
         });
       }
     } else if (this.props.forget !== nextProps.forget) {
@@ -117,7 +118,7 @@ export default class Header extends React.Component {
         this.setState({
           isLoading: false,
           errorStatus: true,
-          errorMsg: nextProps.forget.forget.msg
+          errorMsg: nextProps.forget.msg
         });
       }
     }
@@ -428,7 +429,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="header-container">
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={1000} />
         <nav
           id="navbar"
           className="navbar has-shadow"
