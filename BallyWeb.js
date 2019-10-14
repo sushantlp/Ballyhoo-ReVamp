@@ -7,13 +7,49 @@ const express = require("express");
 const port = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== "production";
 // const dev = false;
-const app = next({ dev, quiet: true });
+const app = next({ dev });
 const handle = app.getRequestHandler();
+
+// const robotsOptions = {
+//   root: __dirname + "/static/",
+//   headers: {
+//     "Content-Type": "text/plain;charset=UTF-8"
+//   }
+// };
+// server.get("/robots.txt", (req, res) =>
+//   res.status(200).sendFile("robots.txt", robotsOptions)
+// );
+
+// const sitemapOptions = {
+//   root: __dirname + "/static/",
+//   headers: {
+//     "Content-Type": "text/xml;charset=UTF-8"
+//   }
+// };
+// server.get("/sitemap.xml", (req, res) =>
+//   res.status(200).sendFile("sitemap.xml", sitemapOptions)
+// );
 
 app
   .prepare()
   .then(() => {
     const server = express();
+
+    server.get("/robots.txt", (req, res) => {
+      if (dev) {
+        app.serveStatic(req, res, Path.resolve("./static/robots.txt"));
+      } else {
+        app.serveStatic(req, res, Path.resolve("./.next/robots.txt"));
+      }
+    });
+
+    server.get("/sitemap.xml", (req, res) => {
+      if (dev) {
+        app.serveStatic(req, res, Path.resolve("./static/sitemap.xml"));
+      } else {
+        app.serveStatic(req, res, Path.resolve("./.next/sitemap.xml"));
+      }
+    });
 
     server.get("/favicon.ico", (req, res) => {
       if (dev) {

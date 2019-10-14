@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+      <loc>https://ballyhoo.today/</loc>
+      <lastmod>2019-10-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+
+        <url>
+        <loc>https://ballyhoo.today/bengaluru/1</loc>
+        <lastmod>2019-10-14</lastmod>
+        </url>
+
+          <url>
+        <loc>https://ballyhoo.today/new-delhi-ncr/2</loc>
+        <lastmod>2019-10-14</lastmod>
+        </url>
+
+          <url>
+        <loc>https://ballyhoo.today/chandigarh/6</loc>
+        <lastmod>2019-10-14</lastmod>
+        </url>
+
+        <url>
+            <loc>https://ballyhoo.today/chennai/7</loc>
+            <lastmod>2019-10-14</lastmod>
+        </url>
+
+        <url>
+            <loc>https://ballyhoo.today/kolkata/9</loc>
+            <lastmod>2019-10-14</lastmod>
+        </url>
+
+        <url>
+            <loc>https://ballyhoo.today/pune/12</loc>
+            <lastmod>2019-10-14</lastmod>
+        </url>
+
+        <url>
+            <loc>https://ballyhoo.today/hyderabad/13</loc>
+            <lastmod>2019-10-14</lastmod>
+        </url>
+
+        <url>
+            <loc>https://ballyhoo.today/mumbai/14</loc>
+            <lastmod>2019-10-14</lastmod>
+        </url>
+   </url>
+
+   <url>
+        <loc>https://ballyhoo.today/about</loc>
+        <lastmod>2019-10-14</lastmod>
+   </url>
+
+   <url>
+        <loc>https://ballyhoo.today/term</loc>
+        <lastmod>2019-10-14</lastmod>
+   </url>
+   
+   <url>
+        <loc>https://ballyhoo.today/privacy</loc>
+        <lastmod>2019-10-14</lastmod>
+   </url>
+   
+   <url>
+        <loc>https://ballyhoo.today/faq</loc>
+        <lastmod>2019-10-14</lastmod>
+    </url>
+
+</urlset>
