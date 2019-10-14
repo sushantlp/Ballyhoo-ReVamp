@@ -37,6 +37,7 @@ class Detail extends React.Component {
     let slice = [];
     let routeParam = [];
     let currentImage = "";
+    let currentTitle = "";
 
     try {
       if (isServer) {
@@ -143,21 +144,37 @@ class Detail extends React.Component {
         store.dispatch(getSeo(seoJson));
       }
 
-      if (parseInt(detailUrlParam.response_type, 10) === 1)
+      if (parseInt(detailUrlParam.response_type, 10) === 1) {
         currentImage =
           "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1510745225/ballyhoo/WALK-IN/4.jpg";
-      else if (parseInt(detailUrlParam.response_type, 10) === 2)
+
+        currentTitle =
+          "Ballyhoo Today - Discover Eat Trend Escape. Explore and Book your Events, activities, Nightlife, curated holiday packages and much more.";
+      } else if (parseInt(detailUrlParam.response_type, 10) === 2) {
         currentImage =
           "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525270865/OTHER_CATEGORY/EVENT/6.jpg";
-      else if (parseInt(detailUrlParam.response_type, 10) === 3)
+
+        currentTitle =
+          "Ballyhoo Today - Discover Eat Trend Escape. Top upcoming events, comedy shows, music concerts near you:";
+      } else if (parseInt(detailUrlParam.response_type, 10) === 3) {
         currentImage =
           "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271105/OTHER_CATEGORY/ACTIVITY/7.jpg";
-      else if (parseInt(detailUrlParam.response_type, 10) === 4)
+
+        currentTitle =
+          "Ballyhoo Today - Discover Eat Trend Escape. Top things to do, indoor and outdoor activities, air adventure, aquatic adventure, Snow Adventure, wildlife";
+      } else if (parseInt(detailUrlParam.response_type, 10) === 4) {
         currentImage =
           "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271482/OTHER_CATEGORY/GETAWAY/3.jpg";
-      else if (parseInt(detailUrlParam.response_type, 10) === 5)
+
+        currentTitle =
+          "Ballyhoo Today - Discover Eat Trend Escape. Discover premium luxury holiday destinations. Domestic and international holiday packages";
+      } else if (parseInt(detailUrlParam.response_type, 10) === 5) {
         currentImage =
           "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,h_630,w_1200/v1525271818/OTHER_CATEGORY/SALOON/6.jpg";
+
+        currentTitle =
+          "Ballyhoo Today - Discover Eat Trend Escape. Luxury day out Spa Packages, body Massage, ratings, popularity";
+      }
 
       if (parseInt(detailUrlParam.result_type, 10) === 1) {
         // Zomato API

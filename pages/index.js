@@ -199,7 +199,7 @@ class Index extends React.Component {
     return (
       <React.Fragment>
         <Head
-          title="Ballyhoo Today"
+          title="Ballyhoo Today - Discover Eat Trend Escape. Explore and Book your Events, activities, Nightlife, curated holiday packages and much more"
           ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
           url={`${hostWithoutSlash}${this.props.currentUrl}`}
           description={this.props.seo.seo.description}
