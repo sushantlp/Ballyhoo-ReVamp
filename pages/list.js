@@ -218,6 +218,7 @@ class List extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    ReactDOM.findDOMNode(this).scrollIntoView();
     if (
       this.props.categoryData !== nextProps.categoryData &&
       nextProps.categoryData.status === "SUCCESS"

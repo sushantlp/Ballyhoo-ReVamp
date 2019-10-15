@@ -10,7 +10,6 @@ import { host, EMAIL } from "../constants";
 
 import { ToastContainer, toast } from "react-toastify";
 
-import Spinner from "../components/spinner";
 import EnquiryComponent from "../components/enquiry";
 import Head from "../components/head";
 import Header from "../components/header";

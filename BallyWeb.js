@@ -104,6 +104,10 @@ app
       return app.render(req, res, "/explore", {});
     });
 
+    server.get("/checkout", (req, res) => {
+      return app.render(req, res, "/checkout", {});
+    });
+
     server.get("/:city", (req, res) => {
       return app.render(req, res, "/", { city: req.params.city });
     });

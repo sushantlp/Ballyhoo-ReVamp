@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import Router from "next/router";
 
@@ -12,7 +11,7 @@ import { host, hostWithoutSlash } from "../constants";
 import Spinner from "../components/spinner";
 import Head from "../components/head";
 import Header from "../components/header";
-// import SubHeader from "../components/sub-header";
+
 import Slidder from "../components/slidder";
 import Discover from "../components/discover";
 import Featured from "../components/featured";
@@ -23,7 +22,6 @@ import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
-// import Space from "../components/loading-space";
 
 import { getsearchData } from "../actions/search-data-action";
 import { getCityLocality } from "../actions/city-locality-action";

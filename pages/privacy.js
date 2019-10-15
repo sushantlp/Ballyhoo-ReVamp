@@ -1,4 +1,4 @@
-import React from "react";
+import ReactDOM from "react-dom";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -42,7 +42,7 @@ class Privacy extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")

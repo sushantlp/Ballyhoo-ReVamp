@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -191,7 +190,7 @@ class Detail extends React.Component {
       console.log(err);
     }
 
-    return { detailUrlParam, routeParam, currentImage };
+    return { detailUrlParam, routeParam, currentImage, currentTitle };
   }
 
   constructor(props) {
@@ -256,7 +255,7 @@ class Detail extends React.Component {
     return (
       <React.Fragment>
         <Head
-          title="Ballyhoo Today"
+          title={this.props.currentTitle}
           ogImage={this.props.currentImage}
           url={`${hostWithoutSlash}${this.props.currentUrl}`}
           description={this.props.seo.seo.description}
