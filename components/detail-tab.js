@@ -162,6 +162,7 @@ const DetailTab = props => {
           dayInNumber={props.parentState.dayInNumber}
           expiry={props.foodCategoryData.foodCategoryData.details.expired}
           keyword={props.keyword}
+          onFnbBuffetClick={props.onFnbBuffetClick}
         />
       ) : null}
 
@@ -172,6 +173,7 @@ const DetailTab = props => {
           detailUrlParam={props.detailUrlParam}
           dayInNumber={props.parentState.dayInNumber}
           keyword={props.keyword}
+          onFnbPackageClick={props.onFnbPackageClick}
         />
       ) : null}
 
@@ -181,6 +183,7 @@ const DetailTab = props => {
           dayInNumber={props.parentState.dayInNumber}
           expiry={props.foodCategoryData.foodCategoryData.details.expired}
           keyword={props.keyword}
+          onFnbEventClick={props.onFnbEventClick}
         />
       ) : null}
 

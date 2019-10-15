@@ -51,7 +51,6 @@ export default class Overview extends React.Component {
   };
 
   handleClick = (marker, event) => {
-    // console.log({ marker })
     this.setState({ selectedMarker: marker });
   };
 
@@ -257,8 +256,7 @@ export default class Overview extends React.Component {
     for (let i = 0; i < topRating; i++) {
       emptyRating.push(i);
     }
-    console.log(this.props.categoryData.categoryData.details);
-    console.log(where);
+
     return (
       <div className="overview-container">
         <div className="box">
@@ -449,7 +447,8 @@ export default class Overview extends React.Component {
           </div>
         </div>
 
-        {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+        {parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
+        this.props.zomatoData.zomatoData.length > 0 ? (
           <div className="box">
             <div className="columns">
               <div className="column">

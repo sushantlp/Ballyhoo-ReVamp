@@ -6,7 +6,7 @@ const express = require("express");
 
 const port = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== "production";
-// const dev = false;
+//const dev = false;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -30,34 +30,33 @@ const handle = app.getRequestHandler();
 //   res.status(200).sendFile("sitemap.xml", sitemapOptions)
 // );
 
+// const options = {
+//   root: path.join(__dirname, '/static'),
+//   headers: {
+//     'Content-Type': 'text/plain;charset=UTF-8',
+//   }
+// };
+// server.get('/robots.txt', (req, res) => (
+//   res.status(200).sendFile('robots.txt', options)
+// ));
+
 app
   .prepare()
   .then(() => {
     const server = express();
 
     server.get("/robots.txt", (req, res) => {
-      if (dev) {
-        app.serveStatic(req, res, Path.resolve("./static/robots.txt"));
-      } else {
-        app.serveStatic(req, res, Path.resolve("./.next/robots.txt"));
-      }
+      app.serveStatic(req, res, Path.resolve("./static/robots.txt"));
     });
 
     server.get("/sitemap.xml", (req, res) => {
-      if (dev) {
-        app.serveStatic(req, res, Path.resolve("./static/sitemap.xml"));
-      } else {
-        app.serveStatic(req, res, Path.resolve("./.next/sitemap.xml"));
-      }
+      app.serveStatic(req, res, Path.resolve("./static/sitemap.xml"));
     });
 
     server.get("/favicon.ico", (req, res) => {
-      if (dev) {
-        app.serveStatic(req, res, Path.resolve("./static/favicon.ico"));
-      } else {
-        app.serveStatic(req, res, Path.resolve("./.next/favicon.ico"));
-      }
+      app.serveStatic(req, res, Path.resolve("./static/favicon.ico"));
     });
+
     server.get("/service-worker.js", (req, res) => {
       // Don't cache service worker is a best practice (otherwise clients wont get emergency bug fix)
       res.set(

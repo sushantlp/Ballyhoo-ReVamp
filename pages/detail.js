@@ -224,12 +224,14 @@ class Detail extends React.Component {
   render() {
     let keyword;
 
-    for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
-      keyword =
-        keyword === undefined
-          ? this.props.seo.seo.keywords[i]
-          : `${keyword}, ${this.props.seo.seo.keywords[i]}`;
-    }
+    if (this.props.seo.seo.length > 0) {
+      for (let i = 0; i < this.props.seo.seo.keywords.length; i++) {
+        keyword =
+          keyword === undefined
+            ? this.props.seo.seo.keywords[i]
+            : `${keyword}, ${this.props.seo.seo.keywords[i]}`;
+      }
+    } else keyword = "";
 
     if (this.state.isLoading)
       return (

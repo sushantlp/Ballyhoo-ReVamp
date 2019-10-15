@@ -8,20 +8,10 @@ const FoodEventList = props => {
       <div className="columns">
         <div className="column">
           {props.events.map((value, key) => {
-            let bookButton = true;
-            if (parseInt(props.expiry, 10) === 1) {
-              if (parseInt(value.reserve_status, 10) === 1) {
-                for (let i = 0; i < value.day_list; i++) {
-                  if (
-                    parseInt(props.dayInNumber, 10) ===
-                    parseInt(value.day_list[i], 10)
-                  ) {
-                    bookButton = false;
-                    break;
-                  }
-                }
-              }
-            }
+            let bookButton = false;
+            if (parseInt(props.expiry, 10) === 1) bookButton = true;
+            else if (parseInt(value.reserve_status, 10) === 0)
+              bookButton = true;
 
             return (
               <Segment key={key}>
@@ -73,7 +63,10 @@ const FoodEventList = props => {
                           <span>RSVP</span>
                         </a>
                       ) : (
-                        <a className="button is-medium is-danger is-pulled-right">
+                        <a
+                          className="button is-medium is-danger is-pulled-right"
+                          onClick={() => props.onFnbEventClick(value)}
+                        >
                           <span>RSVP</span>
                         </a>
                       )}

@@ -83,6 +83,7 @@ const ParentPackage = props => {
                 dayInNumber={props.dayInNumber}
                 expiry={props.foodCategoryData.foodCategoryData.details.expired}
                 keyword={props.keyword}
+                onFnbPackageClick={props.onFnbPackageClick}
               />
             ) : null}
           </div>

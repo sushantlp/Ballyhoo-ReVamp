@@ -8,7 +8,7 @@ const FoodList = props => {
           {props.buffet.map((value, key) => {
             let price = 0;
             let cutPrice = 0;
-            let bookButton = true;
+            let bookButton = false;
             if (parseInt(value.discount, 10) === 0) price = value.price;
             else {
               price =
@@ -19,17 +19,20 @@ const FoodList = props => {
             }
 
             if (parseInt(props.expiry, 10) === 1) {
-              if (parseInt(value.purchase_status, 10) === 1) {
-                for (let i = 0; i < value.day_list; i++) {
-                  if (
-                    parseInt(props.dayInNumber, 10) ===
-                    parseInt(value.day_list[i], 10)
-                  ) {
-                    bookButton = false;
-                    break;
-                  }
-                }
-              }
+              bookButton = true;
+              // if (parseInt(value.purchase_status, 10) === 1) {
+              //   // for (let i = 0; i < value.day_list; i++) {
+              //   //   if (
+              //   //     parseInt(props.dayInNumber, 10) ===
+              //   //     parseInt(value.day_list[i], 10)
+              //   //   ) {
+              //   //     bookButton = false;
+              //   //     break;
+              //   //   }
+              //   // }
+              // }
+            } else {
+              if (parseInt(value.purchase_status, 10) === 0) bookButton = true;
             }
 
             return (
@@ -136,7 +139,10 @@ const FoodList = props => {
                         <span>Book</span>
                       </a>
                     ) : (
-                      <a className="button is-medium is-danger">
+                      <a
+                        className="button is-medium is-danger"
+                        onClick={() => props.onFnbBuffetClick(value)}
+                      >
                         <span>Book</span>
                       </a>
                     )}

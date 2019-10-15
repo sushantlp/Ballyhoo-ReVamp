@@ -98,12 +98,8 @@ class Profile extends React.Component {
         let date = moment();
 
         if (nextProps.profileData.profile.dob !== null) {
-          console.log("HELLLO");
-          console.log(nextProps.profileData.profile.dob);
-
           date = moment(nextProps.profileData.profile.dob, "DD/MM/YYYY");
           date = moment(date);
-          console.log(date);
         }
 
         this.setState({

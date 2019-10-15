@@ -57,35 +57,6 @@ export default class DetailCart extends React.Component {
     });
   };
   render() {
-    const expiry =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
-        ? this.props.foodCategoryData.foodCategoryData.details.expired
-        : this.props.categoryData.categoryData.details.expired;
-    const price =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
-        ? this.props.foodCategoryData.foodCategoryData.details.cost_for_two
-        : parseInt(this.props.detailUrlParam.result_type, 10) !== 1
-        ? this.props.categoryData.categoryData.details.offer_min_price
-        : null;
-
-    const buttonText = this.props.parentState.booking
-      ? "Procced"
-      : parseInt(this.props.detailUrlParam.result_type, 10) === 1
-      ? "Reservation"
-      : parseInt(this.props.detailUrlParam.result_type, 10) === 5
-      ? "Appointment"
-      : "Procced";
-
-    const disabledLogic =
-      parseInt(this.props.detailUrlParam.result_type, 10) === 1
-        ? parseInt(
-            this.props.foodCategoryData.foodCategoryData.details.rsvp,
-            10
-          )
-        : parseInt(this.props.detailUrlParam.result_type, 10) === 5
-        ? this.props.categoryData.categoryData.details.offer_appointment_status
-        : 0;
-
     return (
       <div
         className="detail-cart-container"
@@ -121,18 +92,30 @@ export default class DetailCart extends React.Component {
             </div>
 
             <div className="column is-8">
-              <SingleDatePicker
-                date={this.props.parentState.date}
-                id="date"
-                onDateChange={date => this.props.onChangeDate(date)}
-                focused={this.state.focused}
-                onFocusChange={({ focused }) => this.setState({ focused })}
-                displayFormat="MM-DD-YYYY"
-              />
+              {this.props.parentState.calendarDisabled ? (
+                <SingleDatePicker
+                  date={this.props.parentState.date}
+                  id="date"
+                  onDateChange={date => this.props.onChangeDate(date)}
+                  focused={this.state.focused}
+                  onFocusChange={({ focused }) => this.setState({ focused })}
+                  displayFormat="YYYY-MM-DD"
+                  disabled
+                />
+              ) : (
+                <SingleDatePicker
+                  date={this.props.parentState.date}
+                  id="date"
+                  onDateChange={date => this.props.onChangeDate(date)}
+                  focused={this.state.focused}
+                  onFocusChange={({ focused }) => this.setState({ focused })}
+                  displayFormat="YYYY-MM-DD"
+                />
+              )}
             </div>
           </div>
 
-          {disabledLogic === 1 &&
+          {this.props.parentState.cartTotalPrice === 0 &&
           parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
             <div className="columns">
               <div className="column is-6">
@@ -219,33 +202,24 @@ export default class DetailCart extends React.Component {
             </Segment>
           </Segment> */}
 
-          {price !== null ? (
+          {this.props.parentState.cartTotalPrice !== 0 ? (
             <h4>
               <span className="ffqs fw2 f24">Total : </span>
               <span className="float-right fw2 f24">
-                <span> &#8377;</span> {price}{" "}
+                <span> &#8377;</span> {this.props.parentState.cartTotalPrice}{" "}
               </span>
             </h4>
           ) : null}
 
           <div className="has-text-centered">
-            {parseInt(expiry, 10) === 1 ? (
+            {this.props.parentState.cartButtonDisabled ? (
               <a className="button cart-button-disabled ffqs" disabled>
-                {buttonText}
+                {this.props.parentState.cartButtonText}
               </a>
-            ) : parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
-              disabledLogic === 1 ? (
-                // <a className="button cart-button ffqs">{buttonText}</a>
-                <a className="button cart-button-disabled ffqs" disabled>
-                  {buttonText}
-                </a>
-              ) : (
-                <a className="button cart-button-disabled ffqs" disabled>
-                  {buttonText}
-                </a>
-              )
             ) : (
-              <a className="button cart-button ffqs">{buttonText}</a>
+              <a className="button  cart-button ffqs">
+                {this.props.parentState.cartButtonText}
+              </a>
             )}
           </div>
           <p className="ffqs align">You won’t be charged yet</p>

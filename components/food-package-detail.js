@@ -8,7 +8,7 @@ const FoodPackageDetail = props => {
           {props.package.map((value, key) => {
             let price = 0;
             let cutPrice = 0;
-            let bookButton = true;
+            let bookButton = false;
             if (parseInt(value.discount, 10) === 0) price = value.price;
             else {
               price = (value.price * 100) / value.discount;
@@ -16,19 +16,9 @@ const FoodPackageDetail = props => {
               cutPrice = value.price;
             }
 
-            if (parseInt(props.expiry, 10) === 1) {
-              if (parseInt(value.purchase_status, 10) === 1) {
-                for (let i = 0; i < value.day_list; i++) {
-                  if (
-                    parseInt(props.dayInNumber, 10) ===
-                    parseInt(value.day_list[i], 10)
-                  ) {
-                    bookButton = false;
-                    break;
-                  }
-                }
-              }
-            }
+            if (parseInt(props.expiry, 10) === 1) bookButton = true;
+            else if (parseInt(value.purchase_status, 10) === 0)
+              bookButton = true;
 
             return (
               <div
@@ -142,7 +132,10 @@ const FoodPackageDetail = props => {
                         <span>Book</span>
                       </a>
                     ) : (
-                      <a className="button is-medium is-danger">
+                      <a
+                        className="button is-medium is-danger"
+                        onClick={() => props.onFnbPackageClick(value)}
+                      >
                         <span>Book</span>
                       </a>
                     )}
