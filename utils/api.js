@@ -564,6 +564,43 @@ export default {
     });
   },
 
+  saloonOfferApi: (
+    offerId,
+    customerId,
+    paymentType,
+    paymentId,
+    paymentAmount,
+    bookingDate,
+    bookingTime,
+    bookingItem
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/book/sns/offers`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          offer_id: offerId,
+          customer_id: customerId,
+          payment_type: paymentType,
+          payment_id: paymentId,
+          payment_amount: paymentAmount,
+          booking_date: bookingDate,
+          booking_time: bookingTime,
+          booking_items: bookingItem
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(saloonOffer => resolve(saloonOffer))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
   seoApi: (cityId, categoryId, partnerId) => {
     return new Promise((resolve, reject) => {
       fetch(

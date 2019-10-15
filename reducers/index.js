@@ -25,6 +25,7 @@ import { fnbOffer } from "./fnb-offer-reducer";
 import { eventOffer } from "./event-offer-reducer";
 import { activityOffer } from "./activity-offer-reducer";
 import { escapeOffer } from "./escape-offer-reducer";
+import { saloonOffer } from "./saloon-offer-reducer";
 
 import { seo } from "./seo-data-reducer";
 import { applicationStatus } from "./application-status-reducer";
@@ -58,5 +59,6 @@ export default combineReducers({
   fnbOffer,
   eventOffer,
   activityOffer,
-  escapeOffer
+  escapeOffer,
+  saloonOffer
 });
