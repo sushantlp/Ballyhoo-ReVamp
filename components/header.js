@@ -75,6 +75,7 @@ export default class Header extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.login !== nextProps.login) {
       if (nextProps.login.status === "SUCCESS") {
+        console.log(nextProps.login.login);
         const customerData = {
           customer_id: nextProps.login.login.c_id,
           first_name: this.props.customerData.customerData.first_name,

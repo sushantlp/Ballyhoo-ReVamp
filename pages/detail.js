@@ -283,6 +283,7 @@ class Detail extends React.Component {
           keyword={keyword}
         />
         <ParentDetail
+          customerData={this.props.customerData}
           categoryData={this.props.categoryData}
           foodCategoryData={this.props.foodCategoryData}
           detailUrlParam={this.props.detailUrlParam}

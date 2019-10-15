@@ -20,7 +20,12 @@ export default class ParentDetail extends React.Component {
       cartButtonDisabled: false,
       calendarDisabled: false,
       fnbSelectObj: {},
-      otherSelectObj: {}
+      otherSelectObj: {},
+      fnbTab: {
+        buffet: false,
+        event: false,
+        package: false
+      }
     };
   }
 
@@ -70,10 +75,8 @@ export default class ParentDetail extends React.Component {
         }
       }
 
-      this.setState({
-        cartButtonText: "Reservation",
-        cartButtonDisabled: disabled
-      });
+      this.updateCartButtonDisabled(disabled);
+      this.updateCartButtonText("Reservation");
     } else {
       let disabled = false;
       if (
@@ -99,15 +102,10 @@ export default class ParentDetail extends React.Component {
           disabled = true;
         }
 
-        this.setState({
-          cartButtonDisabled: disabled
-        });
-
+        this.updateCartButtonDisabled(disabled);
         // Saloon Appointment
         if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
-          this.setState({
-            cartButtonText: "Appointment"
-          });
+          this.updateCartButtonText("Appointment");
         }
 
         // Accept only Event & Activity & Escape
@@ -128,10 +126,7 @@ export default class ParentDetail extends React.Component {
 
   onChangeTime = time => {
     const times = time.hour + ":" + time.minute + " " + time.meridiem;
-
-    this.setState({
-      time: times
-    });
+    this.updateChangeTime(times);
   };
 
   changeTab = text => {
@@ -141,24 +136,19 @@ export default class ParentDetail extends React.Component {
   };
 
   onFnbEventClick = obj => {
-    // let date = new Date(obj.date);
-    // date = moment(date);
-    // date = date.format("YYYY-MM-DD");
+    const fnbTab = {
+      buffet: false,
+      event: true,
+      package: false
+    };
 
-    let date = moment(new Date(obj.date));
-    // let date = moment(obj.date).format("YYYY-MM-DD");
-
-    // let date = moment(obj.date, "DD/MM/YYYY");
-    // date = moment(date);
-
-    let time = obj.times.start_time;
+    this.updateFnbTab(fnbTab);
+    this.updateCartButtonText("Procced");
+    this.updateChangeTime(obj.times.start_time);
     this.updateCalendarDisabled();
-    this.onChangeDate(date);
+    this.onChangeDate(moment(new Date(obj.date)));
     this.updateFnbSelectObj(obj);
 
-    this.setState({
-      time
-    });
     console.log(obj);
   };
 
@@ -182,6 +172,34 @@ export default class ParentDetail extends React.Component {
     this.setState({
       calendarDisabled: !this.state.calendarDisabled
     });
+  };
+
+  updateChangeTime = time => {
+    this.setState({
+      time
+    });
+  };
+
+  updateCartButtonText = text => {
+    this.setState({
+      cartButtonText: text
+    });
+  };
+
+  updateCartButtonDisabled = disabled => {
+    this.setState({
+      cartButtonDisabled: disabled
+    });
+  };
+
+  updateFnbTab = tab => {
+    this.setState({
+      fnbTab: tab
+    });
+  };
+
+  onClickProceed = () => {
+    console.log(this.props.customerData);
   };
 
   render() {
@@ -239,6 +257,7 @@ export default class ParentDetail extends React.Component {
                   parentState={this.state}
                   onChangeDate={this.onChangeDate}
                   onChangeTime={this.onChangeTime}
+                  onClickProceed={this.onClickProceed}
                 />
               </div>
             </div>

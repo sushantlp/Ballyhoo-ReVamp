@@ -99,7 +99,7 @@ export default class DetailCart extends React.Component {
                   onDateChange={date => this.props.onChangeDate(date)}
                   focused={this.state.focused}
                   onFocusChange={({ focused }) => this.setState({ focused })}
-                  displayFormat="YYYY-MM-DD"
+                  displayFormat="DD-MM-YYYY"
                   disabled
                 />
               ) : (
@@ -109,7 +109,7 @@ export default class DetailCart extends React.Component {
                   onDateChange={date => this.props.onChangeDate(date)}
                   focused={this.state.focused}
                   onFocusChange={({ focused }) => this.setState({ focused })}
-                  displayFormat="YYYY-MM-DD"
+                  displayFormat="DD-MM-YYYY"
                 />
               )}
             </div>
@@ -146,61 +146,37 @@ export default class DetailCart extends React.Component {
             </div>
           ) : null}
 
-          {/* <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
-            <Segment>
-              <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
-              <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
-                Individual - Baby Kart
-              </h4>
-              <div className="columns mt0-2">
-                <div className="column is-6">
-                  {" "}
-                  <h4 className="fw2">
-                    <span> &#8377;</span> 2,365
-                  </h4>
-                </div>
-                <div className="column is-6">
-                  <div className="float-right">
-                    <span className="icon is-medium cursor-pointer">
-                      <img src="https://img.icons8.com/ios/15/000000/minus.png" />
-                    </span>
+          {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? null : (
+            <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
+              <Segment>
+                <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
+                <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
+                  Individual - Baby Kart
+                </h4>
+                <div className="columns mt0-2">
+                  <div className="column is-6">
+                    {" "}
+                    <h4 className="fw2">
+                      <span> &#8377;</span> 2,365
+                    </h4>
+                  </div>
+                  <div className="column is-6">
+                    <div className="float-right">
+                      <span className="icon is-medium cursor-pointer">
+                        <img src="https://img.icons8.com/ios/15/000000/minus.png" />
+                      </span>
 
-                    <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">1</span>
+                      <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">1</span>
 
-                    <span className="icon is-medium cursor-pointer">
-                      <img src="https://img.icons8.com/ios/15/000000/plus.png" />
-                    </span>
+                      <span className="icon is-medium cursor-pointer">
+                        <img src="https://img.icons8.com/ios/15/000000/plus.png" />
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Segment>
             </Segment>
-
-            <Segment>
-              <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
-              <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">Individual - Micro</h4>
-              <div className="columns mt0-2">
-                <div className="column is-6">
-                  {" "}
-                  <h4 className="fw2">
-                    <span> &#8377;</span> 2,365
-                  </h4>
-                </div>
-                <div className="column is-6">
-                  <div className="float-right">
-                    <span className="icon is-medium cursor-pointer">
-                      <img src="https://img.icons8.com/ios/15/000000/minus.png" />
-                    </span>
-
-                    <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">2</span>
-
-                    <span className="icon is-medium cursor-pointer">
-                      <img src="https://img.icons8.com/ios/15/000000/plus.png" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Segment>
-          </Segment> */}
+          )}
 
           {this.props.parentState.cartTotalPrice !== 0 ? (
             <h4>
@@ -217,7 +193,10 @@ export default class DetailCart extends React.Component {
                 {this.props.parentState.cartButtonText}
               </a>
             ) : (
-              <a className="button  cart-button ffqs">
+              <a
+                className="button  cart-button ffqs"
+                onClick={() => this.props.onClickProceed()}
+              >
                 {this.props.parentState.cartButtonText}
               </a>
             )}
