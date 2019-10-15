@@ -418,6 +418,152 @@ export default {
     });
   },
 
+  fnbOfferApi: (
+    offerId,
+    customerId,
+    paymentType,
+    paymentId,
+    paymentAmount,
+    paymentDiscount,
+    bookingDate,
+    bookingTime,
+    bookingQuantity
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/book/fnb/offers`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          offer_id: offerId,
+          customer_id: customerId,
+          payment_type: paymentType,
+          payment_id: paymentId,
+          payment_amount: paymentAmount,
+          payment_discount: paymentDiscount,
+          booking_date: bookingDate,
+          booking_time: bookingTime,
+          booking_quantity: bookingQuantity
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(fnbOffer => resolve(fnbOffer))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  eventOfferApi: (
+    offerId,
+    customerId,
+    paymentType,
+    paymentId,
+    paymentAmount,
+    bookingItem
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/book/advent/offers`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          offer_id: offerId,
+          customer_id: customerId,
+          payment_type: paymentType,
+          payment_id: paymentId,
+          payment_amount: paymentAmount,
+          booking_items: bookingItem
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(eventOffer => resolve(eventOffer))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  activityOfferApi: (
+    offerId,
+    customerId,
+    paymentType,
+    paymentId,
+    paymentAmount,
+    bookingDate,
+    bookingTime,
+    bookingItem
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/book/activity/offers`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          offer_id: offerId,
+          customer_id: customerId,
+          payment_type: paymentType,
+          payment_id: paymentId,
+          payment_amount: paymentAmount,
+          booking_date: bookingDate,
+          booking_time: bookingTime,
+          booking_items: bookingItem
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(activityOffer => resolve(activityOffer))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  escapeOfferApi: (
+    offerId,
+    customerId,
+    paymentType,
+    paymentId,
+    paymentAmount,
+    bookingDate,
+    bookingTime,
+    bookingItem
+  ) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/book/escape/offers`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          offer_id: offerId,
+          customer_id: customerId,
+          payment_type: paymentType,
+          payment_id: paymentId,
+          payment_amount: paymentAmount,
+          booking_date: bookingDate,
+          booking_time: bookingTime,
+          booking_items: bookingItem
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(escapeOffer => resolve(escapeOffer))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
   seoApi: (cityId, categoryId, partnerId) => {
     return new Promise((resolve, reject) => {
       fetch(
