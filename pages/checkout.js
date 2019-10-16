@@ -6,6 +6,8 @@ import fetch from "isomorphic-unfetch";
 
 import { host } from "../constants";
 
+import { ToastContainer, toast } from "react-toastify";
+
 import CheckoutComponent from "../components/checkout";
 import Head from "../components/head";
 import Header from "../components/header";
@@ -17,8 +19,13 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 
+import { getProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
+
+import { postFnbReservation } from "../actions/fnb-reservation-action";
+
+import "react-toastify/dist/ReactToastify.css";
 
 class Checkout extends React.Component {
   static async getInitialProps(ctx) {
@@ -57,9 +64,30 @@ class Checkout extends React.Component {
     }
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.fnbReservation !== nextProps.fnbReservation) {
+      if (nextProps.fnbReservation.status === "SUCCESS") {
+      } else {
+        this.props.errorToast(nextProps.fnbReservation.msg, 1, true);
+      }
+    }
+  }
+
+  successToast = msg => {
+    return toast.success(msg);
+  };
+
+  errorToast = (msg, id, autoClose) => {
+    toast.error(msg, {
+      autoClose: autoClose,
+      toastId: id
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
+        <ToastContainer pauseOnHover />
         <Head
           title="Ballyhoo Today - Discover Eat Trend Escape. Explore and Book your Events, activities, Nightlife, curated holiday packages and much more"
           ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
@@ -78,8 +106,10 @@ class Checkout extends React.Component {
           customerData={this.props.customerData}
           applicationStatus={this.props.applicationStatus}
           applicationStatusAction={this.props.applicationStatusAction}
+          getProfile={this.props.getProfile}
+          profileData={this.props.profileData}
         />
-        <CheckoutComponent />
+        <CheckoutComponent postFnbReservation={this.props.postFnbReservation} />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
@@ -94,7 +124,9 @@ const mapStateToProps = state => {
     register: state.register,
     forget: state.forget,
     customerData: state.customerData,
-    applicationStatus: state.applicationStatus
+    applicationStatus: state.applicationStatus,
+    fnbReservation: state.fnbReservation,
+    profileData: state.profileData
   };
 };
 
@@ -108,7 +140,9 @@ const mapDispatchToProps = dispatch => {
     applicationStatusAction: bindActionCreators(
       applicationStatusAction,
       dispatch
-    )
+    ),
+    postFnbReservation: bindActionCreators(postFnbReservation, dispatch),
+    getProfile: bindActionCreators(getProfile, dispatch)
   };
 };
 

@@ -28,7 +28,8 @@ export default class ParentDetail extends React.Component {
         event: false,
         package: false
       },
-      verifyOpen: false
+      verifyOpen: false,
+      cartButtonLoading: false
     };
   }
 
@@ -215,6 +216,12 @@ export default class ParentDetail extends React.Component {
     });
   };
 
+  updateCartButtonLoading = bool => {
+    this.setState({
+      cartButtonLoading: bool
+    });
+  };
+
   onClickProceed = quantity => {
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
       if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
@@ -237,6 +244,35 @@ export default class ParentDetail extends React.Component {
             false
           );
         } else {
+          this.props.errorToast(
+            "Please login",
+            this.props.foodCategoryData.foodCategoryData.details.partner_id,
+            false
+          );
+
+          // this.props.routeChange("/checkout");
+          // this.props.postFnbReservation(
+          //   this.props.foodCategoryData.foodCategoryData.details.partner_id,
+          //   this.props.customerData.customerData.customer_id,
+          //   date,
+          //   this.state.time,
+          //   quantity
+          // );
+        }
+      }
+    } else {
+      if (
+        parseInt(this.props.customerData.customerData.email_active, 10) === 0 &&
+        parseInt(this.props.customerData.customerData.mobile_active, 10) === 0
+      )
+        this.updateVerifyAccountState(true);
+
+      this.updateCartButtonLoading(true);
+      if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
+        if (this.state.fnbTab.buffet) {
+        } else if (this.state.fnbTab.event) {
+        } else if (this.state.fnbTab.package) {
+        } else {
           const currentTime = moment(this.state.currentTime, "HH:mm a");
           const time = moment(this.state.time, "HH:mm a");
 
@@ -248,22 +284,32 @@ export default class ParentDetail extends React.Component {
             );
           } else {
             const date = moment(this.state.date).format("YYYY-MM-DD");
-            this.props.postFnbReservation(
-              this.props.foodCategoryData.foodCategoryData.details.partner_id,
-              this.props.customerData.customerData.customer_id,
-              date,
-              this.state.time,
-              quantity
-            );
+
+            const reservation = {
+              name: this.props.foodCategoryData.foodCategoryData.details.bname,
+              partner_id: this.props.foodCategoryData.foodCategoryData.details
+                .partner_id,
+              customer_id: this.props.customerData.customerData.customer_id,
+              date: date,
+              time: this.state.time,
+              quantity: quantity
+            };
+
+            const which = {
+              fnb_reservation: 1,
+              fnb_offer: 0,
+              spa_appointment: 0,
+              spa_offer: 0,
+              activity_offer: 0,
+              event_offer: 0,
+              escape_offer: 0
+            };
+
+            sessionStorage.setItem("RESERVATION", JSON.stringify(reservation));
+            sessionStorage.setItem("WHICH", JSON.stringify(which));
           }
         }
       }
-    } else {
-      if (
-        this.props.customerData.customerData.email_active === 0 &&
-        this.props.customerData.customerData.mobile_active
-      )
-        this.updateVerifyAccountState(true);
     }
   };
 

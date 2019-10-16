@@ -56,6 +56,7 @@ export default class DetailCart extends React.Component {
       quantity: this.state.quantity + 1
     });
   };
+
   render() {
     return (
       <div
@@ -188,13 +189,17 @@ export default class DetailCart extends React.Component {
           ) : null}
 
           <div className="has-text-centered">
-            {this.props.parentState.cartButtonDisabled ? (
+            {this.props.parentState.cartButtonLoading ? (
+              <a className="button cart-button ffqs is-loading">
+                {this.props.parentState.cartButtonText}
+              </a>
+            ) : this.props.parentState.cartButtonDisabled ? (
               <a className="button cart-button-disabled ffqs" disabled>
                 {this.props.parentState.cartButtonText}
               </a>
             ) : (
               <a
-                className="button  cart-button ffqs"
+                className="button cart-button ffqs"
                 onClick={() => this.props.onClickProceed(this.state.quantity)}
               >
                 {this.props.parentState.cartButtonText}

@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom";
+import Router from "next/router";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
@@ -26,11 +27,9 @@ import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { getSeo } from "../actions/seo-data-action";
 
+import { getProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
-
-// Payment Action
-import { postFnbReservation } from "../actions/fnb-reservation-action";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -221,14 +220,6 @@ class Detail extends React.Component {
     }
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.fnbReservation !== nextProps.fnbReservation) {
-      if (nextProps.fnbReservation.status === "SUCCESS") {
-      } else {
-      }
-    }
-  }
-
   changeLoadingState = () => {
     ReactDOM.findDOMNode(this).scrollIntoView();
     this.setState({
@@ -245,6 +236,10 @@ class Detail extends React.Component {
       autoClose: autoClose,
       toastId: id
     });
+  };
+
+  routeChange = url => {
+    Router.push(url);
   };
 
   render() {
@@ -273,6 +268,8 @@ class Detail extends React.Component {
             customerData={this.props.customerData}
             applicationStatus={this.props.applicationStatus}
             applicationStatusAction={this.props.applicationStatusAction}
+            getProfile={this.props.getProfile}
+            profileData={this.props.profileData}
           />
           <Spinner />
           <Headout />
@@ -301,6 +298,8 @@ class Detail extends React.Component {
           customerData={this.props.customerData}
           applicationStatus={this.props.applicationStatus}
           applicationStatusAction={this.props.applicationStatusAction}
+          getProfile={this.props.getProfile}
+          profileData={this.props.profileData}
         />
         <DetailSlider
           slidderImage={this.props.slidderImage}
@@ -323,7 +322,7 @@ class Detail extends React.Component {
           keyword={keyword}
           errorToast={this.errorToast}
           successToast={this.successToast}
-          postFnbReservation={this.props.postFnbReservation}
+          routeChange={this.routeChange}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
@@ -346,7 +345,7 @@ const mapStateToProps = state => {
     seo: state.seo,
     customerData: state.customerData,
     applicationStatus: state.applicationStatus,
-    fnbReservation: state.fnbReservation
+    profileData: state.profileData
   };
 };
 
@@ -368,7 +367,7 @@ const mapDispatchToProps = dispatch => {
       applicationStatusAction,
       dispatch
     ),
-    postFnbReservation: bindActionCreators(postFnbReservation, dispatch)
+    getProfile: bindActionCreators(getProfile, dispatch)
   };
 };
 

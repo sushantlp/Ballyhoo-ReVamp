@@ -274,6 +274,8 @@ class Profile extends React.Component {
           customerData={this.props.customerData}
           applicationStatus={this.props.applicationStatus}
           applicationStatusAction={this.props.applicationStatusAction}
+          getProfile={this.props.getProfile}
+          profileData={this.props.profileData}
         />
         <ProfileComponent
           isLoading={this.state.isLoading}

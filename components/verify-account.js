@@ -112,12 +112,12 @@ export default class VerifyAccount extends React.Component {
               <section className="modal-card-body">
                 {this.state.otp ? (
                   <React.Fragment>
-                    <div class="columns">
-                      <div class="column">
-                        <div class="field">
-                          <div class="control">
+                    <div className="columns">
+                      <div className="column">
+                        <div className="field">
+                          <div className="control">
                             <input
-                              class="input is-large"
+                              className="input is-large"
                               type="text"
                               placeholder="0"
                               value={this.state.otpFirstPosition}
@@ -128,11 +128,11 @@ export default class VerifyAccount extends React.Component {
                         </div>
                       </div>
 
-                      <div class="column is-3">
-                        <div class="field">
-                          <div class="control">
+                      <div className="column is-3">
+                        <div className="field">
+                          <div className="control">
                             <input
-                              class="input is-large"
+                              className="input is-large"
                               type="text"
                               placeholder="0"
                               value={this.state.otpSecondPosition}
@@ -143,11 +143,11 @@ export default class VerifyAccount extends React.Component {
                         </div>
                       </div>
 
-                      <div class="column is-3">
-                        <div class="field">
-                          <div class="control">
+                      <div className="column is-3">
+                        <div className="field">
+                          <div className="control">
                             <input
-                              class="input is-large"
+                              className="input is-large"
                               type="text"
                               placeholder="0"
                               value={this.state.otpThirdPosition}
@@ -158,11 +158,11 @@ export default class VerifyAccount extends React.Component {
                         </div>
                       </div>
 
-                      <div class="column is-3">
-                        <div class="field">
-                          <div class="control">
+                      <div className="column is-3">
+                        <div className="field">
+                          <div className="control">
                             <input
-                              class="input is-large"
+                              className="input is-large"
                               type="text"
                               placeholder="0"
                               value={this.state.otpFourthPosition}
@@ -174,7 +174,7 @@ export default class VerifyAccount extends React.Component {
                       </div>
                     </div>
                     {/* {this.state.errorStatus ? (
-                            <p class="help is-danger">{this.state.errorMsg}</p>
+                            <p className="help is-danger">{this.state.errorMsg}</p>
                           ) : null} */}
                   </React.Fragment>
                 ) : (
@@ -203,7 +203,7 @@ export default class VerifyAccount extends React.Component {
                         Submit
                       </button>
                     ) : (
-                      <button className="button is-danger is-active verify-account-button" >
+                      <button className="button is-danger is-active verify-account-button">
                         Submit
                       </button>
                     )

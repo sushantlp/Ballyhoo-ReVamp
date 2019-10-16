@@ -36,6 +36,7 @@ import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { getSeo } from "../actions/seo-data-action";
 
+import { getProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
 
@@ -367,6 +368,8 @@ class List extends React.Component {
             forget={this.props.forget}
             applicationStatus={this.props.applicationStatus}
             applicationStatusAction={this.props.applicationStatusAction}
+            getProfile={this.props.getProfile}
+            profileData={this.props.profileData}
           />
           <Spinner />
           <Headout />
@@ -394,6 +397,8 @@ class List extends React.Component {
           customerData={this.props.customerData}
           applicationStatus={this.props.applicationStatus}
           applicationStatusAction={this.props.applicationStatusAction}
+          getProfile={this.props.getProfile}
+          profileData={this.props.profileData}
         />
         <ParentList
           cityLocality={this.props.cityLocality}
@@ -431,7 +436,8 @@ const mapStateToProps = state => {
     forget: state.forget,
     seo: state.seo,
     customerData: state.customerData,
-    applicationStatus: state.applicationStatus
+    applicationStatus: state.applicationStatus,
+    profileData: state.profileData
   };
 };
 
@@ -460,7 +466,8 @@ const mapDispatchToProps = dispatch => {
     applicationStatusAction: bindActionCreators(
       applicationStatusAction,
       dispatch
-    )
+    ),
+    getProfile: bindActionCreators(getProfile, dispatch)
   };
 };
 

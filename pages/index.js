@@ -33,6 +33,7 @@ import { postForget } from "../actions/forget-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { getSeo } from "../actions/seo-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
+import { getProfile } from "../actions/profile-action";
 
 class Index extends React.Component {
   static async getInitialProps(ctx) {
@@ -190,6 +191,8 @@ class Index extends React.Component {
             forget={this.props.forget}
             applicationStatus={this.props.applicationStatus}
             applicationStatusAction={this.props.applicationStatusAction}
+            getProfile={this.props.getProfile}
+            profileData={this.props.profileData}
           />
           <Spinner />
           <Headout />
@@ -217,6 +220,8 @@ class Index extends React.Component {
           forget={this.props.forget}
           applicationStatus={this.props.applicationStatus}
           applicationStatusAction={this.props.applicationStatusAction}
+          getProfile={this.props.getProfile}
+          profileData={this.props.profileData}
         />
         <Slidder
           cityLocality={this.props.cityLocality}
@@ -273,7 +278,8 @@ const mapStateToProps = state => {
     forget: state.forget,
     customerData: state.customerData,
     seo: state.seo,
-    applicationStatus: state.applicationStatus
+    applicationStatus: state.applicationStatus,
+    profileData: state.profileData
   };
 };
 
@@ -292,7 +298,8 @@ const mapDispatchToProps = dispatch => {
     applicationStatusAction: bindActionCreators(
       applicationStatusAction,
       dispatch
-    )
+    ),
+    getProfile: bindActionCreators(getProfile, dispatch)
   };
 };
 

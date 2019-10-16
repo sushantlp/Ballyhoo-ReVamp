@@ -75,17 +75,7 @@ export default class Header extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.login !== nextProps.login) {
       if (nextProps.login.status === "SUCCESS") {
-        const customerData = {
-          customer_id: nextProps.login.login.c_id,
-          first_name: this.props.customerData.customerData.first_name,
-          last_name: this.props.customerData.customerData.last_name,
-          email: this.state.signupEmail,
-          mobile: this.props.customerData.customerData.mobile,
-          gender: this.props.customerData.customerData.gender,
-          birthday: this.props.customerData.customerData.birthday,
-          mobile_active: this.props.customerData.customerData.mobile_active,
-          email_active: this.props.customerData.customerData.email_active
-        };
+        this.props.getProfile(nextProps.login.login.c_id);
 
         this.setState({
           profileOpen: true,
@@ -96,12 +86,8 @@ export default class Header extends React.Component {
           login: true
         };
 
-        sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
         sessionStorage.setItem("LOGIN", true);
         this.props.applicationStatusAction(applicationStatus);
-        this.props.updateCustomerData(customerData);
-        this.updateLoginState(false);
-        toast.success("Successful");
       } else {
         this.setState({
           isLoading: false,
@@ -123,7 +109,8 @@ export default class Header extends React.Component {
           gender: this.props.customerData.customerData.gender,
           birthday: this.props.customerData.customerData.birthday,
           mobile_active: this.props.customerData.customerData.mobile_active,
-          email_active: this.props.customerData.customerData.email_active
+          email_active: this.props.customerData.customerData.email_active,
+          loyality: 0
         };
 
         this.setState({
@@ -157,6 +144,25 @@ export default class Header extends React.Component {
           errorMsg: nextProps.forget.msg
         });
       }
+    } else if (this.props.profileData !== nextProps.profileData) {
+      const customerData = {
+        customer_id: nextProps.profileData.profileData.c_id,
+        first_name: nextProps.profileData.profileData.fname,
+        last_name: nextProps.profileData.profileData.lname,
+        email: nextProps.profileData.profileData.email,
+        mobile: nextProps.profileData.profileData.mobile,
+        gender: nextProps.profileData.profileData.sex,
+        birthday: nextProps.profileData.profileData.dob,
+        mobile_active: nextProps.profileData.profileData.mobile_active,
+        email_active: nextProps.profileData.profileData.email_active,
+        email_active: nextProps.profileData.profileData.email_active,
+        loyality: nextProps.profileData.profileData.loyalty_points
+      };
+
+      sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
+      this.props.updateCustomerData(customerData);
+      this.updateLoginState(false);
+      toast.success("Successful");
     }
   }
 
