@@ -141,6 +141,10 @@
   border-bottom: 0px;
 }
 
+.detail-cart-container .DateInput {
+  width: 14.5em;
+}
+
 .detail-cart-container .CalendarDay__selected,
 .CalendarDay__selected:active,
 .CalendarDay__selected:hover {

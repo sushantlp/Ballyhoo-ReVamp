@@ -1,0 +1,47 @@
+.verify-account-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.verify-account-container .modal-card-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.verify-account-container .fw2 {
+  font-weight: 200;
+}
+
+.verify-account-container .verify-account-button {
+  opacity: 1;
+  width: 10em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  /* margin-right: 10em;
+    margin-left: 10em; */
+}
+
+.verify-account-container .spacer.is-1 {
+  height: 1rem;
+}
+
+.verify-account-container .modal-card-foot {
+  flex-direction: column;
+}
+
+.verify-account-container .is-success {
+  color: #23d160;
+}
+
+.verify-account-container .pointer {
+  cursor: pointer;
+}
+
+.verify-account-container .control.has-icons-right .icon {
+  pointer-events: auto;
+}
+
+.verify-account-container .br0 {
+  border-radius: 0;
+}

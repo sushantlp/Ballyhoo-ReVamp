@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import { host, hostWithoutSlash } from "../constants";
 
+import { ToastContainer, toast } from "react-toastify";
+
 import Spinner from "../components/spinner";
 import Head from "../components/head";
 import Header from "../components/header";
@@ -26,6 +28,8 @@ import { getSeo } from "../actions/seo-data-action";
 
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
+
+import "react-toastify/dist/ReactToastify.css";
 
 class Detail extends React.Component {
   static async getInitialProps(ctx) {
@@ -221,6 +225,17 @@ class Detail extends React.Component {
     });
   };
 
+  successToast = msg => {
+    return toast.success(msg);
+  };
+
+  errorToast = (msg, id) => {
+    toast.error(msg, {
+      autoClose: false,
+      toastId: id
+    });
+  };
+
   render() {
     let keyword;
 
@@ -256,6 +271,7 @@ class Detail extends React.Component {
 
     return (
       <React.Fragment>
+        <ToastContainer pauseOnHover />
         <Head
           title={this.props.currentTitle}
           ogImage={this.props.currentImage}
@@ -294,6 +310,8 @@ class Detail extends React.Component {
           zomatoData={this.props.zomatoData}
           getZomatoDataApi={this.props.getZomatoDataApi}
           keyword={keyword}
+          errorToast={this.errorToast}
+          successToast={this.successToast}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
