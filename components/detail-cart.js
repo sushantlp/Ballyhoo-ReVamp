@@ -195,7 +195,7 @@ export default class DetailCart extends React.Component {
             ) : (
               <a
                 className="button  cart-button ffqs"
-                onClick={() => this.props.onClickProceed()}
+                onClick={() => this.props.onClickProceed(this.state.quantity)}
               >
                 {this.props.parentState.cartButtonText}
               </a>

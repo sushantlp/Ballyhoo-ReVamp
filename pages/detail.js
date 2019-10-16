@@ -29,6 +29,9 @@ import { getSeo } from "../actions/seo-data-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
 
+// Payment Action
+import { postFnbReservation } from "../actions/fnb-reservation-action";
+
 import "react-toastify/dist/ReactToastify.css";
 
 class Detail extends React.Component {
@@ -218,6 +221,14 @@ class Detail extends React.Component {
     }
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.fnbReservation !== nextProps.fnbReservation) {
+      if (nextProps.fnbReservation.status === "SUCCESS") {
+      } else {
+      }
+    }
+  }
+
   changeLoadingState = () => {
     ReactDOM.findDOMNode(this).scrollIntoView();
     this.setState({
@@ -229,9 +240,9 @@ class Detail extends React.Component {
     return toast.success(msg);
   };
 
-  errorToast = (msg, id) => {
+  errorToast = (msg, id, autoClose) => {
     toast.error(msg, {
-      autoClose: false,
+      autoClose: autoClose,
       toastId: id
     });
   };
@@ -312,6 +323,7 @@ class Detail extends React.Component {
           keyword={keyword}
           errorToast={this.errorToast}
           successToast={this.successToast}
+          postFnbReservation={this.props.postFnbReservation}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
@@ -333,7 +345,8 @@ const mapStateToProps = state => {
     forget: state.forget,
     seo: state.seo,
     customerData: state.customerData,
-    applicationStatus: state.applicationStatus
+    applicationStatus: state.applicationStatus,
+    fnbReservation: state.fnbReservation
   };
 };
 
@@ -354,7 +367,8 @@ const mapDispatchToProps = dispatch => {
     applicationStatusAction: bindActionCreators(
       applicationStatusAction,
       dispatch
-    )
+    ),
+    postFnbReservation: bindActionCreators(postFnbReservation, dispatch)
   };
 };
 

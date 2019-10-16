@@ -14,6 +14,7 @@ export default class ParentDetail extends React.Component {
       navigation: "Overview",
       booking: false,
       dayInNumber: moment().isoWeekday(),
+      currentTime: moment().format("HH:mm"),
       time: moment().format("HH:mm"),
       date: moment(),
       cartButtonText: "Procced",
@@ -27,14 +28,7 @@ export default class ParentDetail extends React.Component {
         event: false,
         package: false
       },
-      verifyOpen: false,
-      isLoading: false,
-      otp: false,
-      otpButton: false,
-      otpFirstPosition: -1,
-      otpSecondPosition: -1,
-      otpThirdPosition: -1,
-      otpFourthPosition: -1
+      verifyOpen: false
     };
   }
 
@@ -221,98 +215,61 @@ export default class ParentDetail extends React.Component {
     });
   };
 
-  onClickProceed = () => {
-    console.log(this.props.customerData.customerData);
-    this.updateVerifyAccountState(true);
+  onClickProceed = quantity => {
     if (parseInt(this.props.customerData.customerData.customer_id, 10) === 0) {
       if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
-        console.log(this.state.fnbTab);
         if (this.state.fnbTab.buffet) {
           this.props.errorToast(
             "Please login",
-            this.state.fnbSelectObj.offer_id
+            this.state.fnbSelectObj.offer_id,
+            false
           );
         } else if (this.state.fnbTab.event) {
           this.props.errorToast(
             "Please login",
-            this.state.fnbSelectObj.offer_id
+            this.state.fnbSelectObj.offer_id,
+            false
           );
         } else if (this.state.fnbTab.package) {
           this.props.errorToast(
             "Please login",
-            this.state.fnbSelectObj.offer_id
+            this.state.fnbSelectObj.offer_id,
+            false
           );
         } else {
-          console.log("HELLLO");
+          const currentTime = moment(this.state.currentTime, "HH:mm a");
+          const time = moment(this.state.time, "HH:mm a");
+
+          if (currentTime.isAfter(time)) {
+            this.props.errorToast(
+              "Time should be greater and equal current time",
+              1,
+              true
+            );
+          } else {
+            const date = moment(this.state.date).format("YYYY-MM-DD");
+            this.props.postFnbReservation(
+              this.props.foodCategoryData.foodCategoryData.details.partner_id,
+              this.props.customerData.customerData.customer_id,
+              date,
+              this.state.time,
+              quantity
+            );
+          }
         }
       }
     } else {
-      // if ()
-      this.updateVerifyAccountState(true);
+      if (
+        this.props.customerData.customerData.email_active === 0 &&
+        this.props.customerData.customerData.mobile_active
+      )
+        this.updateVerifyAccountState(true);
     }
   };
 
   updateVerifyAccountState = bool => {
     this.setState({
       verifyOpen: bool
-    });
-  };
-
-  onKeyPressOtp = e => {
-    if (!/[0-9]/.test(e.key) || e.target.value.length !== 0) e.preventDefault();
-  };
-
-  onChangeOtp = (e, position) => {
-    if (position === 1) {
-      if (e.target.value === "" && this.state.otpFirstPosition !== -1)
-        this.setState({
-          otpFirstPosition: -1
-        });
-      else
-        this.setState({
-          otpFirstPosition: e.target.value
-        });
-    } else if (position === 2) {
-      if (e.target.value === "" && this.state.otpSecondPosition !== -1)
-        this.setState({
-          otpSecondPosition: -1
-        });
-      else
-        this.setState({
-          otpSecondPosition: e.target.value
-        });
-    } else if (position === 3) {
-      if (e.target.value === "" && this.state.otpThirdPosition !== -1)
-        this.setState({
-          otpThirdPosition: -1
-        });
-      else
-        this.setState({
-          otpThirdPosition: e.target.value
-        });
-    } else if (position === 4) {
-      if (e.target.value === "" && this.state.otpFourthPosition !== -1)
-        this.setState({
-          otpFourthPosition: -1
-        });
-      else
-        this.setState({
-          otpFourthPosition: e.target.value
-        });
-    }
-
-    if (
-      this.state.otpFirstPosition !== -1 &&
-      this.state.otpSecondPosition !== -1 &&
-      this.state.otpThirdPosition !== -1 &&
-      this.state.otpFourthPosition !== -1
-    )
-      this.updateOtpButton(true);
-  };
-
-  updateOtpButton = bool => {
-    this.setState({
-      otpButton: bool
     });
   };
 
@@ -392,11 +349,6 @@ export default class ParentDetail extends React.Component {
             verifyOpen={this.state.verifyOpen}
             updateVerifyAccountState={this.updateVerifyAccountState}
             email={this.props.customerData.customerData.email}
-            isLoading={this.state.isLoading}
-            otp={this.state.otp}
-            onKeyPressOtp={this.onKeyPressOtp}
-            onChangeOtp={this.onChangeOtp}
-            otpButton={this.state.otpButton}
           />
         ) : null}
       </React.Fragment>

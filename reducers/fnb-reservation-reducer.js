@@ -14,7 +14,7 @@ export function fnbReservation(state = initialState, action) {
           ...state,
           fnbReservation: action.fnbReservation.data,
           status: "SUCCESS",
-          msg: "successful"
+          msg: action.fnbReservation.message
         };
       } else {
         return {
