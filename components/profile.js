@@ -89,7 +89,7 @@ const Profile = props => {
                             <div className="column is-12">
                               <input
                                 className="input is-large br0"
-                                type="number"
+                                type="text"
                                 placeholder="Mobile"
                                 disabled
                                 value={props.mobile}

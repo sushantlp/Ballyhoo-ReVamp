@@ -76,18 +76,6 @@ export default class Header extends React.Component {
     if (this.props.login !== nextProps.login) {
       if (nextProps.login.status === "SUCCESS") {
         this.props.getProfile(nextProps.login.login.c_id);
-
-        this.setState({
-          profileOpen: true,
-          isLoading: false
-        });
-
-        const applicationStatus = {
-          login: true
-        };
-
-        sessionStorage.setItem("LOGIN", true);
-        this.props.applicationStatusAction(applicationStatus);
       } else {
         this.setState({
           isLoading: false,
@@ -145,24 +133,40 @@ export default class Header extends React.Component {
         });
       }
     } else if (this.props.profileData !== nextProps.profileData) {
-      const customerData = {
-        customer_id: nextProps.profileData.profileData.c_id,
-        first_name: nextProps.profileData.profileData.fname,
-        last_name: nextProps.profileData.profileData.lname,
-        email: nextProps.profileData.profileData.email,
-        mobile: nextProps.profileData.profileData.mobile,
-        gender: nextProps.profileData.profileData.sex,
-        birthday: nextProps.profileData.profileData.dob,
-        mobile_active: nextProps.profileData.profileData.mobile_active,
-        email_active: nextProps.profileData.profileData.email_active,
-        email_active: nextProps.profileData.profileData.email_active,
-        loyality: nextProps.profileData.profileData.loyalty_points
-      };
-
-      sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
-      this.props.updateCustomerData(customerData);
-      this.updateLoginState(false);
-      toast.success("Successful");
+      if (nextProps.login.status === "SUCCESS") {
+        const customerData = {
+          customer_id: nextProps.profileData.profile.c_id,
+          first_name: nextProps.profileData.profile.fname,
+          last_name: nextProps.profileData.profile.lname,
+          email: nextProps.profileData.profile.email,
+          mobile: nextProps.profileData.profile.mobile,
+          gender: nextProps.profileData.profile.sex,
+          birthday: nextProps.profileData.profile.dob,
+          mobile_active: nextProps.profileData.profile.mobile_active,
+          email_active: nextProps.profileData.profile.email_active,
+          email_active: nextProps.profileData.profile.email_active,
+          loyality: nextProps.profileData.profile.loyalty_points
+        };
+        this.setState({
+          profileOpen: true,
+          isLoading: false
+        });
+        const applicationStatus = {
+          login: true
+        };
+        sessionStorage.setItem("LOGIN", true);
+        this.props.applicationStatusAction(applicationStatus);
+        sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
+        this.props.updateCustomerData(customerData);
+        this.updateLoginState(false);
+        toast.success("Successful");
+      } else {
+        this.setState({
+          isLoading: false,
+          errorStatus: true,
+          errorMsg: nextProps.profileData.msg
+        });
+      }
     }
   }
 
