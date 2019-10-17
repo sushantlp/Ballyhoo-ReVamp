@@ -49,16 +49,16 @@ class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      which : {},
-      customer : {},
-      fnb_reservation: {},
-      fnb_offer : {},
-      spa_appointment: {},
-      spa_offer: {},
-      activity_offer: {},
-      event_offer: {},
-      escape_offer: {}
-    }
+      which: [],
+      customer: [],
+      fnb_reservation: [],
+      fnb_offer: [],
+      spa_appointment: [],
+      spa_offer: [],
+      activity_offer: [],
+      event_offer: [],
+      escape_offer: []
+    };
   }
 
   componentDidMount() {
@@ -78,38 +78,59 @@ class Checkout extends React.Component {
     customer = JSON.parse(customer);
 
     this.setState({
-      customer : customer
-    })
+      customer: customer
+    });
 
     let which = sessionStorage.getItem("WHICH");
     which = JSON.parse(which);
-    
+
     this.setState({
-      which : which
-    })
+      which: which
+    });
 
-   
-
-    spa_appointment: {},
-    spa_offer: {},
-    activity_offer: {},
-    event_offer: {},
-    escape_offer: {}
-    
-    if (parseInt(which.fnb_reservation,10) === 1) {
+    if (parseInt(which.fnb_reservation, 10) === 1) {
       let obj = sessionStorage.getItem("RESERVATION");
       obj = JSON.parse(obj);
       this.setState({
-        fnb_reservation : obj
-      })
-    } else if (parseInt(which.fnb_offer,10) === 1) {
+        fnb_reservation: obj
+      });
+    } else if (parseInt(which.fnb_offer, 10) === 1) {
       let obj = sessionStorage.getItem("FNB_OFFER");
       obj = JSON.parse(obj);
       this.setState({
-        fnb_offer : obj
-      })
+        fnb_offer: obj
+      });
+    } else if (parseInt(which.spa_appointment, 10) === 1) {
+      let obj = sessionStorage.getItem("SPA_APPOINTMENT");
+      obj = JSON.parse(obj);
+      this.setState({
+        spa_appointment: obj
+      });
+    } else if (parseInt(which.spa_offer, 10) === 1) {
+      let obj = sessionStorage.getItem("SPA_OFFER");
+      obj = JSON.parse(obj);
+      this.setState({
+        spa_offer: obj
+      });
+    } else if (parseInt(which.activity_offer, 10) === 1) {
+      let obj = sessionStorage.getItem("ACTIVITY_OFFER");
+      obj = JSON.parse(obj);
+      this.setState({
+        activity_offer: obj
+      });
+    } else if (parseInt(which.event_offer, 10) === 1) {
+      let obj = sessionStorage.getItem("EVENT_OFFER");
+      obj = JSON.parse(obj);
+      this.setState({
+        event_offer: obj
+      });
+    } else if (parseInt(which.escape_offer, 10) === 1) {
+      let obj = sessionStorage.getItem("ESCAPE_OFFER");
+      obj = JSON.parse(obj);
+      this.setState({
+        escape_offer: obj
+      });
     }
-
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
