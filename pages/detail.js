@@ -311,6 +311,7 @@ class Detail extends React.Component {
           keyword={keyword}
         />
         <ParentDetail
+          updateCustomerData={this.props.updateCustomerData}
           customerData={this.props.customerData}
           categoryData={this.props.categoryData}
           foodCategoryData={this.props.foodCategoryData}
@@ -329,6 +330,8 @@ class Detail extends React.Component {
           getOtpAction={this.props.getOtpAction}
           getOtp={this.props.getOtp}
           postOtp={this.props.postOtp}
+          getProfile={this.props.getProfile}
+          profileData={this.props.profileData}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />

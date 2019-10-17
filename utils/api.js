@@ -618,7 +618,9 @@ export default {
 
   getOtpApi: (customerId, type) => {
     return new Promise((resolve, reject) => {
-      fetch(`${host}api/v9/web/customers/${customerId}/activate/otp?${type}`)
+      fetch(
+        `${host}api/v9/web/customers/${customerId}/activate/otp?type=${type}`
+      )
         .then(response => {
           response
             .json()

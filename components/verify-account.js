@@ -21,11 +21,58 @@ export default class VerifyAccount extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.getOtp !== nextProps.getOtp) {
       if (nextProps.getOtp.status === "SUCCESS") {
+        this.setState({
+          verifyIsLoading: false
+        });
+
         this.updateOtp(true);
       } else {
         this.setState({
+          verifyIsLoading: false,
           errorStatus: true,
           errorMsg: nextProps.getOtp.msg
+        });
+      }
+    } else if (this.props.postOtp !== nextProps.postOtp) {
+      if (nextProps.postOtp.status === "SUCCESS") {
+        this.props.getProfile(this.props.customerId);
+      } else {
+        this.setState({
+          submitIsLoading: false,
+          errorStatus: true,
+          errorMsg: nextProps.postOtp.msg
+        });
+      }
+    } else if (this.props.profileData !== nextProps.profileData) {
+      if (nextProps.profileData.status === "SUCCESS") {
+        this.setState({
+          submitIsLoading: false
+        });
+
+        const customerData = {
+          customer_id: nextProps.profileData.profile.c_id,
+          first_name: nextProps.profileData.profile.fname,
+          last_name: nextProps.profileData.profile.lname,
+          email: nextProps.profileData.profile.email,
+          mobile: nextProps.profileData.profile.mobile,
+          gender: nextProps.profileData.profile.sex,
+          birthday: nextProps.profileData.profile.dob,
+          mobile_active: nextProps.profileData.profile.mobile_active,
+          email_active: nextProps.profileData.profile.email_active,
+          email_active: nextProps.profileData.profile.email_active,
+          loyality: nextProps.profileData.profile.loyalty_points
+        };
+
+        sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
+        this.props.updateCustomerData(customerData);
+
+        this.props.updateVerifyAccountState(false);
+        this.props.successToast("Successful");
+      } else {
+        this.setState({
+          submitIsLoading: false,
+          errorStatus: true,
+          errorMsg: nextProps.profileData.msg
         });
       }
     }
@@ -41,7 +88,7 @@ export default class VerifyAccount extends React.Component {
         this.updateOtpButton(false);
 
       this.setState({
-        otpFirstPosition: e.target.value
+        otpFirstPosition: e.target.value.toString()
       });
 
       if (
@@ -56,7 +103,7 @@ export default class VerifyAccount extends React.Component {
         this.updateOtpButton(false);
 
       this.setState({
-        otpSecondPosition: e.target.value
+        otpSecondPosition: e.target.value.toString()
       });
 
       if (
@@ -71,7 +118,7 @@ export default class VerifyAccount extends React.Component {
         this.updateOtpButton(false);
 
       this.setState({
-        otpThirdPosition: e.target.value
+        otpThirdPosition: e.target.value.toString()
       });
 
       if (
@@ -86,7 +133,7 @@ export default class VerifyAccount extends React.Component {
         this.updateOtpButton(false);
 
       this.setState({
-        otpFourthPosition: e.target.value
+        otpFourthPosition: e.target.value.toString()
       });
 
       if (
@@ -112,7 +159,23 @@ export default class VerifyAccount extends React.Component {
   };
 
   onClickVerifyButton = () => {
-    this.props.getOtpAction(customerId, 1);
+    this.setState({
+      verifyIsLoading: true
+    });
+    this.props.getOtpAction(this.props.customerId, 2);
+  };
+
+  onClickSubmitButton = () => {
+    this.setState({
+      submitIsLoading: true
+    });
+
+    const otp =
+      this.state.otpFirstPosition +
+      this.state.otpSecondPosition +
+      this.state.otpThirdPosition +
+      this.state.otpFourthPosition;
+    this.props.postOtpAction(this.props.customerId, otp, 2);
   };
 
   render() {
@@ -238,7 +301,10 @@ export default class VerifyAccount extends React.Component {
                         Submit
                       </button>
                     ) : (
-                      <button className="button is-danger is-active verify-account-button">
+                      <button
+                        className="button is-danger is-active verify-account-button"
+                        onClick={() => this.onClickSubmitButton()}
+                      >
                         Submit
                       </button>
                     )

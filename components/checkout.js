@@ -13,12 +13,12 @@ const Checkout = props => {
           <div className="columns">
             <div className="column is-8">
               <Segment>
-                <CheckoutLeft />
+                <CheckoutLeft postFnbReservation={props.postFnbReservation} />
               </Segment>
             </div>
             <div className="column is-4">
               <Segment>
-                <CheckoutRight />
+                <CheckoutRight postFnbReservation={props.postFnbReservation} />
               </Segment>
             </div>
           </div>

@@ -52,27 +52,6 @@ const CheckoutLeft = props => {
         </div>
       </Segment>
 
-      <Segment style={{ backgroundColor: "aliceblue" }}>
-        <h4 className="ffqs fs1-5 fw2 m0">Go Karting</h4>
-        <h4 className="ffqs fs1 fw2 mt0-5">Individual - Micro</h4>
-        <div className="columns">
-          <div className="column is-6">
-            <h4 className="ffqs fw2 p0-5 fs1-2">
-              Price :
-              <span>
-                {" "}
-                <span> &#8377;</span> 2,365{" "}
-              </span>
-            </h4>
-          </div>
-          <div className="column is-6">
-            <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
-              Quanity :<span> 2</span>
-            </h4>
-          </div>
-        </div>
-      </Segment>
-
       <div className="field">
         <label className="label is-medium ffqs fw2 fs1-4">
           Payment Options :
@@ -80,7 +59,7 @@ const CheckoutLeft = props => {
         <div className="field-body">
           <div className="field ">
             <div className="control">
-              <Segment style={{ backgroundColor: "aliceblue" }}>
+              <Segment style={{ backgroundColor: "floralwhite" }}>
                 <div className="field">
                   <input
                     className="is-checkradio is-danger"

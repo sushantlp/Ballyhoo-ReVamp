@@ -133,7 +133,7 @@ export default class Header extends React.Component {
         });
       }
     } else if (this.props.profileData !== nextProps.profileData) {
-      if (nextProps.login.status === "SUCCESS") {
+      if (nextProps.profileData.status === "SUCCESS") {
         const customerData = {
           customer_id: nextProps.profileData.profile.c_id,
           first_name: nextProps.profileData.profile.fname,

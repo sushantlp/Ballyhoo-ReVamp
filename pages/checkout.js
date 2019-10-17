@@ -48,6 +48,17 @@ class Checkout extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      which : {},
+      customer : {},
+      fnb_reservation: {},
+      fnb_offer : {},
+      spa_appointment: {},
+      spa_offer: {},
+      activity_offer: {},
+      event_offer: {},
+      escape_offer: {}
+    }
   }
 
   componentDidMount() {
@@ -62,6 +73,43 @@ class Checkout extends React.Component {
           console.warn("service worker registration failed", err.message);
         });
     }
+
+    let customer = sessionStorage.getItem("CUSTOMER_DATA");
+    customer = JSON.parse(customer);
+
+    this.setState({
+      customer : customer
+    })
+
+    let which = sessionStorage.getItem("WHICH");
+    which = JSON.parse(which);
+    
+    this.setState({
+      which : which
+    })
+
+   
+
+    spa_appointment: {},
+    spa_offer: {},
+    activity_offer: {},
+    event_offer: {},
+    escape_offer: {}
+    
+    if (parseInt(which.fnb_reservation,10) === 1) {
+      let obj = sessionStorage.getItem("RESERVATION");
+      obj = JSON.parse(obj);
+      this.setState({
+        fnb_reservation : obj
+      })
+    } else if (parseInt(which.fnb_offer,10) === 1) {
+      let obj = sessionStorage.getItem("FNB_OFFER");
+      obj = JSON.parse(obj);
+      this.setState({
+        fnb_offer : obj
+      })
+    }
+
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {

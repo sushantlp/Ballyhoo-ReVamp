@@ -307,6 +307,8 @@ export default class ParentDetail extends React.Component {
 
             sessionStorage.setItem("RESERVATION", JSON.stringify(reservation));
             sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+            this.props.routeChange("/checkout");
           }
         }
       }
@@ -400,6 +402,10 @@ export default class ParentDetail extends React.Component {
             getOtp={this.props.getOtp}
             postOtp={this.props.postOtp}
             customerId={this.props.customerData.customerData.customer_id}
+            getProfile={this.props.getProfile}
+            profileData={this.props.profileData}
+            successToast={this.props.successToast}
+            updateCustomerData={this.props.updateCustomerData}
           />
         ) : null}
       </React.Fragment>
