@@ -4,14 +4,31 @@ export default class VerifyAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      submitIsLoading: false,
       otp: false,
       otpButton: false,
       otpFirstPosition: "",
       otpSecondPosition: "",
       otpThirdPosition: "",
-      otpFourthPosition: ""
+      otpFourthPosition: "",
+
+      verifyIsLoading: false,
+      errorStatus: false,
+      errorMsg: ""
     };
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.getOtp !== nextProps.getOtp) {
+      if (nextProps.getOtp.status === "SUCCESS") {
+        this.updateOtp(true);
+      } else {
+        this.setState({
+          errorStatus: true,
+          errorMsg: nextProps.getOtp.msg
+        });
+      }
+    }
   }
 
   onKeyPressOtp = e => {
@@ -94,6 +111,10 @@ export default class VerifyAccount extends React.Component {
     });
   };
 
+  onClickVerifyButton = () => {
+    this.props.getOtpAction(customerId, 1);
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -112,6 +133,10 @@ export default class VerifyAccount extends React.Component {
               <section className="modal-card-body">
                 {this.state.otp ? (
                   <React.Fragment>
+                    <h4 className="ffqs fw2 text-align-center fs1_3em">
+                      Please enter otp.
+                    </h4>
+
                     <div className="columns">
                       <div className="column">
                         <div className="field">
@@ -173,32 +198,42 @@ export default class VerifyAccount extends React.Component {
                         </div>
                       </div>
                     </div>
-                    {/* {this.state.errorStatus ? (
-                            <p className="help is-danger">{this.state.errorMsg}</p>
-                          ) : null} */}
+                    {this.state.errorStatus ? (
+                      <p class="help is-danger">{this.state.errorMsg}</p>
+                    ) : null}
                   </React.Fragment>
                 ) : (
-                  <div className="field">
-                    <div className="field-body">
-                      <div className="field">
-                        <div className="control is-expanded ffqs fw2">
-                          <input
-                            className="input is-large br0"
-                            type="text"
-                            placeholder="Email"
-                            value={this.props.email}
-                            disabled
-                          />
+                  <React.Fragment>
+                    <h4 className="ffqs fw2 text-align-center fs1_3em">
+                      Do you want to activate your Email ?
+                    </h4>
+
+                    <div className="field">
+                      <div className="field-body">
+                        <div className="field">
+                          <div className="control is-expanded ffqs fw2">
+                            <input
+                              className="input is-large br0 text-align-center"
+                              type="text"
+                              placeholder="Email"
+                              value={this.props.email}
+                              disabled
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+
+                    {this.state.errorStatus ? (
+                      <p class="help is-danger">{this.state.errorMsg}</p>
+                    ) : null}
+                  </React.Fragment>
                 )}
               </section>
               <footer className="modal-card-foot">
                 {this.state.otp ? (
                   this.state.otpButton ? (
-                    this.state.isLoading ? (
+                    this.state.submitIsLoading ? (
                       <button className="button is-danger is-active verify-account-button is-loading">
                         Submit
                       </button>
@@ -216,10 +251,14 @@ export default class VerifyAccount extends React.Component {
                       Submit
                     </button>
                   )
+                ) : this.state.verifyIsLoading ? (
+                  <button className="button is-danger is-active verify-account-button is-loading">
+                    Verify
+                  </button>
                 ) : (
                   <button
                     className="button is-danger is-active verify-account-button"
-                    onClick={() => this.updateOtp(true)}
+                    onClick={() => this.onClickVerifyButton()}
                   >
                     Verify
                   </button>

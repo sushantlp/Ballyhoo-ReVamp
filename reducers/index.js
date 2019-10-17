@@ -29,6 +29,8 @@ import { saloonOffer } from "./saloon-offer-reducer";
 
 import { seo } from "./seo-data-reducer";
 import { applicationStatus } from "./application-status-reducer";
+import { getOtp } from "./get-otp-reducer";
+import { postOtp } from "./post-otp-reducer";
 
 export default combineReducers({
   cityLocality,
@@ -60,5 +62,7 @@ export default combineReducers({
   eventOffer,
   activityOffer,
   escapeOffer,
-  saloonOffer
+  saloonOffer,
+  getOtp,
+  postOtp
 });

@@ -26,6 +26,8 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { getSeo } from "../actions/seo-data-action";
+import { getOtpAction } from "../actions/get-otp-action";
+import { postOtpAction } from "../actions/post-otp-action";
 
 import { getProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
@@ -323,6 +325,10 @@ class Detail extends React.Component {
           errorToast={this.errorToast}
           successToast={this.successToast}
           routeChange={this.routeChange}
+          postOtpAction={this.props.postOtpAction}
+          getOtpAction={this.props.getOtpAction}
+          getOtp={this.props.getOtp}
+          postOtp={this.props.postOtp}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
@@ -345,7 +351,9 @@ const mapStateToProps = state => {
     seo: state.seo,
     customerData: state.customerData,
     applicationStatus: state.applicationStatus,
-    profileData: state.profileData
+    profileData: state.profileData,
+    getOtp: state.getOtp,
+    postOtp: state.postOtp
   };
 };
 
@@ -367,7 +375,9 @@ const mapDispatchToProps = dispatch => {
       applicationStatusAction,
       dispatch
     ),
-    getProfile: bindActionCreators(getProfile, dispatch)
+    getProfile: bindActionCreators(getProfile, dispatch),
+    postOtpAction: bindActionCreators(postOtpAction, dispatch),
+    getOtpAction: bindActionCreators(getOtpAction, dispatch)
   };
 };
 

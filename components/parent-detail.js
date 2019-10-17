@@ -395,6 +395,11 @@ export default class ParentDetail extends React.Component {
             verifyOpen={this.state.verifyOpen}
             updateVerifyAccountState={this.updateVerifyAccountState}
             email={this.props.customerData.customerData.email}
+            postOtpAction={this.props.postOtpAction}
+            getOtpAction={this.props.getOtpAction}
+            getOtp={this.props.getOtp}
+            postOtp={this.props.postOtp}
+            customerId={this.props.customerData.customerData.customer_id}
           />
         ) : null}
       </React.Fragment>

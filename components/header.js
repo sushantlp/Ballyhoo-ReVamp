@@ -468,6 +468,13 @@ export default class Header extends React.Component {
   };
 
   moveToSignup = () => {
+    if (this.state.errorStatus) {
+      this.setState({
+        errorStatus: false,
+        errorMsg: ""
+      });
+    }
+
     this.updateLoginState(false);
     this.updateSignupState(true);
   };
@@ -623,6 +630,8 @@ export default class Header extends React.Component {
             updateForgetState={this.updateForgetState}
             updateForgetEmail={this.updateForgetEmail}
             onClickForgetButton={this.onClickForgetButton}
+            errorStatus={this.state.errorStatus}
+            errorMsg={this.state.errorMsg}
           />
         ) : null}
       </div>

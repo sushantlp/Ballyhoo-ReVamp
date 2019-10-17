@@ -32,6 +32,10 @@ const Forget = props => {
                     </div>
                   </div>
                 </div>
+
+                {props.errorStatus ? (
+                  <p class="help is-danger">{props.errorMsg}</p>
+                ) : null}
               </div>
             </section>
             <footer className="modal-card-foot">

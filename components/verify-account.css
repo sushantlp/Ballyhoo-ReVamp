@@ -45,3 +45,11 @@
 .verify-account-container .br0 {
   border-radius: 0;
 }
+
+.verify-account-container .text-align-center {
+  text-align: center;
+}
+
+.verify-account-container .fs1_3em {
+  font-size: 1.3em;
+}

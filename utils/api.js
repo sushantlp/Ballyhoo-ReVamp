@@ -614,5 +614,40 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  getOtpApi: (customerId, type) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/customers/${customerId}/activate/otp?${type}`)
+        .then(response => {
+          response
+            .json()
+            .then(getOtp => resolve(getOtp))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
+  },
+
+  postOtpApi: (customerId, otp, type) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${host}api/v9/web/customers/${customerId}/activate/otp/verify`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+          otp: otp,
+          type: type
+        })
+      })
+        .then(response => {
+          response
+            .json()
+            .then(postOtp => resolve(postOtp))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };
