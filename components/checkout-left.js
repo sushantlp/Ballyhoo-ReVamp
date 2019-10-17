@@ -13,6 +13,12 @@ const CheckoutLeft = props => {
     cartComponent = false;
     quanity = true;
     item = props.parentState.fnb_reservation;
+  } else if (props.parentState.which.fnb_offer === 1) {
+    if (props.parentState.fnb_offer.event) paymentComponent = false;
+
+    cartComponent = false;
+    quanity = true;
+    item = props.parentState.fnb_offer;
   }
 
   if (item === undefined) return null;

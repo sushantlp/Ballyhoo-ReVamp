@@ -1,4 +1,4 @@
-// import ReadMoreAndLess from "react-read-more-less";
+import ReadMoreAndLess from "react-read-more-less";
 import ReactTextMoreLess from "react-text-more-less";
 const Text = props => {
   return (
@@ -11,7 +11,7 @@ const Text = props => {
           <div className="overview-underscore" />
 
           <h4 className="fz1 pfc4 ffqs fw2 ls white-space lh1-7">
-            {/* <ReadMoreAndLess
+            <ReadMoreAndLess
               ref={props.ReadMore}
               className="read-more-content"
               charLimit={300}
@@ -20,9 +20,9 @@ const Text = props => {
               style={{ color: "#ff3860" }}
             >
               {props.detail}
-            </ReadMoreAndLess> */}
+            </ReadMoreAndLess>
 
-            <ReactTextMoreLess
+            {/* <ReactTextMoreLess
               collapsed={props.collapsed}
               text={props.detail}
               lessHeight={100}
@@ -36,7 +36,7 @@ const Text = props => {
                 <span className="show-more-text">show less</span>
               }
               onClick={() => props.updateCollapsed()}
-            />
+            /> */}
           </h4>
 
           {props.flag ? (

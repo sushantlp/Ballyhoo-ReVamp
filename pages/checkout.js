@@ -25,6 +25,7 @@ import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
 
 import { postFnbReservation } from "../actions/fnb-reservation-action";
+import { postFnbOffer } from "../actions/fnb-offer-action";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -142,6 +143,7 @@ class Checkout extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.fnbReservation !== nextProps.fnbReservation) {
       if (nextProps.fnbReservation.status === "SUCCESS") {
+        this.removeAllOfferSessionData();
         this.successToast(nextProps.fnbReservation.msg);
       } else {
         this.setState({
@@ -149,8 +151,30 @@ class Checkout extends React.Component {
         });
         this.props.errorToast(nextProps.fnbReservation.msg, 1, true);
       }
+    } else if (this.props.fnbOffer !== nextProps.fnbOffer) {
+      if (nextProps.fnbOffer.status === "SUCCESS") {
+        this.removeAllOfferSessionData();
+        this.successToast(nextProps.fnbOffer.msg);
+      } else {
+        this.setState({
+          isLoading: false
+        });
+        this.props.errorToast(nextProps.fnbOffer.msg, 2, true);
+      }
     }
   }
+
+  removeAllOfferSessionData = () => {
+    sessionStorage.removeItem("WHICH");
+    sessionStorage.removeItem("FNB_OFFER");
+    sessionStorage.removeItem("FNB_OFFER");
+    sessionStorage.removeItem("RESERVATION");
+    sessionStorage.removeItem("SPA_APPOINTMENT");
+    sessionStorage.removeItem("SPA_OFFER");
+    sessionStorage.removeItem("ACTIVITY_OFFER");
+    sessionStorage.removeItem("EVENT_OFFER");
+    sessionStorage.removeItem("ESCAPE_OFFER");
+  };
 
   routeChange = url => {
     Router.push(url);
@@ -181,6 +205,18 @@ class Checkout extends React.Component {
         this.state.fnb_reservation.date,
         this.state.fnb_reservation.time,
         this.state.fnb_reservation.quantity
+      );
+    } else if (this.state.which.fnb_offer === 1) {
+      this.props.postFnbOffer(
+        this.state.fnb_offer.offer_id,
+        this.state.fnb_offer.customer_id,
+        1,
+        null,
+        this.state.fnb_offer.payment_amount,
+        this.state.fnb_offer.payment_discount,
+        this.state.fnb_offer.date,
+        this.state.fnb_offer.time,
+        this.state.fnb_offer.quantity
       );
     }
   };
@@ -247,7 +283,8 @@ const mapDispatchToProps = dispatch => {
       dispatch
     ),
     postFnbReservation: bindActionCreators(postFnbReservation, dispatch),
-    getProfile: bindActionCreators(getProfile, dispatch)
+    getProfile: bindActionCreators(getProfile, dispatch),
+    postFnbOffer: bindActionCreators(postFnbOffer, dispatch)
   };
 };
 

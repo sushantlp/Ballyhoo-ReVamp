@@ -249,15 +249,6 @@ export default class ParentDetail extends React.Component {
             this.props.foodCategoryData.foodCategoryData.details.partner_id,
             false
           );
-
-          // this.props.routeChange("/checkout");
-          // this.props.postFnbReservation(
-          //   this.props.foodCategoryData.foodCategoryData.details.partner_id,
-          //   this.props.customerData.customerData.customer_id,
-          //   date,
-          //   this.state.time,
-          //   quantity
-          // );
         }
       }
     } else {
@@ -271,12 +262,68 @@ export default class ParentDetail extends React.Component {
       if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
         if (this.state.fnbTab.buffet) {
         } else if (this.state.fnbTab.event) {
+          const time = moment(this.state.time, "HH:mm a");
+
+          const beforeTime = moment(
+            this.state.fnbSelectObj.times.start_time,
+            "HH:mm a"
+          );
+          const afterTime = moment(
+            this.state.fnbSelectObj.times.end_time,
+            "HH:mm a"
+          );
+
+          if (time.isBetween(beforeTime, afterTime)) {
+            const date = moment(this.state.date).format("YYYY-MM-DD");
+
+            const event = {
+              offer_id: this.state.fnbSelectObj.offer_id,
+              name: this.props.foodCategoryData.foodCategoryData.details.bname,
+              customer_id: this.props.customerData.customerData.customer_id,
+              date: date,
+              time: this.state.time,
+              quantity: quantity,
+              event: true,
+              payment_amount: 0,
+              payment_discount: 0
+            };
+
+            const which = {
+              fnb_reservation: 0,
+              fnb_offer: 1,
+              spa_appointment: 0,
+              spa_offer: 0,
+              activity_offer: 0,
+              event_offer: 0,
+              escape_offer: 0
+            };
+
+            sessionStorage.removeItem("RESERVATION");
+            sessionStorage.removeItem("SPA_APPOINTMENT");
+            sessionStorage.removeItem("SPA_OFFER");
+            sessionStorage.removeItem("ACTIVITY_OFFER");
+            sessionStorage.removeItem("EVENT_OFFER");
+            sessionStorage.removeItem("ESCAPE_OFFER");
+
+            sessionStorage.setItem("FNB_OFFER", JSON.stringify(event));
+            sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+            this.props.routeChange("/checkout");
+          } else {
+            this.updateCartButtonLoading(false);
+            this.props.errorToast(
+              "Time should be greater and equal current time",
+              1,
+              true
+            );
+          }
         } else if (this.state.fnbTab.package) {
         } else {
           const currentTime = moment(this.state.currentTime, "HH:mm a");
           const time = moment(this.state.time, "HH:mm a");
 
           if (currentTime.isAfter(time)) {
+            this.updateCartButtonLoading(false);
             this.props.errorToast(
               "Time should be greater and equal current time",
               1,
@@ -304,6 +351,13 @@ export default class ParentDetail extends React.Component {
               event_offer: 0,
               escape_offer: 0
             };
+
+            sessionStorage.removeItem("FNB_OFFER");
+            sessionStorage.removeItem("SPA_APPOINTMENT");
+            sessionStorage.removeItem("SPA_OFFER");
+            sessionStorage.removeItem("ACTIVITY_OFFER");
+            sessionStorage.removeItem("EVENT_OFFER");
+            sessionStorage.removeItem("ESCAPE_OFFER");
 
             sessionStorage.setItem("RESERVATION", JSON.stringify(reservation));
             sessionStorage.setItem("WHICH", JSON.stringify(which));
