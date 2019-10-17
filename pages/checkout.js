@@ -1,3 +1,4 @@
+import Router from "next/router";
 import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -57,7 +58,8 @@ class Checkout extends React.Component {
       spa_offer: [],
       activity_offer: [],
       event_offer: [],
-      escape_offer: []
+      escape_offer: [],
+      isLoading: false
     };
   }
 
@@ -74,18 +76,20 @@ class Checkout extends React.Component {
         });
     }
 
+    let which = sessionStorage.getItem("WHICH");
+    which = JSON.parse(which);
+
+    if (which === null) this.routeChange("/");
+
+    this.setState({
+      which: which
+    });
+
     let customer = sessionStorage.getItem("CUSTOMER_DATA");
     customer = JSON.parse(customer);
 
     this.setState({
       customer: customer
-    });
-
-    let which = sessionStorage.getItem("WHICH");
-    which = JSON.parse(which);
-
-    this.setState({
-      which: which
     });
 
     if (parseInt(which.fnb_reservation, 10) === 1) {
@@ -130,20 +134,32 @@ class Checkout extends React.Component {
       this.setState({
         escape_offer: obj
       });
+    } else {
+      this.routeChange("/");
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.fnbReservation !== nextProps.fnbReservation) {
       if (nextProps.fnbReservation.status === "SUCCESS") {
+        this.successToast(nextProps.fnbReservation.msg);
       } else {
+        this.setState({
+          isLoading: false
+        });
         this.props.errorToast(nextProps.fnbReservation.msg, 1, true);
       }
     }
   }
 
+  routeChange = url => {
+    Router.push(url);
+  };
+
   successToast = msg => {
-    return toast.success(msg);
+    return toast.success(msg, {
+      onClose: () => this.routeChange("/")
+    });
   };
 
   errorToast = (msg, id, autoClose) => {
@@ -151,6 +167,22 @@ class Checkout extends React.Component {
       autoClose: autoClose,
       toastId: id
     });
+  };
+
+  onClickCheckoutButton = () => {
+    this.setState({
+      isLoading: true
+    });
+
+    if (this.state.which.fnb_reservation === 1) {
+      this.props.postFnbReservation(
+        this.state.fnb_reservation.partner_id,
+        this.state.fnb_reservation.customer_id,
+        this.state.fnb_reservation.date,
+        this.state.fnb_reservation.time,
+        this.state.fnb_reservation.quantity
+      );
+    }
   };
 
   render() {
@@ -178,7 +210,11 @@ class Checkout extends React.Component {
           getProfile={this.props.getProfile}
           profileData={this.props.profileData}
         />
-        <CheckoutComponent postFnbReservation={this.props.postFnbReservation} />
+        <CheckoutComponent
+          postFnbReservation={this.props.postFnbReservation}
+          parentState={this.state}
+          onClickCheckoutButton={this.onClickCheckoutButton}
+        />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>

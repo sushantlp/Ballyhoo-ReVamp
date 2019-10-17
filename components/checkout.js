@@ -13,12 +13,19 @@ const Checkout = props => {
           <div className="columns">
             <div className="column is-8">
               <Segment>
-                <CheckoutLeft postFnbReservation={props.postFnbReservation} />
+                <CheckoutLeft
+                  postFnbReservation={props.postFnbReservation}
+                  parentState={props.parentState}
+                />
               </Segment>
             </div>
             <div className="column is-4">
               <Segment>
-                <CheckoutRight postFnbReservation={props.postFnbReservation} />
+                <CheckoutRight
+                  postFnbReservation={props.postFnbReservation}
+                  parentState={props.parentState}
+                  onClickCheckoutButton={props.onClickCheckoutButton}
+                />
               </Segment>
             </div>
           </div>
