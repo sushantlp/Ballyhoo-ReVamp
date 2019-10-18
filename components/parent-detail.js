@@ -295,6 +295,7 @@ export default class ParentDetail extends React.Component {
         if (this.state.fnbTab.buffet) {
           let notAllowed = false;
           const time = moment(this.state.time, "HH:mm a");
+          const displayTime = moment(time, "hh:mm A");
           const dayInNumber = moment(this.state.date).isoWeekday();
 
           const beforeTime = moment(
@@ -340,6 +341,7 @@ export default class ParentDetail extends React.Component {
                 customer_id: this.props.customerData.customerData.customer_id,
                 date: date,
                 time: this.state.time,
+                display_time: displayTime,
                 quantity: quantity,
                 event: false,
                 payment_amount: this.state.fnbDiscountPrice,
@@ -415,6 +417,9 @@ export default class ParentDetail extends React.Component {
                 .partner_id,
               name: this.props.foodCategoryData.foodCategoryData.details.bname,
               customer_id: this.props.customerData.customerData.customer_id,
+              customer_mobile: this.props.customerData.customerData.mobile,
+              customer_email: this.props.customerData.customerData.email,
+              display_time: displayTime,
               date: date,
               time: this.state.time,
               quantity: quantity,
@@ -455,6 +460,7 @@ export default class ParentDetail extends React.Component {
         } else if (this.state.fnbTab.package) {
           let notAllowed = false;
           const time = moment(this.state.time, "HH:mm a");
+          const displayTime = moment(time, "hh:mm A");
           const dayInNumber = moment(this.state.date).isoWeekday();
 
           const beforeTime = moment(
@@ -498,6 +504,9 @@ export default class ParentDetail extends React.Component {
                 name: this.props.foodCategoryData.foodCategoryData.details
                   .bname,
                 customer_id: this.props.customerData.customerData.customer_id,
+                customer_mobile: this.props.customerData.customerData.mobile,
+                customer_email: this.props.customerData.customerData.email,
+                display_time: displayTime,
                 date: date,
                 time: this.state.time,
                 quantity: quantity,
@@ -546,6 +555,7 @@ export default class ParentDetail extends React.Component {
         } else {
           const currentTime = moment().format("HH:mm A");
           const time = moment(this.state.time, "HH:mm A");
+          const displayTime = moment(time, "hh:mm A");
 
           if (currentTime.isAfter(time)) {
             this.updateCartButtonLoading(false);
@@ -562,8 +572,11 @@ export default class ParentDetail extends React.Component {
               partner_id: this.props.foodCategoryData.foodCategoryData.details
                 .partner_id,
               customer_id: this.props.customerData.customerData.customer_id,
+              customer_mobile: this.props.customerData.customerData.mobile,
+              customer_email: this.props.customerData.customerData.email,
               date: date,
               time: this.state.time,
+              display_time: displayTime,
               quantity: quantity
             };
 

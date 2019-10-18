@@ -63,7 +63,9 @@ class Checkout extends React.Component {
       event_offer: [],
       escape_offer: [],
       isLoading: false,
-      checkoutButtonBlock: false
+      checkoutButtonBlock: false,
+      payment: [],
+      payment_option: ""
     };
   }
 
@@ -79,6 +81,13 @@ class Checkout extends React.Component {
           console.warn("service worker registration failed", err.message);
         });
     }
+
+    // let payment = sessionStorage.getItem("PAYMENT");
+    // payment = JSON.parse(payment);
+
+    // this.setState({
+    //   payment: payment
+    // });
 
     let which = sessionStorage.getItem("WHICH");
     which = JSON.parse(which);
@@ -148,45 +157,60 @@ class Checkout extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.fnbReservation !== nextProps.fnbReservation) {
       if (nextProps.fnbReservation.status === "SUCCESS") {
-        this.removeAllOfferSessionData();
+        // this.removeAllOfferSessionData();
         this.successToast(nextProps.fnbReservation.msg);
       } else {
         this.setState({
           isLoading: false
         });
-        this.props.errorToast(nextProps.fnbReservation.msg, 1, true);
+        this.errorToast(nextProps.fnbReservation.msg, 1, true);
       }
     } else if (this.props.fnbOffer !== nextProps.fnbOffer) {
+      console.log("fnbOffer");
       if (nextProps.fnbOffer.status === "SUCCESS") {
-        this.removeAllOfferSessionData();
+        // this.removeAllOfferSessionData();
         this.successToast(nextProps.fnbOffer.msg);
+
+        console.log("SUCCESS");
       } else {
+        console.log("FAIL");
         this.setState({
           isLoading: false
         });
-        this.props.errorToast(nextProps.fnbOffer.msg, 2, true);
+        this.errorToast(nextProps.fnbOffer.msg, 2, true);
       }
     } else if (this.props.payment !== nextProps.payment) {
       if (nextProps.payment.status === "FAIL") {
         this.setState({
           checkoutButtonBlock: true
         });
-        this.props.errorToast(nextProps.payment.msg, 3, true);
+        this.errorToast(nextProps.payment.msg, 3, true);
+      } else {
+        console.log(nextProps.payment.payment);
+        sessionStorage.setItem(
+          "PAYMENT",
+          JSON.stringify(nextProps.payment.payment)
+        );
+
+        this.setState({
+          payment: nextProps.payment.payment
+        });
       }
     }
   }
 
-  removeAllOfferSessionData = () => {
-    sessionStorage.removeItem("WHICH");
-    sessionStorage.removeItem("FNB_OFFER");
-    sessionStorage.removeItem("FNB_OFFER");
-    sessionStorage.removeItem("RESERVATION");
-    sessionStorage.removeItem("SPA_APPOINTMENT");
-    sessionStorage.removeItem("SPA_OFFER");
-    sessionStorage.removeItem("ACTIVITY_OFFER");
-    sessionStorage.removeItem("EVENT_OFFER");
-    sessionStorage.removeItem("ESCAPE_OFFER");
-  };
+  // removeAllOfferSessionData = () => {
+  //   sessionStorage.removeItem("WHICH");
+  //   sessionStorage.removeItem("FNB_OFFER");
+  //   sessionStorage.removeItem("FNB_OFFER");
+  //   sessionStorage.removeItem("RESERVATION");
+  //   sessionStorage.removeItem("SPA_APPOINTMENT");
+  //   sessionStorage.removeItem("SPA_OFFER");
+  //   sessionStorage.removeItem("ACTIVITY_OFFER");
+  //   sessionStorage.removeItem("EVENT_OFFER");
+  //   sessionStorage.removeItem("ESCAPE_OFFER");
+  //   sessionStorage.removeItem("PAYMENT");
+  // };
 
   routeChange = url => {
     Router.push(url);
@@ -219,20 +243,116 @@ class Checkout extends React.Component {
         this.state.fnb_reservation.quantity
       );
     } else if (this.state.which.fnb_offer === 1) {
+      console.log(this.state.fnb_offer);
+
+      if (this.state.fnb_offer.event) {
+        this.props.postFnbOffer(
+          this.state.fnb_offer.offer_id,
+          this.state.fnb_offer.customer_id,
+          1,
+          null,
+          this.state.fnb_offer.payment_amount,
+          this.state.fnb_offer.payment_discount,
+          this.state.fnb_offer.date,
+          this.state.fnb_offer.time,
+          this.state.fnb_offer.quantity
+        );
+      } else {
+        if (this.state.payment_option === "") {
+          this.setState({
+            isLoading: false
+          });
+
+          this.errorToast(
+            "Please select payment option",
+            this.state.fnb_offer.offer_id,
+            true
+          );
+        } else if (this.state.payment_option === "venue") {
+          this.props.postFnbOffer(
+            this.state.fnb_offer.offer_id,
+            this.state.fnb_offer.customer_id,
+            1,
+            null,
+            this.state.fnb_offer.payment_amount,
+            this.state.fnb_offer.payment_discount,
+            this.state.fnb_offer.date,
+            this.state.fnb_offer.time,
+            this.state.fnb_offer.quantity
+          );
+        } else if (this.state.payment_option === "online") {
+          const amount = this.state.fnb_offer.payment_amount * 100;
+          this.invokeRazorPay(
+            this.state.fnb_offer.customer_email,
+            this.state.fnb_offer.customer_mobile,
+            amount,
+            this.state.fnb_offer.name,
+            this.onlineFnbOffer
+          );
+        }
+      }
+    }
+  };
+
+  onlineFnbOffer = (paymentId, bool) => {
+    if (bool) {
       this.props.postFnbOffer(
         this.state.fnb_offer.offer_id,
         this.state.fnb_offer.customer_id,
-        1,
-        null,
+        2,
+        paymentId,
         this.state.fnb_offer.payment_amount,
         this.state.fnb_offer.payment_discount,
         this.state.fnb_offer.date,
         this.state.fnb_offer.time,
         this.state.fnb_offer.quantity
       );
+    } else {
+      this.setState({
+        isLoading: false
+      });
     }
   };
 
+  invokeRazorPay = (email, mobile, amount, name, callBackApi) => {
+    const options = {
+      key: this.state.payment.online_payment.razorpay_key,
+      amount: amount, // 2000 paise = INR 20
+      name: name,
+      description: "Booking",
+      image:
+        "https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_50/v1539007601/ballyhoo/EMAIL/ballyhoo_black.png",
+      handler: function(response) {
+        callBackApi(response.razorpay_payment_id, true);
+      },
+      modal: {
+        ondismiss: function() {
+          callBackApi(undefined, false);
+        }
+      },
+      prefill: {
+        // name: userName,
+        email: email,
+        contact: mobile
+      },
+      notes: {
+        address: ""
+      },
+      theme: {
+        color: "#ff3860"
+      }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
+  onChangePayment = e => {
+    console.log(e.target.value);
+    this.setState({
+      payment_option: e.target.value
+    });
+  };
   render() {
     return (
       <React.Fragment>
@@ -263,6 +383,7 @@ class Checkout extends React.Component {
           parentState={this.state}
           onClickCheckoutButton={this.onClickCheckoutButton}
           payment={this.props.payment}
+          onChangePayment={this.onChangePayment}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
@@ -280,6 +401,7 @@ const mapStateToProps = state => {
     customerData: state.customerData,
     applicationStatus: state.applicationStatus,
     fnbReservation: state.fnbReservation,
+    fnbOffer: state.fnbOffer,
     profileData: state.profileData,
     payment: state.payment
   };

@@ -14,7 +14,6 @@ const CheckoutRight = props => {
 
   if (item === undefined) return null;
 
-  console.log(item);
   return (
     <div className="checkout-right-container">
       {price ? (

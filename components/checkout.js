@@ -16,7 +16,7 @@ const Checkout = props => {
                 <CheckoutLeft
                   postFnbReservation={props.postFnbReservation}
                   parentState={props.parentState}
-                  payment={props.payment}
+                  onChangePayment={props.onChangePayment}
                 />
               </Segment>
             </div>

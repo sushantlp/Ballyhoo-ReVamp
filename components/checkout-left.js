@@ -53,7 +53,7 @@ const CheckoutLeft = props => {
         <div className="column">
           <h4 className="ffqs fw2 p0-5 fs1-2 float-right ">
             Booking Time :{" "}
-            <span className="tag is-warning fs1">{item.time}</span>
+            <span className="tag is-warning fs1">{item.display_time}</span>
           </h4>
         </div>
       </div>
@@ -101,33 +101,37 @@ const CheckoutLeft = props => {
                   {/* style={{ backgroundColor: "floralwhite" }} */}
                   <Segment>
                     <div className="field">
-                      {props.payment.payment.online_payment.payment_status ===
-                      1 ? (
-                        <React.Fragment>
-                          <input
-                            className="is-checkradio is-danger"
-                            id="online"
-                            type="radio"
-                            name="payment"
-                          />
-                          <label htmlFor="online" className="ffqs fw2 fs1-1">
-                            Online payment (Mobikwik, PayuMoney, PayzZapp)
-                          </label>
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <input
-                            className="is-checkradio is-danger"
-                            id="online"
-                            type="radio"
-                            name="payment"
-                            disabled
-                          />
-                          <label htmlFor="online" className="ffqs fw2 fs1-1">
-                            Online payment (Mobikwik, PayuMoney, PayzZapp)
-                          </label>
-                        </React.Fragment>
-                      )}
+                      {props.parentState.payment.length !== 0 ? (
+                        props.parentState.payment.online_payment
+                          .payment_status === 1 ? (
+                          <React.Fragment>
+                            <input
+                              className="is-checkradio is-danger"
+                              id="online"
+                              type="radio"
+                              name="payment"
+                              value="online"
+                              onChange={event => props.onChangePayment(event)}
+                            />
+                            <label htmlFor="online" className="ffqs fw2 fs1-1">
+                              Online payment (Mobikwik, PayuMoney, PayzZapp)
+                            </label>
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            <input
+                              className="is-checkradio is-danger"
+                              id="online"
+                              type="radio"
+                              name="payment"
+                              disabled
+                            />
+                            <label htmlFor="online" className="ffqs fw2 fs1-1">
+                              Online payment (Mobikwik, PayuMoney, PayzZapp)
+                            </label>
+                          </React.Fragment>
+                        )
+                      ) : null}
 
                       {/* <input
                       className="is-checkradio is-danger"
@@ -140,36 +144,40 @@ const CheckoutLeft = props => {
                       Paytm
                     </label> */}
 
-                      {props.payment.payment.pay_at_venue === 1 ? (
-                        <React.Fragment>
-                          {" "}
-                          <input
-                            className="is-checkradio is-danger"
-                            id="venue"
-                            type="radio"
-                            name="payment"
-                            style={{ paddingLeft: "1em" }}
-                          />
-                          <label htmlFor="venue" className="ffqs fw2 fs1-1">
-                            Pay At Venue
-                          </label>{" "}
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          {" "}
-                          <input
-                            className="is-checkradio is-danger"
-                            id="venue"
-                            type="radio"
-                            name="payment"
-                            style={{ paddingLeft: "1em" }}
-                            disabled
-                          />
-                          <label htmlFor="venue" className="ffqs fw2 fs1-1">
-                            Pay At Venue
-                          </label>{" "}
-                        </React.Fragment>
-                      )}
+                      {props.parentState.payment.length !== 0 ? (
+                        props.parentState.payment.pay_at_venue === 1 ? (
+                          <React.Fragment>
+                            {" "}
+                            <input
+                              className="is-checkradio is-danger"
+                              id="venue"
+                              type="radio"
+                              name="payment"
+                              value="venue"
+                              style={{ paddingLeft: "1em" }}
+                              onChange={event => props.onChangePayment(event)}
+                            />
+                            <label htmlFor="venue" className="ffqs fw2 fs1-1">
+                              Pay At Venue
+                            </label>{" "}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {" "}
+                            <input
+                              className="is-checkradio is-danger"
+                              id="venue"
+                              type="radio"
+                              name="payment"
+                              style={{ paddingLeft: "1em" }}
+                              disabled
+                            />
+                            <label htmlFor="venue" className="ffqs fw2 fs1-1">
+                              Pay At Venue
+                            </label>{" "}
+                          </React.Fragment>
+                        )
+                      ) : null}
                     </div>
                   </Segment>
                 </div>

@@ -54,6 +54,16 @@ class Term extends React.Component {
           console.warn("service worker registration failed", err.message);
         });
     }
+
+    sessionStorage.removeItem("RESERVATION");
+    sessionStorage.removeItem("SPA_APPOINTMENT");
+    sessionStorage.removeItem("SPA_OFFER");
+    sessionStorage.removeItem("ACTIVITY_OFFER");
+    sessionStorage.removeItem("EVENT_OFFER");
+    sessionStorage.removeItem("ESCAPE_OFFER");
+    sessionStorage.removeItem("FNB_OFFER");
+    sessionStorage.removeItem("WHICH");
+    sessionStorage.removeItem("PAYMENT");
   }
 
   render() {
