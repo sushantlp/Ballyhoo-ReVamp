@@ -14,7 +14,7 @@ export function payment(state = initialState, action) {
           ...state,
           payment: action.payment.data,
           status: "SUCCESS",
-          msg: "successful"
+          msg: action.payment.message
         };
       } else {
         return {

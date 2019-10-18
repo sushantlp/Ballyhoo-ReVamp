@@ -20,17 +20,6 @@ const FoodList = props => {
 
             if (parseInt(props.expiry, 10) === 1) {
               bookButton = true;
-              // if (parseInt(value.purchase_status, 10) === 1) {
-              //   // for (let i = 0; i < value.day_list; i++) {
-              //   //   if (
-              //   //     parseInt(props.dayInNumber, 10) ===
-              //   //     parseInt(value.day_list[i], 10)
-              //   //   ) {
-              //   //     bookButton = false;
-              //   //     break;
-              //   //   }
-              //   // }
-              // }
             } else {
               if (parseInt(value.purchase_status, 10) === 0) bookButton = true;
             }
@@ -141,7 +130,7 @@ const FoodList = props => {
                     ) : (
                       <a
                         className="button is-medium is-danger"
-                        onClick={() => props.onFnbBuffetClick(value)}
+                        onClick={() => props.onFnbBuffetClick(value, price)}
                       >
                         <span>Book</span>
                       </a>

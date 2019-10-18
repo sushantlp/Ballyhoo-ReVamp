@@ -134,7 +134,7 @@ const FoodPackageDetail = props => {
                     ) : (
                       <a
                         className="button is-medium is-danger"
-                        onClick={() => props.onFnbPackageClick(value)}
+                        onClick={() => props.onFnbPackageClick(value, price)}
                       >
                         <span>Book</span>
                       </a>

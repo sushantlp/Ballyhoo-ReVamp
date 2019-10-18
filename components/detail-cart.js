@@ -74,14 +74,24 @@ export default class DetailCart extends React.Component {
             </div>
 
             <div className="column is-8">
-              <TimePicker
-                withoutIcon={true}
-                time={this.props.parentState.time} // initial time, default current time
-                theme="material"
-                onTimeChange={time => this.props.onChangeTime(time)}
-                timeMode="12"
-                timezone="America/New_York"
-              />
+              {this.props.parentState.timeDisabled ? (
+                <TimePicker
+                  withoutIcon={true}
+                  time={this.props.parentState.time} // initial time, default current time
+                  theme="material"
+                  onTimeChange={time => this.props.onChangeTime(time)}
+                  timeMode="12"
+                  disabled
+                />
+              ) : (
+                <TimePicker
+                  withoutIcon={true}
+                  time={this.props.parentState.time} // initial time, default current time
+                  theme="material"
+                  onTimeChange={time => this.props.onChangeTime(time)}
+                  timeMode="12"
+                />
+              )}
             </div>
           </div>
 

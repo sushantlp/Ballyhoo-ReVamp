@@ -24,6 +24,8 @@ import { getProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
 
+import { paymentOption } from "../actions/payment-option-action";
+
 import { postFnbReservation } from "../actions/fnb-reservation-action";
 import { postFnbOffer } from "../actions/fnb-offer-action";
 
@@ -60,7 +62,8 @@ class Checkout extends React.Component {
       activity_offer: [],
       event_offer: [],
       escape_offer: [],
-      isLoading: false
+      isLoading: false,
+      checkoutButtonBlock: false
     };
   }
 
@@ -105,6 +108,8 @@ class Checkout extends React.Component {
       this.setState({
         fnb_offer: obj
       });
+
+      this.props.paymentOption(obj.partner_id);
     } else if (parseInt(which.spa_appointment, 10) === 1) {
       let obj = sessionStorage.getItem("SPA_APPOINTMENT");
       obj = JSON.parse(obj);
@@ -160,6 +165,13 @@ class Checkout extends React.Component {
           isLoading: false
         });
         this.props.errorToast(nextProps.fnbOffer.msg, 2, true);
+      }
+    } else if (this.props.payment !== nextProps.payment) {
+      if (nextProps.payment.status === "FAIL") {
+        this.setState({
+          checkoutButtonBlock: true
+        });
+        this.props.errorToast(nextProps.payment.msg, 3, true);
       }
     }
   }
@@ -250,6 +262,7 @@ class Checkout extends React.Component {
           postFnbReservation={this.props.postFnbReservation}
           parentState={this.state}
           onClickCheckoutButton={this.onClickCheckoutButton}
+          payment={this.props.payment}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />
@@ -267,7 +280,8 @@ const mapStateToProps = state => {
     customerData: state.customerData,
     applicationStatus: state.applicationStatus,
     fnbReservation: state.fnbReservation,
-    profileData: state.profileData
+    profileData: state.profileData,
+    payment: state.payment
   };
 };
 
@@ -284,7 +298,8 @@ const mapDispatchToProps = dispatch => {
     ),
     postFnbReservation: bindActionCreators(postFnbReservation, dispatch),
     getProfile: bindActionCreators(getProfile, dispatch),
-    postFnbOffer: bindActionCreators(postFnbOffer, dispatch)
+    postFnbOffer: bindActionCreators(postFnbOffer, dispatch),
+    paymentOption: bindActionCreators(paymentOption, dispatch)
   };
 };
 

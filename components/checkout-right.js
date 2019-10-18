@@ -9,11 +9,12 @@ const CheckoutRight = props => {
   } else if (props.parentState.which.fnb_offer === 1) {
     if (props.parentState.fnb_offer.event) price = false;
 
-    item = props.parentState.fnb_reservation;
+    item = props.parentState.fnb_offer;
   }
 
   if (item === undefined) return null;
 
+  console.log(item);
   return (
     <div className="checkout-right-container">
       {price ? (
@@ -31,7 +32,7 @@ const CheckoutRight = props => {
 
             <div className="column">
               <h4 className="float-right fw2 ffqs p0-5 fs1-2">
-                <span> &#8377;</span> 2,365{" "}
+                <span> &#8377;</span> {item.payment_amount}{" "}
               </h4>
             </div>
           </div>
@@ -45,21 +46,31 @@ const CheckoutRight = props => {
 
             <div className="column">
               <h4 className="float-right fw2 p0-5 fs1-2">
-                <span> &#8377;</span> 2,365{" "}
+                <span> &#8377;</span> {item.payment_amount}{" "}
               </h4>
             </div>
           </div>
+
+          {props.parentState.isLoading ? (
+            <a className="button cart-button ffqs is-loading">Place Order</a>
+          ) : props.parentState.checkoutButtonBlock ? (
+            <a
+              className="button cart-button ffqs"
+              disabled
+              style={{ backgroundColor: "#fdb6c4" }}
+            >
+              Place Order
+            </a>
+          ) : (
+            <a
+              className="button cart-button ffqs"
+              onClick={() => props.onClickCheckoutButton()}
+            >
+              Place Order
+            </a>
+          )}
         </React.Fragment>
-      ) : props.parentState.isLoading ? (
-        <a className="button cart-button ffqs is-loading">Place Order</a>
-      ) : (
-        <a
-          className="button cart-button ffqs"
-          onClick={() => props.onClickCheckoutButton()}
-        >
-          Place Order
-        </a>
-      )}
+      ) : null}
     </div>
   );
 };

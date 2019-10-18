@@ -204,3 +204,13 @@
 .detail-cart-container .preview_container.without_icon {
   padding-right: 0;
 }
+
+.detail-cart-container .SingleDatePickerInput__disabled {
+  background-color: white;
+  cursor: not-allowed;
+}
+
+.detail-cart-container .DateInput_input__disabled {
+  background-color: white;
+  cursor: not-allowed;
+}
