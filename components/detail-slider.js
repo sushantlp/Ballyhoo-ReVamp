@@ -42,6 +42,11 @@ export default class DetailSlider extends React.Component {
       fade: true
     };
 
+    if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
+      console.log(this.props.foodCategoryData.foodCategoryData);
+    } else {
+    }
+
     const images =
       parseInt(this.props.detailUrlParam.result_type, 10) === 1 &&
       this.props.foodCategoryData.foodCategoryData.details.images.length > 0

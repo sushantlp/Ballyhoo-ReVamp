@@ -14,8 +14,8 @@ export default class ParentDetail extends React.Component {
       navigation: "Overview",
       booking: false,
       dayInNumber: moment().isoWeekday(),
-      currentTime: moment().format("HH:mm"),
-      time: moment().format("HH:mm"),
+      currentTime: moment().format("HH:mm A"),
+      time: moment().format("HH:mm A"),
       date: moment(),
       cartButtonText: "Procced",
       cartTotalPrice: 0,
@@ -148,6 +148,7 @@ export default class ParentDetail extends React.Component {
 
     this.updateFnbTab(fnbTab);
     this.updateCartButtonText("Procced");
+
     this.updateChangeTime(obj.times.start_time);
     this.updateCalendarDisabled();
     this.onChangeDate(moment(new Date(obj.date)));
@@ -261,6 +262,8 @@ export default class ParentDetail extends React.Component {
       this.updateCartButtonLoading(true);
       if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
         if (this.state.fnbTab.buffet) {
+          console.log(this.state.fnbSelectObj);
+          const time = moment(this.state.time, "HH:mm a");
         } else if (this.state.fnbTab.event) {
           const time = moment(this.state.time, "HH:mm a");
 
@@ -273,7 +276,18 @@ export default class ParentDetail extends React.Component {
             "HH:mm a"
           );
 
-          if (time.isBetween(beforeTime, afterTime)) {
+          if (
+            (beforeTime.hour() >= 12 && afterTime.hour() <= 12) ||
+            afterTime.isBefore(beforeTime)
+          ) {
+            afterTime.add(1, "days"); // handle spanning days endTime
+
+            if (time.hour() <= 12) {
+              time.add(1, "days"); // handle spanning days currentTime
+            }
+          }
+
+          if (time.isSameOrAfter(beforeTime) && !time.isAfter(afterTime)) {
             const date = moment(this.state.date).format("YYYY-MM-DD");
 
             const event = {
@@ -312,15 +326,15 @@ export default class ParentDetail extends React.Component {
           } else {
             this.updateCartButtonLoading(false);
             this.props.errorToast(
-              "Time should be greater and equal current time",
-              1,
+              "Plese check time",
+              this.state.fnbSelectObj.offer_id,
               true
             );
           }
         } else if (this.state.fnbTab.package) {
         } else {
-          const currentTime = moment(this.state.currentTime, "HH:mm a");
-          const time = moment(this.state.time, "HH:mm a");
+          const currentTime = moment(this.state.currentTime, "HH:mm A");
+          const time = moment(this.state.time, "HH:mm A");
 
           if (currentTime.isAfter(time)) {
             this.updateCartButtonLoading(false);

@@ -111,44 +111,48 @@ class Detail extends React.Component {
       } else {
         routeParam = query;
 
-        // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
-        slice = query.secret.split("b");
+        if (query.secret !== undefined) {
+          // Index Zero=id, One=responseType, Two=partnerId, Three=apiType
+          slice = query.secret.split("b");
 
-        detailUrlParam = {
-          id: slice[0],
-          result_type: slice[1],
-          partner_id: slice[2],
-          api_type: slice[3],
-          key: slice[4],
-          city_id: parseInt(slice[1], 10) === 1 ? slice[0] : slice[5]
-        };
+          detailUrlParam = {
+            id: slice[0],
+            result_type: slice[1],
+            partner_id: slice[2],
+            api_type: slice[3],
+            key: slice[4],
+            city_id: parseInt(slice[1], 10) === 1 ? slice[0] : slice[5]
+          };
 
-        const key =
-          parseInt(detailUrlParam.api_type, 10) !== 3 ? 0 : detailUrlParam.key;
-        const q =
-          parseInt(detailUrlParam.result_type, 10) === 1
-            ? detailUrlParam.partner_id
-            : detailUrlParam.id;
+          const key =
+            parseInt(detailUrlParam.api_type, 10) !== 3
+              ? 0
+              : detailUrlParam.key;
+          const q =
+            parseInt(detailUrlParam.result_type, 10) === 1
+              ? detailUrlParam.partner_id
+              : detailUrlParam.id;
 
-        const [featureJson, slidderJson, seoJson] = await Promise.all([
-          fetch(
-            `${host}api/v9/web/all/featurings?category=${
-              slice[1]
-            }&q=${q}&key=${key}`
-          ).then(r => r.json()),
-          fetch(
-            `${host}api/v9/web/carousel/images?type=${2}&category=${
-              detailUrlParam.result_type
-            }`
-          ).then(r => r.json()),
-          fetch(
-            `${host}api/v9/web/seo?city=${detailUrlParam.city_id}&category=${detailUrlParam.response_type}&partner=${detailUrlParam.partner_id}`
-          ).then(r => r.json())
-        ]);
+          const [featureJson, slidderJson, seoJson] = await Promise.all([
+            fetch(
+              `${host}api/v9/web/all/featurings?category=${
+                slice[1]
+              }&q=${q}&key=${key}`
+            ).then(r => r.json()),
+            fetch(
+              `${host}api/v9/web/carousel/images?type=${2}&category=${
+                detailUrlParam.result_type
+              }`
+            ).then(r => r.json()),
+            fetch(
+              `${host}api/v9/web/seo?city=${detailUrlParam.city_id}&category=${detailUrlParam.response_type}&partner=${detailUrlParam.partner_id}`
+            ).then(r => r.json())
+          ]);
 
-        store.dispatch(getFeaturingData(featureJson));
-        store.dispatch(getSlidderImage(slidderJson));
-        store.dispatch(getSeo(seoJson));
+          store.dispatch(getFeaturingData(featureJson));
+          store.dispatch(getSlidderImage(slidderJson));
+          store.dispatch(getSeo(seoJson));
+        }
       }
 
       if (parseInt(detailUrlParam.response_type, 10) === 1) {

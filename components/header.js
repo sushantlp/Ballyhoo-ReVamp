@@ -159,7 +159,7 @@ export default class Header extends React.Component {
         sessionStorage.setItem("CUSTOMER_DATA", JSON.stringify(customerData));
         this.props.updateCustomerData(customerData);
         this.updateLoginState(false);
-        toast.success("Successful");
+        // toast.success("Successful");
       } else {
         this.setState({
           isLoading: false,
