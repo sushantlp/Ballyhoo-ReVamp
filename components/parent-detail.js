@@ -295,7 +295,7 @@ export default class ParentDetail extends React.Component {
         if (this.state.fnbTab.buffet) {
           let notAllowed = false;
           const time = moment(this.state.time, "HH:mm a");
-          const displayTime = moment(time, "hh:mm A");
+          const displayTime = moment(this.state.time, "h:m");
           const dayInNumber = moment(this.state.date).isoWeekday();
 
           const beforeTime = moment(
@@ -460,7 +460,7 @@ export default class ParentDetail extends React.Component {
         } else if (this.state.fnbTab.package) {
           let notAllowed = false;
           const time = moment(this.state.time, "HH:mm a");
-          const displayTime = moment(time, "hh:mm A");
+          const displayTime = moment(this.state.time, "h:m");
           const dayInNumber = moment(this.state.date).isoWeekday();
 
           const beforeTime = moment(
@@ -553,9 +553,9 @@ export default class ParentDetail extends React.Component {
             );
           }
         } else {
-          const currentTime = moment().format("HH:mm A");
+          const currentTime = moment(moment().format("HH:mm A"));
           const time = moment(this.state.time, "HH:mm A");
-          const displayTime = moment(time, "hh:mm A");
+          const displayTime = moment(moment(this.state.time, "h:m"));
 
           if (currentTime.isAfter(time)) {
             this.updateCartButtonLoading(false);

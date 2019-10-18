@@ -53,7 +53,7 @@ const CheckoutLeft = props => {
         <div className="column">
           <h4 className="ffqs fw2 p0-5 fs1-2 float-right ">
             Booking Time :{" "}
-            <span className="tag is-warning fs1">{item.display_time}</span>
+            <span className="tag is-warning fs1">{item.time}</span>
           </h4>
         </div>
       </div>

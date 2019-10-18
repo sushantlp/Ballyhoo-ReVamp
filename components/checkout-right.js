@@ -69,7 +69,14 @@ const CheckoutRight = props => {
             </a>
           )}
         </React.Fragment>
-      ) : null}
+      ) : (
+        <a
+          className="button cart-button ffqs"
+          onClick={() => props.onClickCheckoutButton()}
+        >
+          Place Order
+        </a>
+      )}
     </div>
   );
 };
