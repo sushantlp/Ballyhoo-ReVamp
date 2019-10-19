@@ -235,6 +235,7 @@ class Checkout extends React.Component {
     });
 
     if (this.state.which.fnb_reservation === 1) {
+      console.log(this.state.fnb_reservation.time);
       this.props.postFnbReservation(
         this.state.fnb_reservation.partner_id,
         this.state.fnb_reservation.customer_id,

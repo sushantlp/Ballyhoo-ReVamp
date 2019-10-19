@@ -18,6 +18,9 @@ export default class ParentDetail extends React.Component {
       time: moment()
         .add(30, "minutes")
         .format("HH:mm A"),
+      displayTime: moment()
+        .add(30, "minutes")
+        .format("hh:mm a"),
 
       date: moment(),
       cartButtonText: "Procced",
@@ -136,6 +139,8 @@ export default class ParentDetail extends React.Component {
   onChangeTime = time => {
     const times = time.hour + ":" + time.minute + " " + time.meridiem;
     this.updateChangeTime(times);
+
+    this.updateDisplayTime(time.hour + ":" + time.minute);
   };
 
   changeTab = text => {
@@ -170,6 +175,9 @@ export default class ParentDetail extends React.Component {
     };
     console.log(obj);
     this.updateChangeTime(moment().format("HH:mm A"));
+
+    this.updateDisplayTime(moment().format("hh:mm a"));
+
     this.updateTimeDisabled(false);
     this.updateCalendarDisabled(false);
 
@@ -188,6 +196,9 @@ export default class ParentDetail extends React.Component {
     };
 
     this.updateChangeTime(moment().format("HH:mm A"));
+
+    this.updateDisplayTime(moment().format("hh:mm a"));
+
     this.updateTimeDisabled(false);
     this.updateCalendarDisabled(false);
 
@@ -226,6 +237,12 @@ export default class ParentDetail extends React.Component {
   updateChangeTime = time => {
     this.setState({
       time
+    });
+  };
+
+  updateDisplayTime = time => {
+    this.setState({
+      displayTime: time
     });
   };
 
@@ -295,7 +312,7 @@ export default class ParentDetail extends React.Component {
         if (this.state.fnbTab.buffet) {
           let notAllowed = false;
           const time = moment(this.state.time, "HH:mm a");
-          const displayTime = moment(this.state.time, "h:m");
+
           const dayInNumber = moment(this.state.date).isoWeekday();
 
           const beforeTime = moment(
@@ -341,7 +358,8 @@ export default class ParentDetail extends React.Component {
                 customer_id: this.props.customerData.customerData.customer_id,
                 date: date,
                 time: this.state.time,
-                display_time: displayTime,
+                display_time: this.state.displayTime,
+
                 quantity: quantity,
                 event: false,
                 payment_amount: this.state.fnbDiscountPrice,
@@ -410,6 +428,7 @@ export default class ParentDetail extends React.Component {
 
           if (time.isSameOrAfter(beforeTime) && !time.isAfter(afterTime)) {
             const date = moment(this.state.date).format("YYYY-MM-DD");
+            const displayDate = moment(this.state.date).format("DD-MM-YYYY");
 
             const event = {
               offer_id: this.state.fnbSelectObj.offer_id,
@@ -419,7 +438,8 @@ export default class ParentDetail extends React.Component {
               customer_id: this.props.customerData.customerData.customer_id,
               customer_mobile: this.props.customerData.customerData.mobile,
               customer_email: this.props.customerData.customerData.email,
-              display_time: displayTime,
+              display_time: this.state.displayTime,
+              display_date: displayDate,
               date: date,
               time: this.state.time,
               quantity: quantity,
@@ -460,7 +480,7 @@ export default class ParentDetail extends React.Component {
         } else if (this.state.fnbTab.package) {
           let notAllowed = false;
           const time = moment(this.state.time, "HH:mm a");
-          const displayTime = moment(this.state.time, "h:m");
+
           const dayInNumber = moment(this.state.date).isoWeekday();
 
           const beforeTime = moment(
@@ -496,6 +516,7 @@ export default class ParentDetail extends React.Component {
           if (notAllowed) {
             if (time.isSameOrAfter(beforeTime) && !time.isAfter(afterTime)) {
               const date = moment(this.state.date).format("YYYY-MM-DD");
+              const displayDate = moment(this.state.date).format("DD-MM-YYYY");
 
               const fnbPackage = {
                 offer_id: this.state.fnbSelectObj.offer_id,
@@ -506,7 +527,8 @@ export default class ParentDetail extends React.Component {
                 customer_id: this.props.customerData.customerData.customer_id,
                 customer_mobile: this.props.customerData.customerData.mobile,
                 customer_email: this.props.customerData.customerData.email,
-                display_time: displayTime,
+                display_time: this.state.displayTime,
+                display_date: displayDate,
                 date: date,
                 time: this.state.time,
                 quantity: quantity,
@@ -555,7 +577,6 @@ export default class ParentDetail extends React.Component {
         } else {
           const currentTime = moment(moment().format("HH:mm A"));
           const time = moment(this.state.time, "HH:mm A");
-          const displayTime = moment(moment(this.state.time, "h:m"));
 
           if (currentTime.isAfter(time)) {
             this.updateCartButtonLoading(false);
@@ -566,7 +587,7 @@ export default class ParentDetail extends React.Component {
             );
           } else {
             const date = moment(this.state.date).format("YYYY-MM-DD");
-
+            const displayDate = moment(this.state.date).format("DD-MM-YYYY");
             const reservation = {
               name: this.props.foodCategoryData.foodCategoryData.details.bname,
               partner_id: this.props.foodCategoryData.foodCategoryData.details
@@ -576,7 +597,8 @@ export default class ParentDetail extends React.Component {
               customer_email: this.props.customerData.customerData.email,
               date: date,
               time: this.state.time,
-              display_time: displayTime,
+              display_time: this.state.displayTime,
+              display_date: displayDate,
               quantity: quantity
             };
 
