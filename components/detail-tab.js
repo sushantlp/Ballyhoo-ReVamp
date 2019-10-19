@@ -174,6 +174,10 @@ const DetailTab = props => {
           dayInNumber={props.parentState.dayInNumber}
           keyword={props.keyword}
           onFnbPackageClick={props.onFnbPackageClick}
+          onEventClick={props.onEventClick}
+          onEscapeClick={props.onEscapeClick}
+          onActivityClick={props.onActivityClick}
+          onSaloonClick={props.onSaloonClick}
         />
       ) : null}
 

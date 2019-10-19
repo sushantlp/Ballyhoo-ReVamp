@@ -1,3 +1,4 @@
+import ReactDOM from "react-dom";
 import Spinner from "./spinner";
 import Search from "./search";
 import MainList from "./main-list";
@@ -16,6 +17,8 @@ class ParentList extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    this.state.isLoading ? null : ReactDOM.findDOMNode(this).scrollIntoView();
+
     if (this.props.listData !== nextProps.listData) {
       this.updateisLoadingState(false);
     }

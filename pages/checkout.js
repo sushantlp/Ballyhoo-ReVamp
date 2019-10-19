@@ -166,14 +166,10 @@ class Checkout extends React.Component {
         this.errorToast(nextProps.fnbReservation.msg, 1, true);
       }
     } else if (this.props.fnbOffer !== nextProps.fnbOffer) {
-      console.log("fnbOffer");
       if (nextProps.fnbOffer.status === "SUCCESS") {
         // this.removeAllOfferSessionData();
         this.successToast(nextProps.fnbOffer.msg);
-
-        console.log("SUCCESS");
       } else {
-        console.log("FAIL");
         this.setState({
           isLoading: false
         });
@@ -235,16 +231,16 @@ class Checkout extends React.Component {
     });
 
     if (this.state.which.fnb_reservation === 1) {
-      console.log(this.state.fnb_reservation.time);
+      const dateSplit = this.state.fnb_reservation.time.split(" ");
       this.props.postFnbReservation(
         this.state.fnb_reservation.partner_id,
         this.state.fnb_reservation.customer_id,
         this.state.fnb_reservation.date,
-        this.state.fnb_reservation.time,
+        dateSplit[0],
         this.state.fnb_reservation.quantity
       );
     } else if (this.state.which.fnb_offer === 1) {
-      console.log(this.state.fnb_offer);
+      const dateSplit = this.state.fnb_offer.time.split(" ");
 
       if (this.state.fnb_offer.event) {
         this.props.postFnbOffer(
@@ -255,7 +251,7 @@ class Checkout extends React.Component {
           this.state.fnb_offer.payment_amount,
           this.state.fnb_offer.payment_discount,
           this.state.fnb_offer.date,
-          this.state.fnb_offer.time,
+          dateSplit[0],
           this.state.fnb_offer.quantity
         );
       } else {
@@ -270,6 +266,8 @@ class Checkout extends React.Component {
             true
           );
         } else if (this.state.payment_option === "venue") {
+          const dateSplit = this.state.fnb_offer.time.split(" ");
+
           this.props.postFnbOffer(
             this.state.fnb_offer.offer_id,
             this.state.fnb_offer.customer_id,
@@ -278,7 +276,7 @@ class Checkout extends React.Component {
             this.state.fnb_offer.payment_amount,
             this.state.fnb_offer.payment_discount,
             this.state.fnb_offer.date,
-            this.state.fnb_offer.time,
+            dateSplit[0],
             this.state.fnb_offer.quantity
           );
         } else if (this.state.payment_option === "online") {
@@ -297,6 +295,8 @@ class Checkout extends React.Component {
 
   onlineFnbOffer = (paymentId, bool) => {
     if (bool) {
+      const dateSplit = this.state.fnb_offer.time.split(" ");
+
       this.props.postFnbOffer(
         this.state.fnb_offer.offer_id,
         this.state.fnb_offer.customer_id,
@@ -305,7 +305,7 @@ class Checkout extends React.Component {
         this.state.fnb_offer.payment_amount,
         this.state.fnb_offer.payment_discount,
         this.state.fnb_offer.date,
-        this.state.fnb_offer.time,
+        dateSplit[0],
         this.state.fnb_offer.quantity
       );
     } else {

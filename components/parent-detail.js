@@ -149,6 +149,26 @@ export default class ParentDetail extends React.Component {
     });
   };
 
+  onEventClick = obj => {
+    console.log(obj);
+  };
+
+  onEscapeClick = obj => {
+    console.log(obj);
+  };
+
+  onExculsiveClick = obj => {
+    console.log(obj);
+  };
+
+  onActivityClick = obj => {
+    console.log(obj);
+  };
+
+  onSaloonClick = obj => {
+    console.log(obj);
+  };
+
   onFnbEventClick = obj => {
     const fnbTab = {
       buffet: false,
@@ -173,7 +193,7 @@ export default class ParentDetail extends React.Component {
       event: false,
       package: false
     };
-    console.log(obj);
+
     this.updateChangeTime(moment().format("HH:mm A"));
 
     this.updateDisplayTime(moment().format("hh:mm a"));
@@ -207,7 +227,6 @@ export default class ParentDetail extends React.Component {
 
     this.updateFnbSelectObj(obj);
     this.updateFnbDiscountPrice(discountPrice);
-    console.log(obj);
   };
 
   updateFnbDiscountPrice = price => {
@@ -298,6 +317,7 @@ export default class ParentDetail extends React.Component {
             false
           );
         }
+      } else {
       }
     } else {
       if (
@@ -680,6 +700,11 @@ export default class ParentDetail extends React.Component {
                   onFnbEventClick={this.onFnbEventClick}
                   onFnbBuffetClick={this.onFnbBuffetClick}
                   onFnbPackageClick={this.onFnbPackageClick}
+                  onEventClick={this.onEventClick}
+                  onEscapeClick={this.onEscapeClick}
+                  onActivityClick={this.onActivityClick}
+                  onSaloonClick={this.onSaloonClick}
+                  onExculsiveClick={this.onExculsiveClick}
                 />
               </div>
               <div className="column is-4">
