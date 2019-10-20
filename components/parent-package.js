@@ -20,6 +20,7 @@ const ParentPackage = props => {
                 purchaseStatus={
                   props.categoryData.categoryData.details.offer_purchase_status
                 }
+                onEventClick={props.onEventClick}
               />
             ) : null}
             {parseInt(props.detailUrlParam.result_type, 10) === 3 ? (
@@ -29,6 +30,7 @@ const ParentPackage = props => {
                 purchaseStatus={
                   props.categoryData.categoryData.details.offer_purchase_status
                 }
+                onActivityClick={props.onActivityClick}
               />
             ) : null}
             {parseInt(props.detailUrlParam.result_type, 10) === 4 ? (
@@ -49,6 +51,7 @@ const ParentPackage = props => {
                       .offer_purchase_status
                   }
                   keyword={props.keyword}
+                  onEscapeClick={props.onEscapeClick}
                 />
               ) : (
                 <ExculsiveEscapePackage
@@ -64,6 +67,7 @@ const ParentPackage = props => {
                       .offer_purchase_status
                   }
                   keyword={props.keyword}
+                  onExculsiveClick={props.onExculsiveClick}
                 />
               )
             ) : null}
@@ -74,6 +78,7 @@ const ParentPackage = props => {
                 purchaseStatus={
                   props.categoryData.categoryData.details.offer_purchase_status
                 }
+                onSaloonClick={props.onSaloonClick}
               />
             ) : null}
 

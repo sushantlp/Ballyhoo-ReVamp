@@ -178,6 +178,7 @@ const DetailTab = props => {
           onEscapeClick={props.onEscapeClick}
           onActivityClick={props.onActivityClick}
           onSaloonClick={props.onSaloonClick}
+          onExculsiveClick={props.onExculsiveClick}
         />
       ) : null}
 
