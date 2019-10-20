@@ -1,4 +1,5 @@
 import "react-dates/initialize";
+
 import { Segment } from "semantic-ui-react";
 
 import { SingleDatePicker } from "react-dates";
@@ -103,16 +104,27 @@ export default class DetailCart extends React.Component {
             </div>
 
             <div className="column is-8">
-              {this.props.parentState.calendarDisabled ? (
-                <SingleDatePicker
-                  date={this.props.parentState.date}
-                  id="date"
-                  onDateChange={date => this.props.onChangeDate(date)}
-                  focused={this.state.focused}
-                  onFocusChange={({ focused }) => this.setState({ focused })}
-                  displayFormat="DD-MM-YYYY"
-                  disabled
-                />
+              {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+                this.props.parentState.calendarDisabled ? (
+                  <SingleDatePicker
+                    date={this.props.parentState.date}
+                    id="date"
+                    onDateChange={date => this.props.onChangeDate(date)}
+                    focused={this.state.focused}
+                    onFocusChange={({ focused }) => this.setState({ focused })}
+                    displayFormat="DD-MM-YYYY"
+                    disabled
+                  />
+                ) : (
+                  <SingleDatePicker
+                    date={this.props.parentState.date}
+                    id="date"
+                    onDateChange={date => this.props.onChangeDate(date)}
+                    focused={this.state.focused}
+                    onFocusChange={({ focused }) => this.setState({ focused })}
+                    displayFormat="DD-MM-YYYY"
+                  />
+                )
               ) : (
                 <SingleDatePicker
                   date={this.props.parentState.date}
@@ -121,6 +133,7 @@ export default class DetailCart extends React.Component {
                   focused={this.state.focused}
                   onFocusChange={({ focused }) => this.setState({ focused })}
                   displayFormat="DD-MM-YYYY"
+                  isOutsideRange={date => this.props.dateCheck(date)}
                 />
               )}
             </div>

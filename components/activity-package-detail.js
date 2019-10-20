@@ -212,14 +212,16 @@ export default class ActivityPackage extends React.Component {
             </article>
           </div>
 
-          {value.price_list.map((value, key) => {
+          {value.price_list.map((activityPrice, key) => {
             let price = 0;
             let cutPrice = 0;
-            if (parseInt(value.price_discount, 10) === 0) price = value.price;
+            if (parseInt(activityPrice.price_discount, 10) === 0)
+              price = activityPrice.price;
             else {
-              price = (value.price * value.price_discount) / 100;
-              price = value.price - price;
-              cutPrice = value.price;
+              price =
+                (activityPrice.price * activityPrice.price_discount) / 100;
+              price = activityPrice.price - price;
+              cutPrice = activityPrice.price;
             }
             return (
               <Segment key={key}>
@@ -230,7 +232,7 @@ export default class ActivityPackage extends React.Component {
                         <div className="columns mb0">
                           <div className="column is-10">
                             <h4 className="ffqs list-title">
-                              {value.price_caption}
+                              {activityPrice.price_caption}
                             </h4>
 
                             <h5 className="fw2 mt0-5 fs1-3">
@@ -244,7 +246,7 @@ export default class ActivityPackage extends React.Component {
                                     ₹ {cutPrice}/-
                                   </span>
                                   <span className="tag is-rounded is-warning ml8">
-                                    {value.price_discount}% off
+                                    {activityPrice.price_discount}% off
                                   </span>{" "}
                                 </span>
                               )}
@@ -257,7 +259,17 @@ export default class ActivityPackage extends React.Component {
                                 BOOK
                               </a>
                             ) : (
-                              <a className="button is-danger fr">BOOK</a>
+                              <a
+                                className="button is-danger fr"
+                                onClick={() =>
+                                  this.props.onActivityClick(
+                                    value,
+                                    activityPrice
+                                  )
+                                }
+                              >
+                                BOOK
+                              </a>
                             )}
                           </div>
                         </div>
@@ -273,7 +285,7 @@ export default class ActivityPackage extends React.Component {
                             readMoreText="See more"
                             readLessText="See less"
                           >
-                            {value.price_inclusion}
+                            {activityPrice.price_inclusion}
                           </ReadMoreAndLess>
                         </div>
                       </div>

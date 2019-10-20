@@ -1,4 +1,5 @@
-import moment from "moment-timezone";
+// import moment from "moment-timezone";
+import moment from "moment";
 import DetailTab from "./detail-tab";
 import DetailCart from "./detail-cart";
 import TrendingDetail from "./trending-detail";
@@ -29,7 +30,10 @@ export default class ParentDetail extends React.Component {
       calendarDisabled: false,
       timeDisabled: false,
       fnbSelectObj: {},
-      otherSelectObj: {},
+      activitySelectObj: {},
+      saloonSelectObj: {},
+      escapeSelectObj: {},
+      eventSelectObj: {},
       fnbTab: {
         buffet: false,
         event: false,
@@ -149,6 +153,12 @@ export default class ParentDetail extends React.Component {
     });
   };
 
+  dateCheck = date => {
+    return moment(date).isSameOrAfter(
+      this.props.categoryData.categoryData.details.offer_buy_end_date,
+      "day"
+    );
+  };
   onEventClick = obj => {
     console.log(obj);
   };
@@ -161,8 +171,14 @@ export default class ParentDetail extends React.Component {
     console.log(obj);
   };
 
-  onActivityClick = obj => {
-    console.log(obj);
+  onActivityClick = (value, activityPrice) => {
+    //activitySelectObj
+
+    let obj = {};
+    console.log(this.props.categoryData.categoryData.details);
+
+    console.log(value);
+    console.log(activityPrice);
   };
 
   onSaloonClick = obj => {
@@ -716,6 +732,7 @@ export default class ParentDetail extends React.Component {
                   onChangeDate={this.onChangeDate}
                   onChangeTime={this.onChangeTime}
                   onClickProceed={this.onClickProceed}
+                  dateCheck={this.dateCheck}
                 />
               </div>
             </div>
