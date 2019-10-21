@@ -26,12 +26,19 @@ export default class ParentDetail extends React.Component {
       date: moment(),
       cartButtonText: "Procced",
       cartTotalPrice: 0,
+      cartCopyTotalPrice: 0,
       cartButtonDisabled: false,
       calendarDisabled: false,
       timeDisabled: false,
       fnbSelectObj: {},
       otherCartObj: [],
-
+      otherTab: {
+        saloon: false,
+        escape: false,
+        exculsive: false,
+        activity: false,
+        event: false
+      },
       fnbTab: {
         buffet: false,
         event: false,
@@ -39,12 +46,14 @@ export default class ParentDetail extends React.Component {
       },
       verifyOpen: false,
       cartButtonLoading: false,
-      fnbDiscountPrice: 0
+
+      cartQuantity: false
     };
   }
 
   componentDidMount() {
     if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
+      this.onChangeCartQuantity(true);
       if (
         this.props.foodCategoryData.foodCategoryData.details.offering ===
         "FNB Package"
@@ -134,7 +143,84 @@ export default class ParentDetail extends React.Component {
     }
   }
 
+  onClickPackageMinus = (key, priceId) => {
+    let cartData = this.state.otherCartObj;
+    let totalAmount = this.state.cartCopyTotalPrice;
+    const quantity = cartData[key].quantity - 1;
+
+    if (parseInt(quantity, 10) === 0) {
+      totalAmount =
+        parseFloat(totalAmount) - parseFloat(cartData[key].copy_price);
+      cartData.splice(key, 1);
+    } else {
+      cartData[key].price = cartData[key].copy_price * quantity;
+      cartData[key].quantity = quantity;
+      totalAmount =
+        parseFloat(totalAmount) - parseFloat(cartData[key].copy_price);
+    }
+
+    this.setState({
+      otherCartObj: cartData
+    });
+
+    this.updateCartTotalPrice(parseFloat(totalAmount));
+    this.updateCopyCartTotalPrice(parseFloat(totalAmount));
+  };
+
+  onClickPackagePlus = (key, priceId) => {
+    let cartData = this.state.otherCartObj;
+    let totalAmount = this.state.cartCopyTotalPrice;
+
+    const quantity = cartData[key].quantity + 1;
+    cartData[key].price = cartData[key].copy_price * quantity;
+    cartData[key].quantity = quantity;
+    totalAmount =
+      parseFloat(totalAmount) + parseFloat(cartData[key].copy_price);
+
+    this.setState({
+      otherCartObj: cartData
+    });
+
+    this.updateCartTotalPrice(parseFloat(totalAmount));
+    this.updateCopyCartTotalPrice(parseFloat(totalAmount));
+  };
+
+  fnbQuantityPrice = quantity => {
+    if (quantity === 0) {
+      if (
+        this.state.fnbTab.buffet ||
+        this.state.fnbTab.event ||
+        this.state.fnbTab.package
+      ) {
+        this.updateCartButtonText("Reservation");
+        this.updateCartTotalPrice(0);
+        this.updateCopyCartTotalPrice(0);
+        this.updateFnbSelectObj({});
+      }
+    } else {
+      const price = this.state.cartCopyTotalPrice * quantity;
+      this.updateCartTotalPrice(price);
+    }
+  };
+
+  onChangeCartQuantity = bool => {
+    this.setState({
+      cartQuantity: bool
+    });
+  };
+
   onChangeDate = date => {
+    if (parseInt(this.props.detailUrlParam.result_type, 10) === 3) {
+      if (this.state.otherCartObj.length !== 0) {
+        this.props.warningToast(
+          "Price should be vary depend upon date change "
+        );
+
+        this.setState({
+          otherCartObj: []
+        });
+      }
+    }
     this.setState({ date });
   };
 
@@ -160,68 +246,152 @@ export default class ParentDetail extends React.Component {
     );
   };
 
-  cartLogic = (packages, price) => {
-    console.log(price);
+  cartLogic = (packages, price, cutPrice) => {
     let cartData = this.state.otherCartObj;
+    let dynamicPrice;
+
+    if (parseInt(this.props.detailUrlParam.result_type, 10) === 3) {
+      const dayInNumber = moment(this.state.date).isoWeekday();
+      for (let i = 0; i < price.daily_prices.length; i++) {
+        if (parseInt(dayInNumber, 10) === price.daily_prices[i].day_id) {
+          if (parseInt(price.price_discount, 10) !== 0) {
+            dynamicPrice =
+              (price.daily_prices[i].price * price.price_discount) / 100;
+            dynamicPrice = price.daily_prices[i].price - price;
+          }
+        }
+      }
+    }
+
+    const obj = {
+      package_caption: packages.package_caption,
+      price_id: price.price_id,
+      price_available: price.price_available,
+      price_discount: price.price_discount,
+      price:
+        dynamicPrice === undefined
+          ? cutPrice === 0
+            ? price.price
+            : cutPrice
+          : dynamicPrice,
+      copy_price:
+        dynamicPrice === undefined
+          ? cutPrice === 0
+            ? price.price
+            : cutPrice
+          : dynamicPrice,
+      price_caption: price.price_caption,
+      quantity: 1
+    };
+
     if (cartData.length !== 0) {
-      for (let i = 0; i < this.state.otherCartObj.length; i++) {
-        if (this.state.otherCartObj[i].price_id !== price.price_id) {
-          const obj = {
-            package_caption: packages.package_caption,
-            price_id: price.price_id,
-            price_available: price.price_available,
-            price_discount: price.price_discount,
-            price: price.price,
-            price_caption: price.price_caption,
-            quantity: 1
-          };
+      let copyPrice = this.state.cartTotalPrice;
+      for (let i = 0; i < cartData.length; i++) {
+        let inside = true;
+        for (let j = 0; j < cartData.length; j++) {
+          if (
+            parseInt(cartData[j].price_id, 10) === parseInt(price.price_id, 10)
+          ) {
+            inside = false;
+            break;
+          }
+        }
 
+        if (inside) {
           cartData.push(obj);
-
           this.setState({
             otherCartObj: cartData
           });
+          copyPrice = parseFloat(copyPrice) + parseFloat(obj.price);
+          break;
         }
       }
+
+      this.updateCartTotalPrice(copyPrice);
+      this.updateCopyCartTotalPrice(copyPrice);
     } else {
-      const obj = {
-        package_caption: packages.package_caption,
-        price_id: price.price_id,
-        price_available: price.price_available,
-        price_discount: price.price_discount,
-        price: price.price,
-        price_caption: price.price_caption,
-        quantity: 1
-      };
-
       cartData.push(obj);
-
       this.setState({
         otherCartObj: cartData
       });
+      this.updateCartTotalPrice(parseFloat(obj.price));
+      this.updateCopyCartTotalPrice(parseFloat(obj.price));
     }
-
-    console.log(this.state.otherCartObj);
   };
 
-  onEventClick = (packages, price) => {
-    this.cartLogic(packages, price);
+  onEventClick = (packages, price, cutPrice, startDate, startTime) => {
+    const otherTab = {
+      saloon: false,
+      escape: false,
+      exculsive: false,
+      activity: false,
+      event: true
+    };
+    this.setState({
+      otherTab
+    });
+
+    this.cartLogic(packages, price, cutPrice);
   };
 
-  onEscapeClick = (packages, price) => {
-    this.cartLogic(packages, price);
+  onEscapeClick = (packages, price, cutPrice) => {
+    const otherTab = {
+      saloon: false,
+      escape: true,
+      exculsive: false,
+      activity: false,
+      event: false
+    };
+    this.setState({
+      otherTab
+    });
+
+    this.cartLogic(packages, price, cutPrice);
   };
 
-  onExculsiveClick = (packages, price) => {
-    this.cartLogic(packages, price);
+  onExculsiveClick = (packages, price, cutPrice) => {
+    const otherTab = {
+      saloon: false,
+      escape: false,
+      exculsive: true,
+      activity: false,
+      event: false
+    };
+    this.setState({
+      otherTab
+    });
+
+    this.cartLogic(packages, price, cutPrice);
   };
 
-  onActivityClick = (packages, price) => {
-    this.cartLogic(packages, price);
+  onActivityClick = (packages, price, cutPrice) => {
+    console.log(price);
+    const otherTab = {
+      saloon: false,
+      escape: false,
+      exculsive: false,
+      activity: true,
+      event: false
+    };
+    this.setState({
+      otherTab
+    });
+    this.cartLogic(packages, price, cutPrice);
   };
 
-  onSaloonClick = (packages, price) => {
-    this.cartLogic(packages, price);
+  onSaloonClick = (packages, price, cutPrice) => {
+    const otherTab = {
+      saloon: true,
+      escape: false,
+      exculsive: false,
+      activity: false,
+      event: false
+    };
+    this.setState({
+      otherTab
+    });
+
+    this.cartLogic(packages, price, cutPrice);
   };
 
   onFnbEventClick = obj => {
@@ -238,7 +408,6 @@ export default class ParentDetail extends React.Component {
     this.updateTimeDisabled(true);
     this.updateCalendarDisabled(true);
     this.onChangeDate(moment(new Date(obj.date)));
-
     this.updateFnbSelectObj(obj);
   };
 
@@ -260,7 +429,8 @@ export default class ParentDetail extends React.Component {
     this.updateCartButtonText("Procced");
 
     this.updateFnbSelectObj(obj);
-    this.updateFnbDiscountPrice(discountPrice);
+    this.updateCartTotalPrice(discountPrice);
+    this.updateCopyCartTotalPrice(discountPrice);
   };
 
   onFnbPackageClick = (obj, discountPrice) => {
@@ -281,12 +451,19 @@ export default class ParentDetail extends React.Component {
     this.updateCartButtonText("Procced");
 
     this.updateFnbSelectObj(obj);
-    this.updateFnbDiscountPrice(discountPrice);
+    this.updateCartTotalPrice(discountPrice);
+    this.updateCopyCartTotalPrice(discountPrice);
   };
 
-  updateFnbDiscountPrice = price => {
+  updateCartTotalPrice = price => {
     this.setState({
-      fnbDiscountPrice: price
+      cartTotalPrice: price
+    });
+  };
+
+  updateCopyCartTotalPrice = price => {
+    this.setState({
+      cartCopyTotalPrice: price
     });
   };
 
@@ -373,6 +550,11 @@ export default class ParentDetail extends React.Component {
           );
         }
       } else {
+        this.props.errorToast(
+          "Please login",
+          this.state.otherCartObj[0].price_id,
+          false
+        );
       }
     } else {
       if (
@@ -423,7 +605,7 @@ export default class ParentDetail extends React.Component {
           if (notAllowed) {
             if (time.isSameOrAfter(beforeTime) && !time.isAfter(afterTime)) {
               const date = moment(this.state.date).format("YYYY-MM-DD");
-
+              const displayDate = moment(this.state.date).format("DD-MM-YYYY");
               const buffet = {
                 offer_id: this.state.fnbSelectObj.offer_id,
                 partner_id: this.props.foodCategoryData.foodCategoryData.details
@@ -434,10 +616,10 @@ export default class ParentDetail extends React.Component {
                 date: date,
                 time: this.state.time,
                 display_time: this.state.displayTime,
-
+                display_date: displayDate,
                 quantity: quantity,
                 event: false,
-                payment_amount: this.state.fnbDiscountPrice,
+                payment_amount: this.state.cartTotalPrice,
                 payment_discount: this.state.fnbSelectObj.discount
               };
 
@@ -608,7 +790,7 @@ export default class ParentDetail extends React.Component {
                 time: this.state.time,
                 quantity: quantity,
                 event: false,
-                payment_amount: this.state.fnbDiscountPrice,
+                payment_amount: this.state.cartTotalPrice,
                 payment_discount: this.state.fnbSelectObj.discount
               };
 
@@ -663,6 +845,7 @@ export default class ParentDetail extends React.Component {
           } else {
             const date = moment(this.state.date).format("YYYY-MM-DD");
             const displayDate = moment(this.state.date).format("DD-MM-YYYY");
+
             const reservation = {
               name: this.props.foodCategoryData.foodCategoryData.details.bname,
               partner_id: this.props.foodCategoryData.foodCategoryData.details
@@ -700,6 +883,7 @@ export default class ParentDetail extends React.Component {
             this.props.routeChange("/checkout");
           }
         }
+      } else {
       }
     }
   };
@@ -772,6 +956,9 @@ export default class ParentDetail extends React.Component {
                   onChangeTime={this.onChangeTime}
                   onClickProceed={this.onClickProceed}
                   dateCheck={this.dateCheck}
+                  fnbQuantityPrice={this.fnbQuantityPrice}
+                  onClickPackageMinus={this.onClickPackageMinus}
+                  onClickPackagePlus={this.onClickPackagePlus}
                 />
               </div>
             </div>

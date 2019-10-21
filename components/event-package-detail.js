@@ -319,7 +319,20 @@ export default class EventPackage extends React.Component {
                                       BOOK
                                     </a>
                                   ) : (
-                                    <a className="button is-danger fr">BOOK</a>
+                                    <a
+                                      className="button is-danger fr"
+                                      onClick={() =>
+                                        this.props.onEventClick(
+                                          list,
+                                          money,
+                                          cutPrice,
+                                          value.package_start_date,
+                                          value.package_start_time
+                                        )
+                                      }
+                                    >
+                                      BOOK
+                                    </a>
                                   )}
                                 </div>
                               </div>

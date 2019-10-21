@@ -95,7 +95,7 @@ const Footer = props => {
                           //   changeCity(value.city_id, value.city_name)
                           // }
                         >
-                          <a href="/">{value.city_name}</a>
+                          <a style={{ cursor: "default" }}>{value.city_name}</a>
                         </li>
                       );
                     })}

@@ -247,6 +247,10 @@ class Detail extends React.Component {
     return toast.success(msg);
   };
 
+  warningToast = msg => {
+    return toast.warning(msg);
+  };
+
   errorToast = (msg, id, autoClose) => {
     toast.error(msg, {
       autoClose: autoClose,
@@ -346,6 +350,7 @@ class Detail extends React.Component {
           postOtp={this.props.postOtp}
           getProfile={this.props.getProfile}
           profileData={this.props.profileData}
+          warningToast={this.warningToast}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />

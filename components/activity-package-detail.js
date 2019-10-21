@@ -264,7 +264,8 @@ export default class ActivityPackage extends React.Component {
                                 onClick={() =>
                                   this.props.onActivityClick(
                                     value,
-                                    activityPrice
+                                    activityPrice,
+                                    cutPrice
                                   )
                                 }
                               >

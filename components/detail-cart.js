@@ -49,6 +49,10 @@ export default class DetailCart extends React.Component {
       this.setState({
         quantity: this.state.quantity - 1
       });
+
+      this.props.fnbQuantityPrice(this.state.quantity - 1);
+    } else {
+      this.props.fnbQuantityPrice(0);
     }
   };
 
@@ -56,9 +60,12 @@ export default class DetailCart extends React.Component {
     this.setState({
       quantity: this.state.quantity + 1
     });
+
+    this.props.fnbQuantityPrice(this.state.quantity + 1);
   };
 
   render() {
+    console.log(this.props.parentState.cartTotalPrice);
     return (
       <div
         className="detail-cart-container"
@@ -68,53 +75,78 @@ export default class DetailCart extends React.Component {
       >
         <Segment style={{ borderTop: "4px solid #ff3860" }}>
           <div className="columns">
-            <div className="column is-4">
-              <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
-                Time :
-              </h4>
-            </div>
+            {parseInt(this.props.detailUrlParam.result_type, 10) ===
+            2 ? null : (
+              <div className="column is-4">
+                <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                  Time :
+                </h4>
+              </div>
+            )}
 
-            <div className="column is-8">
-              {this.props.parentState.timeDisabled ? (
-                <TimePicker
-                  withoutIcon={true}
-                  time={this.props.parentState.time} // initial time, default current time
-                  theme="material"
-                  onTimeChange={time => this.props.onChangeTime(time)}
-                  timeMode="12"
-                  disabled
-                />
-              ) : (
-                <TimePicker
-                  withoutIcon={true}
-                  time={this.props.parentState.time} // initial time, default current time
-                  theme="material"
-                  onTimeChange={time => this.props.onChangeTime(time)}
-                  timeMode="12"
-                />
-              )}
-            </div>
+            {parseInt(this.props.detailUrlParam.result_type, 10) ===
+            2 ? null : (
+              <div className="column is-8">
+                {this.props.parentState.timeDisabled ? (
+                  <TimePicker
+                    withoutIcon={true}
+                    time={this.props.parentState.time} // initial time, default current time
+                    theme="material"
+                    onTimeChange={time => this.props.onChangeTime(time)}
+                    timeMode="12"
+                    disabled
+                  />
+                ) : (
+                  <TimePicker
+                    withoutIcon={true}
+                    time={this.props.parentState.time} // initial time, default current time
+                    theme="material"
+                    onTimeChange={time => this.props.onChangeTime(time)}
+                    timeMode="12"
+                  />
+                )}
+              </div>
+            )}
           </div>
 
           <div className="columns">
-            <div className="column is-4">
-              <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
-                Date :
-              </h4>
-            </div>
+            {parseInt(this.props.detailUrlParam.result_type, 10) ===
+            2 ? null : (
+              <div className="column is-4">
+                <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                  Date :
+                </h4>
+              </div>
+            )}
 
-            <div className="column is-8">
-              {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
-                this.props.parentState.calendarDisabled ? (
-                  <SingleDatePicker
-                    date={this.props.parentState.date}
-                    id="date"
-                    onDateChange={date => this.props.onChangeDate(date)}
-                    focused={this.state.focused}
-                    onFocusChange={({ focused }) => this.setState({ focused })}
-                    displayFormat="DD-MM-YYYY"
-                    disabled
-                  />
+            {parseInt(this.props.detailUrlParam.result_type, 10) ===
+            2 ? null : (
+              <div className="column is-8">
+                {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+                  this.props.parentState.calendarDisabled ? (
+                    <SingleDatePicker
+                      date={this.props.parentState.date}
+                      id="date"
+                      onDateChange={date => this.props.onChangeDate(date)}
+                      focused={this.state.focused}
+                      onFocusChange={({ focused }) =>
+                        this.setState({ focused })
+                      }
+                      displayFormat="DD-MM-YYYY"
+                      disabled
+                    />
+                  ) : (
+                    <SingleDatePicker
+                      date={this.props.parentState.date}
+                      id="date"
+                      onDateChange={date => this.props.onChangeDate(date)}
+                      focused={this.state.focused}
+                      onFocusChange={({ focused }) =>
+                        this.setState({ focused })
+                      }
+                      displayFormat="DD-MM-YYYY"
+                    />
+                  )
                 ) : (
                   <SingleDatePicker
                     date={this.props.parentState.date}
@@ -123,24 +155,14 @@ export default class DetailCart extends React.Component {
                     focused={this.state.focused}
                     onFocusChange={({ focused }) => this.setState({ focused })}
                     displayFormat="DD-MM-YYYY"
+                    isOutsideRange={date => this.props.dateCheck(date)}
                   />
-                )
-              ) : (
-                <SingleDatePicker
-                  date={this.props.parentState.date}
-                  id="date"
-                  onDateChange={date => this.props.onChangeDate(date)}
-                  focused={this.state.focused}
-                  onFocusChange={({ focused }) => this.setState({ focused })}
-                  displayFormat="DD-MM-YYYY"
-                  isOutsideRange={date => this.props.dateCheck(date)}
-                />
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
 
-          {this.props.parentState.cartTotalPrice === 0 &&
-          parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? (
+          {this.props.parentState.cartQuantity ? (
             <div className="columns">
               <div className="column is-6">
                 <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
@@ -176,9 +198,19 @@ export default class DetailCart extends React.Component {
               {this.props.parentState.otherCartObj.map((value, key) => {
                 return (
                   <Segment key={key}>
-                    <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
-                      {value.package_caption}
-                    </h4>
+                    <div className="columns">
+                      <div className="column">
+                        <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
+                          {value.package_caption}
+                        </h4>
+                      </div>
+
+                      <div className="column">
+                        <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
+                          {value.package_caption}
+                        </h4>
+                      </div>
+                    </div>
                     <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
                       {value.price_caption}
                     </h4>
@@ -191,7 +223,15 @@ export default class DetailCart extends React.Component {
                       </div>
                       <div className="column is-6">
                         <div className="float-right">
-                          <span className="icon is-medium cursor-pointer">
+                          <span
+                            className="icon is-medium cursor-pointer"
+                            onClick={() =>
+                              this.props.onClickPackageMinus(
+                                key,
+                                value.price_id
+                              )
+                            }
+                          >
                             <img src="https://img.icons8.com/ios/15/000000/minus.png" />
                           </span>
 
@@ -199,7 +239,12 @@ export default class DetailCart extends React.Component {
                             {value.quantity}
                           </span>
 
-                          <span className="icon is-medium cursor-pointer">
+                          <span
+                            className="icon is-medium cursor-pointer"
+                            onClick={() =>
+                              this.props.onClickPackagePlus(key, value.price_id)
+                            }
+                          >
                             <img src="https://img.icons8.com/ios/15/000000/plus.png" />
                           </span>
                         </div>
@@ -211,7 +256,7 @@ export default class DetailCart extends React.Component {
             </Segment>
           )}
 
-          {this.props.parentState.cartTotalPrice !== 0 ? (
+          {parseInt(this.props.parentState.cartTotalPrice, 10) !== 0 ? (
             <h4>
               <span className="ffqs fw2 f24">Total : </span>
               <span className="float-right fw2 f24">
