@@ -353,7 +353,7 @@ export default class ParentDetail extends React.Component {
     this.cartLogic(packages, price, cutPrice);
   };
 
-  onExculsiveClick = (packages, price, cutPrice) => {
+  onExculsiveClick = (packages, cutPrice) => {
     const otherTab = {
       saloon: false,
       escape: false,
@@ -365,11 +365,11 @@ export default class ParentDetail extends React.Component {
       otherTab
     });
 
-    this.cartLogic(packages, price, cutPrice);
+    console.log(packages);
+    //this.cartLogic(undefined, packages, cutPrice);
   };
 
   onActivityClick = (packages, price, cutPrice) => {
-    console.log(price);
     const otherTab = {
       saloon: false,
       escape: false,

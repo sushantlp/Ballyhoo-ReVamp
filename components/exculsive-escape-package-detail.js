@@ -346,7 +346,12 @@ export default class ExculsiveEscapePackage extends React.Component {
                     BOOK
                   </a>
                 ) : (
-                  <a className="button is-danger fr">BOOK</a>
+                  <a
+                    className="button is-danger fr"
+                    onClick={() => this.props.onExculsiveClick(value, cutPrice)}
+                  >
+                    BOOK
+                  </a>
                 )}
               </div>
 
