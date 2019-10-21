@@ -170,35 +170,44 @@ export default class DetailCart extends React.Component {
             </div>
           ) : null}
 
-          {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ? null : (
+          {parseInt(this.props.detailUrlParam.result_type, 10) === 1 ||
+          this.props.parentState.otherCartObj.length === 0 ? null : (
             <Segment style={{ overflow: "auto", maxHeight: "15em" }}>
-              <Segment>
-                <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">Go Karting</h4>
-                <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
-                  Individual - Baby Kart
-                </h4>
-                <div className="columns mt0-2">
-                  <div className="column is-6">
-                    {" "}
-                    <h4 className="fw2">
-                      <span> &#8377;</span> 2,365
+              {this.props.parentState.otherCartObj.map((value, key) => {
+                return (
+                  <Segment key={key}>
+                    <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
+                      {value.package_caption}
                     </h4>
-                  </div>
-                  <div className="column is-6">
-                    <div className="float-right">
-                      <span className="icon is-medium cursor-pointer">
-                        <img src="https://img.icons8.com/ios/15/000000/minus.png" />
-                      </span>
+                    <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
+                      {value.price_caption}
+                    </h4>
+                    <div className="columns mt0-2">
+                      <div className="column is-6">
+                        {" "}
+                        <h4 className="fw2">
+                          <span> &#8377;</span> {value.price}
+                        </h4>
+                      </div>
+                      <div className="column is-6">
+                        <div className="float-right">
+                          <span className="icon is-medium cursor-pointer">
+                            <img src="https://img.icons8.com/ios/15/000000/minus.png" />
+                          </span>
 
-                      <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">1</span>
+                          <span className="ffqs fs1-2 fw2 pl0-3 pr0-3">
+                            {value.quantity}
+                          </span>
 
-                      <span className="icon is-medium cursor-pointer">
-                        <img src="https://img.icons8.com/ios/15/000000/plus.png" />
-                      </span>
+                          <span className="icon is-medium cursor-pointer">
+                            <img src="https://img.icons8.com/ios/15/000000/plus.png" />
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Segment>
+                  </Segment>
+                );
+              })}
             </Segment>
           )}
 

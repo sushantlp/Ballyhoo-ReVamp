@@ -15,7 +15,7 @@ export default class ParentDetail extends React.Component {
       navigation: "Overview",
       booking: false,
       dayInNumber: moment().isoWeekday(),
-
+      currentDate: moment().format("YYYY-MM-DD"),
       time: moment()
         .add(30, "minutes")
         .format("HH:mm A"),
@@ -30,10 +30,8 @@ export default class ParentDetail extends React.Component {
       calendarDisabled: false,
       timeDisabled: false,
       fnbSelectObj: {},
-      activitySelectObj: {},
-      saloonSelectObj: {},
-      escapeSelectObj: {},
-      eventSelectObj: {},
+      otherCartObj: [],
+
       fnbTab: {
         buffet: false,
         event: false,
@@ -154,35 +152,76 @@ export default class ParentDetail extends React.Component {
   };
 
   dateCheck = date => {
-    return moment(date).isSameOrAfter(
-      this.props.categoryData.categoryData.details.offer_buy_end_date,
-      "day"
+    return (
+      moment(date).isSameOrAfter(
+        this.props.categoryData.categoryData.details.offer_buy_end_date,
+        "day"
+      ) || moment(date).isSameOrBefore(this.state.currentDate)
     );
   };
-  onEventClick = obj => {
-    console.log(obj);
+
+  cartLogic = (packages, price) => {
+    console.log(price);
+    let cartData = this.state.otherCartObj;
+    if (cartData.length !== 0) {
+      for (let i = 0; i < this.state.otherCartObj.length; i++) {
+        if (this.state.otherCartObj[i].price_id !== price.price_id) {
+          const obj = {
+            package_caption: packages.package_caption,
+            price_id: price.price_id,
+            price_available: price.price_available,
+            price_discount: price.price_discount,
+            price: price.price,
+            price_caption: price.price_caption,
+            quantity: 1
+          };
+
+          cartData.push(obj);
+
+          this.setState({
+            otherCartObj: cartData
+          });
+        }
+      }
+    } else {
+      const obj = {
+        package_caption: packages.package_caption,
+        price_id: price.price_id,
+        price_available: price.price_available,
+        price_discount: price.price_discount,
+        price: price.price,
+        price_caption: price.price_caption,
+        quantity: 1
+      };
+
+      cartData.push(obj);
+
+      this.setState({
+        otherCartObj: cartData
+      });
+    }
+
+    console.log(this.state.otherCartObj);
   };
 
-  onEscapeClick = obj => {
-    console.log(obj);
+  onEventClick = (packages, price) => {
+    this.cartLogic(packages, price);
   };
 
-  onExculsiveClick = obj => {
-    console.log(obj);
+  onEscapeClick = (packages, price) => {
+    this.cartLogic(packages, price);
   };
 
-  onActivityClick = (value, activityPrice) => {
-    //activitySelectObj
-
-    let obj = {};
-    console.log(this.props.categoryData.categoryData.details);
-
-    console.log(value);
-    console.log(activityPrice);
+  onExculsiveClick = (packages, price) => {
+    this.cartLogic(packages, price);
   };
 
-  onSaloonClick = obj => {
-    console.log(obj);
+  onActivityClick = (packages, price) => {
+    this.cartLogic(packages, price);
+  };
+
+  onSaloonClick = (packages, price) => {
+    this.cartLogic(packages, price);
   };
 
   onFnbEventClick = obj => {
