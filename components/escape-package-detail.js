@@ -442,7 +442,18 @@ export default class EscapePackage extends React.Component {
                                 BOOK
                               </a>
                             ) : (
-                              <a className="button is-danger fr">BOOK</a>
+                              <a
+                                className="button is-danger fr"
+                                onClick={() =>
+                                  this.props.onEscapeClick(
+                                    value,
+                                    list,
+                                    cutPrice
+                                  )
+                                }
+                              >
+                                BOOK
+                              </a>
                             )}
                           </div>
 

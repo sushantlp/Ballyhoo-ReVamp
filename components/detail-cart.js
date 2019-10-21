@@ -198,22 +198,22 @@ export default class DetailCart extends React.Component {
               {this.props.parentState.otherCartObj.map((value, key) => {
                 return (
                   <Segment key={key}>
-                    <div className="columns">
-                      <div className="column">
-                        <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
-                          {value.package_caption}
-                        </h4>
-                      </div>
-
-                      <div className="column">
-                        <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
-                          {value.package_caption}
-                        </h4>
-                      </div>
-                    </div>
-                    <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
-                      {value.price_caption}
+                    <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
+                      {value.package_caption}
                     </h4>
+
+                    <h4 className="ffqs fs1 fw2 mt0-2 mb0-2">
+                      {value.price_caption}{" "}
+                      {value.date === undefined ? null : (
+                        <span
+                          className="tag is-warning"
+                          style={{ float: "right" }}
+                        >
+                          {value.date}
+                        </span>
+                      )}
+                    </h4>
+
                     <div className="columns mt0-2">
                       <div className="column is-6">
                         {" "}

@@ -326,8 +326,7 @@ export default class EventPackage extends React.Component {
                                           list,
                                           money,
                                           cutPrice,
-                                          value.package_start_date,
-                                          value.package_start_time
+                                          beautyDate
                                         )
                                       }
                                     >

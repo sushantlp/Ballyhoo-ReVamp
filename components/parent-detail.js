@@ -133,6 +133,9 @@ export default class ParentDetail extends React.Component {
 
         // Accept only Event & Activity & Escape
         if (parseInt(this.props.detailUrlParam.result_type, 10) !== 5) {
+          console.log(
+            this.props.categoryData.categoryData.details.offer_min_price
+          );
           this.setState({
             cartTotalPrice: parseFloat(
               this.props.categoryData.categoryData.details.offer_min_price
@@ -246,7 +249,7 @@ export default class ParentDetail extends React.Component {
     );
   };
 
-  cartLogic = (packages, price, cutPrice) => {
+  cartLogic = (packages, price, cutPrice, date) => {
     let cartData = this.state.otherCartObj;
     let dynamicPrice;
 
@@ -281,7 +284,8 @@ export default class ParentDetail extends React.Component {
             : cutPrice
           : dynamicPrice,
       price_caption: price.price_caption,
-      quantity: 1
+      quantity: 1,
+      date: date
     };
 
     if (cartData.length !== 0) {
@@ -319,7 +323,7 @@ export default class ParentDetail extends React.Component {
     }
   };
 
-  onEventClick = (packages, price, cutPrice, startDate, startTime) => {
+  onEventClick = (packages, price, cutPrice, beautyDate) => {
     const otherTab = {
       saloon: false,
       escape: false,
@@ -331,7 +335,7 @@ export default class ParentDetail extends React.Component {
       otherTab
     });
 
-    this.cartLogic(packages, price, cutPrice);
+    this.cartLogic(packages, price, cutPrice, beautyDate);
   };
 
   onEscapeClick = (packages, price, cutPrice) => {
