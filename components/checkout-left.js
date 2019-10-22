@@ -7,35 +7,42 @@ const CheckoutLeft = props => {
   let cartComponent = true;
   let quanity = false;
   let item;
+  let textArea = false;
+  let time = "";
 
   if (props.parentState.which.fnb_reservation === 1) {
     paymentComponent = false;
     cartComponent = false;
     quanity = true;
     item = props.parentState.fnb_reservation;
+    time = item.display_time;
   } else if (props.parentState.which.fnb_offer === 1) {
     if (props.parentState.fnb_offer.event) paymentComponent = false;
 
     cartComponent = false;
     quanity = true;
     item = props.parentState.fnb_offer;
+    time = item.display_time;
   } else if (props.parentState.which.spa_offer === 1) {
     quanity = false;
     item = props.parentState.spa_offer;
   } else if (props.parentState.which.activity_offer === 1) {
     quanity = false;
     item = props.parentState.activity_offer;
+    time = item.time;
   } else if (props.parentState.which.event_offer === 1) {
     quanity = false;
     item = props.parentState.event_offer;
+    time = item.time;
   } else if (props.parentState.which.escape_offer === 1) {
     quanity = false;
+    textArea = true;
     item = props.parentState.escape_offer;
+    time = item.time;
   }
 
   if (item === undefined) return null;
 
-  console.log(item);
   return (
     <div className="checkout-left-container">
       <h4 className="fs1-5 ffqs fw2">My Cart (1)</h4>
@@ -65,13 +72,23 @@ const CheckoutLeft = props => {
 
         <div className="column">
           <h4 className="ffqs fw2 p0-5 fs1-2 float-right ">
-            Booking Time :{" "}
-            <span className="tag is-warning fs1">{item.display_time}</span>
+            Booking Time : <span className="tag is-warning fs1">{time}</span>
           </h4>
         </div>
       </div>
 
       <div className="border-top-dashed" />
+
+      {textArea ? (
+        <React.Fragment>
+          <br />
+          <textarea
+            class="textarea"
+            placeholder="Any customization"
+            onChange={event => props.onChangeRequest(event)}
+          />
+        </React.Fragment>
+      ) : null}
 
       {cartComponent ? (
         <React.Fragment>

@@ -1,5 +1,5 @@
 import "react-dates/initialize";
-
+import moment from "moment";
 import { Segment } from "semantic-ui-react";
 
 import { SingleDatePicker } from "react-dates";
@@ -52,6 +52,11 @@ export default class DetailCart extends React.Component {
 
       this.props.fnbQuantityPrice(this.state.quantity - 1);
     } else {
+      const time = moment()
+        .add(30, "minutes")
+        .format("HH:mm A");
+
+      this.props.onChangeTime(time, true);
       this.props.fnbQuantityPrice(0);
     }
   };
@@ -98,7 +103,13 @@ export default class DetailCart extends React.Component {
                 ) : (
                   <TimePicker
                     withoutIcon={true}
-                    time={this.props.parentState.time} // initial time, default current time
+                    time={
+                      parseInt(this.props.detailUrlParam.result_type, 10) ===
+                        1 ||
+                      parseInt(this.props.detailUrlParam.result_type, 10) === 5
+                        ? this.props.parentState.time
+                        : this.state.currentTime
+                    } // initial time, default current time
                     theme="material"
                     onTimeChange={time => this.props.onChangeTime(time)}
                     timeMode="12"

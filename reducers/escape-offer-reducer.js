@@ -1,4 +1,4 @@
-import { actionType } from "../actions/escape-enquiry-action";
+import { actionType } from "../actions/escape-offer-action";
 
 const initialState = {
   escapeOffer: [],

@@ -215,9 +215,7 @@ class Checkout extends React.Component {
         this.errorToast(nextProps.activityOffer.msg, 2, true);
       }
     } else if (this.props.escapeOffer !== nextProps.escapeOffer) {
-      console.log("DOne");
       if (nextProps.escapeOffer.status === "SUCCESS") {
-        console.log("Success");
         this.successToast(nextProps.escapeOffer.msg);
       } else {
         this.setState({
@@ -236,6 +234,12 @@ class Checkout extends React.Component {
       }
     }
   }
+
+  onChangeRequest = e => {
+    this.setState({
+      remark: e.target.value
+    });
+  };
 
   routeChange = url => {
     Router.push(url);
@@ -625,6 +629,7 @@ class Checkout extends React.Component {
           onClickCheckoutButton={this.onClickCheckoutButton}
           payment={this.props.payment}
           onChangePayment={this.onChangePayment}
+          onChangeRequest={this.onChangeRequest}
         />
         <Headout />
         <Footer cityLocality={this.props.cityLocality} />

@@ -16,6 +16,7 @@ export default class ParentDetail extends React.Component {
       booking: false,
       dayInNumber: moment().isoWeekday(),
       currentDate: moment().format("YYYY-MM-DD"),
+      currentTime: moment().format("hh:mm a"),
       time: moment()
         .add(30, "minutes")
         .format("HH:mm A"),
@@ -229,11 +230,21 @@ export default class ParentDetail extends React.Component {
     this.setState({ date });
   };
 
-  onChangeTime = time => {
-    const times = time.hour + ":" + time.minute + " " + time.meridiem;
-    this.updateChangeTime(times);
+  onChangeTime = (time, flag = false) => {
+    if (flag) {
+      const dateSplit = time.split(" ");
+      const times = dateSplit[0] + ":" + dateSplit[1] + " " + dateSplit[2];
 
-    this.updateDisplayTime(time.hour + ":" + time.minute);
+      this.updateChangeTime(times);
+
+      this.updateDisplayTime(dateSplit[0] + ":" + dateSplit[1]);
+    } else {
+      const times = time.hour + ":" + time.minute + " " + time.meridiem;
+
+      this.updateChangeTime(times);
+
+      this.updateDisplayTime(time.hour + ":" + time.minute);
+    }
   };
 
   changeTab = text => {
@@ -957,7 +968,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.time,
+            time: this.state.currentTime,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
@@ -1005,7 +1016,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.time,
+            time: this.state.currentTime,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
@@ -1051,7 +1062,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.time,
+            time: this.state.currentTime,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
@@ -1099,7 +1110,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.time,
+            time: this.state.currentTime,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
