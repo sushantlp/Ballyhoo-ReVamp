@@ -385,7 +385,53 @@ class Checkout extends React.Component {
         );
       }
     } else if (this.state.which.event_offer === 1) {
+      if (this.state.payment_option === "") {
+        this.setState({
+          isLoading: false
+        });
+
+        this.errorToast(
+          "Please select payment option",
+          this.state.event_offer.offer_id,
+          true
+        );
+      } else if (this.state.payment_option === "venue") {
+        this.props.postEventOffer(
+          this.state.event_offer.offer_id,
+          this.state.event_offer.customer_id,
+          1,
+          null,
+          this.state.event_offer.payment_amount,
+          this.state.event_offer.items
+        );
+      } else if (this.state.payment_option === "online") {
+        const amount = this.state.event_offer.payment_amount * 100;
+        this.invokeRazorPay(
+          this.state.event_offer.customer_email,
+          this.state.event_offer.customer_mobile,
+          amount,
+          this.state.event_offer.name,
+          this.onlineEventOffer
+        );
+      }
     } else if (this.state.which.escape_offer === 1) {
+    }
+  };
+
+  onlineEventOffer = (paymentId, bool) => {
+    if (bool) {
+      this.props.postEventOffer(
+        this.state.event_offer.offer_id,
+        this.state.event_offer.customer_id,
+        2,
+        paymentId,
+        this.state.event_offer.payment_amount,
+        this.state.event_offer.items
+      );
+    } else {
+      this.setState({
+        isLoading: false
+      });
     }
   };
 
