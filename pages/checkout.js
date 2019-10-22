@@ -163,7 +163,6 @@ class Checkout extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.fnbReservation !== nextProps.fnbReservation) {
       if (nextProps.fnbReservation.status === "SUCCESS") {
-        // this.removeAllOfferSessionData();
         this.successToast(nextProps.fnbReservation.msg);
       } else {
         this.setState({
@@ -173,7 +172,6 @@ class Checkout extends React.Component {
       }
     } else if (this.props.fnbOffer !== nextProps.fnbOffer) {
       if (nextProps.fnbOffer.status === "SUCCESS") {
-        // this.removeAllOfferSessionData();
         this.successToast(nextProps.fnbOffer.msg);
       } else {
         this.setState({
@@ -199,13 +197,39 @@ class Checkout extends React.Component {
       }
     } else if (this.props.saloonOffer !== nextProps.saloonOffer) {
       if (nextProps.saloonOffer.status === "SUCCESS") {
-        // this.removeAllOfferSessionData();
         this.successToast(nextProps.saloonOffer.msg);
       } else {
         this.setState({
           isLoading: false
         });
         this.errorToast(nextProps.saloonOffer.msg, 2, true);
+      }
+    } else if (this.props.activityOffer !== nextProps.activityOffer) {
+      if (nextProps.activityOffer.status === "SUCCESS") {
+        this.successToast(nextProps.activityOffer.msg);
+      } else {
+        this.setState({
+          isLoading: false
+        });
+        this.errorToast(nextProps.activityOffer.msg, 2, true);
+      }
+    } else if (this.props.escapeOffer !== nextProps.escapeOffer) {
+      if (nextProps.escapeOffer.status === "SUCCESS") {
+        this.successToast(nextProps.escapeOffer.msg);
+      } else {
+        this.setState({
+          isLoading: false
+        });
+        this.errorToast(nextProps.escapeOffer.msg, 2, true);
+      }
+    } else if (this.props.eventOffer !== nextProps.eventOffer) {
+      if (nextProps.eventOffer.status === "SUCCESS") {
+        this.successToast(nextProps.eventOffer.msg);
+      } else {
+        this.setState({
+          isLoading: false
+        });
+        this.errorToast(nextProps.eventOffer.msg, 2, true);
       }
     }
   }
@@ -326,6 +350,63 @@ class Checkout extends React.Component {
           this.onlineSpaOffer
         );
       }
+    } else if (this.state.which.activity_offer === 1) {
+      if (this.state.payment_option === "") {
+        this.setState({
+          isLoading: false
+        });
+
+        this.errorToast(
+          "Please select payment option",
+          this.state.activity_offer.offer_id,
+          true
+        );
+      } else if (this.state.payment_option === "venue") {
+        const dateSplit = this.state.activity_offer.time.split(" ");
+
+        this.props.postActivityOffer(
+          this.state.activity_offer.offer_id,
+          this.state.activity_offer.customer_id,
+          1,
+          null,
+          this.state.activity_offer.payment_amount,
+          this.state.activity_offer.date,
+          dateSplit[0],
+          this.state.activity_offer.items
+        );
+      } else if (this.state.payment_option === "online") {
+        const amount = this.state.activity_offer.payment_amount * 100;
+        this.invokeRazorPay(
+          this.state.activity_offer.customer_email,
+          this.state.activity_offer.customer_mobile,
+          amount,
+          this.state.activity_offer.name,
+          this.onlineActivityOffer
+        );
+      }
+    } else if (this.state.which.event_offer === 1) {
+    } else if (this.state.which.escape_offer === 1) {
+    }
+  };
+
+  onlineActivityOffer = (paymentId, bool) => {
+    if (bool) {
+      const dateSplit = this.state.activity_offer.time.split(" ");
+
+      this.props.postActivityOffer(
+        this.state.activity_offer.offer_id,
+        this.state.activity_offer.customer_id,
+        2,
+        paymentId,
+        this.state.activity_offer.payment_amount,
+        this.state.activity_offer.date,
+        dateSplit[0],
+        this.state.activity_offer.items
+      );
+    } else {
+      this.setState({
+        isLoading: false
+      });
     }
   };
 
