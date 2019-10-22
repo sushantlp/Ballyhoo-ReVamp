@@ -46,7 +46,6 @@ export default class ParentDetail extends React.Component {
       },
       verifyOpen: false,
       cartButtonLoading: false,
-
       cartQuantity: false
     };
   }
@@ -133,14 +132,11 @@ export default class ParentDetail extends React.Component {
 
         // Accept only Event & Activity & Escape
         if (parseInt(this.props.detailUrlParam.result_type, 10) !== 5) {
-          console.log(
-            this.props.categoryData.categoryData.details.offer_min_price
-          );
-          this.setState({
-            cartTotalPrice: parseFloat(
-              this.props.categoryData.categoryData.details.offer_min_price
-            )
-          });
+          // this.setState({
+          //   cartTotalPrice: parseFloat(
+          //     this.props.categoryData.categoryData.details.offer_min_price
+          //   )
+          // });
         }
       }
     }
@@ -168,6 +164,12 @@ export default class ParentDetail extends React.Component {
 
     this.updateCartTotalPrice(parseFloat(totalAmount));
     this.updateCopyCartTotalPrice(parseFloat(totalAmount));
+
+    parseInt(this.props.detailUrlParam.result_type, 10) === 5
+      ? this.state.otherCartObj.length === 0
+        ? this.updateCartButtonText("Appointment")
+        : null
+      : null;
   };
 
   onClickPackagePlus = (key, priceId) => {
@@ -285,7 +287,8 @@ export default class ParentDetail extends React.Component {
           : dynamicPrice,
       price_caption: price.price_caption,
       quantity: 1,
-      date: date
+      date: date,
+      api_price: price.price
     };
 
     if (cartData.length !== 0) {
@@ -365,8 +368,55 @@ export default class ParentDetail extends React.Component {
       otherTab
     });
 
-    console.log(packages);
-    //this.cartLogic(undefined, packages, cutPrice);
+    let cartData = this.state.otherCartObj;
+
+    const obj = {
+      package_caption: packages.package_caption,
+      price_id: packages.package_id,
+      price_available: packages.package_available,
+      price_discount: packages.package_discount,
+      api_price: packages.price,
+      price: cutPrice === 0 ? packages.price : cutPrice,
+      copy_price: cutPrice === 0 ? packages.price : cutPrice,
+      price_caption: undefined,
+      quantity: 1,
+      date: undefined
+    };
+
+    if (cartData.length !== 0) {
+      let copyPrice = this.state.cartTotalPrice;
+      for (let i = 0; i < cartData.length; i++) {
+        let inside = true;
+        for (let j = 0; j < cartData.length; j++) {
+          if (
+            parseInt(cartData[j].price_id, 10) ===
+            parseInt(packages.package_id, 10)
+          ) {
+            inside = false;
+            break;
+          }
+        }
+
+        if (inside) {
+          cartData.push(obj);
+          this.setState({
+            otherCartObj: cartData
+          });
+          copyPrice = parseFloat(copyPrice) + parseFloat(obj.price);
+          break;
+        }
+      }
+
+      this.updateCartTotalPrice(copyPrice);
+      this.updateCopyCartTotalPrice(copyPrice);
+    } else {
+      cartData.push(obj);
+      this.setState({
+        otherCartObj: cartData
+      });
+      this.updateCartTotalPrice(parseFloat(obj.price));
+      this.updateCopyCartTotalPrice(parseFloat(obj.price));
+    }
   };
 
   onActivityClick = (packages, price, cutPrice) => {
@@ -395,6 +445,7 @@ export default class ParentDetail extends React.Component {
       otherTab
     });
 
+    this.updateCartButtonText("Procced");
     this.cartLogic(packages, price, cutPrice);
   };
 
@@ -888,6 +939,22 @@ export default class ParentDetail extends React.Component {
           }
         }
       } else {
+        const otherTab = {
+          saloon: false,
+          escape: true,
+          exculsive: false,
+          activity: false,
+          event: false
+        };
+
+        if (otherTab.saloon) {
+        } else if (otherTab.escape) {
+        } else if (otherTab.exculsive) {
+        } else if (otherTab.activity) {
+        } else if (otherTab.event) {
+        } else {
+          // Saloon Appointment
+        }
       }
     }
   };

@@ -204,14 +204,14 @@ export default class SaloonPackage extends React.Component {
             </article>
           </div>
 
-          {value.price_list.map((value, key) => {
+          {value.price_list.map((list, key) => {
             let price = 0;
             let cutPrice = 0;
-            if (parseInt(value.price_discount, 10) === 0) price = value.price;
+            if (parseInt(list.price_discount, 10) === 0) price = list.price;
             else {
-              price = (value.price * value.price_discount) / 100;
-              price = value.price - price;
-              cutPrice = value.price;
+              price = (list.price * list.price_discount) / 100;
+              price = list.price - price;
+              cutPrice = list.price;
             }
             return (
               <Segment key={key}>
@@ -222,7 +222,7 @@ export default class SaloonPackage extends React.Component {
                         <div className="columns mb0">
                           <div className="column is-10">
                             <h4 className="ffqs list-title">
-                              {value.price_caption}
+                              {list.price_caption}
                             </h4>
 
                             <h5 className="fw2 mt0-5 fs1-3">
@@ -236,7 +236,7 @@ export default class SaloonPackage extends React.Component {
                                     &#8377; {"  "} {cutPrice}/-
                                   </span>
                                   <span className="tag is-rounded is-warning ml8">
-                                    {value.price_discount}% off
+                                    {list.price_discount}% off
                                   </span>
                                   {"  "}
                                 </span>
@@ -250,7 +250,18 @@ export default class SaloonPackage extends React.Component {
                                 BOOK
                               </a>
                             ) : (
-                              <a className="button is-danger fr">BOOK</a>
+                              <a
+                                className="button is-danger fr"
+                                onClick={() =>
+                                  this.props.onSaloonClick(
+                                    value,
+                                    list,
+                                    cutPrice
+                                  )
+                                }
+                              >
+                                BOOK
+                              </a>
                             )}
                           </div>
                         </div>
@@ -266,7 +277,7 @@ export default class SaloonPackage extends React.Component {
                             readMoreText="See more"
                             readLessText="See less"
                           >
-                            {value.price_inclusion}
+                            {list.price_inclusion}
                           </ReadMoreAndLess>
                         </div>
                       </div>
