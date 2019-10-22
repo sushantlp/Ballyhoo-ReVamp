@@ -215,7 +215,9 @@ class Checkout extends React.Component {
         this.errorToast(nextProps.activityOffer.msg, 2, true);
       }
     } else if (this.props.escapeOffer !== nextProps.escapeOffer) {
+      console.log("DOne");
       if (nextProps.escapeOffer.status === "SUCCESS") {
+        console.log("Success");
         this.successToast(nextProps.escapeOffer.msg);
       } else {
         this.setState({
@@ -427,14 +429,14 @@ class Checkout extends React.Component {
           true
         );
       } else if (this.state.payment_option === "venue") {
-        const dateSplit = this.state.activity_offer.time.split(" ");
+        const dateSplit = this.state.escape_offer.time.split(" ");
         this.props.postEscapeOffer(
           this.state.escape_offer.offer_id,
           this.state.escape_offer.customer_id,
           1,
           null,
           this.state.escape_offer.payment_amount,
-          this.state.activity_offer.date,
+          this.state.escape_offer.date,
           dateSplit[0],
           this.state.escape_offer.items,
           this.state.remark
@@ -454,14 +456,14 @@ class Checkout extends React.Component {
 
   onlineEscapeffer = (paymentId, bool) => {
     if (bool) {
-      const dateSplit = this.state.activity_offer.time.split(" ");
+      const dateSplit = this.state.escape_offer.time.split(" ");
       this.props.postEscapeOffer(
         this.state.escape_offer.offer_id,
         this.state.escape_offer.customer_id,
         2,
         paymentId,
         this.state.event_offer.payment_amount,
-        this.state.activity_offer.date,
+        this.state.escape_offer.date,
         dateSplit[0],
         this.state.event_offer.items,
         this.state.remark
