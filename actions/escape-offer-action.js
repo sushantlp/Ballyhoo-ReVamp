@@ -12,7 +12,8 @@ export function postEscapeOffer(
   paymentAmount,
   bookingDate,
   bookingTime,
-  bookingItem
+  bookingItem,
+  remark
 ) {
   return dispatch => {
     api
@@ -24,7 +25,8 @@ export function postEscapeOffer(
         paymentAmount,
         bookingDate,
         bookingTime,
-        bookingItem
+        bookingItem,
+        remark
       )
       .then(escapeOffer =>
         dispatch({ type: actionType.escapeOffer, escapeOffer })

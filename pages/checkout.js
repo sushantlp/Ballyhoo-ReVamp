@@ -70,7 +70,8 @@ class Checkout extends React.Component {
       isLoading: false,
       checkoutButtonBlock: false,
       payment: [],
-      payment_option: ""
+      payment_option: "",
+      remark: ""
     };
   }
 
@@ -415,6 +416,60 @@ class Checkout extends React.Component {
         );
       }
     } else if (this.state.which.escape_offer === 1) {
+      if (this.state.payment_option === "") {
+        this.setState({
+          isLoading: false
+        });
+
+        this.errorToast(
+          "Please select payment option",
+          this.state.escape_offer.offer_id,
+          true
+        );
+      } else if (this.state.payment_option === "venue") {
+        const dateSplit = this.state.activity_offer.time.split(" ");
+        this.props.postEscapeOffer(
+          this.state.escape_offer.offer_id,
+          this.state.escape_offer.customer_id,
+          1,
+          null,
+          this.state.escape_offer.payment_amount,
+          this.state.activity_offer.date,
+          dateSplit[0],
+          this.state.escape_offer.items,
+          this.state.remark
+        );
+      } else if (this.state.payment_option === "online") {
+        const amount = this.state.escape_offer.payment_amount * 100;
+        this.invokeRazorPay(
+          this.state.escape_offer.customer_email,
+          this.state.escape_offer.customer_mobile,
+          amount,
+          this.state.escape_offer.name,
+          this.onlineEscapeffer
+        );
+      }
+    }
+  };
+
+  onlineEscapeffer = (paymentId, bool) => {
+    if (bool) {
+      const dateSplit = this.state.activity_offer.time.split(" ");
+      this.props.postEscapeOffer(
+        this.state.escape_offer.offer_id,
+        this.state.escape_offer.customer_id,
+        2,
+        paymentId,
+        this.state.event_offer.payment_amount,
+        this.state.activity_offer.date,
+        dateSplit[0],
+        this.state.event_offer.items,
+        this.state.remark
+      );
+    } else {
+      this.setState({
+        isLoading: false
+      });
     }
   };
 

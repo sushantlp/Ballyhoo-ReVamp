@@ -535,7 +535,8 @@ export default {
     paymentAmount,
     bookingDate,
     bookingTime,
-    bookingItem
+    bookingItem,
+    remark
   ) => {
     return new Promise((resolve, reject) => {
       fetch(`${host}api/v9/web/book/escape/offers`, {
@@ -551,7 +552,8 @@ export default {
           payment_amount: paymentAmount,
           booking_date: bookingDate,
           booking_time: bookingTime,
-          booking_items: bookingItem
+          booking_items: bookingItem,
+          booking_remarks: remark
         })
       })
         .then(response => {
