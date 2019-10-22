@@ -19,10 +19,23 @@ const CheckoutLeft = props => {
     cartComponent = false;
     quanity = true;
     item = props.parentState.fnb_offer;
+  } else if (props.parentState.which.spa_offer === 1) {
+    quanity = false;
+    item = props.parentState.spa_offer;
+  } else if (props.parentState.which.activity_offer === 1) {
+    quanity = false;
+    item = props.parentState.activity_offer;
+  } else if (props.parentState.which.event_offer === 1) {
+    quanity = false;
+    item = props.parentState.event_offer;
+  } else if (props.parentState.which.escape_offer === 1) {
+    quanity = false;
+    item = props.parentState.escape_offer;
   }
 
   if (item === undefined) return null;
 
+  console.log(item);
   return (
     <div className="checkout-left-container">
       <h4 className="fs1-5 ffqs fw2">My Cart (1)</h4>
@@ -63,26 +76,42 @@ const CheckoutLeft = props => {
       {cartComponent ? (
         <React.Fragment>
           <h4 className="fs1-4 ffqs fw2">Items Bought :</h4>
-          <Segment style={{ backgroundColor: "aliceblue" }}>
-            <h4 className="ffqs fs1-5 fw2 m0">Go Karting</h4>
-            <h4 className="ffqs fs1 fw2 mt0-5">Individual - Micro</h4>
-            <div className="columns">
-              <div className="column is-6">
-                <h4 className="ffqs fw2 p0-5 fs1-2">
-                  Price :
-                  <span>
-                    {" "}
-                    <span> &#8377;</span> 2,365{" "}
-                  </span>
+
+          {item.packages.map((value, key) => {
+            return (
+              <Segment style={{ backgroundColor: "aliceblue" }} key={key}>
+                <h4 className="ffqs fs1-5 fw2 m0">{value.package_caption}</h4>
+                <h4 className="ffqs fs1 fw2 mt0-5">
+                  {" "}
+                  {value.price_caption}{" "}
+                  {value.date === undefined ? null : (
+                    <span className="tag is-warning" style={{ float: "right" }}>
+                      {value.date}
+                    </span>
+                  )}
                 </h4>
-              </div>
-              <div className="column is-6">
-                <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
-                  Quanity :<span> 2</span>
-                </h4>
-              </div>
-            </div>
-          </Segment>
+                <div className="columns">
+                  <div className="column is-6">
+                    <h4 className="ffqs fw2 p0-5 fs1-2">
+                      Price :
+                      <span>
+                        {" "}
+                        <span> &#8377;</span> {value.price}{" "}
+                      </span>
+                    </h4>
+                  </div>
+                  <div className="column is-6">
+                    <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
+                      Quanity :{" "}
+                      <span style={{ marginLeft: "0.3em" }}>
+                        {value.quantity}
+                      </span>
+                    </h4>
+                  </div>
+                </div>
+              </Segment>
+            );
+          })}
         </React.Fragment>
       ) : null}
 

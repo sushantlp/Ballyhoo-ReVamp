@@ -939,24 +939,214 @@ export default class ParentDetail extends React.Component {
           }
         }
       } else {
-        const otherTab = {
-          saloon: false,
-          escape: true,
-          exculsive: false,
-          activity: false,
-          event: false
-        };
+        if (this.state.otherTab.saloon) {
+          const date = moment(this.state.date).format("YYYY-MM-DD");
+          const displayDate = moment(this.state.date).format("DD-MM-YYYY");
 
-        if (otherTab.saloon) {
-        } else if (otherTab.escape) {
-        } else if (otherTab.exculsive) {
-        } else if (otherTab.activity) {
-        } else if (otherTab.event) {
+          const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
+
+          const saloonPackage = {
+            offer_id: this.props.categoryData.categoryData.details.offer_id,
+            partner_id: this.props.categoryData.categoryData.details
+              .partner_details.p_id,
+            name: this.props.categoryData.categoryData.details.partner_details
+              .p_name,
+            customer_id: this.props.customerData.customerData.customer_id,
+            customer_mobile: this.props.customerData.customerData.mobile,
+            customer_email: this.props.customerData.customerData.email,
+            display_time: this.state.displayTime,
+            display_date: displayDate,
+            date: date,
+            time: this.state.time,
+            payment_amount: this.state.cartTotalPrice,
+            packages: this.state.otherCartObj,
+            items: item
+          };
+
+          const which = {
+            fnb_reservation: 0,
+            fnb_offer: 0,
+            spa_appointment: 0,
+            spa_offer: 1,
+            activity_offer: 0,
+            event_offer: 0,
+            escape_offer: 0
+          };
+
+          sessionStorage.removeItem("RESERVATION");
+          sessionStorage.removeItem("SPA_APPOINTMENT");
+          sessionStorage.removeItem("ACTIVITY_OFFER");
+          sessionStorage.removeItem("EVENT_OFFER");
+          sessionStorage.removeItem("ESCAPE_OFFER");
+          sessionStorage.removeItem("FNB_OFFER");
+
+          sessionStorage.setItem("SPA_OFFER", JSON.stringify(saloonPackage));
+          sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+          this.props.routeChange("/checkout");
+        } else if (
+          this.state.otherTab.escape ||
+          this.state.otherTab.exculsive
+        ) {
+          const date = moment(this.state.date).format("YYYY-MM-DD");
+          const displayDate = moment(this.state.date).format("DD-MM-YYYY");
+
+          const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
+
+          const escapePackage = {
+            offer_id: this.props.categoryData.categoryData.details.offer_id,
+            partner_id: this.props.categoryData.categoryData.details
+              .partner_details.p_id,
+            name: this.props.categoryData.categoryData.details.partner_details
+              .p_name,
+            customer_id: this.props.customerData.customerData.customer_id,
+            customer_mobile: this.props.customerData.customerData.mobile,
+            customer_email: this.props.customerData.customerData.email,
+            display_time: this.state.displayTime,
+            display_date: displayDate,
+            date: date,
+            time: this.state.time,
+            payment_amount: this.state.cartTotalPrice,
+            packages: this.state.otherCartObj,
+            items: item
+          };
+
+          const which = {
+            fnb_reservation: 0,
+            fnb_offer: 0,
+            spa_appointment: 0,
+            spa_offer: 0,
+            activity_offer: 0,
+            event_offer: 0,
+            escape_offer: 1
+          };
+
+          sessionStorage.removeItem("RESERVATION");
+          sessionStorage.removeItem("SPA_APPOINTMENT");
+          sessionStorage.removeItem("ACTIVITY_OFFER");
+          sessionStorage.removeItem("EVENT_OFFER");
+          sessionStorage.removeItem("ESCAPE_OFFER");
+          sessionStorage.removeItem("SPA_OFFER");
+          sessionStorage.removeItem("FNB_OFFER");
+
+          sessionStorage.setItem("ESCAPE_OFFER", JSON.stringify(escapePackage));
+          sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+          this.props.routeChange("/checkout");
+        } else if (this.state.otherTab.activity) {
+          const date = moment(this.state.date).format("YYYY-MM-DD");
+          const displayDate = moment(this.state.date).format("DD-MM-YYYY");
+
+          const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
+
+          const escapePackage = {
+            offer_id: this.props.categoryData.categoryData.details.offer_id,
+            partner_id: this.props.categoryData.categoryData.details
+              .partner_details.p_id,
+            name: this.props.categoryData.categoryData.details.partner_details
+              .p_name,
+            customer_id: this.props.customerData.customerData.customer_id,
+            customer_mobile: this.props.customerData.customerData.mobile,
+            customer_email: this.props.customerData.customerData.email,
+            display_time: this.state.displayTime,
+            display_date: displayDate,
+            date: date,
+            time: this.state.time,
+            payment_amount: this.state.cartTotalPrice,
+            packages: this.state.otherCartObj,
+            items: item
+          };
+
+          const which = {
+            fnb_reservation: 0,
+            fnb_offer: 0,
+            spa_appointment: 0,
+            spa_offer: 0,
+            activity_offer: 1,
+            event_offer: 0,
+            escape_offer: 0
+          };
+
+          sessionStorage.removeItem("RESERVATION");
+          sessionStorage.removeItem("SPA_APPOINTMENT");
+          sessionStorage.removeItem("EVENT_OFFER");
+          sessionStorage.removeItem("ESCAPE_OFFER");
+          sessionStorage.removeItem("SPA_OFFER");
+          sessionStorage.removeItem("FNB_OFFER");
+
+          sessionStorage.setItem(
+            "ACTIVITY_OFFER",
+            JSON.stringify(escapePackage)
+          );
+          sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+          this.props.routeChange("/checkout");
+        } else if (this.state.otherTab.event) {
+          const date = moment(this.state.date).format("YYYY-MM-DD");
+          const displayDate = moment(this.state.date).format("DD-MM-YYYY");
+
+          const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
+
+          const eventPackage = {
+            offer_id: this.props.categoryData.categoryData.details.offer_id,
+            partner_id: this.props.categoryData.categoryData.details
+              .partner_details.p_id,
+            name: this.props.categoryData.categoryData.details.partner_details
+              .p_name,
+            customer_id: this.props.customerData.customerData.customer_id,
+            customer_mobile: this.props.customerData.customerData.mobile,
+            customer_email: this.props.customerData.customerData.email,
+            display_time: this.state.displayTime,
+            display_date: displayDate,
+            date: date,
+            time: this.state.time,
+            payment_amount: this.state.cartTotalPrice,
+            packages: this.state.otherCartObj,
+            items: item
+          };
+
+          const which = {
+            fnb_reservation: 0,
+            fnb_offer: 0,
+            spa_appointment: 0,
+            spa_offer: 0,
+            activity_offer: 0,
+            event_offer: 1,
+            escape_offer: 0
+          };
+
+          sessionStorage.removeItem("RESERVATION");
+          sessionStorage.removeItem("SPA_APPOINTMENT");
+          sessionStorage.removeItem("ESCAPE_OFFER");
+          sessionStorage.removeItem("SPA_OFFER");
+          sessionStorage.removeItem("FNB_OFFER");
+          sessionStorage.removeItem("ACTIVITY_OFFER");
+
+          sessionStorage.setItem("EVENT_OFFER", JSON.stringify(eventPackage));
+          sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+          this.props.routeChange("/checkout");
         } else {
+          if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
+          } else {
+            this.updateCartButtonLoading(false);
+            this.props.errorToast(`Empty cart !!!`, 1, true);
+          }
           // Saloon Appointment
         }
       }
     }
+  };
+
+  otherCategoryJsonBuilder = json => {
+    return json.map(obj => {
+      const item = {};
+      item.item_id = obj.price_id;
+      item.price = obj.api_price;
+      item.discount = obj.price_discount;
+      item.quantity = obj.quantity;
+      return item;
+    });
   };
 
   updateVerifyAccountState = bool => {

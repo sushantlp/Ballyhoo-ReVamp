@@ -29,6 +29,11 @@ import { paymentOption } from "../actions/payment-option-action";
 import { postFnbReservation } from "../actions/fnb-reservation-action";
 import { postFnbOffer } from "../actions/fnb-offer-action";
 
+import { postSaloonOffer } from "../actions/saloon-offer-action";
+import { postActivityOffer } from "../actions/activity-offer-action";
+import { postEscapeOffer } from "../actions/escape-offer-action";
+import { postEventOffer } from "../actions/event-offer-action";
+
 import "react-toastify/dist/ReactToastify.css";
 
 class Checkout extends React.Component {
@@ -82,13 +87,6 @@ class Checkout extends React.Component {
         });
     }
 
-    // let payment = sessionStorage.getItem("PAYMENT");
-    // payment = JSON.parse(payment);
-
-    // this.setState({
-    //   payment: payment
-    // });
-
     let which = sessionStorage.getItem("WHICH");
     which = JSON.parse(which);
 
@@ -131,24 +129,32 @@ class Checkout extends React.Component {
       this.setState({
         spa_offer: obj
       });
+
+      this.props.paymentOption(obj.partner_id);
     } else if (parseInt(which.activity_offer, 10) === 1) {
       let obj = sessionStorage.getItem("ACTIVITY_OFFER");
       obj = JSON.parse(obj);
       this.setState({
         activity_offer: obj
       });
+
+      this.props.paymentOption(obj.partner_id);
     } else if (parseInt(which.event_offer, 10) === 1) {
       let obj = sessionStorage.getItem("EVENT_OFFER");
       obj = JSON.parse(obj);
       this.setState({
         event_offer: obj
       });
+
+      this.props.paymentOption(obj.partner_id);
     } else if (parseInt(which.escape_offer, 10) === 1) {
       let obj = sessionStorage.getItem("ESCAPE_OFFER");
       obj = JSON.parse(obj);
       this.setState({
         escape_offer: obj
       });
+
+      this.props.paymentOption(obj.partner_id);
     } else {
       this.routeChange("/");
     }
@@ -182,7 +188,6 @@ class Checkout extends React.Component {
         });
         this.errorToast(nextProps.payment.msg, 3, true);
       } else {
-        console.log(nextProps.payment.payment);
         sessionStorage.setItem(
           "PAYMENT",
           JSON.stringify(nextProps.payment.payment)
@@ -192,21 +197,18 @@ class Checkout extends React.Component {
           payment: nextProps.payment.payment
         });
       }
+    } else if (this.props.saloonOffer !== nextProps.saloonOffer) {
+      if (nextProps.saloonOffer.status === "SUCCESS") {
+        // this.removeAllOfferSessionData();
+        this.successToast(nextProps.saloonOffer.msg);
+      } else {
+        this.setState({
+          isLoading: false
+        });
+        this.errorToast(nextProps.saloonOffer.msg, 2, true);
+      }
     }
   }
-
-  // removeAllOfferSessionData = () => {
-  //   sessionStorage.removeItem("WHICH");
-  //   sessionStorage.removeItem("FNB_OFFER");
-  //   sessionStorage.removeItem("FNB_OFFER");
-  //   sessionStorage.removeItem("RESERVATION");
-  //   sessionStorage.removeItem("SPA_APPOINTMENT");
-  //   sessionStorage.removeItem("SPA_OFFER");
-  //   sessionStorage.removeItem("ACTIVITY_OFFER");
-  //   sessionStorage.removeItem("EVENT_OFFER");
-  //   sessionStorage.removeItem("ESCAPE_OFFER");
-  //   sessionStorage.removeItem("PAYMENT");
-  // };
 
   routeChange = url => {
     Router.push(url);
@@ -290,6 +292,61 @@ class Checkout extends React.Component {
           );
         }
       }
+    } else if (this.state.which.spa_offer === 1) {
+      if (this.state.payment_option === "") {
+        this.setState({
+          isLoading: false
+        });
+
+        this.errorToast(
+          "Please select payment option",
+          this.state.spa_offer.offer_id,
+          true
+        );
+      } else if (this.state.payment_option === "venue") {
+        const dateSplit = this.state.spa_offer.time.split(" ");
+
+        this.props.postSaloonOffer(
+          this.state.spa_offer.offer_id,
+          this.state.spa_offer.customer_id,
+          1,
+          null,
+          this.state.spa_offer.payment_amount,
+          this.state.spa_offer.date,
+          dateSplit[0],
+          this.state.spa_offer.items
+        );
+      } else if (this.state.payment_option === "online") {
+        const amount = this.state.spa_offer.payment_amount * 100;
+        this.invokeRazorPay(
+          this.state.spa_offer.customer_email,
+          this.state.spa_offer.customer_mobile,
+          amount,
+          this.state.spa_offer.name,
+          this.onlineSpaOffer
+        );
+      }
+    }
+  };
+
+  onlineSpaOffer = (paymentId, bool) => {
+    if (bool) {
+      const dateSplit = this.state.spa_offer.time.split(" ");
+
+      this.props.postFnbOffer(
+        this.state.spa_offer.offer_id,
+        this.state.spa_offer.customer_id,
+        2,
+        paymentId,
+        this.state.spa_offer.payment_amount,
+        this.state.spa_offer.date,
+        dateSplit[0],
+        this.state.spa_offer.items
+      );
+    } else {
+      this.setState({
+        isLoading: false
+      });
     }
   };
 
@@ -349,7 +406,6 @@ class Checkout extends React.Component {
   };
 
   onChangePayment = e => {
-    console.log(e.target.value);
     this.setState({
       payment_option: e.target.value
     });
@@ -404,7 +460,11 @@ const mapStateToProps = state => {
     fnbReservation: state.fnbReservation,
     fnbOffer: state.fnbOffer,
     profileData: state.profileData,
-    payment: state.payment
+    payment: state.payment,
+    saloonOffer: state.saloonOffer,
+    activityOffer: state.activityOffer,
+    escapeOffer: state.escapeOffer,
+    eventOffer: state.eventOffer
   };
 };
 
@@ -422,7 +482,11 @@ const mapDispatchToProps = dispatch => {
     postFnbReservation: bindActionCreators(postFnbReservation, dispatch),
     getProfile: bindActionCreators(getProfile, dispatch),
     postFnbOffer: bindActionCreators(postFnbOffer, dispatch),
-    paymentOption: bindActionCreators(paymentOption, dispatch)
+    paymentOption: bindActionCreators(paymentOption, dispatch),
+    postSaloonOffer: bindActionCreators(postSaloonOffer, dispatch),
+    postActivityOffer: bindActionCreators(postActivityOffer, dispatch),
+    postEscapeOffer: bindActionCreators(postEscapeOffer, dispatch),
+    postEventOffer: bindActionCreators(postEventOffer, dispatch)
   };
 };
 

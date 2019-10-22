@@ -10,6 +10,14 @@ const CheckoutRight = props => {
     if (props.parentState.fnb_offer.event) price = false;
 
     item = props.parentState.fnb_offer;
+  } else if (props.parentState.which.spa_offer === 1) {
+    item = props.parentState.spa_offer;
+  } else if (props.parentState.which.activity_offer === 1) {
+    item = props.parentState.activity_offer;
+  } else if (props.parentState.which.event_offer === 1) {
+    item = props.parentState.event_offer;
+  } else if (props.parentState.which.escape_offer === 1) {
+    item = props.parentState.escape_offer;
   }
 
   if (item === undefined) return null;
