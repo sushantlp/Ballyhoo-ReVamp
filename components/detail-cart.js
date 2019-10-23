@@ -108,7 +108,7 @@ export default class DetailCart extends React.Component {
                         1 ||
                       parseInt(this.props.detailUrlParam.result_type, 10) === 5
                         ? this.props.parentState.time
-                        : this.state.currentTime
+                        : this.props.parentState.currentTime
                     } // initial time, default current time
                     theme="material"
                     onTimeChange={time => this.props.onChangeTime(time)}

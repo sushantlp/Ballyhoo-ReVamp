@@ -562,7 +562,7 @@ class Checkout extends React.Component {
 
   invokeRazorPay = (email, mobile, amount, name, callBackApi) => {
     const options = {
-      key: this.state.payment.online_payment.razorpay_key,
+      key: this.state.payment.razorpay_key.key,
       amount: amount, // 2000 paise = INR 20
       name: name,
       description: "Booking",
@@ -627,7 +627,6 @@ class Checkout extends React.Component {
           postFnbReservation={this.props.postFnbReservation}
           parentState={this.state}
           onClickCheckoutButton={this.onClickCheckoutButton}
-          payment={this.props.payment}
           onChangePayment={this.onChangePayment}
           onChangeRequest={this.onChangeRequest}
         />

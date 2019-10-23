@@ -29,16 +29,16 @@ const CheckoutLeft = props => {
   } else if (props.parentState.which.activity_offer === 1) {
     quanity = false;
     item = props.parentState.activity_offer;
-    time = item.time;
+    time = item.display_time;
   } else if (props.parentState.which.event_offer === 1) {
     quanity = false;
     item = props.parentState.event_offer;
-    time = item.time;
+    time = item.display_time;
   } else if (props.parentState.which.escape_offer === 1) {
     quanity = false;
     textArea = true;
     item = props.parentState.escape_offer;
-    time = item.time;
+    time = item.display_time;
   }
 
   if (item === undefined) return null;
@@ -56,7 +56,8 @@ const CheckoutLeft = props => {
         {quanity ? (
           <div className="column">
             <h4 className="ffqs fw2 p0-5 fs1-2 float-right ">
-              Quanity : <span className="tag is-warning fs1"> 2</span>
+              Quanity :{" "}
+              <span className="tag is-warning fs1">{item.quanity}</span>
             </h4>
           </div>
         ) : null}
@@ -148,8 +149,7 @@ const CheckoutLeft = props => {
                   <Segment>
                     <div className="field">
                       {props.parentState.payment.length !== 0 ? (
-                        props.parentState.payment.online_payment
-                          .payment_status === 1 ? (
+                        props.parentState.payment.razor_pay.status === 1 ? (
                           <React.Fragment>
                             <input
                               className="is-checkradio is-danger"
@@ -191,7 +191,7 @@ const CheckoutLeft = props => {
                     </label> */}
 
                       {props.parentState.payment.length !== 0 ? (
-                        props.parentState.payment.pay_at_venue === 1 ? (
+                        props.parentState.payment.pay_at_venue.status === 1 ? (
                           <React.Fragment>
                             {" "}
                             <input

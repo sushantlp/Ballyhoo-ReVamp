@@ -1,6 +1,8 @@
 import { Segment, Accordion, Icon } from "semantic-ui-react";
 import ReadMoreAndLess from "react-read-more-less";
-// import ReactTextMoreLess from "react-text-more-less";
+
+import EscapeQuery from "./escape-query";
+
 export default class EscapePackage extends React.Component {
   constructor(props) {
     super(props);
@@ -458,13 +460,14 @@ export default class EscapePackage extends React.Component {
                           </div>
 
                           <div className="column is-2">
-                            {this.props.queryButton ? (
+                            <a className="button is-warning fr">SEND QUERY</a>
+                            {/* {this.props.queryButton ? (
                               <a className="button is-warning fr">SEND QUERY</a>
                             ) : (
                               <a className="button is-warning fr" disabled>
                                 SEND QUERY
                               </a>
-                            )}
+                            )} */}
                           </div>
                         </div>
 

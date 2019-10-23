@@ -10,7 +10,6 @@ import "./parent-detail.css";
 export default class ParentDetail extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       navigation: "Overview",
       booking: false,
@@ -47,7 +46,8 @@ export default class ParentDetail extends React.Component {
       },
       verifyOpen: false,
       cartButtonLoading: false,
-      cartQuantity: false
+      cartQuantity: false,
+      escapeQuery: false
     };
   }
 
@@ -219,7 +219,7 @@ export default class ParentDetail extends React.Component {
     if (parseInt(this.props.detailUrlParam.result_type, 10) === 3) {
       if (this.state.otherCartObj.length !== 0) {
         this.props.warningToast(
-          "Price should be vary depend upon date change "
+          "Unable to make payment due to time validation"
         );
 
         this.setState({
@@ -234,13 +234,10 @@ export default class ParentDetail extends React.Component {
     if (flag) {
       const dateSplit = time.split(" ");
       const times = dateSplit[0] + ":" + dateSplit[1] + " " + dateSplit[2];
-
       this.updateChangeTime(times);
-
       this.updateDisplayTime(dateSplit[0] + ":" + dateSplit[1]);
     } else {
       const times = time.hour + ":" + time.minute + " " + time.meridiem;
-
       this.updateChangeTime(times);
 
       this.updateDisplayTime(time.hour + ":" + time.minute);
@@ -475,6 +472,8 @@ export default class ParentDetail extends React.Component {
     this.updateCalendarDisabled(true);
     this.onChangeDate(moment(new Date(obj.date)));
     this.updateFnbSelectObj(obj);
+    this.updateCartTotalPrice(0);
+    this.updateCopyCartTotalPrice(0);
   };
 
   onFnbBuffetClick = (obj, discountPrice) => {
@@ -553,7 +552,8 @@ export default class ParentDetail extends React.Component {
 
   updateChangeTime = time => {
     this.setState({
-      time
+      time: time,
+      currentTime: time
     });
   };
 
@@ -593,19 +593,19 @@ export default class ParentDetail extends React.Component {
         if (this.state.fnbTab.buffet) {
           this.props.errorToast(
             "Please login",
-            this.state.fnbSelectObj.offer_id,
+            this.props.foodCategoryData.foodCategoryData.details.partner_id,
             false
           );
         } else if (this.state.fnbTab.event) {
           this.props.errorToast(
             "Please login",
-            this.state.fnbSelectObj.offer_id,
+            this.props.foodCategoryData.foodCategoryData.details.partner_id,
             false
           );
         } else if (this.state.fnbTab.package) {
           this.props.errorToast(
             "Please login",
-            this.state.fnbSelectObj.offer_id,
+            this.props.foodCategoryData.foodCategoryData.details.partner_id,
             false
           );
         } else {
@@ -618,7 +618,7 @@ export default class ParentDetail extends React.Component {
       } else {
         this.props.errorToast(
           "Please login",
-          this.state.otherCartObj[0].price_id,
+          this.props.categoryData.categoryData.details.partner_details.p_id,
           false
         );
       }
@@ -953,7 +953,7 @@ export default class ParentDetail extends React.Component {
         if (this.state.otherTab.saloon) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-
+          const time = moment(this.state.time, "HH:mm").format("HH:mm A");
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const saloonPackage = {
@@ -968,7 +968,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.currentTime,
+            time: time,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
@@ -1001,7 +1001,7 @@ export default class ParentDetail extends React.Component {
         ) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-
+          const time = moment(this.state.time, "HH:mm").format("HH:mm A");
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const escapePackage = {
@@ -1016,7 +1016,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.currentTime,
+            time: time,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
@@ -1047,7 +1047,10 @@ export default class ParentDetail extends React.Component {
         } else if (this.state.otherTab.activity) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-
+          const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
+          const displayTime = moment(this.state.displayTime, "hh:mm A").format(
+            "hh:mm A"
+          );
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const escapePackage = {
@@ -1059,10 +1062,10 @@ export default class ParentDetail extends React.Component {
             customer_id: this.props.customerData.customerData.customer_id,
             customer_mobile: this.props.customerData.customerData.mobile,
             customer_email: this.props.customerData.customerData.email,
-            display_time: this.state.displayTime,
+            display_time: displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.currentTime,
+            time: time,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
@@ -1095,7 +1098,7 @@ export default class ParentDetail extends React.Component {
         } else if (this.state.otherTab.event) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-
+          const time = moment(this.state.time).format("HH:mm A");
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const eventPackage = {
@@ -1110,7 +1113,7 @@ export default class ParentDetail extends React.Component {
             display_time: this.state.displayTime,
             display_date: displayDate,
             date: date,
-            time: this.state.currentTime,
+            time: time,
             payment_amount: this.state.cartTotalPrice,
             packages: this.state.otherCartObj,
             items: item
