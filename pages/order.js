@@ -1,3 +1,4 @@
+import Router from "next/router";
 import ReactDOM from "react-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -53,7 +54,8 @@ class Order extends React.Component {
       focused: null,
       orderOpen: false,
       isLoading: false,
-      customerId: 0
+      customerId: 0,
+      items: []
     };
   }
 
@@ -83,13 +85,13 @@ class Order extends React.Component {
     let customer = sessionStorage.getItem("CUSTOMER_DATA");
     customer = JSON.parse(customer);
 
-    this.setState({
-      customerId: customer.customer_id
-    });
-
-    if (parseInt(customer.customer_id, 10) === 0) {
+    if (customer === null) {
       this.errorToast("Please Login !!!", 1, true);
     } else {
+      this.setState({
+        customerId: customer.customer_id
+      });
+
       const startDate = moment(this.state.start_date).format("YYYY-MM-DD");
       const endDate = moment(this.state.end_date).format("YYYY-MM-DD");
       this.props.getOrderData(customer.customer_id, startDate, endDate, 1);
@@ -98,7 +100,7 @@ class Order extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.orderData !== nextProps.orderData) {
-      this.updateLoading();
+      this.updateLoading(false);
     }
   }
 
@@ -115,10 +117,15 @@ class Order extends React.Component {
     });
   };
 
-  updateOrderModel = bool => {
+  updateOrderModel = (bool, item) => {
     this.setState({
-      orderOpen: bool
+      orderOpen: bool,
+      items: item
     });
+  };
+
+  routeChange = url => {
+    Router.push(url);
   };
 
   successToast = msg => {
@@ -128,19 +135,29 @@ class Order extends React.Component {
   errorToast = (msg, id, autoClose) => {
     toast.error(msg, {
       autoClose: autoClose,
-      toastId: id
+      toastId: id,
+      onClose: () => this.routeChange("/")
     });
   };
 
-  updateLoading = () => {
+  updateLoading = bool => {
     this.setState({
-      isLoading: !this.state.isLoading
+      isLoading: bool
     });
   };
 
   loadMoreOrder = nextPage => {
-    this.updateLoading();
-    this.props.getMoreOrderData(customerId, startDate, endDate, nextPage);
+    this.updateLoading(true);
+
+    const startDate = moment(this.state.start_date).format("YYYY-MM-DD");
+    const endDate = moment(this.state.end_date).format("YYYY-MM-DD");
+
+    this.props.getMoreOrderData(
+      this.state.customerId,
+      startDate,
+      endDate,
+      nextPage
+    );
   };
 
   render() {

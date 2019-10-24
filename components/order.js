@@ -1,6 +1,8 @@
 import "react-dates/initialize";
 
 import { DateRangePicker } from "react-dates";
+
+import Spinner from "./spinner";
 import OrderModel from "./order-model";
 
 import "react-dates/lib/css/_datepicker.css";
@@ -10,7 +12,7 @@ import "./order.css";
 const Order = props => {
   console.log(props.orderData);
 
-  if (props.orderData.orderData.length === 0) return null;
+  if (props.orderData.orderData.length === 0) return <Spinner />;
 
   return (
     <React.Fragment>
@@ -56,13 +58,19 @@ const Order = props => {
                 <div className="box" key={key}>
                   <article className="media">
                     <div className="media-left">
-                      <figure className="image is-128x128">
+                      <figure className="image is-128*128">
                         <img
                           src="https:////cdn-imgix.headout.com/tour/13770/TOUR-IMAGE/9590b09b-3c11-4e47-b364-53ee809b8326-7563-barcelona-skip-the-line-entry-ticket-to-park-guell-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min"
                           alt="Image"
                         />
                       </figure>
                     </div>
+
+                    {parseInt(value.purchase_discount, 10) !== 0 ? (
+                      <div className="ribbon ribbon-top-left">
+                        <span>{value.purchase_discount} % OFF</span>
+                      </div>
+                    ) : null}
 
                     <div className="media-content">
                       <div className="content">
@@ -78,7 +86,10 @@ const Order = props => {
                         <div className="columns">
                           <div className="column is-8">
                             <h4 className="fs1-3 fw2 ffqs">
-                              Quanity : <span className="grey">2</span>
+                              Quanity :{" "}
+                              <span className="grey">
+                                {value.purchase_quantity}
+                              </span>
                             </h4>
                             <h4 className="fs1-3 fw2 ffqs">
                               Total Amount :{" "}
@@ -88,7 +99,12 @@ const Order = props => {
                             </h4>
                             <h4 className="fs1-3 fw2 ffqs">
                               Payment Type :{" "}
-                              <span className="grey">Pay At Venue</span>
+                              <span className="grey">
+                                {" "}
+                                {parseInt(value.payment_type, 10) === 1
+                                  ? "Online"
+                                  : "Pay At Venue"}
+                              </span>
                             </h4>
                           </div>
 
@@ -148,24 +164,28 @@ const Order = props => {
           <div className="has-text-centered">
             {props.orderData.next_page !== null ? (
               props.orderState.isLoading ? (
-                <a className="button is-warning is-loading is-large">
-                  Load More
+                <a
+                  className="button is-warning is-loading is-large"
+                  style={{ width: "12em" }}
+                >
+                  LOAD MORE
                 </a>
               ) : (
                 <a
                   className="button is-warning is-large"
                   onClick={() => props.loadMoreOrder(props.orderData.next_page)}
+                  style={{ width: "12em" }}
                 >
-                  Load More
+                  LOAD MORE
                 </a>
               )
             ) : (
               <a
                 className="button is-warning is-large"
-                title="Disabled button"
                 disabled
+                style={{ width: "12em" }}
               >
-                Load More
+                LOAD MORE
               </a>
             )}
           </div>
