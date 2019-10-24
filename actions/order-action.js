@@ -1,3 +1,5 @@
+import api from "../utils/api";
+
 export const actionType = {
   orderData: "ORDER_DATA",
   orderDataMerge: "ORDER_DATA_MERGE"

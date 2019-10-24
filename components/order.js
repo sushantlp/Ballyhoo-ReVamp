@@ -8,6 +8,10 @@ import "react-dates/lib/css/_datepicker.css";
 import "./order.css";
 
 const Order = props => {
+  console.log(props.orderData);
+
+  if (props.orderData.orderData.length === 0) return null;
+
   return (
     <React.Fragment>
       <section className="section">
@@ -43,81 +47,93 @@ const Order = props => {
               </span>
             </h4>
 
-            <div className="box">
-              <article className="media">
-                <div className="media-left">
-                  <figure className="image is-128x128">
-                    <img
-                      src="https:////cdn-imgix.headout.com/tour/13770/TOUR-IMAGE/9590b09b-3c11-4e47-b364-53ee809b8326-7563-barcelona-skip-the-line-entry-ticket-to-park-guell-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min"
-                      alt="Image"
-                    />
-                  </figure>
-                </div>
-
-                <div className="media-content">
-                  <div className="content">
-                    <div className="columns">
-                      <div className="column is-12">
-                        <h4 className="fw2 fs2 m0 ffqs plh1">
-                          {" "}
-                          Wake and Bake by Rohan Joshi That Comedy Club
-                        </h4>
-                      </div>
+            {props.orderData.orderData.map((value, key) => {
+              const REG_HEX = /&#x([a-fA-F0-9]+);/;
+              let currency = value.purchase_currency.replace(REG_HEX, "$1");
+              currency = parseInt(currency, 16);
+              currency = String.fromCharCode(currency);
+              return (
+                <div className="box" key={key}>
+                  <article className="media">
+                    <div className="media-left">
+                      <figure className="image is-128x128">
+                        <img
+                          src="https:////cdn-imgix.headout.com/tour/13770/TOUR-IMAGE/9590b09b-3c11-4e47-b364-53ee809b8326-7563-barcelona-skip-the-line-entry-ticket-to-park-guell-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min"
+                          alt="Image"
+                        />
+                      </figure>
                     </div>
 
-                    <div className="columns">
-                      <div className="column is-8">
-                        <h4 className="fs1-3 fw2 ffqs">
-                          Quanity : <span className="grey">2</span>
-                        </h4>
-                        <h4 className="fs1-3 fw2 ffqs">
-                          Total Amount :{" "}
-                          <span className="grey">
-                            <span> &#8377;</span> 100
-                          </span>
-                        </h4>
-                        <h4 className="fs1-3 fw2 ffqs">
-                          Payment Type :{" "}
-                          <span className="grey">Pay At Venue</span>
-                        </h4>
+                    <div className="media-content">
+                      <div className="content">
+                        <div className="columns">
+                          <div className="column is-12">
+                            <h4 className="fw2 fs2 m0 ffqs plh1">
+                              {" "}
+                              {value.offer_title}
+                            </h4>
+                          </div>
+                        </div>
+
+                        <div className="columns">
+                          <div className="column is-8">
+                            <h4 className="fs1-3 fw2 ffqs">
+                              Quanity : <span className="grey">2</span>
+                            </h4>
+                            <h4 className="fs1-3 fw2 ffqs">
+                              Total Amount :{" "}
+                              <span className="grey">
+                                <span>{currency}</span> {value.payment_amount}
+                              </span>
+                            </h4>
+                            <h4 className="fs1-3 fw2 ffqs">
+                              Payment Type :{" "}
+                              <span className="grey">Pay At Venue</span>
+                            </h4>
+                          </div>
+
+                          <div className="column is-4">
+                            <h4 className="fs1-3 fw2 ffqs">
+                              Confirmation Code :{" "}
+                              <span className="grey">
+                                {value.confirmation_code}
+                              </span>
+                            </h4>
+                            <h4 className="fs1-3 fw2 ffqs">
+                              Booking Date :{" "}
+                              <span className="grey">{value.booking_date}</span>
+                            </h4>
+                            <h4 className="fs1-3 fw2 ffqs">
+                              Booking Time :{" "}
+                              <span className="grey">{value.booking_time}</span>
+                            </h4>
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="column is-4">
-                        <h4 className="fs1-3 fw2 ffqs">
-                          Confirmation Code :{" "}
-                          <span className="grey">26989</span>
-                        </h4>
-                        <h4 className="fs1-3 fw2 ffqs">
-                          Booking Date :{" "}
-                          <span className="grey">21-08-2019</span>
-                        </h4>
-                        <h4 className="fs1-3 fw2 ffqs">
-                          Booking Time :{" "}
-                          <span className="grey">03 : 10 PM</span>
-                        </h4>
-                      </div>
+                      {value.purchase_items.length === 0 ? (
+                        <a
+                          className="button is-large is-danger is-outlined is-fullwidth"
+                          disabled
+                          style={{ pointerEvents: "none" }}
+                        >
+                          VIEW DETAIL
+                        </a>
+                      ) : (
+                        <a
+                          className="button is-large is-danger is-outlined is-fullwidth"
+                          onClick={() =>
+                            props.updateOrderModel(true, value.purchase_items)
+                          }
+                        >
+                          VIEW DETAIL
+                        </a>
+                      )}
                     </div>
-                  </div>
-
-                  <a
-                    className="button is-large is-danger is-outlined is-fullwidth"
-                    onClick={() => props.updateOrderModel(true)}
-                  >
-                    VIEW DETAIL
-                  </a>
-
-                  {/* <a
-                    className="button is-large is-danger is-outlined is-fullwidth"
-                    title="Disabled button"
-                    disabled
-                    onClick={() => props.updateOrderModel(true)}
-                    style={{ pointerEvents: "none" }}
-                  >
-                    VIEW DETAIL
-                  </a> */}
+                  </article>
                 </div>
-              </article>
-            </div>
+              );
+            })}
           </div>
         </div>
 
@@ -127,6 +143,33 @@ const Order = props => {
             updateOrderModel={props.updateOrderModel}
           />
         ) : null}
+
+        <section className="section">
+          <div className="has-text-centered">
+            {props.orderData.next_page !== null ? (
+              props.orderState.isLoading ? (
+                <a className="button is-warning is-loading is-large">
+                  Load More
+                </a>
+              ) : (
+                <a
+                  className="button is-warning is-large"
+                  onClick={() => props.loadMoreOrder(props.orderData.next_page)}
+                >
+                  Load More
+                </a>
+              )
+            ) : (
+              <a
+                className="button is-warning is-large"
+                title="Disabled button"
+                disabled
+              >
+                Load More
+              </a>
+            )}
+          </div>
+        </section>
       </section>
     </React.Fragment>
   );

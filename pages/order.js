@@ -51,7 +51,9 @@ class Order extends React.Component {
       start_date: moment(),
       end_date: moment().add(1, "day"),
       focused: null,
-      orderOpen: false
+      orderOpen: false,
+      isLoading: false,
+      customerId: 0
     };
   }
 
@@ -78,8 +80,26 @@ class Order extends React.Component {
     sessionStorage.removeItem("WHICH");
     sessionStorage.removeItem("PAYMENT");
 
-    console.log(this.state.start_date);
-    console.log(this.state.end_date);
+    let customer = sessionStorage.getItem("CUSTOMER_DATA");
+    customer = JSON.parse(customer);
+
+    this.setState({
+      customerId: customer.customer_id
+    });
+
+    if (parseInt(customer.customer_id, 10) === 0) {
+      this.errorToast("Please Login !!!", 1, true);
+    } else {
+      const startDate = moment(this.state.start_date).format("YYYY-MM-DD");
+      const endDate = moment(this.state.end_date).format("YYYY-MM-DD");
+      this.props.getOrderData(customer.customer_id, startDate, endDate, 1);
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.orderData !== nextProps.orderData) {
+      this.updateLoading();
+    }
   }
 
   onDateChange = (startDate, endDate) => {
@@ -110,6 +130,17 @@ class Order extends React.Component {
       autoClose: autoClose,
       toastId: id
     });
+  };
+
+  updateLoading = () => {
+    this.setState({
+      isLoading: !this.state.isLoading
+    });
+  };
+
+  loadMoreOrder = nextPage => {
+    this.updateLoading();
+    this.props.getMoreOrderData(customerId, startDate, endDate, nextPage);
   };
 
   render() {
@@ -143,6 +174,7 @@ class Order extends React.Component {
           onFocusedChange={this.onFocusedChange}
           updateOrderModel={this.updateOrderModel}
           orderData={this.props.orderData}
+          loadMoreOrder={this.loadMoreOrder}
         />
         <Headout />
         <Footer />
@@ -154,7 +186,6 @@ class Order extends React.Component {
 const mapStateToProps = state => {
   return {
     cityLocality: state.cityLocality,
-
     login: state.login,
     register: state.register,
     forget: state.forget,

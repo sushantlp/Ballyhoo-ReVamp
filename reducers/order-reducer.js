@@ -2,7 +2,7 @@ import { actionType } from "../actions/order-action";
 
 const initialState = {
   orderData: [],
-  next_page: 1,
+  next_page: null,
   prev_page: 0,
   status: "START",
   msg: ""
@@ -25,7 +25,7 @@ export function orderData(state = initialState, action) {
           ...state,
           orderData: [],
           status: "FAIL",
-          next_page: 1,
+          next_page: null,
           prev_page: 0,
           msg: action.orderData.message
         };
@@ -48,7 +48,7 @@ export function orderData(state = initialState, action) {
         return {
           ...state,
           orderData: [],
-          next_page: 1,
+          next_page: null,
           prev_page: 0,
           status: "FAIL",
           msg: action.orderData.message

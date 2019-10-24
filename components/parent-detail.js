@@ -953,7 +953,7 @@ export default class ParentDetail extends React.Component {
         if (this.state.otherTab.saloon) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-          const time = moment(this.state.time, "HH:mm").format("HH:mm A");
+          const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const saloonPackage = {
@@ -1001,7 +1001,7 @@ export default class ParentDetail extends React.Component {
         ) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-          const time = moment(this.state.time, "HH:mm").format("HH:mm A");
+          const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const escapePackage = {
@@ -1098,7 +1098,8 @@ export default class ParentDetail extends React.Component {
         } else if (this.state.otherTab.event) {
           const date = moment(this.state.date).format("YYYY-MM-DD");
           const displayDate = moment(this.state.date).format("DD-MM-YYYY");
-          const time = moment(this.state.time).format("HH:mm A");
+
+          const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
           const item = this.otherCategoryJsonBuilder(this.state.otherCartObj);
 
           const eventPackage = {

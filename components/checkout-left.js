@@ -84,7 +84,7 @@ const CheckoutLeft = props => {
         <React.Fragment>
           <br />
           <textarea
-            class="textarea"
+            className="textarea"
             placeholder="Any customization"
             onChange={event => props.onChangeRequest(event)}
           />

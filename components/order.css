@@ -70,7 +70,7 @@
 .order-container .grey {
   background-color: #ece9e9;
   border-radius: 4px;
-  padding: 0.1em 0.5em 0.1em 0.5em;
+  padding: 0.2em 0.5em 0.2em 0.5em;
 }
 
 .order-container .button.is-fullwidth {
@@ -107,4 +107,19 @@
   right: 0px;
   border-top: 26px solid transparent;
   border-right: 33px solid #ff3860;
+}
+
+/* .order-container .order-button {
+  background-color: #ff3860;
+  color: white;
+  opacity: 1;
+  width: 17.2em;
+  height: 2.5em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+} */
+
+span {
+  content: "\0024";
 }
