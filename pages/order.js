@@ -142,7 +142,6 @@ class Order extends React.Component {
   };
 
   successToast = msg => {
-    console.log("TOASTSSSSSSSS");
     toast.success(msg);
   };
 

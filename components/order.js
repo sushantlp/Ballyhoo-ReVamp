@@ -88,7 +88,10 @@ const Order = props => {
                             </h4> */}
 
                             <p className="title ffqs">{value.offer_title}</p>
-                            <p className="subtitle is-6 mb8">
+                            <p
+                              className="subtitle is-6 mb8 ffqs"
+                              style={{ fontSize: "1.5em" }}
+                            >
                               {value.partner_bname}
                             </p>
                           </div>
@@ -96,13 +99,26 @@ const Order = props => {
 
                         <div className="columns">
                           <div className="column is-8">
-                            <h4 className="fs1-3 fw2 ffqs">
+                            {/* <h4 className="fs1-3 fw2 ffqs">
                               Quanity :{" "}
                               <span className="grey">
                                 {value.purchase_quantity}
-                              </span>
-                            </h4>
-                            <h4 className="fs1-3 fw2 ffqs">
+                              </span> */}
+
+                            <div class="control">
+                              <div class="tags has-addons">
+                                <span class="tag is-warning is-light is-large">
+                                  {" "}
+                                  Quantity :
+                                </span>
+                                <span class="tag is-warning is-large">
+                                  {value.purchase_quantity}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* </h4> */}
+                            {/* <h4 className="fs1-3 fw2 ffqs">
                               Total Amount :{" "}
                               <span className="grey">
                                 {parseInt(value.payment_amount, 10) === 0 ? (
@@ -114,9 +130,30 @@ const Order = props => {
                                     {value.payment_amount}{" "}
                                   </React.Fragment>
                                 )}
-                              </span>
-                            </h4>
-                            <h4 className="fs1-3 fw2 ffqs">
+                              </span> */}
+
+                            <div class="control" style={{ marginTop: "1em" }}>
+                              <div class="tags has-addons">
+                                <span class="tag is-warning is-light  is-large">
+                                  {" "}
+                                  Total Amount :{" "}
+                                </span>
+                                <span class="tag is-warning is-large">
+                                  {parseInt(value.payment_amount, 10) === 0 ? (
+                                    <span>N/A</span>
+                                  ) : (
+                                    <React.Fragment>
+                                      {" "}
+                                      <span>{currency}</span>{" "}
+                                      {value.payment_amount}{" "}
+                                    </React.Fragment>
+                                  )}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* </h4> */}
+                            {/* <h4 className="fs1-3 fw2 ffqs">
                               Payment Type :{" "}
                               <span className="grey">
                                 {" "}
@@ -124,24 +161,79 @@ const Order = props => {
                                   ? "Online"
                                   : "Pay At Venue"}
                               </span>
-                            </h4>
+                            </h4> */}
+
+                            <div class="control" style={{ marginTop: "1em" }}>
+                              <div class="tags has-addons">
+                                <span class="tag is-warning is-light  is-large">
+                                  {" "}
+                                  Payment Type :{" "}
+                                </span>
+                                <span class="tag is-warning is-large">
+                                  {" "}
+                                  {parseInt(value.payment_type, 10) === 1
+                                    ? "Online"
+                                    : "Pay At Venue"}
+                                </span>
+                              </div>
+                            </div>
                           </div>
 
                           <div className="column is-4">
-                            <h4 className="fs1-3 fw2 ffqs">
+                            {/* <h4 className="fs1-3 fw2 ffqs">
                               Confirmation Code :{" "}
                               <span className="grey">
                                 {value.confirmation_code}
                               </span>
-                            </h4>
-                            <h4 className="fs1-3 fw2 ffqs">
+                            </h4> */}
+
+                            <div class="control">
+                              <div class="tags has-addons">
+                                <span class="tag is-warning is-light is-large">
+                                  {" "}
+                                  Confirmation Code :{" "}
+                                </span>
+                                <span class="tag is-warning is-large">
+                                  {value.confirmation_code}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* <h4 className="fs1-3 fw2 ffqs">
                               Booking Date :{" "}
                               <span className="grey">{value.booking_date}</span>
-                            </h4>
-                            <h4 className="fs1-3 fw2 ffqs">
+                            </h4> */}
+
+                            <div class="control" style={{ marginTop: "1em" }}>
+                              <div class="tags has-addons">
+                                <span class="tag is-warning is-light is-large">
+                                  {" "}
+                                  Booking Date :{" "}
+                                </span>
+                                <span class="tag is-warning is-large">
+                                  {" "}
+                                  {value.booking_date}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div class="control" style={{ marginTop: "1em" }}>
+                              <div class="tags has-addons">
+                                <span class="tag is-warning is-light is-large">
+                                  {" "}
+                                  Booking Time :{" "}
+                                </span>
+                                <span class="tag is-warning is-large">
+                                  {" "}
+                                  {value.booking_time}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* <h4 className="fs1-3 fw2 ffqs">
                               Booking Time :{" "}
                               <span className="grey">{value.booking_time}</span>
-                            </h4>
+                            </h4> */}
                           </div>
                         </div>
                       </div>

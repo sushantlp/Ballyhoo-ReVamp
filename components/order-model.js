@@ -26,42 +26,63 @@ const OrderModel = props => {
                       <div className="media-content">
                         <div className="content">
                           <div className="columns m0">
-                            <div className="column is-12">
-                              <h4 className="fs1-5 fw2 ffqs">
-                                {" "}
-                                {item.price_caption}
-                              </h4>
+                            <div className="column is-8">
+                              {item.package_caption === null ? (
+                                <h4 className="fs1-5 fw2 ffqs">
+                                  {" "}
+                                  {item.price_caption}
+                                </h4>
+                              ) : (
+                                <React.Fragment>
+                                  {" "}
+                                  <h4 className="fs1-5 fw2 ffqs">
+                                    {" "}
+                                    {item.package_caption}
+                                  </h4>
+                                  <h4 className="fs1-5 fw2 ffqs">
+                                    {" "}
+                                    {item.price_caption}
+                                  </h4>
+                                </React.Fragment>
+                              )}
                             </div>
 
-                            {/* <div className="column is-2">
-                              <h4 className="fs1 fw2 ffqs">Aug 31 2019</h4>
-                            </div> */}
+                            <div className="column is-4">
+                              <span
+                                className="tag is-warning is-medium"
+                                style={{ float: "right" }}
+                              >
+                                <span>Quantity : {item.quantity}</span>
+                              </span>
+                            </div>
                           </div>
 
                           <div className="columns m0">
-                            <div className="column is-4">
-                              <h4 className="fs1-2 fw2 ffqs ">
-                                <span className="grey">
-                                  Price : <span>{props.currency}</span>{" "}
-                                  {item.price}
-                                </span>
-                              </h4>
+                            <div className="column is-3">
+                              <span className="tag is-warning is-medium">
+                                Price : {item.quantity}
+                              </span>
                             </div>
 
-                            <div className="column is-4">
-                              <h4 className="fs1-2 fw2 ffqs">
-                                {" "}
-                                <span className="grey">Aug 31 2019</span>
-                              </h4>
-                            </div>
+                            {item.package_start_date === null ? null : (
+                              <div className="column is-3">
+                                <h4 className="fs1-2 fw2 ffqs">
+                                  <span className="tag is-warning is-medium">
+                                    Start Date : {item.package_start_date}
+                                  </span>
+                                </h4>
+                              </div>
+                            )}
 
-                            <div className="column is-4">
-                              <h4 className="fs1-2 fw2 ffqs float-right">
-                                <span className="grey">
-                                  Quantity : {item.quantity}
-                                </span>
-                              </h4>
-                            </div>
+                            {item.package_end_date === null ? null : (
+                              <div className="column is-3">
+                                <h4 className="fs1-2 fw2 ffqs">
+                                  <span className="tag is-warning is-medium">
+                                    End Date : {item.package_end_date}
+                                  </span>
+                                </h4>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
