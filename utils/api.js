@@ -653,5 +653,20 @@ export default {
         })
         .catch(error => console.log(error));
     });
+  },
+
+  orderDataApi: (customerId, startDate, endDate, page) => {
+    return new Promise((resolve, reject) => {
+      fetch(
+        `${host}api/v9/web/customers/${customerId}/orders?from=${startDate}&to=${endDate}&page=${page}`
+      )
+        .then(response => {
+          response
+            .json()
+            .then(orderData => resolve(orderData))
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    });
   }
 };

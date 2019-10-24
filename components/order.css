@@ -1,25 +1,7 @@
-/* .order-container .box {
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  display: block;
-  padding: 0.5em;
-  border-radius: 0;
-} */
-
-/* .order-container .box figure {
-  margin-left: 0px;
-  margin-top: 0px;
-  margin-right: 1em;
-  margin-bottom: 0.5em;
-} */
-
 .order-container .box .image {
   width: 200px;
   height: 200px;
 }
-
-/* .order-container .box .media .media-left {
-  margin-right: 0;
-} */
 
 .order-container .ffqs {
   font-family: "Quicksand", sans-serif;
@@ -93,4 +75,36 @@
 
 .order-container .button.is-fullwidth {
   margin-top: 3em;
+}
+
+.order-container .DateRangePickerInput__withBorder {
+  border-radius: 0px;
+}
+
+.order-container .DateInput {
+  width: 5em;
+}
+
+.order-container .DateInput_input__focused {
+  /* width: 5em; */
+  border-bottom: 2px solid #ff3860;
+}
+
+.order-container .CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #ff3860;
+  border: 1px double #ff3860;
+  color: #fff;
+}
+
+/* .order-container .DayPicker_weekHeader_ul {
+  margin-top: -2px;
+} */
+
+.order-container .DayPickerKeyboardShortcuts_show__bottomRight::before {
+  bottom: 0px;
+  right: 0px;
+  border-top: 26px solid transparent;
+  border-right: 33px solid #ff3860;
 }

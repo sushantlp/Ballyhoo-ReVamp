@@ -103,6 +103,10 @@ app
       return app.render(req, res, "/explore", {});
     });
 
+    server.get("/order", (req, res) => {
+      return app.render(req, res, "/order", {});
+    });
+
     server.get("/checkout", (req, res) => {
       return app.render(req, res, "/checkout", {});
     });
