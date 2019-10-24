@@ -71,6 +71,7 @@
   background-color: #ece9e9;
   border-radius: 4px;
   padding: 0.2em 0.5em 0.2em 0.5em;
+  letter-spacing: 0.1em;
 }
 
 .order-container .button.is-fullwidth {
@@ -82,13 +83,18 @@
 }
 
 .order-container .DateInput {
-  width: 5em;
+  width: 5.5em;
 }
 
 .order-container .DateInput_input__focused {
-  /* width: 5em; */
   border-bottom: 2px solid #ff3860;
 }
+/* 
+.order-container .CalendarDay__selected_span {
+  background: #ff3860;
+  border: 1px double #ff3860;
+  color: #fff;
+} */
 
 .order-container .CalendarDay__selected,
 .CalendarDay__selected:active,
@@ -152,4 +158,8 @@
   right: -4px;
   top: 20px;
   transform: rotate(-45deg);
+}
+
+.order-container figure {
+  margin: 0em 0px;
 }

@@ -567,6 +567,20 @@ export default class Header extends React.Component {
                   </div>
                 ) : null}
 
+                {this.state.profileOpen ? (
+                  <div className="navbar-item">
+                    <Link href="/order">
+                      <div className="control">
+                        <div className="buttons">
+                          <a className="button is-rounded is-outlined">
+                            <span>Order</span>
+                          </a>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ) : null}
+
                 <div className="navbar-item">
                   <Link href="/explore">
                     <div className="control">

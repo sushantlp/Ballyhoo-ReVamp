@@ -55,7 +55,9 @@ class Order extends React.Component {
       orderOpen: false,
       isLoading: false,
       customerId: 0,
-      items: []
+      items: [],
+      currency: "&#8377;",
+      searchButtonLoading: false
     };
   }
 
@@ -100,14 +102,24 @@ class Order extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.orderData !== nextProps.orderData) {
+      if (nextProps.orderData.status === "FAIL") {
+        this.errorToast(nextProps.orderData.msg, 1, true);
+      } else if (
+        nextProps.orderData.status === "SUCCESS" &&
+        nextProps.orderData.orderData.length === 0
+      ) {
+        this.successToast("Empty order list !!!");
+      }
+
       this.updateLoading(false);
+      this.updateSearchButtonLoading(false);
     }
   }
 
-  onDateChange = (startDate, endDate) => {
+  onDateChange = date => {
     this.setState({
-      start_date: startDate,
-      end_date: endDate
+      start_date: date.startDate,
+      end_date: date.endDate
     });
   };
 
@@ -117,10 +129,11 @@ class Order extends React.Component {
     });
   };
 
-  updateOrderModel = (bool, item) => {
+  updateOrderModel = (bool, item, currency) => {
     this.setState({
       orderOpen: bool,
-      items: item
+      items: item,
+      currency
     });
   };
 
@@ -129,7 +142,8 @@ class Order extends React.Component {
   };
 
   successToast = msg => {
-    return toast.success(msg);
+    console.log("TOASTSSSSSSSS");
+    toast.success(msg);
   };
 
   errorToast = (msg, id, autoClose) => {
@@ -144,6 +158,19 @@ class Order extends React.Component {
     this.setState({
       isLoading: bool
     });
+  };
+
+  updateSearchButtonLoading = bool => {
+    this.setState({
+      searchButtonLoading: bool
+    });
+  };
+
+  newOrder = () => {
+    this.updateSearchButtonLoading(true);
+    const startDate = moment(this.state.start_date).format("YYYY-MM-DD");
+    const endDate = moment(this.state.end_date).format("YYYY-MM-DD");
+    this.props.getOrderData(this.state.customerId, startDate, endDate, 1);
   };
 
   loadMoreOrder = nextPage => {
@@ -192,6 +219,7 @@ class Order extends React.Component {
           updateOrderModel={this.updateOrderModel}
           orderData={this.props.orderData}
           loadMoreOrder={this.loadMoreOrder}
+          newOrder={this.newOrder}
         />
         <Headout />
         <Footer />

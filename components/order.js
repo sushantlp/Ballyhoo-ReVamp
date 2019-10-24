@@ -12,7 +12,7 @@ import "./order.css";
 const Order = props => {
   console.log(props.orderData);
 
-  if (props.orderData.orderData.length === 0) return <Spinner />;
+  if (props.orderData.orderData.status === "START") return <Spinner />;
 
   return (
     <React.Fragment>
@@ -28,24 +28,33 @@ const Order = props => {
                   startDateId="filterStartDate"
                   endDate={props.orderState.end_date}
                   endDateId="filterEndDate"
-                  onDatesChange={(startDate, endDate) =>
-                    props.onDateChange(startDate, endDate)
-                  }
+                  onDatesChange={date => props.onDateChange(date)}
                   focusedInput={props.orderState.focused}
                   onFocusChange={focusedInput =>
                     props.onFocusedChange(focusedInput)
                   }
                   displayFormat="MMM DD YYYY"
+                  isOutsideRange={function noRefCheck() {}}
                 />
               </span>
 
               <span>
-                <a
-                  className="button is-danger is-large"
-                  style={{ borderRadius: "0px" }}
-                >
-                  SEARCH
-                </a>
+                {props.orderState.searchButtonLoading ? (
+                  <a
+                    className="button is-danger  is-loading is-large"
+                    style={{ borderRadius: "0px" }}
+                  >
+                    SEARCH
+                  </a>
+                ) : (
+                  <a
+                    className="button is-danger is-large"
+                    style={{ borderRadius: "0px" }}
+                    onClick={() => props.newOrder()}
+                  >
+                    SEARCH
+                  </a>
+                )}
               </span>
             </h4>
 
@@ -59,10 +68,7 @@ const Order = props => {
                   <article className="media">
                     <div className="media-left">
                       <figure className="image is-128*128">
-                        <img
-                          src="https:////cdn-imgix.headout.com/tour/13770/TOUR-IMAGE/9590b09b-3c11-4e47-b364-53ee809b8326-7563-barcelona-skip-the-line-entry-ticket-to-park-guell-01.jpg?auto=compress&fm=pjpg&w=480&h=480&crop=faces&fit=min"
-                          alt="Image"
-                        />
+                        <img src={value.purchase_image} alt="Image" />
                       </figure>
                     </div>
 
@@ -76,10 +82,15 @@ const Order = props => {
                       <div className="content">
                         <div className="columns">
                           <div className="column is-12">
-                            <h4 className="fw2 fs2 m0 ffqs plh1">
+                            {/* <h4 className="fw2 fs2 m0 ffqs plh1">
                               {" "}
                               {value.offer_title}
-                            </h4>
+                            </h4> */}
+
+                            <p className="title ffqs">{value.offer_title}</p>
+                            <p className="subtitle is-6 mb8">
+                              {value.partner_bname}
+                            </p>
                           </div>
                         </div>
 
@@ -94,7 +105,15 @@ const Order = props => {
                             <h4 className="fs1-3 fw2 ffqs">
                               Total Amount :{" "}
                               <span className="grey">
-                                <span>{currency}</span> {value.payment_amount}
+                                {parseInt(value.payment_amount, 10) === 0 ? (
+                                  <span>N/A</span>
+                                ) : (
+                                  <React.Fragment>
+                                    {" "}
+                                    <span>{currency}</span>{" "}
+                                    {value.payment_amount}{" "}
+                                  </React.Fragment>
+                                )}
                               </span>
                             </h4>
                             <h4 className="fs1-3 fw2 ffqs">
@@ -139,7 +158,11 @@ const Order = props => {
                         <a
                           className="button is-large is-danger is-outlined is-fullwidth"
                           onClick={() =>
-                            props.updateOrderModel(true, value.purchase_items)
+                            props.updateOrderModel(
+                              true,
+                              value.purchase_items,
+                              currency
+                            )
                           }
                         >
                           VIEW DETAIL
@@ -157,39 +180,45 @@ const Order = props => {
           <OrderModel
             orderOpen={props.orderState.orderOpen}
             updateOrderModel={props.updateOrderModel}
+            items={props.orderState.items}
+            currency={props.orderState.currency}
           />
         ) : null}
 
-        <section className="section">
-          <div className="has-text-centered">
-            {props.orderData.next_page !== null ? (
-              props.orderState.isLoading ? (
-                <a
-                  className="button is-warning is-loading is-large"
-                  style={{ width: "12em" }}
-                >
-                  LOAD MORE
-                </a>
+        {props.orderData.orderData.length === 0 ? null : (
+          <section className="section">
+            <div className="has-text-centered">
+              {props.orderData.next_page !== null ? (
+                props.orderState.isLoading ? (
+                  <a
+                    className="button is-warning is-loading is-large"
+                    style={{ width: "12em" }}
+                  >
+                    LOAD MORE
+                  </a>
+                ) : (
+                  <a
+                    className="button is-warning is-large"
+                    onClick={() =>
+                      props.loadMoreOrder(props.orderData.next_page)
+                    }
+                    style={{ width: "12em" }}
+                  >
+                    LOAD MORE
+                  </a>
+                )
               ) : (
                 <a
                   className="button is-warning is-large"
-                  onClick={() => props.loadMoreOrder(props.orderData.next_page)}
+                  disabled
                   style={{ width: "12em" }}
                 >
                   LOAD MORE
                 </a>
-              )
-            ) : (
-              <a
-                className="button is-warning is-large"
-                disabled
-                style={{ width: "12em" }}
-              >
-                LOAD MORE
-              </a>
-            )}
-          </div>
-        </section>
+              )}
+            </div>
+          </section>
+        )}
       </section>
     </React.Fragment>
   );
