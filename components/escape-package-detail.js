@@ -14,7 +14,8 @@ export default class EscapePackage extends React.Component {
         door: false
       },
       collapsed: true,
-      dynamic: []
+      dynamic: [],
+      escapeQuery: false
     };
   }
 
@@ -114,6 +115,12 @@ export default class EscapePackage extends React.Component {
     const newIndex = activeIndex === index ? -1 : index;
 
     this.setState({ activeIndex: newIndex });
+  };
+
+  updateEscapeQueryState = bool => {
+    this.setState({
+      escapeQuery: bool
+    });
   };
 
   render() {
@@ -388,8 +395,6 @@ export default class EscapePackage extends React.Component {
               cutPrice = list.price;
             }
 
-            // this.state.dynamic.push({ bool: true });
-
             return (
               <Segment key={key}>
                 <div className="package-container">
@@ -443,13 +448,6 @@ export default class EscapePackage extends React.Component {
 
                           <div className="column is-2">
                             <a className="button is-warning fr">SEND QUERY</a>
-                            {/* {this.props.queryButton ? (
-                              <a className="button is-warning fr">SEND QUERY</a>
-                            ) : (
-                              <a className="button is-warning fr" disabled>
-                                SEND QUERY
-                              </a>
-                            )} */}
                           </div>
                         </div>
 
@@ -466,29 +464,6 @@ export default class EscapePackage extends React.Component {
                           >
                             {list.price_description}
                           </ReadMoreAndLess>
-
-                          {/* <ReactTextMoreLess
-                            collapsed={this.state.dynamic[key].bool}
-                            text={list.price_description}
-                            lessHeight={100}
-                            showMoreText="... show more"
-                            showMoreElement={
-                              <span>
-                                ...{" "}
-                                <span className="show-more-text">
-                                  show more
-                                </span>
-                              </span>
-                            }
-                            showLessElement={
-                              <span className="show-more-text">show less</span>
-                            }
-                            onClick={() => {
-                              this.setState({
-                                collapsed: !this.state.dynamic[key].bool
-                              });
-                            }}
-                          /> */}
                         </div>
                       </div>
                     </div>
@@ -715,6 +690,13 @@ export default class EscapePackage extends React.Component {
           >
             <span>VIEW DETAILS</span>
           </a>
+
+          {this.state.escapeQuery ? (
+            <EscapeQuery
+              escapeQuery={this.state.escapeQuery}
+              updateEscapeQueryState={this.updateEscapeQueryState}
+            />
+          ) : null}
         </Segment>
       );
     });

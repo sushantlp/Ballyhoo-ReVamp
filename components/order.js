@@ -1,5 +1,6 @@
 import "react-dates/initialize";
 
+import { Segment } from "semantic-ui-react";
 import { DateRangePicker } from "react-dates";
 
 import Spinner from "./spinner";
@@ -58,64 +59,71 @@ const Order = props => {
               </span>
             </h4>
 
-            {props.orderData.orderData.map((value, key) => {
-              const REG_HEX = /&#x([a-fA-F0-9]+);/;
-              let currency = value.purchase_currency.replace(REG_HEX, "$1");
-              currency = parseInt(currency, 16);
-              currency = String.fromCharCode(currency);
-              return (
-                <div className="box" key={key}>
-                  <article className="media">
-                    <div className="media-left">
-                      <figure className="image is-128*128">
-                        <img src={value.purchase_image} alt="Image" />
-                      </figure>
-                    </div>
+            <section className="section">
+              <div className="container">
+                {props.orderData.orderData.map((value, key) => {
+                  const REG_HEX = /&#x([a-fA-F0-9]+);/;
+                  let currency = value.purchase_currency.replace(REG_HEX, "$1");
+                  currency = parseInt(currency, 16);
+                  currency = String.fromCharCode(currency);
+                  return (
+                    <div className="box" key={key}>
+                      <article className="media">
+                        <div className="media-left">
+                          <figure className="image is-128*128">
+                            <img src={value.purchase_image} alt="Image" />
+                          </figure>
+                        </div>
 
-                    {parseInt(value.purchase_discount, 10) !== 0 ? (
-                      <div className="ribbon ribbon-top-left">
-                        <span>{value.purchase_discount} % OFF</span>
-                      </div>
-                    ) : null}
+                        {parseInt(value.purchase_discount, 10) !== 0 ? (
+                          <div className="ribbon ribbon-top-left">
+                            <span>{value.purchase_discount} % OFF</span>
+                          </div>
+                        ) : null}
 
-                    <div className="media-content">
-                      <div className="content">
-                        <div className="columns">
-                          <div className="column is-12">
-                            {/* <h4 className="fw2 fs2 m0 ffqs plh1">
+                        <div className="media-content">
+                          <div className="content">
+                            <div className="columns">
+                              <div className="column is-12">
+                                {/* <h4 className="fw2 fs2 m0 ffqs plh1">
                               {" "}
                               {value.offer_title}
                             </h4> */}
 
-                            <p className="title ffqs">{value.offer_title}</p>
-                            <p
-                              className="subtitle is-6 mb8 ffqs"
-                              style={{ fontSize: "1.5em" }}
-                            >
-                              {value.partner_bname}
-                            </p>
-                          </div>
-                        </div>
+                                <p className="title ffqs">
+                                  {value.offer_title}
+                                </p>
+                                <p
+                                  className="subtitle is-6 mb8 ffqs"
+                                  style={{ fontSize: "1.5em" }}
+                                >
+                                  {value.partner_bname}
+                                </p>
+                              </div>
+                            </div>
 
-                        <div className="columns">
-                          <div className="column is-8">
-                            {/* <h4 className="fs1-3 fw2 ffqs">
+                            <div className="columns">
+                              <div className="column is-8">
+                                {/* <h4 className="fs1-3 fw2 ffqs">
                               Quanity :{" "}
                               <span className="grey">
                                 {value.purchase_quantity}
                               </span> */}
 
-                            <div class="control">
-                              <div class="tags has-addons">
-                                <span class="tag is-large"> Quantity :</span>
-                                <span class="tag is-warning is-large">
-                                  {value.purchase_quantity}
-                                </span>
-                              </div>
-                            </div>
+                                <div class="control">
+                                  <div class="tags has-addons">
+                                    <span class="tag is-large">
+                                      {" "}
+                                      Quantity :
+                                    </span>
+                                    <span class="tag is-warning is-large">
+                                      {value.purchase_quantity}
+                                    </span>
+                                  </div>
+                                </div>
 
-                            {/* </h4> */}
-                            {/* <h4 className="fs1-3 fw2 ffqs">
+                                {/* </h4> */}
+                                {/* <h4 className="fs1-3 fw2 ffqs">
                               Total Amount :{" "}
                               <span className="grey">
                                 {parseInt(value.payment_amount, 10) === 0 ? (
@@ -129,28 +137,32 @@ const Order = props => {
                                 )}
                               </span> */}
 
-                            <div class="control" style={{ marginTop: "1em" }}>
-                              <div class="tags has-addons">
-                                <span class="tag is-large">
-                                  {" "}
-                                  Total Amount :{" "}
-                                </span>
-                                <span class="tag is-warning is-large">
-                                  {parseInt(value.payment_amount, 10) === 0 ? (
-                                    <span>N/A</span>
-                                  ) : (
-                                    <React.Fragment>
+                                <div
+                                  class="control"
+                                  style={{ marginTop: "1em" }}
+                                >
+                                  <div class="tags has-addons">
+                                    <span class="tag is-large">
                                       {" "}
-                                      <span>{currency}</span>{" "}
-                                      {value.payment_amount}{" "}
-                                    </React.Fragment>
-                                  )}
-                                </span>
-                              </div>
-                            </div>
+                                      Total Amount :{" "}
+                                    </span>
+                                    <span class="tag is-warning is-large">
+                                      {parseInt(value.payment_amount, 10) ===
+                                      0 ? (
+                                        <span>N/A</span>
+                                      ) : (
+                                        <React.Fragment>
+                                          {" "}
+                                          <span>{currency}</span>{" "}
+                                          {value.payment_amount}{" "}
+                                        </React.Fragment>
+                                      )}
+                                    </span>
+                                  </div>
+                                </div>
 
-                            {/* </h4> */}
-                            {/* <h4 className="fs1-3 fw2 ffqs">
+                                {/* </h4> */}
+                                {/* <h4 className="fs1-3 fw2 ffqs">
                               Payment Type :{" "}
                               <span className="grey">
                                 {" "}
@@ -160,108 +172,134 @@ const Order = props => {
                               </span>
                             </h4> */}
 
-                            <div class="control" style={{ marginTop: "1em" }}>
-                              <div class="tags has-addons">
-                                <span class="tag is-large">
-                                  {" "}
-                                  Payment Type :{" "}
-                                </span>
-                                <span class="tag is-warning is-large">
-                                  {" "}
-                                  {parseInt(value.payment_type, 10) === 1
-                                    ? "Online"
-                                    : "Pay At Venue"}
-                                </span>
+                                <div
+                                  class="control"
+                                  style={{ marginTop: "1em" }}
+                                >
+                                  <div class="tags has-addons">
+                                    <span class="tag is-large">
+                                      {" "}
+                                      Payment Type :{" "}
+                                    </span>
+                                    <span class="tag is-warning is-large">
+                                      {" "}
+                                      {parseInt(value.payment_type, 10) === 1
+                                        ? "Online"
+                                        : "Pay At Venue"}
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                          </div>
 
-                          <div className="column is-4">
-                            {/* <h4 className="fs1-3 fw2 ffqs">
+                              <div className="column is-4">
+                                {/* <h4 className="fs1-3 fw2 ffqs">
                               Confirmation Code :{" "}
                               <span className="grey">
                                 {value.confirmation_code}
                               </span>
                             </h4> */}
 
-                            <div class="control">
-                              <div class="tags has-addons">
-                                <span class="tag is-large">
-                                  {" "}
-                                  Confirmation Code :{" "}
-                                </span>
-                                <span class="tag is-warning is-large">
-                                  {value.confirmation_code}
-                                </span>
-                              </div>
-                            </div>
+                                <div class="control">
+                                  <div class="tags has-addons">
+                                    <span class="tag is-large">
+                                      {" "}
+                                      Confirmation Code :{" "}
+                                    </span>
+                                    <span class="tag is-warning is-large">
+                                      {value.confirmation_code}
+                                    </span>
+                                  </div>
+                                </div>
 
-                            {/* <h4 className="fs1-3 fw2 ffqs">
+                                {/* <h4 className="fs1-3 fw2 ffqs">
                               Booking Date :{" "}
                               <span className="grey">{value.booking_date}</span>
                             </h4> */}
 
-                            <div class="control" style={{ marginTop: "1em" }}>
-                              <div class="tags has-addons">
-                                <span class="tag is-large">
-                                  {" "}
-                                  Booking Date :{" "}
-                                </span>
-                                <span class="tag is-warning is-large">
-                                  {" "}
-                                  {value.booking_date}
-                                </span>
-                              </div>
-                            </div>
+                                <div
+                                  class="control"
+                                  style={{ marginTop: "1em" }}
+                                >
+                                  <div class="tags has-addons">
+                                    <span class="tag is-large">
+                                      {" "}
+                                      Booking Date :{" "}
+                                    </span>
+                                    <span class="tag is-warning is-large">
+                                      {" "}
+                                      {value.booking_date}
+                                    </span>
+                                  </div>
+                                </div>
 
-                            <div class="control" style={{ marginTop: "1em" }}>
-                              <div class="tags has-addons">
-                                <span class="tag is-large">
-                                  {" "}
-                                  Booking Time :{" "}
-                                </span>
-                                <span class="tag is-warning is-large">
-                                  {" "}
-                                  {value.booking_time}
-                                </span>
-                              </div>
-                            </div>
+                                <div
+                                  class="control"
+                                  style={{ marginTop: "1em" }}
+                                >
+                                  <div class="tags has-addons">
+                                    <span class="tag is-large">
+                                      {" "}
+                                      Booking Time :{" "}
+                                    </span>
+                                    <span class="tag is-warning is-large">
+                                      {" "}
+                                      {value.booking_time}
+                                    </span>
+                                  </div>
+                                </div>
 
-                            {/* <h4 className="fs1-3 fw2 ffqs">
+                                {/* <h4 className="fs1-3 fw2 ffqs">
                               Booking Time :{" "}
                               <span className="grey">{value.booking_time}</span>
                             </h4> */}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      {value.purchase_items.length === 0 ? (
-                        <a
-                          className="button is-large is-danger is-outlined is-fullwidth"
-                          disabled
-                          style={{ pointerEvents: "none" }}
-                        >
-                          VIEW DETAIL
-                        </a>
-                      ) : (
-                        <a
-                          className="button is-large is-danger is-outlined is-fullwidth"
-                          onClick={() =>
-                            props.updateOrderModel(
-                              true,
-                              value.purchase_items,
-                              currency
-                            )
-                          }
-                        >
-                          VIEW DETAIL
-                        </a>
-                      )}
+                          {value.purchase_items.length === 0 ? (
+                            <section
+                              className="section"
+                              style={{ paddingBottom: "0em" }}
+                            >
+                              <div className="has-text-centered">
+                                <a
+                                  className="button is-danger is-large"
+                                  disabled
+                                  style={{ width: "12em" }}
+                                >
+                                  VIEW DETAIL
+                                </a>
+                              </div>
+                            </section>
+                          ) : (
+                            <section
+                              className="section"
+                              style={{ paddingBottom: "0em" }}
+                            >
+                              <div className="has-text-centered">
+                                <a
+                                  className="button is-large is-danger"
+                                  style={{ width: "12em" }}
+                                  onClick={() =>
+                                    props.updateOrderModel(
+                                      true,
+                                      value.purchase_items,
+                                      currency
+                                    )
+                                  }
+                                >
+                                  VIEW DETAIL
+                                </a>
+                              </div>
+                            </section>
+                          )}
+                        </div>
+                      </article>
                     </div>
-                  </article>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </section>
           </div>
         </div>
 

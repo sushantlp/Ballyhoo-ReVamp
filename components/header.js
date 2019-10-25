@@ -520,7 +520,7 @@ export default class Header extends React.Component {
                   <div className="control">
                     <div className="buttons">
                       <a className="button is-rounded is-outlined" disabled>
-                        <span>Story</span>
+                        <span>Stories</span>
                       </a>
                     </div>
                   </div>

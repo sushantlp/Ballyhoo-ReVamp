@@ -1,10 +1,10 @@
 const next = require("next");
 // const http = require("http");
-const url = require("url");
+// const url = require("url");
 const Path = require("path");
 const express = require("express");
 
-const port = process.env.PORT || 4000;
+// const port = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== "production";
 //const dev = false;
 const app = next({ dev });

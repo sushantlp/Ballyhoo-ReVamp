@@ -1,11 +1,28 @@
 import "./escape-query.css";
 
 export default class EscapeQuery extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeIndex: -1,
+      packages: [],
+      toggle: {
+        index: -1,
+        door: false
+      },
+      collapsed: true,
+      dynamic: []
+    };
+  }
+
+  onClickSendQueryButton = () => {};
+
+  onChangeName = () => {};
   render() {
     return (
       <React.Fragment>
         <div className="escape-query-container">
-          <div className={props.loginOpen ? "modal is-active" : "modal"}>
+          <div className={this.props.escapeQuery ? "modal is-active" : "modal"}>
             <div className="modal-background" />
             <div className="modal-card">
               <header className="modal-card-head">
@@ -13,98 +30,54 @@ export default class EscapeQuery extends React.Component {
                 <button
                   className="delete"
                   aria-label="close"
-                  onClick={() => props.updateLoginState(false)}
+                  onClick={() => this.props.updateEscapeQueryState(false)}
                 />
               </header>
               <section className="modal-card-body">
+                <h4 className="ffqs escape-query-title">Group Booking</h4>
+
                 <div className="field">
+                  <label className="label is-medium ffqs fw2">Name</label>
+
                   <div className="field-body">
                     <div className="field">
-                      <div className="control is-expanded ffqs fw2">
+                      <label className="control is-expanded">
                         <input
-                          className="input is-large br0"
+                          className="input is-large"
                           type="text"
-                          placeholder="Email"
-                          onChange={e => props.updateLoginEmail(e)}
+                          placeholder="Aaron Swartz"
+                          onChange={event => this.onChangeName(event)}
                         />
-                      </div>
+                      </label>
                     </div>
                   </div>
-                </div>
-
-                <div className="field">
-                  <div className="field-body">
-                    <div className="field">
-                      <div className="control is-expanded has-icons-right">
-                        <input
-                          className="input is-large br0"
-                          type={props.loginPassDisplay ? "email" : "password"}
-                          placeholder="Password"
-                          onChange={e => props.updateLoginPassword(e)}
-                        />
-                        <span
-                          className="pointer icon is-small is-right"
-                          onClick={() => props.updateLoginPassDisplay()}
-                        >
-                          <img src="https://img.icons8.com/wired/20/000000/show-password.png" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {props.errorStatus ? (
-                    <p class="help is-danger">{props.errorMsg}</p>
-                  ) : null}
-                </div>
-
-                <div style={{ textAlign: "right" }}>
-                  <label>
-                    {" "}
-                    <strong
-                      className="pointer ffqs is-success"
-                      onClick={() => props.moveToForget()}
-                    >
-                      Forget Password ?
-                    </strong>
-                  </label>
                 </div>
               </section>
               <footer className="modal-card-foot">
                 {props.isLoading ? (
                   <button
-                    className="button is-danger is-active login-button is-loading"
+                    className="button is-danger is-active send-query-button is-loading"
                     disabled
                     style={{ backgroundColor: "#fdb6c4" }}
                   >
-                    LOGIN
+                    SEND QUERY
                   </button>
                 ) : props.loginButton ? (
                   <button
-                    className="button is-danger is-active login-button"
-                    onClick={() => props.onClickLoginButton()}
+                    className="button is-danger is-active send-query-button"
+                    onClick={() => this.onClickSendQueryButton()}
                   >
-                    LOGIN
+                    SEND QUERY
                   </button>
                 ) : (
                   <button
                     style={{ backgroundColor: "#fdb6c4" }}
-                    className="button is-danger is-active login-button"
+                    className="button is-danger is-active send-query-button"
                     disabled
                   >
-                    LOGIN
+                    SEND QUERY
                   </button>
                 )}
-
-                <label>
-                  {" "}
-                  New to Ballyhoo ?{" "}
-                  <strong
-                    className="pointer ffqs is-success"
-                    onClick={() => props.moveToSignup()}
-                  >
-                    Create an account
-                  </strong>
-                </label>
               </footer>
             </div>
           </div>
