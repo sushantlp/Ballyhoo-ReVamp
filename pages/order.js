@@ -221,7 +221,7 @@ class Order extends React.Component {
           newOrder={this.newOrder}
         />
         <Headout />
-        <Footer />
+        <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
     );
   }
