@@ -121,6 +121,7 @@ export default class EscapeQuery extends React.Component {
                             this.setState({ focused })
                           }
                           displayFormat="DD-MM-YYYY"
+                          numberOfMonths={1}
                         />
                       </div>
                     </div>
