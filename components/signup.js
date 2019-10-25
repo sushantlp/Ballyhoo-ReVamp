@@ -146,7 +146,7 @@ const Signup = props => {
               {props.isLoading ? (
                 <button
                   className="button is-danger is-active signup-button is-loading"
-                  disabled
+                  // disabled
                   style={{ backgroundColor: "#fdb6c4" }}
                 >
                   SIGNUP

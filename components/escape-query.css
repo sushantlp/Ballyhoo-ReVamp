@@ -1,3 +1,59 @@
 .escape-query-container .ffqs {
   font-family: "Quicksand", sans-serif;
 }
+
+.escape-query-container .send-query-button {
+  opacity: 1;
+  width: 10em;
+  height: 2.4em;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.escape-query-container .escape-query-title {
+  font-size: 2em;
+  font-weight: 200;
+  margin-bottom: 0em;
+}
+
+.escape-query-container
+  .select:not(.is-multiple):not(.is-loading):hover::after {
+  color: #ff3860;
+}
+
+.escape-query-container .select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #ff3860;
+}
+
+.escape-query-container .SingleDatePickerInput__withBorder {
+  width: 20em;
+  border-bottom: 2px solid #ff3860;
+}
+
+.escape-query-container .DateInput_input__focused {
+  border-bottom: 0px;
+}
+
+.escape-query-container .CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #ff3860;
+  border: 1px double #ff3860;
+  color: #fff;
+}
+
+.escape-query-container .DayPicker_weekHeader_ul {
+  margin-top: -2px;
+}
+
+.escape-query-container .DayPickerKeyboardShortcuts_show__bottomRight::before {
+  bottom: 0px;
+  right: 0px;
+  border-top: 26px solid transparent;
+  border-right: 33px solid #ff3860;
+}
+
+.escape-query-container .DateInput {
+  width: 16em;
+}

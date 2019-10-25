@@ -1,3 +1,9 @@
+import "react-dates/initialize";
+
+import moment from "moment";
+import { SingleDatePicker } from "react-dates";
+
+import "react-dates/lib/css/_datepicker.css";
 import "./escape-query.css";
 
 export default class EscapeQuery extends React.Component {
@@ -11,13 +17,22 @@ export default class EscapeQuery extends React.Component {
         door: false
       },
       collapsed: true,
-      dynamic: []
+      dynamic: [],
+      isLoading: false,
+      queryLoading: true,
+      focused: false,
+      date: moment()
     };
   }
 
   onClickSendQueryButton = () => {};
 
   onChangeName = () => {};
+
+  onChangeEmail = () => {};
+
+  onChangeMobile = () => {};
+
   render() {
     return (
       <React.Fragment>
@@ -26,7 +41,10 @@ export default class EscapeQuery extends React.Component {
             <div className="modal-background" />
             <div className="modal-card">
               <header className="modal-card-head">
-                <h4 className="modal-card-title fw2 ffqs">BALLYHOO</h4>
+                <h4 className="modal-card-title ffqs escape-query-title">
+                  {" "}
+                  {this.props.caption}
+                </h4>
                 <button
                   className="delete"
                   aria-label="close"
@@ -34,8 +52,6 @@ export default class EscapeQuery extends React.Component {
                 />
               </header>
               <section className="modal-card-body">
-                <h4 className="ffqs escape-query-title">Group Booking</h4>
-
                 <div className="field">
                   <label className="label is-medium ffqs fw2">Name</label>
 
@@ -46,23 +62,86 @@ export default class EscapeQuery extends React.Component {
                           className="input is-large"
                           type="text"
                           placeholder="Aaron Swartz"
-                          onChange={event => this.onChangeName(event)}
+                          onChange={e => this.onChangeName(e)}
                         />
                       </label>
                     </div>
                   </div>
                 </div>
+
+                <div className="field">
+                  <label className="label is-medium ffqs fw2">Email</label>
+
+                  <div className="field-body">
+                    <div className="field">
+                      <label className="control is-expanded">
+                        <input
+                          className="input is-large"
+                          type="text"
+                          placeholder="Open@Code"
+                          onChange={e => this.onChangeEmail(e)}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label is-medium ffqs fw2">Phone</label>
+
+                  <div className="field-body">
+                    <div className="field">
+                      <label className="control is-expanded">
+                        <input
+                          className="input is-large"
+                          type="number"
+                          placeholder="Mobile"
+                          onChange={e => this.onChangeMobile(e)}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label is-medium ffqs fw2">
+                    Booking Date
+                  </label>
+
+                  <div className="field-body">
+                    <div className="field ">
+                      <div className="control">
+                        <SingleDatePicker
+                          showDefaultInputIcon={true}
+                          id="date"
+                          date={this.state.date}
+                          onDateChange={date => this.setState({ date })}
+                          focused={this.state.focused}
+                          onFocusChange={({ focused }) =>
+                            this.setState({ focused })
+                          }
+                          displayFormat="DD-MM-YYYY"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </section>
-              <footer className="modal-card-foot">
-                {props.isLoading ? (
+              <footer
+                className="modal-card-foot"
+                style={{
+                  paddingLeft: "15em",
+                  paddingRight: "15em"
+                }}
+              >
+                {this.state.isLoading ? (
                   <button
                     className="button is-danger is-active send-query-button is-loading"
-                    disabled
                     style={{ backgroundColor: "#fdb6c4" }}
                   >
                     SEND QUERY
                   </button>
-                ) : props.loginButton ? (
+                ) : this.state.queryLoading ? (
                   <button
                     className="button is-danger is-active send-query-button"
                     onClick={() => this.onClickSendQueryButton()}

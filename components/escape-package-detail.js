@@ -15,7 +15,9 @@ export default class EscapePackage extends React.Component {
       },
       collapsed: true,
       dynamic: [],
-      escapeQuery: false
+      escapeQuery: false,
+      id: 0,
+      caption: ""
     };
   }
 
@@ -120,6 +122,14 @@ export default class EscapePackage extends React.Component {
   updateEscapeQueryState = bool => {
     this.setState({
       escapeQuery: bool
+    });
+  };
+
+  onClickSendQuery = (id, caption) => {
+    this.updateEscapeQueryState(true);
+    this.setState({
+      id,
+      caption
     });
   };
 
@@ -447,7 +457,17 @@ export default class EscapePackage extends React.Component {
                           </div>
 
                           <div className="column is-2">
-                            <a className="button is-warning fr">SEND QUERY</a>
+                            <a
+                              className="button is-warning fr"
+                              onClick={() =>
+                                this.onClickSendQuery(
+                                  list.price_id,
+                                  list.price_caption
+                                )
+                              }
+                            >
+                              SEND QUERY
+                            </a>
                           </div>
                         </div>
 
@@ -695,6 +715,8 @@ export default class EscapePackage extends React.Component {
             <EscapeQuery
               escapeQuery={this.state.escapeQuery}
               updateEscapeQueryState={this.updateEscapeQueryState}
+              id={this.state.id}
+              caption={this.state.caption}
             />
           ) : null}
         </Segment>
