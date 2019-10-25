@@ -273,24 +273,6 @@ export default class EscapePackage extends React.Component {
                     >
                       {value.package_inclusion}
                     </ReadMoreAndLess>
-
-                    {/* <ReactTextMoreLess
-                      collapsed={this.state.collapsed}
-                      text={value.package_inclusion}
-                      lessHeight={100}
-                      showMoreText="... show more"
-                      showMoreElement={
-                        <span>
-                          ... <span className="show-more-text">show more</span>
-                        </span>
-                      }
-                      showLessElement={
-                        <span className="show-more-text">show less</span>
-                      }
-                      onClick={() => {
-                        this.setState({ collapsed: !this.state.collapsed });
-                      }}
-                    /> */}
                   </div>
                 </div>
               </div>

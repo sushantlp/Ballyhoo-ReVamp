@@ -107,10 +107,7 @@ const Order = props => {
 
                             <div class="control">
                               <div class="tags has-addons">
-                                <span class="tag is-warning is-light is-large">
-                                  {" "}
-                                  Quantity :
-                                </span>
+                                <span class="tag is-large"> Quantity :</span>
                                 <span class="tag is-warning is-large">
                                   {value.purchase_quantity}
                                 </span>
@@ -134,7 +131,7 @@ const Order = props => {
 
                             <div class="control" style={{ marginTop: "1em" }}>
                               <div class="tags has-addons">
-                                <span class="tag is-warning is-light  is-large">
+                                <span class="tag is-large">
                                   {" "}
                                   Total Amount :{" "}
                                 </span>
@@ -165,7 +162,7 @@ const Order = props => {
 
                             <div class="control" style={{ marginTop: "1em" }}>
                               <div class="tags has-addons">
-                                <span class="tag is-warning is-light  is-large">
+                                <span class="tag is-large">
                                   {" "}
                                   Payment Type :{" "}
                                 </span>
@@ -189,7 +186,7 @@ const Order = props => {
 
                             <div class="control">
                               <div class="tags has-addons">
-                                <span class="tag is-warning is-light is-large">
+                                <span class="tag is-large">
                                   {" "}
                                   Confirmation Code :{" "}
                                 </span>
@@ -206,7 +203,7 @@ const Order = props => {
 
                             <div class="control" style={{ marginTop: "1em" }}>
                               <div class="tags has-addons">
-                                <span class="tag is-warning is-light is-large">
+                                <span class="tag is-large">
                                   {" "}
                                   Booking Date :{" "}
                                 </span>
@@ -219,7 +216,7 @@ const Order = props => {
 
                             <div class="control" style={{ marginTop: "1em" }}>
                               <div class="tags has-addons">
-                                <span class="tag is-warning is-light is-large">
+                                <span class="tag is-large">
                                   {" "}
                                   Booking Time :{" "}
                                 </span>

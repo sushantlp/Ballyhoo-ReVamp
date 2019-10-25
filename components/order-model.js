@@ -1,7 +1,6 @@
 import "./order-model.css";
 
 const OrderModel = props => {
-  console.log(props);
   return (
     <React.Fragment>
       <div className="order-model-container">
@@ -20,6 +19,15 @@ const OrderModel = props => {
             </header>
             <section className="modal-card-body">
               {props.items.map((item, key) => {
+                let price = 0;
+                let cutPrice = 0;
+                if (parseInt(item.discount, 10) === 0) price = item.price;
+                else {
+                  price = (item.price * item.discount) / 100;
+                  price = item.price - price;
+                  cutPrice = item.price;
+                }
+
                 return (
                   <div className="box" key={key}>
                     <article className="media">
@@ -28,18 +36,21 @@ const OrderModel = props => {
                           <div className="columns m0">
                             <div className="column is-8">
                               {item.package_caption === null ? (
-                                <h4 className="fs1-5 fw2 ffqs">
+                                <h4 className="fs1-5 fw2">
                                   {" "}
                                   {item.price_caption}
                                 </h4>
                               ) : (
                                 <React.Fragment>
                                   {" "}
-                                  <h4 className="fs1-5 fw2 ffqs">
+                                  <h4 className="fs1-5 fw2">
                                     {" "}
                                     {item.package_caption}
                                   </h4>
-                                  <h4 className="fs1-5 fw2 ffqs">
+                                  <h4
+                                    className="fs1-5 fw2 ffqs"
+                                    style={{ marginTop: "-0.3em" }}
+                                  >
                                     {" "}
                                     {item.price_caption}
                                   </h4>
@@ -58,14 +69,31 @@ const OrderModel = props => {
                           </div>
 
                           <div className="columns m0">
-                            <div className="column is-3">
-                              <span className="tag is-warning is-medium">
+                            <div className="column is-4">
+                              {/* <span className="tag is-warning is-medium">
                                 Price : {item.quantity}
-                              </span>
+                              </span> */}
+
+                              <h5 className="fw2 fs1-2">
+                                {props.currency} {price}/-
+                                {cutPrice === 0 ? null : (
+                                  <span>
+                                    <span
+                                      className="fw2 fs0-7 tdl ml8"
+                                      style={{ color: "#363636" }}
+                                    >
+                                      {props.currency} {cutPrice}/-
+                                    </span>
+                                    <span className="tag is-rounded is-warning ml8">
+                                      {list.price_discount}% off
+                                    </span>{" "}
+                                  </span>
+                                )}
+                              </h5>
                             </div>
 
                             {item.package_start_date === null ? null : (
-                              <div className="column is-3">
+                              <div className="column is-4">
                                 <h4 className="fs1-2 fw2 ffqs">
                                   <span className="tag is-warning is-medium">
                                     Start Date : {item.package_start_date}
@@ -75,7 +103,7 @@ const OrderModel = props => {
                             )}
 
                             {item.package_end_date === null ? null : (
-                              <div className="column is-3">
+                              <div className="column is-4">
                                 <h4 className="fs1-2 fw2 ffqs">
                                   <span className="tag is-warning is-medium">
                                     End Date : {item.package_end_date}

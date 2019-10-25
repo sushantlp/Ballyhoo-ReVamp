@@ -32,3 +32,19 @@
   border-radius: 4px;
   padding: 0.3em 0.5em 0.3em 0.5em;
 }
+
+.order-model-container .fs1-2 {
+  font-size: 1.2em;
+}
+
+.order-model-container .fs0-7 {
+  font-size: 0.7em;
+}
+
+.order-model-container .tdl {
+  text-decoration: line-through;
+}
+
+.order-model-container .ml8 {
+  margin-left: 8px !important;
+}
