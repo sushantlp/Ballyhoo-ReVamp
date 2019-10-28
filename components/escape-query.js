@@ -40,20 +40,21 @@ export default class EscapeQuery extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.escapeEnquiry !== nextProps.escapeEnquiry) {
       if (nextProps.escapeEnquiry.status === "SUCCESS") {
-        this.setState({
-          isLoading: false
-        });
         toast.success(nextProps.escapeEnquiry.msg, {
           onClose: () => this.props.updateEscapeQueryState(false)
         });
-      } else {
+
         this.setState({
           isLoading: false
         });
-
+      } else {
         toast.error(nextProps.escapeEnquiry.msg, {
           autoClose: true,
           onClose: () => this.props.updateEscapeQueryState(false)
+        });
+
+        this.setState({
+          isLoading: false
         });
       }
     }

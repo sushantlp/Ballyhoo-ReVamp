@@ -1,6 +1,8 @@
 import { Segment, Accordion, Icon } from "semantic-ui-react";
 import ReadMoreAndLess from "react-read-more-less";
 
+import EscapeQuery from "./escape-query";
+
 export default class ExculsiveEscapePackage extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,10 @@ export default class ExculsiveEscapePackage extends React.Component {
       toggle: {
         index: -1,
         door: false
-      }
+      },
+      escapeQuery: false,
+      id: 0,
+      caption: ""
     };
   }
 
@@ -126,6 +131,20 @@ export default class ExculsiveEscapePackage extends React.Component {
     const newIndex = activeIndex === index ? -1 : index;
 
     this.setState({ activeIndex: newIndex });
+  };
+
+  updateEscapeQueryState = bool => {
+    this.setState({
+      escapeQuery: bool
+    });
+  };
+
+  onClickSendQuery = (id, caption) => {
+    this.updateEscapeQueryState(true);
+    this.setState({
+      id,
+      caption
+    });
   };
 
   render() {
@@ -356,7 +375,17 @@ export default class ExculsiveEscapePackage extends React.Component {
               </div>
 
               <div className="card-footer-item">
-                <a className="button is-warning fr">SEND QUERY</a>
+                <a
+                  className="button is-warning fr"
+                  onClick={() =>
+                    this.onClickSendQuery(
+                      value.package_id,
+                      value.package_caption
+                    )
+                  }
+                >
+                  SEND QUERY
+                </a>
                 {/* {this.props.queryButton ? (
                   <a className="button is-warning fr">SEND QUERY</a>
                 ) : (
@@ -510,6 +539,19 @@ export default class ExculsiveEscapePackage extends React.Component {
           >
             <span>VIEW DETAILS</span>
           </a>
+
+          {this.state.escapeQuery ? (
+            <EscapeQuery
+              escapeQuery={this.state.escapeQuery}
+              updateEscapeQueryState={this.updateEscapeQueryState}
+              id={this.state.id}
+              offer_id={this.props.offer_id}
+              caption={this.state.caption}
+              customerData={this.props.customerData}
+              escapeEnquiry={this.props.escapeEnquiry}
+              postEscapeEnquiry={this.props.postEscapeEnquiry}
+            />
+          ) : null}
         </Segment>
       );
     });
