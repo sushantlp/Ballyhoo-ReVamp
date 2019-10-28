@@ -4,7 +4,7 @@ export const actionType = {
   escapeEnquiry: "ESCAPE_ENQUIRY"
 };
 
-export function escapeEnquiry(
+export function postEscapeEnquiry(
   offerId,
   name,
   mobile,

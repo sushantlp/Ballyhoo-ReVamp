@@ -14,7 +14,7 @@ export function escapeEnquiry(state = initialState, action) {
           ...state,
           escapeEnquiry: action.escapeEnquiry.data,
           status: "SUCCESS",
-          msg: "successful"
+          msg: action.escapeEnquiry.message
         };
       } else {
         return {

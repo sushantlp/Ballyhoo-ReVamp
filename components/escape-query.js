@@ -2,22 +2,19 @@ import "react-dates/initialize";
 
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
+import { ToastContainer, toast } from "react-toastify";
+
+import { EMAIL } from "../constants";
 
 import "react-dates/lib/css/_datepicker.css";
 import "./escape-query.css";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export default class EscapeQuery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: -1,
-      packages: [],
-      toggle: {
-        index: -1,
-        door: false
-      },
-      collapsed: true,
-      dynamic: [],
       isLoading: false,
       queryLoading: false,
       focused: false,
@@ -40,21 +37,199 @@ export default class EscapeQuery extends React.Component {
     }
   }
 
-  onClickSendQueryButton = () => {};
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.escapeEnquiry !== nextProps.escapeEnquiry) {
+      if (nextProps.escapeEnquiry.status === "SUCCESS") {
+        this.setState({
+          isLoading: false
+        });
+        toast.success(nextProps.escapeEnquiry.msg, {
+          onClose: () => this.props.updateEscapeQueryState(false)
+        });
+      } else {
+        this.setState({
+          isLoading: false
+        });
 
-  onChangeName = () => {};
+        toast.error(nextProps.escapeEnquiry.msg, {
+          autoClose: true,
+          onClose: () => this.props.updateEscapeQueryState(false)
+        });
+      }
+    }
+  }
 
-  onChangeEmail = () => {};
+  onClickSendQueryButton = () => {
+    this.setState({
+      isLoading: true
+    });
 
-  onChangeMobile = () => {};
+    const date = moment(this.state.date, "YYYY-MM-DD").format("YYYY-MM-DD");
 
-  onChangePeople = () => {};
+    this.props.postEscapeEnquiry(
+      this.props.offer_id,
+      this.state.name,
+      this.state.mobile,
+      this.state.email,
+      date,
+      this.state.people,
+      this.state.customization,
+      this.props.id
+    );
+  };
 
-  onChangeCustomization = () => {};
+  onChangeName = e => {
+    if (e.target.value === "")
+      this.setState({
+        queryLoading: false
+      });
+
+    this.setState({
+      name: e.target.value
+    });
+
+    if (!EMAIL.test(this.state.email)) {
+      if (this.state.queryLoading)
+        this.setState({
+          queryLoading: false
+        });
+    } else {
+      if (
+        this.state.mobile !== "" &&
+        this.state.email !== "" &&
+        this.state.customization !== ""
+      )
+        this.setState({
+          queryLoading: true
+        });
+    }
+  };
+
+  onChangeEmail = e => {
+    if (e.target.value === "")
+      this.setState({
+        queryLoading: false
+      });
+
+    this.setState({
+      email: e.target.value
+    });
+
+    if (!EMAIL.test(e.target.value)) {
+      if (this.state.queryLoading)
+        this.setState({
+          queryLoading: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.mobile !== "" &&
+        this.state.name !== "" &&
+        this.state.customization !== ""
+      )
+        this.setState({
+          queryLoading: true
+        });
+    }
+  };
+
+  onChangeMobile = e => {
+    if (e.target.value === "")
+      this.setState({
+        queryLoading: false
+      });
+
+    this.setState({
+      mobile: e.target.value
+    });
+
+    if (!EMAIL.test(this.state.email)) {
+      if (this.state.queryLoading)
+        this.setState({
+          queryLoading: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.email !== "" &&
+        this.state.name !== "" &&
+        this.state.customization !== ""
+      )
+        this.setState({
+          queryLoading: true
+        });
+    }
+  };
+
+  onChangePeople = e => {
+    if (e.target.value === "")
+      this.setState({
+        queryLoading: false
+      });
+
+    this.setState({
+      people: e.target.value
+    });
+
+    if (!EMAIL.test(this.state.email)) {
+      if (this.state.queryLoading)
+        this.setState({
+          queryLoading: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.mobile !== "" &&
+        this.state.email !== "" &&
+        this.state.name !== "" &&
+        this.state.customization !== ""
+      )
+        this.setState({
+          queryLoading: true
+        });
+    }
+  };
+
+  onChangeCustomization = e => {
+    if (e.target.value === "")
+      this.setState({
+        queryLoading: false
+      });
+
+    this.setState({
+      customization: e.target.value
+    });
+
+    if (!EMAIL.test(this.state.email)) {
+      if (this.state.queryLoading)
+        this.setState({
+          queryLoading: false
+        });
+    } else {
+      if (
+        e.target.value !== "" &&
+        this.state.mobile !== "" &&
+        this.state.email !== "" &&
+        this.state.name !== ""
+      )
+        this.setState({
+          queryLoading: true
+        });
+    }
+  };
+
+  onKeyMobile = e => {
+    if (!/[0-9]/.test(e.key)) e.preventDefault();
+  };
+
+  onKeyPeople = e => {
+    if (!/[1-9]/.test(e.key)) e.preventDefault();
+  };
 
   render() {
     return (
       <React.Fragment>
+        <ToastContainer pauseOnHover />
         <div className="escape-query-container">
           <div className={this.props.escapeQuery ? "modal is-active" : "modal"}>
             <div className="modal-background" />
@@ -81,6 +256,7 @@ export default class EscapeQuery extends React.Component {
                           className="input is-large"
                           type="text"
                           placeholder="Aaron Swartz"
+                          value={this.state.name}
                           onChange={e => this.onChangeName(e)}
                         />
                       </label>
@@ -98,6 +274,7 @@ export default class EscapeQuery extends React.Component {
                           className="input is-large"
                           type="text"
                           placeholder="Open@Code"
+                          value={this.state.email}
                           onChange={e => this.onChangeEmail(e)}
                         />
                       </label>
@@ -113,9 +290,11 @@ export default class EscapeQuery extends React.Component {
                       <label className="control is-expanded">
                         <input
                           className="input is-large"
-                          type="number"
+                          type="text"
                           placeholder="Mobile"
+                          value={this.state.mobile}
                           onChange={e => this.onChangeMobile(e)}
+                          onKeyPress={this.onKeyMobile}
                         />
                       </label>
                     </div>
@@ -157,9 +336,11 @@ export default class EscapeQuery extends React.Component {
                       <label className="control is-expanded">
                         <input
                           className="input is-large"
-                          type="number"
+                          type="text"
                           placeholder="People"
+                          value={this.state.people}
                           onChange={event => this.onChangePeople(event)}
+                          onKeyPress={this.onKeyPeople}
                         />
                       </label>
                     </div>

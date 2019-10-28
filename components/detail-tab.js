@@ -180,6 +180,8 @@ const DetailTab = props => {
           onSaloonClick={props.onSaloonClick}
           onExculsiveClick={props.onExculsiveClick}
           customerData={props.customerData}
+          escapeEnquiry={props.escapeEnquiry}
+          postEscapeEnquiry={props.postEscapeEnquiry}
         />
       ) : null}
 

@@ -33,6 +33,8 @@ import { getProfile } from "../actions/profile-action";
 import { updateCustomerData } from "../actions/customer-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
 
+import { postEscapeEnquiry } from "../actions/escape-enquiry-action";
+
 import "react-toastify/dist/ReactToastify.css";
 
 class Detail extends React.Component {
@@ -351,6 +353,8 @@ class Detail extends React.Component {
           getProfile={this.props.getProfile}
           profileData={this.props.profileData}
           warningToast={this.warningToast}
+          escapeEnquiry={this.props.escapeEnquiry}
+          postEscapeEnquiry={this.props.postEscapeEnquiry}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
@@ -375,7 +379,8 @@ const mapStateToProps = state => {
     applicationStatus: state.applicationStatus,
     profileData: state.profileData,
     getOtp: state.getOtp,
-    postOtp: state.postOtp
+    postOtp: state.postOtp,
+    escapeEnquiry: state.escapeEnquiry
   };
 };
 
@@ -399,7 +404,8 @@ const mapDispatchToProps = dispatch => {
     ),
     getProfile: bindActionCreators(getProfile, dispatch),
     postOtpAction: bindActionCreators(postOtpAction, dispatch),
-    getOtpAction: bindActionCreators(getOtpAction, dispatch)
+    getOtpAction: bindActionCreators(getOtpAction, dispatch),
+    postEscapeEnquiry: bindActionCreators(postEscapeEnquiry, dispatch)
   };
 };
 
