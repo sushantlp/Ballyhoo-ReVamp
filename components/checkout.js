@@ -14,7 +14,6 @@ const Checkout = props => {
             <div className="column is-8">
               <Segment>
                 <CheckoutLeft
-                  postFnbReservation={props.postFnbReservation}
                   parentState={props.parentState}
                   onChangePayment={props.onChangePayment}
                   onChangeRequest={props.onChangeRequest}
@@ -24,7 +23,6 @@ const Checkout = props => {
             <div className="column is-4">
               <Segment>
                 <CheckoutRight
-                  postFnbReservation={props.postFnbReservation}
                   parentState={props.parentState}
                   onClickCheckoutButton={props.onClickCheckoutButton}
                 />

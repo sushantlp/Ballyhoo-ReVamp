@@ -6,6 +6,9 @@ const CheckoutRight = props => {
   if (props.parentState.which.fnb_reservation === 1) {
     price = false;
     item = props.parentState.fnb_reservation;
+  } else if (props.parentState.which.spa_appointment === 1) {
+    price = false;
+    item = props.parentState.spa_appointment;
   } else if (props.parentState.which.fnb_offer === 1) {
     if (props.parentState.fnb_offer.event) price = false;
 

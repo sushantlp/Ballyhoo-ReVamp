@@ -645,7 +645,6 @@ class Checkout extends React.Component {
           profileData={this.props.profileData}
         />
         <CheckoutComponent
-          postFnbReservation={this.props.postFnbReservation}
           parentState={this.state}
           onClickCheckoutButton={this.onClickCheckoutButton}
           onChangePayment={this.onChangePayment}

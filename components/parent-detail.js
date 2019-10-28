@@ -1,10 +1,9 @@
-// import moment from "moment-timezone";
 import moment from "moment";
 import DetailTab from "./detail-tab";
 import DetailCart from "./detail-cart";
 import TrendingDetail from "./trending-detail";
 import VerifyAccount from "./verify-account";
-
+import SaloonMenu from "./saloon-menu";
 import "./parent-detail.css";
 
 export default class ParentDetail extends React.Component {
@@ -47,7 +46,8 @@ export default class ParentDetail extends React.Component {
       verifyOpen: false,
       cartButtonLoading: false,
       cartQuantity: false,
-      escapeQuery: false
+      escapeQuery: false,
+      saloonMenu: false
     };
   }
 
@@ -584,6 +584,12 @@ export default class ParentDetail extends React.Component {
   updateCartButtonLoading = bool => {
     this.setState({
       cartButtonLoading: bool
+    });
+  };
+
+  updateSaloonMenuState = bool => {
+    this.setState({
+      saloonMenu: bool
     });
   };
 
@@ -1143,10 +1149,9 @@ export default class ParentDetail extends React.Component {
           this.props.routeChange("/checkout");
         } else {
           if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
-            console.log(this.props.spaMenu);
-
-            if (this.props.spaMenu.spaMenu.subcode !== 204) {
+            if (this.props.spaMenu.spaMenu.subcode === 204) {
               // Without Menu
+
               const currentTime = moment(moment().format("HH:mm A"));
               const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
 
@@ -1158,55 +1163,25 @@ export default class ParentDetail extends React.Component {
                   true
                 );
               } else {
-                const displayTime = moment(this.state.time, "hh:mm A").format(
-                  "hh:mm A"
-                );
-                const date = moment(this.state.date).format("YYYY-MM-DD");
-                const displayDate = moment(
-                  this.state.date,
-                  "DD-MM-YYYY"
-                ).format("DD-MM-YYYY");
-
-                const appointment = {
-                  name: this.props.categoryData.categoryData.details.bname,
-                  partner_id: this.props.categoryData.categoryData.details
-                    .partner_id,
-                  customer_id: this.props.customerData.customerData.customer_id,
-                  customer_mobile: this.props.customerData.customerData.mobile,
-                  customer_email: this.props.customerData.customerData.email,
-                  date: date,
-                  time: this.state.time,
-                  display_time: displayTime,
-                  display_date: displayDate,
-                  menu: []
-                };
-
-                const which = {
-                  fnb_reservation: 0,
-                  fnb_offer: 0,
-                  spa_appointment: 1,
-                  spa_offer: 0,
-                  activity_offer: 0,
-                  event_offer: 0,
-                  escape_offer: 0
-                };
-
-                sessionStorage.removeItem("FNB_OFFER");
-                sessionStorage.removeItem("RESERVATION");
-                sessionStorage.removeItem("SPA_OFFER");
-                sessionStorage.removeItem("ACTIVITY_OFFER");
-                sessionStorage.removeItem("EVENT_OFFER");
-                sessionStorage.removeItem("ESCAPE_OFFER");
-
-                sessionStorage.setItem(
-                  "SPA_APPOINTMENT",
-                  JSON.stringify(appointment)
-                );
-                sessionStorage.setItem("WHICH", JSON.stringify(which));
-
+                this.saloonAppointment();
                 this.props.routeChange("/checkout");
               }
             } else {
+              // Saloon Appointment Menu
+
+              const currentTime = moment(moment().format("HH:mm A"));
+              const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
+
+              if (currentTime.isAfter(time)) {
+                this.updateCartButtonLoading(false);
+                this.props.errorToast(
+                  "Time should be greater and equal current time",
+                  1,
+                  true
+                );
+              } else {
+                this.saloonAppointment();
+              }
             }
           } else {
             this.updateCartButtonLoading(false);
@@ -1218,6 +1193,47 @@ export default class ParentDetail extends React.Component {
     }
   };
 
+  saloonAppointment = () => {
+    const displayTime = moment(this.state.time, "hh:mm A").format("hh:mm A");
+    const date = moment(this.state.date).format("YYYY-MM-DD");
+    const displayDate = moment(this.state.date, "DD-MM-YYYY").format(
+      "DD-MM-YYYY"
+    );
+
+    const appointment = {
+      partner_id: this.props.categoryData.categoryData.details.partner_details
+        .p_id,
+      name: this.props.categoryData.categoryData.details.partner_details.p_name,
+      customer_id: this.props.customerData.customerData.customer_id,
+      customer_mobile: this.props.customerData.customerData.mobile,
+      customer_email: this.props.customerData.customerData.email,
+      date: date,
+      time: this.state.time,
+      display_time: displayTime,
+      display_date: displayDate,
+      menu: []
+    };
+
+    const which = {
+      fnb_reservation: 0,
+      fnb_offer: 0,
+      spa_appointment: 1,
+      spa_offer: 0,
+      activity_offer: 0,
+      event_offer: 0,
+      escape_offer: 0
+    };
+
+    sessionStorage.removeItem("FNB_OFFER");
+    sessionStorage.removeItem("RESERVATION");
+    sessionStorage.removeItem("SPA_OFFER");
+    sessionStorage.removeItem("ACTIVITY_OFFER");
+    sessionStorage.removeItem("EVENT_OFFER");
+    sessionStorage.removeItem("ESCAPE_OFFER");
+
+    sessionStorage.setItem("SPA_APPOINTMENT", JSON.stringify(appointment));
+    sessionStorage.setItem("WHICH", JSON.stringify(which));
+  };
   otherCategoryJsonBuilder = json => {
     return json.map(obj => {
       const item = {};
@@ -1332,6 +1348,15 @@ export default class ParentDetail extends React.Component {
             profileData={this.props.profileData}
             successToast={this.props.successToast}
             updateCustomerData={this.props.updateCustomerData}
+          />
+        ) : null}
+
+        {this.state.saloonMenu ? (
+          <SaloonMenu
+            saloonMenu={this.state.saloonMenu}
+            updateSaloonMenuState={this.updateSaloonMenuState}
+            routeChange={this.props.routeChange}
+            spaMenu={this.props.spaMenu.spaMenu}
           />
         ) : null}
       </React.Fragment>
