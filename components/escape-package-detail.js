@@ -717,6 +717,7 @@ export default class EscapePackage extends React.Component {
               updateEscapeQueryState={this.updateEscapeQueryState}
               id={this.state.id}
               caption={this.state.caption}
+              customerData={this.props.customerData}
             />
           ) : null}
         </Segment>

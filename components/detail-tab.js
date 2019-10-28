@@ -179,6 +179,7 @@ const DetailTab = props => {
           onActivityClick={props.onActivityClick}
           onSaloonClick={props.onSaloonClick}
           onExculsiveClick={props.onExculsiveClick}
+          customerData={props.customerData}
         />
       ) : null}
 

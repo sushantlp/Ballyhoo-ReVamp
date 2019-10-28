@@ -1220,6 +1220,7 @@ export default class ParentDetail extends React.Component {
                   onActivityClick={this.onActivityClick}
                   onSaloonClick={this.onSaloonClick}
                   onExculsiveClick={this.onExculsiveClick}
+                  customerData={this.props.customerData}
                 />
               </div>
               <div className="column is-4">

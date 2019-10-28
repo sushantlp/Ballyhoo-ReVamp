@@ -19,10 +19,25 @@ export default class EscapeQuery extends React.Component {
       collapsed: true,
       dynamic: [],
       isLoading: false,
-      queryLoading: true,
+      queryLoading: false,
       focused: false,
-      date: moment()
+      date: moment(),
+      name: "",
+      email: "",
+      mobile: "",
+      people: 1,
+      customization: ""
     };
+  }
+
+  componentDidMount() {
+    if (parseInt(this.props.customerData.customerData.customer_id, 10) !== 0) {
+      this.setState({
+        name: `${this.props.customerData.customerData.first_name} ${this.props.customerData.customerData.last_name}`,
+        email: this.props.customerData.customerData.email,
+        mobile: this.props.customerData.customerData.mobile
+      });
+    }
   }
 
   onClickSendQueryButton = () => {};
@@ -32,6 +47,10 @@ export default class EscapeQuery extends React.Component {
   onChangeEmail = () => {};
 
   onChangeMobile = () => {};
+
+  onChangePeople = () => {};
+
+  onChangeCustomization = () => {};
 
   render() {
     return (
@@ -122,6 +141,43 @@ export default class EscapeQuery extends React.Component {
                           }
                           displayFormat="DD-MM-YYYY"
                           numberOfMonths={1}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label is-medium ffqs fw2">
+                    No of People
+                  </label>
+
+                  <div className="field-body">
+                    <div className="field">
+                      <label className="control is-expanded">
+                        <input
+                          className="input is-large"
+                          type="number"
+                          placeholder="People"
+                          onChange={event => this.onChangePeople(event)}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field">
+                  <label className="label is-medium ffqs fw2">
+                    Any Customization ?
+                  </label>
+
+                  <div className="field-body">
+                    <div className="field">
+                      <div className="control">
+                        <textarea
+                          className="textarea"
+                          placeholder="Any Customization"
+                          onChange={event => this.onChangeCustomization(event)}
                         />
                       </div>
                     </div>

@@ -53,6 +53,7 @@ const ParentPackage = props => {
                   keyword={props.keyword}
                   onEscapeClick={props.onEscapeClick}
                   offer_id={props.categoryData.categoryData.details.offer_id}
+                  customerData={props.customerData}
                 />
               ) : (
                 <ExculsiveEscapePackage
@@ -70,6 +71,7 @@ const ParentPackage = props => {
                   keyword={props.keyword}
                   onExculsiveClick={props.onExculsiveClick}
                   offer_id={props.categoryData.categoryData.details.offer_id}
+                  customerData={props.customerData}
                 />
               )
             ) : null}
