@@ -1143,6 +1143,71 @@ export default class ParentDetail extends React.Component {
           this.props.routeChange("/checkout");
         } else {
           if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
+            console.log(this.props.spaMenu);
+
+            if (this.props.spaMenu.spaMenu.subcode !== 204) {
+              // Without Menu
+              const currentTime = moment(moment().format("HH:mm A"));
+              const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
+
+              if (currentTime.isAfter(time)) {
+                this.updateCartButtonLoading(false);
+                this.props.errorToast(
+                  "Time should be greater and equal current time",
+                  1,
+                  true
+                );
+              } else {
+                const displayTime = moment(this.state.time, "hh:mm A").format(
+                  "hh:mm A"
+                );
+                const date = moment(this.state.date).format("YYYY-MM-DD");
+                const displayDate = moment(
+                  this.state.date,
+                  "DD-MM-YYYY"
+                ).format("DD-MM-YYYY");
+
+                const appointment = {
+                  name: this.props.categoryData.categoryData.details.bname,
+                  partner_id: this.props.categoryData.categoryData.details
+                    .partner_id,
+                  customer_id: this.props.customerData.customerData.customer_id,
+                  customer_mobile: this.props.customerData.customerData.mobile,
+                  customer_email: this.props.customerData.customerData.email,
+                  date: date,
+                  time: this.state.time,
+                  display_time: displayTime,
+                  display_date: displayDate,
+                  menu: []
+                };
+
+                const which = {
+                  fnb_reservation: 0,
+                  fnb_offer: 0,
+                  spa_appointment: 1,
+                  spa_offer: 0,
+                  activity_offer: 0,
+                  event_offer: 0,
+                  escape_offer: 0
+                };
+
+                sessionStorage.removeItem("FNB_OFFER");
+                sessionStorage.removeItem("RESERVATION");
+                sessionStorage.removeItem("SPA_OFFER");
+                sessionStorage.removeItem("ACTIVITY_OFFER");
+                sessionStorage.removeItem("EVENT_OFFER");
+                sessionStorage.removeItem("ESCAPE_OFFER");
+
+                sessionStorage.setItem(
+                  "SPA_APPOINTMENT",
+                  JSON.stringify(appointment)
+                );
+                sessionStorage.setItem("WHICH", JSON.stringify(which));
+
+                this.props.routeChange("/checkout");
+              }
+            } else {
+            }
           } else {
             this.updateCartButtonLoading(false);
             this.props.errorToast(`Empty cart !!!`, 1, true);

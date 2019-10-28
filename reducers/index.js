@@ -32,6 +32,7 @@ import { applicationStatus } from "./application-status-reducer";
 import { getOtp } from "./get-otp-reducer";
 import { postOtp } from "./post-otp-reducer";
 import { orderData } from "./order-reducer";
+import { spaMenu } from "./spa-menu-reducer";
 
 export default combineReducers({
   cityLocality,
@@ -66,5 +67,6 @@ export default combineReducers({
   saloonOffer,
   getOtp,
   postOtp,
-  orderData
+  orderData,
+  spaMenu
 });

@@ -1,5 +1,3 @@
-import api from "../utils/api";
-
 export const actionType = {
   slidderImage: "SLIDDER_IMAGE"
 };

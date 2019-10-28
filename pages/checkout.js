@@ -30,6 +30,8 @@ import { postFnbReservation } from "../actions/fnb-reservation-action";
 import { postFnbOffer } from "../actions/fnb-offer-action";
 
 import { postSaloonOffer } from "../actions/saloon-offer-action";
+import { postSaloonAppointment } from "../actions/saloon-appointment-action";
+
 import { postActivityOffer } from "../actions/activity-offer-action";
 import { postEscapeOffer } from "../actions/escape-offer-action";
 import { postEventOffer } from "../actions/event-offer-action";
@@ -231,6 +233,15 @@ class Checkout extends React.Component {
           isLoading: false
         });
         this.errorToast(nextProps.eventOffer.msg, 2, true);
+      }
+    } else if (this.props.saloonAppointment !== nextProps.saloonAppointment) {
+      if (nextProps.saloonAppointment.status === "SUCCESS") {
+        this.successToast(nextProps.saloonAppointment.msg);
+      } else {
+        this.setState({
+          isLoading: false
+        });
+        this.errorToast(nextProps.saloonAppointment.msg, 2, true);
       }
     }
   }
@@ -455,6 +466,16 @@ class Checkout extends React.Component {
           this.onlineEscapeffer
         );
       }
+    } else if (this.state.which.spa_appointment === 1) {
+      const dateSplit = this.state.spa_appointment.time.split(" ");
+
+      this.props.postSaloonAppointment(
+        this.state.spa_appointment.partner_id,
+        this.state.spa_appointment.customer_id,
+        this.state.spa_appointment.date,
+        dateSplit[0],
+        this.state.spa_appointment.menu
+      );
     }
   };
 
@@ -652,7 +673,8 @@ const mapStateToProps = state => {
     saloonOffer: state.saloonOffer,
     activityOffer: state.activityOffer,
     escapeOffer: state.escapeOffer,
-    eventOffer: state.eventOffer
+    eventOffer: state.eventOffer,
+    saloonAppointment: state.saloonAppointment
   };
 };
 
@@ -674,7 +696,8 @@ const mapDispatchToProps = dispatch => {
     postSaloonOffer: bindActionCreators(postSaloonOffer, dispatch),
     postActivityOffer: bindActionCreators(postActivityOffer, dispatch),
     postEscapeOffer: bindActionCreators(postEscapeOffer, dispatch),
-    postEventOffer: bindActionCreators(postEventOffer, dispatch)
+    postEventOffer: bindActionCreators(postEventOffer, dispatch),
+    postSaloonAppointment: bindActionCreators(postSaloonAppointment, dispatch)
   };
 };
 

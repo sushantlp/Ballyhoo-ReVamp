@@ -1,4 +1,3 @@
-import getQueryString from "./paramParser";
 import { host } from "../constants";
 
 export default {
@@ -669,4 +668,17 @@ export default {
         .catch(error => console.log(error));
     });
   }
+
+  // spaMenuApi: partnerId => {
+  //   return new Promise((resolve, reject) => {
+  //     fetch(`${host}api/v9/web/partners/${partnerId}/spa-menus`)
+  //       .then(response => {
+  //         response
+  //           .json()
+  //           .then(spaMenu => resolve(spaMenu))
+  //           .catch(error => console.log(error));
+  //       })
+  //       .catch(error => console.log(error));
+  //   });
+  // }
 };

@@ -35,6 +35,8 @@ import { applicationStatusAction } from "../actions/application-status-action";
 
 import { postEscapeEnquiry } from "../actions/escape-enquiry-action";
 
+import { getSpaMenu } from "../actions/spa-menu-action";
+
 import "react-toastify/dist/ReactToastify.css";
 
 class Detail extends React.Component {
@@ -106,6 +108,13 @@ class Detail extends React.Component {
           store.dispatch(getFoodCategoryData(categoryJson));
         else store.dispatch(getCategoryData(categoryJson));
 
+        if (parseInt(detailUrlParam.result_type, 10) === 5) {
+          const spaMenu = await fetch(
+            `${host}api/v9/web/partners/${detailUrlParam.partner_id}/spa-menus`
+          ).then(r => r.json());
+          store.dispatch(getSpaMenu(spaMenu));
+        }
+
         store.dispatch(getCityLocality(cityLocalityJson));
         store.dispatch(getFeaturingData(featureJson));
         store.dispatch(getSlidderImage(slidderJson));
@@ -150,6 +159,13 @@ class Detail extends React.Component {
               `${host}api/v9/web/seo?city=${detailUrlParam.city_id}&category=${detailUrlParam.response_type}&partner=${detailUrlParam.partner_id}`
             ).then(r => r.json())
           ]);
+
+          if (parseInt(detailUrlParam.result_type, 10) === 5) {
+            const spaMenu = await fetch(
+              `${host}api/v9/web/partners/${detailUrlParam.partner_id}/spa-menus`
+            ).then(r => r.json());
+            store.dispatch(getSpaMenu(spaMenu));
+          }
 
           store.dispatch(getFeaturingData(featureJson));
           store.dispatch(getSlidderImage(slidderJson));
@@ -355,6 +371,7 @@ class Detail extends React.Component {
           warningToast={this.warningToast}
           escapeEnquiry={this.props.escapeEnquiry}
           postEscapeEnquiry={this.props.postEscapeEnquiry}
+          spaMenu={this.props.spaMenu}
         />
         <Headout keyword={keyword} />
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
@@ -380,7 +397,8 @@ const mapStateToProps = state => {
     profileData: state.profileData,
     getOtp: state.getOtp,
     postOtp: state.postOtp,
-    escapeEnquiry: state.escapeEnquiry
+    escapeEnquiry: state.escapeEnquiry,
+    spaMenu: state.spaMenu
   };
 };
 
@@ -405,7 +423,8 @@ const mapDispatchToProps = dispatch => {
     getProfile: bindActionCreators(getProfile, dispatch),
     postOtpAction: bindActionCreators(postOtpAction, dispatch),
     getOtpAction: bindActionCreators(getOtpAction, dispatch),
-    postEscapeEnquiry: bindActionCreators(postEscapeEnquiry, dispatch)
+    postEscapeEnquiry: bindActionCreators(postEscapeEnquiry, dispatch),
+    getSpaMenu: bindActionCreators(getSpaMenu, dispatch)
   };
 };
 
