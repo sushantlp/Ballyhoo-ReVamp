@@ -1,0 +1,35 @@
+.saloon-menu-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.saloon-menu-container .fs1-5 {
+  font-size: 1.5em;
+}
+
+.saloon-menu-container .fw2 {
+  font-weight: 200;
+}
+
+.saloon-menu-container .mt0-1 {
+  margin-top: 0.1em;
+}
+
+.saloon-menu-container .mb0-1 {
+  margin-bottom: 0.1em;
+}
+
+.saloon-menu-container .cursor-pointer {
+  cursor: pointer;
+}
+
+.saloon-menu-container .pr0-3 {
+  padding-right: 0.3em;
+}
+
+.saloon-menu-container .pl0-3 {
+  padding-left: 0.3em;
+}
+
+.saloon-menu-container .float-right {
+  float: right;
+}

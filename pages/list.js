@@ -117,7 +117,9 @@ class List extends React.Component {
           "Ballyhoo Today - Discover Eat Trend Escape. Luxury day out Spa Packages, body Massage, ratings, popularity";
       }
 
+      let apiType = listUrlParam.api_type;
       if (listUrlParam.flag === 1) {
+        apiType = 5;
         dynamicUrl = `${host}api/v9/web/search?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}&page=${page}`;
       } else {
         dynamicUrl = `${host}api/v9/web/listing?city_id=${listUrlParam.city_id}&type=${listUrlParam.api_type}&q=${listUrlParam.key}&page=${page}`;
@@ -141,7 +143,7 @@ class List extends React.Component {
             }`
           ).then(r => r.json()),
           fetch(
-            `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+            `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${apiType}&key=${listUrlParam.key}`
           ).then(r => r.json()),
           fetch(
             `${host}api/v9/web/seo?city=${listUrlParam.city_id}&category=${listUrlParam.response_type}`
@@ -172,7 +174,7 @@ class List extends React.Component {
             }`
           ).then(r => r.json()),
           fetch(
-            `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${listUrlParam.api_type}&key=${listUrlParam.key}`
+            `${host}api/v9/web/recommended/collections?city=${listUrlParam.city_id}&type=${apiType}&key=${listUrlParam.key}`
           ).then(r => r.json()),
           fetch(
             `${host}api/v9/web/seo?city=${listUrlParam.city_id}&category=${listUrlParam.response_type}`

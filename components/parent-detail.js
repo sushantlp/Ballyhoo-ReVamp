@@ -1181,6 +1181,7 @@ export default class ParentDetail extends React.Component {
                 );
               } else {
                 this.saloonAppointment();
+                this.updateSaloonMenuState(true);
               }
             }
           } else {
@@ -1194,7 +1195,7 @@ export default class ParentDetail extends React.Component {
   };
 
   saloonAppointment = () => {
-    const displayTime = moment(this.state.time, "hh:mm A").format("hh:mm A");
+    const time = moment(this.state.time, "HH:mm A").format("HH:mm A");
     const date = moment(this.state.date).format("YYYY-MM-DD");
     const displayDate = moment(this.state.date, "DD-MM-YYYY").format(
       "DD-MM-YYYY"
@@ -1208,8 +1209,8 @@ export default class ParentDetail extends React.Component {
       customer_mobile: this.props.customerData.customerData.mobile,
       customer_email: this.props.customerData.customerData.email,
       date: date,
-      time: this.state.time,
-      display_time: displayTime,
+      time: time,
+      display_time: this.state.displayTime,
       display_date: displayDate,
       menu: []
     };
@@ -1234,6 +1235,7 @@ export default class ParentDetail extends React.Component {
     sessionStorage.setItem("SPA_APPOINTMENT", JSON.stringify(appointment));
     sessionStorage.setItem("WHICH", JSON.stringify(which));
   };
+
   otherCategoryJsonBuilder = json => {
     return json.map(obj => {
       const item = {};
