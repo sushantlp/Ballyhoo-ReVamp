@@ -14,6 +14,10 @@
   margin-top: 0.1em;
 }
 
+.saloon-menu-container .mt1em {
+  margin-top: 1em;
+}
+
 .saloon-menu-container .mb0-1 {
   margin-bottom: 0.1em;
 }
@@ -32,4 +36,12 @@
 
 .saloon-menu-container .float-right {
   float: right;
+}
+
+.saloon-menu-container .fs2em {
+  font-size: 2em;
+}
+
+.saloon-menu-container .border-top-dashed {
+  border-top: 1px dashed #e0e0e0;
 }
