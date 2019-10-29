@@ -105,26 +105,17 @@ const CheckoutLeft = props => {
         <React.Fragment>
           <h4 className="fs1-4 ffqs fw2">Items Bought :</h4>
 
-          {item.packages.map((value, key) => {
+          {item.menu.map((item, key) => {
             return (
               <Segment style={{ backgroundColor: "aliceblue" }} key={key}>
-                <h4 className="ffqs fs1-5 fw2 m0">{value.package_caption}</h4>
-                <h4 className="ffqs fs1 fw2 mt0-5">
-                  {" "}
-                  {value.price_caption}{" "}
-                  {value.date === undefined ? null : (
-                    <span className="tag is-warning" style={{ float: "right" }}>
-                      {value.date}
-                    </span>
-                  )}
-                </h4>
+                <h4 className="fw2 fs1-5 ffqs">{item.name}</h4>
                 <div className="columns">
                   <div className="column is-6">
                     <h4 className="ffqs fw2 p0-5 fs1-2">
                       Price :
                       <span>
                         {" "}
-                        <span> &#8377;</span> {value.price}{" "}
+                        <span> &#8377;</span> {item.price}{" "}
                       </span>
                     </h4>
                   </div>
@@ -132,7 +123,7 @@ const CheckoutLeft = props => {
                     <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
                       Quanity :{" "}
                       <span style={{ marginLeft: "0.3em" }}>
-                        {value.quantity}
+                        {item.quantity}
                       </span>
                     </h4>
                   </div>

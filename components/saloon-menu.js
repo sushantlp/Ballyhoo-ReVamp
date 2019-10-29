@@ -7,7 +7,9 @@ export default class SaloonMenu extends React.Component {
     super(props);
     this.state = {
       menus: [],
-      api_menus: []
+      api_menus: [],
+      skipLoading: false,
+      proccedLoading: false
     };
   }
 
@@ -35,14 +37,16 @@ export default class SaloonMenu extends React.Component {
     });
   }
 
-  onClickAdd = (itemId, key, unique) => {
+  onClickAdd = (itemId, key, unique, price, name) => {
     let menus = this.state.menus;
     let apiMenu = this.state.api_menus;
     menus[key].items[unique].quantity = 1;
 
     const obj = {
       item_id: itemId,
-      quantity: 1
+      quantity: 1,
+      price: price,
+      name: name
     };
 
     apiMenu.push(obj);
@@ -89,7 +93,7 @@ export default class SaloonMenu extends React.Component {
     }
 
     menus[key].items[unique].quantity = menus[key].items[unique].quantity + 1;
-    apiMenu[index].quantity = apiMenu[index].quantity - 1;
+    apiMenu[index].quantity = apiMenu[index].quantity + 1;
 
     this.setState({
       menus,
@@ -97,9 +101,37 @@ export default class SaloonMenu extends React.Component {
     });
   };
 
-  onClickSkip = () => {};
+  onClickSkip = () => {
+    this.setState({
+      skipLoading: true
+    });
+    this.props.routeChange("/checkout");
+  };
 
-  onClickProcced = () => {};
+  onClickProcced = () => {
+    this.setState({
+      proccedLoading: true
+    });
+
+    let appointment = sessionStorage.getItem("SPA_APPOINTMENT");
+    appointment = JSON.parse(appointment);
+
+    appointment = {
+      partner_id: appointment.partner_id,
+      name: appointment.name,
+      customer_id: appointment.customer_id,
+      customer_mobile: appointment.customer_mobile,
+      customer_email: appointment.customer_email,
+      date: appointment.date,
+      time: appointment.time,
+      display_time: appointment.display_time,
+      display_date: appointment.display_date,
+      menu: this.state.api_menus
+    };
+
+    sessionStorage.setItem("SPA_APPOINTMENT", JSON.stringify(appointment));
+    this.props.routeChange("/checkout");
+  };
 
   render() {
     if (this.state.menus.length === 0) return null;
@@ -149,7 +181,9 @@ export default class SaloonMenu extends React.Component {
                                             this.onClickAdd(
                                               item.item_id,
                                               key,
-                                              unique
+                                              unique,
+                                              item.price,
+                                              item.item_name
                                             )
                                           }
                                         >
@@ -198,31 +232,58 @@ export default class SaloonMenu extends React.Component {
                     </React.Fragment>
                   );
                 })}
+              </section>
 
-                <div className="border-top-dashed" />
-                <br />
-                <div className="columns">
+              <footer className="modal-card-foot">
+                {/* <div className="border-top-dashed" />
+                <br /> */}
+                <div
+                  className="columns"
+                  style={{
+                    paddingLeft: "8em",
+
+                    paddingRight: "8em"
+                  }}
+                >
                   <div className="column">
-                    <button
-                      className="button is-outlined fw2 fs1-5 ffqs float-right"
-                      style={{ width: "8em" }}
-                      onClick={() => this.onClickSkip()}
-                    >
-                      Skip
-                    </button>
+                    {this.state.skipLoading ? (
+                      <button
+                        className="button is-outlined fw2 fs1-5 ffqs is-loading"
+                        style={{ width: "8em" }}
+                      >
+                        Skip
+                      </button>
+                    ) : (
+                      <button
+                        className="button is-outlined fw2 fs1-5 ffqs"
+                        style={{ width: "8em" }}
+                        onClick={() => this.onClickSkip()}
+                      >
+                        Skip
+                      </button>
+                    )}
                   </div>
 
                   <div className="column">
-                    <button
-                      className="button is-danger is-outlined fw2 fs1-5 ffqs"
-                      style={{ width: "8em" }}
-                      onClick={() => this.onClickProcced()}
-                    >
-                      Procced
-                    </button>
+                    {this.state.proccedLoading ? (
+                      <button
+                        className="button is-danger is-outlined fw2 fs1-5 ffqs is-loading"
+                        style={{ width: "8em" }}
+                      >
+                        Procced
+                      </button>
+                    ) : (
+                      <button
+                        className="button is-danger is-outlined fw2 fs1-5 ffqs"
+                        style={{ width: "8em" }}
+                        onClick={() => this.onClickProcced()}
+                      >
+                        Procced
+                      </button>
+                    )}
                   </div>
                 </div>
-              </section>
+              </footer>
             </div>
           </div>
         </div>

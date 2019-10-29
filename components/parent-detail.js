@@ -1148,6 +1148,7 @@ export default class ParentDetail extends React.Component {
 
           this.props.routeChange("/checkout");
         } else {
+          console.log(this.props.detailUrlParam.result_type);
           if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
             if (this.props.spaMenu.spaMenu.subcode === 204) {
               // Without Menu
@@ -1359,6 +1360,7 @@ export default class ParentDetail extends React.Component {
             updateSaloonMenuState={this.updateSaloonMenuState}
             routeChange={this.props.routeChange}
             spaMenu={this.props.spaMenu.spaMenu}
+            routeChange={this.props.routeChange}
           />
         ) : null}
       </React.Fragment>
