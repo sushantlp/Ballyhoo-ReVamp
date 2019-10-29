@@ -184,7 +184,7 @@ const Order = props => {
                                     <span class="tag is-warning is-large">
                                       {" "}
                                       {parseInt(value.payment_type, 10) === 1
-                                        ? "Online"
+                                        ? "Online/Paid"
                                         : "Pay At Venue"}
                                     </span>
                                   </div>

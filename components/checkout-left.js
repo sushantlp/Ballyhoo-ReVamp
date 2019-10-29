@@ -115,7 +115,7 @@ const CheckoutLeft = props => {
                       Price :
                       <span>
                         {" "}
-                        <span> &#8377;</span> {item.price}{" "}
+                        <span> &#8377;</span> {item.price * item.quantity}{" "}
                       </span>
                     </h4>
                   </div>
