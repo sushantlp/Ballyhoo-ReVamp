@@ -1,11 +1,7 @@
-body {
-  /* color: #998da0; */
-}
-
-@font-face {
+/* @font-face {
   font-family: "Madeleina Sans";
   src: url("/static/Madeleina_Sans.otf") format("opentype");
-}
+} */
 
 .footer-rightside-summary {
   max-width: 360px;
@@ -13,7 +9,7 @@ body {
   line-height: 1.66667;
 }
 
-.brand {
+.app-footer .brand {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -21,7 +17,7 @@ body {
   line-height: 1;
 }
 
-.brand-icon {
+.app-footer .brand-icon {
   width: 56px;
   height: 56px;
   margin-right: 1rem;
@@ -29,16 +25,15 @@ body {
   will-change: width, height, margin-right;
 }
 
-.brand-title {
+.app-footer .brand-title {
   font-size: 2rem;
   color: #463853;
   transition-duration: 172ms;
   will-change: transform;
   font-family: "Quicksand", sans-serif;
-  /* font-weight: 300; */
 }
 
-.brand-subtitle {
+.app-footer .brand-subtitle {
   margin-top: 0.25rem;
   font-size: 1.125rem;
   font-weight: normal;
@@ -77,7 +72,6 @@ body {
 
 .menu-list a {
   border-radius: 10px;
-  /* color: #998da0; */
   display: block;
   padding: 0.5em 0.75em;
 }
@@ -91,7 +85,6 @@ body {
 .section.is-medium {
   margin-top: 2em;
   padding: 3rem 1.5rem;
-  /* background-color: rgb(240, 241, 245); */
 }
 
 .short-story {
@@ -102,10 +95,6 @@ body {
 
 .copyright {
   font-family: "Quicksand", sans-serif;
-}
-
-.copyright strong {
-  /* font-family: "Madeleina Sans", sans-serif; */
 }
 
 .lh1_7 {

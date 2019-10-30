@@ -1,44 +1,11 @@
 const next = require("next");
-// const http = require("http");
-// const url = require("url");
+
 const Path = require("path");
 const express = require("express");
-
-// const port = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== "production";
 //const dev = false;
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
-// const robotsOptions = {
-//   root: __dirname + "/static/",
-//   headers: {
-//     "Content-Type": "text/plain;charset=UTF-8"
-//   }
-// };
-// server.get("/robots.txt", (req, res) =>
-//   res.status(200).sendFile("robots.txt", robotsOptions)
-// );
-
-// const sitemapOptions = {
-//   root: __dirname + "/static/",
-//   headers: {
-//     "Content-Type": "text/xml;charset=UTF-8"
-//   }
-// };
-// server.get("/sitemap.xml", (req, res) =>
-//   res.status(200).sendFile("sitemap.xml", sitemapOptions)
-// );
-
-// const options = {
-//   root: path.join(__dirname, '/static'),
-//   headers: {
-//     'Content-Type': 'text/plain;charset=UTF-8',
-//   }
-// };
-// server.get('/robots.txt', (req, res) => (
-//   res.status(200).sendFile('robots.txt', options)
-// ));
 
 app
   .prepare()

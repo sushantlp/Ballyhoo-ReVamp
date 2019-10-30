@@ -1,0 +1,60 @@
+.city-model-container .modal-card,
+.modal-content {
+  width: 100%;
+}
+
+.city-model-container .modal-card-head {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.city-model-container .modal-card-head {
+  background-color: white;
+  padding: 10px;
+}
+
+.city-model-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.city-model-container .justify-content-center {
+  justify-content: center;
+}
+
+.city-model-container .jss359 {
+  /* width: 68px;
+  height: 68px; */
+  position: relative;
+}
+
+.city-model-container .ffqs {
+  font-family: "Quicksand", sans-serif;
+}
+
+.city-model-container .img-resp {
+  /* display: block;
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.city-model-container .pt0-5em {
+  padding-top: 0.5em;
+}
+
+.city-model-container .pl0-5em {
+  padding-left: 0.5em;
+}
+
+.city-model-container .text-align-centre {
+  text-align: center;
+}
+
+.city-model-container .brand-title {
+  font-size: 1.5rem;
+  color: black;
+}

@@ -51,18 +51,20 @@ export default class Slidder extends React.Component {
             { shallow: true }
           );
         }
-      } else {
-        this.createCityList(this.props.cityLocality.cityLocality);
-        this.setCityName("Bengaluru");
-        Router.push(
-          {
-            pathname: Router.router.route,
-            query: { city: "bengaluru", city_id: 1 }
-          },
-          `/bengaluru/${1}`,
-          { shallow: true }
-        );
       }
+
+      // else {
+      //   this.createCityList(this.props.cityLocality.cityLocality);
+      //   this.setCityName("Bengaluru");
+      //   Router.push(
+      //     {
+      //       pathname: Router.router.route,
+      //       query: { city: "bengaluru", city_id: 1 }
+      //     },
+      //     `/bengaluru/${1}`,
+      //     { shallow: true }
+      //   );
+      // }
     }
     if (this.props.searchData.searchData.length !== 0)
       this.createSearchList(this.props.searchData.searchData);
@@ -190,12 +192,13 @@ export default class Slidder extends React.Component {
     )
       return <Spinner />;
 
-    if (
-      this.props.homeScreen.status === "START" ||
-      this.props.homeScreen.status === "FAIL"
-    )
-      return <Spinner />;
+    // if (
+    //   this.props.homeScreen.status === "START" ||
+    //   this.props.homeScreen.status === "FAIL"
+    // )
+    //   return <Spinner />;
 
+    if (this.props.homeScreen.homeScreen.length === 0) return null;
     if (this.state.cityName === "") return null;
     const carousel = this.props.homeScreen.homeScreen.carousel;
     const settings = {

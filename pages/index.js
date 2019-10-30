@@ -22,6 +22,7 @@ import SlidderBanner from "../components/slidder-banner";
 import Banner from "../components/banner";
 import Headout from "../components/headout";
 import Footer from "../components/footer";
+import CityModel from "../components/city-model";
 
 import { getsearchData } from "../actions/search-data-action";
 import { getCityLocality } from "../actions/city-locality-action";
@@ -40,9 +41,7 @@ class Index extends React.Component {
     let currentUrl = [];
     try {
       const { store, isServer, req, query, asPath } = ctx;
-
       let cityId = 1;
-
       if (isServer) {
         currentUrl = req.url;
         if (
@@ -57,22 +56,27 @@ class Index extends React.Component {
           cityId = query.city_id;
       }
 
-      const [
-        cityLocalityJson,
-        homeScreenJson,
-        searchJson,
-        seoJson
-      ] = await Promise.all([
-        fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
-        fetch(`${host}api/v9/web/home?city_id=${cityId}`).then(r => r.json()),
-        fetch(`${host}api/v9/web/search-keys`).then(r => r.json()),
-        fetch(`${host}api/v9/web/seo?city=${cityId}`).then(r => r.json())
-      ]);
-
-      store.dispatch(getsearchData(searchJson));
-      store.dispatch(getHomeScreen(homeScreenJson));
+      // City Locality API
+      let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
+      cityLocalityJson = await cityLocalityJson.json();
       store.dispatch(getCityLocality(cityLocalityJson));
-      store.dispatch(getSeo(seoJson));
+
+      // const [
+      //   cityLocalityJson,
+      //   homeScreenJson,
+      //   searchJson,
+      //   seoJson
+      // ] = await Promise.all([
+      //   fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
+      //   fetch(`${host}api/v9/web/home?city_id=${cityId}`).then(r => r.json()),
+      //   fetch(`${host}api/v9/web/search-keys`).then(r => r.json()),
+      //   fetch(`${host}api/v9/web/seo?city=${cityId}`).then(r => r.json())
+      // ]);
+
+      // store.dispatch(getsearchData(searchJson));
+      // store.dispatch(getHomeScreen(homeScreenJson));
+      // store.dispatch(getCityLocality(cityLocalityJson));
+      // store.dispatch(getSeo(seoJson));
     } catch (err) {
       console.log("ERROR");
       console.log(err);
@@ -84,7 +88,8 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      cityModel: false
     };
   }
 
@@ -121,10 +126,8 @@ class Index extends React.Component {
         nextProps.categoryData.categoryData.details.hasOwnProperty("offer_id")
       ) {
         const { city } = Router.router.query;
-
         const partnerId =
           nextProps.categoryData.categoryData.details.partner_details.p_id;
-
         let partner = nextProps.categoryData.categoryData.details.partner_details.p_name.replace(
           /[^a-zA-Z ]/g,
           ""
@@ -272,6 +275,10 @@ class Index extends React.Component {
         <Headout keyword={keyword} />
 
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
+
+        {this.state.cityModel ? (
+          <CityModel cityModel={this.state.cityModel} />
+        ) : null}
       </React.Fragment>
     );
   }
