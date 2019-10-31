@@ -58,32 +58,13 @@ class Index extends React.Component {
           cityId = query.city_id;
       }
 
-      // City Locality API
-      let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
-      cityLocalityJson = await cityLocalityJson.json();
+      const [cityLocalityJson, searchJson] = await Promise.all([
+        fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
+        fetch(`${host}api/v9/web/search-keys`).then(r => r.json())
+      ]);
+
       store.dispatch(getCityLocality(cityLocalityJson));
-
-      // Search Json
-      let searchJson = await fetch(`${host}api/v9/web/search-keys`);
-      searchJson = await searchJson.json();
       store.dispatch(getsearchData(searchJson));
-
-      // const [
-      //   cityLocalityJson,
-      //   homeScreenJson,
-      //   searchJson,
-      //   seoJson
-      // ] = await Promise.all([
-      //   fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
-      //   fetch(`${host}api/v9/web/home?city_id=${cityId}`).then(r => r.json()),
-      //   fetch(`${host}api/v9/web/search-keys`).then(r => r.json()),
-      //   fetch(`${host}api/v9/web/seo?city=${cityId}`).then(r => r.json())
-      // ]);
-
-      // store.dispatch(getsearchData(searchJson));
-      // store.dispatch(getHomeScreen(homeScreenJson));
-      // store.dispatch(getCityLocality(cityLocalityJson));
-      // store.dispatch(getSeo(seoJson));
     } catch (err) {
       console.log("ERROR");
       console.log(err);
@@ -101,7 +82,7 @@ class Index extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
@@ -114,14 +95,24 @@ class Index extends React.Component {
         });
     }
 
-    const customStore = new Store("ballyhoo", "ballyhoo_store");
-    get("city", customStore).then(city =>
-      city === undefined
-        ? this.setState({
-            cityModel: true
-          })
-        : this.onApiCall(city)
-    );
+    const url = this.props.currentUrl.split("/");
+
+    if (url.length === 3) {
+      const city = this.props.cityLocality.cityLocality.filter(obj => {
+        if (obj.city_id === parseInt(url[2], 10)) return obj;
+      });
+
+      this.onCitySelected(city[0]);
+    } else {
+      const customStore = new Store("ballyhoo", "ballyhoo_store");
+      get("city", customStore).then(city =>
+        city === undefined
+          ? this.setState({
+              cityModel: true
+            })
+          : this.onApiCall(city)
+      );
+    }
 
     sessionStorage.setItem(
       "CITY",
@@ -212,7 +203,7 @@ class Index extends React.Component {
     });
   };
 
-  onCitySelected = async city => {
+  onCitySelected = city => {
     const customStore = new Store("ballyhoo", "ballyhoo_store");
     set("city", city, customStore);
 
