@@ -44,20 +44,28 @@ const CityModel = props => {
                           .map((city, key) => {
                             return (
                               <div
-                                className="column"
+                                className="column is-one-third-mobile"
                                 key={key}
                                 onClick={() => props.onCitySelected(city)}
                               >
                                 <div className="jss359">
-                                  <img
-                                    className="img-resp"
-                                    alt={city.city_name}
-                                    src={city.image_path}
-                                  />
+                                  <figure class="image is-96x96">
+                                    <img
+                                      className="img-resp is-rounded"
+                                      alt={city.city_name}
+                                      src={city.image_path}
+                                    />
+
+                                    <div className="pt0-5em text-align-centre all-city">
+                                      <span className="ffqs">
+                                        {city.city_name}
+                                      </span>
+                                    </div>
+                                  </figure>
                                 </div>
-                                <div className="pt0-5em text-align-centre all-city">
+                                {/* <div className="pt0-5em text-align-centre all-city">
                                   <span className="ffqs">{city.city_name}</span>
-                                </div>
+                                </div> */}
                               </div>
                             );
                           })}
@@ -82,7 +90,7 @@ const CityModel = props => {
                         {props.cityLocality.cityLocality.map((city, key) => {
                           return (
                             <div
-                              className="column is-2 text-align-centre all-city"
+                              className="column is-one-third-mobile text-align-centre all-city"
                               key={key}
                               onClick={() => props.onCitySelected(city)}
                             >

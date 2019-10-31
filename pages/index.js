@@ -77,7 +77,7 @@ class Index extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      cityModel: false,
+      cityModel: true,
       hideSeek: true
     };
   }
