@@ -40,6 +40,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+  border-radius: 50%;
 }
 
 .city-model-container .pt0-5em {
@@ -57,4 +58,24 @@
 .city-model-container .brand-title {
   font-size: 1.5rem;
   color: black;
+}
+
+.city-model-container .fw2 {
+  font-weight: 200;
+}
+
+.city-model-container .all-city:hover {
+  cursor: pointer;
+}
+
+.city-model-container .jss359:hover {
+  cursor: pointer;
+}
+
+.city-model-container .modal {
+  justify-content: initial;
+}
+
+.city-model-container .spacer-is-2 {
+  height: 2rem;
 }

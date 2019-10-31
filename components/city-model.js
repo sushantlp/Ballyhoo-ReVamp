@@ -1,4 +1,18 @@
+import styled, { keyframes } from "styled-components";
+import { zoomInDown, zoomInUp } from "react-animations";
 import "./city-model.css";
+
+const zoomInAnimation = keyframes`${zoomInDown}`;
+const zoomOutAnimation = keyframes`${zoomInUp}`;
+
+const ZoomInDiv = styled.div`
+  animation: 1s ${zoomInAnimation};
+`;
+
+const ZoomOutDiv = styled.div`
+  animation: 1s ${zoomOutAnimation};
+`;
+
 const CityModel = props => {
   return (
     <React.Fragment>
@@ -7,8 +21,6 @@ const CityModel = props => {
           <div className="modal-background" />
           <div className="modal-card">
             <header className="modal-card-head">
-              {/* <h4 className="modal-card-title fw2 ffqs">BALLYHOO</h4> */}
-
               <img
                 alt="Ballyhoo"
                 role="presentation"
@@ -18,110 +30,81 @@ const CityModel = props => {
               <div className="brand-title pl0-5em">Ballyhoo Today</div>
             </header>
             <section className="modal-card-body">
-              <h1 style={{ textAlign: "center" }}>Select your city</h1>
+              <h1 className="text-align-centre fw2 ffqs">Select Your City</h1>
 
-              <br />
-              <div className="container justify-content-center">
-                <div className="columns">
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="http:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1535979973\/ballyhoo\/CITY_IMAGES\/1.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Bangalore</span>
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="http:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1535979973\/ballyhoo\/CITY_IMAGES\/2.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Delhi</span>
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="https:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1543998344\/ballyhoo\/CITY_IMAGES\/6.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Chandigarh</span>
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="http:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1535979973\/ballyhoo\/CITY_IMAGES\/7.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Chennai</span>
-                    </div>
-                  </div>
+              <div className="spacer-is-2" />
 
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="https:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1543998613\/ballyhoo\/CITY_IMAGES\/9.jpg"
-                      />
+              {props.hideSeek ? (
+                <React.Fragment>
+                  <ZoomOutDiv>
+                    <div className="container justify-content-center">
+                      <div className="columns is-multiline is-mobile">
+                        {props.cityLocality.cityLocality
+                          .filter(city => city.featured === 1)
+                          .map((city, key) => {
+                            return (
+                              <div
+                                className="column"
+                                key={key}
+                                onClick={() => props.onCitySelected(city)}
+                              >
+                                <div className="jss359">
+                                  <img
+                                    className="img-resp"
+                                    alt={city.city_name}
+                                    src={city.image_path}
+                                  />
+                                </div>
+                                <div className="pt0-5em text-align-centre all-city">
+                                  <span className="ffqs">{city.city_name}</span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                      </div>
                     </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Kolkata</span>
+                  </ZoomOutDiv>
+                  <div className="spacer-is-2" />
+
+                  <h4
+                    className="text-align-centre all-city ffqs fw2"
+                    // style={{ color: "#ff3860" }}
+                    onClick={() => props.onClickHideSeek(false)}
+                  >
+                    View All Cities
+                  </h4>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <ZoomInDiv>
+                    <div className="container justify-content-center">
+                      <div className="columns is-multiline is-mobile">
+                        {props.cityLocality.cityLocality.map((city, key) => {
+                          return (
+                            <div
+                              className="column is-2 text-align-centre all-city"
+                              key={key}
+                              onClick={() => props.onCitySelected(city)}
+                            >
+                              <span className="ffqs">{city.city_name}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="http:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1535979973\/ballyhoo\/CITY_IMAGES\/12.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Pune</span>
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="http:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1535979973\/ballyhoo\/CITY_IMAGES\/13.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Hyderabad</span>
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div className="jss359">
-                      <img
-                        className="img-resp"
-                        alt="Bangalore"
-                        src="http:\/\/res.cloudinary.com\/dp67gawk6\/image\/upload\/w_500,h_500\/v1535979973\/ballyhoo\/CITY_IMAGES\/14.jpg"
-                      />
-                    </div>
-                    <div className="pt0-5em text-align-centre">
-                      <span className="ffqs">Mumbai</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  </ZoomInDiv>
+
+                  <div className="spacer-is-2" />
+
+                  <h4
+                    className="text-align-centre all-city ffqs fw2"
+                    // style={{ color: "#ff3860" }}
+                    onClick={() => props.onClickHideSeek(true)}
+                  >
+                    View All Cities
+                  </h4>
+                </React.Fragment>
+              )}
             </section>
           </div>
         </div>

@@ -164,7 +164,7 @@ export default class Collection extends React.Component {
   }
 
   onClickCollection = (collection, props) => {
-    props.changeLoadingState();
+    props.changeLoadingState(true);
     const { city, city_id } = Router.router.query;
 
     let title = collection.title.replace(/[^a-zA-Z ]/g, "");

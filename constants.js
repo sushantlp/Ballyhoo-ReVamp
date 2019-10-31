@@ -1,5 +1,7 @@
 //export const host = "http://18.206.248.86:8080/";
 
+export const database = "ballyhoo_store";
+export const version = 1;
 export const host = "https://ballyhoo.today/";
 export const hostWithoutSlash = "https://ballyhoo.today";
 export const EMAIL = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

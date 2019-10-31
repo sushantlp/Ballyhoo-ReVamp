@@ -70,7 +70,7 @@ function SamplePrevArrow(props) {
 
 export default class Featured extends React.Component {
   onClickFeatured = (featured, props) => {
-    props.changeLoadingState();
+    props.changeLoadingState(true);
     const { city, city_id } = Router.router.query;
 
     let title = featured.title.replace(/[^a-zA-Z ]/g, "");

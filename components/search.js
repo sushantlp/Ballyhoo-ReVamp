@@ -34,7 +34,7 @@ export default class Search extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.cityLocality !== nextProps.cityLocality)
-      this.createCityList(nextProps.cityLocality.cityLocality, "Bengaluru");
+      this.createCityList(nextProps.cityLocality.cityLocality);
 
     if (this.props.searchData !== nextProps.searchData)
       this.createSearchList(nextProps.searchData.searchData);
@@ -50,7 +50,7 @@ export default class Search extends React.Component {
       return city;
     });
 
-    sessionStorage.setItem("CITY_LOCALITY", JSON.stringify(props));
+    sessionStorage.setItem("CITY", JSON.stringify(props));
     this.setState({
       cityList: cityArray
     });

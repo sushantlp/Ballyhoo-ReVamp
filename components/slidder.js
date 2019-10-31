@@ -52,19 +52,6 @@ export default class Slidder extends React.Component {
           );
         }
       }
-
-      // else {
-      //   this.createCityList(this.props.cityLocality.cityLocality);
-      //   this.setCityName("Bengaluru");
-      //   Router.push(
-      //     {
-      //       pathname: Router.router.route,
-      //       query: { city: "bengaluru", city_id: 1 }
-      //     },
-      //     `/bengaluru/${1}`,
-      //     { shallow: true }
-      //   );
-      // }
     }
     if (this.props.searchData.searchData.length !== 0)
       this.createSearchList(this.props.searchData.searchData);
@@ -117,19 +104,20 @@ export default class Slidder extends React.Component {
 
   // On City Change
   onChangeCity = (e, data) => {
-    const bunch = this.state.cityList.filter(obj => {
-      if (obj.value.toLowerCase() === data.value.toLowerCase()) return obj;
+    const bunch = this.props.cityLocality.cityLocality.filter(obj => {
+      if (obj.city_name.toLowerCase() === data.value.toLowerCase()) return obj;
     });
+
     this.setCityName(data.value);
-    this.props.cityChangeApiCall(bunch[0].key);
-    const city = bunch[0].text.replace(/ /g, "-").toLowerCase();
-    this.setCityName(bunch[0].text);
+    this.props.cityChangeApiCall(bunch[0]);
+    const city = data.value.replace(/ /g, "-").toLowerCase();
+    this.setCityName(data.value);
     Router.push(
       {
         pathname: Router.router.route,
-        query: { city: city, city_id: bunch[0].key }
+        query: { city: city, city_id: bunch[0].city_id }
       },
-      `/${city}/${bunch[0].key}`,
+      `/${city}/${bunch[0].city_id}`,
       { shallow: true }
     );
   };
@@ -162,7 +150,7 @@ export default class Slidder extends React.Component {
   };
 
   onClickButton = props => {
-    props.changeLoadingState();
+    props.changeLoadingState(true);
     const { city, city_id } = Router.router.query;
 
     let title = this.state.selectSearch.keyword.replace(/[^a-zA-Z ]/g, "");
@@ -192,15 +180,11 @@ export default class Slidder extends React.Component {
     )
       return <Spinner />;
 
-    // if (
-    //   this.props.homeScreen.status === "START" ||
-    //   this.props.homeScreen.status === "FAIL"
-    // )
-    //   return <Spinner />;
-
     if (this.props.homeScreen.homeScreen.length === 0) return null;
     if (this.state.cityName === "") return null;
+
     const carousel = this.props.homeScreen.homeScreen.carousel;
+
     const settings = {
       dots: true,
       infinite: true,

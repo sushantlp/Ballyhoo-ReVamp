@@ -71,7 +71,7 @@ function SamplePrevArrow(props) {
 
 export default class Discover extends React.Component {
   onClickDiscover = (discover, props) => {
-    props.changeLoadingState();
+    props.changeLoadingState(true);
 
     const { city, city_id } = Router.router.query;
 

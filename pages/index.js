@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 
 import fetch from "isomorphic-unfetch";
 
-import { host, hostWithoutSlash } from "../constants";
+import { host, hostWithoutSlash, database, version } from "../constants";
+
+import { Store, get, set } from "idb-keyval";
 
 import Spinner from "../components/spinner";
 import Head from "../components/head";
@@ -32,7 +34,7 @@ import { postLogin } from "../actions/login-action";
 import { postRegister } from "../actions/register-action";
 import { postForget } from "../actions/forget-action";
 import { updateCustomerData } from "../actions/customer-data-action";
-import { getSeo } from "../actions/seo-data-action";
+import { getSeo, getSeoApi } from "../actions/seo-data-action";
 import { applicationStatusAction } from "../actions/application-status-action";
 import { getProfile } from "../actions/profile-action";
 
@@ -60,6 +62,11 @@ class Index extends React.Component {
       let cityLocalityJson = await fetch(`${host}api/v9/web/city-list`);
       cityLocalityJson = await cityLocalityJson.json();
       store.dispatch(getCityLocality(cityLocalityJson));
+
+      // Search Json
+      let searchJson = await fetch(`${host}api/v9/web/search-keys`);
+      searchJson = await searchJson.json();
+      store.dispatch(getsearchData(searchJson));
 
       // const [
       //   cityLocalityJson,
@@ -89,11 +96,12 @@ class Index extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      cityModel: false
+      cityModel: false,
+      hideSeek: true
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     ReactDOM.findDOMNode(this).scrollIntoView();
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
@@ -106,6 +114,19 @@ class Index extends React.Component {
         });
     }
 
+    const customStore = new Store("ballyhoo", "ballyhoo_store");
+    get("city", customStore).then(city =>
+      city === undefined
+        ? this.setState({
+            cityModel: true
+          })
+        : this.onApiCall(city)
+    );
+
+    sessionStorage.setItem(
+      "CITY",
+      JSON.stringify(this.props.cityLocality.cityLocality)
+    );
     sessionStorage.removeItem("RESERVATION");
     sessionStorage.removeItem("SPA_APPOINTMENT");
     sessionStorage.removeItem("SPA_OFFER");
@@ -159,23 +180,62 @@ class Index extends React.Component {
           { shallow: true }
         );
       }
+    } else if (
+      this.props.homeScreen !== nextProps.homeScreen &&
+      nextProps.homeScreen.status === "SUCCESS"
+    ) {
+      this.changeLoadingState(false);
     }
   }
 
-  cityChangeApiCall = cityId => {
-    this.props.getHomeScreenApi(cityId);
+  onClickHideSeek = bool => {
+    this.setState({
+      hideSeek: bool
+    });
+  };
+
+  cityChangeApiCall = city => {
+    const customStore = new Store("ballyhoo", "ballyhoo_store");
+    set("city", city, customStore);
+    this.props.getHomeScreenApi(city.city_id);
   };
 
   categoryApiCall = offerId => {
-    this.changeLoadingState();
+    this.changeLoadingState(true);
     this.props.getCategoryDataApi(offerId);
   };
 
-  changeLoadingState = () => {
+  changeLoadingState = bool => {
     ReactDOM.findDOMNode(this).scrollIntoView();
     this.setState({
-      isLoading: !this.state.isLoading
+      isLoading: bool
     });
+  };
+
+  onCitySelected = async city => {
+    const customStore = new Store("ballyhoo", "ballyhoo_store");
+    set("city", city, customStore);
+
+    this.setState({
+      cityModel: false
+    });
+
+    this.onApiCall(city);
+  };
+
+  onApiCall = city => {
+    this.changeLoadingState(true);
+    this.props.getHomeScreenApi(city.city_id);
+    this.props.getSeoApi(city.city_id, null, null);
+
+    Router.push(
+      {
+        pathname: Router.router.route,
+        query: { city: city.city_name, city_id: city.city_id }
+      },
+      `/${city.city_name}/${city.city_id}`,
+      { shallow: true }
+    );
   };
 
   render() {
@@ -277,7 +337,13 @@ class Index extends React.Component {
         <Footer cityLocality={this.props.cityLocality} keyword={keyword} />
 
         {this.state.cityModel ? (
-          <CityModel cityModel={this.state.cityModel} />
+          <CityModel
+            cityModel={this.state.cityModel}
+            hideSeek={this.state.hideSeek}
+            onClickHideSeek={this.onClickHideSeek}
+            cityLocality={this.props.cityLocality}
+            onCitySelected={this.onCitySelected}
+          />
         ) : null}
       </React.Fragment>
     );
@@ -312,6 +378,7 @@ const mapDispatchToProps = dispatch => {
     postForget: bindActionCreators(postForget, dispatch),
     updateCustomerData: bindActionCreators(updateCustomerData, dispatch),
     getSeo: bindActionCreators(getSeo, dispatch),
+    getSeoApi: bindActionCreators(getSeoApi, dispatch),
     applicationStatusAction: bindActionCreators(
       applicationStatusAction,
       dispatch
