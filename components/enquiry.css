@@ -75,3 +75,7 @@
 .enquiry-container .DateInput {
   width: 16em;
 }
+
+.enquiry-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

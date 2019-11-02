@@ -43,7 +43,7 @@ export default class Filter extends React.Component {
         <Segment disabled>
           {parseInt(this.props.urlParam.response_type, 10) === 1 ? (
             <React.Fragment>
-              <h3 className="google mb1-5 mt0-5">Package</h3>
+              <h3 className="google mb1-5 mt0-5 letter-spacing-1px">Package</h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -51,7 +51,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -95,7 +95,7 @@ export default class Filter extends React.Component {
                 </div>
               </div>
               {/* <div className="divider" /> */}
-              <h3 className="google mb1-5">Food</h3>
+              <h3 className="google mb1-5 letter-spacing-1px">Food</h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -103,7 +103,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -143,7 +143,9 @@ export default class Filter extends React.Component {
           {parseInt(this.props.urlParam.response_type, 10) === 2 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
+              <h3 className="google mb1-5 mt0-5 letter-spacing-1px">
+                Budget Per Person
+              </h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -151,7 +153,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -194,7 +196,7 @@ export default class Filter extends React.Component {
                   </div>
                 </div>
               </div>
-              <h3 className="google mb1-5">Date</h3>
+              <h3 className="google mb1-5 letter-spacing-1px">Date</h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -202,7 +204,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -231,7 +233,9 @@ export default class Filter extends React.Component {
           {parseInt(this.props.urlParam.response_type, 10) === 3 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
+              <h3 className="google mb1-5 mt0-5 letter-spacing-1px">
+                Budget Per Person
+              </h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -239,7 +243,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -289,7 +293,9 @@ export default class Filter extends React.Component {
           {parseInt(this.props.urlParam.response_type, 10) === 5 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
+              <h3 className="google mb1-5 mt0-5 letter-spacing-1px">
+                Budget Per Person
+              </h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -297,7 +303,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -340,7 +346,7 @@ export default class Filter extends React.Component {
                   </div>
                 </div>
               </div>
-              <h3 className="google mb1-5">Gender</h3>
+              <h3 className="google mb1-5 letter-spacing-1px">Gender</h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -348,7 +354,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -387,7 +393,9 @@ export default class Filter extends React.Component {
           {parseInt(this.props.urlParam.response_type, 10) === 4 ? (
             <React.Fragment>
               {" "}
-              <h3 className="google mb1-5 mt0-5">Budget Per Person</h3>
+              <h3 className="google mb1-5 mt0-5 letter-spacing-1px">
+                Budget Per Person
+              </h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -395,7 +403,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"
@@ -438,7 +446,7 @@ export default class Filter extends React.Component {
                   </div>
                 </div>
               </div>
-              <h3 className="google mb1-5">Escape</h3>
+              <h3 className="google mb1-5 letter-spacing-1px">Escape</h3>
               <div
                 className="columns is-desktop is-multiline is-narrow"
                 style={{
@@ -446,7 +454,7 @@ export default class Filter extends React.Component {
                   cursor: "not-allowed"
                 }}
               >
-                <div className="field">
+                <div className="field letter-spacing-1px">
                   <div className="column">
                     <input
                       className="is-checkradio has-background-color is-danger"

@@ -14,7 +14,7 @@ const FoodPackageDetail = props => {
     );
 
   return (
-    <div className="food-list-container">
+    <div className="food-list-container letter-spacing-1px">
       <div className="columns">
         <div className="column">
           {props.package.map((value, key) => {

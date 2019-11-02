@@ -284,7 +284,7 @@ export default class DetailCart extends React.Component {
             </h4>
           ) : null}
 
-          <div className="has-text-centered">
+          <div className="has-text-centered letter-spacing-1px">
             {this.props.parentState.cartButtonLoading ? (
               <a className="button cart-button ffqs is-loading">
                 {this.props.parentState.cartButtonText}

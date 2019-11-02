@@ -34,3 +34,7 @@
   opacity: 0.8;
   color: rgba(40, 40, 40, 0.3);
 }
+
+.filter-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

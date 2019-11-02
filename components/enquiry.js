@@ -12,7 +12,7 @@ const Enquiry = props => {
   return (
     <React.Fragment>
       <div className="enquiry-container">
-        <div className="columns">
+        <div className="columns letter-spacing-1px">
           <div className="column is-three-fifths is-offset-one-fifth">
             <Segment style={{ marginTop: "3em" }}>
               <div className="columns">

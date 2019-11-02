@@ -202,7 +202,8 @@ export default class Search extends React.Component {
                       height: "50px",
                       fontWeight: "700",
                       cursor: "not-allowed",
-                      opacity: "0.80"
+                      opacity: "0.80",
+                      letterSpacing: "1px"
                     }}
                   >
                     SUBMIT
@@ -210,7 +211,11 @@ export default class Search extends React.Component {
                 ) : (
                   <a
                     className="button is-danger"
-                    style={{ height: "50px", fontWeight: "700" }}
+                    style={{
+                      height: "50px",
+                      fontWeight: "700",
+                      letterSpacing: "1px"
+                    }}
                     onClick={() => this.onClickButton(this.props)}
                   >
                     SUBMIT

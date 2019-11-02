@@ -2,7 +2,7 @@ import "./login.css";
 const Login = props => {
   return (
     <React.Fragment>
-      <div className="login-container">
+      <div className="login-container letter-spacing-1px">
         <div className={props.loginOpen ? "modal is-active" : "modal"}>
           <div className="modal-background" />
           <div className="modal-card">

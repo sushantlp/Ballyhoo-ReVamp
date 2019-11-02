@@ -5,7 +5,7 @@ import "./signup.css";
 const Signup = props => {
   return (
     <React.Fragment>
-      <div className="signup-container">
+      <div className="signup-container letter-spacing-1px">
         <div className={props.signupOpen ? "modal is-active" : "modal"}>
           <div className="modal-background" />
           <div className="modal-card">

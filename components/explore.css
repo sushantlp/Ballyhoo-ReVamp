@@ -98,3 +98,7 @@
 .explore-container .DateInput {
   width: 16em;
 }
+
+.explore-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

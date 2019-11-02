@@ -69,7 +69,7 @@ const EscapeList = props => {
 
     return (
       <React.Fragment key={key}>
-        <div className="box" id="child-list">
+        <div className="box letter-spacing-1px" id="child-list">
           <article className="media">
             <div className="media-left">
               <figure className="image">

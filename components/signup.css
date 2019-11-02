@@ -41,3 +41,7 @@
 .signup-container .control.has-icons-right .icon {
   pointer-events: auto;
 }
+
+.signup-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

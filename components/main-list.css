@@ -380,3 +380,7 @@
 .main-list-container .padding1-4-1 {
   padding: 1.4em 1em;
 }
+
+.main-list-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

@@ -3,7 +3,7 @@ import Spinner from "./spinner";
 import Search from "./search";
 import MainList from "./main-list";
 import Filter from "./filter";
-import Space from "./loading-space";
+// import Space from "./loading-space";
 // import Similar from "./similar";
 import TrendingList from "./trending-list";
 

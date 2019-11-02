@@ -3,7 +3,7 @@ import "./forget.css";
 const Forget = props => {
   return (
     <React.Fragment>
-      <div className="forget-container">
+      <div className="forget-container letter-spacing-1px">
         <div className={props.forgetOpen ? "modal is-active" : "modal"}>
           <div className="modal-background" />
           <div className="modal-card">

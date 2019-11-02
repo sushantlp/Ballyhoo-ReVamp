@@ -33,3 +33,7 @@
 .forget-container .text-align-center {
   text-align: center;
 }
+
+.forget-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

@@ -5,7 +5,7 @@ import FoodBreweryList from "./food-brewery-list";
 import ActivityList from "./activity-list";
 import SpaList from "./spa-list";
 import EventList from "./event-list";
-import FilterDisplay from "./filter-display";
+// import FilterDisplay from "./filter-display";
 
 import "./main-list.css";
 
@@ -56,10 +56,16 @@ const MainList = props => {
         <div className="has-text-centered">
           {props.listData.next_page !== null ? (
             props.parentListState.isLoading ? (
-              <a className="button is-danger is-loading is-large">Load More</a>
+              <a
+                className="button is-danger is-loading is-large"
+                style={{ letterSpacing: "1px" }}
+              >
+                Load More
+              </a>
             ) : (
               <a
                 className="button is-danger is-large"
+                style={{ letterSpacing: "1px" }}
                 onClick={() => props.onLoadMoreList(props.listData.next_page)}
               >
                 Load More
@@ -68,6 +74,7 @@ const MainList = props => {
           ) : (
             <a
               className="button is-danger is-large"
+              style={{ letterSpacing: "1px" }}
               title="Disabled button"
               disabled
             >
