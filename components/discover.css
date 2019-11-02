@@ -49,3 +49,7 @@
 .discover-container .discover-slider {
   cursor: pointer;
 }
+
+.discover-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

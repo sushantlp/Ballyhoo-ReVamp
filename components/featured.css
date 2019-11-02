@@ -53,3 +53,7 @@
   box-sizing: border-box;
   width: 90px;
 }
+
+.featured-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

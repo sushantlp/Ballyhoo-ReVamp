@@ -198,7 +198,7 @@ export default class Collection extends React.Component {
             <div className="imgBx">
               <img src={collection.img} alt={props.keyword} />
             </div>
-            <div className="details">
+            <div className="details letter-spacing-1px">
               <h2>{collection.title}</h2>
             </div>
           </div>
@@ -233,7 +233,9 @@ export default class Collection extends React.Component {
             />
             <Card.Content style={{ textAlign: "center" }}>
               <Card.Header style={{ fontSize: "20px", color: "black" }}>
-                <span className="city-title">{collection.title}</span>
+                <span className="city-title letter-spacing-1px">
+                  {collection.title}
+                </span>
               </Card.Header>
             </Card.Content>
           </Card>
@@ -248,7 +250,9 @@ export default class Collection extends React.Component {
         <div className="container" key={key} style={{ marginTop: "2em" }}>
           <div className="collection-container">
             <div className="collection-header-container">
-              <h2 className="collection-header">{collection.title}</h2>
+              <h2 className="collection-header letter-spacing-1px">
+                {collection.title}
+              </h2>
               <div className="underscore" />
             </div>
 

@@ -139,3 +139,7 @@
 .collection-container .box-odd .slick-list {
   padding-left: 0.2em;
 }
+
+.collection-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

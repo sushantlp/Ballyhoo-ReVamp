@@ -77,7 +77,9 @@ export default class Popular extends React.Component {
     return (
       <div className="container" style={{ marginTop: "3em" }}>
         <div className="popular-header-container">
-          <h2 className="popular-header">Plan Your Escape</h2>
+          <h2 className="popular-header letter-spacing-1px">
+            Plan Your Escape
+          </h2>
           <div className="underscore" />
         </div>
 
@@ -96,7 +98,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover1 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "1.3%" }}
                   onMouseEnter={() => this.toggleHoverEnter(1)}
                   onClick={() => this.onClickPopular(popular[0], this.props)}
@@ -117,7 +119,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover2 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "24%" }}
                   onMouseEnter={() => this.toggleHoverEnter(2)}
                   onClick={() => this.onClickPopular(popular[1], this.props)}
@@ -138,7 +140,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover3 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "48%" }}
                   onMouseEnter={() => this.toggleHoverEnter(3)}
                   onClick={() => this.onClickPopular(popular[2], this.props)}
@@ -159,7 +161,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover4 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "77%" }}
                   onMouseEnter={() => this.toggleHoverEnter(4)}
                   onClick={() => this.onClickPopular(popular[3], this.props)}
@@ -182,7 +184,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover5 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "9%" }}
                   onMouseEnter={() => this.toggleHoverEnter(5)}
                   onClick={() => this.onClickPopular(popular[4], this.props)}
@@ -203,7 +205,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover6 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "33%" }}
                   onMouseEnter={() => this.toggleHoverEnter(6)}
                   onClick={() => this.onClickPopular(popular[5], this.props)}
@@ -224,7 +226,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover8 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "57%" }}
                   onMouseEnter={() => this.toggleHoverEnter(8)}
                   onClick={() => this.onClickPopular(popular[7], this.props)}
@@ -245,7 +247,7 @@ export default class Popular extends React.Component {
 
               {this.state.hover7 ? (
                 <p
-                  className="tiletext"
+                  className="tiletext letter-spacing-1px"
                   style={{ left: "88%" }}
                   onMouseEnter={() => this.toggleHoverEnter(7)}
                   onClick={() => this.onClickPopular(popular[6], this.props)}

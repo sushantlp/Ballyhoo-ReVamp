@@ -234,3 +234,7 @@
   width: 90px;
   margin-bottom: 2em;
 }
+
+.popular-header-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}
