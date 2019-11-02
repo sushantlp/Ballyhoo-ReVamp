@@ -4,7 +4,10 @@ const Menu = props => {
     <div className="box">
       <div className="columns">
         <div className="column">
-          <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+          <h4
+            className="ffqs cuisine-title letter-spacing-1px"
+            style={{ color: "black" }}
+          >
             Menu
           </h4>
           <div className="overview-underscore" />

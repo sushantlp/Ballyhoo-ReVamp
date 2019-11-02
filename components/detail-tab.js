@@ -23,7 +23,7 @@ const DetailTab = props => {
                   alt={props.keyword}
                 />
               </span>
-              <span>Overview</span>
+              <span style={{ letterSpacing: "1px" }}>Overview</span>
             </a>
           </li>
 
@@ -41,7 +41,7 @@ const DetailTab = props => {
                     alt={props.keyword}
                   />
                 </span>
-                <span>Offers</span>
+                <span style={{ letterSpacing: "1px" }}>Offers</span>
               </a>
             </li>
           ) : null}
@@ -60,7 +60,7 @@ const DetailTab = props => {
                     alt={props.keyword}
                   />
                 </span>
-                <span>Buffets</span>
+                <span style={{ letterSpacing: "1px" }}>Buffets</span>
               </a>
             </li>
           ) : null}
@@ -79,7 +79,7 @@ const DetailTab = props => {
                     alt={props.keyword}
                   />
                 </span>
-                <span>Packages</span>
+                <span style={{ letterSpacing: "1px" }}>Packages</span>
               </a>
             </li>
           ) : parseInt(props.detailUrlParam.result_type, 10) !== 1 ? (
@@ -96,7 +96,7 @@ const DetailTab = props => {
                     alt={props.keyword}
                   />
                 </span>
-                <span>Packages</span>
+                <span style={{ letterSpacing: "1px" }}>Packages</span>
               </a>
             </li>
           ) : null}
@@ -115,7 +115,7 @@ const DetailTab = props => {
                     alt={props.keyword}
                   />
                 </span>
-                <span>Events</span>
+                <span style={{ letterSpacing: "1px" }}>Events</span>
               </a>
             </li>
           ) : null}
@@ -134,7 +134,7 @@ const DetailTab = props => {
                     alt={props.keyword}
                   />
                 </span>
-                <span>Reviews</span>
+                <span style={{ letterSpacing: "1px" }}>Reviews</span>
               </a>
             </li>
           ) : null}

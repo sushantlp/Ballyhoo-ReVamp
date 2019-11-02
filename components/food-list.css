@@ -97,6 +97,10 @@
   font-size: 14px;
 }
 
+.food-list-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}
+
 .ribbon {
   width: 140px;
   height: 200px;

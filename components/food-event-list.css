@@ -65,6 +65,10 @@
   line-height: 1.7em;
 }
 
+.food-event-list-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}
+
 .ribbon {
   width: 140px;
   height: 200px;

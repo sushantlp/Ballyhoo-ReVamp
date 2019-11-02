@@ -1262,7 +1262,10 @@ export default class ParentDetail extends React.Component {
             <div className="columns">
               <div className="column is-8">
                 <div className="column is-6">
-                  <h4 className="ffqs parent-detail-title mb0-4">
+                  <h4
+                    className="ffqs parent-detail-title mb0-4"
+                    style={{ letterSpacing: "1px" }}
+                  >
                     {parseInt(this.props.detailUrlParam.result_type, 10) === 1
                       ? this.props.foodCategoryData.foodCategoryData.details
                           .bname
@@ -1288,6 +1291,7 @@ export default class ParentDetail extends React.Component {
                       10
                     ) === 1 ? (
                       <span
+                        style={{ letterSpacing: "1px" }}
                         className="tag is-warning"
                         style={{
                           float: "right",
@@ -1301,7 +1305,10 @@ export default class ParentDetail extends React.Component {
                   </h4>
 
                   {parseInt(this.props.detailUrlParam.result_type, 10) === 2 ? (
-                    <h5 className="ffqs parent-detail-sub-title mt0-1">
+                    <h5
+                      className="ffqs parent-detail-sub-title mt0-1"
+                      style={{ letterSpacing: "1px" }}
+                    >
                       {this.props.categoryData.categoryData.details.offer_title}
                     </h5>
                   ) : null}

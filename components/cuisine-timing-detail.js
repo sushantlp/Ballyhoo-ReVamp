@@ -4,11 +4,14 @@ const CuisineTiming = props => {
       <div className="cuisine-container">
         <div className="columns">
           <div className="column is-6">
-            <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+            <h4
+              className="ffqs cuisine-title letter-spacing-1px"
+              style={{ color: "black" }}
+            >
               {props.cuisineTagFlag ? "Cuisine" : "Hashtag"}
             </h4>
             <div className="overview-underscore" />
-            <ul className="package-tags">
+            <ul className="package-tags letter-spacing-1px">
               {props.cuisineTag.map((tag, key) => {
                 return (
                   <li className="ellipsis" key={key}>
@@ -20,11 +23,14 @@ const CuisineTiming = props => {
           </div>
 
           <div className="column is-5 is-offset-1">
-            <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+            <h4
+              className="ffqs cuisine-title letter-spacing-1px"
+              style={{ color: "black" }}
+            >
               Timings
             </h4>
             <div className="overview-underscore" />
-            <ul className="package-tags">
+            <ul className="package-tags letter-spacing-1px">
               {props.timing.map((tag, key) => {
                 return (
                   <li className="ellipsis" key={key}>

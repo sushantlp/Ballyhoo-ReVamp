@@ -48,8 +48,10 @@ const FoodList = props => {
                     <div className="content">
                       <div className="columns mb0">
                         <div className="column is-10">
-                          <h4 className="ffqs list-title">{value.title}</h4>
-                          <h4 className="mb8 plh1 list-subtitle">
+                          <h4 className="ffqs list-title letter-spacing-1px">
+                            {value.title}
+                          </h4>
+                          <h4 className="mb8 plh1 list-subtitle letter-spacing-1px">
                             {value.days} {value.times.start_time}
                             {"  "} To {"  "}
                             {value.times.end_time}
@@ -98,7 +100,7 @@ const FoodList = props => {
                       </div>
 
                       <div
-                        className="f14 ffqs plh1"
+                        className="f14 ffqs plh1 letter-spacing-1px"
                         style={{ whiteSpace: "pre-line" }}
                       >
                         <ReadMoreAndLess
@@ -116,7 +118,7 @@ const FoodList = props => {
                 </article>
 
                 <footer className="card-footer">
-                  <div className="card-footer-item">
+                  <div className="card-footer-item letter-spacing-1px">
                     <span className="span-flex">
                       <h5
                         className="m0 f24 fw9 flh28"

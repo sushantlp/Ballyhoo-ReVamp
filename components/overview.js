@@ -269,7 +269,7 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column is-5">
-              <h4 className="ffqs fw2">
+              <h4 className="ffqs fw2 letter-spacing-1px">
                 {parseInt(this.props.detailUrlParam.result_type, 10) === 1
                   ? "Average cost for two :"
                   : "Price :"}
@@ -283,7 +283,7 @@ export default class Overview extends React.Component {
 
             <div className="column is-4">
               <div>
-                <span className="tag fw7">
+                <span className="tag fw7 letter-spacing-1px">
                   <span className="ffqs fw2 f1-2">Popularity : </span>
                   <img
                     src="https://img.icons8.com/plasticine/20/000000/hearts.png"
@@ -304,7 +304,9 @@ export default class Overview extends React.Component {
                 this.props.categoryData.categoryData.details.offer_verified,
                 10
               ) === 1 ? (
-                <span className="tag is-rounded is-success">Verified</span>
+                <span className="tag is-rounded is-success letter-spacing-1px">
+                  Verified
+                </span>
               ) : (
                 <span className="rating">
                   {fullRating.map(function(i) {
@@ -429,11 +431,16 @@ export default class Overview extends React.Component {
         <div className="box">
           <div className="columns">
             <div className="column">
-              <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+              <h4
+                className="ffqs cuisine-title letter-spacing-1px"
+                style={{ color: "black" }}
+              >
                 Where ?
               </h4>
               <div className="overview-underscore" />
-              <h4 className="ff f10 f1-1 fw2 lh1-7">{where}</h4>
+              <h4 className="ff f10 f1-1 fw2 lh1-7 letter-spacing-1px">
+                {where}
+              </h4>
               {where == null ? (
                 <EscapeMap
                   markers={

@@ -206,3 +206,7 @@
 .overview-container .mt0-5 {
   margin-top: 0.5em;
 }
+
+.overview-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

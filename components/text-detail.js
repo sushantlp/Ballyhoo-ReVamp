@@ -1,16 +1,19 @@
 import ReadMoreAndLess from "react-read-more-less";
-import ReactTextMoreLess from "react-text-more-less";
+
 const Text = props => {
   return (
     <div className="box">
       <div className="columns">
         <div className="column">
-          <h4 className="ffqs cuisine-title" style={{ color: "black" }}>
+          <h4
+            className="ffqs cuisine-title letter-spacing-1px"
+            style={{ color: "black" }}
+          >
             {props.title}
           </h4>
           <div className="overview-underscore" />
 
-          <h4 className="fz1 pfc4 ffqs fw2 ls white-space lh1-7">
+          <h4 className="fz1 pfc4 ffqs fw2 ls white-space lh1-7 letter-spacing-1px">
             <ReadMoreAndLess
               ref={props.ReadMore}
               className="read-more-content"
@@ -21,26 +24,10 @@ const Text = props => {
             >
               {props.detail}
             </ReadMoreAndLess>
-
-            {/* <ReactTextMoreLess
-              collapsed={props.collapsed}
-              text={props.detail}
-              lessHeight={100}
-              showMoreText="... show more"
-              showMoreElement={
-                <span>
-                  ... <span className="show-more-text">show more</span>
-                </span>
-              }
-              showLessElement={
-                <span className="show-more-text">show less</span>
-              }
-              onClick={() => props.updateCollapsed()}
-            /> */}
           </h4>
 
           {props.flag ? (
-            <ul className="package-tags">
+            <ul className="package-tags letter-spacing-1px">
               {props.happyHour.map((tag, key) => {
                 return (
                   <li className="ellipsis" key={key}>

@@ -37,7 +37,7 @@ const zomatoUiRender = props => {
 
     return (
       <Segment key={key}>
-        <h3 className="ff f1-1 fw2">{value.reviewer}</h3>{" "}
+        <h3 className="ff f1-1 fw2 letter-spacing-1px">{value.reviewer}</h3>{" "}
         <span className="rating">
           {fullRating.map(function(i) {
             return (
@@ -59,7 +59,7 @@ const zomatoUiRender = props => {
             })}
           </span>
         </span>{" "}
-        <h4 className="fz1 pfc4 ffqs fw2 ls white-space mt0-5">
+        <h4 className="fz1 pfc4 ffqs fw2 ls white-space mt0-5 letter-spacing-1px">
           <ReadMoreAndLess
             ref={props.ReadMore}
             className="read-more-content"
@@ -78,10 +78,12 @@ const Zomato = props => {
   return (
     <div className="zomato-container">
       <h4 className="cuisine-title">
-        <span className="ffqs" style={{ color: "black" }}>
+        <span className="ffqs letter-spacing-1px" style={{ color: "black" }}>
           Rating
         </span>{" "}
-        <span className="fs0-7 light-red">(Powered By Zomato)</span>
+        <span className="fs0-7 light-red letter-spacing-1px">
+          (Powered By Zomato)
+        </span>
       </h4>
       <div className="overview-underscore" />
 
