@@ -241,16 +241,20 @@ export default class ExculsiveEscapePackage extends React.Component {
                     </div>
                   </div>
 
-                  <div className="columns mb0">
-                    <div className="column">
-                      <h4 className="ffqs fs1-3 fw2">
-                        Travel Duration :{"  "}
-                        <span className="tag is-rounded is-warning">
-                          {value.package_travel_time} hours
-                        </span>
-                      </h4>
+                  {value.package_travel_time != null ? (
+                    <div className="columns mb0">
+                      <div className="column">
+                        <h4 className="ffqs fs1-3 fw2">
+                          Travel Duration :{"  "}
+                          <span className="tag is-rounded is-warning">
+                            {value.package_travel_time} hours
+                          </span>
+                        </h4>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    NULL
+                  )}
 
                   <div
                     className="fs1-1 ffqs plh1"

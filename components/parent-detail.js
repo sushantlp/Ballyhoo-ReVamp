@@ -1261,7 +1261,7 @@ export default class ParentDetail extends React.Component {
           <div className="container is-fluid">
             <div className="columns">
               <div className="column is-8">
-                <div className="column is-6">
+                <div className="column">
                   <h4
                     className="ffqs parent-detail-title mb0-4"
                     style={{ letterSpacing: "1px" }}

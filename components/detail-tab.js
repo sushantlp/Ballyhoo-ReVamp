@@ -119,7 +119,7 @@ const DetailTab = props => {
             </li>
           ) : null}
 
-          {parseInt(props.detailUrlParam.result_type, 10) !== 2 ? (
+          {/* {parseInt(props.detailUrlParam.result_type, 10) !== 2 ? (
             <li
               className={
                 props.parentState.navigation === "Reviews" ? "is-active" : ""
@@ -136,7 +136,7 @@ const DetailTab = props => {
                 <span style={{ letterSpacing: "1px" }}>Reviews</span>
               </a>
             </li>
-          ) : null}
+          ) : null} */}
         </ul>
       </div>
 

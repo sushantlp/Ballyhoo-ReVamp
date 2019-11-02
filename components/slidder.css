@@ -22,3 +22,40 @@
   top: 0.4em;
   letter-spacing: 1px;
 }
+
+.slidder-container figure {
+  margin: 0px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .slidder-container .hero .carousel {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+
+  .slidder-container .hero .slick-list {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .slidder-container .hero .carousel {
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+
+  .slidder-container .hero .slick-list {
+    height: 250px;
+  }
+
+  .Search .container {
+    margin-top: -200px;
+  }
+
+  .slidder-container .column .button {
+    margin-left: 35%;
+    margin-right: 35%;
+  }
+}

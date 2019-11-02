@@ -27,10 +27,14 @@ const CityModel = props => {
                 src="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_40/v1569659435/BallyhooV3/WEB/ballyhoo.png"
               />
 
-              <div className="brand-title pl0-5em">Ballyhoo Today</div>
+              <div className="brand-title pl0-5em letter-spacing-1px">
+                Ballyhoo Today
+              </div>
             </header>
             <section className="modal-card-body">
-              <h1 className="text-align-centre fw2 ffqs">Select Your City</h1>
+              <h1 className="text-align-centre fw2 ffqs letter-spacing-1px">
+                Select Your City
+              </h1>
 
               <div className="spacer-is-2" />
 
@@ -75,7 +79,7 @@ const CityModel = props => {
                   <div className="spacer-is-2" />
 
                   <h4
-                    className="text-align-centre all-city ffqs fw2"
+                    className="text-align-centre all-city ffqs fw2 letter-spacing-1px"
                     // style={{ color: "#ff3860" }}
                     onClick={() => props.onClickHideSeek(false)}
                   >
@@ -94,7 +98,9 @@ const CityModel = props => {
                               key={key}
                               onClick={() => props.onCitySelected(city)}
                             >
-                              <span className="ffqs">{city.city_name}</span>
+                              <span className="ffqs letter-spacing-1px">
+                                {city.city_name}
+                              </span>
                             </div>
                           );
                         })}
@@ -105,7 +111,7 @@ const CityModel = props => {
                   <div className="spacer-is-2" />
 
                   <h4
-                    className="text-align-centre all-city ffqs fw2"
+                    className="text-align-centre all-city ffqs fw2 letter-spacing-1px"
                     // style={{ color: "#ff3860" }}
                     onClick={() => props.onClickHideSeek(true)}
                   >

@@ -7,8 +7,14 @@ export default class SlidderBanner extends React.Component {
       .filter(image => parseInt(image.banner_type, 10) === 1)
       .map((image, key) => {
         return (
-          <img src={image.img} alt={keyword} className="carousel" key={key} />
+          <figure className="image" key={key}>
+            <img src={image.img} alt={keyword} className="carousel" />
+          </figure>
         );
+
+        // return (
+        //   <img src={image.img} alt={keyword} className="carousel" key={key} />
+        // );
       });
   };
 

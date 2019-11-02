@@ -145,7 +145,11 @@ export default class Slidder extends React.Component {
 
   slidderImageArray = (json, keyword) => {
     return json.map((image, key) => {
-      return <img src={image} alt={keyword} className="carousel" key={key} />;
+      return (
+        <figure className="image" key={key}>
+          <img src={image} alt={keyword} className="carousel" />
+        </figure>
+      );
     });
   };
 
