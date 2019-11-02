@@ -82,7 +82,10 @@ export default class DetailCart extends React.Component {
             {parseInt(this.props.detailUrlParam.result_type, 10) ===
             2 ? null : (
               <div className="column is-4">
-                <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                <h4
+                  className="ffqs fs1-5 fw2 letter-spacing-1px"
+                  style={{ paddingTop: "0.5em" }}
+                >
                   Time :
                 </h4>
               </div>
@@ -123,7 +126,10 @@ export default class DetailCart extends React.Component {
             {parseInt(this.props.detailUrlParam.result_type, 10) ===
             2 ? null : (
               <div className="column is-4">
-                <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                <h4
+                  className="ffqs fs1-5 fw2 letter-spacing-1px"
+                  style={{ paddingTop: "0.5em" }}
+                >
                   Date :
                 </h4>
               </div>
@@ -175,7 +181,10 @@ export default class DetailCart extends React.Component {
           {this.props.parentState.cartQuantity ? (
             <div className="columns">
               <div className="column is-6">
-                <h4 className="ffqs fs1-5 fw2" style={{ paddingTop: "0.5em" }}>
+                <h4
+                  className="ffqs fs1-5 fw2 letter-spacing-1px"
+                  style={{ paddingTop: "0.5em" }}
+                >
                   No of Guests :
                 </h4>
               </div>
@@ -208,7 +217,7 @@ export default class DetailCart extends React.Component {
               {this.props.parentState.otherCartObj.map((value, key) => {
                 return (
                   <Segment key={key}>
-                    <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1">
+                    <h4 className="ffqs fs1-5 fw2 mt0-1 mb0-1 letter-spacing-1px">
                       {value.package_caption}
                     </h4>
 
@@ -268,7 +277,7 @@ export default class DetailCart extends React.Component {
 
           {parseInt(this.props.parentState.cartTotalPrice, 10) !== 0 ? (
             <h4>
-              <span className="ffqs fw2 f24">Total : </span>
+              <span className="ffqs fw2 f24 letter-spacing-1px">Total : </span>
               <span className="float-right fw2 f24">
                 <span> &#8377;</span> {this.props.parentState.cartTotalPrice}{" "}
               </span>
@@ -293,7 +302,9 @@ export default class DetailCart extends React.Component {
               </a>
             )}
           </div>
-          <p className="ffqs align">You won’t be charged yet</p>
+          <p className="ffqs align letter-spacing-1px">
+            You won’t be charged yet
+          </p>
         </Segment>
       </div>
     );

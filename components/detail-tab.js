@@ -3,7 +3,6 @@ import FoodList from "./food-list";
 import FoodEventList from "./food-event-list";
 import FoodOfferList from "./food-offer-list";
 import ParentPackage from "./parent-package";
-import "./detail-tab.css";
 
 const DetailTab = props => {
   return (

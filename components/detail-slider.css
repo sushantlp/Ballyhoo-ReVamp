@@ -16,6 +16,10 @@
   font-family: "Quicksand", sans-serif;
 }
 
+.detail-slider-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}
+
 .top-left {
   position: absolute;
   top: 1em;

@@ -80,6 +80,10 @@
   margin-bottom: 1em;
 }
 
+.trending-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}
+
 /* .trending-container .slick-slide {margin-left:0px}  */
 
 .trending-container .slick-list {

@@ -128,7 +128,9 @@ export default class TrendingDetail extends React.Component {
 
             <Card.Content style={{ textAlign: "center" }}>
               <Card.Header style={{ color: "black" }}>
-                <span className="city-title">{feature.title}</span>
+                <span className="city-title letter-spacing-1px">
+                  {feature.title}
+                </span>
               </Card.Header>
             </Card.Content>
           </Card>
@@ -157,7 +159,9 @@ export default class TrendingDetail extends React.Component {
       <div className="container">
         <div className="trending-detail-card">
           <div className="trending-detail-header-container">
-            <h2 className="trending-detail-header">You May Also Like</h2>
+            <h2 className="trending-detail-header letter-spacing-1px">
+              You May Also Like
+            </h2>
             <div className="underscore" />
           </div>
 

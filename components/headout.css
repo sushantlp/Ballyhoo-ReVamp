@@ -4,12 +4,6 @@
   position: relative;
 }
 
-.download-section .iphone-wrapper,
-.download-section .android-wrapper {
-  /* margin-right: -12.5em; */
-  /* right: 50%; */
-}
-
 picture {
   width: 100%;
 }

@@ -27,7 +27,7 @@ const Headout = props => {
             </div>
           </div>
 
-          <div className="middle-content">
+          <div className="middle-content" style={{ letterSpacing: "1px" }}>
             <div className="title">Ballyhoo on the go</div>
             <div className="line" />
             <div className="subtitle lh1_5">

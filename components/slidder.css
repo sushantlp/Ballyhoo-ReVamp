@@ -20,4 +20,5 @@
 
 .slidder-container .ui.search.dropdown > .text {
   top: 0.4em;
+  letter-spacing: 1px;
 }

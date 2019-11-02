@@ -104,13 +104,13 @@ export default class Trending extends React.Component {
             />
 
             {trending.offer_promoted === 1 ? (
-              <div className="ribbon ribbon-top-left">
+              <div className="ribbon ribbon-top-left letter-spacing-1px">
                 <span>Featured</span>
               </div>
             ) : null}
 
             {trending.offer_exclusive === 1 ? (
-              <div className="ribbon ribbon-bottom-right">
+              <div className="ribbon ribbon-bottom-right letter-spacing-1px">
                 <span style={{ backgroundColor: "#ffdd57", color: "black" }}>
                   Exculsive
                 </span>
@@ -122,10 +122,7 @@ export default class Trending extends React.Component {
                 <span className="city-title">{trending.offer_title}</span>
               </Card.Header>
 
-              <a
-                className="product-title block"
-                // href="/tour/8541/united-arab-emirates/dubai/dubai-frame-skip-the-line-tickets"
-              >
+              <a className="product-title block letter-spacing-1px">
                 {description}
               </a>
             </Card.Content>
@@ -159,7 +156,9 @@ export default class Trending extends React.Component {
       <div className="container" style={{ marginTop: "1em" }}>
         <div className="trending-container">
           <div className="trending-header-container">
-            <h2 className="trending-header">Trending Packages</h2>
+            <h2 className="trending-header letter-spacing-1px">
+              Trending Packages
+            </h2>
             <div className="underscore" />
           </div>
           <Slider {...settings}>

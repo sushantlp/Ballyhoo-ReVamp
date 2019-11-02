@@ -499,7 +499,9 @@ export default class Header extends React.Component {
                   />
                 </div>
                 <div className="brand-content">
-                  <div className="brand-title">Ballyhoo Today</div>
+                  <div className="brand-title letter-spacing-1px">
+                    Ballyhoo Today
+                  </div>
                 </div>
               </a>
 
@@ -515,7 +517,7 @@ export default class Header extends React.Component {
             </div>
 
             <div id="navMenuExpo" className="navbar-menu">
-              <div className="navbar-end">
+              <div className="navbar-end letter-spacing-1px">
                 <div className="navbar-item">
                   <div className="control">
                     <div className="buttons">

@@ -71,7 +71,7 @@ export default class DetailSlider extends React.Component {
                     alt={this.props.keyword}
                   />
                 </span>
-                <span className="text">See Gallery</span>
+                <span className="text letter-spacing-1px">See Gallery</span>
               </a>
             </p>
           </div>

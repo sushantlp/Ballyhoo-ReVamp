@@ -72,22 +72,16 @@ function SamplePrevArrow(props) {
 }
 
 export default class TrendingList extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   onClickRecommendation = recommendation => {
     const city = this.props.routeParam.city;
-    const secret = this.props.routeParam.secret;
-
-    // const title = recommendation.title.replace(/ /g, "-").toLowerCase();
+    // const secret = this.props.routeParam.secret;
 
     let title = recommendation.title.replace(/[^a-zA-Z ]/g, "");
     title = title.replace(/ /g, "-").toLowerCase();
     title = title.replace(/-+/gi, "-");
 
-    // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
-    const slice = secret.split("b");
+    // // Index Zero=cityId, One=apiType, Two=Key, Three=responseType, Four=page
+    // const slice = secret.split("b");
 
     const secrets = `${this.props.urlParam.city_id}b${
       recommendation.api_type
@@ -137,7 +131,9 @@ export default class TrendingList extends React.Component {
             />
             <Card.Content style={{ textAlign: "center" }}>
               <Card.Header style={{ fontSize: "17px", color: "black" }}>
-                <span className="city-title">{recommendation.title}</span>
+                <span className="city-title letter-spacing-1px">
+                  {recommendation.title}
+                </span>
               </Card.Header>
             </Card.Content>
           </Card>
@@ -165,7 +161,9 @@ export default class TrendingList extends React.Component {
       <div className="container">
         <div className="trending-list-container">
           <div className="trending-list-header-container">
-            <h2 className="trending-list-header">You May Also Like</h2>
+            <h2 className="trending-list-header letter-spacing-1px">
+              You May Also Like
+            </h2>
             <div className="underscore" />
           </div>
           {recommendation.length >= 4 ? (

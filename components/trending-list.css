@@ -79,3 +79,7 @@
 .trending-list-container .ui.card > .content {
   padding: 1.5em;
 }
+
+.trending-list-container .letter-spacing-1px {
+  letter-spacing: 1px;
+}

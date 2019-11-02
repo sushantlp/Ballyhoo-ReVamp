@@ -1,20 +1,6 @@
-import Router from "next/router";
 import Link from "next/link";
 import _ from "lodash";
 import "./footer.css";
-
-// const changeCity = (cityId, cityName) => {
-//   const city = cityName.replace(/ /g, "-").toLowerCase();
-
-//   Router.push(
-//     {
-//       pathname: "/",
-//       query: { city: city, city_id: cityId }
-//     },
-//     `/${city}/${cityId}`,
-//     { shallow: false }
-//   );
-// };
 
 const Footer = props => {
   let city = [];
@@ -38,13 +24,18 @@ const Footer = props => {
                     />
                   </div>
                   <div className="brand-content">
-                    <div className="brand-title">Ballyhoo Today</div>
+                    <div
+                      className="brand-title"
+                      style={{ letterSpacing: "1px" }}
+                    >
+                      Ballyhoo Today
+                    </div>
                     {/* <div className="brand-subtitle">Just Konnect</div> */}
                   </div>
                 </a>
               </Link>
               <hr className="spacer is-1" />
-              <p className="short-story lh1_7">
+              <p className="short-story lh1_7" style={{ letterSpacing: "1px" }}>
                 Explore only the best happening places with reviews, photos,
                 prices and more all at once. Discover Urban Escapes or hidden
                 jewels in your city for exclusive eventful experiences. Find
@@ -85,8 +76,11 @@ const Footer = props => {
             <div className="columns">
               <div className="column">
                 <div className="menu">
-                  <p className="menu-label"> Cities </p>
-                  <ul className="menu-list">
+                  <p className="menu-label" style={{ letterSpacing: "1px" }}>
+                    {" "}
+                    Cities{" "}
+                  </p>
+                  <ul className="menu-list" style={{ letterSpacing: "1px" }}>
                     {city.map((value, key) => {
                       return (
                         <li
@@ -104,8 +98,11 @@ const Footer = props => {
               </div>
               <div className="column">
                 <div className="menu">
-                  <p className="menu-label"> Company </p>
-                  <ul className="menu-list">
+                  <p className="menu-label" style={{ letterSpacing: "1px" }}>
+                    {" "}
+                    Company{" "}
+                  </p>
+                  <ul className="menu-list" style={{ letterSpacing: "1px" }}>
                     <li>
                       <a href="/about" target="_blank">
                         About Ballyhoo
@@ -137,8 +134,11 @@ const Footer = props => {
 
               <div className="column">
                 <div className="menu">
-                  <p className="menu-label"> Connect with us </p>
-                  <ul className="menu-list">
+                  <p className="menu-label" style={{ letterSpacing: "1px" }}>
+                    {" "}
+                    Connect with us{" "}
+                  </p>
+                  <ul className="menu-list" style={{ letterSpacing: "1px" }}>
                     <li>
                       <a
                         href="https://www.facebook.com/ballyhootoday/"
@@ -199,7 +199,7 @@ const Footer = props => {
         </div>
 
         <div className="content has-text-centered">
-          <p className="copyright">
+          <p className="copyright" style={{ letterSpacing: "1px" }}>
             Copyright © 2019, <strong>Ballyhoo Today</strong> All rights
             reserved.
           </p>

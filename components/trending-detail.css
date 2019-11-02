@@ -46,13 +46,8 @@
 }
 
 .trending-detail-card .trending-detail-card:hover {
-  /* transform: scale(1.04); */
-
   -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
   filter: grayscale(0%);
-  /* transform: scale(1.1); */
-  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.35); */
-
   opacity: 1 !important;
   cursor: pointer;
 }
@@ -85,11 +80,9 @@
   margin-bottom: 1em;
 }
 
-/* .trending-detail-card .slick-slide {margin-left:0px}  */
-
-/* .trending-detail-card .slick-detail {
-  padding-left: 0.3em;
-} */
+.trending-detail-card .letter-spacing-1px {
+  letter-spacing: 1px;
+}
 
 .trending-detail-container .slick-list {
   padding-left: 0.4em;
