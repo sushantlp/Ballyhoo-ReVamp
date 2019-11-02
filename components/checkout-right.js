@@ -26,7 +26,7 @@ const CheckoutRight = props => {
   if (item === undefined) return null;
 
   return (
-    <div className="checkout-right-container">
+    <div className="checkout-right-container" style={{ letterSpacing: "1px" }}>
       {price ? (
         <React.Fragment>
           <h4 className="fs1-4" style={{ color: "#878787" }}>

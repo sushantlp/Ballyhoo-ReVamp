@@ -152,7 +152,11 @@ export default class EventPackage extends React.Component {
       }
 
       return (
-        <Segment style={{ backgroundColor: "#f1f1f1" }} key={key}>
+        <Segment
+          style={{ backgroundColor: "#f1f1f1" }}
+          key={key}
+          className="letter-spacing-1px"
+        >
           <a className="button is-warning view-detail ffqs is-dark">
             <span>{beautyDate}</span>
           </a>

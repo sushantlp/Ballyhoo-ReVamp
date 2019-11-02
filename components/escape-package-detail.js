@@ -194,7 +194,11 @@ export default class EscapePackage extends React.Component {
       }
 
       return (
-        <Segment style={{ backgroundColor: "#f1f1f1" }} key={key}>
+        <Segment
+          style={{ backgroundColor: "#f1f1f1" }}
+          key={key}
+          className="letter-spacing-1px"
+        >
           <div className="box">
             <article className="media">
               <div className="media-content">

@@ -54,7 +54,7 @@ const CheckoutLeft = props => {
   if (item === undefined) return null;
 
   return (
-    <div className="checkout-left-container">
+    <div className="checkout-left-container" style={{ letterSpacing: "1px" }}>
       <h4 className="fs1-5 ffqs fw2">My Cart (1)</h4>
       <div className="border-bottom-solid" />
       <br />
