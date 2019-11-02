@@ -77,7 +77,7 @@ class Index extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      cityModel: true,
+      cityModel: false,
       hideSeek: true
     };
   }
@@ -104,14 +104,18 @@ class Index extends React.Component {
 
       this.onCitySelected(city[0]);
     } else {
-      const customStore = new Store("ballyhoo", "ballyhoo_store");
-      get("city", customStore).then(city =>
-        city === undefined
-          ? this.setState({
-              cityModel: true
-            })
-          : this.onApiCall(city)
-      );
+      if (!("indexedDB" in window)) {
+        this.onCitySelected(this.props.cityLocality.cityLocality[0]);
+      } else {
+        const customStore = new Store("ballyhoo", "ballyhoo_store");
+        get("city", customStore).then(city =>
+          city === undefined
+            ? this.setState({
+                cityModel: true
+              })
+            : this.onApiCall(city)
+        );
+      }
     }
 
     sessionStorage.setItem(

@@ -8,6 +8,7 @@ import Zomato from "./zomato-rating";
 import CuisineTiming from "./cuisine-timing-detail";
 import Text from "./text-detail";
 import TourDetail from "./escape-tour-detail";
+import BestTime from "./best-time";
 
 import "lightbox-react/style.css";
 import "./overview.css";
@@ -196,6 +197,12 @@ export default class Overview extends React.Component {
       parseInt(this.props.detailUrlParam.result_type, 10) !== 1
         ? this.props.categoryData.categoryData.details.offer_faqs
         : null;
+
+    const bestTime =
+      parseInt(this.props.detailUrlParam.result_type, 10) === 4
+        ? this.props.categoryData.categoryData.details.offer_preferred_months
+        : [];
+
     const tourDetail =
       parseInt(this.props.detailUrlParam.result_type, 10) === 4
         ? parseInt(
@@ -351,6 +358,8 @@ export default class Overview extends React.Component {
             updateCollapsed={this.updateCollapsed}
           />
         ) : null}
+
+        {bestTime.length > 0 ? <BestTime bestTime={bestTime} /> : null}
         {tourDetail != null ? (
           <TourDetail
             tourDetail={tourDetail}

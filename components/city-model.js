@@ -49,7 +49,7 @@ const CityModel = props => {
                                 onClick={() => props.onCitySelected(city)}
                               >
                                 <div className="jss359">
-                                  <figure class="image is-96x96">
+                                  <figure className="image is-96x96">
                                     <img
                                       className="img-resp is-rounded"
                                       alt={city.city_name}

@@ -1,6 +1,18 @@
 import ReadMoreAndLess from "react-read-more-less";
+
+import EmptyMessage from "./empty-message";
+
 import "./food-list.css";
 const FoodPackageDetail = props => {
+  if (props.package.length === 0)
+    return (
+      <EmptyMessage
+        img={"https://img.icons8.com/plasticine/64/000000/box-love.png"}
+        description={"No Package Available"}
+        title={"Package"}
+      />
+    );
+
   return (
     <div className="food-list-container">
       <div className="columns">

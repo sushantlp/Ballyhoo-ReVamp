@@ -1,8 +1,22 @@
 import ReadMoreAndLess from "react-read-more-less";
 import { Segment } from "semantic-ui-react";
+
+import EmptyMessage from "./empty-message";
+
 import "./food-event-list.css";
 
 const FoodEventList = props => {
+  if (props.events.length === 0)
+    return (
+      <EmptyMessage
+        img={
+          "https://img.icons8.com/cute-clipart/64/000000/tear-off-calendar.png"
+        }
+        description={"No Event Available"}
+        title={"Event"}
+      />
+    );
+
   return (
     <div className="food-event-list-container">
       <div className="columns">

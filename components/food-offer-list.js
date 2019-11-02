@@ -1,8 +1,21 @@
 import { Segment } from "semantic-ui-react";
 import ReadMoreAndLess from "react-read-more-less";
 
+import EmptyMessage from "./empty-message";
+
 import "./food-offer-list.css";
-const FoodList = props => {
+const FoodOfferList = props => {
+  console.log(props.offer);
+
+  if (props.offer.length === 0)
+    return (
+      <EmptyMessage
+        img={"https://img.icons8.com/dusk/64/000000/sale.png"}
+        description={"No Discount Offers Available"}
+        title={"Discount Offer"}
+      />
+    );
+
   return (
     <div className="food-offer-list-container">
       <div className="columns">
@@ -52,4 +65,4 @@ const FoodList = props => {
   );
 };
 
-export default FoodList;
+export default FoodOfferList;

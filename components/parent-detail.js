@@ -1279,6 +1279,25 @@ export default class ParentDetail extends React.Component {
                             .offer_title
                       : this.props.categoryData.categoryData.details
                           .partner_details.p_name}
+
+                    {parseInt(this.props.detailUrlParam.result_type, 10) ===
+                      4 &&
+                    parseInt(
+                      this.props.categoryData.categoryData.details
+                        .offer_exclusive,
+                      10
+                    ) === 1 ? (
+                      <span
+                        className="tag is-warning"
+                        style={{
+                          float: "right",
+                          borderRadius: "0px",
+                          marginTop: "1.5%"
+                        }}
+                      >
+                        Exculsive
+                      </span>
+                    ) : null}
                   </h4>
 
                   {parseInt(this.props.detailUrlParam.result_type, 10) === 2 ? (

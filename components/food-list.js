@@ -1,6 +1,17 @@
 import ReadMoreAndLess from "react-read-more-less";
+
+import EmptyMessage from "./empty-message";
+
 import "./food-list.css";
 const FoodList = props => {
+  if (props.buffet.length === 0)
+    return (
+      <EmptyMessage
+        img={"https://img.icons8.com/bubbles/64/000000/restaurant.png"}
+        description={"No Buffets Available"}
+        title={"Buffet"}
+      />
+    );
   return (
     <div className="food-list-container">
       <div className="columns">
