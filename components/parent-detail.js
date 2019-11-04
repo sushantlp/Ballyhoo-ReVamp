@@ -130,15 +130,6 @@ export default class ParentDetail extends React.Component {
         if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
           this.updateCartButtonText("Appointment");
         }
-
-        // Accept only Event & Activity & Escape
-        if (parseInt(this.props.detailUrlParam.result_type, 10) !== 5) {
-          // this.setState({
-          //   cartTotalPrice: parseFloat(
-          //     this.props.categoryData.categoryData.details.offer_min_price
-          //   )
-          // });
-        }
       }
     }
   }
@@ -245,6 +236,20 @@ export default class ParentDetail extends React.Component {
   };
 
   changeTab = text => {
+    if (parseInt(this.props.detailUrlParam.result_type, 10) === 1) {
+      if (text !== "Events") {
+        this.setState({
+          time: moment()
+            .add(30, "minutes")
+            .format("HH:mm A"),
+          displayTime: moment()
+            .add(30, "minutes")
+            .format("hh:mm a"),
+          date: moment()
+        });
+      }
+    }
+
     this.setState({
       navigation: text
     });
@@ -1148,7 +1153,6 @@ export default class ParentDetail extends React.Component {
 
           this.props.routeChange("/checkout");
         } else {
-          console.log(this.props.detailUrlParam.result_type);
           if (parseInt(this.props.detailUrlParam.result_type, 10) === 5) {
             if (this.props.spaMenu.spaMenu.subcode === 204) {
               // Without Menu

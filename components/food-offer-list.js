@@ -5,8 +5,6 @@ import EmptyMessage from "./empty-message";
 
 import "./food-offer-list.css";
 const FoodOfferList = props => {
-  console.log(props.offer);
-
   if (props.offer.length === 0)
     return (
       <EmptyMessage

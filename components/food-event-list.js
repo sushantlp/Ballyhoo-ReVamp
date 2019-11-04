@@ -37,7 +37,7 @@ const FoodEventList = props => {
                       </figure>
                     </div>
 
-                    <div className="ribbon ribbon-top-left">
+                    <div className="ribbon ribbon-top-left letter-spacing-1px">
                       <span>{value.days}</span>
                     </div>
 
