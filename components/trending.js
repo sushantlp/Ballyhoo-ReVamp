@@ -51,7 +51,7 @@ function SamplePrevArrow(props) {
         position: "relative",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px 0 rgba(51, 60, 63, 0.22)",
-        top: "8em",
+        top: "9.7em",
         float: "left",
         zIndex: "1"
       }}
@@ -90,7 +90,7 @@ export default class Trending extends React.Component {
             style={{
               width: calculate > 4 ? "250px" : "275px",
 
-              height: "300px",
+              height: "310px",
               marginBottom: "2em"
             }}
           >

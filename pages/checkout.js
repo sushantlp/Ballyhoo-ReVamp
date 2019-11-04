@@ -583,7 +583,7 @@ class Checkout extends React.Component {
 
   invokeRazorPay = (email, mobile, amount, name, callBackApi) => {
     const options = {
-      key: this.state.payment.razorpay_key.key,
+      key: this.state.payment.razor_pay.key,
       amount: amount, // 2000 paise = INR 20
       name: name,
       description: "Booking",

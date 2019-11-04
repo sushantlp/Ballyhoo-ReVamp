@@ -188,10 +188,9 @@ export default class SaloonPackage extends React.Component {
                         {value.price_captions.map((value, key) => {
                           return (
                             <span className="fw2 fs1-1" key={key}>
-                              {value} {"  "}
-                              {"  "}
+                              {value}
                               {priceCaptionLength === key + 1 ? ". " : ", "}
-                              {"  "}
+                              {"  "} {"  "}
                             </span>
                           );
                         })}

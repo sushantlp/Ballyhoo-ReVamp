@@ -244,11 +244,11 @@ export default class EventPackage extends React.Component {
                               {list.price_captions.map((value, key) => {
                                 return (
                                   <span className="fw2 fs1-3" key={key}>
-                                    {value} {"  "}
-                                    {"  "}
+                                    {value}
                                     {priceCaptionLength === key + 1
                                       ? ". "
                                       : ", "}
+                                    {"  "}
                                     {"  "}
                                   </span>
                                 );

@@ -1296,11 +1296,12 @@ export default class ParentDetail extends React.Component {
                     ) === 1 ? (
                       <span
                         style={{ letterSpacing: "1px" }}
-                        className="tag is-warning"
+                        className="tag is-warning is-medium"
                         style={{
                           float: "right",
                           borderRadius: "0px",
-                          marginTop: "1.5%"
+                          marginTop: "1.5%",
+                          fontSize: "1.1rem"
                         }}
                       >
                         Exculsive

@@ -1,8 +1,7 @@
 import ReadMoreAndLess from "react-read-more-less";
-
 import EmptyMessage from "./empty-message";
-
 import "./food-list.css";
+
 const FoodList = props => {
   if (props.buffet.length === 0)
     return (
@@ -124,10 +123,11 @@ const FoodList = props => {
                         className="m0 f24 fw9 flh28"
                         style={{ color: "#635f5f" }}
                       >
-                        ₹ {price}
                         {cutPrice === 0 ? null : (
-                          <span className="f12 pfc3 tdl ml8">₹ {cutPrice}</span>
+                          <span className="f18 pfc3 tdl">₹ {cutPrice}</span>
                         )}
+                        <span className="ml8"> ₹ {price}</span>
+
                         {parseInt(value.tax_inclusive, 10) === 1 ? (
                           <span className="f24 ml8">+ TAX</span>
                         ) : null}

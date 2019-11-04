@@ -36,6 +36,7 @@ const CheckoutLeft = props => {
   } else if (props.parentState.which.spa_offer === 1) {
     quanity = false;
     item = props.parentState.spa_offer;
+    time = item.display_time;
   } else if (props.parentState.which.activity_offer === 1) {
     quanity = false;
     item = props.parentState.activity_offer;
@@ -67,7 +68,7 @@ const CheckoutLeft = props => {
           <div className="column">
             <h4 className="ffqs fw2 p0-5 fs1-2 float-right ">
               Quanity :{" "}
-              <span className="tag is-warning fs1">{item.quanity}</span>
+              <span className="tag is-warning fs1">{item.quantity}</span>
             </h4>
           </div>
         ) : null}
@@ -121,7 +122,7 @@ const CheckoutLeft = props => {
                   </div>
                   <div className="column is-6">
                     <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
-                      Quanity :{" "}
+                      Quantity :{" "}
                       <span style={{ marginLeft: "0.3em" }}>
                         {item.quantity}
                       </span>
@@ -162,7 +163,7 @@ const CheckoutLeft = props => {
                   </div>
                   <div className="column is-6">
                     <h4 className="ffqs fw2 p0-5 fs1-2 float-right">
-                      Quanity :{" "}
+                      Quantity :{" "}
                       <span style={{ marginLeft: "0.3em" }}>
                         {value.quantity}
                       </span>
