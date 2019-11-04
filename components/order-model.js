@@ -96,7 +96,10 @@ const OrderModel = props => {
                               <div className="column is-4">
                                 <h4 className="fs1-2 fw2 ffqs">
                                   <span className="tag is-warning is-medium">
-                                    Start Date : {item.package_start_date}
+                                    {props.offering === "Events"
+                                      ? "Event Date :"
+                                      : "Start Date :"}
+                                    {item.package_start_date}
                                   </span>
                                 </h4>
                               </div>

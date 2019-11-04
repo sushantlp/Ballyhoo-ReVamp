@@ -1,6 +1,5 @@
 import "react-dates/initialize";
 
-import { Segment } from "semantic-ui-react";
 import { DateRangePicker } from "react-dates";
 
 import Spinner from "./spinner";
@@ -85,11 +84,6 @@ const Order = props => {
                           <div className="content">
                             <div className="columns">
                               <div className="column is-12">
-                                {/* <h4 className="fw2 fs2 m0 ffqs plh1">
-                              {" "}
-                              {value.offer_title}
-                            </h4> */}
-
                                 <p className="title ffqs">
                                   {value.offer_title}
                                 </p>
@@ -104,12 +98,6 @@ const Order = props => {
 
                             <div className="columns">
                               <div className="column is-8">
-                                {/* <h4 className="fs1-3 fw2 ffqs">
-                              Quanity :{" "}
-                              <span className="grey">
-                                {value.purchase_quantity}
-                              </span> */}
-
                                 <div class="control">
                                   <div class="tags has-addons">
                                     <span class="tag is-large">
@@ -121,21 +109,6 @@ const Order = props => {
                                     </span>
                                   </div>
                                 </div>
-
-                                {/* </h4> */}
-                                {/* <h4 className="fs1-3 fw2 ffqs">
-                              Total Amount :{" "}
-                              <span className="grey">
-                                {parseInt(value.payment_amount, 10) === 0 ? (
-                                  <span>N/A</span>
-                                ) : (
-                                  <React.Fragment>
-                                    {" "}
-                                    <span>{currency}</span>{" "}
-                                    {value.payment_amount}{" "}
-                                  </React.Fragment>
-                                )}
-                              </span> */}
 
                                 <div
                                   class="control"
@@ -161,17 +134,6 @@ const Order = props => {
                                   </div>
                                 </div>
 
-                                {/* </h4> */}
-                                {/* <h4 className="fs1-3 fw2 ffqs">
-                              Payment Type :{" "}
-                              <span className="grey">
-                                {" "}
-                                {parseInt(value.payment_type, 10) === 1
-                                  ? "Online"
-                                  : "Pay At Venue"}
-                              </span>
-                            </h4> */}
-
                                 <div
                                   class="control"
                                   style={{ marginTop: "1em" }}
@@ -192,13 +154,6 @@ const Order = props => {
                               </div>
 
                               <div className="column is-4">
-                                {/* <h4 className="fs1-3 fw2 ffqs">
-                              Confirmation Code :{" "}
-                              <span className="grey">
-                                {value.confirmation_code}
-                              </span>
-                            </h4> */}
-
                                 <div class="control">
                                   <div class="tags has-addons">
                                     <span class="tag is-large">
@@ -211,11 +166,6 @@ const Order = props => {
                                   </div>
                                 </div>
 
-                                {/* <h4 className="fs1-3 fw2 ffqs">
-                              Booking Date :{" "}
-                              <span className="grey">{value.booking_date}</span>
-                            </h4> */}
-
                                 <div
                                   class="control"
                                   style={{ marginTop: "1em" }}
@@ -227,7 +177,11 @@ const Order = props => {
                                     </span>
                                     <span class="tag is-warning is-large">
                                       {" "}
-                                      {value.booking_date}
+                                      {value.booking_date === null ? (
+                                        <span>N/A</span>
+                                      ) : (
+                                        value.booking_date
+                                      )}
                                     </span>
                                   </div>
                                 </div>
@@ -243,15 +197,14 @@ const Order = props => {
                                     </span>
                                     <span class="tag is-warning is-large">
                                       {" "}
-                                      {value.booking_time}
+                                      {value.booking_time === null ? (
+                                        <span>N/A</span>
+                                      ) : (
+                                        value.booking_time
+                                      )}
                                     </span>
                                   </div>
                                 </div>
-
-                                {/* <h4 className="fs1-3 fw2 ffqs">
-                              Booking Time :{" "}
-                              <span className="grey">{value.booking_time}</span>
-                            </h4> */}
                               </div>
                             </div>
                           </div>
@@ -284,7 +237,8 @@ const Order = props => {
                                     props.updateOrderModel(
                                       true,
                                       value.purchase_items,
-                                      currency
+                                      currency,
+                                      value.offering
                                     )
                                   }
                                 >
@@ -309,6 +263,7 @@ const Order = props => {
             updateOrderModel={props.updateOrderModel}
             items={props.orderState.items}
             currency={props.orderState.currency}
+            offering={props.orderState.offering}
           />
         ) : null}
 

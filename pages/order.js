@@ -57,7 +57,8 @@ class Order extends React.Component {
       customerId: 0,
       items: [],
       currency: "&#8377;",
-      searchButtonLoading: false
+      searchButtonLoading: false,
+      offering: ""
     };
   }
 
@@ -129,11 +130,12 @@ class Order extends React.Component {
     });
   };
 
-  updateOrderModel = (bool, item, currency) => {
+  updateOrderModel = (bool, item, currency, offering) => {
     this.setState({
       orderOpen: bool,
       items: item,
-      currency
+      currency,
+      offering
     });
   };
 
