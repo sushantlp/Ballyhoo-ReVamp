@@ -108,11 +108,14 @@ class Explore extends React.Component {
     ReactDOM.findDOMNode(this).scrollIntoView();
     if (this.props.postExplore !== nextProps.postExplore) {
       if (nextProps.postExplore.status === "SUCCESS") {
-        console.log("INSIDE");
         this.updateIsLoading();
-        toast.success("Successful", {
-          onClose: () => this.routeChange()
-        });
+
+        // toast.success(nextProps.postExplore.msg, {
+        //   onClose: () => this.routeChange()
+        // });
+
+        toast.success(nextProps.postExplore.msg);
+        Router.push("/");
       } else {
         this.updateIsLoading();
         toast.error(`${nextProps.postExplore.msg} !`);
@@ -121,6 +124,7 @@ class Explore extends React.Component {
   }
 
   routeChange = () => {
+    console.log("ROUTE");
     Router.push("/");
   };
 
@@ -325,6 +329,7 @@ class Explore extends React.Component {
   };
 
   render() {
+   
     if (this.state.isLoading)
       return (
         <React.Fragment>
@@ -351,6 +356,7 @@ class Explore extends React.Component {
 
     return (
       <React.Fragment>
+        <ToastContainer autoClose={3000} />
         <Head
           title="Ballyhoo Today - Discover Eat Trend Escape. Explore and Book your Events, activities, Nightlife, curated holiday packages and much more"
           ogImage="https://res.cloudinary.com/dp67gawk6/image/upload/c_scale,w_1200/v1539670597/ballyhoo/BALLYHOO_WEBSITE/1440x600finalpge.jpg"
@@ -395,7 +401,7 @@ class Explore extends React.Component {
           onChangeDate={this.onChangeDate}
         />
         <Headout />
-        <ToastContainer autoClose={3000} />
+
         <Footer cityLocality={this.props.cityLocality} />
       </React.Fragment>
     );
