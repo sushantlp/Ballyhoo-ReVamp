@@ -151,7 +151,6 @@ export default class Search extends React.Component {
                   search
                   fluid
                   selection
-                  style={{ height: "50px" }}
                   options={this.state.cityList}
                   defaultValue={this.state.cityName}
                   onChange={(event, data) => this.onChangeCity(event, data)}
@@ -176,7 +175,6 @@ export default class Search extends React.Component {
                   search
                   fluid
                   selection
-                  style={{ height: "50px" }}
                   options={this.state.searchList}
                   onChange={(event, data) => this.onChangeSearch(event, data)}
                   icon={
@@ -199,7 +197,7 @@ export default class Search extends React.Component {
                   <a
                     className="button is-danger"
                     style={{
-                      height: "50px",
+                    
                       fontWeight: "700",
                       cursor: "not-allowed",
                       opacity: "0.80",

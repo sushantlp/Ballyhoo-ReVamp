@@ -1,6 +1,6 @@
 .slidder-container .hero .carousel {
   height: 400px;
-  /* object-fit: cover */
+  
   background-repeat: no-repeat;
   background-size: auto;
 }
