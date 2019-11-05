@@ -1,50 +1,10 @@
-.search-container {
-  width: 100%; 
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-size: cover;
-}
-
-.search-container .column .button {
-  height: 50px;
-  width: 8em;
-  
-}
-
-.search-container .column {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.search-container .ui.search.dropdown > .text {
-  margin-top: 0.5em;
-  letter-spacing: 1px;
-}
-
-.search-container .ui.search.dropdown > input.search {
-  background: none transparent !important;
-  border: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  cursor: text;
-  top: 6px;
-  left: 1px;
-  width: 100%;
-  outline: 0;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  padding: inherit;
-  letter-spacing: 1px;
-}
-
-.search-container .container {
-  padding: 4em;
-}
-
-.search-container .ui.fluid.dropdown {
-  height: 50px;
-}
-
+/* 
  @media screen and (min-width: 769px) {
+
+  .search-container .container {
+    padding-top: 15px;
+  }
+
   .search-container .column.is-2,
   .column.is-2-tablet {
     flex: none;
@@ -64,7 +24,7 @@
   }
 
   .search-container .column .button {
-    height: 45px;
+    height: 40px;
     width: 8em;
   }
 
@@ -72,33 +32,26 @@
     margin-top: 0.3em;
     letter-spacing: 1px;
   }
-}
 
-
-
-@media only screen and (max-width: 1024px) {
-  .search-container .column .button {
-    margin-left: 40%;
-    margin-right: 40%;
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.1em;
+    float: right;
+    color: grey;
   }
 
-  .search-container .column {
-    background: none;
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.1em;
+    float: right;
+    color: grey;
   }
+} */
 
-  .search-container {
-    width: 100%;
-    height: 200px;
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-size: cover;
+/* @media only screen and (max-width: 769px) {
+  .search-container .container {
+    padding-top: 15px;
   }
-}
-
-@media only screen and (max-width: 769px) {
-  /* .search-container .container {
-    padding-top: 0;
-  } */
 
   .search-container {
     width: 100%;
@@ -111,6 +64,196 @@
   .search-container .column .button {
     margin-left: 30%;
     margin-right: 30%;
+    height: 40px;
+    width: 8em;
+  }
+
+  .search-container .ui.fluid.dropdown {
+    height: 45px;
+  }
+
+  .search-container .ui.search.dropdown > .text {
+    margin-top: 0.3em;
+    letter-spacing: 1px;
+  }
+
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.1em;
+    float: right;
+    color: grey;
+  }
+}  */
+
+@media only screen and (min-width: 960px) {
+  /* styles for browsers larger than 960px; */
+}
+@media only screen and (min-width: 1440px) {
+  /* styles for browsers larger than 1440px; */
+
+  .search-container {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+  }
+
+  .search-container .column .button {
+    height: 50px;
+    width: 8em;
+  }
+
+  .search-container .column {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .search-container .ui.search.dropdown > .text {
+    margin-top: 0.5em;
+    letter-spacing: 1px;
+  }
+
+  .search-container .ui.search.dropdown > input.search {
+    background: none transparent !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    cursor: text;
+    top: 6px;
+    left: 1px;
+    width: 100%;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    padding: inherit;
+    letter-spacing: 1px;
+  }
+
+  .search-container .container {
+    padding: 4em;
+  }
+
+  .search-container .ui.fluid.dropdown {
+    height: 50px;
+  }
+
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.3em;
+    float: right;
+    color: grey;
+  }
+}
+@media only screen and (min-width: 2000px) {
+  /* for sumo sized (mac) screens */
+
+  .search-container {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+  }
+
+  .search-container .column .button {
+    height: 50px;
+    width: 8em;
+  }
+
+  .search-container .column {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .search-container .ui.search.dropdown > .text {
+    margin-top: 0.5em;
+    letter-spacing: 1px;
+  }
+
+  .search-container .ui.search.dropdown > input.search {
+    background: none transparent !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    cursor: text;
+    top: 6px;
+    left: 1px;
+    width: 100%;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    padding: inherit;
+    letter-spacing: 1px;
+  }
+
+  .search-container .container {
+    padding: 4em;
+  }
+
+  .search-container .ui.fluid.dropdown {
+    height: 50px;
+  }
+
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.3em;
+    float: right;
+    color: grey;
+  }
+}
+@media only screen and (max-device-width: 480px) {
+  /* styles for mobile browsers smaller than 480px; (iPhone) */
+
+  .search-container .container {
+    padding-top: 15px;
+  }
+
+  .search-container {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .search-container .column .button {
+    margin-left: 35%;
+    margin-right: 35%;
+    height: 40px;
+    width: 8em;
+  }
+
+  .search-container .ui.fluid.dropdown {
+    height: 45px;
+  }
+
+  .search-container .ui.search.dropdown > .text {
+    margin-top: 0.3em;
+    letter-spacing: 1px;
+  }
+
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.1em;
+    float: right;
+    color: grey;
+  }
+}
+@media only screen and (device-width: 768px) {
+  /* default iPad screens */
+
+  .search-container .container {
+    padding-top: 15px;
+  }
+
+  .search-container {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .search-container .column .button {
+    margin-left: 40%;
+    margin-right: 40%;
     height: 45px;
     width: 8em;
   }
@@ -123,6 +266,79 @@
     margin-top: 0.3em;
     letter-spacing: 1px;
   }
-} 
 
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.1em;
+    float: right;
+    color: grey;
+  }
+}
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* For portrait layouts only */
 
+  .search-container {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* For landscape layouts only */
+
+  .search-container {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size: cover;
+  }
+
+  .search-container .column .button {
+    height: 50px;
+    width: 8em;
+  }
+
+  .search-container .column {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .search-container .ui.search.dropdown > .text {
+    margin-top: 0.5em;
+    letter-spacing: 1px;
+  }
+
+  .search-container .ui.search.dropdown > input.search {
+    background: none transparent !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    cursor: text;
+    top: 6px;
+    left: 1px;
+    width: 100%;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    padding: inherit;
+    letter-spacing: 1px;
+  }
+
+  .search-container .container {
+    padding: 4em;
+  }
+
+  .search-container .ui.fluid.dropdown {
+    height: 50px;
+  }
+
+  .search-container .dropdown-img {
+    margin-right: -1.1em;
+    margin-top: 0.3em;
+    float: right;
+    color: grey;
+  }
+}

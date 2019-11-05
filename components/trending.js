@@ -89,7 +89,6 @@ export default class Trending extends React.Component {
             raised
             style={{
               width: calculate > 4 ? "250px" : "275px",
-
               height: "310px",
               marginBottom: "2em"
             }}
@@ -147,7 +146,6 @@ export default class Trending extends React.Component {
       slidesToShow: 4,
       slidesToScroll: 1,
       className: "trending-slick",
-      // centerPadding: "0px",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };

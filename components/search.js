@@ -158,12 +158,8 @@ export default class Search extends React.Component {
                     <img
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
                       alt={this.props.keyword}
-                      style={{
-                        marginRight: "-1.1em",
-                        marginTop: "0.3em",
-                        float: "right",
-                        color: "grey"
-                      }}
+                      className="dropdown-img"
+                    
                     />
                   }
                 />
@@ -181,12 +177,8 @@ export default class Search extends React.Component {
                     <img
                       src="https://img.icons8.com/wired/20/000000/search.png"
                       alt={this.props.keyword}
-                      style={{
-                        marginRight: "-1.1em",
-                        marginTop: "0.3em",
-                        float: "right",
-                        color: "grey"
-                      }}
+                      className="dropdown-img"
+                   
                     />
                   }
                 />
@@ -197,7 +189,6 @@ export default class Search extends React.Component {
                   <a
                     className="button is-danger"
                     style={{
-                    
                       fontWeight: "700",
                       cursor: "not-allowed",
                       opacity: "0.80",
@@ -210,7 +201,6 @@ export default class Search extends React.Component {
                   <a
                     className="button is-danger"
                     style={{
-                      height: "50px",
                       fontWeight: "700",
                       letterSpacing: "1px"
                     }}
