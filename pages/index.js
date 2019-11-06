@@ -42,11 +42,11 @@ class Index extends React.Component {
   static async getInitialProps(ctx) {
     let currentUrl = [];
     try {
-      const { store, isServer, req,  asPath } = ctx;
-  
+      const { store, isServer, req, asPath } = ctx;
+
       if (isServer) currentUrl = req.url;
       else currentUrl = asPath;
-       
+
       const [cityLocalityJson, searchJson] = await Promise.all([
         fetch(`${host}api/v9/web/city-list`).then(r => r.json()),
         fetch(`${host}api/v9/web/search-keys`).then(r => r.json())
@@ -84,7 +84,6 @@ class Index extends React.Component {
         });
     }
 
-   
     const url = this.props.currentUrl.split("/");
 
     if (url.length === 3) {
@@ -98,15 +97,17 @@ class Index extends React.Component {
         this.onCitySelected(this.props.cityLocality.cityLocality[0]);
       } else {
         const customStore = new Store("ballyhoo", "ballyhoo_store");
-        get("city", customStore).then(city =>
-          city === undefined
-            ? this.setState({
-                cityModel: true
-              })
-            : this.onApiCall(city)
-        ).catch(error => {
-          this.onCitySelected(this.props.cityLocality.cityLocality[0]);
-        })
+        get("city", customStore)
+          .then(city =>
+            city === undefined
+              ? this.setState({
+                  cityModel: true
+                })
+              : this.onApiCall(city)
+          )
+          .catch(error => {
+            this.onCitySelected(this.props.cityLocality.cityLocality[0]);
+          });
       }
     }
 
@@ -207,11 +208,10 @@ class Index extends React.Component {
       cityModel: false
     });
 
-  
     this.onApiCall(city);
   };
 
-  onApiCall = city => {   
+  onApiCall = city => {
     this.changeLoadingState(true);
     this.props.getHomeScreenApi(city.city_id);
     this.props.getSeoApi(city.city_id, null, null);

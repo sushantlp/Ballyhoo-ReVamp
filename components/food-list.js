@@ -22,10 +22,9 @@ const FoodList = props => {
             if (parseInt(value.discount, 10) === 0) price = value.price;
             else {
               price =
-                (parseInt(value.price, 10) * parseInt(value.discount, 10)) /
-                100;
-              price = parseInt(value.price, 10) - price;
-              cutPrice = value.price;
+                (parseFloat(value.price) * parseFloat(value.discount)) / 100;
+              price = Math.round(parseFloat(value.price) - price);
+              cutPrice = parseFloat(value.price);
             }
 
             if (parseInt(props.expiry, 10) === 1) {

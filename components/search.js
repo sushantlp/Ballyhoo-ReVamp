@@ -159,7 +159,6 @@ export default class Search extends React.Component {
                       src="https://img.icons8.com/carbon-copy/20/000000/define-location.png"
                       alt={this.props.keyword}
                       className="dropdown-img"
-                    
                     />
                   }
                 />
@@ -178,13 +177,12 @@ export default class Search extends React.Component {
                       src="https://img.icons8.com/wired/20/000000/search.png"
                       alt={this.props.keyword}
                       className="dropdown-img"
-                   
                     />
                   }
                 />
               </div>
 
-              <div className="column is-2">
+              <div className="column is-1">
                 {this.state.submit ? (
                   <a
                     className="button is-danger"

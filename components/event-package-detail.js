@@ -280,11 +280,14 @@ export default class EventPackage extends React.Component {
                   let price = 0;
                   let cutPrice = 0;
                   if (parseInt(money.price_discount, 10) === 0)
-                    price = money.price;
+                    price = parseFloat(money.price);
                   else {
-                    price = (money.price * money.price_discount) / 100;
-                    price = money.price - price;
-                    cutPrice = money.price;
+                    price =
+                      (parseFloat(money.price) *
+                        parseFloat(money.price_discount)) /
+                      100;
+                    price = Math.round(parseFloat(money.price) - price);
+                    cutPrice = parseFloat(money.price);
                   }
 
                   return (

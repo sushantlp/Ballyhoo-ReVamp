@@ -134,7 +134,7 @@ export default class ParentDetail extends React.Component {
     }
   }
 
-  onClickPackageMinus = (key, priceId) => {
+  onClickPackageMinus = key => {
     let cartData = this.state.otherCartObj;
     let totalAmount = this.state.cartCopyTotalPrice;
     const quantity = cartData[key].quantity - 1;
@@ -247,6 +247,9 @@ export default class ParentDetail extends React.Component {
             .format("hh:mm a"),
           date: moment()
         });
+
+        this.updateTimeDisabled(false);
+        this.updateCalendarDisabled(false);
       }
     }
 
@@ -543,15 +546,15 @@ export default class ParentDetail extends React.Component {
     });
   };
 
-  updateTimeDisabled = () => {
+  updateTimeDisabled = bool => {
     this.setState({
-      timeDisabled: !this.state.timeDisabled
+      timeDisabled: bool
     });
   };
 
-  updateCalendarDisabled = () => {
+  updateCalendarDisabled = bool => {
     this.setState({
-      calendarDisabled: !this.state.calendarDisabled
+      calendarDisabled: bool
     });
   };
 
@@ -772,10 +775,10 @@ export default class ParentDetail extends React.Component {
               customer_id: this.props.customerData.customerData.customer_id,
               customer_mobile: this.props.customerData.customerData.mobile,
               customer_email: this.props.customerData.customerData.email,
-              display_time: this.state.displayTime,
+              display_time: moment().format("hh:mm a"),
               display_date: displayDate,
               date: date,
-              time: this.state.time,
+              time: moment(this.state.time, "HH:mm A").format("HH:mm A"),
               quantity: quantity,
               event: true,
               payment_amount: 0,

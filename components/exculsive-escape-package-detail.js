@@ -168,11 +168,12 @@ export default class ExculsiveEscapePackage extends React.Component {
       };
 
       if (parseInt(value.package_discount, 10) === 0)
-        price = parseInt(value.price, 10);
+        price = parseFloat(value.price);
       else {
-        price = (parseInt(value.price, 10) * value.package_discount) / 100;
-        price = parseInt(value.price, 10) - price;
-        cutPrice = parseInt(value.price, 10);
+        price =
+          (parseFloat(value.price) * parseFloat(value.package_discount)) / 100;
+        price = Math.round(parseFloat(value.price) - price);
+        cutPrice = parseFloat(value.price);
       }
 
       for (let i = 0; i < value.package_inclusion_types.length; i++) {

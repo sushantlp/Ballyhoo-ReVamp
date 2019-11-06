@@ -403,11 +403,14 @@ export default class EscapePackage extends React.Component {
           {value.price_list.map((list, key) => {
             let price = 0;
             let cutPrice = 0;
-            if (parseInt(list.price_discount, 10) === 0) price = list.price;
+            if (parseInt(list.price_discount, 10) === 0)
+              price = parseFloat(list.price);
             else {
-              price = (list.price * list.price_discount) / 100;
-              price = list.price - price;
-              cutPrice = list.price;
+              price =
+                (parseFloat(list.price) * parseFloat(list.price_discount)) /
+                100;
+              price = Math.round(parseFloat(list.price) - price);
+              cutPrice = parseFloat(list.price);
             }
 
             return (

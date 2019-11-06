@@ -220,12 +220,14 @@ export default class ActivityPackage extends React.Component {
             let price = 0;
             let cutPrice = 0;
             if (parseInt(activityPrice.price_discount, 10) === 0)
-              price = activityPrice.price;
+              price = parseFloat(activityPrice.price);
             else {
               price =
-                (activityPrice.price * activityPrice.price_discount) / 100;
-              price = activityPrice.price - price;
-              cutPrice = activityPrice.price;
+                (parseFloat(activityPrice.price) *
+                  parseFloat(activityPrice.price_discount)) /
+                100;
+              price = Math.round(parseFloat(activityPrice.price) - price);
+              cutPrice = parseFloat(activityPrice.price);
             }
             return (
               <Segment key={key}>

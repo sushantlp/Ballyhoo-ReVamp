@@ -21,11 +21,13 @@ const FoodPackageDetail = props => {
             let price = 0;
             let cutPrice = 0;
             let bookButton = false;
-            if (parseInt(value.discount, 10) === 0) price = value.price;
+            if (parseInt(value.discount, 10) === 0)
+              price = parseFloat(value.price);
             else {
-              price = (value.price * 100) / value.discount;
-              price = value.price - price;
-              cutPrice = value.price;
+              price =
+                (parseFloat(value.price) * parseFloat(value.discount)) / 100;
+              price = Math.round(parseFloat(value.price) - price);
+              cutPrice = parseFloat(value.price);
             }
 
             if (parseInt(props.expiry, 10) === 1) bookButton = true;
@@ -125,12 +127,16 @@ const FoodPackageDetail = props => {
                         className="m0 f24 fw9 flh28"
                         style={{ color: "#635f5f" }}
                       >
-                        &#8377; {"  "} {price}
                         {cutPrice === 0 ? null : (
-                          <span className="f12 pfc3 tdl ml8">
+                          <span className="f18 pfc3 tdl">
                             &#8377; {"  "} {cutPrice}
                           </span>
                         )}
+
+                        <span className="ml8">
+                          {" "}
+                          &#8377; {"  "} {price}
+                        </span>
                         {parseInt(value.tax_inclusive, 10) === 1 ? (
                           <span className="f24 ml8">+ TAX</span>
                         ) : null}
